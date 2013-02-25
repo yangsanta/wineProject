@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="order_detail.model.Order_DetailVO" table="order_detail">
+
+		<composite-id>
+			<key-property name="o_no" column="o_no" />
+			<key-property name="p_no" column="p_no" />
+		</composite-id>
+
+
+		<property name="p_num" column="p_num" />
+		<property name="od_sales" column="od_sales" />
+		<property name="od_price" column="od_price" />
+
+
+	</class>
+</hibernate-mapping>
+

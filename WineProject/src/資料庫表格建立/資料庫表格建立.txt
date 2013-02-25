@@ -1,0 +1,284 @@
+use WineProject;
+
+drop table discussion;
+
+create table discussion (
+ d_no               int IDENTITY (1001,1) not null,
+ m_no               int  not null,
+ d_context          text,
+ d_datetime         datetime,
+ d_status           varchar(100),
+ d_final_edit       datetime,
+ d_title            varchar(100),
+  constraint discussion_primary_key primary key (d_no)
+
+);
+
+insert into discussion values ('1001','xxx','2013-03-01 12:10:00','ooo','2013-03-01 12:10:00','想保存酒，希望高手、達人分享經驗..');
+insert into discussion values ('1001','xxx','2013-03-01 12:15:00','ooo','2013-03-01 12:15:00','[討論]泡夜店你最愛喝哪種調酒');
+insert into discussion values ('1003','xxx','2013-03-01 12:20:00','ooo','2013-03-01 12:20:00','請問紅酒跟葡萄酒的差別?');
+insert into discussion values ('1005','xxx','2013-03-01 12:25:00','ooo','2013-03-01 12:25:00','威士忌品法');
+insert into discussion values ('1002','xxx','2013-03-01 12:30:00','ooo','2013-03-01 12:30:00','日本男人沒啤酒肚的奧秘');
+
+
+-------------------------------------------------------------------------------
+drop table product;
+
+create table product (
+ p_no               int IDENTITY  not null,
+ p_name             varchar(50)  not null,
+ p_pic              varchar(100),
+ p_year             int,
+ p_rate             int,
+ p_area             varchar(20),
+ p_intro            varchar(max),
+ p_num              int,
+ p_price            float,
+ p_status           varchar(10),
+ p_winery           varchar(30),
+ p_click_count      int,
+ p_buy_count        int,
+ p_style            varchar(10),
+ p_sales            varchar(10),
+ p_vol              int,
+ p_alcho            float,
+ p_date             datetime,
+ p_type             varchar(20),
+ p_grape            varchar(20)
+     
+  constraint product_primary_key primary key (p_no)
+
+);
+
+insert into product values ('傑卡斯臻藏巴洛沙席哈紅酒','a1.jpg','2008','80','Australia','得2005 Taster Guide International Wine Judging等主要國際競賽肯定,在1847年，一位年輕的巴伐利亞移民約翰.葛蘭（Johann Gramp）來到了南澳的巴洛沙河谷，在一條名為傑卡斯溪畔種下了他的第一棵葡萄樹。經過129年的穩定發展，1976年正式以『傑卡斯』為品牌名稱在全球上市，時至今日，每年超過8百萬箱的出口量，讓傑卡斯成為澳洲最受歡迎的葡萄酒廠。每天，近2百萬杯的傑卡斯葡萄酒在世界各地的人們手中被享用，質優易飲的傑卡斯風格深植人心。用於臻藏系列的葡萄，採自精選葡萄園的果實，釀酒師精選來自Padthaway, Langhorne Creek, Coonawarra以及克來兒谷地等地區，果實充分熟成富有濃郁品種風味與細緻單寧的葡萄，作為釀造臻藏系列的來源。香氣集中、濃縮風味，在橡木桶內熟成18-22個月（席哈紅酒）。','50','800','上架中','傑卡斯','80','150','水果香','AB','750','14.5',GETDATE(),'red wine','Syrah / Shiraz');
+insert into product values ('西班牙莫緹卡酒莊－托雷多紅酒','a2.jpg','2007','70','西班牙托雷多','原是中小型釀酒廠創建於1950年歷經四代經營的酒莊，因品質優良，於是予1994年成立國際品牌開始擴展國際市場，主要致力於生產各式葡萄酒(單一品種葡萄酒/佐餐酒/汽泡酒/有機葡萄酒等等)，酒莊產區位在歐洲相當有名且重要的一個中心地帶托雷多省（Toledo），拉曼恰的東部（La Mancha），此區乃是西班牙條例的D.O.產區。自1994年創建以來經營者便不斷的研究及創新，專業的瓶裝及質量的管控，將傳統與創新結合，研發並改變不同的植種方式，以滿足市場上的需求。西班牙莫緹卡酒莊的葡萄園坐落在海拔722米的坡地上，這區的土地屬於地中海型氣候，特點氣候乾燥，冬季寒冷，夏季炎熱，但有海風調節。這些特殊天然環境條件造就出風味獨特的葡萄酒，這些葡萄樹年齡約10年，總產量有限（約5.5公斤／株葡萄樹），酒莊非常仔細地控制每個環節使莫緹卡酒莊的紅/白酒都保持著完美的平衡。','30','280','上架中','BODEGAS VERDUGUEZ','100','90','水果香','RG','750','11.4',GETDATE(),'red wine','Cabernet Sauvignon');
+
+------------------------------------------------------------------------------
+
+drop table reply;
+
+create table reply (
+ d_no               int  not null,
+ r_no               int IDENTITY (1001,1) not null,
+ r_context          text,
+ m_no          		int not null,
+ r_datetime         datetime,
+ r_status       	varchar(10),
+ r_final_edit       datetime,
+ constraint reply_r_no_pk primary key (r_no));
+
+insert into reply values ('1001','xxx','1003','2013-03-01 13:10:00','ooo','2013-03-01 13:10:00');
+insert into reply values ('1001','xxx','1003','2013-03-01 13:15:00','ooo','2013-03-01 13:15:00');
+insert into reply values ('1001','xxx','1003','2013-03-01 13:20:00','ooo','2013-03-01 13:20:00');
+insert into reply values ('1001','xxx','1003','2013-03-01 13:25:00','ooo','2013-03-01 13:25:00');
+insert into reply values ('1001','xxx','1003','2013-03-01 13:30:00','ooo','2013-03-01 13:30:00');
+
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+drop table coupon;
+drop table order_detail;
+
+
+create table coupon (
+ c_key					  varchar(20) not null,
+ c_price				  int not null,
+ c_status                 bit,
+ c_deadline				  datetime,
+ constraint coupon_primary_key primary key (c_key));
+
+insert into coupon values ('AAAAAAAAAAAAAA1',1000,0,GETDATE());
+insert into coupon values ('BBBBBBBBBBBBBB2',500,0,GETDATE());
+insert into coupon values ('CCCCCCCCCCCCCC3',200,0,GETDATE());
+insert into coupon values ('DDDDDDDDDDDDDD4',100,0,GETDATE());
+
+
+create table order_detail (
+ o_no               int not null,
+ p_no               int not null,
+ p_num              int ,
+ od_sales           int,
+ od_price           int,
+CONSTRAINT [PK_order_detail] PRIMARY KEY CLUSTERED 
+(
+[o_no],
+[p_no]
+) ON [PRIMARY] )
+
+
+;
+
+insert into order_detail values (0001,1111,12,0,2000);
+insert into order_detail values (0001,2222,1,0,1000);
+insert into order_detail values (0002,123,2,0,500);
+insert into order_detail values (0003,1001,2,1,1000);
+insert into order_detail values (0003,1002,4,1,200);
+insert into order_detail values (0004,9999,1,0,1000);
+insert into order_detail values (0004,9998,2,0,999);
+----------------------------------------------------------------------------------------------------------------------------------
+drop table coupon_set;
+create table coupon_set ( --[table]滿額贈Coupon   ok
+cs_limit_price			int,	--金額區間/下限  [ primary key ]
+cs_price				int		--Coupon面額
+);
+insert into coupon_set values (300,50);
+insert into coupon_set values (500,100);
+insert into coupon_set values (1000,200);
+insert into coupon_set values (1500,300);
+insert into coupon_set values (3000,400);
+-------------------------------------------------------------
+drop table shipping_set;
+create table shipping_set ( --[table]滿額免運   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+min_pirce 				int	--最低額度 [ primary key ]
+);
+insert into shipping_set values (300);
+-------------------------------------------------------------
+drop table food_set;
+create table food_set ( --[table]食物搭配   ok
+Uniid				int IDENTITY (1,1) not null,	--流水號 [ primary key ]
+fs_id				int  not null,	--商品ID  pri
+rp_id				int	 not null	--食譜ID 
+);
+insert into food_set values (101,101);
+insert into food_set values (102,102);
+-------------------------------------------------------------
+drop table food;
+create table food ( --[table]食物種類 ok
+f_id				int IDENTITY (1,1) not null,	--食物種類ID [ primary key ]
+f_name				varchar(120)  not null,	--食物種類name
+ constraint food_primary_key primary key (f_id)
+);
+insert into food values ('青菜');
+insert into food values ('乳製品');
+insert into food values ('肉類');
+insert into food values ('海鮮');
+-------------------------------------------------------------
+drop table ingredient;
+create table ingredient ( --[table]食材 ok
+i_id				int IDENTITY (1,1) not null,	--食材ID [ primary key ]
+i_name				varchar(120)  not null,			--食材name
+ constraint ingredient_primary_key primary key (i_id)
+);
+insert into ingredient values ('高麗菜');
+insert into ingredient values ('馬鈴薯泥');
+insert into ingredient values ('羊肉');
+insert into ingredient values ('牛肉');
+insert into ingredient values ('豬肉');
+-------------------------------------------------------------
+drop table sauce;
+create table sauce ( --[table]醬料 ok
+s_id				int IDENTITY (101,1) not null,	--醬料ID [ primary key ]
+s_name				varchar(120)  not null,			--醬料name
+constraint sauce_primary_key primary key (s_id)
+);
+insert into sauce values ('bbQ');
+insert into sauce values ('番茄醬');
+insert into sauce values ('黑胡椒');
+-------------------------------------------------------------
+drop table recipe;
+create table recipe ( --[table]食譜   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+rp_id				int  IDENTITY (101,1) not null,	--食譜ID [ primary key ]
+f_id				int,	--食物種類ID
+i_id				int,	--食材ID
+s_id				int,	--醬料ID
+);
+insert into recipe values (101,101,101);
+insert into recipe values (102,102,102);
+-------------------------------------------------------------
+drop table ab;
+create table ab ( --[table]AB   ok
+Uniid				int IDENTITY (1,1) not null,	--流水號 [ primary key ]
+ab_a_p_id				int  not null,	--AID
+ab_b_p_id				int  not null		--BID
+);
+insert into ab values (101,1001);
+insert into ab values (102,1002);
+-----------------------------------------------------------
+drop table orders;
+
+create table orders (
+o_no			    Integer IDENTITY (1,1) not null,
+m_no				Integer not null,
+o_date				date,
+c_key				varchar(20),
+o_shipping			Integer,
+o_after_sales		Integer,
+o_recipient			varchar(10),
+o_recipient_addr	varchar(20),
+o_recipient_tel		varchar(20),
+o_status			varchar(10),
+o_pic				varchar(100),
+constraint orders_primary_key primary key (o_no));
+
+insert into orders values ('1','2013-2-16','N','50','9999','sa','捷運大安站','0987654321','F','1.png');
+insert into orders values ('1','2013-2-16','Y','0','1234','sa','捷運大安站','0987654321','T','2.png');
+insert into orders values ('2','2013-2-16','N','50','4999','sa','捷運大安站','0987654321','T','3.png');
+insert into orders values ('3','2013-2-16','Y','50','6999','sa','捷運大安站','0987654321','T','4.png');
+insert into orders values ('5','2013-2-16','N','50','7999','sa','捷運大安站','0987654321','F','5.png');
+insert into orders values ('6','2013-2-16','N','50','6999','sa','捷運大安站','0987654321','F','6.png');
+insert into orders values ('6','2013-2-16','Y','50','5999','sa','捷運大安站','0987654321','T','7.png');
+insert into orders values ('8','2013-2-16','N','50','8999','sa','捷運大安站','0987654321','F','8.png');
+-----------------------------------------------------------------------
+
+drop table member;
+
+create table member (
+ m_no               int IDENTITY (1001,1) not null,
+ m_name               varchar(10),
+ m_pwd                 varchar(16),
+ m_mobile            char(10),
+ m_email                 varchar(40),
+ m_bday                date,
+ m_addr              varchar(100),
+ m_pic				varchar(100),
+ m_safety_q				varchar(120),
+ m_safety_a				varchar(120),
+ m_status				int,
+ constraint member_m_no_pk primary key (m_no));
+
+insert into member values ('king1','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1);
+insert into member values ('king2','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1);
+insert into member values ('king3','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1);
+insert into member values ('king4','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1);
+insert into member values ('king5','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1);
+insert into member values ('king6','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1);
+-----------------------------------------------------------------------------------
+
+drop table admins;
+
+create table admins (
+ a_no               int IDENTITY (1,1) not null,
+ a_name               varchar(20),
+ a_pwd                 varchar(16),
+ a_role                 varchar(10),
+
+ constraint admins_a_no_pk primary key (a_no));
+
+insert into admins values ('adm1','111','LV_1');
+insert into admins values ('adm2','222','LV_2');
+insert into admins values ('adm3','333','LV_3');
+insert into admins values ('adm4','444','LV_2');
+insert into admins values ('adm5','555','LV_3');
+insert into admins values ('adm6','666','LV_1');
+-------------------------------------------------------
+
+drop table rg;
+
+create table rg (
+ u_id               int IDENTITY (1,1) not null,
+ p_no                 int,
+ r_or_g                 char(1),
+ rg_area                 int,
+ rgs_date                  date,
+ rge_date                    date,
+               
+ constraint rg_uid_pk primary key (u_id));
+
+insert into rg values ('0001','r','1','2013-2-21','2013-4-30');
+insert into rg values ('0002','g','1','2013-2-21','2013-4-30');
+insert into rg values ('0003','r','2','2013-3-10','2013-5-30');
+insert into rg values ('0004','g','2','2013-3-10','2013-5-30');
+insert into rg values ('0005','r','3','2013-5-15','2013-6-30');
+insert into rg values ('0006','g','3','2013-5-15','2013-6-30');
