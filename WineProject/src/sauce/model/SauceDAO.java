@@ -3,7 +3,7 @@ package sauce.model;
 import java.util.*;
 import java.sql.*;
 
-public class sauceDAO implements sauceDAO_interface {
+public class SauceDAO implements SauceDAO_interface {
 	String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	String url = "jdbc:sqlserver://localhost:1433;DatabaseName=WineProject";
 	String userid = "sa";
@@ -21,7 +21,7 @@ public class sauceDAO implements sauceDAO_interface {
 		      "UPDATE sauce set s_name=? where s_id=?";
 
 
-	public void insert(sauceVO sauceVO) {
+	public void insert(SauceVO sauceVO) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -66,7 +66,7 @@ public class sauceDAO implements sauceDAO_interface {
 	}
 
 
-	public void update(sauceVO sauceVO) {
+	public void update(SauceVO sauceVO) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -155,9 +155,9 @@ public class sauceDAO implements sauceDAO_interface {
 	}
 
 
-	public sauceVO findByPrimaryKey(Integer s_id) {
+	public SauceVO findByPrimaryKey(Integer s_id) {
 
-		sauceVO sauceVO = null;
+		SauceVO sauceVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -174,7 +174,7 @@ public class sauceDAO implements sauceDAO_interface {
 
 			while (rs.next()) {
 				// empVo 也稱為 Domain objects
-				sauceVO = new sauceVO();
+				sauceVO = new SauceVO();
 				sauceVO.setS_id(rs.getInt("s_id"));
 				sauceVO.setS_name(rs.getString("s_name"));
 				
@@ -216,9 +216,9 @@ public class sauceDAO implements sauceDAO_interface {
 	}
 
 
-	public List<sauceVO> getAll() {
-		List<sauceVO> list = new ArrayList<sauceVO>();
-		sauceVO sauceVO = null;
+	public List<SauceVO> getAll() {
+		List<SauceVO> list = new ArrayList<SauceVO>();
+		SauceVO sauceVO = null;
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -233,7 +233,7 @@ public class sauceDAO implements sauceDAO_interface {
 
 			while (rs.next()) {
 				// empVO 也稱為 Domain objects
-				sauceVO = new sauceVO();
+				sauceVO = new SauceVO();
 				sauceVO.setS_id(rs.getInt("s_id"));
 				sauceVO.setS_name(rs.getString("s_name"));
 				
@@ -277,16 +277,16 @@ public class sauceDAO implements sauceDAO_interface {
 
 	public static void main(String[] args) {
 
-		sauceDAO dao = new sauceDAO();
+		SauceDAO dao = new SauceDAO();
 
 		// 新增
-		sauceVO sauceVO1 = new sauceVO();
+		SauceVO sauceVO1 = new SauceVO();
 		sauceVO1.setS_name("番茄醬1");
 
 		dao.insert(sauceVO1);
 
 		// 修改
-		sauceVO sauceVO2 = new sauceVO();
+		SauceVO sauceVO2 = new SauceVO();
 		sauceVO2.setS_id(new Integer(102));
 		sauceVO2.setS_name("king12");
 
@@ -296,14 +296,14 @@ public class sauceDAO implements sauceDAO_interface {
 		dao.delete(101);
 
 //		// 查詢
-		sauceVO sauceVO3 = dao.findByPrimaryKey(102);
+		SauceVO sauceVO3 = dao.findByPrimaryKey(102);
 		System.out.print(sauceVO3.getS_id() + ",");
 		System.out.print(sauceVO3.getS_name());
 		System.out.println("---------------------");
 
 		// 查詢
-		List<sauceVO> list = dao.getAll();
-		for (sauceVO asauce : list) {
+		List<SauceVO> list = dao.getAll();
+		for (SauceVO asauce : list) {
 			System.out.print(asauce.getS_id() + ",");
 			System.out.print(asauce.getS_name() + ",");
 
