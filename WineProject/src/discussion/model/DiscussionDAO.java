@@ -9,16 +9,12 @@ public class DiscussionDAO implements DiscussionDAO_interface {
 	String userid = "sa";
 	String passwd = "sa123456";
 
-	private static final String INSERT_STMT =
-		      "INSERT INTO discussion (m_no,d_context,d_datetime,d_status,d_final_edit,d_title) VALUES (?, ?, ?, ?, ?, ?)";
-	private static final String GET_ALL_STMT =
-		      "SELECT d_no,m_no,d_context,d_datetime,d_status,d_final_edit,d_title FROM discussion order by d_no";
-	private static final String GET_ONE_STMT =
-		      "SELECT d_no,m_no,d_context,d_datetime,d_status,d_final_edit,d_title FROM discussion where d_no=?";
-	private static final String DELETE =
-		      "DELETE FROM discussion where d_no = ?";
-	private static final String UPDATE =
-		      "UPDATE discussion set m_no=?,d_context=?,d_datetime=?,d_status=?,d_final_edit=?,d_title=? where d_no=?";
+	private static final String INSERT_STMT = "INSERT INTO discussion (m_no,d_context,d_datetime,d_status,d_final_edit,d_title) VALUES (?, ?, ?, ?, ?, ?)";
+	private static final String GET_ALL_STMT = "SELECT d_no,m_no,d_context,d_datetime,d_status,d_final_edit,d_title FROM discussion order by d_no";
+	private static final String GET_ONE_STMT = "SELECT d_no,m_no,d_context,d_datetime,d_status,d_final_edit,d_title FROM discussion where d_no=?";
+	private static final String DELETE = "DELETE FROM discussion where d_no = ?";
+	private static final String UPDATE = "UPDATE discussion set m_no=?,d_context=?,d_datetime=?,d_status=?,d_final_edit=?,d_title=? where d_no=?";
+	private static final String FINDNO = "SELECT count(*) as TOTAL_NO FROM discussion";
 
 	@Override
 	public void insert(DiscussionVO discussionVO) {
@@ -80,14 +76,14 @@ public class DiscussionDAO implements DiscussionDAO_interface {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(UPDATE);
-			
+
 			pstmt.setInt(1, discussionVO.getM_no());
 			pstmt.setString(2, discussionVO.getD_context());
 			pstmt.setDate(3, discussionVO.getD_datetime());
 			pstmt.setString(4, discussionVO.getD_status());
 			pstmt.setDate(5, discussionVO.getD_final_edit());
 			pstmt.setString(6, discussionVO.getD_title());
-			
+
 			pstmt.executeUpdate();
 
 			// Handle any driver errors
@@ -291,5 +287,64 @@ public class DiscussionDAO implements DiscussionDAO_interface {
 		}
 		return list;
 	}
-	
+
+	@Override
+	public Integer findTotalNOofDiscussion() {
+		Integer totalNO = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(FINDNO);
+			rs = pstmt.executeQuery();
+
+			rs.next();
+			totalNO = rs.getInt(1);
+			// Handle any driver errors
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return totalNO;
+
+	}
+
+	public static void main(String args[]) {
+		
+		//測試findTotalNOofDiscussion總留言比數
+//		DiscussionDAO dao = new DiscussionDAO();
+//		Integer totalNO = dao.findTotalNOofDiscussion();
+//		System.out.print(totalNO);
+	}
 }

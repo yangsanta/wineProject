@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="discussion.model.DiscussionVO" table="discussion">
+
+		<id name="d_no" column="d_no">
+            <generator class="identity"/>
+		</id>
+
+		<property name="m_no" column="m_no" />
+		<property name="d_context" column="d_context" />
+		<property name="d_datetime" column="d_datetime" />
+		<property name="d_status" column="d_status" />
+		<property name="d_final_edit" column="d_final_edit" />
+		<property name="d_title" column="d_title" />
+
+		
+
+	</class>
+</hibernate-mapping>
+
