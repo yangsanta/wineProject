@@ -125,7 +125,7 @@ public class CouponHibernateDAO implements CouponDAO_interface {
 //		 dao.update(couponVO2);
 
 		// ¡´ §R°£											OK!!!!!!!!
-//		 dao.delete("AAAAAAAAAAAAAA1");
+		 dao.delete("AAAAAAAAAAAAAA1");
 
 		// ¡´ ¬d¸ß-findByPrimaryKey 							OK!!!!!!!!!
 //		 CouponVO couponVO3 = dao.findByPrimaryKey("AAA2");

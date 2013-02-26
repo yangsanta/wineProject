@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="member.model.MemberVO" table="member">
+
+		<id name="m_no" column="m_no">
+            <generator class="identity"/>
+		</id>
+
+		<property name="m_name" column="m_name" />
+		<property name="m_pwd" column="m_pwd" />
+		<property name="m_mobile" column="m_mobile" />
+		<property name="m_email" column="m_email" />
+		<property name="m_bday" column="m_bday" />
+		<property name="m_addr" column="m_addr" />
+		<property name="m_pic" column="m_pic" />
+		<property name="m_safety_q" column="m_safety_q" />
+		<property name="m_safety_a" column="m_safety_a" />
+		<property name="m_status" column="m_status" />
+
+	</class>
+</hibernate-mapping>
+

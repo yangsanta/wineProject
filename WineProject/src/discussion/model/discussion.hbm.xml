@@ -6,7 +6,7 @@
 	<class name="discussion.model.DiscussionVO" table="discussion">
 
 		<id name="d_no" column="d_no">
-            <generator class="identity"/>
+			<generator class="identity"/>
 		</id>
 
 		<property name="m_no" column="m_no" />
@@ -15,9 +15,6 @@
 		<property name="d_status" column="d_status" />
 		<property name="d_final_edit" column="d_final_edit" />
 		<property name="d_title" column="d_title" />
-
-		
-
 	</class>
 </hibernate-mapping>
 

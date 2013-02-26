@@ -30,9 +30,9 @@ public class DiscussionDAO implements DiscussionDAO_interface {
 
 			pstmt.setInt(1, discussionVO.getM_no());
 			pstmt.setString(2, discussionVO.getD_context());
-			pstmt.setDate(3, discussionVO.getD_datetime());
+			pstmt.setTimestamp(3, discussionVO.getD_datetime());
 			pstmt.setString(4, discussionVO.getD_status());
-			pstmt.setDate(5, discussionVO.getD_final_edit());
+			pstmt.setTimestamp(5, discussionVO.getD_final_edit());
 			pstmt.setString(6, discussionVO.getD_title());
 
 			pstmt.executeUpdate();
@@ -79,9 +79,9 @@ public class DiscussionDAO implements DiscussionDAO_interface {
 
 			pstmt.setInt(1, discussionVO.getM_no());
 			pstmt.setString(2, discussionVO.getD_context());
-			pstmt.setDate(3, discussionVO.getD_datetime());
+			pstmt.setTimestamp(3, discussionVO.getD_datetime());
 			pstmt.setString(4, discussionVO.getD_status());
-			pstmt.setDate(5, discussionVO.getD_final_edit());
+			pstmt.setTimestamp(5, discussionVO.getD_final_edit());
 			pstmt.setString(6, discussionVO.getD_title());
 
 			pstmt.executeUpdate();
@@ -182,9 +182,9 @@ public class DiscussionDAO implements DiscussionDAO_interface {
 				discussionVO.setD_no(rs.getInt("d_no"));
 				discussionVO.setM_no(rs.getInt("m_no"));
 				discussionVO.setD_context(rs.getString("d_context"));
-				discussionVO.setD_datetime(rs.getDate("d_datetime"));
+				discussionVO.setD_datetime(rs.getTimestamp("d_datetime"));
 				discussionVO.setD_status(rs.getString("d_status"));
-				discussionVO.setD_final_edit(rs.getDate("d_final_edit"));
+				discussionVO.setD_final_edit(rs.getTimestamp("d_final_edit"));
 				discussionVO.setD_title(rs.getString("d_title"));
 
 			}
@@ -246,9 +246,9 @@ public class DiscussionDAO implements DiscussionDAO_interface {
 				discussion.setD_no(rs.getInt("d_no"));
 				discussion.setM_no(rs.getInt("m_no"));
 				discussion.setD_context(rs.getString("d_context"));
-				discussion.setD_datetime(rs.getDate("d_datetime"));
+				discussion.setD_datetime(rs.getTimestamp("d_datetime"));
 				discussion.setD_status(rs.getString("d_status"));
-				discussion.setD_final_edit(rs.getDate("d_final_edit"));
+				discussion.setD_final_edit(rs.getTimestamp("d_final_edit"));
 				discussion.setD_title(rs.getString("d_title"));
 				list.add(discussion); // Store the row in the list
 			}

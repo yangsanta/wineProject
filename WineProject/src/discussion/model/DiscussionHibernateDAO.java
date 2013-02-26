@@ -45,11 +45,11 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 
 	@Override
 	public void delete(Integer d_no) {
-		List<DiscussionVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			DiscussionVO discussionVO = new DiscussionVO();
+			discussionVO.setD_no(d_no);
 			session.delete(discussionVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
@@ -109,9 +109,63 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 
 	public static void main(String args[]) {
 		
-		//測試findTotalNOofDiscussion總留言筆數
 		DiscussionHibernateDAO dao = new DiscussionHibernateDAO();
+		
+
+		
+
+		
+		//測試insert()
+//		DiscussionVO discussionVO1 = new DiscussionVO();
+//		discussionVO1.setM_no(111);
+//		discussionVO1.setD_context("oooxxxoooxxx");
+//		discussionVO1.setD_datetime(new java.sql.Timestamp(new java.util.Date().getTime()));
+//		discussionVO1.setD_status("000");
+//		discussionVO1.setD_final_edit(new java.sql.Timestamp(new java.util.Date().getTime()));
+//		discussionVO1.setD_title("請問聰明人喝的酒跟笨蛋喝的酒的差別?");
+//		dao.insert(discussionVO1);
+		
+		
+		//測試update()
+//		DiscussionVO discussionVO2 = new DiscussionVO();
+//		discussionVO2.setD_no(1010);
+//		discussionVO2.setM_no(111);
+//		discussionVO2.setD_context("11111111111");
+//		discussionVO2.setD_datetime(new java.sql.Timestamp(new java.util.Date().getTime()));
+//		discussionVO2.setD_status("000");
+//		discussionVO2.setD_final_edit(new java.sql.Timestamp(new java.util.Date().getTime()));
+//		discussionVO2.setD_title("請問聰明人喝的酒跟笨蛋喝的酒的差別?");
+//		dao.update(discussionVO2);
+				
+		//測試delete()
+//		dao.delete(1014);
+		
+		//測試findByPrimaryKey()
+//		DiscussionVO aDiscussion= dao.findByPrimaryKey(1013);
+//		System.out.print(aDiscussion.getD_no() + ",");
+//		System.out.print(aDiscussion.getM_no() + ",");
+//		System.out.print(aDiscussion.getD_context() + ",");
+//		System.out.print(aDiscussion.getD_datetime() + ",");
+//		System.out.print(aDiscussion.getD_status() + ",");
+//		System.out.print(aDiscussion.getD_final_edit() + ",");
+//		System.out.print(aDiscussion.getD_title());
+//		System.out.println();	
+		
+		//測試getAll()
+		List<DiscussionVO> list = dao.getAll();
+		for (DiscussionVO aDiscussion : list) {
+			System.out.print(aDiscussion.getD_no() + ",");
+			System.out.print(aDiscussion.getM_no() + ",");
+			System.out.print(aDiscussion.getD_context() + ",");
+			System.out.print(aDiscussion.getD_datetime() + ",");
+			System.out.print(aDiscussion.getD_status() + ",");
+			System.out.print(aDiscussion.getD_final_edit() + ",");
+			System.out.print(aDiscussion.getD_title());
+			System.out.println();	
+		}		
+		
+		//測試findTotalNOofDiscussion()總留言筆數
 		Integer totalNO = dao.findTotalNOofDiscussion();
-		System.out.println(totalNO);
+		System.out.println("總留言筆數 = " + totalNO);
 	}
 }
