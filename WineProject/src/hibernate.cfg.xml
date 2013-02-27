@@ -37,6 +37,7 @@
 		<mapping resource="order_detail/model/order_detail.hbm.xml" />
 		<mapping resource="discussion/model/discussion.hbm.xml" />
 		<mapping resource="member/model/member.hbm.xml" />
+		<mapping resource="product/model/product.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>
