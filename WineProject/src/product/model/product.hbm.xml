@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="product.model.ProductVO" table="product">
+
+		<id name="p_no" column="p_no">
+			<generator class="identity"></generator>
+		</id>
+
+		<property name="p_name" column="p_name" />
+		<property name="p_year" column="p_year" />
+		<property name="p_rate" column="p_rate" />
+		<property name="p_area" column="p_area" />
+		<property name="p_intro" column="p_intro" />
+		<property name="p_num" column="p_num" />
+		<property name="p_price" column="p_price" />
+		<property name="p_status" column="p_status" />
+		<property name="p_winery" column="p_winery" />
+		<property name="p_click_count" column="p_click_count" />
+		<property name="p_buy_count" column="p_buy_count" />
+		<property name="p_style" column="p_style" />
+		<property name="p_sales" column="p_sales" />
+		<property name="p_vol" column="p_vol" />
+		<property name="p_alcho" column="p_alcho" />
+		<property name="p_date" column="p_date" />
+		<property name="p_type" column="p_type" />
+		<property name="p_grape" column="p_grape" />
+
+
+
+	</class>
+</hibernate-mapping>
+

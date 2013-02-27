@@ -344,4 +344,10 @@ public class ProductDAO implements ProductDAO_interface {
 		return list;
 	}
 
+	@Override
+	public List findProductType(String productlist) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
