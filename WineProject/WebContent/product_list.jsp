@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=BIG5"
 	pageEncoding="BIG5"%>
-<%@ page import="java.util.*"%>
-<%@ page import="product.model.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -11,17 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		ProductHibernateDAO dao = new ProductHibernateDAO();
-		List<String> area = dao.findProductType("p_area");
-		pageContext.setAttribute("area", area);
-		List<String> style = dao.findProductType("p_style");
-		pageContext.setAttribute("style", style);
-		List<String> p_winery = dao.findProductType("p_winery");
-		pageContext.setAttribute("p_winery", p_winery);
-		List<String> p_vol = dao.findProductType("p_vol");
-		pageContext.setAttribute("p_vol", p_vol);
-	%>
+
 
 
 	<div id='cssmenu'>
@@ -56,38 +44,29 @@
 						<li class='has-sub'><a href='#'><span>${creat} </span></a></li>
 					</c:forEach>
 				</ul></li>
-			<li class='active has-sub'><a href='#'><span>°sºØ</span></a>
+			<li class='active has-sub'><a href='#'><span>°sºØ/¸²µåºØ</span></a>
 				<ul>
 					<li class='has-sub'><a href='#'><span>¬õ¸²µå°s </span></a>
 						<ul>
-							<%
-								List<String> redWine = dao.findGrapeType("¬õ¸²µå°s");
-								pageContext.setAttribute("redWine", redWine);
-							%>
+
 							<c:forEach var="grape" items="${redWine}">
-							<li class='last'><a href='#'><span>${grape}</span></a></li>
-						</c:forEach>
+								<li class='last'><a href='#'><span>${grape}</span></a></li>
+							</c:forEach>
 						</ul></li>
 
 					<li class='has-sub'><a href='#'><span>¥Õ¸²µå°s</span></a>
 						<ul>
-							<%
-								List<String> whiteWine = dao.findGrapeType("¥Õ¸²µå°s");
-								pageContext.setAttribute("whiteWine", whiteWine);
-							%>
+
 							<c:forEach var="grape" items="${whiteWine}">
-							<li class='last'><a href='#'><span>${grape}</span></a></li>
-						</c:forEach>
+								<li class='last'><a href='#'><span>${grape}</span></a></li>
+							</c:forEach>
 						</ul></li>
 					<li class='has-sub'><a href='#'><span>®ðªw°s </span></a>
-							<ul>
-							<%
-								List<String> bubbleWine = dao.findGrapeType("¥Õ¸²µå°s");
-								pageContext.setAttribute("bubbleWine", bubbleWine);
-							%>
+						<ul>
+
 							<c:forEach var="grape" items="${bubbleWine}">
-							<li class='last'><a href='#'><span>${grape}</span></a></li>
-						</c:forEach>
+								<li class='last'><a href='#'><span>${grape}</span></a></li>
+							</c:forEach>
 						</ul></li>
 				</ul></li>
 		</ul>
