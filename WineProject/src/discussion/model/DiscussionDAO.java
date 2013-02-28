@@ -10,7 +10,7 @@ public class DiscussionDAO implements DiscussionDAO_interface {
 	String passwd = "sa123456";
 
 	private static final String INSERT_STMT = "INSERT INTO discussion (m_no,d_context,d_datetime,d_status,d_final_edit,d_title) VALUES (?, ?, ?, ?, ?, ?)";
-	private static final String GET_ALL_STMT = "SELECT d_no,m_no,d_context,d_datetime,d_status,d_final_edit,d_title FROM discussion order by d_no";
+	private static final String GET_ALL_STMT = "SELECT d_no,m_no,d_context,d_datetime,d_status,d_final_edit,d_title FROM discussion order by d_datetime desc";
 	private static final String GET_ONE_STMT = "SELECT d_no,m_no,d_context,d_datetime,d_status,d_final_edit,d_title FROM discussion where d_no=?";
 	private static final String DELETE = "DELETE FROM discussion where d_no = ?";
 	private static final String UPDATE = "UPDATE discussion set m_no=?,d_context=?,d_datetime=?,d_status=?,d_final_edit=?,d_title=? where d_no=?";
@@ -341,10 +341,22 @@ public class DiscussionDAO implements DiscussionDAO_interface {
 	}
 
 	public static void main(String args[]) {
-		
+
+		DiscussionDAO dao = new DiscussionDAO();
 		//測試findTotalNOofDiscussion總留言比數
-//		DiscussionDAO dao = new DiscussionDAO();
 //		Integer totalNO = dao.findTotalNOofDiscussion();
 //		System.out.print(totalNO);
+		
+		List<DiscussionVO> list = dao.getAll();
+		for (DiscussionVO aDiscussion : list) {
+//			System.out.print(aDiscussion.getD_no() + ",");
+//			System.out.print(aDiscussion.getM_no() + ",");
+//			System.out.print(aDiscussion.getD_context() + ",");
+			System.out.print(aDiscussion.getD_datetime() + ",");
+//			System.out.print(aDiscussion.getD_status() + ",");
+//			System.out.print(aDiscussion.getD_final_edit() + ",");
+//			System.out.print(aDiscussion.getD_title());
+			System.out.println();	
+		}
 	}
 }

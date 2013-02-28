@@ -15,7 +15,7 @@ import coupon.model.CouponVO;
 
 public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 
-	private static final String GET_ALL_STMT = "FROM DiscussionVO order by d_no";
+	private static final String GET_ALL_STMT = "FROM DiscussionVO order by d_datetime desc";
 	
 	@Override
 	public void insert(DiscussionVO discussionVO) {
