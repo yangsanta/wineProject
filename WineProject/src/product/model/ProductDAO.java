@@ -5,11 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-
-
 
 public class ProductDAO implements ProductDAO_interface {
 	String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
@@ -17,16 +15,11 @@ public class ProductDAO implements ProductDAO_interface {
 	String userid = "sa";
 	String passwd = "sa123456";
 
-	private static final String INSERT_STMT =
-			"INSERT INTO product (p_name,p_year,p_rate,p_area,p_intro,p_num,p_price,p_status,p_winery,p_click_count,p_buy_count,p_style,p_sales,p_vol,p_alcho,p_date,p_type,p_grape) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	private static final String GET_ALL_STMT =
-			"SELECT p_no,p_name,p_year,p_rate,p_area,p_intro,p_num,p_price,p_status,p_winery,p_click_count,p_buy_count,p_style,p_sales,p_vol,p_alcho,p_date,p_type,p_grape FROM product order by p_no";
-	private static final String GET_ONE_STMT =
-			"SELECT p_no,p_name,p_year,p_rate,p_area,p_intro,p_num,p_price,p_status,p_winery,p_click_count,p_buy_count,p_style,p_sales,p_vol,p_alcho,p_date,p_type,p_grape FROM product where p_no = ?";
-	private static final String DELETE =
-			"DELETE FROM product where p_no = ?";
-	private static final String UPDATE =
-			"UPDATE product set p_name= ?,p_year= ?,p_rate= ?,p_area= ?,p_intro= ?,p_num= ?,p_price= ?,p_status= ?,p_winery= ?,p_click_count= ?,p_buy_count= ?,p_style= ?,p_sales= ?,p_vol= ?,p_alcho= ? ,p_date=?,p_type=?,p_grape=? where p_no = ?";
+	private static final String INSERT_STMT = "INSERT INTO product (p_name,p_year,p_rate,p_area,p_intro,p_num,p_price,p_status,p_winery,p_click_count,p_buy_count,p_style,p_sales,p_vol,p_alcho,p_date,p_type,p_grape) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	private static final String GET_ALL_STMT = "SELECT p_no,p_name,p_year,p_rate,p_area,p_intro,p_num,p_price,p_status,p_winery,p_click_count,p_buy_count,p_style,p_sales,p_vol,p_alcho,p_date,p_type,p_grape FROM product order by p_no";
+	private static final String GET_ONE_STMT = "SELECT p_no,p_name,p_year,p_rate,p_area,p_intro,p_num,p_price,p_status,p_winery,p_click_count,p_buy_count,p_style,p_sales,p_vol,p_alcho,p_date,p_type,p_grape FROM product where p_no = ?";
+	private static final String DELETE = "DELETE FROM product where p_no = ?";
+	private static final String UPDATE = "UPDATE product set p_name= ?,p_year= ?,p_rate= ?,p_area= ?,p_intro= ?,p_num= ?,p_price= ?,p_status= ?,p_winery= ?,p_click_count= ?,p_buy_count= ?,p_style= ?,p_sales= ?,p_vol= ?,p_alcho= ? ,p_date=?,p_type=?,p_grape=? where p_no = ?";
 
 	@Override
 	public void insert(ProductVO productVO) {
@@ -346,6 +339,62 @@ public class ProductDAO implements ProductDAO_interface {
 
 	@Override
 	public List findProductType(String productlist) {
+		List list = new ArrayList();
+
+		ProductVO productVO = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			Statement st = con.createStatement();
+			
+			
+			while (rs.next()) {String aaa = list.toString();
+
+			list.add(aaa);
+			}
+
+			// Handle any driver errors
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
+
+	@Override
+	public List<String> findGrapeType(String productType) {
 		// TODO Auto-generated method stub
 		return null;
 	}

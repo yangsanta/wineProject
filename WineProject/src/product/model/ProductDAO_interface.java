@@ -14,4 +14,6 @@ public interface ProductDAO_interface {
 	public List<ProductVO> getAll();
 
 	public List findProductType(String productlist);
+
+	public List<String> findGrapeType(String productType);
 }
