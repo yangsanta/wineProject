@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=BIG5">
 <title>${ productVO.p_name }</title>
 <link rel="stylesheet" href="../style/ProductOne.css">
 </head>
 <body>
 <div class=p_content>
-	<div class="p_pics">${ productVO.p_no }圖片</div>
+	<div class="p_pics">${ productVO.p_pic }圖片</div>
 	<div class="p_data">
 		<div class="p_title">${ productVO.p_name} </div>
 		<ul class="p_info1">
