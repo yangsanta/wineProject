@@ -140,6 +140,7 @@ public class MemberHibernateDAO implements MemberDAO_interface {
 		// ¬d¸ß
 		List<MemberVO> list = dao.getAll();
 		for (MemberVO aMember : list) {
+			System.out.print(aMember.getM_id() + ",");
 			System.out.print(aMember.getM_no() + ",");
 			System.out.print(aMember.getM_name() + ",");
 			System.out.print(aMember.getM_pwd() + ",");

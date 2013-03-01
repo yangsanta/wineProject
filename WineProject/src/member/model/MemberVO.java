@@ -3,6 +3,13 @@ import java.sql.Date;
 
 public class MemberVO implements java.io.Serializable{
 	private Integer m_no;
+	private String m_id;
+	public String getM_id() {
+		return m_id;
+	}
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
 	private String m_name;
 	private String m_pwd;
 	private String m_mobile;

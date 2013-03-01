@@ -6,9 +6,9 @@
 	<class name="member.model.MemberVO" table="member">
 
 		<id name="m_no" column="m_no">
-            <generator class="identity"/>
+			<generator class="identity" />
 		</id>
-
+		<property name="m_id" column="m_id" />
 		<property name="m_name" column="m_name" />
 		<property name="m_pwd" column="m_pwd" />
 		<property name="m_mobile" column="m_mobile" />
@@ -19,6 +19,7 @@
 		<property name="m_safety_q" column="m_safety_q" />
 		<property name="m_safety_a" column="m_safety_a" />
 		<property name="m_status" column="m_status" />
+
 
 	</class>
 </hibernate-mapping>
