@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="rg.model.RgVO" table="rg">
+
+		<id name="u_id" column="u_id">
+			<generator class="identity"></generator>
+		</id>
+
+		<property name="p_no" column="p_no" />
+		<property name="r_or_g" column="r_or_g" />
+		<property name="rgs_date" column="rgs_date" />
+		<property name="rge_date" column="rge_date" />
+
+	</class>
+</hibernate-mapping>
+

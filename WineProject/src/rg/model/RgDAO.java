@@ -10,15 +10,15 @@ public class RgDAO implements RgDAO_interface {
 	String passwd = "sa123456";
 
 	private static final String INSERT_STMT =
-			 "INSERT INTO rg (p_no,r_or_g,rg_area,rgs_date,rge_date) VALUES (?, ?, ?, ?, ?)";
+			 "INSERT INTO rg (p_no,r_or_g,rgs_date,rge_date) VALUES ( ?, ?, ?, ?)";
 	private static final String GET_ALL_STMT =
-		      "SELECT u_id,p_no,r_or_g,rg_area,rgs_date,rge_date FROM rg order by u_id";
+		      "SELECT u_id,p_no,r_or_g,rgs_date,rge_date FROM rg order by u_id";
 	private static final String GET_ONE_STMT =
-		      "SELECT u_id,p_no,r_or_g,rg_area,rgs_date,rge_date FROM rg where u_id=?";
+		      "SELECT u_id,p_no,r_or_g,rgs_date,rge_date FROM rg where u_id=?";
 	private static final String DELETE =
 		      "DELETE FROM rg where u_id = ?";
 	private static final String UPDATE =
-		      "UPDATE rg set p_no=?,r_or_g=?,rg_area=?,rgs_date=?,rge_date=? where u_id=?";
+		      "UPDATE rg set p_no=?,r_or_g=?,rgs_date=?,rge_date=? where u_id=?";
 
 	@Override
 	public void insert(RgVO rgVO) {
@@ -34,9 +34,9 @@ public class RgDAO implements RgDAO_interface {
 
 			pstmt.setInt(1, rgVO.getP_no());
 			pstmt.setString(2, rgVO.getR_or_g());
-			pstmt.setInt(3, rgVO.getRg_area());
-			pstmt.setDate(4, rgVO.getRgs_date());
-			pstmt.setDate(5, rgVO.getRge_date());
+
+			pstmt.setDate(3, rgVO.getRgs_date());
+			pstmt.setDate(4, rgVO.getRge_date());
 			
 
 			pstmt.executeUpdate();
@@ -83,10 +83,10 @@ public class RgDAO implements RgDAO_interface {
 
 			pstmt.setInt(1, rgVO.getP_no());
 			pstmt.setString(2, rgVO.getR_or_g());
-			pstmt.setInt(3, rgVO.getRg_area());
-			pstmt.setDate(4, rgVO.getRgs_date());
-			pstmt.setDate(5, rgVO.getRge_date());
-			pstmt.setInt(6, rgVO.getU_id());
+
+			pstmt.setDate(3, rgVO.getRgs_date());
+			pstmt.setDate(4, rgVO.getRge_date());
+			pstmt.setInt(5, rgVO.getU_id());
 
 			pstmt.executeUpdate();
 
@@ -186,7 +186,7 @@ public class RgDAO implements RgDAO_interface {
 				rgVO.setU_id(rs.getInt("u_id"));
 				rgVO.setP_no(rs.getInt("p_no"));
 				rgVO.setR_or_g(rs.getString("r_or_g"));
-				rgVO.setRg_area(rs.getInt("rg_area"));
+
 				rgVO.setRgs_date(rs.getDate("rgs_date"));
 				rgVO.setRge_date(rs.getDate("rge_date"));
 				
@@ -249,7 +249,7 @@ public class RgDAO implements RgDAO_interface {
 				rgVO.setU_id(rs.getInt("u_id"));
 				rgVO.setP_no(rs.getInt("p_no"));
 				rgVO.setR_or_g(rs.getString("r_or_g"));
-				rgVO.setRg_area(rs.getInt("rg_area"));
+
 				rgVO.setRgs_date(rs.getDate("rgs_date"));
 				rgVO.setRge_date(rs.getDate("rge_date"));
 				list.add(rgVO); // Store the row in the list
@@ -298,7 +298,7 @@ public class RgDAO implements RgDAO_interface {
 		RgVO rgVO1 = new RgVO();
 		rgVO1.setP_no(1);
 		rgVO1.setR_or_g("r");
-		rgVO1.setRg_area(1);
+
 		rgVO1.setRgs_date(java.sql.Date.valueOf("2013-02-21"));
 		rgVO1.setRge_date(java.sql.Date.valueOf("2013-4-30"));
 		
@@ -309,7 +309,7 @@ public class RgDAO implements RgDAO_interface {
 		rgVO2.setU_id(new Integer(2));
 		rgVO2.setP_no(1);
 		rgVO2.setR_or_g("r");
-		rgVO2.setRg_area(1);
+
 		rgVO2.setRgs_date(java.sql.Date.valueOf("2013-02-21"));
 		rgVO2.setRge_date(java.sql.Date.valueOf("2013-4-30"));
 		dao.update(rgVO2);
@@ -322,7 +322,7 @@ public class RgDAO implements RgDAO_interface {
 		System.out.print(rgVO3.getU_id() + ",");
 		System.out.print(rgVO3.getP_no() + ",");
 		System.out.print(rgVO3.getR_or_g() + ",");
-		System.out.print(rgVO3.getRg_area() + ",");
+
 		System.out.print(rgVO3.getRgs_date() + ",");
 		System.out.print(rgVO3.getRge_date() + ",");
 		
@@ -334,7 +334,7 @@ public class RgDAO implements RgDAO_interface {
 			System.out.print(aRng.getU_id() + ",");
 			System.out.print(aRng.getP_no() + ",");
 			System.out.print(aRng.getR_or_g() + ",");
-			System.out.print(aRng.getRg_area() + ",");
+
 			System.out.print(aRng.getRgs_date() + ",");
 			System.out.print(aRng.getRge_date() + ",");
 			

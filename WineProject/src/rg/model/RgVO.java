@@ -5,7 +5,6 @@ public class RgVO implements java.io.Serializable{
 	private Integer u_id;
 	private Integer p_no;
 	private String r_or_g;
-	private Integer rg_area;
 	private Date rgs_date;
 	private Date rge_date;
 	public Integer getU_id() {
@@ -26,12 +25,7 @@ public class RgVO implements java.io.Serializable{
 	public void setR_or_g(String r_or_g) {
 		this.r_or_g = r_or_g;
 	}
-	public Integer getRg_area() {
-		return rg_area;
-	}
-	public void setRg_area(Integer rg_area) {
-		this.rg_area = rg_area;
-	}
+
 	public Date getRgs_date() {
 		return rgs_date;
 	}
