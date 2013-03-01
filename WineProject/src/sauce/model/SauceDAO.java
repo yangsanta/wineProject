@@ -1,4 +1,4 @@
-package sauce.model;
+ï»¿package sauce.model;
 
 import java.util.*;
 import java.sql.*;
@@ -173,7 +173,7 @@ public class SauceDAO implements SauceDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVo ¤]ºÙ¬° Domain objects
+				// empVo ä¹Ÿç¨±ç‚º Domain objects
 				sauceVO = new SauceVO();
 				sauceVO.setS_id(rs.getInt("s_id"));
 				sauceVO.setS_name(rs.getString("s_name"));
@@ -232,7 +232,7 @@ public class SauceDAO implements SauceDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVO ¤]ºÙ¬° Domain objects
+				// empVO ä¹Ÿç¨±ç‚º Domain objects
 				sauceVO = new SauceVO();
 				sauceVO.setS_id(rs.getInt("s_id"));
 				sauceVO.setS_name(rs.getString("s_name"));
@@ -279,29 +279,29 @@ public class SauceDAO implements SauceDAO_interface {
 
 		SauceDAO dao = new SauceDAO();
 
-		// ·s¼W
+		// æ–°å¢ž
 		SauceVO sauceVO1 = new SauceVO();
-		sauceVO1.setS_name("µf­XÂæ1");
+		sauceVO1.setS_name("ç•ªèŒ„é†¬1");
 
 		dao.insert(sauceVO1);
 
-		// ­×§ï
+		// ä¿®æ”¹
 		SauceVO sauceVO2 = new SauceVO();
 		sauceVO2.setS_id(new Integer(102));
 		sauceVO2.setS_name("king12");
 
 		dao.update(sauceVO2);
 
-		// §R°£
+		// åˆªé™¤
 		dao.delete(101);
 
-//		// ¬d¸ß
+//		// æŸ¥è©¢
 		SauceVO sauceVO3 = dao.findByPrimaryKey(102);
 		System.out.print(sauceVO3.getS_id() + ",");
 		System.out.print(sauceVO3.getS_name());
 		System.out.println("---------------------");
 
-		// ¬d¸ß
+		// æŸ¥è©¢
 		List<SauceVO> list = dao.getAll();
 		for (SauceVO asauce : list) {
 			System.out.print(asauce.getS_id() + ",");

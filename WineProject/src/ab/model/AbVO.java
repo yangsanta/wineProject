@@ -1,4 +1,4 @@
-package ab.model;
+﻿package ab.model;
 
 
 public class AbVO implements java.io.Serializable{

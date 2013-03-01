@@ -1,4 +1,4 @@
-package recipe.model;
+﻿package recipe.model;
 
 public class RecipeVO implements java.io.Serializable{
 	private Integer rp_id;

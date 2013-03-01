@@ -1,4 +1,4 @@
-package ingredient.model;
+ï»¿package ingredient.model;
 
 import java.util.*;
 import java.sql.*;
@@ -173,7 +173,7 @@ public class IngredientDAO implements IngredientDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVo ¤]ºÙ¬° Domain objects
+				// empVo ä¹Ÿç¨±ç‚º Domain objects
 				ingredientVO = new IngredientVO();
 				ingredientVO.seti_id(rs.getInt("i_id"));
 				ingredientVO.seti_name(rs.getString("i_name"));
@@ -232,7 +232,7 @@ public class IngredientDAO implements IngredientDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVO ¤]ºÙ¬° Domain objects
+				// empVO ä¹Ÿç¨±ç‚º Domain objects
 				ingredientVO = new IngredientVO();
 				ingredientVO.seti_id(rs.getInt("i_id"));
 				ingredientVO.seti_name(rs.getString("i_name"));
@@ -279,29 +279,29 @@ public class IngredientDAO implements IngredientDAO_interface {
 
 		IngredientDAO dao = new IngredientDAO();
 
-		// ·s¼W
+		// æ–°å¢
 		IngredientVO ingredientVO1 = new IngredientVO();
-		ingredientVO1.seti_name("·s¼W°¨¹aÁ¦ªd1");
+		ingredientVO1.seti_name("æ–°å¢é¦¬éˆ´è–¯æ³¥1");
 
 		dao.insert(ingredientVO1);
 
-		// ­×§ï
+		// ä¿®æ”¹
 		IngredientVO ingredientVO2 = new IngredientVO();
 		ingredientVO2.seti_id(new Integer(102));
-		ingredientVO2.seti_name("­×§ï°ªÄRµæ12");
+		ingredientVO2.seti_name("ä¿®æ”¹é«˜éº—èœ12");
 
 		dao.update(ingredientVO2);
 
-		// §R°£
+		// åˆªé™¤
 		dao.delete(101);
 
-//		// ¬d¸ß
+//		// æŸ¥è©¢
 		IngredientVO ingredientVO3 = dao.findByPrimaryKey(102);
 		System.out.print(ingredientVO3.geti_id() + ",");
 		System.out.print(ingredientVO3.geti_name());
 		System.out.println("---------------------");
 
-		// ¬d¸ß
+		// æŸ¥è©¢
 		List<IngredientVO> list = dao.getAll();
 		for (IngredientVO aingredient : list) {
 			System.out.print(aingredient.geti_id() + ",");

@@ -1,4 +1,4 @@
-package order_detail.model;
+ï»¿package order_detail.model;
 
 import hibernate.util.HibernateUtil;
 
@@ -114,7 +114,7 @@ public class Order_DetailHibernateDAO implements Order_DetailDAO_interface {
 
 		Order_DetailHibernateDAO dao = new Order_DetailHibernateDAO();
 
-		//¡´ ·s¼W 														OK!!!!!!!!!!!!
+		//â— æ–°å¢ 														OK!!!!!!!!!!!!
 
 //		Order_DetailVO order_DetailVO1 = new Order_DetailVO();
 //		order_DetailVO1.setO_no(123);
@@ -126,7 +126,7 @@ public class Order_DetailHibernateDAO implements Order_DetailDAO_interface {
 
 
 
-		//¡´ ­×§ï  OK!!!!
+		//â— ä¿®æ”¹  OK!!!!
 //		Order_DetailVO order_DetailVO2 = new Order_DetailVO();
 //		order_DetailVO2.setO_no(0001);
 //		order_DetailVO2.setP_no(2222);
@@ -136,12 +136,12 @@ public class Order_DetailHibernateDAO implements Order_DetailDAO_interface {
 //		dao.update(order_DetailVO2);
 
 
-		//¡´ §R°£               									OK!!!!!
+		//â— åˆªé™¤               									OK!!!!!
 //		dao.delete(1,1111);
 
 
 
-		//¡´ ¬d¸ß-findByPrimaryKey                              OK!!!!!!!!
+		//â— æŸ¥è©¢-findByPrimaryKey                              OK!!!!!!!!
 //		List<Order_DetailVO> list = dao.findByPrimaryKey(1,2222);
 //		for (Order_DetailVO order_DetailVO3 : list) {
 //			System.out.print(order_DetailVO3.getO_no() + ",");
@@ -152,7 +152,7 @@ public class Order_DetailHibernateDAO implements Order_DetailDAO_interface {
 //			System.out.println();
 //		}
 		
-		//¡´ ¬d¸ß-findByO_no                              OK!!!!!!!!
+		//â— æŸ¥è©¢-findByO_no                              OK!!!!!!!!
 //		List<Order_DetailVO> list = dao.findByO_no(123);
 //		for (Order_DetailVO order_DetailVO3 : list) {
 //			System.out.print(order_DetailVO3.getO_no() + ",");
@@ -164,7 +164,7 @@ public class Order_DetailHibernateDAO implements Order_DetailDAO_interface {
 //		}	
 		
 
-		//¡´ ¬d¸ß-getAll 										OK!!!!!!!!!!!!
+		//â— æŸ¥è©¢-getAll 										OK!!!!!!!!!!!!
 		List<Order_DetailVO> list = dao.getAll();
 		for (Order_DetailVO order_DetailVO1 : list) {
 			System.out.print(order_DetailVO1.getO_no() + ",");

@@ -1,4 +1,4 @@
-package food.model;
+﻿package food.model;
 
 import java.util.*;
 

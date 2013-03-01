@@ -1,4 +1,4 @@
-package discussion.controller;
+ï»¿package discussion.controller;
 
 import java.io.IOException;
 import java.util.*;
@@ -15,12 +15,12 @@ import member.model.MemberVO;
 import discussion.model.*;
 
 public class DiscussionListServlet extends HttpServlet {
-	//ªì©l³¡¤À¤À·~©Ò»İ¤§°Ñ¼Æ¨Ãµ¹ª½
-	static final int rowsPerPage = 3; // ¨C­¶ªºµ§¼Æ
-	static int pageNumber = 0; // Á`­¶¼Æ
-	static int whichPage = 1; // ·í«e²Ä´X­¶
-	static int pageIndexArray[] = null; //¦s©ñ©Ò¦³­¶¼Æªº°}¦C
-	static int pageIndex = 0; // ·í«e­¶¼Æ¦b°}¦C¤¤¤§¯Á¤Şindex
+	//åˆå§‹éƒ¨åˆ†åˆ†æ¥­æ‰€éœ€ä¹‹åƒæ•¸ä¸¦çµ¦ç›´
+	static final int rowsPerPage = 3; // æ¯é çš„ç­†æ•¸
+	static int pageNumber = 0; // ç¸½é æ•¸
+	static int whichPage = 1; // ç•¶å‰ç¬¬å¹¾é 
+	static int pageIndexArray[] = null; //å­˜æ”¾æ‰€æœ‰é æ•¸çš„é™£åˆ—
+	static int pageIndex = 0; // ç•¶å‰é æ•¸åœ¨é™£åˆ—ä¸­ä¹‹ç´¢å¼•index
 	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +31,7 @@ public class DiscussionListServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		DiscussionHibernateDAO dao = new DiscussionHibernateDAO();
-		List<DiscussionVO> list = dao.getAll();		//¨C¦¸¶i¤J¯d¨¥ªO¦Cªí®É¡AÀò¨ú¥ş³¡°Q½×¤å³¹¤§¸ê®Æ
+		List<DiscussionVO> list = dao.getAll();		//æ¯æ¬¡é€²å…¥ç•™è¨€æ¿åˆ—è¡¨æ™‚ï¼Œç²å–å…¨éƒ¨è¨è«–æ–‡ç« ä¹‹è³‡æ–™
 //		MemberHibernateDAO daoMem = new MemberHibernateDAO();
 //		List<MemberVO> listMem = daoMem.getAll();
 //		for(DiscussionVO dvo:list){
@@ -48,7 +48,7 @@ public class DiscussionListServlet extends HttpServlet {
 		
 		
 		
-		int rowNumber = dao.findTotalNOofDiscussion(); //§ó·s·í«eÁ`µ§¼Æ
+		int rowNumber = dao.findTotalNOofDiscussion(); //æ›´æ–°ç•¶å‰ç¸½ç­†æ•¸
 		req.setCharacterEncoding("UTF-8");
 //		String action = req.getParameter("action");
 		req.setAttribute("list", list);				
@@ -62,29 +62,29 @@ public class DiscussionListServlet extends HttpServlet {
 //			req.setAttribute("pageIndexArray", pageIndexArray);
 //			req.setAttribute("pageIndex", pageIndex);
 			
-		//¦pªGÁ`¤ñ¼Æ °£ ¨C­¶µ§¼Æ ¤§¾l¼Æ ¤£¬°¹s ¡A«hÁ`­¶¼Æ¬°¨ä°Ó¼Æ+1
+		//å¦‚æœç¸½æ¯”æ•¸ é™¤ æ¯é ç­†æ•¸ ä¹‹é¤˜æ•¸ ä¸ç‚ºé›¶ ï¼Œå‰‡ç¸½é æ•¸ç‚ºå…¶å•†æ•¸+1
 			if (rowNumber % rowsPerPage != 0){
 				pageNumber = rowNumber / rowsPerPage + 1;
 			}
-		//¬°¹s«hÁ`­¶¼Æ¬°¨ä°Ó¼Æ
+		//ç‚ºé›¶å‰‡ç¸½é æ•¸ç‚ºå…¶å•†æ•¸
 			else{
 				pageNumber = rowNumber / rowsPerPage;
 			}
 			req.setAttribute("pageNumber", pageNumber);
-		//³]©w¦s©ñ­¶¼Æ¤§°}¦Cªø«×¨Ã¶]°j°éµ¹­È	
+		//è¨­å®šå­˜æ”¾é æ•¸ä¹‹é™£åˆ—é•·åº¦ä¸¦è·‘è¿´åœˆçµ¦å€¼	
 			pageIndexArray = new int[pageNumber];
 			for (int i = 1; i <= pageIndexArray.length; i++){
 				pageIndexArray[i - 1] = i * rowsPerPage - rowsPerPage;
 				req.setAttribute("pageIndexArray", pageIndexArray);
 			}
-		//·í«e­¶­±¤Î­¶¼Æ°}¦C¤§³]©w
+		//ç•¶å‰é é¢åŠé æ•¸é™£åˆ—ä¹‹è¨­å®š
 			if(req.getParameter("whichPage")!=null){
 				whichPage = Integer.parseInt(req.getParameter("whichPage"));
 				pageIndex = pageIndexArray[whichPage - 1];
 				}else{whichPage = 1;pageIndex = 0;}
 				req.setAttribute("whichPage", whichPage);
 				req.setAttribute("pageIndex", pageIndex);
-		//±N¸ê®ÆÂà¥æ¦Ü°Q½×°Ï¦Cªí
+		//å°‡è³‡æ–™è½‰äº¤è‡³è¨è«–å€åˆ—è¡¨
 			RequestDispatcher dis = req
 					.getRequestDispatcher("/discussion/listAllDiscussion.jsp"); 
 			dis.forward(req, res);

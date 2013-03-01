@@ -1,4 +1,4 @@
-package food.model;
+﻿package food.model;
 
  
 public class FoodVO implements java.io.Serializable{

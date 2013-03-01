@@ -1,4 +1,4 @@
-package rg.model;
+﻿package rg.model;
 
 import java.util.*;
 import java.sql.*;
@@ -181,7 +181,7 @@ public class RgDAO implements RgDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVo �]�٬� Domain objects
+				// empVo 嚙稽嚙誶穿蕭 Domain objects
 				rgVO = new RgVO();
 				rgVO.setU_id(rs.getInt("u_id"));
 				rgVO.setP_no(rs.getInt("p_no"));
@@ -244,7 +244,7 @@ public class RgDAO implements RgDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVO �]�٬� Domain objects
+				// empVO 嚙稽嚙誶穿蕭 Domain objects
 				rgVO = new RgVO();
 				rgVO.setU_id(rs.getInt("u_id"));
 				rgVO.setP_no(rs.getInt("p_no"));

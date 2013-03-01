@@ -1,4 +1,4 @@
-package food_set.model;
+ï»¿package food_set.model;
 
 import java.util.*;
 import java.sql.*;
@@ -173,7 +173,7 @@ public class Food_setDAO implements Food_setDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVo ¤]ºÙ¬° Domain objects
+				// empVo ä¹Ÿç¨±ç‚º Domain objects
 				food_setVO = new Food_setVO();
 				food_setVO.setUniid(rs.getInt("Uniid"));
 				food_setVO.setfs_id(rs.getInt("fs_id"));
@@ -232,7 +232,7 @@ public class Food_setDAO implements Food_setDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVO ¤]ºÙ¬° Domain objects
+				// empVO ä¹Ÿç¨±ç‚º Domain objects
 				food_setVO = new Food_setVO();
 				food_setVO.setUniid(rs.getInt("Uniid"));
 				food_setVO.setfs_id(rs.getInt("fs_id"));
@@ -279,14 +279,14 @@ public class Food_setDAO implements Food_setDAO_interface {
 
 		Food_setDAO dao = new Food_setDAO();
 
-		// ·s¼W
+		// æ–°å¢ž
 		Food_setVO food_setVO1 = new Food_setVO();
 
 		food_setVO1.setfs_id(103);
 		food_setVO1.setrp_id(103);
 		dao.insert(food_setVO1);
 
-		// ­×§ï
+		// ä¿®æ”¹
 		Food_setVO food_setVO2 = new Food_setVO();
 		food_setVO2.setUniid(1);
 		food_setVO2.setfs_id(1001);
@@ -294,16 +294,16 @@ public class Food_setDAO implements Food_setDAO_interface {
 		
 		dao.update(food_setVO2);
 
-//		// §R°£
+//		// åˆªé™¤
 		dao.delete(2);
 
-//		// ¬d¸ß
+//		// æŸ¥è©¢
 		Food_setVO food_setVO3 = dao.findByPrimaryKey(3);
 		System.out.print(food_setVO3.getUniid() + ",");
 		System.out.print(food_setVO3.getfs_id());
 		System.out.println("---------------------");
 
-		// ¬d¸ß
+		// æŸ¥è©¢
 		List<Food_setVO> list = dao.getAll();
 		for (Food_setVO afood_set : list) {
 			System.out.print(afood_set.getUniid() + ",");

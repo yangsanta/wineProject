@@ -1,4 +1,4 @@
-package shipping_set.model;
+ï»¿package shipping_set.model;
 
 import java.util.*;
 import java.sql.*;
@@ -172,7 +172,7 @@ public class Shipping_setDAO implements Shipping_setDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVo ¤]ºÙ¬° Domain objects
+				// empVo ä¹Ÿç¨±ç‚º Domain objects
 				shipping_setVO = new Shipping_setVO();
 				shipping_setVO.setmin_pirce(rs.getInt("min_pirce"));
 				
@@ -230,7 +230,7 @@ public class Shipping_setDAO implements Shipping_setDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVO ¤]ºÙ¬° Domain objects
+				// empVO ä¹Ÿç¨±ç‚º Domain objects
 				shipping_setVO = new Shipping_setVO();
 				shipping_setVO.setmin_pirce(rs.getInt("min_pirce"));
 				
@@ -276,26 +276,26 @@ public class Shipping_setDAO implements Shipping_setDAO_interface {
 
 		Shipping_setDAO dao = new Shipping_setDAO();
 
-		// ·s¼W
+		// æ–°å¢ž
 		Shipping_setVO shipping_setVO1 = new Shipping_setVO();
 		shipping_setVO1.setmin_pirce(300);
 		dao.insert(shipping_setVO1);
 
-		// ­×§ï
+		// ä¿®æ”¹
 		Shipping_setVO shipping_setVO2 = new Shipping_setVO();
 		shipping_setVO2.setmin_pirce(800);
 
 		dao.update(shipping_setVO2);
 
-		// §R°£
+		// åˆªé™¤
 		dao.delete(300);
 
-		// ¬d¸ß
+		// æŸ¥è©¢
 		Shipping_setVO shipping_setVO3 = dao.findByPrimaryKey(800);
 		System.out.print(shipping_setVO3.getmin_pirce() + ",");
 		System.out.println("---------------------");
 
-		// ¬d¸ß
+		// æŸ¥è©¢
 		List<Shipping_setVO> list = dao.getAll();
 		for (Shipping_setVO ashipping_set : list) {
 			System.out.print(ashipping_set.getmin_pirce() + ",");

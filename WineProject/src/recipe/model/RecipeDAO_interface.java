@@ -1,4 +1,4 @@
-package recipe.model;
+﻿package recipe.model;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package Filter;
+ï»¿package Filter;
 
 
 import java.io.IOException;
@@ -47,11 +47,11 @@ public class productList implements Filter {
 		request.setAttribute("p_winery", p_winery);
 		List<String> p_vol = dao.findProductType("p_vol");
 		request.setAttribute("p_vol", p_vol);
-		List<String> redWine = dao.findGrapeType("¬õ¸²µå°s");
+		List<String> redWine = dao.findGrapeType("ç´…è‘¡è„é…’");
 		request.setAttribute("redWine", redWine);
-		List<String> whiteWine = dao.findGrapeType("¥Õ¸²µå°s");
+		List<String> whiteWine = dao.findGrapeType("ç™½è‘¡è„é…’");
 		request.setAttribute("whiteWine", whiteWine);
-		List<String> bubbleWine = dao.findGrapeType("®ğªw°s");
+		List<String> bubbleWine = dao.findGrapeType("æ°£æ³¡é…’");
 		request.setAttribute("bubbleWine", bubbleWine);
 		
 		chain.doFilter(request, response);

@@ -1,16 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=BIG5"
-    pageEncoding="BIG5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=BIG5">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>List All Products</title>
 <link rel="stylesheet" href="../style/ProductList.css">
 </head>
 <body>
 <div class="searchResult">
-	·j´Mµ²ªG¦@ ${totalRows} µ§¡A­¶¼Æ ${whichPage} / ${totalPages}¡G
+	æœå°‹çµæžœå…± ${totalRows} ç­†ï¼Œé æ•¸ ${whichPage} / ${totalPages}ï¼š
 	<table class="p_outerTable">
 		<tbody>
 		<c:forEach var="product" items="${list}" begin="${pageIndex}" end="${pageIndex+rowsPerPage-1}" >
@@ -30,11 +30,11 @@
 		</tbody>
 	</table>
 	<div class="pageSwitch">
-		²Ä 
+		ç¬¬ 
 		<c:forEach var="page" begin="1" end="${totalPages}">
 			<a href="DisplayProducts?action=getAll&pageNo=${page}">${page}</a>
 		</c:forEach>
-		 ­¶
+		 é 
 	</div>
 </div>
 

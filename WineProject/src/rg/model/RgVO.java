@@ -1,4 +1,4 @@
-package rg.model;
+﻿package rg.model;
 import java.sql.Date;
 
 public class RgVO implements java.io.Serializable{

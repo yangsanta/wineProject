@@ -1,4 +1,4 @@
-package coupon.model;
+ï»¿package coupon.model;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import coupon.model.*;
 
 public class CouponDAO implements CouponDAO_interface {
 
-	// ¤@­ÓÀ³¥Îµ{¦¡¤¤,°w¹ï¤@­Ó¸ê®Æ®w ,¦@¥Î¤@­ÓDataSource§Y¥i
+	// ä¸€å€‹æ‡‰ç”¨ç¨‹å¼ä¸­,é‡å°ä¸€å€‹è³‡æ–™åº« ,å…±ç”¨ä¸€å€‹DataSourceå³å¯
 	private static DataSource ds = null;
 	static {
 		try {
@@ -171,7 +171,7 @@ public class CouponDAO implements CouponDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVo ¤]ºÙ¬° Domain objects
+				// empVo ä¹Ÿç¨±ç‚º Domain objects
 				couponVO = new CouponVO();
 				couponVO.setC_key(rs.getString("c_key"));
 				couponVO.setC_price(rs.getInt("c_price"));
@@ -226,7 +226,7 @@ public class CouponDAO implements CouponDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// couponVO ¤]ºÙ¬° Domain objects
+				// couponVO ä¹Ÿç¨±ç‚º Domain objects
 				couponVO = new CouponVO();
 				couponVO.setC_key(rs.getString("c_key"));
 				couponVO.setC_price(rs.getInt("c_price"));
@@ -282,7 +282,7 @@ public class CouponDAO implements CouponDAO_interface {
 	// rs = pstmt.executeQuery();
 	//
 	// while (rs.next()) {
-	// // couponVO ¤]ºÙ¬° Domain objects
+	// // couponVO ä¹Ÿç¨±ç‚º Domain objects
 	// couponVO = new CouponVO();
 	// couponVO.setC_key(rs.getString("c_key"));
 	// couponVO.setC_price(rs.getInt("c_price"));

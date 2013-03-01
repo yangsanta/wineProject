@@ -1,4 +1,4 @@
-package shipping_set.model;
+﻿package shipping_set.model;
 
 import java.util.*;
 

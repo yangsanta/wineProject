@@ -1,4 +1,4 @@
-package product.model;
+﻿package product.model;
 
 
 import java.sql.Timestamp;
@@ -7,21 +7,21 @@ import java.util.List;
 public class ProductDAO_test {
 	public static void main(String arg[]) {
 		ProductDAO dao = new ProductDAO();
-		// �s�W
+		// 新增
 //		ProductVO productVOO1 = new ProductVO();
-//		productVOO1.setP_name("�����ԹϮL���Q�@�Ÿ����ո���s");
+//		productVOO1.setP_name("路易拉圖夏布利一級葡萄園白葡萄酒");
 //		productVOO1.setP_year(2008);
 //		productVOO1.setP_rate(90);
-//		productVOO1.setP_area("�k�ꥬ�ڦa�L���Q");
+//		productVOO1.setP_area("法國布根地夏布利");
 //		productVOO1
-//				.setP_intro("�����ԹϮL���Q�@�Ÿ����ո���s�O�ѮL���Q�@�Ÿ���餺���X�̦n���L�h������A���C�y�X�f���S�O�ӽo�M�����հs�C�����Թϰs�t�g�ѭ��C���媺�Ͳ��q�M���_�i�B���شӻP�C�y�޳N�ӽT�O�C�~����~�誺í�w�C�����ԹϮL���Q�@�Ÿ����ո���s�b���ÿ��Ѥ��o�áA�H�O�d�s�A�G���C���~�A�ʤ����ʪ��Żĵo�ùL�{�A���s���[í�w�A�f�P��[����C�a�ڥN�N�ǩӸg�窺�����Թϰs�t (Maison Louis Latour)�A�O�k�ꥬ�ڦa�B�����Ϥ��j�ۦW�s�Ӥ��@�A��1797�~�ХߥH�ӡA�@�����u�ǲΩM�~��A���]�i�󭲷s�M�гy�A�H���u�}�����ڦa���B�հs�~��D�W�@�ɡA�P�ɤ]�O�Ͳ����ڦa���ϥH�~�pArd��che(���w�k)���u�踲��s�����X�C�ԹϮa�ڦ�17�@���H�ӫK�}�l�֦��P�W�[�ۦ������A�p���b���ڦa�w��50�����������A�d��C�q�_����������(Chambertin)������n�䪺���˨��C- �X���k(Chevalier-Montrachet)�A�䤤��30�������S�Ÿ����A�]�A0.8�������������B1�������J����-�t����(Romanee Saint Vivant)�B17���������n(Corton) �H�Ϊ�9���������n�d�z��(Corton-Charlemagne)�A�ìO�b���C(Cote d'Or) �֦��̤j��Ҫ��S�Ÿ���骺�s�ӡC�����ԹϩҦ����ۦ������̩ҥͲ�������A�Ҧb��ù��-���n (Aloxe-Corton)�����n�����k��(Ch��teau Corton Grancey)�̪��s���C�s�P���~�C�o�O�k��Ĥ@�Ө̥\��ʫسy���s���A�������ǲΪ��B�@�覡�A���T�u�ǲΡA�ܤ������ԹϩҦ��ۦ�����骺�s�����ϥΤH�u��֡A�t�@�S��O���s���֨ϥηs�������~�A�ӷs�����h�Ω�հs�A����~��A�ϥΩ���s�A�P�Y�ǥ��ڦa�s�t�覡�ۤϡC�غذ����A�ϸ����Թϥհs�I���@�����G���P����B�d�G������A���s�h�f�P����״I�C�����Թϰs�t���\�h��L�P�����P���B�A�Ҧp�֦��ۤv�������s�t�B�L��t�B��B���q�A�s�~���]���M�ΧΪ��A�����ۤv������C�����ԹϦ۲ĤT�N�x���H�_�A�K�O�\�h�����Q�ڪ��̷R�A�A�b�@�ɦU�j���Ŷ����P�\�U�A�p�ھ��X�a�dù(Monte Carlo's)�����B�餺��Le Beau-Rivage�B�ھ��R������(The Paris Ritz)���s��W���ݱo������ԹϡA��a�אּ2008�~G8���p�|���w�Τ[�A�O�z���e���L�����ڦa�W�t�C");
+//				.setP_intro("路易拉圖夏布利一級葡萄園白葡萄酒是由夏布利一級葡萄園內精選出最好的夏多內葡萄，所釀造出口味特別細緻清雅的白酒。路易拉圖酒廠經由降低葡萄的生產量和不斷進步的種植與釀造技術來確保每年葡萄品質的穩定。路易拉圖夏布利一級葡萄園白葡萄酒在不鏽鋼槽中發酵，以保留新鮮果味。此外，百分之百的乳酸發酵過程，讓酒質更加穩定，口感更加圓潤。家族代代傳承經營的路易拉圖酒廠 (Maison Louis Latour)，是法國布根地伯恩產區五大著名酒商之一，自1797年創立以來，一直堅守傳統和品質，但也勇於革新和創造，以其優良的布根地紅、白酒品質聞名世界，同時也是生產布根地產區以外如Ardche(阿德榭)的優質葡萄酒的先驅。拉圖家族自17世紀以來便開始擁有與增加自有葡萄園，如今在布根地已有50公頃的葡萄園，範圍。從北部的香貝丹(Chambertin)延伸到南邊的歇瓦里耶- 蒙哈榭(Chevalier-Montrachet)，其中有30公頃的特級葡萄園，包括0.8公頃的香貝丹、1公頃的侯馬內-聖維馮(Romanee Saint Vivant)、17公頃的高登(Corton) 以及近9公頃的高登查理曼(Corton-Charlemagne)，並是在金丘(Cote d'Or) 擁有最大比例的特級葡萄園的酒商。路易拉圖所有的自有葡萄園裡所生產的葡萄，皆在阿羅斯-高登 (Aloxe-Corton)的高登格蘭榭堡(Chteau Corton Grancey)裡的酒窖釀製與陳年。這是法國第一個依功能性建造的酒窖，仍維持傳統的運作方式，為固守傳統，至今路易拉圖所有自有葡萄園的酒全部使用人工踩皮，另一特色是紅酒較少使用新橡木桶陳年，而新橡木桶則用於白酒，ㄧ兩年後再使用於紅酒，與某些布根地酒廠方式相反。種種堅持，使路易拉圖白酒富有濃郁的果味與香草、榛果等香氣，紅酒則口感圓潤豐富。路易拉圖酒廠有許多其他與眾不同之處，例如擁有自己的橡木桶酒廠、印刷廠、船運公司，連瓶型也有專用形狀，堅持自己的風格。路易拉圖自第三代掌門人起，便是許多王公貴族的最愛，，在世界各大高級飯店與餐廳，如巴黎蒙地卡羅(Monte Carlo's)飯店、日內瓦Le Beau-Rivage、巴黎麗池飯店(The Paris Ritz)的酒單上都看得到路易拉圖，更榮選為2008年G8高峰會指定用久，是您不容錯過的布根地名廠。");
 //		productVOO1.setP_num(85);
 //		productVOO1.setP_price(1650.0);
-//		productVOO1.setP_status("�W�[��");
+//		productVOO1.setP_status("上架中");
 //		productVOO1.setP_winery("Chardonnay");
 //		productVOO1.setP_click_count(80);
 //		productVOO1.setP_buy_count(90);
-//		productVOO1.setP_style("���G��");
+//		productVOO1.setP_style("水果香");
 //		productVOO1.setP_sales("RG");
 //		productVOO1.setP_vol(750);
 //		productVOO1.setP_alcho(13.0);
@@ -30,22 +30,22 @@ public class ProductDAO_test {
 //		productVOO1.setP_grape("Pinot Noir");
 //		dao.insert(productVOO1);
 		// -------------------------------------------------
-		// �ק�
+		// 修改
 //		ProductVO productVOO2 = new ProductVO();
 //		productVOO2.setP_no(4);
-//		productVOO2.setP_name("�ǥd�����äڬ��F�u�����s");
+//		productVOO2.setP_name("傑卡斯臻藏巴洛沙席哈紅酒");
 //		productVOO2.setP_year(2008);
 //		productVOO2.setP_rate(80);
-//		productVOO2.setP_area("�D�w");
+//		productVOO2.setP_area("澳洲");
 //		productVOO2
-//				.setP_intro("�o2005 Taster Guide International Wine Judging���D�n����v�ɪ֩w,�b1847�~�A�@��~�����ڥ�Q�Ȳ�������.�����]Johann Gramp�^�Ө�F�n�D���ڬ��F�e���A�b�@���W���ǥd���˯`�ؤU�F�L���Ĥ@�ʸ����C�g�L129�~��í�w�o�i�A1976�~�����H�y�ǥd���z���~�P�W�٦b���y�W���A�ɦܤ���A�C�~�W�L8�ʸU�c���X�f�q�A���ǥd�������D�w�̨��w�諸����s�t�C�C�ѡA��2�ʸU�M���ǥd������s�b�@�ɦU�a���H�̤⤤�Q�ɥΡA���u�������ǥd������`�ӤH�ߡC�Ω��èt�C������A�Ħۺ�︲��骺�G��A�C�s�v���Ӧ�Padthaway, Langhorne Creek, Coonawarra�H�ΧJ�Өਦ�a���a�ϡA�G��R�������I���@���~�ح����P�ӽo��窺����A�@���C�y���èt�C���ӷ��C���𶰤��B�@�Y�����A�b����������18-22�Ӥ�]�u�����s�^�C");
+//				.setP_intro("得2005 Taster Guide International Wine Judging等主要國際競賽肯定,在1847年，一位年輕的巴伐利亞移民約翰.葛蘭（Johann Gramp）來到了南澳的巴洛沙河谷，在一條名為傑卡斯溪畔種下了他的第一棵葡萄樹。經過129年的穩定發展，1976年正式以『傑卡斯』為品牌名稱在全球上市，時至今日，每年超過8百萬箱的出口量，讓傑卡斯成為澳洲最受歡迎的葡萄酒廠。每天，近2百萬杯的傑卡斯葡萄酒在世界各地的人們手中被享用，質優易飲的傑卡斯風格深植人心。用於臻藏系列的葡萄，採自精選葡萄園的果實，釀酒師精選來自Padthaway, Langhorne Creek, Coonawarra以及克來兒谷地等地區，果實充分熟成富有濃郁品種風味與細緻單寧的葡萄，作為釀造臻藏系列的來源。香氣集中、濃縮風味，在橡木桶內熟成18-22個月（席哈紅酒）。");
 //		productVOO2.setP_num(50);
 //		productVOO2.setP_price(800.0);
-//		productVOO2.setP_status("�U�[��");
-//		productVOO2.setP_winery("�ǥd��");
+//		productVOO2.setP_status("下架中");
+//		productVOO2.setP_winery("傑卡斯");
 //		productVOO2.setP_click_count(100);
 //		productVOO2.setP_buy_count(150);
-//		productVOO2.setP_style("���G��");
+//		productVOO2.setP_style("水果香");
 //		productVOO2.setP_sales("B");
 //		productVOO2.setP_vol(750);
 //		productVOO2.setP_alcho(14.5);
@@ -54,10 +54,10 @@ public class ProductDAO_test {
 //		productVOO2.setP_grape("Syrah \\ Shiraz");
 //		dao.update(productVOO2);
 		// ---------------------------------------------
-		// �R��
+		// 刪除
 //		 dao.delete(4);
 		// ------------------------------------------------
-		// �d��
+		// 查詢
 
 		 ProductVO productVOO3 = dao.findByPrimaryKey(2);
 		 System.out.println(productVOO3.getP_no() + ",");
@@ -80,7 +80,7 @@ public class ProductDAO_test {
 		 System.out.println(productVOO3.getP_type() + ",");
 		 System.out.println(productVOO3.getP_grape() );
 		 System.out.println();
-		// �d��
+		// 查詢
 //		List<ProductVO> list = dao.getAll();
 //		for (ProductVO aEmp : list) {
 //			System.out.println(aEmp.getP_no() + ",");

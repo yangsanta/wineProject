@@ -1,4 +1,4 @@
-package coupon.model;
+﻿package coupon.model;
 
 import java.util.*;
 

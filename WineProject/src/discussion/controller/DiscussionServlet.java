@@ -1,4 +1,4 @@
-package discussion.controller;
+ï»¿package discussion.controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -37,7 +37,7 @@ public class DiscussionServlet extends HttpServlet {
 		req.setAttribute("errorMsgs", errorMsgs);
 
 		try {
-			//Æ[¬İ¥DÃD¤º¤å¥\¯à
+			//è§€çœ‹ä¸»é¡Œå…§æ–‡åŠŸèƒ½
 			if ("getOne".equals(action)) {
 
 				String str = req.getParameter("d_no");
@@ -46,44 +46,44 @@ public class DiscussionServlet extends HttpServlet {
 				DiscussionVO discussionVO = dao.findByPrimaryKey(d_no);
 				
 				if (discussionVO == null) {
-					errorMsgs.add("¬dµL¸ê®Æ");
+					errorMsgs.add("æŸ¥ç„¡è³‡æ–™");
 				}
 
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
 							.getRequestDispatcher(url);
 					failureView.forward(req, res);
-					return;// µ{¦¡¤¤Â_
+					return;// ç¨‹å¼ä¸­æ–·
 				}
 
-				req.setAttribute("discussionVO", discussionVO); // ¸ê®Æ®w¨ú¥XªºVOª«¥ó,¦s¤Jreq
-				RequestDispatcher successView = req.getRequestDispatcher("/discussion/listOneDiscussion.jsp"); // ¦¨¥\Âà¥æ
+				req.setAttribute("discussionVO", discussionVO); // è³‡æ–™åº«å–å‡ºçš„VOç‰©ä»¶,å­˜å…¥req
+				RequestDispatcher successView = req.getRequestDispatcher("/discussion/listOneDiscussion.jsp"); // æˆåŠŸè½‰äº¤
 				successView.forward(req, res);
 			}
 			
-			//·s¼W¥DÃD¥\¯à
+			//æ–°å¢ä¸»é¡ŒåŠŸèƒ½
 			if("insert".equals(action)){
-				//¤§«á­×§ï¦¨±qsessionÀò¨ú·|­û½s¸¹
+				//ä¹‹å¾Œä¿®æ”¹æˆå¾sessionç²å–æœƒå“¡ç·¨è™Ÿ
 				int m_no = 1001;
-				//¥DÃD¦r¦êªºÀË¬d
+				//ä¸»é¡Œå­—ä¸²çš„æª¢æŸ¥
 				String d_title = req.getParameter("d_title").trim();
 				if(d_title == null){
-					errorMsgs.add("½Ğ¿é¤J¤å³¹¥DÃD");
+					errorMsgs.add("è«‹è¼¸å…¥æ–‡ç« ä¸»é¡Œ");
 				}
-				//¤º¤åªºÀË¬d
+				//å…§æ–‡çš„æª¢æŸ¥
 				String d_context = req.getParameter("d_context");
 				if(d_context.length() < 20){
-					errorMsgs.add("¤å³¹¤º®e½Ğ¿é¤J¶W¹L20¦r");
+					errorMsgs.add("æ–‡ç« å…§å®¹è«‹è¼¸å…¥è¶…é20å­—");
 				} 
 
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
 							.getRequestDispatcher(url);
 					failureView.forward(req, res);
-					return;// µ{¦¡¤¤Â_
+					return;// ç¨‹å¼ä¸­æ–·
 				}
 				
-				//³]©w·s¼W¤§¥DÃDª«¥ó°Ñ¼Æ
+				//è¨­å®šæ–°å¢ä¹‹ä¸»é¡Œç‰©ä»¶åƒæ•¸
 				Timestamp time = new java.sql.Timestamp(new java.util.Date().getTime());
 				String d_status = "1";
 				DiscussionVO discussionVO = new DiscussionVO();
@@ -97,14 +97,14 @@ public class DiscussionServlet extends HttpServlet {
 				discussionVO.setD_status(d_status);
 				dao.insert(discussionVO);
 
-				req.setAttribute("discussionVO", discussionVO); // ¸ê®Æ®w¨ú¥XªºVOª«¥ó,¦s¤Jreq
-				RequestDispatcher successView = req.getRequestDispatcher("DiscussionList"); // ¦¨¥\Âà¥æ
+				req.setAttribute("discussionVO", discussionVO); // è³‡æ–™åº«å–å‡ºçš„VOç‰©ä»¶,å­˜å…¥req
+				RequestDispatcher successView = req.getRequestDispatcher("DiscussionList"); // æˆåŠŸè½‰äº¤
 				successView.forward(req, res);
 			}
 			
 			
 		} catch (Exception e) {
-			errorMsgs.add("µLªk¨ú±o¸ê®Æ:" + e.getMessage());
+			errorMsgs.add("ç„¡æ³•å–å¾—è³‡æ–™:" + e.getMessage());
 			RequestDispatcher failureView = req
 					.getRequestDispatcher("DiscussionList");
 			failureView.forward(req, res);

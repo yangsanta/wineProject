@@ -1,4 +1,4 @@
-package member.model;
+ï»¿package member.model;
 
 import java.util.*;
 import java.sql.*;
@@ -190,7 +190,7 @@ public class MemberDAO implements MemberDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVo ¤]ºÙ¬° Domain objects
+				// empVo ä¹Ÿç¨±ç‚º Domain objects
 				memberVO = new MemberVO();
 				memberVO.setM_no(rs.getInt("m_no"));
 				memberVO.setM_name(rs.getString("m_name"));
@@ -257,7 +257,7 @@ public class MemberDAO implements MemberDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVO ¤]ºÙ¬° Domain objects
+				// empVO ä¹Ÿç¨±ç‚º Domain objects
 				memberVO = new MemberVO();
 				memberVO.setM_no(rs.getInt("m_no"));
 				memberVO.setM_name(rs.getString("m_name"));
@@ -312,7 +312,7 @@ public class MemberDAO implements MemberDAO_interface {
 
 		MemberDAO dao = new MemberDAO();
 
-		// ·s¼W
+		// æ–°å¢ž
 		MemberVO memberVO1 = new MemberVO();
 		memberVO1.setM_name("king21");
 		memberVO1.setM_pwd("president");
@@ -326,7 +326,7 @@ public class MemberDAO implements MemberDAO_interface {
 		memberVO1.setM_status(new Integer(2));
 		dao.insert(memberVO1);
 
-		// ­×§ï
+		// ä¿®æ”¹
 		MemberVO memberVO2 = new MemberVO();
 		memberVO2.setM_no(new Integer(1002));
 		memberVO2.setM_name("king12");
@@ -341,10 +341,10 @@ public class MemberDAO implements MemberDAO_interface {
 		memberVO2.setM_status(new Integer(2));
 		dao.update(memberVO2);
 
-		// §R°£
+		// åˆªé™¤
 		dao.delete(1001);
 
-		// ¬d¸ß
+		// æŸ¥è©¢
 		MemberVO memberVO3 = dao.findByPrimaryKey(1004);
 		System.out.print(memberVO3.getM_no() + ",");
 		System.out.print(memberVO3.getM_name() + ",");
@@ -359,7 +359,7 @@ public class MemberDAO implements MemberDAO_interface {
 		System.out.println(memberVO3.getM_status());
 		System.out.println("---------------------");
 
-		// ¬d¸ß
+		// æŸ¥è©¢
 		List<MemberVO> list = dao.getAll();
 		for (MemberVO aMember : list) {
 			System.out.print(aMember.getM_no() + ",");

@@ -1,4 +1,4 @@
-package sauce.model;
+﻿package sauce.model;
 
 
 public class SauceVO implements java.io.Serializable{

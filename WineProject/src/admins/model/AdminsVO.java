@@ -1,4 +1,4 @@
-package admins.model;
+﻿package admins.model;
 
 public class AdminsVO implements java.io.Serializable{
 	private Integer a_no;

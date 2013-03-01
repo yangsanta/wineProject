@@ -1,4 +1,4 @@
-package ingredient.model;
+﻿package ingredient.model;
 
 
 public class IngredientVO implements java.io.Serializable{

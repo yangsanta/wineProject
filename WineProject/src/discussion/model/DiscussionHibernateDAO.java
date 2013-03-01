@@ -1,4 +1,4 @@
-package discussion.model;
+ï»¿package discussion.model;
 
 import hibernate.util.HibernateUtil;
 
@@ -115,18 +115,18 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 		
 
 		
-		//´ú¸Õinsert()
+		//æ¸¬è©¦insert()
 //		DiscussionVO discussionVO1 = new DiscussionVO();
 //		discussionVO1.setM_no(111);
 //		discussionVO1.setD_context("oooxxxoooxxx");
 //		discussionVO1.setD_datetime(new java.sql.Timestamp(new java.util.Date().getTime()));
 //		discussionVO1.setD_status("000");
 //		discussionVO1.setD_final_edit(new java.sql.Timestamp(new java.util.Date().getTime()));
-//		discussionVO1.setD_title("½Ğ°İÁo©ú¤H³Üªº°s¸ò²Â³J³Üªº°sªº®t§O?");
+//		discussionVO1.setD_title("è«‹å•è°æ˜äººå–çš„é…’è·Ÿç¬¨è›‹å–çš„é…’çš„å·®åˆ¥?");
 //		dao.insert(discussionVO1);
 		
 		
-		//´ú¸Õupdate()
+		//æ¸¬è©¦update()
 //		DiscussionVO discussionVO2 = new DiscussionVO();
 //		discussionVO2.setD_no(1010);
 //		discussionVO2.setM_no(111);
@@ -134,13 +134,13 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 //		discussionVO2.setD_datetime(new java.sql.Timestamp(new java.util.Date().getTime()));
 //		discussionVO2.setD_status("000");
 //		discussionVO2.setD_final_edit(new java.sql.Timestamp(new java.util.Date().getTime()));
-//		discussionVO2.setD_title("½Ğ°İÁo©ú¤H³Üªº°s¸ò²Â³J³Üªº°sªº®t§O?");
+//		discussionVO2.setD_title("è«‹å•è°æ˜äººå–çš„é…’è·Ÿç¬¨è›‹å–çš„é…’çš„å·®åˆ¥?");
 //		dao.update(discussionVO2);
 				
-		//´ú¸Õdelete()
+		//æ¸¬è©¦delete()
 //		dao.delete(1014);
 		
-		//´ú¸ÕfindByPrimaryKey()
+		//æ¸¬è©¦findByPrimaryKey()
 //		DiscussionVO aDiscussion= dao.findByPrimaryKey(1013);
 //		System.out.print(aDiscussion.getD_no() + ",");
 //		System.out.print(aDiscussion.getM_no() + ",");
@@ -151,7 +151,7 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 //		System.out.print(aDiscussion.getD_title());
 //		System.out.println();	
 		
-		//´ú¸ÕgetAll()
+		//æ¸¬è©¦getAll()
 		List<DiscussionVO> list = dao.getAll();
 		for (DiscussionVO aDiscussion : list) {
 			System.out.print(aDiscussion.getD_no() + ",");
@@ -164,8 +164,8 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 			System.out.println();	
 		}		
 		
-		//´ú¸ÕfindTotalNOofDiscussion()Á`¯d¨¥µ§¼Æ
+		//æ¸¬è©¦findTotalNOofDiscussion()ç¸½ç•™è¨€ç­†æ•¸
 		Integer totalNO = dao.findTotalNOofDiscussion();
-		System.out.println("Á`¯d¨¥µ§¼Æ = " + totalNO);
+		System.out.println("ç¸½ç•™è¨€ç­†æ•¸ = " + totalNO);
 	}
 }

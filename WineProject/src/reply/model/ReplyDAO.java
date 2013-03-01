@@ -1,4 +1,4 @@
-package reply.model;
+ï»¿package reply.model;
 
 import java.util.*;
 import java.sql.*;
@@ -181,7 +181,7 @@ public class ReplyDAO implements ReplyDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVo ¤]ºÙ¬° Domain objects
+				// empVo ä¹Ÿç¨±ç‚º Domain objects
 				replyVO = new ReplyVO();
 				replyVO.setD_no(rs.getInt("d_no"));
 				replyVO.setR_no(rs.getInt("r_no"));
@@ -245,7 +245,7 @@ public class ReplyDAO implements ReplyDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVO ¤]ºÙ¬° Domain objects
+				// empVO ä¹Ÿç¨±ç‚º Domain objects
 				replyVO = new ReplyVO();
 				replyVO.setD_no(rs.getInt("d_no"));
 				replyVO.setR_no(rs.getInt("r_no"));

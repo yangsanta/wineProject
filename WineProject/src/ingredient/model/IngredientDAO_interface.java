@@ -1,4 +1,4 @@
-package ingredient.model;
+﻿package ingredient.model;
 
 import java.util.*;
 

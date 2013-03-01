@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=BIG5"
-	pageEncoding="BIG5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <link rel="stylesheet" href="styles.css" />
-<meta http-equiv="Content-Type" content="text/html; charset=BIG5">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -14,39 +14,39 @@
 
 	<div id='cssmenu'>
 		<ul>
-			<li class='active has-sub'><a href='#'><span>­·¨ı</span></a>
+			<li class='active has-sub'><a href='#'><span>é¢¨å‘³</span></a>
 				<ul>
 					<c:forEach var="creat" items="${style}">
 						<li class='has-sub'><a href='#'><span>${creat} </span></a></li>
 					</c:forEach>
 				</ul></li>
-			<li class='active has-sub'><a href='#'><span>°ê®a/¦a°Ï</span></a>
+			<li class='active has-sub'><a href='#'><span>åœ‹å®¶/åœ°å€</span></a>
 				<ul>
 					<c:forEach var="creat" items="${area}">
 						<li class='has-sub'><a href='#'><span>${creat} </span></a></li>
 					</c:forEach>
 				</ul></li>
-			<li class='active has-sub'><a href='#'><span>«~µP/°s²ø</span></a>
+			<li class='active has-sub'><a href='#'><span>å“ç‰Œ/é…’èŠ</span></a>
 				<ul>
 					<c:forEach var="creat" items="${p_winery}">
 						<li class='has-sub'><a href='#'><span>${creat} </span></a></li>
 					</c:forEach>
 				</ul></li>
-			<li class='active has-sub'><a href='#'><span>»ù®æ</span></a>
+			<li class='active has-sub'><a href='#'><span>åƒ¹æ ¼</span></a>
 				<ul>
-					<li class='has-sub'><a href='#'><span>400¤¸¥H¤U </span></a></li>
-					<li class='has-sub'><a href='#'><span>400¤¸~800¤¸</span></a></li>
-					<li class='has-sub'><a href='#'><span>800¤¸¥H¤W </span></a></li>
+					<li class='has-sub'><a href='#'><span>400å…ƒä»¥ä¸‹ </span></a></li>
+					<li class='has-sub'><a href='#'><span>400å…ƒ~800å…ƒ</span></a></li>
+					<li class='has-sub'><a href='#'><span>800å…ƒä»¥ä¸Š </span></a></li>
 				</ul></li>
-			<li class='active has-sub'><a href='#'><span>®e¶q</span></a>
+			<li class='active has-sub'><a href='#'><span>å®¹é‡</span></a>
 				<ul>
 					<c:forEach var="creat" items="${p_vol}">
 						<li class='has-sub'><a href='#'><span>${creat} </span></a></li>
 					</c:forEach>
 				</ul></li>
-			<li class='active has-sub'><a href='#'><span>°sºØ/¸²µåºØ</span></a>
+			<li class='active has-sub'><a href='#'><span>é…’ç¨®/è‘¡è„ç¨®</span></a>
 				<ul>
-					<li class='has-sub'><a href='#'><span>¬õ¸²µå°s </span></a>
+					<li class='has-sub'><a href='#'><span>ç´…è‘¡è„é…’ </span></a>
 						<ul>
 
 							<c:forEach var="grape" items="${redWine}">
@@ -54,14 +54,14 @@
 							</c:forEach>
 						</ul></li>
 
-					<li class='has-sub'><a href='#'><span>¥Õ¸²µå°s</span></a>
+					<li class='has-sub'><a href='#'><span>ç™½è‘¡è„é…’</span></a>
 						<ul>
 
 							<c:forEach var="grape" items="${whiteWine}">
 								<li class='last'><a href='#'><span>${grape}</span></a></li>
 							</c:forEach>
 						</ul></li>
-					<li class='has-sub'><a href='#'><span>®ğªw°s </span></a>
+					<li class='has-sub'><a href='#'><span>æ°£æ³¡é…’ </span></a>
 						<ul>
 
 							<c:forEach var="grape" items="${bubbleWine}">

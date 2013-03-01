@@ -1,4 +1,4 @@
-package rg.model;
+﻿package rg.model;
 
 import hibernate.util.HibernateUtil;
 

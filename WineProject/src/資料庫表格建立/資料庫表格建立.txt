@@ -1,4 +1,4 @@
-use WineProject;
+ï»¿use WineProject;
 
 drop table discussion;
 
@@ -14,11 +14,11 @@ create table discussion (
 
 );
 
-insert into discussion values ('1001','xxx','2013-03-01 12:10:00','ooo','2013-03-01 12:10:00','·Q«O¦s°s¡A§Æ±æ°ª¤â¡B¹F¤H¤À¨É¸gÅç..');
-insert into discussion values ('1001','xxx','2013-03-01 12:15:00','ooo','2013-03-01 12:15:00','[°Q½×]ªw©]©±§A³Ì·R³Ü­şºØ½Õ°s');
-insert into discussion values ('1003','xxx','2013-03-01 12:20:00','ooo','2013-03-01 12:20:00','½Ğ°İ¬õ°s¸ò¸²µå°sªº®t§O?');
-insert into discussion values ('1005','xxx','2013-03-01 12:25:00','ooo','2013-03-01 12:25:00','«Â¤h§Ò«~ªk');
-insert into discussion values ('1002','xxx','2013-03-01 12:30:00','ooo','2013-03-01 12:30:00','¤é¥»¨k¤H¨S°à°s¨{ªº¶ø¯µ');
+insert into discussion values ('1001','xxx','2013-03-01 12:10:00','ooo','2013-03-01 12:10:00','æƒ³ä¿å­˜é…’ï¼Œå¸Œæœ›é«˜æ‰‹ã€é”äººåˆ†äº«ç¶“é©—..');
+insert into discussion values ('1001','xxx','2013-03-01 12:15:00','ooo','2013-03-01 12:15:00','[è¨è«–]æ³¡å¤œåº—ä½ æœ€æ„›å–å“ªç¨®èª¿é…’');
+insert into discussion values ('1003','xxx','2013-03-01 12:20:00','ooo','2013-03-01 12:20:00','è«‹å•ç´…é…’è·Ÿè‘¡è„é…’çš„å·®åˆ¥?');
+insert into discussion values ('1005','xxx','2013-03-01 12:25:00','ooo','2013-03-01 12:25:00','å¨å£«å¿Œå“æ³•');
+insert into discussion values ('1002','xxx','2013-03-01 12:30:00','ooo','2013-03-01 12:30:00','æ—¥æœ¬ç”·äººæ²’å•¤é…’è‚šçš„å¥§ç§˜');
 
 
 -------------------------------------------------------------------------------
@@ -50,8 +50,8 @@ create table product (
 
 );
 
-insert into product values ('³Ç¥d´µ¿²ÂÃ¤Ú¬¥¨F®u«¢¬õ°s','a1.jpg','2008','80','¿D¬w','±o2005 Taster Guide International Wine Judgingµ¥¥D­n°ê»ÚÄvÁÉªÖ©w,¦b1847¦~¡A¤@¦ì¦~»´ªº¤Ú¥ï§Q¨È²¾¥Á¬ù¿«.¸¯Äõ¡]Johann Gramp¡^¨Ó¨ì¤F«n¿Dªº¤Ú¬¥¨Fªe¨¦¡A¦b¤@±ø¦W¬°³Ç¥d´µ·Ë¯`ºØ¤U¤F¥Lªº²Ä¤@´Ê¸²µå¾ğ¡C¸g¹L129¦~ªºÃ­©wµo®i¡A1976¦~¥¿¦¡¥H¡y³Ç¥d´µ¡z¬°«~µP¦WºÙ¦b¥ş²y¤W¥«¡A®É¦Ü¤µ¤é¡A¨C¦~¶W¹L8¦Ê¸U½cªº¥X¤f¶q¡AÅı³Ç¥d´µ¦¨¬°¿D¬w³Ì¨üÅwªïªº¸²µå°s¼t¡C¨C¤Ñ¡Aªñ2¦Ê¸UªMªº³Ç¥d´µ¸²µå°s¦b¥@¬É¦U¦aªº¤H­Ì¤â¤¤³Q¨É¥Î¡A½èÀu©ö¶¼ªº³Ç¥d´µ­·®æ²`´Ó¤H¤ß¡C¥Î©ó¿²ÂÃ¨t¦Cªº¸²µå¡A±Ä¦Ûºë¿ï¸²µå¶éªºªG¹ê¡AÆC°s®vºë¿ï¨Ó¦ÛPadthaway, Langhorne Creek, Coonawarra¥H¤Î§J¨Ó¨à¨¦¦aµ¥¦a°Ï¡AªG¹ê¥R¤À¼ô¦¨´I¦³¿@­§«~ºØ­·¨ı»P²Ó½o³æ¹çªº¸²µå¡A§@¬°ÆC³y¿²ÂÃ¨t¦Cªº¨Ó·½¡C­»®ğ¶°¤¤¡B¿@ÁY­·¨ı¡A¦b¾ó¤ì±í¤º¼ô¦¨18-22­Ó¤ë¡]®u«¢¬õ°s¡^¡C','50','800','¤W¬[¤¤','³Ç¥d´µ','80','150','¤ôªG­»','AB','750','14.5',GETDATE(),'¬õ¸²µå°s','Syrah / Shiraz');
-insert into product values ('¦è¯Z¤ú²ö½{¥d°s²ø¡Ğ¦«¹p¦h¬õ°s','a2.jpg','2007','70','¦è¯Z¤ú¦«¹p¦h','­ì¬O¤¤¤p«¬ÆC°s¼t³Ğ«Ø©ó1950¦~¾ú¸g¥|¥N¸gÀçªº°s²ø¡A¦]«~½èÀu¨}¡A©ó¬O¤©1994¦~¦¨¥ß°ê»Ú«~µP¶}©lÂX®i°ê»Ú¥«³õ¡A¥D­n­P¤O©ó¥Í²£¦U¦¡¸²µå°s(³æ¤@«~ºØ¸²µå°s/¦õÀ\°s/¨Tªw°s/¦³¾÷¸²µå°sµ¥µ¥)¡A°s²ø²£°Ï¦ì¦b¼Ú¬w¬Û·í¦³¦W¥B­«­nªº¤@­Ó¤¤¤ß¦a±a¦«¹p¦h¬Ù¡]Toledo¡^¡A©Ô°Ò«êªºªF³¡¡]La Mancha¡^¡A¦¹°Ï¤D¬O¦è¯Z¤ú±ø¨ÒªºD.O.²£°Ï¡C¦Û1994¦~³Ğ«Ø¥H¨Ó¸gÀçªÌ«K¤£Â_ªº¬ã¨s¤Î³Ğ·s¡A±M·~ªº²~¸Ë¤Î½è¶qªººŞ±±¡A±N¶Ç²Î»P³Ğ·sµ²¦X¡A¬ãµo¨Ã§ïÅÜ¤£¦Pªº´ÓºØ¤è¦¡¡A¥Hº¡¨¬¥«³õ¤Wªº»İ¨D¡C¦è¯Z¤ú²ö½{¥d°s²øªº¸²µå¶é§¤¸¨¦b®ü©Ş722¦Ìªº©Y¦a¤W¡A³o°Ïªº¤g¦aÄİ©ó¦a¤¤®ü«¬®ğ­Ô¡A¯SÂI®ğ­Ô°®Àê¡A¥V©u´H§N¡A®L©uª¢¼ö¡A¦ı¦³®ü­·½Õ¸`¡C³o¨Ç¯S®í¤ÑµMÀô¹Ò±ø¥ó³y´N¥X­·¨ı¿W¯Sªº¸²µå°s¡A³o¨Ç¸²µå¾ğ¦~ÄÖ¬ù10¦~¡AÁ`²£¶q¦³­­¡]¬ù5.5¤½¤ç¡ş®è¸²µå¾ğ¡^¡A°s²ø«D±`¥J²Ó¦a±±¨î¨C­ÓÀô¸`¨Ï²ö½{¥d°s²øªº¬õ/¥Õ°s³£«O«ùµÛ§¹¬üªº¥­¿Å¡C','30','280','¤W¬[¤¤','BODEGAS VERDUGUEZ','100','90','¤ôªG­»','RG','750','11.4',GETDATE(),'¬õ¸²µå°s','Cabernet Sauvignon');
+insert into product values ('å‚‘å¡æ–¯è‡»è—å·´æ´›æ²™å¸­å“ˆç´…é…’','a1.jpg','2008','80','æ¾³æ´²','å¾—2005 Taster Guide International Wine Judgingç­‰ä¸»è¦åœ‹éš›ç«¶è³½è‚¯å®š,åœ¨1847å¹´ï¼Œä¸€ä½å¹´è¼•çš„å·´ä¼åˆ©äºç§»æ°‘ç´„ç¿°.è‘›è˜­ï¼ˆJohann Grampï¼‰ä¾†åˆ°äº†å—æ¾³çš„å·´æ´›æ²™æ²³è°·ï¼Œåœ¨ä¸€æ¢åç‚ºå‚‘å¡æ–¯æºªç•”ç¨®ä¸‹äº†ä»–çš„ç¬¬ä¸€æ£µè‘¡è„æ¨¹ã€‚ç¶“é129å¹´çš„ç©©å®šç™¼å±•ï¼Œ1976å¹´æ­£å¼ä»¥ã€å‚‘å¡æ–¯ã€ç‚ºå“ç‰Œåç¨±åœ¨å…¨çƒä¸Šå¸‚ï¼Œæ™‚è‡³ä»Šæ—¥ï¼Œæ¯å¹´è¶…é8ç™¾è¬ç®±çš„å‡ºå£é‡ï¼Œè®“å‚‘å¡æ–¯æˆç‚ºæ¾³æ´²æœ€å—æ­¡è¿çš„è‘¡è„é…’å» ã€‚æ¯å¤©ï¼Œè¿‘2ç™¾è¬æ¯çš„å‚‘å¡æ–¯è‘¡è„é…’åœ¨ä¸–ç•Œå„åœ°çš„äººå€‘æ‰‹ä¸­è¢«äº«ç”¨ï¼Œè³ªå„ªæ˜“é£²çš„å‚‘å¡æ–¯é¢¨æ ¼æ·±æ¤äººå¿ƒã€‚ç”¨æ–¼è‡»è—ç³»åˆ—çš„è‘¡è„ï¼Œæ¡è‡ªç²¾é¸è‘¡è„åœ’çš„æœå¯¦ï¼Œé‡€é…’å¸«ç²¾é¸ä¾†è‡ªPadthaway, Langhorne Creek, Coonawarraä»¥åŠå…‹ä¾†å…’è°·åœ°ç­‰åœ°å€ï¼Œæœå¯¦å……åˆ†ç†Ÿæˆå¯Œæœ‰æ¿ƒéƒå“ç¨®é¢¨å‘³èˆ‡ç´°ç·»å–®å¯§çš„è‘¡è„ï¼Œä½œç‚ºé‡€é€ è‡»è—ç³»åˆ—çš„ä¾†æºã€‚é¦™æ°£é›†ä¸­ã€æ¿ƒç¸®é¢¨å‘³ï¼Œåœ¨æ©¡æœ¨æ¡¶å…§ç†Ÿæˆ18-22å€‹æœˆï¼ˆå¸­å“ˆç´…é…’ï¼‰ã€‚','50','800','ä¸Šæ¶ä¸­','å‚‘å¡æ–¯','80','150','æ°´æœé¦™','AB','750','14.5',GETDATE(),'ç´…è‘¡è„é…’','Syrah / Shiraz');
+insert into product values ('è¥¿ç­ç‰™è«ç·¹å¡é…’èŠï¼æ‰˜é›·å¤šç´…é…’','a2.jpg','2007','70','è¥¿ç­ç‰™æ‰˜é›·å¤š','åŸæ˜¯ä¸­å°å‹é‡€é…’å» å‰µå»ºæ–¼1950å¹´æ­·ç¶“å››ä»£ç¶“ç‡Ÿçš„é…’èŠï¼Œå› å“è³ªå„ªè‰¯ï¼Œæ–¼æ˜¯äºˆ1994å¹´æˆç«‹åœ‹éš›å“ç‰Œé–‹å§‹æ“´å±•åœ‹éš›å¸‚å ´ï¼Œä¸»è¦è‡´åŠ›æ–¼ç”Ÿç”¢å„å¼è‘¡è„é…’(å–®ä¸€å“ç¨®è‘¡è„é…’/ä½é¤é…’/æ±½æ³¡é…’/æœ‰æ©Ÿè‘¡è„é…’ç­‰ç­‰)ï¼Œé…’èŠç”¢å€ä½åœ¨æ­æ´²ç›¸ç•¶æœ‰åä¸”é‡è¦çš„ä¸€å€‹ä¸­å¿ƒåœ°å¸¶æ‰˜é›·å¤šçœï¼ˆToledoï¼‰ï¼Œæ‹‰æ›¼æ°çš„æ±éƒ¨ï¼ˆLa Manchaï¼‰ï¼Œæ­¤å€ä¹ƒæ˜¯è¥¿ç­ç‰™æ¢ä¾‹çš„D.O.ç”¢å€ã€‚è‡ª1994å¹´å‰µå»ºä»¥ä¾†ç¶“ç‡Ÿè€…ä¾¿ä¸æ–·çš„ç ”ç©¶åŠå‰µæ–°ï¼Œå°ˆæ¥­çš„ç“¶è£åŠè³ªé‡çš„ç®¡æ§ï¼Œå°‡å‚³çµ±èˆ‡å‰µæ–°çµåˆï¼Œç ”ç™¼ä¸¦æ”¹è®Šä¸åŒçš„æ¤ç¨®æ–¹å¼ï¼Œä»¥æ»¿è¶³å¸‚å ´ä¸Šçš„éœ€æ±‚ã€‚è¥¿ç­ç‰™è«ç·¹å¡é…’èŠçš„è‘¡è„åœ’åè½åœ¨æµ·æ‹”722ç±³çš„å¡åœ°ä¸Šï¼Œé€™å€çš„åœŸåœ°å±¬æ–¼åœ°ä¸­æµ·å‹æ°£å€™ï¼Œç‰¹é»æ°£å€™ä¹¾ç‡¥ï¼Œå†¬å­£å¯’å†·ï¼Œå¤å­£ç‚ç†±ï¼Œä½†æœ‰æµ·é¢¨èª¿ç¯€ã€‚é€™äº›ç‰¹æ®Šå¤©ç„¶ç’°å¢ƒæ¢ä»¶é€ å°±å‡ºé¢¨å‘³ç¨ç‰¹çš„è‘¡è„é…’ï¼Œé€™äº›è‘¡è„æ¨¹å¹´é½¡ç´„10å¹´ï¼Œç¸½ç”¢é‡æœ‰é™ï¼ˆç´„5.5å…¬æ–¤ï¼æ ªè‘¡è„æ¨¹ï¼‰ï¼Œé…’èŠéå¸¸ä»”ç´°åœ°æ§åˆ¶æ¯å€‹ç’°ç¯€ä½¿è«ç·¹å¡é…’èŠçš„ç´…/ç™½é…’éƒ½ä¿æŒè‘—å®Œç¾çš„å¹³è¡¡ã€‚','30','280','ä¸Šæ¶ä¸­','BODEGAS VERDUGUEZ','100','90','æ°´æœé¦™','RG','750','11.4',GETDATE(),'ç´…è‘¡è„é…’','Cabernet Sauvignon');
 
 ------------------------------------------------------------------------------
 
@@ -119,9 +119,9 @@ insert into order_detail values (0004,9999,1,0,1000);
 insert into order_detail values (0004,9998,2,0,999);
 ----------------------------------------------------------------------------------------------------------------------------------
 drop table coupon_set;
-create table coupon_set ( --[table]º¡ÃBÃØCoupon   ok
-cs_limit_price			int,	--ª÷ÃB°Ï¶¡/¤U­­  [ primary key ]
-cs_price				int		--Coupon­±ÃB
+create table coupon_set ( --[table]æ»¿é¡è´ˆCoupon   ok
+cs_limit_price			int,	--é‡‘é¡å€é–“/ä¸‹é™  [ primary key ]
+cs_price				int		--Couponé¢é¡
 );
 insert into coupon_set values (300,50);
 insert into coupon_set values (500,100);
@@ -130,114 +130,114 @@ insert into coupon_set values (1500,300);
 insert into coupon_set values (3000,400);
 -------------------------------------------------------------
 drop table shipping_set;
-create table shipping_set ( --[table]º¡ÃB§K¹B   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-min_pirce 				int	--³Ì§CÃB«× [ primary key ]
+create table shipping_set ( --[table]æ»¿é¡å…é‹   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+min_pirce 				int	--æœ€ä½é¡åº¦ [ primary key ]
 );
 insert into shipping_set values (300);
 -------------------------------------------------------------------------------------------------------------------------
-drop table		food_set;		--§R°£·f°t--text
-drop table		recipe;			--§R°£­¹ÃĞ
-drop table		food;			--§R°£­¹ª«
-drop table		ingredient;		--§R°£­¹§÷
-drop table		sauce;			--§R°£­·¨ı
+drop table		food_set;		--åˆªé™¤æ­é…--text
+drop table		recipe;			--åˆªé™¤é£Ÿè­œ
+drop table		food;			--åˆªé™¤é£Ÿç‰©
+drop table		ingredient;		--åˆªé™¤é£Ÿæ
+drop table		sauce;			--åˆªé™¤é¢¨å‘³
 -------------------------------------------------------------------------------------------------------------------------
-create table	food ( --[table]­¹ª«ºØÃş ok
-f_id				int IDENTITY (1,1) 	not null,	--­¹ª«ºØÃşID [ primary key ]
-f_name			varchar(120) 	 not null,		--­¹ª«ºØÃşname
+create table	food ( --[table]é£Ÿç‰©ç¨®é¡ ok
+f_id				int IDENTITY (1,1) 	not null,	--é£Ÿç‰©ç¨®é¡ID [ primary key ]
+f_name			varchar(120) 	 not null,		--é£Ÿç‰©ç¨®é¡name
  constraint food_primary_key primary key (f_id)
 );
-insert into food values ('¦×Ãş');
-insert into food values ('¨Å¹T');
-insert into food values ('²¢ÂI');
-insert into food values ('½\Ãş');
-insert into food values ('ÂûÀn');
-insert into food values ('®üÂA');
+insert into food values ('è‚‰é¡');
+insert into food values ('ä¹³é…ª');
+insert into food values ('ç”œé»');
+insert into food values ('ç©€é¡');
+insert into food values ('é›é´¨');
+insert into food values ('æµ·é®®');
 -------------------------------------------------------------------------------------------------------------------------
-create table	ingredient ( --[table]¥D­n¦¨¤À ok
-i_id				int IDENTITY (1,1) 	not null,	--­¹§÷ID [ primary key ]
-i_name			varchar(120)  	not null,		--­¹§÷name
+create table	ingredient ( --[table]ä¸»è¦æˆåˆ† ok
+i_id				int IDENTITY (1,1) 	not null,	--é£ŸæID [ primary key ]
+i_name			varchar(120)  	not null,		--é£Ÿæname
  constraint ingredient_primary_key primary key (i_id),
 );
-insert into ingredient values ('¤û¦×');
-insert into ingredient values ('¦Ï¦×');
-insert into ingredient values ('½Ş¦×');
-insert into ingredient values ('¤p¤û¦×');
-insert into ingredient values ('ÂÅ¯¾¨Å¹T');
-insert into ingredient values ('¤Á¹F¨Å¹T');
-insert into ingredient values ('¥¤ªoªº');
-insert into ingredient values ('¤s¦Ï¨Å¹T');
-insert into ingredient values ('¤z¥¤¹T/µw½è');
-insert into ingredient values ('¥bµw½è');
-insert into ingredient values ('¨ı¹D­«ªº');
-insert into ingredient values ('ªGÂæ');
-insert into ingredient values ('¥©§J¤O');
-insert into ingredient values ('¥¤ªo');
-insert into ingredient values ('ÂfÂc');
-insert into ingredient values ('¤d¼hÄÑ');
-insert into ingredient values ('®üÂA¶º');
-insert into ingredient values ('¸q¤j§QÄÑ');
-insert into ingredient values ('©ÜÂÄ');
-insert into ingredient values ('¿L¶º');
-insert into ingredient values ('¨§¿L¦×');
-insert into ingredient values ('Âû¦×');
-insert into ingredient values ('Àn¦×');
-insert into ingredient values ('¤õÂû');
-insert into ingredient values ('¿ÀÃÉ');
-insert into ingredient values ('Às½¼');
-insert into ingredient values ('¨dÄ÷');
-insert into ingredient values ('ÂD³½');
-insert into ingredient values ('¤z¨©');
-insert into ingredient values ('½¼');
-insert into ingredient values ('¹Ø¥q');
-insert into ingredient values ('ª÷ºj³½');
-insert into ingredient values ('¥Õ³½');
+insert into ingredient values ('ç‰›è‚‰');
+insert into ingredient values ('ç¾Šè‚‰');
+insert into ingredient values ('è±¬è‚‰');
+insert into ingredient values ('å°ç‰›è‚‰');
+insert into ingredient values ('è—ç´‹ä¹³é…ª');
+insert into ingredient values ('åˆ‡é”ä¹³é…ª');
+insert into ingredient values ('å¥¶æ²¹çš„');
+insert into ingredient values ('å±±ç¾Šä¹³é…ª');
+insert into ingredient values ('å¹²å¥¶é…ª/ç¡¬è³ª');
+insert into ingredient values ('åŠç¡¬è³ª');
+insert into ingredient values ('å‘³é“é‡çš„');
+insert into ingredient values ('æœé†¬');
+insert into ingredient values ('å·§å…‹åŠ›');
+insert into ingredient values ('å¥¶æ²¹');
+insert into ingredient values ('æª¸æª¬');
+insert into ingredient values ('åƒå±¤éºµ');
+insert into ingredient values ('æµ·é®®é£¯');
+insert into ingredient values ('ç¾©å¤§åˆ©éºµ');
+insert into ingredient values ('æŠ«è–©');
+insert into ingredient values ('ç‡‰é£¯');
+insert into ingredient values ('è±†ç‡‰è‚‰');
+insert into ingredient values ('é›è‚‰');
+insert into ingredient values ('é´¨è‚‰');
+insert into ingredient values ('ç«é›');
+insert into ingredient values ('èƒèŸ¹');
+insert into ingredient values ('é¾è¦');
+insert into ingredient values ('ç‰¡è £');
+insert into ingredient values ('é®­é­š');
+insert into ingredient values ('å¹²è²');
+insert into ingredient values ('è¦');
+insert into ingredient values ('å£½å¸');
+insert into ingredient values ('é‡‘æ§é­š');
+insert into ingredient values ('ç™½é­š');
 -------------------------------------------------------------------------------------------------------------------------
-create table	sauce ( --[table]Âæ®Æor­·¨ı ok
-s_id				int IDENTITY (101,1) 	not null,	--Âæ®ÆID [ primary key ]
-s_name			varchar(120)  				--Âæ®Æname
+create table	sauce ( --[table]é†¬æ–™oré¢¨å‘³ ok
+s_id				int IDENTITY (101,1) 	not null,	--é†¬æ–™ID [ primary key ]
+s_name			varchar(120)  				--é†¬æ–™name
 constraint sauce_primary_key primary key (s_id),
 );
-insert into sauce values ('­»¯ó');
-insert into sauce values ('»¶´Ô');
-insert into sauce values ('Ä¨Û£');
-insert into sauce values ('¿L¦×');
-insert into sauce values ('¯N¦×');
-insert into sauce values ('º~³ù');
-insert into sauce values ('­»¸z');
-insert into sauce values ('¸Ì¯á¦×');
-insert into sauce values ('»q¯»ªº');
-insert into sauce values ('¤ôªG');
-insert into sauce values ('ÂfÂc/¬a¾ï');
-insert into sauce values ('¦×¤ù');
+insert into sauce values ('é¦™è‰');
+insert into sauce values ('è¾£æ¤’');
+insert into sauce values ('è˜‘è‡');
+insert into sauce values ('ç‡‰è‚‰');
+insert into sauce values ('çƒ¤è‚‰');
+insert into sauce values ('æ¼¢å ¡');
+insert into sauce values ('é¦™è…¸');
+insert into sauce values ('è£¡è„Šè‚‰');
+insert into sauce values ('è£¹ç²‰çš„');
+insert into sauce values ('æ°´æœ');
+insert into sauce values ('æª¸æª¬/æŸ‘æ©˜');
+insert into sauce values ('è‚‰ç‰‡');
 insert into sauce values ('null');
-insert into sauce values ('¦×ªº');
-insert into sauce values ('½­µæ');
-insert into sauce values ('¦×Âæ');
-insert into sauce values ('«CÂæ');
-insert into sauce values ('­X¥Ä');
-insert into sauce values ('¥ÕÂæ/®üÂA');
-insert into sauce values ('¥¤ªoªº');
-insert into sauce values ('¸q¦¡¿L¶º');
-insert into sauce values ('ªã¥½');
-insert into sauce values ('¨¯»¶ªº');
-insert into sauce values ('¬µÂû');
-insert into sauce values ('­»·Î');
-insert into sauce values ('ªo«ÊÀn');
-insert into sauce values ('ÃZ¨x');
-insert into sauce values ('³n´ßªº');
-insert into sauce values ('»¶ªº');
-insert into sauce values ('ÃÉ¦×»æ');
-insert into sauce values ('¿N¯N');
-insert into sauce values ('³Â»¶');
-insert into sauce values ('¿L³½');
-insert into sauce values ('¥É¦Ì±²»æ');
-insert into sauce values ('¬µªº');
+insert into sauce values ('è‚‰çš„');
+insert into sauce values ('è”¬èœ');
+insert into sauce values ('è‚‰é†¬');
+insert into sauce values ('é’é†¬');
+insert into sauce values ('èŒ„æ±');
+insert into sauce values ('ç™½é†¬/æµ·é®®');
+insert into sauce values ('å¥¶æ²¹çš„');
+insert into sauce values ('ç¾©å¼ç‡‰é£¯');
+insert into sauce values ('èŠ¥æœ«');
+insert into sauce values ('è¾›è¾£çš„');
+insert into sauce values ('ç‚¸é›');
+insert into sauce values ('é¦™ç…');
+insert into sauce values ('æ²¹å°é´¨');
+insert into sauce values ('éµè‚');
+insert into sauce values ('è»Ÿæ®¼çš„');
+insert into sauce values ('è¾£çš„');
+insert into sauce values ('èŸ¹è‚‰é¤…');
+insert into sauce values ('ç‡’çƒ¤');
+insert into sauce values ('éº»è¾£');
+insert into sauce values ('ç‡‰é­š');
+insert into sauce values ('ç‰ç±³æ²é¤…');
+insert into sauce values ('ç‚¸çš„');
 -------------------------------------------------------------
-create table	recipe ( --[table]­¹ÃĞ   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-rp_id				int  IDENTITY (101,1) not null,		--­¹ÃĞID [ primary key ]
-f_id				int 				not null,		--­¹ª«ID	[ fo_key food		f_id]
-i_id				int  				not null,		--­¹§÷ID	[ fo_key ingredient i_id]
-s_id				int 				not null,		--­·¨ıid	[ fo_key sauce		s_id]
+create table	recipe ( --[table]é£Ÿè­œ   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+rp_id				int  IDENTITY (101,1) not null,		--é£Ÿè­œID [ primary key ]
+f_id				int 				not null,		--é£Ÿç‰©ID	[ fo_key food		f_id]
+i_id				int  				not null,		--é£ŸæID	[ fo_key ingredient i_id]
+s_id				int 				not null,		--é¢¨å‘³id	[ fo_key sauce		s_id]
 constraint recipe_key primary key (rp_id),
 constraint recipe_f_id_fk foreign key (f_id) references food		 (f_id),
 constraint recipe_i_id_fk foreign key (i_id) references ingredient (i_id),
@@ -330,14 +330,14 @@ insert into recipe values (	6	,	33	,	133	);
 insert into recipe values (	6	,	33	,	134	);
 insert into recipe values (	6	,	33	,	135	);
 -------------------------------------------------------------------------------------------------------------------------
-create table food_set ( --[table]­¹ª«·f°t   ok
-Uniid				int IDENTITY (1,1) not null,		--¬y¤ô¸¹ [ primary key ]
-fs_id				int  not null,	--°Ó«~ID  pri
-rp_id				int	 not null	--­¹ÃĞID 
---constraint food_set_fs_id_fk foreign key (fs_id) references product		(????),		-F-K°Ó«~ID
+create table food_set ( --[table]é£Ÿç‰©æ­é…   ok
+Uniid				int IDENTITY (1,1) not null,		--æµæ°´è™Ÿ [ primary key ]
+fs_id				int  not null,	--å•†å“ID  pri
+rp_id				int	 not null	--é£Ÿè­œID 
+--constraint food_set_fs_id_fk foreign key (fs_id) references product		(????),		-F-Kå•†å“ID
 constraint ood_set_rp_id_fk foreign key (rp_id)	references recipe		(rp_id),
 );
---							--°Ó«~ID	­¹ÃĞID																
+--							--å•†å“ID	é£Ÿè­œID																
 --insert into food_set values (		,	101	);															
 --insert into food_set values (		,	102	);															
 --insert into food_set values (		,	103	);															
@@ -440,7 +440,7 @@ constraint ood_set_rp_id_fk foreign key (rp_id)	references recipe		(rp_id),
 -------------------------------------------------------------
 drop table ab;
 create table ab ( --[table]AB   ok
-Uniid				int IDENTITY (1,1) not null,	--¬y¤ô¸¹ [ primary key ]
+Uniid				int IDENTITY (1,1) not null,	--æµæ°´è™Ÿ [ primary key ]
 ab_a_p_id				int  not null,	--AID
 ab_b_p_id				int  not null		--BID
 );
@@ -463,14 +463,14 @@ o_status			varchar(10),
 o_pic				varchar(100),
 constraint orders_primary_key primary key (o_no));
 
-insert into orders values ('1','2013-2-16','N','50','9999','sa','±¶¹B¤j¦w¯¸','0987654321','F','1.png');
-insert into orders values ('1','2013-2-16','Y','0','1234','sa','±¶¹B¤j¦w¯¸','0987654321','T','2.png');
-insert into orders values ('2','2013-2-16','N','50','4999','sa','±¶¹B¤j¦w¯¸','0987654321','T','3.png');
-insert into orders values ('3','2013-2-16','Y','50','6999','sa','±¶¹B¤j¦w¯¸','0987654321','T','4.png');
-insert into orders values ('5','2013-2-16','N','50','7999','sa','±¶¹B¤j¦w¯¸','0987654321','F','5.png');
-insert into orders values ('6','2013-2-16','N','50','6999','sa','±¶¹B¤j¦w¯¸','0987654321','F','6.png');
-insert into orders values ('6','2013-2-16','Y','50','5999','sa','±¶¹B¤j¦w¯¸','0987654321','T','7.png');
-insert into orders values ('8','2013-2-16','N','50','8999','sa','±¶¹B¤j¦w¯¸','0987654321','F','8.png');
+insert into orders values ('1','2013-2-16','N','50','9999','sa','æ·é‹å¤§å®‰ç«™','0987654321','F','1.png');
+insert into orders values ('1','2013-2-16','Y','0','1234','sa','æ·é‹å¤§å®‰ç«™','0987654321','T','2.png');
+insert into orders values ('2','2013-2-16','N','50','4999','sa','æ·é‹å¤§å®‰ç«™','0987654321','T','3.png');
+insert into orders values ('3','2013-2-16','Y','50','6999','sa','æ·é‹å¤§å®‰ç«™','0987654321','T','4.png');
+insert into orders values ('5','2013-2-16','N','50','7999','sa','æ·é‹å¤§å®‰ç«™','0987654321','F','5.png');
+insert into orders values ('6','2013-2-16','N','50','6999','sa','æ·é‹å¤§å®‰ç«™','0987654321','F','6.png');
+insert into orders values ('6','2013-2-16','Y','50','5999','sa','æ·é‹å¤§å®‰ç«™','0987654321','T','7.png');
+insert into orders values ('8','2013-2-16','N','50','8999','sa','æ·é‹å¤§å®‰ç«™','0987654321','F','8.png');
 -----------------------------------------------------------------------
 
 drop table member;

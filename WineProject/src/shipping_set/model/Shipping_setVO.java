@@ -1,4 +1,4 @@
-package shipping_set.model;
+﻿package shipping_set.model;
 
 
 public class Shipping_setVO implements java.io.Serializable{

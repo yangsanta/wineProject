@@ -1,4 +1,4 @@
-package reply.model;
+﻿package reply.model;
 import java.sql.Date;
 
 public class ReplyVO  implements java.io.Serializable{

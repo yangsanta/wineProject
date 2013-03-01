@@ -1,4 +1,4 @@
-package orders.model;
+﻿package orders.model;
 import java.awt.Image;
 import java.sql.Date;
 

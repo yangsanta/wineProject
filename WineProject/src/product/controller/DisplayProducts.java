@@ -1,4 +1,4 @@
-package product.controller;
+ï»¿package product.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -89,10 +89,10 @@ public class DisplayProducts extends HttpServlet {
 	}
 	
 	private void splitPages(List<ProductVO> list, HttpServletRequest request) {
-		int rowsPerPage = 5;  //¨C­¶ªºµ§¼Æ    
-	    int totalRows=list.size();      //Á`µ§¼Æ
-	    int totalPages=0;     //Á`­¶¼Æ      
-	    int whichPage=1;      //²Ä´X­¶
+		int rowsPerPage = 5;  //æ¯é çš„ç­†æ•¸    
+	    int totalRows=list.size();      //ç¸½ç­†æ•¸
+	    int totalPages=0;     //ç¸½é æ•¸      
+	    int whichPage=1;      //ç¬¬å¹¾é 
 	    int pageIndexArray[]=null;
 	    int pageIndex=0; 
 		

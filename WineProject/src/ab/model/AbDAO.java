@@ -1,4 +1,4 @@
-package ab.model;
+ï»¿package ab.model;
 
 import java.util.*;
 import java.sql.*;
@@ -173,7 +173,7 @@ public class AbDAO implements AbDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVo ¤]ºÙ¬° Domain objects
+				// empVo ä¹Ÿç¨±ç‚º Domain objects
 				abVO = new AbVO();
 				abVO.setUniid(rs.getInt("Uniid"));
 				abVO.setab_a_p_id(rs.getInt("ab_a_p_id"));
@@ -232,7 +232,7 @@ public class AbDAO implements AbDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVO ¤]ºÙ¬° Domain objects
+				// empVO ä¹Ÿç¨±ç‚º Domain objects
 				abVO = new AbVO();
 				abVO.setUniid(rs.getInt("Uniid"));
 				abVO.setab_a_p_id(rs.getInt("ab_a_p_id"));
@@ -279,14 +279,14 @@ public class AbDAO implements AbDAO_interface {
 
 		AbDAO dao = new AbDAO();
 
-		// ·s¼W
+		// æ–°å¢ž
 		AbVO abVO1 = new AbVO();
 
 		abVO1.setab_a_p_id(103);
 		abVO1.setab_b_p_id(1003);
 		dao.insert(abVO1);
 
-		// ­×§ï
+		// ä¿®æ”¹
 		AbVO abVO2 = new AbVO();
 		abVO2.setUniid(1);
 		abVO2.setab_a_p_id(1011);
@@ -294,16 +294,16 @@ public class AbDAO implements AbDAO_interface {
 		
 		dao.update(abVO2);
 
-//		// §R°£
+//		// åˆªé™¤
 //		dao.delete(2);
 
-//		// ¬d¸ß
+//		// æŸ¥è©¢
 		AbVO abVO3 = dao.findByPrimaryKey(3);
 		System.out.print(abVO3.getUniid() + ",");
 		System.out.print(abVO3.getab_a_p_id());
 		System.out.println("---------------------");
 
-		// ¬d¸ß
+		// æŸ¥è©¢
 		List<AbVO> list = dao.getAll();
 		for (AbVO aab : list) {
 			System.out.print(aab.getUniid() + ",");

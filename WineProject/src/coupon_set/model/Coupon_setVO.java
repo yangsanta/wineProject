@@ -1,4 +1,4 @@
-package coupon_set.model;
+﻿package coupon_set.model;
 
 
 public class Coupon_setVO implements java.io.Serializable{

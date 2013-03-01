@@ -1,4 +1,4 @@
-package order_detail.model;
+﻿package order_detail.model;
 
 import java.util.List;
 

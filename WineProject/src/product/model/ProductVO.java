@@ -1,4 +1,4 @@
-package product.model;
+﻿package product.model;
 
 
 import java.sql.Timestamp;

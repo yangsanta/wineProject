@@ -1,4 +1,4 @@
-package coupon_set.model;
+ï»¿package coupon_set.model;
 
 import java.util.*;
 import java.sql.*;
@@ -172,7 +172,7 @@ public class Coupon_setDAO implements Coupon_setDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVo ¤]ºÙ¬° Domain objects
+				// empVo ä¹Ÿç¨±ç‚º Domain objects
 				coupon_setVO = new Coupon_setVO();
 				coupon_setVO.setcs_limit_price(rs.getInt("cs_limit_price"));
 				coupon_setVO.setcs_price(rs.getInt("cs_price"));
@@ -231,7 +231,7 @@ public class Coupon_setDAO implements Coupon_setDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVO ¤]ºÙ¬° Domain objects
+				// empVO ä¹Ÿç¨±ç‚º Domain objects
 				coupon_setVO = new Coupon_setVO();
 				coupon_setVO.setcs_limit_price(rs.getInt("cs_limit_price"));
 				coupon_setVO.setcs_price(rs.getInt("cs_price"));
@@ -278,30 +278,30 @@ public class Coupon_setDAO implements Coupon_setDAO_interface {
 
 		Coupon_setDAO dao = new Coupon_setDAO();
 
-		// ·s¼W
+		// æ–°å¢ž
 //		Coupon_setVO coupon_setVO1 = new Coupon_setVO();
 //
 //		coupon_setVO1.setcs_price(501);
 //		coupon_setVO1.setcs_limit_price(30001);
 //		dao.insert(coupon_setVO1);
 
-		// ­×§ï
+		// ä¿®æ”¹
 //		Coupon_setVO coupon_setVO2 = new Coupon_setVO();
 //		coupon_setVO2.setcs_limit_price(30001);
 //		coupon_setVO2.setcs_price(502);
 //
 //		dao.update(coupon_setVO2);
 
-//		// §R°£
+//		// åˆªé™¤
 //		dao.delete(30001);
 
-//		// ¬d¸ß
+//		// æŸ¥è©¢
 //		Coupon_setVO coupon_setVO3 = dao.findByPrimaryKey(500);
 //		System.out.print(coupon_setVO3.getcs_limit_price() + ",");
 //		System.out.print(coupon_setVO3.getcs_price());
 //		System.out.println("---------------------");
 
-		// ¬d¸ß
+		// æŸ¥è©¢
 		List<Coupon_setVO> list = dao.getAll();
 		for (Coupon_setVO acoupon_set : list) {
 			System.out.print(acoupon_set.getcs_limit_price() + ",");

@@ -1,4 +1,4 @@
-//package discussion.model;
+ï»¿//package discussion.model;
 //
 //import java.util.*;
 //import java.sql.*;
@@ -177,7 +177,7 @@
 //			rs = pstmt.executeQuery();
 //
 //			while (rs.next()) {
-//				// empVo ¤]ºÙ¬° Domain objects
+//				// empVo ä¹Ÿç¨±ç‚º Domain objects
 //				discussionVO = new DiscussionVO();
 //				discussionVO.setD_no(rs.getInt("d_no"));
 //				discussionVO.setM_no(rs.getInt("m_no"));
@@ -241,7 +241,7 @@
 //			rs = pstmt.executeQuery();
 //
 //			while (rs.next()) {
-//				// empVO ¤]ºÙ¬° Domain objects
+//				// empVO ä¹Ÿç¨±ç‚º Domain objects
 //				discussion = new DiscussionVO();
 //				discussion.setD_no(rs.getInt("d_no"));
 //				discussion.setM_no(rs.getInt("m_no"));
@@ -343,7 +343,7 @@
 //	public static void main(String args[]) {
 //
 //		DiscussionDAO dao = new DiscussionDAO();
-//		//´ú¸ÕfindTotalNOofDiscussionÁ`¯d¨¥¤ñ¼Æ
+//		//æ¸¬è©¦findTotalNOofDiscussionç¸½ç•™è¨€æ¯”æ•¸
 ////		Integer totalNO = dao.findTotalNOofDiscussion();
 ////		System.out.print(totalNO);
 //		

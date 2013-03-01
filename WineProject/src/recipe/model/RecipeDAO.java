@@ -1,4 +1,4 @@
-package recipe.model;
+ï»¿package recipe.model;
 
 import java.util.*;
 import java.sql.*;
@@ -318,7 +318,7 @@ public class RecipeDAO implements RecipeDAO_interface {
 //		System.out.println();
 //		System.out.println("---------------------");
 
-		// ¬d¸ß
+		// æŸ¥è©¢
 		List<RecipeVO> list = dao.getAll();
 		for (RecipeVO aRecipe : list) {
 			System.out.print(aRecipe.getRp_id() + ",");

@@ -1,4 +1,4 @@
-package member.model;
+﻿package member.model;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;

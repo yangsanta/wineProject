@@ -1,4 +1,4 @@
-package coupon.model;
+Ôªøpackage coupon.model;
 
 import hibernate.util.HibernateUtil;
 
@@ -91,7 +91,7 @@ public class CouponHibernateDAO implements CouponDAO_interface {
 		
 		Long time = new java.util.Date().getTime();
 		
-		// °¥ ∑sºW 							OK!!!!
+		// ‚óè Êñ∞Â¢û 							OK!!!!
 
 //		 CouponVO couponVO1 = new CouponVO();
 //		 couponVO1.setC_key("AAA2");
@@ -100,7 +100,7 @@ public class CouponHibernateDAO implements CouponDAO_interface {
 //		 couponVO1.setC_status(true);
 //		 dao.insert(couponVO1);
 
-		// °¥ ≠◊ßÔ 													OK!!
+		// ‚óè ‰øÆÊîπ 													OK!!
 //		 CouponVO couponVO2 = new CouponVO();
 //		 couponVO2.setC_key("AAA2");
 //		 couponVO2.setC_price(999);
@@ -108,10 +108,10 @@ public class CouponHibernateDAO implements CouponDAO_interface {
 //		 couponVO2.setC_deadline(new java.sql.Timestamp(new java.util.Date().getTime()));  //java.sql.Timestamp.valueOf("2013-11-12 20:11:20")
 //		 dao.update(couponVO2);
 
-		// °¥ ßR∞£											OK!!!!!!!!
+		// ‚óè Âà™Èô§											OK!!!!!!!!
 		 dao.delete("AAAAAAAAAAAAAA1");
 
-		// °¥ ¨d∏ﬂ-findByPrimaryKey 							OK!!!!!!!!!
+		// ‚óè Êü•Ë©¢-findByPrimaryKey 							OK!!!!!!!!!
 //		 CouponVO couponVO3 = dao.findByPrimaryKey("AAA2");
 //		 System.out.print(couponVO3.getC_key() + ",");
 //		 System.out.print(couponVO3.getC_price() + ",");
@@ -119,7 +119,7 @@ public class CouponHibernateDAO implements CouponDAO_interface {
 //		 System.out.print(couponVO3.getC_deadline());
 //		 System.out.println();
 
-		// ?!!!!!!!!!!!!!!!!!°¥ ¨d∏ﬂ-getAll (¶h§Ëemp2.hbm.xml•≤∂∑≥]¨∞lazy="false")(¿u!)
+		// ?!!!!!!!!!!!!!!!!!‚óè Êü•Ë©¢-getAll (Â§öÊñπemp2.hbm.xmlÂøÖÈ†àË®≠ÁÇ∫lazy="false")(ÂÑ™!)
 		List<CouponVO> list = dao.getAll();
 		for (CouponVO aCoupon : list) {
 			System.out.print(aCoupon.getC_key() + ",");
