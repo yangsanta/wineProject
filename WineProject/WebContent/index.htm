@@ -1,0 +1,529 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-tw">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>酒迷 | 歷久彌新的香濃口感</title>
+ <meta content="酒迷 | 歷久彌新的香濃口感。" name="description" />
+  <meta content="酒迷 | 歷久彌新的香濃口感" name="keywords" />
+        <link href="style/reset.css" rel="stylesheet" type="text/css" />
+		<link href="style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	    <script src="http://code.jquery.com/jquery.js"></script>
+		<script src="style/bootstrap/js/bootstrap.min.js"></script>
+<style type="text/css">
+/* 全域css */
+
+body{	font-size: 12pt;
+	line-height: 1.75em;
+	font-family: Georgia, serif;
+	background: #ad8667 url('images/bg.jpg');
+	color: #ebe1d9;}
+#body{	width:960px;
+		margin:  0 auto;
+		
+}
+#shadow_bg {
+	background: url('images/shadow.png') top left repeat-x;
+}
+/* header */
+#header {
+	position: relative;
+	padding: 40px 40px 10px 40px;
+	height: 120px;
+}
+
+#logo {
+	position: absolute;
+	top: 40px;
+	left: 40px;
+	height: 120px;
+}
+
+#logo a {
+	text-decoration: none;
+	color: #fff;
+}
+
+#logo h1 {
+	font-size: 3.5em;
+	font-family: Lobster, cursive;
+	text-shadow: 0 2px 1px #32251B;
+}
+#search{float:right;margin:5px;}
+.iconsearch{background-image: url("images/search_icon.png"); background-repeat: no-repeat; background-position:6px 2px;
+			font-size: 14px;
+			height: 25px;
+			line-height: 1.2em;
+			padding: 6px 10px 6px 28px;
+			border-radius: 15px;
+}
+#little_nav {
+	position: absolute;
+	right: 40px;
+	}
+#little_nav a {
+	text-decoration: none;
+	text-transform: lowercase;
+	color: #f4eeea;
+	text-shadow: 0 1px 1px #32251B;
+	font-size: 0.5em;
+}
+
+#little_nav li {
+	margin: 0 0.5em ;
+}
+
+#little_nav ul {
+	list-style: none;
+}
+#little_nav ul li {
+	float: left;
+}
+#nav {
+background: url('images/nav_bg.png') no-repeat;
+	position: absolute;
+	right: 40px;
+	height: 53px;
+	top: 80px;
+	width:560px;
+}
+
+#nav a {
+	text-decoration: none;
+	text-transform: lowercase;
+	color: #f4eeea;
+	text-shadow: 0 1px 1px #32251B;
+	font-size: 1.2em;
+}
+
+#nav li {
+line-height: 40px;
+	margin: 0 1em 0 1em;
+}
+
+#nav ul {
+	list-style: none;
+}
+
+#nav ul li {
+	float: left;
+}
+/*主內容 */
+#main {
+	position: relative;
+	padding: 0;
+	color: #5e5e5e;
+
+}
+
+#main strong {
+	color: #3e3e3e;
+}
+
+#main ul {
+	list-style: none;
+}
+
+#main ul li {
+	padding: 15px 0 15px 0;
+	border-top: dotted 1px #b3b3b3;
+}
+
+#main ul li.first {
+	padding-top: 0;
+	border-top: 0;
+}
+
+#main ul.imageList li {
+	padding: 15px 0 15px 0;
+}
+/* 左邊選單 */
+#main #sidebar {
+	float: left;
+}
+#left_menu{
+	width: 180px;
+	background: #32251b;
+	color: #fff;
+	padding: 20px;
+	-moz-box-shadow: 3px 3px 4px rgb(39, 32, 26);
+    -webkit-box-shadow: 3px 3px 4px rgb(39, 32, 26);
+    box-shadow: 3px 3px 4px rgb(39, 32, 26);
+		-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+#left_menu span {
+		color:yellow;
+		font-size: 16pt;
+	}
+#left_menu a{	color: #fff;}
+.abgne-news-scroll {
+		color:#fff;
+		margin-top:10px;
+		background: #32251b;
+		width: 210px;
+		height: 480px;
+		overflow: hidden;
+		padding: 20px 5px 5px 5px;
+		-moz-box-shadow: 3px 3px 4px rgb(39, 32, 26);
+		-webkit-box-shadow: 3px 3px 4px rgb(39, 32, 26);
+		box-shadow: 3px 3px 4px rgb(39, 32, 26);
+	}
+		.abgne-news-scroll ul {
+		margin: 5px 0;
+	}
+		.abgne-news-scroll span.title {
+		color:yellow;
+		font-size: 16pt;
+	}
+
+	.abgne-news-scroll li {
+		clear: left;
+		height: 55px;
+	}
+	.abgne-news-scroll li a {
+		float: left;
+	}
+	.abgne-news-scroll li a img {
+		border: 1px solid #ccc;
+		padding: 2px;
+		margin:0 15px 10px 0;
+	}
+	.abgne-news-scroll li div {
+		float: left;
+		margin-left: 5px;
+		font-size: 12px;
+	}
+/* 右邊內容 */
+#content {
+	margin: 0 0 0 250px;
+	padding: 40px;
+	background: #fff;
+	-moz-box-shadow: 3px 3px 4px rgb(88, 67, 49);
+    -webkit-box-shadow: 3px 3px 4px rgb(88, 67, 49);
+    box-shadow: 3px 3px 4px rgb(88, 67, 49);
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+#copyright{
+	padding: 30px 0 30px 0;
+	background: rgba(102, 57, 31, 0.6);
+	border-top: 1px solid rgba(102, 57, 31, 0.6);;
+}
+#copyright span{color:rgb(43, 16, 2);margin-left:20px}
+
+/* 首頁區 */
+/*右邊 廣告輪播 ad*/
+#abgneBlock {
+		width: 640px;
+		height: 311px;
+		position: relative;
+		overflow: hidden;
+		border: 1px solid #ccc;
+	}
+	#abgneBlock ul.list {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		position: absolute;
+		width: 9999px;
+		height: 100%;
+	}
+	#abgneBlock ul.list li {
+	padding:0px;
+		float: left;
+		width: 640px;
+		height: 100%;
+	}
+	#abgneBlock .list img{
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+	#abgneBlock ul.playerControl {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		position: absolute;
+		bottom: 5px;
+		right: 5px;
+		height: 14px;
+	}
+	#abgneBlock ul.playerControl li {
+		float: left;
+		width: 10px;
+		height: 10px;
+		cursor: pointer;
+		margin: 0px 2px;
+		background: url(images/cir_ctrl.png) no-repeat -10px 0;
+	}
+	#abgneBlock ul.playerControl li.current { 
+		background-position: 0 0;
+	}
+</style>
+<script type="text/javascript">
+	$(function(){
+		// 先取得必要的元素並用 jQuery 包裝
+		// 再來取得 $block 的高度及設定動畫時間
+		var $block = $('#abgneBlock'),
+			$slides = $('ul.list', $block),
+			_width = $block.width(),
+			$li = $('li', $slides),
+			_animateSpeed = 600, 
+			// 加入計時器, 輪播時間及控制開關
+			timer, _showSpeed = 3000, _stop = false;
+
+		// 產生 li 選項
+		var _str = '';
+		for(var i=0, j=$li.length;i<j;i++){
+			// 每一個 li 都有自己的 className = playerControl_號碼
+			_str += '<li class="playerControl_' + (i+1) + '"></li>';
+		}
+
+		// 產生 ul 並把 li 選項加到其中
+		var $playerControl = $('<ul class="playerControl"></ul>').html(_str).appendTo($slides.parent()).css('left', function(){
+			// 把 .playerControl 移到置中的位置
+			return (_width - $(this).width()) / 2;
+		});
+		
+		// 幫 li 加上 click 事件
+		var $playerControlLi = $playerControl.find('li').click(function(){
+			var $this = $(this);
+			$this.addClass('current').siblings('.current').removeClass('current');
+
+			clearTimeout(timer);
+			// 移動位置到相對應的號碼
+			$slides.stop().animate({
+				left: _width * $this.index() * -1
+			}, _animateSpeed, function(){
+				// 當廣告移動到正確位置後, 依判斷來啟動計時器
+				if(!_stop) timer = setTimeout(move, _showSpeed);
+			});
+
+			return false;
+		}).eq(0).click().end();
+
+		// 如果滑鼠移入 $block 時
+		$block.hover(function(){
+			// 關閉開關及計時器
+			_stop = true;
+			clearTimeout(timer);
+		}, function(){
+			// 如果滑鼠移出 $block 時
+			// 開啟開關及計時器
+			_stop = false;
+			timer = setTimeout(move, _showSpeed);
+		});
+		
+		// 計時器使用
+		function move(){
+			var _index = $('.current').index();
+			$playerControlLi.eq((_index + 1) % $playerControlLi.length).click();
+		}
+	});
+	// 選單左邊熱門廣告輪播
+	$(function(){
+		// 先取得 .abgne-news-scroll ul 及 li 的高度
+		// 並設定訊息移動, 淡入及輪播時間
+		var $news = $('.abgne-news-scroll ul'), 
+			scrollHeight = $news.find('li').outerHeight(true), 
+			scrollSpeed = 2000, fadeInSpeed = 2000, 
+			timer, speed = 5000;
+		
+		// 用來控制輪播用
+		function newsScroll(){
+			// 先把 .abgne-news-scroll ul 往下移
+			$news.animate({
+				top: scrollHeight + 'px'
+			}, scrollSpeed, function(){
+				// 當 .abgne-news-scroll ul 移動到定點後
+				// 先找出最後一個 li
+				var $last = $news.find('li:last');
+				// 複製一份並先隱藏起來
+				// 接著把它加到 .abgne-news-scroll ul 中的第一個項目
+				// 最後用淡入的方式顯示, 當顯示完後繼續輪播
+				$last.clone().hide().prependTo($news).fadeIn(fadeInSpeed, function(){
+					timer = setTimeout(newsScroll, speed);
+				});
+				// 馬上把 .abgne-news-scroll ul 移到 top 等於 0 的位置
+				$news.css('top', 0);
+				// 把 $last 移除掉
+				$last.remove();
+			});
+		}
+		
+		// 啟動輪播計時器
+		timer = setTimeout(newsScroll, speed);
+	});
+</script>
+</head>
+
+<body >
+	<div id="shadow_bg" >
+	<div id="body" >
+				<div id="search">
+					<input name="searchInput" type="text" class="search-query iconsearch" placeholder="搜尋" style="width: 70px; height: 10px; padding-left: 24px;" onfocus="this.style.width='100px'" onblur="this.style.width='70px'">
+					</div>
+						<br class="clear" />
+				<div id="header">
+					<div id="logo">
+						<h1>
+							<a href="#">酒迷logo</a>
+						</h1>
+					</div>
+					
+					<div id="little_nav">
+						<ul>
+							<li>
+								<a href="#">加入會員</a>
+							</li>
+							<li>
+								<a href="#">登入</a>
+							</li>
+							<li>
+								<a href="#">會員專區</a>
+							</li>
+							<li>
+								<a href="#">購物車</a>
+							</li>
+							<img src="images/cart.png" style="margin-top:-15px;width:50px;"/>
+						</ul>
+					</div>
+					<div id="nav">
+						<ul>
+							<li class="first active">
+								<a href="#">本月新品</a>
+							</li>
+							<li>
+								<a href="#">暢銷商品</a>
+							</li>
+							<li>
+								<a href="#">優惠商品</a>
+							</li>
+							<li>
+								<a href="#">餐酒搭配</a>
+							</li>
+							
+							<li class="last">
+								<a href="#">討論區</a>
+							</li>
+						</ul>
+						<br class="clear" />
+					</div>
+				</div>
+	<div id="main">
+					<div id="sidebar">
+					<div id="left_menu">
+						<span>快速選單</span>
+
+						<ul class="linkedList">
+							<li class="first">
+								<a href="#">風味</a>
+							</li>
+							<li>
+								<a href="#">國家、地區</a>
+							</li>
+							<li>
+								<a href="#">品牌、酒莊</a>
+							</li>
+							<li>
+								<a href="#">價格</a>
+							</li>
+							<li>
+								<a href="#">容量</a>
+							</li>
+							<li>
+								<a href="#">酒種</a>
+							</li>
+							<li class="last">
+								<a href="#">進階搜尋</a>
+							</li>
+						</ul>
+						</div>
+										<div class="abgne-news-scroll">
+										<div align="center"><span class="title">暢銷商品</span></div>
+		<ul>
+			<li>
+				<div><a href="#"><img src="products/I0171_thumbnail.gif" style="width:50px;"/></a>
+				<span>馬德里斯特紅酒<br> <br>特價$899！</span></div>
+			</li>
+			<li>
+				<div><a href="#"><img src="products/I1101_thumbnail.gif" style="width:50px;"/></a>
+				<span>義大利雪之邱 <br><br>售價$700</span></div>
+			</li>
+			<li>
+				<div><a href="#"><img src="products/I1126_thumbnail.gif" style="width:50px;"/></a>
+				<span>山之巔黃標紅酒 <br><br>售價$650！</span></div>
+			</li>
+			<li>
+				<div><a href="#"><img src="products/I4602_thumbnail.gif" style="width:50px;"/></a>
+				<span>匯雅粉紅香檳 <br><br>售價$3500</span></div>
+			</li>
+			<li>
+				<div><a href="#"><img src="products/K0404_thumbnail.gif" style="width:50px;"/></a>
+				<span>死亡之谷恢復紅血紅酒 <br><br>售價$899</span></div>
+			</li>
+		</ul>
+	</div>
+					</div>
+	
+					<div id="content">
+						<div id="abgneBlock">
+		<ul class="list">
+			<li><a target="_blank" href="#"><img src="images/ad/01.jpg"></a></li>
+			<li><a target="_blank" href="#"><img src="images/ad/02.jpg"></a></li>
+			<li><a target="_blank" href="#"><img src="images/ad/03.jpg"></a></li>
+			<li><a target="_blank" href="#"><img src="images/ad/04.jpg"></a></li>
+			<li><a target="_blank" href="#"><img src="images/ad/05.jpg"></a></li>
+		</ul>
+	</div>
+						<div id="box1">
+							<h2>
+								Welcome to Coffeelike
+							</h2>
+								<h2>倒安由爭隊同它心實</h2>
+引是和什式聲，理個有流，落除速熱行民散會關，起集得舉物月配苦場會要冷西道智識見就可我、可路資……會更的排卻上能資錢總華的無中可成入全了轉來身？打叫來收人不死，來子樂多她類，以長黑要反開倒創經陸檢運次三水新了如獨可石行服二三呢片北不對公發任高院性路許生畫賽能北。世可們局是星加的場長懷氣，們的滿是類未苦商而冷治一了實，愛背痛的者總不是女的下個。爸刻用新接頭者百。有滿的賽子孩計保的才這頭報的青務文我，許己。
+
+說樓接道建經為樹壓的改；來合告嚴是聽園不。
+
+兒大民好過該現量。出一們時保不知滿人食？告幾子的叫，極快馬文隨的這定非人團響……科靜日說果子學愛其帶辦來懷影之因……開心同其家教下因起臺。發門獨？式水外合管路在回期驗天靜人下舉滿德力這子沒點視，治各房母華公是：處再開皮感說；不花沒頭和年養境才話！字度學久地，智見朋？率華地年為部這作言行息教四愛此師戲是現、看單即兒黃爭事：打是打工保建人開生否致們照文，然體當價高、學有場叫不面望情火反線到形星往常。
+<h2>有以分百比業全企</h2>
+體分格舉發！見東之千之心！情率金不一事動果始花戲當願的灣出，自來指臺是人每治：國過用一香演頭了一你合了。不家文多魚一車機發數今石童，論參共各親不反成教展斯成身開身角的成力之的個品，面子河前了去以明但利歡。
+
+又起寶可相列全市、十國從夠外次叫經心研有通他員出得女是論子電毒己圖房排清：們等灣才會，辦選一，最顧統畫有來風有後製相我德感無。心坡一目那。
+
+放活真……水收方在力不已環座紀資，登國是的風門……國成我個太空於物規？趣聽樓家自醫停。
+
+特人見發萬件片濟上卻司因時；隊灣無的臉，巴可是式很、間打灣變，應的物、好須見望都放發年司造母好由作民高便內用大裡變羅。報現女戰人，家園得到？住認？
+
+臺下內；河分我：市報經深不爸低學前場，爭中牛！能運從那古腳只！於王獲許指完年有白去製器用：想境兒、參我灣以頭有觀麼沒自期，感個童裡一就手雖前的一親輕；下果自學考們選我日加難許足想小令力？
+							</p>
+						</div>
+
+						<br class="clear" />
+					</div>
+					<br class="clear" />
+				</div>
+			</div>
+			<div id="copyright">
+				<div class="container">
+				<img src="images/footer.png">
+				<span>使用者條款 | 隱私權政策 | 常見問題 | 聯絡我們</span>
+				<span style="float:right;margin-right:20px"> Copyright © 2013 JomeWine Inc.  酒迷創意行銷股份有限公司</span>
+				</div>
+			</div>
+				
+			</div>
+			
+</div>
+</body>
+
+</html>
+
+
+
+</html>
