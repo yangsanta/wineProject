@@ -44,8 +44,7 @@ public class DisplayProducts extends HttpServlet {
 		if ("getAll".equals(action)){
 			ProductDAO productDAO = new ProductDAO();
 			List<ProductVO> list = productDAO.getAll();
-			HttpSession session = request.getSession();
-			session.setAttribute("list", list);
+			request.setAttribute("list", list);
 			
 			splitPages(list, request);
 			
@@ -77,8 +76,7 @@ public class DisplayProducts extends HttpServlet {
 			System.out.println(conditionValue);
 			List<ProductVO> list = productDAO.findSomeProduct(condition,conditionValue);
 			
-			HttpSession session = request.getSession();
-			session.setAttribute("list", list);
+			request.setAttribute("list", list);
 			
 			splitPages(list, request);
 			
@@ -106,7 +104,6 @@ public class DisplayProducts extends HttpServlet {
 	    pageIndexArray = new int[totalPages];
 	    for (int i=0; i<totalPages; i++)
 	    	 pageIndexArray[i] = rowsPerPage * i;
-	    //request.getSession().setAttribute("pageIndexArray", pageIndexArray);
 	    
 	    try{
 	    	whichPage = Integer.parseInt(request.getParameter("pageNo"));
@@ -121,11 +118,11 @@ public class DisplayProducts extends HttpServlet {
 	    	}
 	    }
 	    
-	    request.getSession().setAttribute("whichPage", whichPage);
-	    request.getSession().setAttribute("pageIndex", pageIndex);
-	    request.getSession().setAttribute("totalPages", totalPages);
-	    request.getSession().setAttribute("totalRows", totalRows);
-	    request.getSession().setAttribute("rowsPerPage", rowsPerPage);
+	    request.setAttribute("whichPage", whichPage);
+	    request.setAttribute("pageIndex", pageIndex);
+	    request.setAttribute("totalPages", totalPages);
+	    request.setAttribute("totalRows", totalRows);
+	    request.setAttribute("rowsPerPage", rowsPerPage);
 	}
 
 }
