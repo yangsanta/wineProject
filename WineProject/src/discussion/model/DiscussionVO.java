@@ -1,26 +1,39 @@
 package discussion.model;
 import java.sql.Timestamp;
 
+import member.model.MemberVO;
+
 public class DiscussionVO  implements java.io.Serializable{
 	private Integer d_no;
-	private Integer m_no;
+//	private Integer m_no;
+	private MemberVO memberVO;
+	public MemberVO getMemberVO(){
+		return memberVO;
+	}
+	public void setMemberVO(MemberVO memberVO){
+		this.memberVO = memberVO;
+	}
+	
 	private String d_context;
 	private Timestamp d_datetime;
 	private String d_status;
 	private Timestamp d_final_edit;
 	private String d_title;
+//	private String m_name;
+//	
+//	public String getM_name() {
+//		return m_name;
+//	}
+//	public void setM_name(String m_name) {
+//		this.m_name = m_name;
+//	}
+	
 	
 	public Integer getD_no() {
 		return d_no;
 	}
 	public void setD_no(Integer d_no) {
 		this.d_no = d_no;
-	}
-	public Integer getM_no() {
-		return m_no;
-	}
-	public void setM_no(Integer m_no) {
-		this.m_no = m_no;
 	}
 	public String getD_context() {
 		return d_context;

@@ -9,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import member.model.MemberHibernateDAO;
+import member.model.MemberVO;
 import discussion.model.*;
 
 public class DiscussionListServlet extends HttpServlet {
@@ -29,6 +32,22 @@ public class DiscussionListServlet extends HttpServlet {
 		
 		DiscussionHibernateDAO dao = new DiscussionHibernateDAO();
 		List<DiscussionVO> list = dao.getAll();		//每次進入留言板列表時，獲取全部討論文章之資料
+//		MemberHibernateDAO daoMem = new MemberHibernateDAO();
+//		List<MemberVO> listMem = daoMem.getAll();
+//		for(DiscussionVO dvo:list){
+//			for(MemberVO mvo:listMem){
+//				System.out.print(dvo.getM_no() +",");
+//				System.out.println(mvo.getM_no());
+//				if((dvo.getM_no()).equals((mvo.getM_no()))){
+//					System.out.print(7879);
+//					dvo.setM_name(mvo.getM_name());
+//					System.out.print(dvo.getM_name());
+//				}
+//			}
+//		}
+		
+		
+		
 		int rowNumber = dao.findTotalNOofDiscussion(); //更新當前總筆數
 		req.setCharacterEncoding("UTF-8");
 //		String action = req.getParameter("action");

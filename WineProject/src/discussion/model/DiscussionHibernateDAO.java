@@ -155,7 +155,7 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 		List<DiscussionVO> list = dao.getAll();
 		for (DiscussionVO aDiscussion : list) {
 			System.out.print(aDiscussion.getD_no() + ",");
-			System.out.print(aDiscussion.getM_no() + ",");
+//			System.out.print(aDiscussion.getM_no() + ",");
 			System.out.print(aDiscussion.getD_context() + ",");
 			System.out.print(aDiscussion.getD_datetime() + ",");
 			System.out.print(aDiscussion.getD_status() + ",");
