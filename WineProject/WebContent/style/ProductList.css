@@ -1,3 +1,4 @@
+@CHARSET "UTF-8";
 table a {
 	text-decoration:none;
 }
@@ -7,19 +8,19 @@ td {
 }
 
 .p_innerTable {
-	width: 590px;
+	width: 480px;
 }
 .p_outerTable {
 	border: 1px silver solid;
 	margin: 15px auto;
 }
 .p_pic {
-	width:200px;
+	width:150px;
 }
 .pageSwitch {
-	margin-left:350px;
+	margin-left:170px;
 }
 .searchResult {
 	margin: 25px auto;
-	width: 900px;
+	width: 640px;
 }
