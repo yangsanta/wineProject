@@ -16,7 +16,7 @@
 	<tr>
 		<td>主題:${discussionVO.d_title}</td>
 		<td>發表日期:${discussionVO.d_datetime}</td>
-		<td>作者ID:${discussionVO.memberVO.m_id}</td>
+		<td>作者帳號:${discussionVO.memberVO.m_id}</td>
 	</tr>
 	<tr>
 		<td colspan="3">內文:${discussionVO.d_context}</td>

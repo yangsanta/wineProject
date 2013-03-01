@@ -19,7 +19,7 @@
   </welcome-file-list>
   	<servlet>
 		<servlet-name>DiscussionList</servlet-name>
-		<servlet-class>discussion.controller.DiscussionListServlet</servlet-class>
+		<servlet-class>discussion.controller.DiscussionServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DiscussionList</servlet-name>
