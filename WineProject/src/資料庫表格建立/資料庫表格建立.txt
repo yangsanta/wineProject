@@ -134,21 +134,14 @@ create table shipping_set ( --[table]º¡ÃB§K¹B   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 min_pirce 				int	--³Ì§CÃB«× [ primary key ]
 );
 insert into shipping_set values (300);
--------------------------------------------------------------
-drop table food_set;
-create table food_set ( --[table]­¹ª«·f°t   ok
-Uniid				int IDENTITY (1,1) not null,	--¬y¤ô¸¹ [ primary key ]
-fs_id				int  not null,	--°Ó«~ID  pri
-rp_id				int	 not null	--­¹ÃÐID 
-);
-insert into food_set values (101,101);
-insert into food_set values (102,102);
--------------------------------------------------------------
-drop table sauce;
-drop table ingredient;
-drop table food;
 -------------------------------------------------------------------------------------------------------------------------
-create table food ( --[table]­¹ª«ºØÃþ ok
+drop table		food_set;		--§R°£·f°t
+drop table		recipe;			--§R°£­¹ÃÐ
+drop table		food;			--§R°£­¹ª«
+drop table		ingredient;		--§R°£­¹§÷
+drop table		sauce;			--§R°£­·¨ý
+-------------------------------------------------------------------------------------------------------------------------
+create table	food ( --[table]­¹ª«ºØÃþ ok
 f_id				int IDENTITY (1,1) 	not null,	--­¹ª«ºØÃþID [ primary key ]
 f_name			varchar(120) 	 not null,		--­¹ª«ºØÃþname
  constraint food_primary_key primary key (f_id)
@@ -160,151 +153,290 @@ insert into food values ('½\Ãþ');
 insert into food values ('ÂûÀn');
 insert into food values ('®üÂA');
 -------------------------------------------------------------------------------------------------------------------------
-create table ingredient ( --[table]¥D­n¦¨¤À ok
+create table	ingredient ( --[table]¥D­n¦¨¤À ok
 i_id				int IDENTITY (1,1) 	not null,	--­¹§÷ID [ primary key ]
-f_id				int			not null	,	--­¹ª«ºØÃþID [ fo_key f_id]
 i_name			varchar(120)  	not null,		--­¹§÷name
  constraint ingredient_primary_key primary key (i_id),
- constraint ingredient_f_id_fk foreign key (f_id) references food (f_id),
 );
-insert into ingredient values (1,'¤û¦×');
-insert into ingredient values (1,'¦Ï¦×');
-insert into ingredient values (1,'½Þ¦×');
-insert into ingredient values (1,'¤p¤û¦×');
-insert into ingredient values (2,'ÂÅ¯¾¨Å¹T');
-insert into ingredient values (2,'¤Á¹F¨Å¹T');
-insert into ingredient values (2,'¥¤ªoªº');
-insert into ingredient values (2,'¤s¦Ï¨Å¹T');
-insert into ingredient values (2,'¤z¥¤¹T/µw½è');
-insert into ingredient values (2,'¥bµw½è');
-insert into ingredient values (2,'¨ý¹D­«ªº');
-insert into ingredient values (3,'ªGÂæ');
-insert into ingredient values (3,'¥©§J¤O');
-insert into ingredient values (3,'¥¤ªo');
-insert into ingredient values (3,'ÂfÂc');
-insert into ingredient values (4,'¤d¼hÄÑ');
-insert into ingredient values (4,'®üÂA¶º');
-insert into ingredient values (4,'·N¤j§Q­±');
-insert into ingredient values (4,'©ÜÂÄ');
-insert into ingredient values (4,'¿L¶º');
-insert into ingredient values (5,'¨§¿L¦×');
-insert into ingredient values (5,'Âû¦×');
-insert into ingredient values (5,'Àn¦×');
-insert into ingredient values (5,'¤õÂû');
-insert into ingredient values (6,'¿ÀÃÉ');
-insert into ingredient values (6,'Às½¼');
-insert into ingredient values (6,'¨dÄ÷');
-insert into ingredient values (6,'ÂD³½');
-insert into ingredient values (6,'¤z¨©');
-insert into ingredient values (6,'½¼');
-insert into ingredient values (6,'¹Ø¥q');
-insert into ingredient values (6,'ª÷ºj³½');
-insert into ingredient values (6,'¥Õ³½');
+insert into ingredient values ('¤û¦×');
+insert into ingredient values ('¦Ï¦×');
+insert into ingredient values ('½Þ¦×');
+insert into ingredient values ('¤p¤û¦×');
+insert into ingredient values ('ÂÅ¯¾¨Å¹T');
+insert into ingredient values ('¤Á¹F¨Å¹T');
+insert into ingredient values ('¥¤ªoªº');
+insert into ingredient values ('¤s¦Ï¨Å¹T');
+insert into ingredient values ('¤z¥¤¹T/µw½è');
+insert into ingredient values ('¥bµw½è');
+insert into ingredient values ('¨ý¹D­«ªº');
+insert into ingredient values ('ªGÂæ');
+insert into ingredient values ('¥©§J¤O');
+insert into ingredient values ('¥¤ªo');
+insert into ingredient values ('ÂfÂc');
+insert into ingredient values ('¤d¼hÄÑ');
+insert into ingredient values ('®üÂA¶º');
+insert into ingredient values ('¸q¤j§QÄÑ');
+insert into ingredient values ('©ÜÂÄ');
+insert into ingredient values ('¿L¶º');
+insert into ingredient values ('¨§¿L¦×');
+insert into ingredient values ('Âû¦×');
+insert into ingredient values ('Àn¦×');
+insert into ingredient values ('¤õÂû');
+insert into ingredient values ('¿ÀÃÉ');
+insert into ingredient values ('Às½¼');
+insert into ingredient values ('¨dÄ÷');
+insert into ingredient values ('ÂD³½');
+insert into ingredient values ('¤z¨©');
+insert into ingredient values ('½¼');
+insert into ingredient values ('¹Ø¥q');
+insert into ingredient values ('ª÷ºj³½');
+insert into ingredient values ('¥Õ³½');
 -------------------------------------------------------------------------------------------------------------------------
-create table sauce ( --[table]Âæ®Æor­·¨ý ok
+create table	sauce ( --[table]Âæ®Æor­·¨ý ok
 s_id				int IDENTITY (101,1) 	not null,	--Âæ®ÆID [ primary key ]
-i_id				int                  		not null,	--­¹§÷ID[ fo_key i_id]
 s_name			varchar(120)  				--Âæ®Æname
 constraint sauce_primary_key primary key (s_id),
-constraint sauce_primary_i_id_fk foreign key (i_id) references ingredient (i_id),
 );
-insert into sauce values (1,'­»¯ó');
-insert into sauce values (1,'»¶´Ô');
-insert into sauce values (1,'Ä¨Û£');
-insert into sauce values (1,'¿L¦×');
-insert into sauce values (1,'¯N¦×');
-insert into sauce values (1,'º~³ù');
-insert into sauce values (2,'­»¯ó');
-insert into sauce values (2,'»¶´Ô');
-insert into sauce values (3,'­»¯ó');
-insert into sauce values (3,'»¶´Ô');
-insert into sauce values (3,'Ä¨Û£');
-insert into sauce values (3,'­»¸z');
-insert into sauce values (3,'¸Ì¯á¦×');
-insert into sauce values (3,'¯N¦×');
-insert into sauce values (3,'»q¯»ªº');
-insert into sauce values (3,'¤ôªG');
-insert into sauce values (4,'­»¯ó');
-insert into sauce values (4,'ÂfÂc/¬a¾ï');
-insert into sauce values (4,'Ä¨Û£');
-insert into sauce values (4,'»q¯»ªº');
-insert into sauce values (4,'¦×¤ù');
-insert into sauce values (5,'');
-insert into sauce values (6,'');
-insert into sauce values (7,'');
-insert into sauce values (8,'');
-insert into sauce values (9,'');
-insert into sauce values (10,'');
-insert into sauce values (11,'');
-insert into sauce values (12,'');
-insert into sauce values (13,'');
-insert into sauce values (14,'');
-insert into sauce values (15,'');
-insert into sauce values (16,'¦×ªº');
-insert into sauce values (16,'½­µæ');
-insert into sauce values (17,'');
-insert into sauce values (18,'¦×Âæ');
-insert into sauce values (18,'Ä¨Û£');
-insert into sauce values (18,'«CÂæ');
-insert into sauce values (18,'­X¥Ä');
-insert into sauce values (18,'½­µæ');
-insert into sauce values (18,'¥ÕÂæ/®üÂA');
-insert into sauce values (18,'¥¤ªo©³');
-insert into sauce values (19,'¦×ªº');
-insert into sauce values (19,'½­µæ');
-insert into sauce values (20,'Ä¨Û£©³');
-insert into sauce values (20,'¸q¦¡¿L¶º');
-insert into sauce values (20,'½­µæ©³');
-insert into sauce values (21,'');
-insert into sauce values (22,'­»¯ó');
-insert into sauce values (22,'ÂfÂc/¬a¾ï');
-insert into sauce values (22,'Ä¨Û£');
-insert into sauce values (22,'ªã¥½');
-insert into sauce values (22,'¨¯»¶ªº');
-insert into sauce values (22,'¯N¦×');
-insert into sauce values (22,'¥¤ªoªº');
-insert into sauce values (22,'¬µÂû');
-insert into sauce values (23,'­»·Î');
-insert into sauce values (23,'ªo«ÊÀn');
-insert into sauce values (23,'ÃZ¨x');
-insert into sauce values (23,'¤ôªG');
-insert into sauce values (24,'ÂfÂc/¬a¾ï');
-insert into sauce values (24,'¯Nªº');
-insert into sauce values (24,'»q¯»ªº');
-insert into sauce values (25,'³n´ßªº');
-insert into sauce values (25,'»¶ªº');
-insert into sauce values (25,'¥¤ªo');
-insert into sauce values (25,'ÃÉ¦×»æ');
-insert into sauce values (26,'¥¤ªo');
-insert into sauce values (27,'');
-insert into sauce values (28,'­»¯ó');
-insert into sauce values (28,'ªã¥½');
-insert into sauce values (28,'¿N¯N');
-insert into sauce values (29,'­»¯ó');
-insert into sauce values (29,'ÂfÂc/¬a¾ï');
-insert into sauce values (29,'¥¤ªo');
-insert into sauce values (30,'ÂfÂc/¬a¾ï');
-insert into sauce values (30,'­»¯ó');
-insert into sauce values (31,'');
-insert into sauce values (32,'­»·Î');
-insert into sauce values (32,'³Â»¶');
-insert into sauce values (33,'­»¯ó');
-insert into sauce values (33,'»¶´Ô');
-insert into sauce values (33,'ÂfÂc/¬a¾ï');
-insert into sauce values (33,'¿L³½');
-insert into sauce values (33,'¥É¦Ì±²»æ');
-insert into sauce values (33,'¬µªº');
--------------------------------------------------------------------------------------------------------------------------
+insert into sauce values ('­»¯ó');
+insert into sauce values ('»¶´Ô');
+insert into sauce values ('Ä¨Û£');
+insert into sauce values ('¿L¦×');
+insert into sauce values ('¯N¦×');
+insert into sauce values ('º~³ù');
+insert into sauce values ('­»¸z');
+insert into sauce values ('¸Ì¯á¦×');
+insert into sauce values ('»q¯»ªº');
+insert into sauce values ('¤ôªG');
+insert into sauce values ('ÂfÂc/¬a¾ï');
+insert into sauce values ('¦×¤ù');
+insert into sauce values ('null');
+insert into sauce values ('¦×ªº');
+insert into sauce values ('½­µæ');
+insert into sauce values ('¦×Âæ');
+insert into sauce values ('«CÂæ');
+insert into sauce values ('­X¥Ä');
+insert into sauce values ('¥ÕÂæ/®üÂA');
+insert into sauce values ('¥¤ªoªº');
+insert into sauce values ('¸q¦¡¿L¶º');
+insert into sauce values ('ªã¥½');
+insert into sauce values ('¨¯»¶ªº');
+insert into sauce values ('¬µÂû');
+insert into sauce values ('­»·Î');
+insert into sauce values ('ªo«ÊÀn');
+insert into sauce values ('ÃZ¨x');
+insert into sauce values ('³n´ßªº');
+insert into sauce values ('»¶ªº');
+insert into sauce values ('ÃÉ¦×»æ');
+insert into sauce values ('¿N¯N');
+insert into sauce values ('³Â»¶');
+insert into sauce values ('¿L³½');
+insert into sauce values ('¥É¦Ì±²»æ');
+insert into sauce values ('¬µªº');
 -------------------------------------------------------------
-drop table recipe;
-create table recipe ( --[table]­¹ÃÐ   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-rp_id				int  IDENTITY (101,1) not null,	--­¹ÃÐID [ primary key ]
-f_id				int,	--­¹ª«ºØÃþID
-i_id				int,	--­¹§÷ID
-s_id				int,	--Âæ®ÆID
+create table	recipe ( --[table]­¹ÃÐ   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+rp_id				int  IDENTITY (101,1) not null,		--­¹ÃÐID [ primary key ]
+f_id				int 				not null,		--­¹ª«ID	[ fo_key food		f_id]
+i_id				int  				not null,		--­¹§÷ID	[ fo_key ingredient i_id]
+s_id				int 				not null,		--­·¨ýid	[ fo_key sauce		s_id]
+constraint recipe_key primary key (rp_id),
+constraint recipe_f_id_fk foreign key (f_id) references food		 (f_id),
+constraint recipe_i_id_fk foreign key (i_id) references ingredient (i_id),
+constraint recipe_s_id_fk foreign key (s_id) references sauce		 (s_id),
 );
-insert into recipe values (101,101,101);
-insert into recipe values (102,102,102);
+insert into recipe values (	1	,	1	,	101	);
+insert into recipe values (	1	,	1	,	102	);
+insert into recipe values (	1	,	1	,	103	);
+insert into recipe values (	1	,	1	,	104	);
+insert into recipe values (	1	,	1	,	105	);
+insert into recipe values (	1	,	1	,	106	);
+insert into recipe values (	1	,	2	,	101	);
+insert into recipe values (	1	,	2	,	102	);
+insert into recipe values (	1	,	3	,	101	);
+insert into recipe values (	1	,	3	,	102	);
+insert into recipe values (	1	,	3	,	103	);
+insert into recipe values (	1	,	3	,	107	);
+insert into recipe values (	1	,	3	,	108	);
+insert into recipe values (	1	,	3	,	105	);
+insert into recipe values (	1	,	3	,	109	);
+insert into recipe values (	1	,	3	,	110	);
+insert into recipe values (	1	,	4	,	101	);
+insert into recipe values (	1	,	4	,	111	);
+insert into recipe values (	1	,	4	,	103	);
+insert into recipe values (	1	,	4	,	109	);
+insert into recipe values (	1	,	4	,	112	);
+insert into recipe values (	2	,	5	,	113	);
+insert into recipe values (	2	,	6	,	113	);
+insert into recipe values (	2	,	7	,	113	);
+insert into recipe values (	2	,	8	,	113	);
+insert into recipe values (	2	,	9	,	113	);
+insert into recipe values (	2	,	10	,	113	);
+insert into recipe values (	2	,	11	,	113	);
+insert into recipe values (	3	,	12	,	113	);
+insert into recipe values (	3	,	13	,	113	);
+insert into recipe values (	3	,	14	,	113	);
+insert into recipe values (	3	,	15	,	113	);
+insert into recipe values (	4	,	16	,	114	);
+insert into recipe values (	4	,	16	,	115	);
+insert into recipe values (	4	,	17	,	113	);
+insert into recipe values (	4	,	18	,	116	);
+insert into recipe values (	4	,	18	,	103	);
+insert into recipe values (	4	,	18	,	117	);
+insert into recipe values (	4	,	18	,	118	);
+insert into recipe values (	4	,	18	,	115	);
+insert into recipe values (	4	,	18	,	119	);
+insert into recipe values (	4	,	18	,	120	);
+insert into recipe values (	4	,	19	,	114	);
+insert into recipe values (	4	,	19	,	115	);
+insert into recipe values (	4	,	20	,	103	);
+insert into recipe values (	4	,	20	,	121	);
+insert into recipe values (	4	,	20	,	115	);
+insert into recipe values (	5	,	21	,	113	);
+insert into recipe values (	5	,	22	,	101	);
+insert into recipe values (	5	,	22	,	111	);
+insert into recipe values (	5	,	22	,	103	);
+insert into recipe values (	5	,	22	,	122	);
+insert into recipe values (	5	,	22	,	123	);
+insert into recipe values (	5	,	22	,	105	);
+insert into recipe values (	5	,	22	,	120	);
+insert into recipe values (	5	,	22	,	124	);
+insert into recipe values (	5	,	23	,	125	);
+insert into recipe values (	5	,	23	,	126	);
+insert into recipe values (	5	,	23	,	127	);
+insert into recipe values (	5	,	23	,	110	);
+insert into recipe values (	5	,	24	,	111	);
+insert into recipe values (	5	,	24	,	131	);
+insert into recipe values (	5	,	24	,	109	);
+insert into recipe values (	6	,	25	,	128	);
+insert into recipe values (	6	,	25	,	129	);
+insert into recipe values (	6	,	25	,	120	);
+insert into recipe values (	6	,	25	,	130	);
+insert into recipe values (	6	,	26	,	120	);
+insert into recipe values (	6	,	27	,	113	);
+insert into recipe values (	6	,	28	,	101	);
+insert into recipe values (	6	,	28	,	122	);
+insert into recipe values (	6	,	28	,	131	);
+insert into recipe values (	6	,	29	,	101	);
+insert into recipe values (	6	,	29	,	111	);
+insert into recipe values (	6	,	29	,	120	);
+insert into recipe values (	6	,	30	,	111	);
+insert into recipe values (	6	,	30	,	101	);
+insert into recipe values (	6	,	31	,	113	);
+insert into recipe values (	6	,	32	,	125	);
+insert into recipe values (	6	,	32	,	132	);
+insert into recipe values (	6	,	33	,	101	);
+insert into recipe values (	6	,	33	,	102	);
+insert into recipe values (	6	,	33	,	111	);
+insert into recipe values (	6	,	33	,	133	);
+insert into recipe values (	6	,	33	,	134	);
+insert into recipe values (	6	,	33	,	135	);
+-------------------------------------------------------------------------------------------------------------------------
+create table food_set ( --[table]­¹ª«·f°t   ok
+Uniid				int IDENTITY (1,1) not null,		--¬y¤ô¸¹ [ primary key ]
+fs_id				int  not null,	--°Ó«~ID  pri
+rp_id				int	 not null	--­¹ÃÐID 
+--constraint food_set_fs_id_fk foreign key (fs_id) references product		(????),		-F-K°Ó«~ID
+constraint ood_set_rp_id_fk foreign key (rp_id)	references recipe		(rp_id),
+);
+--							--°Ó«~ID	­¹ÃÐID																
+--insert into food_set values (		,	101	);															
+--insert into food_set values (		,	102	);															
+--insert into food_set values (		,	103	);															
+--insert into food_set values (		,	104	);															
+--insert into food_set values (		,	105	);															
+--insert into food_set values (		,	106	);															
+--insert into food_set values (		,	107	);															
+--insert into food_set values (		,	108	);															
+--insert into food_set values (		,	109	);															
+--insert into food_set values (		,	110	);															
+--insert into food_set values (		,	111	);															
+--insert into food_set values (		,	112	);															
+--insert into food_set values (		,	113	);															
+--insert into food_set values (		,	114	);															
+--insert into food_set values (		,	115	);															
+--insert into food_set values (		,	116	);															
+--insert into food_set values (		,	117	);															
+--insert into food_set values (		,	118	);															
+--insert into food_set values (		,	119	);															
+--insert into food_set values (		,	120	);															
+--insert into food_set values (		,	121	);															
+--insert into food_set values (		,	122	);															
+--insert into food_set values (		,	123	);															
+--insert into food_set values (		,	124	);															
+--insert into food_set values (		,	125	);															
+--insert into food_set values (		,	126	);															
+--insert into food_set values (		,	127	);															
+--insert into food_set values (		,	128	);															
+--insert into food_set values (		,	129	);															
+--insert into food_set values (		,	130	);															
+--insert into food_set values (		,	131	);															
+--insert into food_set values (		,	132	);															
+--insert into food_set values (		,	133	);															
+--insert into food_set values (		,	134	);															
+--insert into food_set values (		,	135	);															
+--insert into food_set values (		,	136	);															
+--insert into food_set values (		,	137	);															
+--insert into food_set values (		,	138	);															
+--insert into food_set values (		,	139	);															
+--insert into food_set values (		,	140	);															
+--insert into food_set values (		,	141	);															
+--insert into food_set values (		,	142	);															
+--insert into food_set values (		,	143	);															
+--insert into food_set values (		,	144	);															
+--insert into food_set values (		,	145	);															
+--insert into food_set values (		,	146	);															
+--insert into food_set values (		,	147	);															
+--insert into food_set values (		,	148	);															
+--insert into food_set values (		,	149	);															
+--insert into food_set values (		,	150	);															
+--insert into food_set values (		,	151	);															
+--insert into food_set values (		,	152	);															
+--insert into food_set values (		,	153	);															
+--insert into food_set values (		,	154	);															
+--insert into food_set values (		,	155	);															
+--insert into food_set values (		,	156	);															
+--insert into food_set values (		,	157	);															
+--insert into food_set values (		,	158	);															
+--insert into food_set values (		,	159	);															
+--insert into food_set values (		,	160	);															
+--insert into food_set values (		,	161	);															
+--insert into food_set values (		,	162	);															
+--insert into food_set values (		,	163	);															
+--insert into food_set values (		,	164	);															
+--insert into food_set values (		,	165	);															
+--insert into food_set values (		,	166	);															
+--insert into food_set values (		,	167	);															
+--insert into food_set values (		,	168	);															
+--insert into food_set values (		,	169	);															
+--insert into food_set values (		,	170	);															
+--insert into food_set values (		,	171	);															
+--insert into food_set values (		,	172	);															
+--insert into food_set values (		,	173	);															
+--insert into food_set values (		,	174	);															
+--insert into food_set values (		,	175	);															
+--insert into food_set values (		,	176	);															
+--insert into food_set values (		,	177	);															
+--insert into food_set values (		,	178	);															
+--insert into food_set values (		,	179	);															
+--insert into food_set values (		,	180	);															
+--insert into food_set values (		,	181	);															
+--insert into food_set values (		,	182	);															
+--insert into food_set values (		,	183	);															
+--insert into food_set values (		,	184	);															
+--insert into food_set values (		,	185	);															
+--insert into food_set values (		,	186	);															
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
 -------------------------------------------------------------
 drop table ab;
 create table ab ( --[table]AB   ok
