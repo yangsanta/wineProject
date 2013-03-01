@@ -51,7 +51,7 @@ public class productList implements Filter {
 		request.setAttribute("redWine", redWine);
 		List<String> whiteWine = dao.findGrapeType("¥Õ¸²µå°s");
 		request.setAttribute("whiteWine", whiteWine);
-		List<String> bubbleWine = dao.findGrapeType("¥Õ¸²µå°s");
+		List<String> bubbleWine = dao.findGrapeType("®ðªw°s");
 		request.setAttribute("bubbleWine", bubbleWine);
 		
 		chain.doFilter(request, response);

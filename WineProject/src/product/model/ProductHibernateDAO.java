@@ -212,29 +212,30 @@ public class ProductHibernateDAO implements ProductDAO_interface {
 		// System.out.println(productVOO3.getP_grape() );
 		// System.out.println();
 		// ¬d¸ß
-//		List<ProductVO> list = dao.getAll();
-//		for (ProductVO aEmp : list) {
-//			System.out.println(aEmp.getP_no() + ",");
-//			System.out.println(aEmp.getP_name() + ",");
-//			System.out.println(aEmp.getP_year() + ",");
-//			System.out.println(aEmp.getP_rate() + ",");
-//			System.out.println(aEmp.getP_area() + ",");
-//			System.out.println(aEmp.getP_intro() + ",");
-//			System.out.println(aEmp.getP_num() + ",");
-//			System.out.println(aEmp.getP_price() + ",");
-//			System.out.println(aEmp.getP_status() + ",");
-//			System.out.println(aEmp.getP_winery() + ",");
-//			System.out.println(aEmp.getP_click_count() + ",");
-//			System.out.println(aEmp.getP_buy_count() + ",");
-//			System.out.println(aEmp.getP_style() + ",");
-//			System.out.println(aEmp.getP_sales() + ",");
-//			System.out.println(aEmp.getP_vol() + ",");
-//			System.out.println(aEmp.getP_alcho() + ",");
-//			System.out.println(aEmp.getP_date() + ",");
-//			System.out.println(aEmp.getP_type() + ",");
-//			System.out.println(aEmp.getP_grape());
-//			System.out.println();
-//		}
+		List<ProductVO> list = dao.getAll();
+		for (ProductVO aEmp : list) {
+			System.out.println(aEmp.getP_no() + ",");
+			System.out.println(aEmp.getP_name() + ",");
+			System.out.println(aEmp.getP_pic() + ",");
+			System.out.println(aEmp.getP_year() + ",");
+			System.out.println(aEmp.getP_rate() + ",");
+			System.out.println(aEmp.getP_area() + ",");
+			System.out.println(aEmp.getP_intro() + ",");
+			System.out.println(aEmp.getP_num() + ",");
+			System.out.println(aEmp.getP_price() + ",");
+			System.out.println(aEmp.getP_status() + ",");
+			System.out.println(aEmp.getP_winery() + ",");
+			System.out.println(aEmp.getP_click_count() + ",");
+			System.out.println(aEmp.getP_buy_count() + ",");
+			System.out.println(aEmp.getP_style() + ",");
+			System.out.println(aEmp.getP_sales() + ",");
+			System.out.println(aEmp.getP_vol() + ",");
+			System.out.println(aEmp.getP_alcho() + ",");
+			System.out.println(aEmp.getP_date() + ",");
+			System.out.println(aEmp.getP_type() + ",");
+			System.out.println(aEmp.getP_grape());
+			System.out.println();
+		}
 	}
 
 }
