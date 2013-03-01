@@ -1,3 +1,4 @@
+@CHARSET "UTF-8";
 div {
 	border:1px solid silver;
 }
@@ -8,13 +9,13 @@ div {
 .p_content{
 	margin: 25px auto;
 	padding:0px 0px;
-	width:900px;
+	width:640px;
 	
 }
 .p_data {
 	margin: 0px 0px;
 	float: left;
-	width: 695px;
+	width: 480px;
 }
 .p_info1 {
 	
@@ -28,7 +29,7 @@ div {
 .p_pics {
 	margin: 0px 0px;
 	float: left;
-	width: 200px;
+	width: 150px;
 }
 .p_purchase{
 }
