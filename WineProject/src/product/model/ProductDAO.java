@@ -1,402 +1,241 @@
-﻿package product.model;
+package product.model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import hibernate.util.HibernateUtil;
+
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDAO implements ProductDAO_interface {
-	String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	String url = "jdbc:sqlserver://localhost:1433;DatabaseName=WineProject";
-	String userid = "sa";
-	String passwd = "sa123456";
+import org.hibernate.Query;
+import org.hibernate.Session;
 
-	private static final String INSERT_STMT = "INSERT INTO product (p_name,p_year,p_rate,p_area,p_intro,p_num,p_price,p_status,p_winery,p_click_count,p_buy_count,p_style,p_sales,p_vol,p_alcho,p_date,p_type,p_grape) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	private static final String GET_ALL_STMT = "SELECT p_no,p_name,p_year,p_rate,p_area,p_intro,p_num,p_price,p_status,p_winery,p_click_count,p_buy_count,p_style,p_sales,p_vol,p_alcho,p_date,p_type,p_grape FROM product order by p_no";
-	private static final String GET_ONE_STMT = "SELECT p_no,p_name,p_year,p_rate,p_area,p_intro,p_num,p_price,p_status,p_winery,p_click_count,p_buy_count,p_style,p_sales,p_vol,p_alcho,p_date,p_type,p_grape FROM product where p_no = ?";
-	private static final String DELETE = "DELETE FROM product where p_no = ?";
-	private static final String UPDATE = "UPDATE product set p_name= ?,p_year= ?,p_rate= ?,p_area= ?,p_intro= ?,p_num= ?,p_price= ?,p_status= ?,p_winery= ?,p_click_count= ?,p_buy_count= ?,p_style= ?,p_sales= ?,p_vol= ?,p_alcho= ? ,p_date=?,p_type=?,p_grape=? where p_no = ?";
+public class ProductDAO implements ProductDAO_interface {
+	private static final String GET_ALL_STMT = "from ProductVO order by p_no";
 
 	@Override
 	public void insert(ProductVO productVO) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(INSERT_STMT);
-
-			pstmt.setString(1, productVO.getP_name());
-			pstmt.setInt(2, productVO.getP_year());
-			pstmt.setInt(3, productVO.getP_rate());
-			pstmt.setString(4, productVO.getP_area());
-			pstmt.setString(5, productVO.getP_intro());
-			pstmt.setInt(6, productVO.getP_num());
-			pstmt.setDouble(7, productVO.getP_price());
-			pstmt.setString(8, productVO.getP_status());
-			pstmt.setString(9, productVO.getP_winery());
-			pstmt.setInt(10, productVO.getP_click_count());
-			pstmt.setInt(11, productVO.getP_buy_count());
-			pstmt.setString(12, productVO.getP_style());
-			pstmt.setString(13, productVO.getP_sales());
-			pstmt.setInt(14, productVO.getP_vol());
-			pstmt.setDouble(15, productVO.getP_alcho());
-			pstmt.setTimestamp(16, productVO.getP_date());
-			pstmt.setString(17, productVO.getP_type());
-			pstmt.setString(18, productVO.getP_grape());
-			pstmt.executeUpdate();
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			session.saveOrUpdate(productVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
-
 	}
 
 	@Override
 	public void update(ProductVO productVO) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(UPDATE);
-
-			pstmt.setString(1, productVO.getP_name());
-			pstmt.setInt(2, productVO.getP_year());
-			pstmt.setInt(3, productVO.getP_rate());
-			pstmt.setString(4, productVO.getP_area());
-			pstmt.setString(5, productVO.getP_intro());
-			pstmt.setInt(6, productVO.getP_num());
-			pstmt.setDouble(7, productVO.getP_price());
-			pstmt.setString(8, productVO.getP_status());
-			pstmt.setString(9, productVO.getP_winery());
-			pstmt.setInt(10, productVO.getP_click_count());
-			pstmt.setInt(11, productVO.getP_buy_count());
-			pstmt.setString(12, productVO.getP_style());
-			pstmt.setString(13, productVO.getP_sales());
-			pstmt.setInt(14, productVO.getP_vol());
-			pstmt.setDouble(15, productVO.getP_alcho());
-			pstmt.setTimestamp(16, productVO.getP_date());
-			pstmt.setString(17, productVO.getP_type());
-			pstmt.setString(18, productVO.getP_grape());
-			pstmt.setInt(19, productVO.getP_no());
-
-			pstmt.executeUpdate();
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			session.saveOrUpdate(productVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
-
 	}
 
 	@Override
 	public void delete(Integer p_no) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(DELETE);
-
-			pstmt.setInt(1, p_no);
-
-			pstmt.executeUpdate();
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			ProductVO productV = new ProductVO();
+			productV.setP_no(p_no);
+			session.delete(productV);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 
 	}
 
 	@Override
 	public ProductVO findByPrimaryKey(Integer p_no) {
-		ProductVO productVO = null;
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
+		ProductVO ProductVO = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(GET_ONE_STMT);
-
-			pstmt.setInt(1, p_no);
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-
-				productVO = new ProductVO();
-				productVO.setP_no(rs.getInt("p_no"));
-				productVO.setP_name(rs.getString("p_name"));
-				productVO.setP_year(rs.getInt("p_year"));
-				productVO.setP_rate(rs.getInt("p_rate"));
-				productVO.setP_area(rs.getString("p_area"));
-				productVO.setP_intro(rs.getString("p_intro"));
-				productVO.setP_num(rs.getInt("p_num"));
-				productVO.setP_price(rs.getDouble("p_price"));
-				productVO.setP_status(rs.getString("p_status"));
-				productVO.setP_winery(rs.getString("p_winery"));
-				productVO.setP_click_count(rs.getInt("p_click_count"));
-				productVO.setP_buy_count(rs.getInt("p_buy_count"));
-				productVO.setP_style(rs.getString("p_style"));
-				productVO.setP_sales(rs.getString("p_sales"));
-				productVO.setP_vol(rs.getInt("p_vol"));
-				productVO.setP_alcho(rs.getDouble("p_alcho"));
-				productVO.setP_date(rs.getTimestamp("p_date"));
-				productVO.setP_type(rs.getString("p_type"));
-				productVO.setP_grape(rs.getString("p_grape"));
-
-			}
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			ProductVO = (ProductVO) session.get(ProductVO.class, p_no);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
-		return productVO;
+		return ProductVO;
 	}
 
 	@Override
 	public List<ProductVO> getAll() {
-		List<ProductVO> list = new ArrayList<ProductVO>();
-		ProductVO productVO = null;
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
+		List<ProductVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(GET_ALL_STMT);
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-
-				productVO = new ProductVO();
-				productVO.setP_no(rs.getInt("p_no"));
-				productVO.setP_name(rs.getString("p_name"));
-				productVO.setP_year(rs.getInt("p_year"));
-				productVO.setP_rate(rs.getInt("p_rate"));
-				productVO.setP_area(rs.getString("p_area"));
-				productVO.setP_intro(rs.getString("p_intro"));
-				productVO.setP_num(rs.getInt("p_num"));
-				productVO.setP_price(rs.getDouble("p_price"));
-				productVO.setP_status(rs.getString("p_status"));
-				productVO.setP_winery(rs.getString("p_winery"));
-				productVO.setP_click_count(rs.getInt("p_click_count"));
-				productVO.setP_buy_count(rs.getInt("p_buy_count"));
-				productVO.setP_style(rs.getString("p_style"));
-				productVO.setP_sales(rs.getString("p_sales"));
-				productVO.setP_vol(rs.getInt("p_vol"));
-				productVO.setP_alcho(rs.getDouble("p_alcho"));
-				productVO.setP_date(rs.getTimestamp("p_date"));
-				productVO.setP_type(rs.getString("p_type"));
-				productVO.setP_grape(rs.getString("p_grape"));
-				list.add(productVO);
-			}
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			Query query = session.createQuery(GET_ALL_STMT);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 		return list;
 	}
 
 	@Override
-	public List findProductType(String productlist) {
+	public List<String> findProductType(String productlist) {
 		List list = new ArrayList();
-
-		ProductVO productVO = null;
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		List list1 = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
 		try {
+			session.beginTransaction();
+			Query query = session.createQuery("SELECT DISTINCT " + productlist
+					+ "  FROM ProductVO");
+			list1 = query.list();
 
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			Statement st = con.createStatement();
-			
-			
-			while (rs.next()) {String aaa = list.toString();
+			for (int i = 0; i < list1.size(); i++) {
+				String aaa = list1.get(i).toString();
 
-			list.add(aaa);
+				list.add(aaa);
 			}
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 		return list;
 	}
 
-	@Override
 	public List<String> findGrapeType(String productType) {
-		// TODO Auto-generated method stub
-		return null;
+		List list = null;
+
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		try {
+			session.beginTransaction();
+			
+			Query query = session.createQuery("SELECT DISTINCT p_grape FROM ProductVO where p_type=?");
+			query.setParameter(0, productType);
+			list = query.list();
+
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+
+	// -------------------------------------------------------
+	public static void main(String arg[]) {
+		ProductDAO dao = new ProductDAO();
+//		 List<String> listStyle = dao.findGrapeType("紅葡萄酒");
+//		 for (String aEmp : listStyle) {
+//		
+//		 System.out.println(aEmp);
+//		 }
+		// 新增
+//		 ProductVO productVOO1 = new ProductVO();
+//		 productVOO1.setP_name("路易拉圖夏布利一級葡萄園白葡萄酒");
+//		 productVOO1.setP_year(2008);
+//		 productVOO1.setP_rate(90);
+//		 productVOO1.setP_area("法國布根地夏布利");
+//		 productVOO1
+//		 .setP_intro("路易拉圖夏布利一級葡萄園白葡萄酒是由夏布利一級葡萄園內精選出最好的夏多內葡萄，所釀造出口味特別細緻清雅的白酒。路易拉圖酒廠經由降低葡萄的生產量和不斷進步的種植與釀造技術來確保每年葡萄品質的穩定。路易拉圖夏布利一級葡萄園白葡萄酒在不鏽鋼槽中發酵，以保留新鮮果味。此外，百分之百的乳酸發酵過程，讓酒質更加穩定，口感更加圓潤。家族代代傳承經營的路易拉圖酒廠 (Maison Louis Latour)，是法國布根地伯恩產區五大著名酒商之一，自1797年創立以來，一直堅守傳統和品質，但也勇於革新和創造，以其優良的布根地紅、白酒品質聞名世界，同時也是生產布根地產區以外如Ardche(阿德榭)的優質葡萄酒的先驅。拉圖家族自17世紀以來便開始擁有與增加自有葡萄園，如今在布根地已有50公頃的葡萄園，範圍。從北部的香貝丹(Chambertin)延伸到南邊的歇瓦里耶- 蒙哈榭(Chevalier-Montrachet)，其中有30公頃的特級葡萄園，包括0.8公頃的香貝丹、1公頃的侯馬內-聖維馮(Romanee Saint Vivant)、17公頃的高登(Corton) 以及近9公頃的高登查理曼(Corton-Charlemagne)，並是在金丘(Cote d'Or) 擁有最大比例的特級葡萄園的酒商。路易拉圖所有的自有葡萄園裡所生產的葡萄，皆在阿羅斯-高登 (Aloxe-Corton)的高登格蘭榭堡(Chteau Corton Grancey)裡的酒窖釀製與陳年。這是法國第一個依功能性建造的酒窖，仍維持傳統的運作方式，為固守傳統，至今路易拉圖所有自有葡萄園的酒全部使用人工踩皮，另一特色是紅酒較少使用新橡木桶陳年，而新橡木桶則用於白酒，ㄧ兩年後再使用於紅酒，與某些布根地酒廠方式相反。種種堅持，使路易拉圖白酒富有濃郁的果味與香草、榛果等香氣，紅酒則口感圓潤豐富。路易拉圖酒廠有許多其他與眾不同之處，例如擁有自己的橡木桶酒廠、印刷廠、船運公司，連瓶型也有專用形狀，堅持自己的風格。路易拉圖自第三代掌門人起，便是許多王公貴族的最愛，，在世界各大高級飯店與餐廳，如巴黎蒙地卡羅(Monte Carlo's)飯店、日內瓦Le Beau-Rivage、巴黎麗池飯店(The Paris Ritz)的酒單上都看得到路易拉圖，更榮選為2008年G8高峰會指定用久，是您不容錯過的布根地名廠。");
+//		 productVOO1.setP_num(85);
+//		 productVOO1.setP_price(1650.0);
+//		 productVOO1.setP_status("上架中");
+//		 productVOO1.setP_winery("Chardonnay");
+//		 productVOO1.setP_click_count(80);
+//		 productVOO1.setP_buy_count(90);
+//		 productVOO1.setP_style("土味");
+//		 productVOO1.setP_sales("RG");
+//		 productVOO1.setP_vol(750);
+//		 productVOO1.setP_alcho(13.0);
+//		 productVOO1.setP_date(new Timestamp(new java.util.Date().getTime()));
+//		 productVOO1.setP_type("白葡萄酒");
+//		 productVOO1.setP_grape("Pinot Noir");
+//		 dao.insert(productVOO1);
+		// -------------------------------------------------
+		// 修改
+		// ProductVO productVOO2 = new ProductVO();
+		// productVOO2.setP_no(1);
+		// productVOO2.setP_name("傑卡斯臻藏巴洛沙席哈紅酒");
+		// productVOO2.setP_year(2008);
+		// productVOO2.setP_rate(80);
+		// productVOO2.setP_area("澳洲");
+		// productVOO2
+		// .setP_intro("得2005 Taster Guide International Wine Judging等主要國際競賽肯定,在1847年，一位年輕的巴伐利亞移民約翰.葛蘭（Johann Gramp）來到了南澳的巴洛沙河谷，在一條名為傑卡斯溪畔種下了他的第一棵葡萄樹。經過129年的穩定發展，1976年正式以『傑卡斯』為品牌名稱在全球上市，時至今日，每年超過8百萬箱的出口量，讓傑卡斯成為澳洲最受歡迎的葡萄酒廠。每天，近2百萬杯的傑卡斯葡萄酒在世界各地的人們手中被享用，質優易飲的傑卡斯風格深植人心。用於臻藏系列的葡萄，採自精選葡萄園的果實，釀酒師精選來自Padthaway, Langhorne Creek, Coonawarra以及克來兒谷地等地區，果實充分熟成富有濃郁品種風味與細緻單寧的葡萄，作為釀造臻藏系列的來源。香氣集中、濃縮風味，在橡木桶內熟成18-22個月（席哈紅酒）。");
+		// productVOO2.setP_num(50);
+		// productVOO2.setP_price(800.0);
+		// productVOO2.setP_status("下架中");
+		// productVOO2.setP_winery("Jacob’s Creek");
+		// productVOO2.setP_click_count(100);
+		// productVOO2.setP_buy_count(150);
+		// productVOO2.setP_style("辛辣味");
+		// productVOO2.setP_sales("B");
+		// productVOO2.setP_vol(750);
+		// productVOO2.setP_alcho(14.5);
+		// productVOO2.setP_date(new Timestamp(new java.util.Date().getTime()));
+		// productVOO2.setP_type("red wine");
+		// productVOO2.setP_grape("Syrah \\ Shiraz");
+		// dao.update(productVOO2);
+		// ---------------------------------------------
+		// 刪除
+		// dao.delete(5);
+		// ------------------------------------------------
+		// 查詢
+
+		// ProductVO productVOO3 = dao.findByPrimaryKey(2);
+		// System.out.println(productVOO3.getP_no() + ",");
+		// System.out.println(productVOO3.getP_name() + ",");
+		// System.out.println(productVOO3.getP_year() + ",");
+		// System.out.println(productVOO3.getP_rate() + ",");
+		// System.out.println(productVOO3.getP_area() + ",");
+		// System.out.println(productVOO3.getP_intro() + ",");
+		// System.out.println(productVOO3.getP_num() + ",");
+		// System.out.println(productVOO3.getP_price() + ",");
+		// System.out.println(productVOO3.getP_status() + ",");
+		// System.out.println(productVOO3.getP_winery() + ",");
+		// System.out.println(productVOO3.getP_click_count() + ",");
+		// System.out.println(productVOO3.getP_buy_count() + ",");
+		// System.out.println(productVOO3.getP_style() + ",");
+		// System.out.println(productVOO3.getP_sales() + ",");
+		// System.out.println(productVOO3.getP_vol() + ",");
+		// System.out.println(productVOO3.getP_alcho() + ",");
+		// System.out.println(productVOO3.getP_date() + ",");
+		// System.out.println(productVOO3.getP_type() + ",");
+		// System.out.println(productVOO3.getP_grape() );
+		// System.out.println();
+		// 查詢
+		List<ProductVO> list = dao.getAll();
+		for (ProductVO aEmp : list) {
+			System.out.println(aEmp.getP_no() + ",");
+			System.out.println(aEmp.getP_name() + ",");
+			System.out.println(aEmp.getP_pic() + ",");
+			System.out.println(aEmp.getP_year() + ",");
+			System.out.println(aEmp.getP_rate() + ",");
+			System.out.println(aEmp.getP_area() + ",");
+			System.out.println(aEmp.getP_intro() + ",");
+			System.out.println(aEmp.getP_num() + ",");
+			System.out.println(aEmp.getP_price() + ",");
+			System.out.println(aEmp.getP_status() + ",");
+			System.out.println(aEmp.getP_winery() + ",");
+			System.out.println(aEmp.getP_click_count() + ",");
+			System.out.println(aEmp.getP_buy_count() + ",");
+			System.out.println(aEmp.getP_style() + ",");
+			System.out.println(aEmp.getP_sales() + ",");
+			System.out.println(aEmp.getP_vol() + ",");
+			System.out.println(aEmp.getP_alcho() + ",");
+			System.out.println(aEmp.getP_date() + ",");
+			System.out.println(aEmp.getP_type() + ",");
+			System.out.println(aEmp.getP_grape());
+			System.out.println();
+		}
 	}
 
 }
