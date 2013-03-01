@@ -135,7 +135,7 @@ min_pirce 				int	--最低額度 [ primary key ]
 );
 insert into shipping_set values (300);
 -------------------------------------------------------------------------------------------------------------------------
-drop table		food_set;		--刪除搭配
+drop table		food_set;		--刪除搭配--text
 drop table		recipe;			--刪除食譜
 drop table		food;			--刪除食物
 drop table		ingredient;		--刪除食材

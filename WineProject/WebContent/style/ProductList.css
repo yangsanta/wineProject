@@ -1,0 +1,25 @@
+table a {
+	text-decoration:none;
+}
+
+td {
+	border: 1px silver solid;
+}
+
+.p_innerTable {
+	width: 590px;
+}
+.p_outerTable {
+	border: 1px silver solid;
+	margin: 15px auto;
+}
+.p_pic {
+	width:200px;
+}
+.pageSwitch {
+	margin-left:350px;
+}
+.searchResult {
+	margin: 25px auto;
+	width: 900px;
+}

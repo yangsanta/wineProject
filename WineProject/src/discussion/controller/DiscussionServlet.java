@@ -11,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import member.model.MemberVO;
 import discussion.model.*;
 
 
@@ -62,7 +64,7 @@ public class DiscussionServlet extends HttpServlet {
 			//新增主題功能
 			if("insert".equals(action)){
 				//之後修改成從session獲取會員編號
-				int m_no = 1099;
+				int m_no = 1001;
 				//主題字串的檢查
 				String d_title = req.getParameter("d_title").trim();
 				if(d_title == null){
@@ -72,25 +74,29 @@ public class DiscussionServlet extends HttpServlet {
 				String d_context = req.getParameter("d_context");
 				if(d_context.length() < 20){
 					errorMsgs.add("文章內容請輸入超過20字");
-				}
-				//設定新增之主題物件參數
-				Timestamp time = new java.sql.Timestamp(new java.util.Date().getTime());
-				String d_status = "1";
-				DiscussionVO discussionVO = new DiscussionVO();
-				discussionVO.setM_no(m_no);
-				discussionVO.setD_title(d_title);
-				discussionVO.setD_context(d_context);
-				discussionVO.setD_datetime(time);
-				discussionVO.setD_final_edit(time);
-				discussionVO.setD_status(d_status);
-				dao.insert(discussionVO);
-				
+				} 
+
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
 							.getRequestDispatcher(url);
 					failureView.forward(req, res);
 					return;// 程式中斷
 				}
+				
+				//設定新增之主題物件參數
+				Timestamp time = new java.sql.Timestamp(new java.util.Date().getTime());
+				String d_status = "1";
+				DiscussionVO discussionVO = new DiscussionVO();
+				MemberVO memberVO = new MemberVO();
+				memberVO.setM_no(m_no);
+				discussionVO.setMemberVO(memberVO);
+				discussionVO.setD_title(d_title);
+				discussionVO.setD_context(d_context);
+				discussionVO.setD_datetime(time);
+				discussionVO.setD_final_edit(time);
+				discussionVO.setD_status(d_status);
+				dao.insert(discussionVO);
+
 				req.setAttribute("discussionVO", discussionVO); // 資料庫取出的VO物件,存入req
 				RequestDispatcher successView = req.getRequestDispatcher("DiscussionList"); // 成功轉交
 				successView.forward(req, res);

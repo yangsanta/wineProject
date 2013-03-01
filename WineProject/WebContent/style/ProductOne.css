@@ -1,0 +1,37 @@
+div {
+	border:1px solid silver;
+}
+
+.bar {
+	clear: both;
+}
+.p_content{
+	margin: 25px auto;
+	padding:0px 0px;
+	width:900px;
+	
+}
+.p_data {
+	margin: 0px 0px;
+	float: left;
+	width: 695px;
+}
+.p_info1 {
+	
+}
+.p_info2 {
+	
+}
+.p_intro {
+	padding:15px;
+}
+.p_pics {
+	margin: 0px 0px;
+	float: left;
+	width: 200px;
+}
+.p_purchase{
+}
+.p_title {
+	
+}
