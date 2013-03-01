@@ -69,7 +69,7 @@ public class DisplayProducts extends HttpServlet {
 		
 		//Add getSome_For_Display for where xxx=? search. DAO modification is needed. 
 		//JoJo 3/1/2012
-		if ("getSome_For_Display".equals(action)) {
+		/*if ("getSome_For_Display".equals(action)) {
 			String condition = request.getParameter("condition");
 			String conditionValue = request.getParameter("conditionValue");
 			ProductDAO productDAO = new ProductDAO();
@@ -84,7 +84,8 @@ public class DisplayProducts extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
 			rd.forward(request, response);
 			return;
-		}
+		}*/
+		
 	}
 	
 	private void splitPages(List<ProductVO> list, HttpServletRequest request) {

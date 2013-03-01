@@ -37,28 +37,6 @@
 		 頁
 	</div>
 </div>
-<hr>
-this area for testing while developing:
-<table class="p_outerTable">
-	<tbody>
-		<tr>
-			<td>圖片</td>
-			<td>
-				<table>
-				<tr><td>第 1 行</td></tr>
-				<tr><td>第 2 行</td></tr>
-				<tr><td>第 3 行</td></tr>
-				</table>
-			</td>
-		</tr>
-	</tbody>
-</table>
-<a href="DisplayProducts?action=getAll&pageNo=3">Product/DisplayProducts</a>
-rowsPerPage = ${ rowsPerPage }
-whichPage = ${ whichPage }
-pageIndex = ${ pageIndex }
-totalPages = ${ totalPages }
-totalRows = ${ totalRows }
 
 </body>
 </html>
