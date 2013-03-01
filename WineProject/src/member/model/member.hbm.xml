@@ -21,6 +21,12 @@
 		<property name="m_status" column="m_status" />
 
 
+		<set name="members" table="discussion" lazy="false"
+		    cascade="all" inverse="true" order-by="m_no asc" >
+            <key><column name="m_no"/></key>
+		    <one-to-many class="discussion.model.DiscussionVO"/>
+		</set>
+		
 	</class>
 </hibernate-mapping>
 

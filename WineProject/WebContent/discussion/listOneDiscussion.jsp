@@ -1,25 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=BIG5"
-    pageEncoding="BIG5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=BIG5">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<%-- ¥DÃD:${discussionVO.d_title}<br/> --%>
-<%-- µoªí¤é´Á:${discussionVO.d_datetime}<br/> --%>
-<%-- §@ªÌID:${discussionVO.m_no}<br/> --%>
-<%-- ¤º¤å:${discussionVO.d_context} --%>
+<%-- ä¸»é¡Œ:${discussionVO.d_title}<br/> --%>
+<%-- ç™¼è¡¨æ—¥æœŸ:${discussionVO.d_datetime}<br/> --%>
+<%-- ä½œè€…ID:${discussionVO.m_no}<br/> --%>
+<%-- å…§æ–‡:${discussionVO.d_context} --%>
 
 <table  border='1' bordercolor='#CCCCFF' width='800'>
 	<tr>
-		<td>¥DÃD:${discussionVO.d_title}</td>
-		<td>µoªí¤é´Á:${discussionVO.d_datetime}</td>
-		<td>§@ªÌID:${discussionVO.m_no}</td>
+		<td>ä¸»é¡Œ:${discussionVO.d_title}</td>
+		<td>ç™¼è¡¨æ—¥æœŸ:${discussionVO.d_datetime}</td>
+		<td>ä½œè€…ID:${discussionVO.memberVO.m_id}</td>
 	</tr>
 	<tr>
-		<td colspan="3">¤º¤å:${discussionVO.d_context}</td>
+		<td colspan="3">å…§æ–‡:${discussionVO.d_context}</td>
 	</tr>
 </table>
 </body>

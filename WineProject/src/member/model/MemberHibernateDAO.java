@@ -92,7 +92,7 @@ public class MemberHibernateDAO implements MemberDAO_interface {
 
 		// ·s¼W
 //		MemberVO memberVO1 = new MemberVO();
-//		memberVO1.setM_name("king21");
+//		memberVO1.setM_name("newnewn");
 //		memberVO1.setM_pwd("president");
 //		memberVO1.setM_mobile("0955959888");
 //		memberVO1.setM_email("kk.jj@yahoo.com");

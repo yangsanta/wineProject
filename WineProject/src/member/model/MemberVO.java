@@ -1,5 +1,7 @@
 package member.model;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MemberVO implements java.io.Serializable{
 	private Integer m_no;
@@ -20,6 +22,15 @@ public class MemberVO implements java.io.Serializable{
 	private String m_safety_q;
 	private String m_safety_a;
 	private Integer m_status;
+	
+	private Set<MemberVO> members = new HashSet<MemberVO>();
+	public Set<MemberVO> getMembers() {
+		return members;
+	}
+	public void setMembers(Set<MemberVO> members) {
+		this.members = members;
+	}
+	
 	
 	public Integer getM_no() {
 		return m_no;
