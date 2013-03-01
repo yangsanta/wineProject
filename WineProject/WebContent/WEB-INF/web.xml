@@ -52,4 +52,12 @@
 		<servlet-name>DisplayProducts</servlet-name>
 		<url-pattern>/product/DisplayProducts</url-pattern>
 	</servlet-mapping>
+	  <servlet>
+    <servlet-name>memberRegister</servlet-name>
+    <servlet-class>member.controller.register</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>memberRegister</servlet-name>
+    <url-pattern>/product/memberRegister</url-pattern>
+  </servlet-mapping>
 </web-app>
