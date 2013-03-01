@@ -43,4 +43,13 @@
 		<servlet-name>insertDiscussion</servlet-name>
 		<url-pattern>/insertDiscussion</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DisplayProducts</servlet-name>
+		<servlet-class>product.controller.DisplayProducts</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DisplayProducts</servlet-name>
+		<url-pattern>/product/DisplayProducts</url-pattern>
+	</servlet-mapping>
 </web-app>
