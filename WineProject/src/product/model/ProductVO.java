@@ -7,14 +7,6 @@ public class ProductVO implements java.io.Serializable {
 	private Integer p_no;
 	private String p_name;
 	private String p_pic;
-	public String getP_pic() {
-		return p_pic;
-	}
-
-	public void setP_pic(String p_pic) {
-		this.p_pic = p_pic;
-	}
-
 	private Integer p_year;
 	private Integer p_rate;
 	private String p_area;
@@ -33,6 +25,13 @@ public class ProductVO implements java.io.Serializable {
     private String p_type;
     private String p_grape;
 
+public String getP_pic() {
+		return p_pic;
+	}
+
+	public void setP_pic(String p_pic) {
+		this.p_pic = p_pic;
+	}
 
 	public Timestamp getP_date() {
 		return p_date;

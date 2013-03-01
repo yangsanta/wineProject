@@ -67,13 +67,15 @@ public class DisplayProducts extends HttpServlet {
 			return;
 		}
 		
-		//Add getSome_For_Display for where xxx=? search. DAO modification is needed. 
+//		Add getSome_For_Display for where xxx=? search. DAO modification is needed. 
 		//JoJo 3/1/2012
-		/*if ("getSome_For_Display".equals(action)) {
+		if ("getSome_For_Display".equals(action)) {
 			String condition = request.getParameter("condition");
 			String conditionValue = request.getParameter("conditionValue");
+			conditionValue=new String(conditionValue.getBytes("ISO-8859-1"),"UTF-8");
 			ProductDAO productDAO = new ProductDAO();
-			List<ProductVO> list = productDAO.findByCondition(condition, conditionValue);
+			System.out.println(conditionValue);
+			List<ProductVO> list = productDAO.findSomeProduct(condition,conditionValue);
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("list", list);
@@ -84,7 +86,7 @@ public class DisplayProducts extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
 			rd.forward(request, response);
 			return;
-		}*/
+		}
 		
 	}
 	

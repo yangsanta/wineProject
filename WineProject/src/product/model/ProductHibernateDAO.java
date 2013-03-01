@@ -238,4 +238,13 @@ public class ProductHibernateDAO implements ProductDAO_interface {
 		}
 	}
 
+	@Override
+	public List<ProductVO> findSomeProduct(String lcondition,
+			String conditionValue) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 }

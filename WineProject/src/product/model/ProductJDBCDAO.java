@@ -399,4 +399,13 @@ public class ProductJDBCDAO implements ProductDAO_interface {
 		return null;
 	}
 
+	@Override
+	public List<ProductVO> findSomeProduct(String lcondition,
+			String conditionValue) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 }
