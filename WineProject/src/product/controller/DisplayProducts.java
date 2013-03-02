@@ -42,6 +42,8 @@ public class DisplayProducts extends HttpServlet {
 		String action = request.getParameter("action");
 		
 		if ("getAll".equals(action)){
+			request.setAttribute("action", new String("getAll"));
+			
 			ProductDAO productDAO = new ProductDAO();
 			List<ProductVO> list = productDAO.getAll();
 			request.setAttribute("list", list);
@@ -55,6 +57,8 @@ public class DisplayProducts extends HttpServlet {
 		}
 		
 		if ("getOne_For_Display".equals(action)) {
+			request.setAttribute("action", new String("getOne_For_Display"));
+			
 			Integer p_no = Integer.parseInt(request.getParameter("pId"));
 			ProductDAO productDAO = new ProductDAO();
 			ProductVO productVO = productDAO.findByPrimaryKey(p_no);
@@ -69,8 +73,14 @@ public class DisplayProducts extends HttpServlet {
 //		Add getSome_For_Display for where xxx=? search. DAO modification is needed. 
 		//JoJo 3/1/2012
 		if ("getSome_For_Display".equals(action)) {
+			request.setAttribute("action", new String("getSome_For_Display"));
+			
 			String condition = request.getParameter("condition");
 			String conditionValue = request.getParameter("conditionValue");
+			
+			String conditionParam = "&condition=" + condition + "&conditionValue=" + conditionValue;
+			request.setAttribute("conditionParam", conditionParam);
+			
 			conditionValue=new String(conditionValue.getBytes("ISO-8859-1"),"UTF-8");
 			ProductDAO productDAO = new ProductDAO();
 			System.out.println(conditionValue);

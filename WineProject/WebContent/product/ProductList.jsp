@@ -32,7 +32,7 @@
 	<div class="pageSwitch">
 		第 
 		<c:forEach var="page" begin="1" end="${totalPages}">
-			<a href="DisplayProducts?action=getAll&pageNo=${page}">${page}</a>
+			<a href="DisplayProducts?action=${action}&pageNo=${page}${conditionParam}">${page}</a>
 		</c:forEach>
 		 頁
 	</div>
