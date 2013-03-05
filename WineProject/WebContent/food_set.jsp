@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="recipe.jsp">食物搭配</a>
+<a href="food/setselectall">食物搭配</a>
 </body>
 </html>

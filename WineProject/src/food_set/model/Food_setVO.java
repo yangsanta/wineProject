@@ -4,7 +4,7 @@
 public class Food_setVO implements java.io.Serializable{
 	private Integer Uniid;
 	private Integer fs_id;
-	private Integer rp_id;
+	private Integer s_id;
 	
 	public Integer getUniid() {
 		return Uniid;
@@ -18,11 +18,11 @@ public class Food_setVO implements java.io.Serializable{
 	public void setfs_id(Integer fs_id) {
 		this.fs_id = fs_id;
 	}
-	public Integer getrp_id() {
-		return rp_id;
+	public Integer gets_id() {
+		return s_id;
 	}
-	public void setrp_id(Integer rp_id) {
-		this.rp_id = rp_id;
+	public void sets_id(Integer s_id) {
+		this.s_id = s_id;
 	}
 
 

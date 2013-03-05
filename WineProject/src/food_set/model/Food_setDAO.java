@@ -10,15 +10,15 @@ public class Food_setDAO implements Food_setDAO_interface {
 	String passwd = "sa123456";
 
 	private static final String INSERT_STMT =
-		      "INSERT INTO food_set (fs_id,rp_id) VALUES (?, ?)";
+		      "INSERT INTO food_set (fs_id,s_id) VALUES (?, ?)";
 	private static final String GET_ALL_STMT =
-		      "SELECT Uniid,fs_id,rp_id FROM food_set order by Uniid";
+		      "SELECT Uniid,fs_id,s_id FROM food_set order by Uniid";
 	private static final String GET_ONE_STMT =
-		      "SELECT Uniid,fs_id,rp_id FROM food_set where Uniid=?";
+		      "SELECT Uniid,fs_id,s_id FROM food_set where Uniid=?";
 	private static final String DELETE =
 		      "DELETE FROM food_set where Uniid = ?";
 	private static final String UPDATE =
-		      "UPDATE food_set set fs_id=?,rp_id=? where Uniid=?";
+		      "UPDATE food_set set fs_id=?,s_id=? where Uniid=?";
 
 
 	public void insert(Food_setVO food_setVO) {
@@ -33,7 +33,7 @@ public class Food_setDAO implements Food_setDAO_interface {
 			pstmt = con.prepareStatement(INSERT_STMT);
 
 			pstmt.setInt(1, food_setVO.getfs_id());
-			pstmt.setInt(2, food_setVO.getrp_id());	
+			pstmt.setInt(2, food_setVO.gets_id());	
 
 			pstmt.executeUpdate();
 
@@ -78,7 +78,7 @@ public class Food_setDAO implements Food_setDAO_interface {
 			pstmt = con.prepareStatement(UPDATE);
 
 			pstmt.setInt(1, food_setVO.getfs_id());
-			pstmt.setInt(2, food_setVO.getrp_id());
+			pstmt.setInt(2, food_setVO.gets_id());
 			pstmt.setInt(3, food_setVO.getUniid());			
 			pstmt.executeUpdate();
 
@@ -177,7 +177,7 @@ public class Food_setDAO implements Food_setDAO_interface {
 				food_setVO = new Food_setVO();
 				food_setVO.setUniid(rs.getInt("Uniid"));
 				food_setVO.setfs_id(rs.getInt("fs_id"));
-				food_setVO.setrp_id(rs.getInt("rp_id"));				
+				food_setVO.sets_id(rs.getInt("s_id"));				
 			}
 
 			// Handle any driver errors
@@ -236,7 +236,7 @@ public class Food_setDAO implements Food_setDAO_interface {
 				food_setVO = new Food_setVO();
 				food_setVO.setUniid(rs.getInt("Uniid"));
 				food_setVO.setfs_id(rs.getInt("fs_id"));
-				food_setVO.setrp_id(rs.getInt("rp_id"));	
+				food_setVO.sets_id(rs.getInt("s_id"));	
 				list.add(food_setVO); // Store the row in the list
 			}
 
@@ -283,14 +283,14 @@ public class Food_setDAO implements Food_setDAO_interface {
 		Food_setVO food_setVO1 = new Food_setVO();
 
 		food_setVO1.setfs_id(103);
-		food_setVO1.setrp_id(103);
+		food_setVO1.sets_id(103);
 		dao.insert(food_setVO1);
 
 		// 修改
 		Food_setVO food_setVO2 = new Food_setVO();
 		food_setVO2.setUniid(1);
 		food_setVO2.setfs_id(1001);
-		food_setVO2.setrp_id(1001);
+		food_setVO2.sets_id(1001);
 		
 		dao.update(food_setVO2);
 
