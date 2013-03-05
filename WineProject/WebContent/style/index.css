@@ -1,0 +1,234 @@
+/* 全域css */
+
+body{	font-size: 12pt;
+	line-height: 1.75em;
+	font-family: Georgia, serif;
+	background: #ad8667 url('../images/bg.jpg');
+	color: #ebe1d9;}
+#body{	width:960px;
+		margin:  0 auto;
+		
+}
+#shadow_bg {
+	background: url('../images/shadow.png') top left repeat-x;
+}
+/* header */
+#header {
+	position: relative;
+	padding: 40px 40px 10px 40px;
+	height: 120px;
+}
+/* 彈出fancybox 的css設定*/
+#login-box {
+	float: left;
+	border: 1px solid #c7c7c7;
+	border-radius: 6px;
+	padding: 30px;
+	background: rgba(255,255,255,0.45);
+	width:250px;
+}
+ #fbconnect_button{
+ background: rgba(255,255,255,0.45);
+	float: left;
+	border: 1px solid #c7c7c7;
+	border-radius: 6px;
+	padding: 30px 20px 30px 20px;
+	margin-left:30px;
+}
+.form-item{margin-top:10px;}
+.form-question{margin-top:10px;float:right;}
+.form-question a{margin-left:10px;font-size: 9pt;}
+#login_submit input[type="submit"]{float:right;margin-top:10px;}
+/* 彈出fancybox 的css設定*/
+#logo {
+	position: absolute;
+	top: 40px;
+	left: 40px;
+	height: 120px;
+}
+
+#logo a {
+	text-decoration: none;
+	color: #fff;
+}
+
+#logo h1 {
+	font-size: 3.5em;
+	font-family: Lobster, cursive;
+	text-shadow: 0 2px 1px #32251B;
+}
+#search{float:right;margin:5px;}
+.iconsearch{background-image: url("../images/search_icon.png"); background-repeat: no-repeat; background-position:6px 2px;
+			font-size: 14px;
+			height: 25px;
+			line-height: 1.2em;
+			padding: 6px 10px 6px 28px;
+			border-radius: 15px;
+}
+#little_nav {
+	position: absolute;
+	right: 40px;
+	}
+#little_nav a {
+	text-decoration: none;
+	text-transform: lowercase;
+	color: #f4eeea;
+	text-shadow: 0 3px 5px #32251B;
+	font-size: 13px;
+}
+#little_nav a:hover {position:relative;
+					color:yellow;
+					left:1px;
+					top:1px;	}
+#little_nav li {
+	margin: 0 0.5em ;
+}
+
+#little_nav ul {
+	list-style: none;
+}
+#little_nav ul li {
+	float: left;
+}
+#nav {
+background: url('../images/nav_bg.png') no-repeat;
+	position: absolute;
+	right: 40px;
+	height: 53px;
+	top: 80px;
+	width:560px;
+}
+
+#nav a {
+	text-decoration: none;
+	text-transform: lowercase;
+	color: #f4eeea;
+	text-shadow: 0 1px 1px #32251B;
+	font-size: 1.2em;
+}
+#nav a:hover {position:relative;
+					color:yellow;
+					left:1px;
+					top:1px;	}
+#nav li {
+line-height: 40px;
+	margin: 0 1em 0 1em;
+}
+
+#nav ul {
+	list-style: none;
+}
+
+#nav ul li {
+	float: left;
+}
+/*主內容 */
+#main {
+	position: relative;
+	padding: 0;
+	color: #5e5e5e;
+
+}
+
+#main strong {
+	color: #3e3e3e;
+}
+
+#main ul {
+	list-style: none;
+}
+
+#main ul li {
+	padding: 15px 0 15px 0;
+	border-top: dotted 1px #b3b3b3;
+}
+
+#main ul li.first {
+	padding-top: 0;
+	border-top: 0;
+}
+
+#main ul.imageList li {
+	padding: 15px 0 15px 0;
+}
+/* 左邊選單 */
+#main #sidebar {
+	float: left;
+}
+#left_menu{
+	width: 180px;
+	background: #32251b;
+	color: #fff;
+	padding: 20px;
+	-moz-box-shadow: 3px 3px 4px rgb(39, 32, 26);
+    -webkit-box-shadow: 3px 3px 4px rgb(39, 32, 26);
+    box-shadow: 3px 3px 4px rgb(39, 32, 26);
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+#left_menu span {
+		color:yellow;
+		font-size: 16pt;
+	}
+#left_menu a{	color: #fff;}
+.abgne-news-scroll {
+		color:#fff;
+		margin-top:10px;
+		background: #32251b;
+		width: 210px;
+		height: 480px;
+		overflow: hidden;
+		padding: 20px 5px 5px 5px;
+		-moz-box-shadow: 3px 3px 4px rgb(39, 32, 26);
+		-webkit-box-shadow: 3px 3px 4px rgb(39, 32, 26);
+		box-shadow: 3px 3px 4px rgb(39, 32, 26);
+		-webkit-border-radius: 7px;
+		-moz-border-radius: 7px;
+		border-radius: 7px;
+	}
+		.abgne-news-scroll ul {
+		margin: 5px 0;
+	}
+		.abgne-news-scroll span.title {
+		color:yellow;
+		font-size: 16pt;
+	}
+
+	.abgne-news-scroll li {
+		clear: left;
+		height: 55px;
+	}
+	.abgne-news-scroll li a {
+		float: left;
+	}
+	.abgne-news-scroll li a img {
+		border: 1px solid #ccc;
+		padding: 2px;
+		margin:0 15px 10px 0;
+	}
+	.abgne-news-scroll li div {
+		float: left;
+		margin-left: 5px;
+		font-size: 12px;
+	}
+/* 右邊內容 */
+#content {
+	margin: 0 0 0 250px;
+	padding: 40px;
+	background: #fff;
+	-moz-box-shadow: 3px 3px 4px rgb(88, 67, 49);
+    -webkit-box-shadow: 3px 3px 4px rgb(88, 67, 49);
+    box-shadow: 3px 3px 4px rgb(88, 67, 49);
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+#copyright{
+	padding: 30px 0 30px 0;
+	background: rgba(102, 57, 31, 0.6);
+	border-top: 1px solid rgba(102, 57, 31, 0.6);;
+}
+#copyright span{color:rgb(43, 16, 2);margin-left:20px}
+
+.font-small{font-size: 12px;}

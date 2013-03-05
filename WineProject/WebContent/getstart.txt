@@ -1,0 +1,39 @@
+root/
+  ├── products/              放我們商品圖片的資料夾
+  │   ├──    略
+  │   ├── 
+  ├── style/  		   css的資料夾以及bootstrap樣板 
+  │   ├── bootstrap			[所有頁面]bootstrap樣板
+  │   ├── index.css			[所有頁面]主架構的css 所有網頁都會套用到 
+  │   ├── jquery.fancybox.css	[所有頁面]會員登入用的那個fancybox彈出式畫面css
+  │   ├── reset.css  		[所有頁面]css reset 
+  ├── 額外備份檔/ 		備份開發過程中的一些也許會用到的圖片、檔案psd檔之類的
+  │   ├── 
+  │   ├──
+  ├── js/
+  │   ├── index.js			[所有頁面]主架構的js (熱門廣告輪播、氣泡選單、fancybox彈出式畫面
+  │   ├── jquery-1.9.0.min.js	[所有頁面]jquery
+  │   ├── jquery.fancybox.js	[所有頁面]會員登入用的那個fancybox彈出式畫面
+  │   ├── 
+  ├── images/
+  │   ├── ad			[首頁]廣告輪播的圖片檔
+  │   │    ├──略
+  │   │    ├──
+  │   ├── bg.jpg			[所有頁面]網站背景
+  │   ├── cart.png			[所有頁面]header購物車小圖
+  │   ├── cir_ctrl.png		[首頁]	  首頁廣告輪播分頁小圖
+  │   ├── discussion_paper.gif	[討論區]  每篇文章前面的小圖
+  │   ├── disz_bg.png		[討論區]  討論區 背景
+  │   ├── fancybox_overlay.png	[所有頁面]fancybox
+  │   ├── fancybox_sprite.png	[所有頁面]fancybox
+  │   ├── fbconnect.jpg		[所有頁面]會員登入
+  │   ├── footer.png		[所有頁面]footer
+  │   ├── login_bg.png		[所有頁面]會員登入背景
+  │   ├── nav_bg.png		[所有頁面]css選單背景
+  │   ├── search_icon.png		[所有頁面]搜尋框圖
+  │   ├── shadow.png		[所有頁面]網站背景漸層
+  │
+  ├── index.htm			網站首頁
+  ├── discussion.htm			討論區
+  ├── getstart.txt			說明檔案
+  └── favicon.ico			網站小圖

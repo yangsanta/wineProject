@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>酒迷 |登入管理系統</title>
+
+    <!-- Le styles -->
+		<link href="style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+		background-image : url(images/bg.jpg); /*背景圖片*/
+      }
+
+      .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+      
+        background-color: rgba(255, 255, 255, 1);
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+				
+				
+		position: fixed; /*畫面置中*/
+		top: 40%;
+		left: 50%;
+		margin-left: -200px;
+		margin-top: -100px;
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+
+    </style>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="twitter.github.com/bootstrap/assets/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading">登入</h2><hr>
+        <input type="text" class="input-block-level" placeholder="管理者帳號">
+        <input type="password" class="input-block-level" placeholder="密碼">
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> 記不住我
+        </label><br>
+        <button class="btn btn-large btn-block btn-primary" type="submit">登入</button>
+      </form>
+
+    </div> <!-- /container -->
+
+
+  </body>
+</html>
