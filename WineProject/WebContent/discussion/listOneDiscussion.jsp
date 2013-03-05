@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.util.*"%>
 <%@ page import="discussion.model.*"%>
 <%@ page import="reply.model.*"%>
@@ -20,7 +21,7 @@
 <table  border='1' bordercolor='#CCCCFF' width='800'>
 	<tr>
 		<td>主題:${discussionVO.d_title}</td>
-		<td>發表日期:${discussionVO.d_datetime}</td>
+		<td>發表日期:<fmt:formatDate value="${discussionVO.d_datetime}" pattern="yyyy/MM/dd HH:mm:ss"/></td>
 		<td>作者帳號:${discussionVO.memberVO.m_id}</td>
 	</tr>
 	<tr>
@@ -30,7 +31,7 @@
 		<c:forEach var="i" begin="0" end="${fn:length(discussionVO.replies) - 1}">
 			<tr>
 				<td>推文:${discussionVO.replies[i].r_context}</td>
-				<td>發表日期:${discussionVO.replies[i].r_datetime}</td>
+				<td>發表日期:<fmt:formatDate value="${discussionVO.replies[i].r_datetime}" pattern="yyyy/MM/dd HH:mm:ss"/></td>
 				<td>作者帳號:${discussionVO.replies[i].memberVO.m_id}</td>
 			</tr>
 	</c:forEach>
