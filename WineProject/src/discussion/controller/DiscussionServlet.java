@@ -17,6 +17,12 @@ import discussion.model.*;
 
 
 public class DiscussionServlet extends HttpServlet {
+	
+	static final int rowsPerPage = 3; 
+	static int pageNumber = 0;  
+	static int whichPage = 1;  
+	static int pageIndexArray[] = null; 
+	static int pageIndex = 0;  
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -37,6 +43,16 @@ public class DiscussionServlet extends HttpServlet {
 		req.setAttribute("errorMsgs", errorMsgs);
 
 		try {
+			if ("getAll".equals(action)) {
+				dao = new DiscussionHibernateDAO();
+				List<DiscussionVO> list = dao.getAll();		//�C���i�J�d���O�C��ɡA�������Q�פ峹�����
+				splitPages(list,req);
+					RequestDispatcher dis = req
+							.getRequestDispatcher("/discussion/listAllDiscussion.jsp"); 
+					dis.forward(req, res);
+				
+			}
+			
 			//觀看主題內文功能
 			if ("getOne".equals(action)) {
 
@@ -98,7 +114,7 @@ public class DiscussionServlet extends HttpServlet {
 				dao.insert(discussionVO);
 
 				req.setAttribute("discussionVO", discussionVO); // 資料庫取出的VO物件,存入req
-				RequestDispatcher successView = req.getRequestDispatcher("DiscussionList"); // 成功轉交
+				RequestDispatcher successView = req.getRequestDispatcher("/DiscussionList?action=getAll"); // 成功轉交
 				successView.forward(req, res);
 			}
 			
@@ -111,4 +127,37 @@ public class DiscussionServlet extends HttpServlet {
 		}
 	}
 
+	private void splitPages(List<DiscussionVO> list, HttpServletRequest req) {
+		
+		int rowNumber = list.size(); 
+		req.setAttribute("list", list);				
+		String url = req.getRequestURI();
+		req.setAttribute("url", url);
+		req.setAttribute("rowsPerPage", rowsPerPage);
+		req.setAttribute("rowNumber", rowNumber);
+			
+		
+			if (rowNumber % rowsPerPage != 0){
+				pageNumber = rowNumber / rowsPerPage + 1;
+			}
+
+			else{
+				pageNumber = rowNumber / rowsPerPage;
+			}
+			req.setAttribute("pageNumber", pageNumber);
+
+			pageIndexArray = new int[pageNumber];
+			for (int i = 1; i <= pageIndexArray.length; i++){
+				pageIndexArray[i - 1] = i * rowsPerPage - rowsPerPage;
+				req.setAttribute("pageIndexArray", pageIndexArray);
+			}
+
+			if(req.getParameter("whichPage")!=null){
+				whichPage = Integer.parseInt(req.getParameter("whichPage"));
+				pageIndex = pageIndexArray[whichPage - 1];
+				}else{whichPage = 1;pageIndex = 0;}
+				req.setAttribute("whichPage", whichPage);
+				req.setAttribute("pageIndex", pageIndex);
+	}
+	
 }

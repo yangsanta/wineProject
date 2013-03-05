@@ -12,7 +12,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-import product.model.ProductHibernateDAO;
+import product.model.ProductDAO;
 
 /**
  * Servlet Filter implementation class productList
@@ -38,7 +38,7 @@ public class productList implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		ProductHibernateDAO dao = new ProductHibernateDAO();
+		ProductDAO dao = new ProductDAO();
 		List<String> area = dao.findProductType("p_area");
 		request.setAttribute("area", area);
 		List<String> style = dao.findProductType("p_style");

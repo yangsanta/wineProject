@@ -86,6 +86,25 @@ public class MemberHibernateDAO implements MemberDAO_interface {
 		return list;
 	}
 
+	public Integer findHaveName(String id) {
+		Integer totalNO = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("SELECT count(*) as count FROM MemberVO where m_id=?");
+			query.setParameter(0, id);
+			Long count = (Long)query.list().get(0);
+			totalNO = count.intValue();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}		
+		return totalNO;
+	}
+	
+	
 	public static void main(String[] args) {
 
 		MemberHibernateDAO dao = new MemberHibernateDAO();

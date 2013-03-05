@@ -12,16 +12,16 @@ public class MemberVO implements java.io.Serializable{
 	public void setM_id(String m_id) {
 		this.m_id = m_id;
 	}
-	private String m_name;
-	private String m_pwd;
-	private String m_mobile;
-	private String m_email;
-	private Date m_bday;
-	private String m_addr;
-	private String m_pic;
-	private String m_safety_q;
-	private String m_safety_a;
-	private Integer m_status;
+	private String m_name = null;
+	private String m_pwd = null;
+	private String m_mobile = null;
+	private String m_email = null;
+	private Date m_bday = null;
+	private String m_addr = null;
+	private String m_pic = null;
+	private String m_safety_q = null;
+	private String m_safety_a = null;
+	private Integer m_status = null;
 	
 	private Set<MemberVO> members = new HashSet<MemberVO>();
 	public Set<MemberVO> getMembers() {

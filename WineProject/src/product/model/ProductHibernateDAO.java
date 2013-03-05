@@ -10,7 +10,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 public class ProductHibernateDAO implements ProductDAO_interface {
-	private static final String GET_ALL_STMT = "from ProductVO join  order by p_no";
+	private static final String GET_ALL_STMT = "from ProductVO order by p_no";
 
 	@Override
 	public void insert(ProductVO productVO) {
@@ -237,5 +237,14 @@ public class ProductHibernateDAO implements ProductDAO_interface {
 			System.out.println();
 		}
 	}
+
+	@Override
+	public List<ProductVO> findSomeProduct(String lcondition,
+			String conditionValue) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

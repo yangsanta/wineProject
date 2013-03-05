@@ -15,7 +15,7 @@
 	<table border='1' bordercolor='#CCCCFF' width='800'>
 		<tr>
 			<th>主題</th>
-			<th>作者ID</th>
+			<th>作者帳號</th>
 			<th>發文時間</th>
 		</tr>
 
@@ -32,12 +32,12 @@
 		<tr>
 			<c:if test="${rowsPerPage<rowNumber}">
 				<c:if test="${pageIndex>=rowsPerPage}">
-					<td><A href="${url}?whichPage=1">至第一頁</A>&nbsp;</td>
-					<td><A href="${url}?whichPage=${whichPage-1}">上一頁 </A>&nbsp;</td>
+					<td><A href="${url}?action=getAll&whichPage=1">至第一頁</A>&nbsp;</td>
+					<td><A href="${url}?action=getAll&whichPage=${whichPage-1}">上一頁 </A>&nbsp;</td>
 				</c:if>
 				<c:if test="${pageIndex<pageIndexArray[pageNumber-1]}">
-					<td><A href="${url}?whichPage=${whichPage+1}">下一頁</A>&nbsp;</td>
-					<td><A href="${url}?whichPage=${pageNumber}">至最後一頁 </A>&nbsp;</td>
+					<td><A href="${url}?action=getAll&whichPage=${whichPage+1}">下一頁</A>&nbsp;</td>
+					<td><A href="${url}?action=getAll&whichPage=${pageNumber}">至最後一頁 </A>&nbsp;</td>
 				</c:if>
 			</c:if>
 		</tr>
@@ -48,7 +48,7 @@
 				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				</td>
-				<form method="post" action="${url}">
+				<form method="post" action="${url}?action=getAll&">
 				<td><select size="1" name="whichPage">
 						<c:forEach var="i" begin="1" end="${pageNumber}">
 							<option value="${i}">跳至第${i}頁

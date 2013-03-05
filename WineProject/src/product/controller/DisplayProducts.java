@@ -8,45 +8,38 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import product.model.ProductDAO;
 import product.model.ProductVO;
 
-/**
- * Servlet implementation class DisplayProducts
- */
 public class DisplayProducts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public DisplayProducts() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		
 		if ("getAll".equals(action)){
-			ProductDAO productDAO = new ProductDAO();
-			List<ProductVO> list = productDAO.getAll();
-			HttpSession session = request.getSession();
-			session.setAttribute("list", list);
+			List<ProductVO> list = null;
 			
+			//如果用戶只是切換分頁，就直接從session裡抓list出來，如果用戶是新執行getAll (點擊瀏覽全商品的連結，或直接在新的session打開該連結)，則重新query資料庫
+			if (request.getAttribute("action") != null && (request.getAttribute("action").equals("getAll"))){
+				list = (List<ProductVO>) request.getSession().getAttribute("list");
+			} else {
+				request.setAttribute("action", new String("getAll"));
+				
+				ProductDAO productDAO = new ProductDAO();
+				list = productDAO.getAll();
+				request.getSession().setAttribute("list", list);
+			}
 			splitPages(list, request);
 			
 			String listAllUrl = "/product/ProductList.jsp";
@@ -56,6 +49,8 @@ public class DisplayProducts extends HttpServlet {
 		}
 		
 		if ("getOne_For_Display".equals(action)) {
+			request.setAttribute("action", new String("getOne_For_Display"));
+			
 			Integer p_no = Integer.parseInt(request.getParameter("pId"));
 			ProductDAO productDAO = new ProductDAO();
 			ProductVO productVO = productDAO.findByPrimaryKey(p_no);
@@ -67,27 +62,40 @@ public class DisplayProducts extends HttpServlet {
 			return;
 		}
 		
-		//Add getSome_For_Display for where xxx=? search. DAO modification is needed. 
-		//JoJo 3/1/2012
-		/*if ("getSome_For_Display".equals(action)) {
+//		for "where xxx=?" search.
+		if ("getSome_For_Display".equals(action)) {
+			List<ProductVO> list = null;
+			
+			//設定jsp<c:forEach>產出的分頁連結的condition&conditionValue參數
 			String condition = request.getParameter("condition");
 			String conditionValue = request.getParameter("conditionValue");
-			ProductDAO productDAO = new ProductDAO();
-			List<ProductVO> list = productDAO.findByCondition(condition, conditionValue);
+			String conditionParam = "&condition=" + condition + "&conditionValue=" + conditionValue;
+			request.setAttribute("conditionParam", conditionParam);
 			
-			HttpSession session = request.getSession();
-			session.setAttribute("list", list);
-			
+			//如果用戶只是切換分頁，就直接從session裡抓list出來;如果用戶是新執行getSome_For_Display (點擊瀏覽全商品的連結，或直接在新的session打開該連結)，則重新query資料庫
+			if (request.getAttribute("action") != null && (request.getAttribute("action").equals("getSome_For_Display"))){
+				list = (List<ProductVO>) request.getSession().getAttribute("list");
+			} else {
+				request.setAttribute("action", new String("getSome_For_Display"));
+							
+				conditionValue = new String(conditionValue.getBytes("ISO-8859-1"),"UTF-8");
+				ProductDAO productDAO = new ProductDAO();
+				System.out.println(conditionValue);
+				list = productDAO.findSomeProduct(condition,conditionValue);
+				
+				request.setAttribute("list", list);				
+			}
 			splitPages(list, request);
 			
 			String listAllUrl = "/product/ProductList.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
 			rd.forward(request, response);
 			return;
-		}*/
+		}
 		
 	}
 	
+	//分頁
 	private void splitPages(List<ProductVO> list, HttpServletRequest request) {
 		int rowsPerPage = 5;  //每頁的筆數    
 	    int totalRows=list.size();      //總筆數
@@ -104,7 +112,6 @@ public class DisplayProducts extends HttpServlet {
 	    pageIndexArray = new int[totalPages];
 	    for (int i=0; i<totalPages; i++)
 	    	 pageIndexArray[i] = rowsPerPage * i;
-	    //request.getSession().setAttribute("pageIndexArray", pageIndexArray);
 	    
 	    try{
 	    	whichPage = Integer.parseInt(request.getParameter("pageNo"));
@@ -119,11 +126,11 @@ public class DisplayProducts extends HttpServlet {
 	    	}
 	    }
 	    
-	    request.getSession().setAttribute("whichPage", whichPage);
-	    request.getSession().setAttribute("pageIndex", pageIndex);
-	    request.getSession().setAttribute("totalPages", totalPages);
-	    request.getSession().setAttribute("totalRows", totalRows);
-	    request.getSession().setAttribute("rowsPerPage", rowsPerPage);
+	    request.setAttribute("whichPage", whichPage);
+	    request.setAttribute("pageIndex", pageIndex);
+	    request.setAttribute("totalPages", totalPages);
+	    request.setAttribute("totalRows", totalRows);
+	    request.setAttribute("rowsPerPage", rowsPerPage);
 	}
 
 }

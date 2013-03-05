@@ -16,4 +16,7 @@ public interface ProductDAO_interface {
 	public List findProductType(String productlist);
 
 	public List<String> findGrapeType(String productType);
+
+	public List<ProductVO> findSomeProduct(String lcondition,
+			String conditionValue);
 }
