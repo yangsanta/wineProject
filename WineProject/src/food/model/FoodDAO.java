@@ -26,7 +26,7 @@ public class FoodDAO implements FoodDAO_interface {
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(INSERT_STMT);
 
-			pstmt.setString(1, foodVO.getf_name());
+			pstmt.setString(1, foodVO.getF_name());
 
 			pstmt.executeUpdate();
 
@@ -69,8 +69,8 @@ public class FoodDAO implements FoodDAO_interface {
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(UPDATE);
 
-			pstmt.setString(1, foodVO.getf_name());
-			pstmt.setInt(2, foodVO.getf_id());
+			pstmt.setString(1, foodVO.getF_name());
+			pstmt.setInt(2, foodVO.getF_id());
 
 			pstmt.executeUpdate();
 
@@ -166,8 +166,8 @@ public class FoodDAO implements FoodDAO_interface {
 			while (rs.next()) {
 				// empVo 也稱為 Domain objects
 				foodVO = new FoodVO();
-				foodVO.setf_id(rs.getInt("f_id"));
-				foodVO.setf_name(rs.getString("f_name"));
+				foodVO.setF_id(rs.getInt("f_id"));
+				foodVO.setF_name(rs.getString("f_name"));
 
 			}
 
@@ -224,8 +224,8 @@ public class FoodDAO implements FoodDAO_interface {
 			while (rs.next()) {
 				// empVO 也稱為 Domain objects
 				foodVO = new FoodVO();
-				foodVO.setf_id(rs.getInt("f_id"));
-				foodVO.setf_name(rs.getString("f_name"));
+				foodVO.setF_id(rs.getInt("f_id"));
+				foodVO.setF_name(rs.getString("f_name"));
 
 				list.add(foodVO); // Store the row in the list
 			}
@@ -271,14 +271,14 @@ public class FoodDAO implements FoodDAO_interface {
 
 		// 新增
 		FoodVO foodVO1 = new FoodVO();
-		foodVO1.setf_name("新增乳製品");
+		foodVO1.setF_name("新增乳製品");
 
 		dao.insert(foodVO1);
 
 		// 修改
 		FoodVO foodVO2 = new FoodVO();
-		foodVO2.setf_id(new Integer(102));
-		foodVO2.setf_name("修改乳製品");
+		foodVO2.setF_id(new Integer(102));
+		foodVO2.setF_name("修改乳製品");
 		//
 		dao.update(foodVO2);
 
@@ -287,15 +287,15 @@ public class FoodDAO implements FoodDAO_interface {
 
 		// // 查詢
 		FoodVO foodVO3 = dao.findByPrimaryKey(102);
-		System.out.print(foodVO3.getf_id() + ",");
-		System.out.print(foodVO3.getf_name());
+		System.out.print(foodVO3.getF_id() + ",");
+		System.out.print(foodVO3.getF_name());
 		System.out.println("---------------------");
 
 		// 查詢
 		List<FoodVO> list = dao.getAll();
 		for (FoodVO afood : list) {
-			System.out.print(afood.getf_id() + ",");
-			System.out.print(afood.getf_name() + ",");
+			System.out.print(afood.getF_id() + ",");
+			System.out.print(afood.getF_name() + ",");
 
 			System.out.println("-1---------------1-");
 		}

@@ -15,7 +15,9 @@ public class IngredientDAO implements IngredientDAO_interface {
 		      "SELECT i_id,f_id,i_name FROM ingredient order by i_id";
 	private static final String GET_ONE_STMT =
 		      "SELECT i_id,f_id,i_name FROM ingredient where i_id=?";
-	private static final String DELETE =
+	private static final String GET_f_id =
+		      "SELECT i_id,f_id,i_name FROM ingredient where f_id=?";
+		private static final String DELETE =
 		      "DELETE FROM ingredient where i_id = ?";
 	private static final String UPDATE =
 		      "UPDATE ingredient set f_id=?,i_name=? where i_id=?";
@@ -32,8 +34,8 @@ public class IngredientDAO implements IngredientDAO_interface {
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(INSERT_STMT);
 
-			pstmt.setInt(1, ingredientVO.getf_id());
-			pstmt.setString(2, ingredientVO.geti_name());
+			pstmt.setInt(1, ingredientVO.getF_id());
+			pstmt.setString(2, ingredientVO.getI_name());
 			
 
 			pstmt.executeUpdate();
@@ -78,9 +80,9 @@ public class IngredientDAO implements IngredientDAO_interface {
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(UPDATE);
 
-			pstmt.setInt(1, ingredientVO.getf_id());
-			pstmt.setString(2, ingredientVO.geti_name());
-			pstmt.setInt(3, ingredientVO.geti_id());
+			pstmt.setInt(1, ingredientVO.getF_id());
+			pstmt.setString(2, ingredientVO.getI_name());
+			pstmt.setInt(3, ingredientVO.getI_id());
 
 			pstmt.executeUpdate();
 
@@ -177,9 +179,9 @@ public class IngredientDAO implements IngredientDAO_interface {
 			while (rs.next()) {
 				// empVo 也稱為 Domain objects
 				ingredientVO = new IngredientVO();
-				ingredientVO.seti_id(rs.getInt("i_id"));
-				ingredientVO.setf_id(rs.getInt("f_id"));
-				ingredientVO.seti_name(rs.getString("i_name"));
+				ingredientVO.setI_id(rs.getInt("i_id"));
+				ingredientVO.setF_id(rs.getInt("f_id"));
+				ingredientVO.setI_name(rs.getString("i_name"));
 				
 			}
 
@@ -237,12 +239,13 @@ public class IngredientDAO implements IngredientDAO_interface {
 			while (rs.next()) {
 				// empVO 也稱為 Domain objects
 				ingredientVO = new IngredientVO();
-				ingredientVO.seti_id(rs.getInt("i_id"));
-				ingredientVO.setf_id(rs.getInt("f_id"));
-				ingredientVO.seti_name(rs.getString("i_name"));
+				ingredientVO.setI_id(rs.getInt("i_id"));
+				ingredientVO.setF_id(rs.getInt("f_id"));
+				ingredientVO.setI_name(rs.getString("i_name"));
 				
 				list.add(ingredientVO); // Store the row in the list
 			}
+			
 
 			// Handle any driver errors
 		} catch (ClassNotFoundException e) {
@@ -279,22 +282,84 @@ public class IngredientDAO implements IngredientDAO_interface {
 		return list;
 	}
 
+	public List<IngredientVO> getf_id(Integer id) {
+		List<IngredientVO> list = new ArrayList<IngredientVO>();
+		IngredientVO ingredientVO = null;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(GET_f_id);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				// empVO 也稱為 Domain objects
+				ingredientVO = new IngredientVO();
+				ingredientVO.setI_id(rs.getInt("i_id"));
+				ingredientVO.setF_id(rs.getInt("f_id"));
+				ingredientVO.setI_name(rs.getString("i_name"));
+				
+				list.add(ingredientVO); // Store the row in the list
+			}
+			
+
+			// Handle any driver errors
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
+	
 	public static void main(String[] args) {
 
 		IngredientDAO dao = new IngredientDAO();
 
 		// 新增
 		IngredientVO ingredientVO1 = new IngredientVO();
-		ingredientVO1.setf_id(20);
-		ingredientVO1.seti_name("新增馬鈴薯泥1");
+		ingredientVO1.setF_id(20);
+		ingredientVO1.setI_name("新增馬鈴薯泥1");
 
 		dao.insert(ingredientVO1);
 
 		// 修改
 		IngredientVO ingredientVO2 = new IngredientVO();
-		ingredientVO2.seti_id(new Integer(102));
-		ingredientVO2.setf_id(20);
-		ingredientVO2.seti_name("修改高麗菜12");
+		ingredientVO2.setI_id(new Integer(102));
+		ingredientVO2.setF_id(20);
+		ingredientVO2.setI_name("修改高麗菜12");
 
 		dao.update(ingredientVO2);
 
@@ -303,17 +368,17 @@ public class IngredientDAO implements IngredientDAO_interface {
 
 //		// 查詢
 		IngredientVO ingredientVO3 = dao.findByPrimaryKey(102);
-		System.out.print(ingredientVO3.geti_id() + ",");
-		System.out.print(ingredientVO3.getf_id());
-		System.out.print(ingredientVO3.geti_name());
+		System.out.print(ingredientVO3.getI_id() + ",");
+		System.out.print(ingredientVO3.getF_id()+ ",");
+		System.out.print(ingredientVO3.getI_name());
 		System.out.println("---------------------");
 
 		// 查詢
 		List<IngredientVO> list = dao.getAll();
 		for (IngredientVO aingredient : list) {
-			System.out.print(aingredient.geti_id() + ",");
-			System.out.print(aingredient.getf_id());
-			System.out.print(aingredient.geti_name() + ",");
+			System.out.print(aingredient.getI_id() + ",");
+			System.out.print(aingredient.getF_id()+ ",");
+			System.out.print(aingredient.getI_name() + ",");
 
 			
 			System.out.println("-1---------------1-");
