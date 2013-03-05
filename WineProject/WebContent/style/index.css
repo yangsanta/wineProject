@@ -1,4 +1,4 @@
-/* ¥ş°ìcss */
+/* å…¨åŸŸcss */
 
 body{	font-size: 12pt;
 	line-height: 1.75em;
@@ -18,7 +18,7 @@ body{	font-size: 12pt;
 	padding: 40px 40px 10px 40px;
 	height: 120px;
 }
-/* ¼u¥Xfancybox ªºcss³]©w*/
+/* å½ˆå‡ºfancybox çš„cssè¨­å®š*/
 #login-box {
 	float: left;
 	border: 1px solid #c7c7c7;
@@ -39,7 +39,7 @@ body{	font-size: 12pt;
 .form-question{margin-top:10px;float:right;}
 .form-question a{margin-left:10px;font-size: 9pt;}
 #login_submit input[type="submit"]{float:right;margin-top:10px;}
-/* ¼u¥Xfancybox ªºcss³]©w*/
+/* å½ˆå‡ºfancybox çš„cssè¨­å®š*/
 #logo {
 	position: absolute;
 	top: 40px;
@@ -122,7 +122,7 @@ line-height: 40px;
 #nav ul li {
 	float: left;
 }
-/*¥D¤º®e */
+/*ä¸»å…§å®¹ */
 #main {
 	position: relative;
 	padding: 0;
@@ -151,27 +151,13 @@ line-height: 40px;
 #main ul.imageList li {
 	padding: 15px 0 15px 0;
 }
-/* ¥ªÃä¿ï³æ */
+/* å·¦é‚Šé¸å–® */
 #main #sidebar {
 	float: left;
 }
-#left_menu{
-	width: 180px;
-	background: #32251b;
-	color: #fff;
-	padding: 20px;
-	-moz-box-shadow: 3px 3px 4px rgb(39, 32, 26);
-    -webkit-box-shadow: 3px 3px 4px rgb(39, 32, 26);
-    box-shadow: 3px 3px 4px rgb(39, 32, 26);
-	-webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
-	border-radius: 7px;
-}
-#left_menu span {
-		color:yellow;
-		font-size: 16pt;
-	}
-#left_menu a{	color: #fff;}
+
+
+
 .abgne-news-scroll {
 		color:#fff;
 		margin-top:10px;
@@ -212,7 +198,7 @@ line-height: 40px;
 		margin-left: 5px;
 		font-size: 12px;
 	}
-/* ¥kÃä¤º®e */
+/* å³é‚Šå…§å®¹ */
 #content {
 	margin: 0 0 0 250px;
 	padding: 40px;

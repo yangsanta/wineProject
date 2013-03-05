@@ -6,7 +6,7 @@
 
 	<session-factory>
 
-		<!-- ³s½u¦Àc3p0³]©w -->
+		<!-- é€£ç·šæ± c3p0è¨­å®š -->
 		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
 		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=WineProject</property>
 		<property name="hibernate.connection.username">sa</property>
@@ -17,22 +17,22 @@
 		<property name="hibernate.c3p0.timeout">1800</property>
 		<property name="hibernate.c3p0.max_statements">50</property>
 
-		<!--SQL¤è¨¥,¥H¤U¨Ï¥ÎOracle -->
+		<!--SQLæ–¹è¨€,ä»¥ä¸‹ä½¿ç”¨Oracle -->
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
 
-		<!--SQL¤è¨¥,¥H¤U¨Ï¥ÎOracle -->
+		<!--SQLæ–¹è¨€,ä»¥ä¸‹ä½¿ç”¨Oracle -->
 		<property name="hibernate.show_sql">true</property>
 
 		<!-- Disable the second-level cache -->
 		<property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
 
-		<!--¥æ©öºÞ²zÃþ«¬, ¥H¤U¨Ï¥ÎJDBC Transaction -->
+		<!--äº¤æ˜“ç®¡ç†é¡žåž‹, ä»¥ä¸‹ä½¿ç”¨JDBC Transaction -->
 		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
 
-		<!--¥æ©öºÞ²zÃþ«¬, ¥H¤U¨Ï¥ÎJDBC Transaction -->
+		<!--äº¤æ˜“ç®¡ç†é¡žåž‹, ä»¥ä¸‹ä½¿ç”¨JDBC Transaction -->
 		<property name="hibernate.current_session_context_class">thread</property>
 
-		<!--¥æ©öºÞ²zÃþ«¬, ¥H¤U¨Ï¥ÎJDBC Transaction -->
+		<!--äº¤æ˜“ç®¡ç†é¡žåž‹, ä»¥ä¸‹ä½¿ç”¨JDBC Transaction -->
 		<mapping resource="coupon/model/coupon.hbm.xml" />
 		<mapping resource="order_detail/model/order_detail.hbm.xml" />
 		<mapping resource="discussion/model/discussion.hbm.xml" />

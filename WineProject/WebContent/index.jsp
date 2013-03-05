@@ -1,16 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
 <html>
 <head>
-<meta http-equiv="Content-Language" content="zh-tw">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>酒迷 | 歷久彌新的香濃口感</title>
- <meta content="酒迷 | 歷久彌新的香濃口感。" name="description" />
-  <meta content="酒迷 | 歷久彌新的香濃口感" name="keywords" />
+	<meta http-equiv="Content-Language" content="zh-tw">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>酒迷 | 歷久彌新的香濃口感</title>
+	<meta content="酒迷 | 歷久彌新的香濃口感。" name="description" />
+ 	<meta content="酒迷 | 歷久彌新的香濃口感" name="keywords" />
         <link href="style/reset.css" rel="stylesheet" type="text/css" />
 		<link href="style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-			<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="http://code.jquery.com/jquery.js"></script>
 		<script src="style/bootstrap/js/bootstrap.js"></script>
 
 		<script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.4"></script>
@@ -19,7 +21,6 @@
 
 		<script type="text/javascript" src="js/index.js?v=1.0"></script>
 <style type="text/css">
-
 /*右邊 廣告輪播 ad*/
 #abgneBlock {
 		width: 640px;
@@ -145,82 +146,10 @@
 					<input name="searchInput" type="text" class="search-query iconsearch" placeholder="搜尋" style="width: 70px; height: 10px; padding-left: 24px;" onfocus="this.style.width='100px'" onblur="this.style.width='70px'">
 					</div>
 						<br class="clear" />
-				<div id="header">
-					<div id="logo">
-						<h1>
-							<a href="#">酒迷logo</a>
-						</h1>
-					</div>
-					
-					<div id="little_nav">
-						<ul>
-							<li>
-								<a href="#">加入會員</a>
-							</li>
-							<li>
-								<a class="fancybox" href="#inline1" >登入</a>
-							</li>
-							<li>
-								<a href="#">會員專區</a>
-							</li>
-							<li>
-								<a href="#">購物車
-							</li>
-							<li><div style="margin-top:-15px;padding:10px 0 0 15px; background: url('images/cart.png') no-repeat;width:50px;height:50px"><span> 2</span></div></a></li>
-							
-						</ul>
-					</div>
-					<div id="nav">
-						<ul>
-							<li class="first active">
-								<a href="#"rel="tooltip" data-placement="bottom" title="介紹本月新上市的最新好酒，邀您一同來品嘗">本月新品</a>
-							</li>
-							<li>
-								<a href="#"rel="tooltip" data-placement="bottom" title="年度暢銷熱賣商品都在這邊，快來搶購!">暢銷商品</a>
-							</li>
-							<li>
-								<a href="#"rel="tooltip" data-placement="bottom" title="最新的組合套餐優惠，您可以用最優惠的方式購買到此產品">優惠商品</a>
-							</li>
-							<li>
-								<a href="#"rel="tooltip" data-placement="bottom" title="不知道吃甚麼晚餐配甚麼樣的酒最浪漫美味嗎? 來這邊就對了">餐酒搭配</a>
-							</li>
-							
-							<li class="last">
-								<a href="discussion.htm"rel="tooltip" data-placement="bottom" title="相信這世界上一定還有更多與你一樣愛酒的人士，一起討論吧">討論區</a>
-							</li>
-						</ul>
-						<br class="clear" />
-					</div>
-				</div>
+			<%@ include file="view_model/index_header.htm"%>
 	<div id="main">
 					<div id="sidebar">
-					<div id="left_menu">
-						<span>快速選單</span>
-
-						<ul class="linkedList">
-							<li class="first">
-								<a href="#">風味</a>
-							</li>
-							<li>
-								<a href="#">國家、地區</a>
-							</li>
-							<li>
-								<a href="#">品牌、酒莊</a>
-							</li>
-							<li>
-								<a href="#">價格</a>
-							</li>
-							<li>
-								<a href="#">容量</a>
-							</li>
-							<li>
-								<a href="#">酒種</a>
-							</li>
-							<li class="last">
-								<a href="#">進階搜尋</a>
-							</li>
-						</ul>
-						</div>
+						<%@ include file="view_model/product_list.jsp"%>
 										<div class="abgne-news-scroll">
 										<div align="center"><span class="title">暢銷商品</span></div>
 		<ul>
@@ -279,51 +208,7 @@
 	<a href="#" rel="tooltip" title="A nice tooltip">test</a>	
 臺下內；河分我：市報經深不爸低學前場，爭中牛！能運從那古腳只！於王獲許指完年有白去製器用：想境兒、參我灣以頭有觀麼沒自期，感個童裡一就手雖前的一親輕；下果自學考們選我日加難許足想小令力？<a class="fancybox" href="#inline1" title="Lorem ipsum dolor sit amet">Inline</a>
 
-	<div id="inline1" style="width:700px;padding-left:25px;display: none;padding-bottom:30px;">
-	<h1>登入會員</h1>
-	<hr>
-		<div id="welcome-note">歡迎回來</div><br>
-		<div id="login-box">
-				<form action="123.htm" method="post" id="user-login">
-
-					<div class="form-item">
-						<label style="width:80px">電子郵件 :</label>
-							<div class="input-prepend">
-								<span class="add-on"><i class="icon-user"></i></span>
-								<input class="span3" id="inputIcon" type="text" maxlength="128">
-							</div>
-						
-					</div>
-					<div class="form-item">
-						<label style="width:80px">密碼 :</label> 
-							<div class="input-prepend">
-								<span class="add-on"><i class="icon-lock"></i></span>
-								<input class="span3" id="inputIcon" type="password" maxlength="128">
-							</div>			
-					</div>
-						
-					<div class="form-question">
-							<a href="#"
-								title="建立一個新的使用者帳號。">註冊帳號</a>
-							<a href="#" title="我們會將新密碼索取函寄到您的電子信箱">忘記密碼</a>
-							<a href="#"
-								title="若您登入一直發生困難，請填寫這個表單。">登入問題回報</a>
-					</div>
-					<br class="clear" />
-					<div  id="login_submit">
-						<input type="submit"  value="登入" class="btn btn-success" style="Width:150px;Height:40px;"/>
-					</div>
-				</form>
-		</div>
-		<div id="fbconnect_button" >
-			<label for="fbconnect_button"><span style="font-size: 15pt;">沒有註冊嗎?</span><br><br>現在你可以直接用 Facbook 登入 </label> <br><br><a
-				class="facebook-action-connect"
-				href="https://www.facebook.com/dialog/oauth?client_id=145772212108981&redirect_uri=http%3A//bhuntr.com/fboauth/connect&scope=email%2Cuser_photos%2Cuser_checkins%2Cuser_events%2Cread_friendlists%2Cuser_interests%2Cuser_likes%2Cread_stream"><img
-				src="images/fbconnect.jpg"
-				alt="" /></a><br><br><br>
-		</div>
-		 <br style="clear:both;" /><br><br>
-	</div>
+<%@ include file="view_model/index_fast_login.htm"%>
 						</div>
 
 						<br class="clear" />
@@ -331,13 +216,7 @@
 					<br class="clear" />
 				</div>
 			</div>
-			<div id="copyright">
-				<div class="container">
-				<img src="images/footer.png">
-				<span>使用者條款 | 隱私權政策 | 常見問題 | 聯絡我們</span>
-				<span style="float:right;margin-right:20px"> Copyright © 2013 JomeWine Inc.  酒迷創意行銷股份有限公司</span>
-				</div>
-			</div>
+<%@ include file="view_model/index_footer.htm"%>
 				
 			</div>
 			

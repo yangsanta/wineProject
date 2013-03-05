@@ -1,39 +1,39 @@
 root/
-  ¢u¢w¢w products/              ©ñ§Ú­Ì°Ó«~¹Ï¤ùªº¸ê®Æ§¨
-  ¢x   ¢u¢w¢w    ²¤
-  ¢x   ¢u¢w¢w 
-  ¢u¢w¢w style/  		   cssªº¸ê®Æ§¨¥H¤Îbootstrap¼ËªO 
-  ¢x   ¢u¢w¢w bootstrap			[©Ò¦³­¶­±]bootstrap¼ËªO
-  ¢x   ¢u¢w¢w index.css			[©Ò¦³­¶­±]¥D¬[ºcªºcss ©Ò¦³ºô­¶³£·|®M¥Î¨ì 
-  ¢x   ¢u¢w¢w jquery.fancybox.css	[©Ò¦³­¶­±]·|­ûµn¤J¥Îªº¨º­Ófancybox¼u¥X¦¡µe­±css
-  ¢x   ¢u¢w¢w reset.css  		[©Ò¦³­¶­±]css reset 
-  ¢u¢w¢w ÃB¥~³Æ¥÷ÀÉ/ 		³Æ¥÷¶}µo¹Lµ{¤¤ªº¤@¨Ç¤]³\·|¥Î¨ìªº¹Ï¤ù¡BÀÉ®×psdÀÉ¤§Ãşªº
-  ¢x   ¢u¢w¢w 
-  ¢x   ¢u¢w¢w
-  ¢u¢w¢w js/
-  ¢x   ¢u¢w¢w index.js			[©Ò¦³­¶­±]¥D¬[ºcªºjs (¼öªù¼s§i½ü¼½¡B®ğªw¿ï³æ¡Bfancybox¼u¥X¦¡µe­±
-  ¢x   ¢u¢w¢w jquery-1.9.0.min.js	[©Ò¦³­¶­±]jquery
-  ¢x   ¢u¢w¢w jquery.fancybox.js	[©Ò¦³­¶­±]·|­ûµn¤J¥Îªº¨º­Ófancybox¼u¥X¦¡µe­±
-  ¢x   ¢u¢w¢w 
-  ¢u¢w¢w images/
-  ¢x   ¢u¢w¢w ad			[­º­¶]¼s§i½ü¼½ªº¹Ï¤ùÀÉ
-  ¢x   ¢x    ¢u¢w¢w²¤
-  ¢x   ¢x    ¢u¢w¢w
-  ¢x   ¢u¢w¢w bg.jpg			[©Ò¦³­¶­±]ºô¯¸­I´º
-  ¢x   ¢u¢w¢w cart.png			[©Ò¦³­¶­±]headerÁÊª«¨®¤p¹Ï
-  ¢x   ¢u¢w¢w cir_ctrl.png		[­º­¶]	  ­º­¶¼s§i½ü¼½¤À­¶¤p¹Ï
-  ¢x   ¢u¢w¢w discussion_paper.gif	[°Q½×°Ï]  ¨C½g¤å³¹«e­±ªº¤p¹Ï
-  ¢x   ¢u¢w¢w disz_bg.png		[°Q½×°Ï]  °Q½×°Ï ­I´º
-  ¢x   ¢u¢w¢w fancybox_overlay.png	[©Ò¦³­¶­±]fancybox
-  ¢x   ¢u¢w¢w fancybox_sprite.png	[©Ò¦³­¶­±]fancybox
-  ¢x   ¢u¢w¢w fbconnect.jpg		[©Ò¦³­¶­±]·|­ûµn¤J
-  ¢x   ¢u¢w¢w footer.png		[©Ò¦³­¶­±]footer
-  ¢x   ¢u¢w¢w login_bg.png		[©Ò¦³­¶­±]·|­ûµn¤J­I´º
-  ¢x   ¢u¢w¢w nav_bg.png		[©Ò¦³­¶­±]css¿ï³æ­I´º
-  ¢x   ¢u¢w¢w search_icon.png		[©Ò¦³­¶­±]·j´M®Ø¹Ï
-  ¢x   ¢u¢w¢w shadow.png		[©Ò¦³­¶­±]ºô¯¸­I´ºº¥¼h
-  ¢x
-  ¢u¢w¢w index.htm			ºô¯¸­º­¶
-  ¢u¢w¢w discussion.htm			°Q½×°Ï
-  ¢u¢w¢w getstart.txt			»¡©úÀÉ®×
-  ¢|¢w¢w favicon.ico			ºô¯¸¤p¹Ï
+  â”œâ”€â”€ products/              æ”¾æˆ‘å€‘å•†å“åœ–ç‰‡çš„è³‡æ–™å¤¾
+  â”‚   â”œâ”€â”€    ç•¥
+  â”‚   â”œâ”€â”€ 
+  â”œâ”€â”€ style/  		   cssçš„è³‡æ–™å¤¾ä»¥åŠbootstrapæ¨£æ¿ 
+  â”‚   â”œâ”€â”€ bootstrap			[æ‰€æœ‰é é¢]bootstrapæ¨£æ¿
+  â”‚   â”œâ”€â”€ index.css			[æ‰€æœ‰é é¢]ä¸»æ¶æ§‹çš„css æ‰€æœ‰ç¶²é éƒ½æœƒå¥—ç”¨åˆ° 
+  â”‚   â”œâ”€â”€ jquery.fancybox.css	[æ‰€æœ‰é é¢]æœƒå“¡ç™»å…¥ç”¨çš„é‚£å€‹fancyboxå½ˆå‡ºå¼ç•«é¢css
+  â”‚   â”œâ”€â”€ reset.css  		[æ‰€æœ‰é é¢]css reset 
+  â”œâ”€â”€ é¡å¤–å‚™ä»½æª”/ 		å‚™ä»½é–‹ç™¼éç¨‹ä¸­çš„ä¸€äº›ä¹Ÿè¨±æœƒç”¨åˆ°çš„åœ–ç‰‡ã€æª”æ¡ˆpsdæª”ä¹‹é¡çš„
+  â”‚   â”œâ”€â”€ 
+  â”‚   â”œâ”€â”€
+  â”œâ”€â”€ js/
+  â”‚   â”œâ”€â”€ index.js			[æ‰€æœ‰é é¢]ä¸»æ¶æ§‹çš„js (ç†±é–€å»£å‘Šè¼ªæ’­ã€æ°£æ³¡é¸å–®ã€fancyboxå½ˆå‡ºå¼ç•«é¢
+  â”‚   â”œâ”€â”€ jquery-1.9.0.min.js	[æ‰€æœ‰é é¢]jquery
+  â”‚   â”œâ”€â”€ jquery.fancybox.js	[æ‰€æœ‰é é¢]æœƒå“¡ç™»å…¥ç”¨çš„é‚£å€‹fancyboxå½ˆå‡ºå¼ç•«é¢
+  â”‚   â”œâ”€â”€ 
+  â”œâ”€â”€ images/ 
+  â”‚   â”œâ”€â”€ ad			[é¦–é ]å»£å‘Šè¼ªæ’­çš„åœ–ç‰‡æª”
+  â”‚   â”‚    â”œâ”€â”€ç•¥
+  â”‚   â”‚    â”œâ”€â”€
+  â”‚   â”œâ”€â”€ bg.jpg			[æ‰€æœ‰é é¢]ç¶²ç«™èƒŒæ™¯
+  â”‚   â”œâ”€â”€ cart.png			[æ‰€æœ‰é é¢]headerè³¼ç‰©è»Šå°åœ–
+  â”‚   â”œâ”€â”€ cir_ctrl.png		[é¦–é ]	  é¦–é å»£å‘Šè¼ªæ’­åˆ†é å°åœ–
+  â”‚   â”œâ”€â”€ discussion_paper.gif	[è¨è«–å€]  æ¯ç¯‡æ–‡ç« å‰é¢çš„å°åœ–
+  â”‚   â”œâ”€â”€ disz_bg.png		[è¨è«–å€]  è¨è«–å€ èƒŒæ™¯
+  â”‚   â”œâ”€â”€ fancybox_overlay.png	[æ‰€æœ‰é é¢]fancybox
+  â”‚   â”œâ”€â”€ fancybox_sprite.png	[æ‰€æœ‰é é¢]fancybox
+  â”‚   â”œâ”€â”€ fbconnect.jpg		[æ‰€æœ‰é é¢]æœƒå“¡ç™»å…¥
+  â”‚   â”œâ”€â”€ footer.png		[æ‰€æœ‰é é¢]footer
+  â”‚   â”œâ”€â”€ login_bg.png		[æ‰€æœ‰é é¢]æœƒå“¡ç™»å…¥èƒŒæ™¯
+  â”‚   â”œâ”€â”€ nav_bg.png		[æ‰€æœ‰é é¢]cssé¸å–®èƒŒæ™¯
+  â”‚   â”œâ”€â”€ search_icon.png		[æ‰€æœ‰é é¢]æœå°‹æ¡†åœ–
+  â”‚   â”œâ”€â”€ shadow.png		[æ‰€æœ‰é é¢]ç¶²ç«™èƒŒæ™¯æ¼¸å±¤
+  â”‚
+  â”œâ”€â”€ index.htm			ç¶²ç«™é¦–é 
+  â”œâ”€â”€ discussion.htm			è¨è«–å€
+  â”œâ”€â”€ getstart.txt			èªªæ˜æª”æ¡ˆ
+  â””â”€â”€ favicon.ico			ç¶²ç«™å°åœ–
