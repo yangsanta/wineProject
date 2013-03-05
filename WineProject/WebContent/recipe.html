@@ -8,39 +8,39 @@
 	$(function(){
 		$.getJSON('food/setselectall?action=select1', {}, function(data){
 			$.each(data, function(){
-				//$('#emps').append('<option value="' + this.id + '">' + this.name + '</option>');
-				$('#emps').append($('<option></option>').val(this.f_id).text(this.f_name));
+				//$('#foods').append('<option value="' + this.id + '">' + this.name + '</option>');
+				$('#foods').append($('<option></option>').val(this.f_id).text(this.f_name));
 			});	
 		});
 		
-		$('#emps').change(function(){
+		$('#foods').change(function(){
 			//alert('changed');
 			//$('#orders option[value!=0]').remove();
-			$('#orders').empty().append('<option value="0">--- 請選擇 ---</option>');
-			$('#orders1').empty().append('<option value="0">--- 請選擇 ---</option>');
+			$('#ingredients').empty().append('<option value="0">--- 請選擇 ---</option>');
+			$('#sauces').empty().append('<option value="0">--- 請選擇 ---</option>');
 			
-			//var eid = $('#emps :selected').val();
+			//var eid = $('#foods :selected').val();
 			var eid = $(this).val();
 			
 			$.getJSON('food/setselectall?action=select2', {id:eid}, function(data){
 				$.each(data, function(){
 					//$('#orders').append('<option value="' + this + '">' + this + '</option>');
-					$('#orders').append($('<option></option>').val(this).text(this.i_id));
+					$('#ingredients').append($('<option></option>').val(this.f_id).text(this.i_name));
 				});	
 			});
 		});
-		$('#orders').change(function(){
+		$('#ingredients').change(function(){
 			//alert('changed');
 			//$('#orders option[value!=0]').remove();
-			$('#orders1').empty().append('<option value="0">--- 請選擇 ---</option>');
+			$('#sauces').empty().append('<option value="0">--- 請選擇 ---</option>');
 			
-			//var eid = $('#emps :selected').val();
-			var eid = $(this).val();
+			//var eid = $('#foods :selected').val();
+			var eid1 = $(this).val();
 			
-			$.getJSON('food/setselectall?action=select3', {id:eid}, function(data){
+			$.getJSON('food/setselectall?action=select3', {id:eid1}, function(data){
 				$.each(data, function(){
 					//$('#orders').append('<option value="' + this + '">' + this + '</option>');
-					$('#orders1').append($('<option></option>').val(this).text(this));
+					$('#sauces').append($('<option></option>').val(this.i_id).text(this.s_name));
 				});	
 			});
 		});
@@ -49,13 +49,13 @@
 </script>
 </head>
 <body>
-<select id="emps">
+<select id="foods">
 <option value="0">-------- 請選擇 --------</option>
 </select>
-<select id="orders">
+<select id="ingredients">
 <option value="0">--- 請選擇 ---</option>
 </select>
-<select id="orders1">
+<select id="sauces">
 <option value="0">--- 請選擇 ---</option>
 </select>
 </body>
