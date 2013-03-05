@@ -9,5 +9,7 @@
 <body>
 <a href="product/DisplayProducts?action=getAll&pageNo=1">Product/DisplayProducts(getAll)</a><br/>
 <a href="product/DisplayProducts?action=getSome_For_Display&pageNo=1&condition=p_vol&conditionValue=750">Product/DisplayProducts(getSome_For_Display)</a>
+<hr />
+<a href="member/MemberService">member/MemberService</a>
 </body>
 </html>

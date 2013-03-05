@@ -76,4 +76,12 @@
 		<servlet-name>setselectallfood</servlet-name>
 		<url-pattern>/food/setselectall</url-pattern>
 	</servlet-mapping>
+	<servlet>
+    	<servlet-name>MemberService</servlet-name>
+    	<servlet-class>member.controller.MemberService</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>MemberService</servlet-name>
+    	<url-pattern>/member/MemberService</url-pattern>
+  	</servlet-mapping>
 </web-app>
