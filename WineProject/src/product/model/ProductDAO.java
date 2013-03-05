@@ -158,7 +158,26 @@ public class ProductDAO implements ProductDAO_interface {
 		}
 		return list;
 	}
+	public List<String> findCountry(String area) {
+		List list = null;
 
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		try {
+			session.beginTransaction();
+
+			Query query = session
+					.createQuery("SELECT DISTINCT p_country FROM ProductVO where p_area=?");
+			query.setParameter(0, area);
+			list = query.list();
+
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
 	// -------------------------------------------------------
 	public static void main(String arg[]) {
 		ProductDAO dao = new ProductDAO();

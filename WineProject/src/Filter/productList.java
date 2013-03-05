@@ -39,8 +39,27 @@ public class productList implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		ProductDAO dao = new ProductDAO();
-		List<String> area = dao.findProductType("p_area");
-		request.setAttribute("area", area);
+		List<String> France = dao.findCountry("法國");
+		for(String aaa:France){
+			System.out.println(aaa);
+		}
+		request.setAttribute("France", France);
+		List<String> Australia = dao.findCountry("澳洲");
+		request.setAttribute("Australia", Australia);
+		List<String> America = dao.findCountry("美國加州");
+		request.setAttribute("America", America);
+		List<String> Italy = dao.findCountry("義大利");
+		request.setAttribute("Italy", Italy);
+		List<String> Germany = dao.findCountry("德國");
+		request.setAttribute("Germany", Germany);
+		List<String> Spain = dao.findCountry("西班牙");
+		request.setAttribute("Spain", Spain);
+		List<String> Argentina = dao.findCountry("阿根廷");
+		request.setAttribute("Argentina", Argentina);
+		List<String> Chile = dao.findCountry("智利");
+		request.setAttribute("Chile", Chile);
+		List<String> Portugal = dao.findCountry("葡萄牙");
+		request.setAttribute("Portugal", Portugal);
 		List<String> style = dao.findProductType("p_style");
 		request.setAttribute("style", style);
 		List<String> p_winery = dao.findProductType("p_winery");

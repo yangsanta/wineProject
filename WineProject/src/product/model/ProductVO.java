@@ -1,6 +1,5 @@
 ﻿package product.model;
 
-
 import java.sql.Timestamp;
 
 public class ProductVO implements java.io.Serializable {
@@ -12,7 +11,7 @@ public class ProductVO implements java.io.Serializable {
 	private String p_area;
 	private String p_intro;
 	private Integer p_num;
-	private Double p_price;
+	private Integer p_price;
 	private String p_status;
 	private String p_winery;
 	private Integer p_click_count;
@@ -21,12 +20,31 @@ public class ProductVO implements java.io.Serializable {
 	private String p_sales;
 	private Integer p_vol;
 	private Double p_alcho;
-    private Timestamp p_date;
-    private String p_type;
-    private String p_grape;
+	private Timestamp p_date;
+	private String p_type;
+	private String p_grape;
+	private Integer p_discount;
+	private String p_country;
+	
 
-public String getP_pic() {
+	public String getP_country() {
+		return p_country;
+	}
+
+	public void setP_country(String p_country) {
+		this.p_country = p_country;
+	}
+
+	public String getP_pic() {
 		return p_pic;
+	}
+
+	public Integer getP_discount() {
+		return p_discount;
+	}
+
+	public void setP_discount(Integer p_discount) {
+		this.p_discount = p_discount;
 	}
 
 	public void setP_pic(String p_pic) {
@@ -113,11 +131,11 @@ public String getP_pic() {
 		this.p_num = p_num;
 	}
 
-	public Double getP_price() {
+	public Integer getP_price() {
 		return p_price;
 	}
 
-	public void setP_price(Double p_price) {
+	public void setP_price(Integer p_price) {
 		this.p_price = p_price;
 	}
 

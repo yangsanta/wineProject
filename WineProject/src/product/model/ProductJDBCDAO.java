@@ -211,7 +211,7 @@ public class ProductJDBCDAO implements ProductDAO_interface {
 				productVO.setP_area(rs.getString("p_area"));
 				productVO.setP_intro(rs.getString("p_intro"));
 				productVO.setP_num(rs.getInt("p_num"));
-				productVO.setP_price(rs.getDouble("p_price"));
+				productVO.setP_price(rs.getInt("p_price"));
 				productVO.setP_status(rs.getString("p_status"));
 				productVO.setP_winery(rs.getString("p_winery"));
 				productVO.setP_click_count(rs.getInt("p_click_count"));
@@ -287,7 +287,7 @@ public class ProductJDBCDAO implements ProductDAO_interface {
 				productVO.setP_area(rs.getString("p_area"));
 				productVO.setP_intro(rs.getString("p_intro"));
 				productVO.setP_num(rs.getInt("p_num"));
-				productVO.setP_price(rs.getDouble("p_price"));
+				productVO.setP_price(rs.getInt("p_price"));
 				productVO.setP_status(rs.getString("p_status"));
 				productVO.setP_winery(rs.getString("p_winery"));
 				productVO.setP_click_count(rs.getInt("p_click_count"));
