@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="java.util.*"%>
 <%@ page import="discussion.model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -15,6 +16,7 @@
 	<table border='1' bordercolor='#CCCCFF' width='800'>
 		<tr>
 			<th>主題</th>
+			<th>推文數</th>
 			<th>作者帳號</th>
 			<th>發文時間</th>
 		</tr>
@@ -23,6 +25,7 @@
 			end="${pageIndex+rowsPerPage-1}">
 			<tr align='center' valign='middle'>
 				<td><a href="DiscussionOne?d_no=${discussionVO.d_no}&action=getOne">${discussionVO.d_title}</a></td>
+				<td>${fn:length(discussionVO.replies)}</td>
 				<td>${discussionVO.memberVO.m_id}</td>
 				<td>${discussionVO.d_datetime}</td>
 		</c:forEach>
