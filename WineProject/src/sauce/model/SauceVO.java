@@ -3,6 +3,7 @@
 
 public class SauceVO implements java.io.Serializable{
 	private Integer s_id;
+	private Integer i_id;
 	private String s_name;
 	
 	public Integer getS_id() {
@@ -16,6 +17,12 @@ public class SauceVO implements java.io.Serializable{
 	}
 	public void setS_name(String s_name) {
 		this.s_name = s_name;
+	}
+	public Integer geti_id() {
+		return i_id;
+	}
+	public void seti_id(Integer i_id) {
+		this.i_id = i_id;
 	}
 
 
