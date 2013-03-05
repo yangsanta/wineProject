@@ -39,6 +39,7 @@
 		<mapping resource="member/model/member.hbm.xml" />
 		<mapping resource="product/model/product.hbm.xml" />
 		<mapping resource="rg/model/rg.hbm.xml" />
+		<mapping resource="reply/model/reply.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>

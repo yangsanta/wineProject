@@ -27,6 +27,12 @@
 		    <one-to-many class="discussion.model.DiscussionVO"/>
 		</set>
 		
+		<set name="memberss" table="reply" lazy="false"
+		    cascade="all" inverse="true" order-by="m_no asc" >
+            <key><column name="m_no"/></key>
+		    <one-to-many class="reply.model.ReplyVO"/>
+		</set>
+		
 	</class>
 </hibernate-mapping>
 

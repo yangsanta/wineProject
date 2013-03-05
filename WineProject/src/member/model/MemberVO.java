@@ -30,7 +30,13 @@ public class MemberVO implements java.io.Serializable{
 	public void setMembers(Set<MemberVO> members) {
 		this.members = members;
 	}
-	
+	private Set<MemberVO> memberss = new HashSet<MemberVO>();
+	public Set<MemberVO> getMemberss() {
+		return memberss;
+	}
+	public void setMemberss(Set<MemberVO> memberss) {
+		this.memberss = memberss;
+	}
 	
 	public Integer getM_no() {
 		return m_no;

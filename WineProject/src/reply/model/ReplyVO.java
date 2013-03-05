@@ -1,15 +1,26 @@
 ﻿package reply.model;
-import java.sql.Date;
+import java.sql.Timestamp;
+
+import member.model.MemberVO;
+
 
 public class ReplyVO  implements java.io.Serializable{
 	private Integer d_no;
 	private Integer r_no;
 	private String r_context;
-	private Integer m_no;
-	private Date r_datetime;
+//	private Integer m_no;
+	private MemberVO memberVO;
+	private Timestamp r_datetime;
 	private String r_status;
-	private Date r_final_edit;
-	
+	private Timestamp r_final_edit;
+
+	public MemberVO getMemberVO() {
+		return memberVO;
+	}
+
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
+	}
 	public Integer getD_no() {
 		return d_no;
 	}
@@ -28,16 +39,16 @@ public class ReplyVO  implements java.io.Serializable{
 	public void setR_context(String r_context) {
 		this.r_context = r_context;
 	}
-	public Integer getM_no() {
-		return m_no;
-	}
-	public void setM_no(Integer m_no) {
-		this.m_no = m_no;
-	}
-	public Date getR_datetime() {
+//	public Integer getM_no() {
+//		return m_no;
+//	}
+//	public void setM_no(Integer m_no) {
+//		this.m_no = m_no;
+//	}
+	public Timestamp getR_datetime() {
 		return r_datetime;
 	}
-	public void setR_datetime(Date r_datetime) {
+	public void setR_datetime(Timestamp r_datetime) {
 		this.r_datetime = r_datetime;
 	}
 	public String getR_status() {
@@ -46,10 +57,10 @@ public class ReplyVO  implements java.io.Serializable{
 	public void setR_status(String r_status) {
 		this.r_status = r_status;
 	}
-	public Date getR_final_edit() {
+	public Timestamp getR_final_edit() {
 		return r_final_edit;
 	}
-	public void setR_final_edit(Date r_final_edit) {
+	public void setR_final_edit(Timestamp r_final_edit) {
 		this.r_final_edit = r_final_edit;
 	}
 	

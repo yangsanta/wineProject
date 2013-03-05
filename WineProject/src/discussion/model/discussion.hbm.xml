@@ -15,9 +15,15 @@
 		<property name="d_final_edit" column="d_final_edit" />
 		<property name="d_title" column="d_title" />
 		<!-- <property name="m_no" column="m_no" /> -->
+		
 		<many-to-one name="memberVO" class="member.model.MemberVO" lazy="false">
 		    <column name="m_no" />
 		</many-to-one>
+
+		<bag name="replies" cascade="all" inverse="true" lazy="false" order-by="r_datetime">
+			<key column="r_no"></key>
+			<one-to-many class="reply.model.ReplyVO"/>
+		</bag>
 		
 	</class>
 </hibernate-mapping>
