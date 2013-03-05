@@ -3,6 +3,7 @@
 
 public class IngredientVO implements java.io.Serializable{
 	private Integer i_id;
+	private Integer f_id;
 	private String i_name;
 	
 	public Integer geti_id() {
@@ -16,6 +17,12 @@ public class IngredientVO implements java.io.Serializable{
 	}
 	public void seti_name(String i_name) {
 		this.i_name = i_name;
+	}
+	public Integer getf_id() {
+		return f_id;
+	}
+	public void setf_id(Integer f_id) {
+		this.f_id = f_id;
 	}
 
 
