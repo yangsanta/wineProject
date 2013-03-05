@@ -1,5 +1,10 @@
 package recipe.controller;
 
+import ingredient.model.IngredientDAO;
+import ingredient.model.IngredientVO;
+import sauce.model.SauceDAO;
+import sauce.model.SauceVO;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -14,11 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONValue;
 
-import recipe.model.RecipeDAO;
 import food.model.FoodDAO;
 import food.model.FoodVO;
-import recipe.model.RecipeDAO;
-import recipe.model.RecipeVO;
 
 /**
  * Servlet implementation class recipefood
@@ -55,8 +57,8 @@ public class recipefood extends HttpServlet {
 
 			for (FoodVO food : list) {
 				Map m1 = new HashMap();
-				m1.put("f_id", food.getf_id());
-				m1.put("f_name", food.getf_name());
+				m1.put("f_id", food.getF_id());
+				m1.put("f_name", food.getF_name());
 				l1.add(m1);
 			}
 
@@ -64,24 +66,43 @@ public class recipefood extends HttpServlet {
 			response.getWriter().println(jsonString);
 		}
 		if (action.equals("select2")) {
-			RecipeDAO recipeDAO = new RecipeDAO();
-			List<RecipeVO> list = recipeDAO.getAll();
+			IngredientDAO ingredientDAO = new IngredientDAO();
+			Integer id = Integer.parseInt(request.getParameter("id"));
+			List<IngredientVO> list = ingredientDAO.getf_id(id);
 
 			List l2 = new LinkedList();
 
-			for (RecipeVO recipe : list) {
+			for (IngredientVO ingredient : list) {
 				Map m2 = new HashMap();
-				m2.put("f_id", recipe.getF_id());
-				m2.put("i_id", recipe.getI_id());
-				//m1.put("f_name", recipe.getf_name());
+				m2.put("f_id", ingredient.getF_id());
+//				 System.out.println("f_id", ingredient.getf_id());
+				m2.put("i_name", ingredient.getI_name());
 				l2.add(m2);
-							
+
 			}
 
 			String jsonString = JSONValue.toJSONString(l2);
+			//System.out.println(jsonString);
 			response.getWriter().println(jsonString);
 		}
-		
+		if (action.equals("select3")) {
+			SauceDAO SauceDAO = new SauceDAO();
+			Integer id = Integer.parseInt(request.getParameter("id"));
+			List<SauceVO> list = SauceDAO.geti_id(id);
+
+			List l3 = new LinkedList();
+
+			for (SauceVO sauce : list) {
+				Map m3 = new HashMap();
+				m3.put("i_id", sauce.getI_id());
+				m3.put("s_name", sauce.getS_name());
+				l3.add(m3);
+
+			}
+
+			String jsonString = JSONValue.toJSONString(l3);
+			response.getWriter().println(jsonString);
+		}
 	}
 
 	/**

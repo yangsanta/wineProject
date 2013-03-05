@@ -8,4 +8,5 @@ public interface IngredientDAO_interface {
           public void delete(Integer i_id);
           public IngredientVO findByPrimaryKey(Integer i_id);
           public List<IngredientVO> getAll();
+          public List<IngredientVO> getf_id(Integer id);
 }
