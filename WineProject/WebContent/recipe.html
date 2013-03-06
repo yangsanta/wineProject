@@ -5,58 +5,82 @@
 <title>jQueryTwoSelect</title>
 <script type="text/javascript" src="Scripts/jquery-1.9.1.js"></script>
 <script type="text/javascript">
-	$(function(){
-		$.getJSON('food/setselectall?action=select1', {}, function(data){
-			$.each(data, function(){
+	$(function() {
+		$.getJSON('food/setselectall?action=select1', {}, function(data) {
+			$.each(data, function() {
 				//$('#foods').append('<option value="' + this.id + '">' + this.name + '</option>');
-				$('#foods').append($('<option></option>').val(this.f_id).text(this.f_name));
-			});	
-		});
-		
-		$('#foods').change(function(){
-			//alert('changed');
-			//$('#orders option[value!=0]').remove();
-			$('#ingredients').empty().append('<option value="0">--- 請選擇 ---</option>');
-			$('#sauces').empty().append('<option value="0">--- 請選擇 ---</option>');
-			
-			//var eid = $('#foods :selected').val();
-			var eid = $(this).val();
-			
-			$.getJSON('food/setselectall?action=select2', {id:eid}, function(data){
-				$.each(data, function(){
-					//$('#orders').append('<option value="' + this + '">' + this + '</option>');
-					$('#ingredients').append($('<option></option>').val(this.f_id).text(this.i_name));
-				});	
+				$('#foods')
+						.append(
+								$('<option></option>').val(this.f_id).text(
+										this.f_name));
 			});
 		});
-		$('#ingredients').change(function(){
-			//alert('changed');
-			//$('#orders option[value!=0]').remove();
-			$('#sauces').empty().append('<option value="0">--- 請選擇 ---</option>');
-			
-			//var eid = $('#foods :selected').val();
-			var eid1 = $(this).val();
-			
-			$.getJSON('food/setselectall?action=select3', {id:eid1}, function(data){
-				$.each(data, function(){
-					//$('#orders').append('<option value="' + this + '">' + this + '</option>');
-					$('#sauces').append($('<option></option>').val(this.i_id).text(this.s_name));
-				});	
-			});
-		});
-		
+
+		$('#foods').change(
+				function() {
+					//alert('changed');
+					//$('#orders option[value!=0]').remove();
+					$('#ingredients').empty().append(
+							'<option value="0">--- 請選擇 ---</option>');
+					$('#sauces').empty().append(
+							'<option value="0">--- 請選擇 ---</option>');
+
+					//var eid = $('#foods :selected').val();
+					var eid = $('#foods').val();
+
+					$.getJSON('food/setselectall?action=select2', {
+						id : eid
+					}, function(data) {
+						$.each(data, function() {
+							//$('#orders').append('<option value="' + this + '">' + this + '</option>');
+							$('#ingredients').append(
+									$('<option></option>').val(this.i_id).text(
+											this.i_name));
+						});
+					});
+				});
+
+		$('#ingredients').change(
+				function() {
+					//alert('changed');
+					//$('#orders option[value!=0]').remove();
+					$('#sauces').empty().append(
+							'<option value="0">--- 請選擇 ---</option>');
+
+					//var eid = $('#foods :selected').val();
+					var eid = $('#ingredients').val();
+
+					$.getJSON('food/setselectall?action=select3', {
+						id : eid
+					}, function(data) {
+						$.each(data, function() {
+							
+							if($('#sauces').text()!='none'){
+							
+							//$('#orders').append('<option value="' + this + '">' + this + '</option>');
+							$('#sauces').append(
+									$('<option></option>').val(this.s_id).text(
+											this.s_name));}
+							$('#id1').val($('#sauces').val());
+						});
+					});
+				});
+
 	})
 </script>
 </head>
 <body>
-<select id="foods">
-<option value="0">-------- 請選擇 --------</option>
-</select>
-<select id="ingredients">
-<option value="0">--- 請選擇 ---</option>
-</select>
-<select id="sauces">
-<option value="0">--- 請選擇 ---</option>
-</select>
+	<select id="foods">
+		<option value="0">-------- 請選擇 --------</option>
+	</select>
+	<select id="ingredients">
+		<option value="0">--- 請選擇 ---</option>
+	</select>
+	<select id="sauces">
+		<option value="0">--- 請選擇 ---</option>
+	</select>
+<form>
+<input id="id1" type="text"  value="">
+</form>
 </body>
 </html>

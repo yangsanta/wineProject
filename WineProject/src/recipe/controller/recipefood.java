@@ -22,10 +22,6 @@ import org.json.simple.JSONValue;
 import food.model.FoodDAO;
 import food.model.FoodVO;
 
-/**
- * Servlet implementation class recipefood
- */
-@WebServlet("/recipefood")
 public class recipefood extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -74,7 +70,7 @@ public class recipefood extends HttpServlet {
 
 			for (IngredientVO ingredient : list) {
 				Map m2 = new HashMap();
-				m2.put("f_id", ingredient.getF_id());
+				m2.put("i_id", ingredient.getI_id());
 //				 System.out.println("f_id", ingredient.getf_id());
 				m2.put("i_name", ingredient.getI_name());
 				l2.add(m2);
@@ -94,7 +90,7 @@ public class recipefood extends HttpServlet {
 
 			for (SauceVO sauce : list) {
 				Map m3 = new HashMap();
-				m3.put("i_id", sauce.getI_id());
+				m3.put("s_id", sauce.getS_id());
 				m3.put("s_name", sauce.getS_name());
 				l3.add(m3);
 
