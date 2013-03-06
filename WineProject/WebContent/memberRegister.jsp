@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//Dtd XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/Dtd/xhtml1-transitional.dtd">
 <link rel="shortcut icon" href="favicon.ico" />
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon" />
 <html>
 <head>
 	<meta http-equiv="Content-Language" content="zh-tw">
@@ -54,26 +54,29 @@
 
 <HR>
 <Form Action="product/memberRegister" method="post" >
+<div style="float:left;">
+<img src="images/ic_registrate_200.png"></div>
+<div style="float:left">
     <Table>
          <TR>
-             <td align="right">帳號：</td>
-             <td align="left"><input	type="text" name="m_id" value="helloSnoopy" size="20"></td>
+             <td align="right">帳號：<br></td>
+             <td align="left"><input	type="text" name="m_id" value="" size="20"></td>
          </TR>
          <TR>
-             <td align="right">密碼：</td>
-             <td align="left" ><input	type="password" name="m_pwd" value="123456" size="20"></td>
+             <td align="right">密碼：<br></td>
+             <td align="left" ><input	type="password" name="m_pwd" value="" size="20"></td>
          </TR>             
          <TR>
-             <td align="right">姓名：</td>
-             <td align="left" ><input	type="text" name="m_name" value="史努比"  size="30"></td>
+             <td align="right">姓名：<br></td>
+             <td align="left" ><input	type="text" name="m_name" value=""  size="30"></td>
          </TR>             
          <TR>
              <td align="right">Email：</td>
-             <td align="left" ><input type="text" name="m_email" value="snoopyHello@ppp.com.tw" size="40"></td>
+             <td align="left" ><input type="text" name="m_email" value="" size="40"></td>
          </TR>             
          <TR>
              <td align="right">手機：</td>
-             <td align="left" > <input type="text" name="m_mobile" value="0123456789"></td>
+             <td align="left" > <input type="text" name="m_mobile" value=""><br><br></td>
          </TR>             
          <TR>
              <td align="right">生日：</td>
@@ -81,12 +84,12 @@
          </TR>
          <TR>
              <td align="right">地址：</td>
-             <td align="left" > <input type="text" name="m_addr" value="taipei"></td>
+             <td align="left" > <input type="text" name="m_addr" value=""></td>
          </TR>    
         <TR>
             <td colspan="2" align="center">      <input type="submit" value="送出註冊" class="btn btn-primary"> </td>
             </TR>
-         </Table>
+         </Table></div>
 </Form>
 	<br class="clear" />
 				</div>

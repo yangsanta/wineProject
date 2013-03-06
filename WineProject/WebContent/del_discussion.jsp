@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <link rel="shortcut icon" href="favicon.ico" />
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon" />
 <html>
 <head>
 	<meta http-equiv="Content-Language" content="zh-tw">
@@ -241,21 +241,11 @@ tr:hover {background-color:rgb(255, 255, 255);;border-bottom: 1px solid #000;}
 					<br class="clear" />
 				</div>
 			</div>
-			<div id="copyright">
-				<div class="container">
-				<img src="images/footer.png">
-				<span>使用者條款 | 隱私權政策 | 常見問題 | 聯絡我們</span>
-				<span style="float:right;margin-right:20px"> Copyright © 2013 JomeWine Inc.  酒迷創意行銷股份有限公司</span>
-				</div>
-			</div>
+			<%@ include file="../view_model/index_footer.htm"%>
 				
 			</div>
 			
 </div>
 </body>
-
-</html>
-
-
 
 </html>
