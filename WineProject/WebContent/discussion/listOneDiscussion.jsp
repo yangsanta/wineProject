@@ -37,5 +37,12 @@
 	</c:forEach>
 	</c:if>
 </table>
+<!-- 	--留言功能 -->
+	<form action="<c:url value='/reply'/>">
+	快速留言：<textarea cols="50" rows="3" name="r_context"></textarea><br />
+			<input type="submit" value="Send"/>
+			<input type="hidden" name="action" value="insert">
+			<input type="hidden" name="d_no" value="${discussionVO.d_no}">
+	</form>
 </body>
 </html>

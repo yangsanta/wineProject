@@ -45,6 +45,15 @@
 		<url-pattern>/insertDiscussion</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>insertReply</servlet-name>
+		<servlet-class>reply.controller.ReplyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>insertReply</servlet-name>
+		<url-pattern>/reply</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>DisplayProducts</servlet-name>
 		<servlet-class>product.controller.DisplayProducts</servlet-class>
 	</servlet>
@@ -77,11 +86,11 @@
 		<url-pattern>/food/setselectall</url-pattern>
 	</servlet-mapping>
 	<servlet>
-    	<servlet-name>MemberService</servlet-name>
-    	<servlet-class>member.controller.MemberService</servlet-class>
-  	</servlet>
-  	<servlet-mapping>
-    	<servlet-name>MemberService</servlet-name>
-    	<url-pattern>/member/MemberService</url-pattern>
-  	</servlet-mapping>
+		<servlet-name>MemberService</servlet-name>
+		<servlet-class>member.controller.MemberService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MemberService</servlet-name>
+		<url-pattern>/member/MemberService</url-pattern>
+	</servlet-mapping>
 </web-app>

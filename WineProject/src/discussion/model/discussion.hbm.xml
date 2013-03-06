@@ -21,7 +21,7 @@
 		</many-to-one>
 
 		<bag name="replies" cascade="all" inverse="true" lazy="false" order-by="r_datetime">
-			<key column="r_no"></key>
+			<key column="d_no"></key>
 			<one-to-many class="reply.model.ReplyVO"/>
 		</bag>
 		
