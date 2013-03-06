@@ -15,7 +15,7 @@
 		<tbody>
 		<c:forEach var="product" items="${list}" begin="${pageIndex}" end="${pageIndex+rowsPerPage-1}" >
 			<tr>
-				<td class="p_pic"><a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}">${product.p_pic}</a></td>
+				<td class="p_pic"><a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}"><img src="../images/products/${product.p_pic}.jpg" style="width:50px;"/></a></td>
 				<td>
 				<table class="p_innerTable">
 					<tr><td><a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}">${product.p_name}</a></td></tr>
