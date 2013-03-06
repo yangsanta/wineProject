@@ -3,14 +3,14 @@
 <div id="header">
 					<div id="logo">
 						<h1>
-							<a href="index.jsp">酒迷logo</a>
+							<a href="<%=request.getContextPath()%>/index.jsp">酒迷logo</a>
 						</h1>
 					</div>
 					
 					<div id="little_nav">
 						<ul>
 							<li>
-								<a href="memberRegister.jsp">加入會員</a>
+								<a href="<%=request.getContextPath()%>/memberRegister.jsp">加入會員</a>
 							</li>
 							<li>
 								<a class="fancybox" href="#inline1" >登入</a>
@@ -21,7 +21,7 @@
 							<li>
 								<a href="#">購物車
 							</li>
-							<li><div style="margin-top:-15px;padding:10px 0 0 15px; background: url('images/cart.png') no-repeat;width:50px;height:50px"><span> 2</span></div></a></li>
+							<li><div style="margin-top:-15px;padding:10px 0 0 15px; background: url('<%=request.getContextPath()%>/images/cart.png') no-repeat;width:50px;height:50px"><span> 2</span></div></a></li>
 							
 						</ul>
 					</div>
@@ -41,7 +41,7 @@
 							</li>
 							
 							<li class="last">
-								<a href="DiscussionList?action=getAll"rel="tooltip" data-placement="bottom" title="相信這世界上一定還有更多與你一樣愛酒的人士，一起討論吧">討論區</a>
+								<a href="<%=request.getContextPath()%>/DiscussionList?action=getAll"rel="tooltip" data-placement="bottom" title="相信這世界上一定還有更多與你一樣愛酒的人士，一起討論吧">討論區</a>
 							</li>
 						</ul>
 						<br class="clear" />

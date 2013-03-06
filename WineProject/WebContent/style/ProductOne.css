@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-div {
+#content div {
 	border:1px solid silver;
 }
 
@@ -17,22 +17,11 @@ div {
 	float: left;
 	width: 480px;
 }
-.p_info1 {
-	
-}
-.p_info2 {
-	
-}
-.p_intro {
+#content.p_intro {
 	padding:15px;
 }
-.p_pics {
+#content.p_pics {
 	margin: 0px 0px;
 	float: left;
 	width: 150px;
-}
-.p_purchase{
-}
-.p_title {
-	
 }

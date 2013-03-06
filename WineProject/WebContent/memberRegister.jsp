@@ -43,31 +43,7 @@
 	<div id="main">
 					<div id="sidebar">
 						<%@ include file="view_model/product_list.jsp"%>
-										<div class="abgne-news-scroll">
-										<div align="center"><span class="title">暢銷商品</span></div>
-		<ul>
-			<li>
-				<div><a href="#"><img src="products/I0171_thumbnail.gif" style="width:50px;"/></a>
-				<span>馬德里斯特紅酒<br> <br>特價$899！</span></div>
-			</li>
-			<li>
-				<div><a href="#"><img src="products/I1101_thumbnail.gif" style="width:50px;"/></a>
-				<span>義大利雪之邱 <br><br>售價$700</span></div>
-			</li>
-			<li>
-				<div><a href="#"><img src="products/I1126_thumbnail.gif" style="width:50px;"/></a>
-				<span>山之巔黃標紅酒 <br><br>售價$650！</span></div>
-			</li>
-			<li>
-				<div><a href="#"><img src="products/I4602_thumbnail.gif" style="width:50px;"/></a>
-				<span>匯雅粉紅香檳 <br><br>售價$3500</span></div>
-			</li>
-			<li>
-				<div><a href="#"><img src="products/K0404_thumbnail.gif" style="width:50px;"/></a>
-				<span>死亡之谷恢復紅血紅酒 <br><br>售價$899</span></div>
-			</li>
-		</ul>
-	</div>
+						<%@ include file="view_model/index_left_hotsale.htm"%>	
 					</div>
 	
 					<div id="content">
