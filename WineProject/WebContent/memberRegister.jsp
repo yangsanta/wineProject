@@ -18,14 +18,40 @@
 		<script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.4"></script>
 		<link rel="stylesheet" type="text/css" href="style/jquery.fancybox.css?v=2.1.4" media="screen" />
 		<link rel="stylesheet" type="text/css" href="style/index.css?v=1.0" media="screen" />
-
+   <link type="text/css" href="style/jquery.datepick.css" rel="stylesheet">
 		<script type="text/javascript" src="js/index.js?v=1.0"></script>
+		     <script src="<%=request.getContextPath()%>/js/jquery.validate.min.js" type="text/javascript" ></script>
+     <script src="<%=request.getContextPath()%>/js/messages_tw.js" type="text/javascript" ></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.datepick.js"></script>
+     <script type="text/javascript" charset="utf-8">
+        $(document).ready( function(){
+            $('#commentForm').validate({
+                success: function(label) {
+                    label.addClass("success").text("Ok!");
+                }
+            });
+   
+	$('#m_bday').datepick();
+	$('#inlineDatepicker').datepick({onSelect: showDate});
+});
+
+function showDate(date) {
+	alert('The date chosen is ' + date);
+}
+</script>  
+     
 <style type="text/css">
+ label.error {
+            background:url("<%=request.getContextPath()%>/images/unchecked.gif") no-repeat 0px 0px;
+            padding-left: 16px;
+        }
 
+        label.success {
+            background:url("<%=request.getContextPath()%>/images/checked.gif") no-repeat 0px 0px;
+            padding-left: 16px;
+        }
 </style>
-<script type="text/javascript">
 
-</script>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="twitter.github.com/bootstrap/assets/js/html5shiv.js"></script>
@@ -53,18 +79,18 @@
 </div>
 
 <HR>
-<Form Action="product/memberRegister" method="post" >
+<Form Action="product/memberRegister" method="post" id="commentForm" class="cmxform" >
 <div style="float:left;">
 <img src="images/ic_registrate_200.png"></div>
 <div style="float:left">
     <Table>
          <TR>
-             <td align="right">帳號：<br></td>
-             <td align="left"><input	type="text" name="m_id" value="" size="20"></td>
+             <td align="right">帳號e：<br></td>
+             <td align="left"><input	type="text" name="m_id" value="" size="20" class="required" minlength="3"></td>
          </TR>
          <TR>
              <td align="right">密碼：<br></td>
-             <td align="left" ><input	type="password" name="m_pwd" value="" size="20"></td>
+             <td align="left" ><input	type="password" name="m_pwd" value="" size="20" class="required" minlength="8"></td>
          </TR>             
          <TR>
              <td align="right">姓名：<br></td>
@@ -72,15 +98,15 @@
          </TR>             
          <TR>
              <td align="right">Email：</td>
-             <td align="left" ><input type="text" name="m_email" value="" size="40"></td>
+             <td align="left" ><input type="text" name="m_email" value="" size="40" class="required email"></td>
          </TR>             
          <TR>
              <td align="right">手機：</td>
-             <td align="left" > <input type="text" name="m_mobile" value=""><br><br></td>
+             <td align="left" > <input type="text" name="m_mobile" value="" class="required number" minlength="10" maxlength="11"></td>
          </TR>             
          <TR>
              <td align="right">生日：</td>
-             <td align="left" > <input type="text" name="m_bday" value="2000-11-11"></td>
+             <td align="left" > <input type="text" id="m_bday" name="m_bday" value="2000-11-11" ></td>
          </TR>
          <TR>
              <td align="right">地址：</td>
