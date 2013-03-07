@@ -244,7 +244,7 @@ drop table ingredient;	--刪除食材
 drop table food;		--刪除食物
 -------------------------------------------------------------------------------------------------------------------------
 create table food ( --[table]食物種類 ok
-f_id				int IDENTITY (1,1) 	not null,	--食物種類ID [ primary key ]
+f_id				int IDENTITY (1001,1) 	not null,	--食物種類ID [ primary key ]
 f_name			varchar(120) 	 not null,		--食物種類name
  constraint food_primary_key primary key (f_id)
 );
@@ -256,143 +256,143 @@ insert into food values ('雞鴨');
 insert into food values ('海鮮');
 -------------------------------------------------------------------------------------------------------------------------
 create table ingredient ( --[table]主要成分 ok
-i_id				int IDENTITY (1,1) 	not null,	--食材ID [ primary key ]
+i_id				int IDENTITY (2001,1) 	not null,	--食材ID [ primary key ]
 f_id				int			not null	,	--食物種類ID [ fo_key f_id]
 i_name			varchar(120)  	not null,		--食材name
  constraint ingredient_primary_key primary key (i_id),
  constraint ingredient_f_id_fk foreign key (f_id) references food (f_id),
 );
-insert into ingredient values (1,'牛肉');
-insert into ingredient values (1,'羊肉');
-insert into ingredient values (1,'豬肉');
-insert into ingredient values (1,'小牛肉');
-insert into ingredient values (2,'藍紋乳酪');
-insert into ingredient values (2,'切達乳酪');
-insert into ingredient values (2,'奶油的');
-insert into ingredient values (2,'山羊乳酪');
-insert into ingredient values (2,'干奶酪/硬質');
-insert into ingredient values (2,'半硬質');
-insert into ingredient values (2,'味道重的');
-insert into ingredient values (3,'果醬');
-insert into ingredient values (3,'巧克力');
-insert into ingredient values (3,'奶油');
-insert into ingredient values (3,'檸檬');
-insert into ingredient values (4,'千層麵');
-insert into ingredient values (4,'海鮮飯');
-insert into ingredient values (4,'義大利麵');
-insert into ingredient values (4,'披薩');
-insert into ingredient values (4,'燉飯');
-insert into ingredient values (5,'豆燉肉');
-insert into ingredient values (5,'雞肉');
-insert into ingredient values (5,'鴨肉');
-insert into ingredient values (5,'火雞');
-insert into ingredient values (6,'螃蟹');
-insert into ingredient values (6,'龍蝦');
-insert into ingredient values (6,'牡蠣');
-insert into ingredient values (6,'鮭魚');
-insert into ingredient values (6,'干貝');
-insert into ingredient values (6,'蝦');
-insert into ingredient values (6,'壽司');
-insert into ingredient values (6,'金槍魚');
-insert into ingredient values (6,'白魚');
+insert into ingredient values (1001,'牛肉');
+insert into ingredient values (1001,'羊肉');
+insert into ingredient values (1001,'豬肉');
+insert into ingredient values (1001,'小牛肉');
+insert into ingredient values (1002,'藍紋乳酪');
+insert into ingredient values (1002,'切達乳酪');
+insert into ingredient values (1002,'奶油的');
+insert into ingredient values (1002,'山羊乳酪');
+insert into ingredient values (1002,'干奶酪/硬質');
+insert into ingredient values (1002,'半硬質');
+insert into ingredient values (1002,'味道重的');
+insert into ingredient values (1003,'果醬');
+insert into ingredient values (1003,'巧克力');
+insert into ingredient values (1003,'奶油');
+insert into ingredient values (1003,'檸檬');
+insert into ingredient values (1004,'千層麵');
+insert into ingredient values (1004,'海鮮飯');
+insert into ingredient values (1004,'義大利麵');
+insert into ingredient values (1004,'披薩');
+insert into ingredient values (1004,'燉飯');
+insert into ingredient values (1005,'豆燉肉');
+insert into ingredient values (1005,'雞肉');
+insert into ingredient values (1005,'鴨肉');
+insert into ingredient values (1005,'火雞');
+insert into ingredient values (1006,'螃蟹');
+insert into ingredient values (1006,'龍蝦');
+insert into ingredient values (1006,'牡蠣');
+insert into ingredient values (1006,'鮭魚');
+insert into ingredient values (1006,'干貝');
+insert into ingredient values (1006,'蝦');
+insert into ingredient values (1006,'壽司');
+insert into ingredient values (1006,'金槍魚');
+insert into ingredient values (1006,'白魚');
 -------------------------------------------------------------------------------------------------------------------------
 create table sauce ( --[table]醬料or風味 ok
-s_id				int IDENTITY (101,1) 	not null,	--醬料ID [ primary key ]
+s_id				int IDENTITY (3001,1) 	not null,	--醬料ID [ primary key ]
 i_id				int                  		not null,	--食材ID[ fo_key i_id]
 s_name			varchar(120)  				--醬料name
 constraint sauce_primary_key primary key (s_id),
 constraint sauce_primary_i_id_fk foreign key (i_id) references ingredient (i_id),
 );
-insert into sauce values (1,'香草');
-insert into sauce values (1,'辣椒');
-insert into sauce values (1,'蘑菇');
-insert into sauce values (1,'燉肉');
-insert into sauce values (1,'烤肉');
-insert into sauce values (1,'漢堡');
-insert into sauce values (2,'香草');
-insert into sauce values (2,'辣椒');
-insert into sauce values (3,'香草');
-insert into sauce values (3,'辣椒');
-insert into sauce values (3,'蘑菇');
-insert into sauce values (3,'香腸');
-insert into sauce values (3,'裡脊肉');
-insert into sauce values (3,'烤肉');
-insert into sauce values (3,'裹粉的');
-insert into sauce values (3,'水果');
-insert into sauce values (4,'香草');
-insert into sauce values (4,'檸檬/柑橘');
-insert into sauce values (4,'蘑菇');
-insert into sauce values (4,'裹粉的');
-insert into sauce values (4,'肉片');
-insert into sauce values (5,'none');
-insert into sauce values (6,'none');
-insert into sauce values (7,'none');
-insert into sauce values (8,'none');
-insert into sauce values (9,'none');
-insert into sauce values (10,'none');
-insert into sauce values (11,'none');
-insert into sauce values (12,'none');
-insert into sauce values (13,'none');
-insert into sauce values (14,'none');
-insert into sauce values (15,'none');
-insert into sauce values (16,'肉的');
-insert into sauce values (16,'蔬菜');
-insert into sauce values (17,'none');
-insert into sauce values (18,'肉醬');
-insert into sauce values (18,'蘑菇');
-insert into sauce values (18,'青醬');
-insert into sauce values (18,'茄汁');
-insert into sauce values (18,'蔬菜');
-insert into sauce values (18,'白醬/海鮮');
-insert into sauce values (18,'奶油底');
-insert into sauce values (19,'肉的');
-insert into sauce values (19,'蔬菜');
-insert into sauce values (20,'蘑菇底');
-insert into sauce values (20,'義式燉飯');
-insert into sauce values (20,'蔬菜底');
-insert into sauce values (21,'none');
-insert into sauce values (22,'香草');
-insert into sauce values (22,'檸檬/柑橘');
-insert into sauce values (22,'蘑菇');
-insert into sauce values (22,'芥末');
-insert into sauce values (22,'辛辣的');
-insert into sauce values (22,'烤肉');
-insert into sauce values (22,'奶油的');
-insert into sauce values (22,'炸雞');
-insert into sauce values (23,'香煎');
-insert into sauce values (23,'油封鴨');
-insert into sauce values (23,'鵝肝');
-insert into sauce values (23,'水果');
-insert into sauce values (24,'檸檬/柑橘');
-insert into sauce values (24,'烤的');
-insert into sauce values (24,'裹粉的');
-insert into sauce values (25,'軟殼的');
-insert into sauce values (25,'辣的');
-insert into sauce values (25,'奶油');
-insert into sauce values (25,'蟹肉餅');
-insert into sauce values (26,'奶油');
-insert into sauce values (27,'none');
-insert into sauce values (28,'香草');
-insert into sauce values (28,'芥末');
-insert into sauce values (28,'燒烤');
-insert into sauce values (29,'香草');
-insert into sauce values (29,'檸檬/柑橘');
-insert into sauce values (29,'奶油');
-insert into sauce values (30,'檸檬/柑橘');
-insert into sauce values (30,'香草');
-insert into sauce values (31,'none');
-insert into sauce values (32,'香煎');
-insert into sauce values (32,'麻辣');
-insert into sauce values (33,'香草');
-insert into sauce values (33,'辣椒');
-insert into sauce values (33,'檸檬/柑橘');
-insert into sauce values (33,'燉魚');
-insert into sauce values (33,'玉米捲餅');
-insert into sauce values (33,'炸的');
+insert into sauce values (2001,'香草');
+insert into sauce values (2001,'辣椒');
+insert into sauce values (2001,'蘑菇');
+insert into sauce values (2001,'燉肉');
+insert into sauce values (2001,'烤肉');
+insert into sauce values (2001,'漢堡');
+insert into sauce values (2002,'香草');
+insert into sauce values (2002,'辣椒');
+insert into sauce values (2003,'香草');
+insert into sauce values (2003,'辣椒');
+insert into sauce values (2003,'蘑菇');
+insert into sauce values (2003,'香腸');
+insert into sauce values (2003,'裡脊肉');
+insert into sauce values (2003,'烤肉');
+insert into sauce values (2003,'裹粉的');
+insert into sauce values (2003,'水果');
+insert into sauce values (2004,'香草');
+insert into sauce values (2004,'檸檬/柑橘');
+insert into sauce values (2004,'蘑菇');
+insert into sauce values (2004,'裹粉的');
+insert into sauce values (2004,'肉片');
+insert into sauce values (2005,'none');
+insert into sauce values (2006,'none');
+insert into sauce values (2007,'none');
+insert into sauce values (2008,'none');
+insert into sauce values (2009,'none');
+insert into sauce values (2010,'none');
+insert into sauce values (2011,'none');
+insert into sauce values (2012,'none');
+insert into sauce values (2013,'none');
+insert into sauce values (2014,'none');
+insert into sauce values (2015,'none');
+insert into sauce values (2016,'肉的');
+insert into sauce values (2016,'蔬菜');
+insert into sauce values (2017,'none');
+insert into sauce values (2018,'肉醬');
+insert into sauce values (2018,'蘑菇');
+insert into sauce values (2018,'青醬');
+insert into sauce values (2018,'茄汁');
+insert into sauce values (2018,'蔬菜');
+insert into sauce values (2018,'白醬/海鮮');
+insert into sauce values (2018,'奶油底');
+insert into sauce values (2019,'肉的');
+insert into sauce values (2019,'蔬菜');
+insert into sauce values (2020,'蘑菇底');
+insert into sauce values (2020,'義式燉飯');
+insert into sauce values (2020,'蔬菜底');
+insert into sauce values (2021,'none');
+insert into sauce values (2022,'香草');
+insert into sauce values (2022,'檸檬/柑橘');
+insert into sauce values (2022,'蘑菇');
+insert into sauce values (2022,'芥末');
+insert into sauce values (2022,'辛辣的');
+insert into sauce values (2022,'烤肉');
+insert into sauce values (2022,'奶油的');
+insert into sauce values (2022,'炸雞');
+insert into sauce values (2023,'香煎');
+insert into sauce values (2023,'油封鴨');
+insert into sauce values (2023,'鵝肝');
+insert into sauce values (2023,'水果');
+insert into sauce values (2024,'檸檬/柑橘');
+insert into sauce values (2024,'烤的');
+insert into sauce values (2024,'裹粉的');
+insert into sauce values (2025,'軟殼的');
+insert into sauce values (2025,'辣的');
+insert into sauce values (2025,'奶油');
+insert into sauce values (2025,'蟹肉餅');
+insert into sauce values (2026,'奶油');
+insert into sauce values (2027,'none');
+insert into sauce values (2028,'香草');
+insert into sauce values (2028,'芥末');
+insert into sauce values (2028,'燒烤');
+insert into sauce values (2029,'香草');
+insert into sauce values (2029,'檸檬/柑橘');
+insert into sauce values (2029,'奶油');
+insert into sauce values (2030,'檸檬/柑橘');
+insert into sauce values (2030,'香草');
+insert into sauce values (2031,'none');
+insert into sauce values (2032,'香煎');
+insert into sauce values (2032,'麻辣');
+insert into sauce values (2033,'香草');
+insert into sauce values (2033,'辣椒');
+insert into sauce values (2033,'檸檬/柑橘');
+insert into sauce values (2033,'燉魚');
+insert into sauce values (2033,'玉米捲餅');
+insert into sauce values (2033,'炸的');
 -------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------
 create table food_set ( --[table]食物搭配   ok
-Uniid				int IDENTITY (1,1) not null,		--流水號 [ primary key ]
+Uniid				int IDENTITY (4001,1) not null,		--流水號 [ primary key ]
 fs_id				int  not null,	--商品ID  pri
 s_id				int	 not null	--風味ID 
 --constraint food_set_fs_id_fk foreign key (fs_id) references product		(????),		-F-K商品ID

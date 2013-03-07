@@ -3,84 +3,114 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=BIG5">
 <title>jQueryTwoSelect</title>
+<style type="text/css">
+#table1,td,th {
+	border: 1px green solid;
+	width: 400px;
+	border-collapse: collapse;
+	padding: 5px;
+}
+</style>
 <script type="text/javascript" src="Scripts/jquery-1.9.1.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$.getJSON('food/setselectall?action=select1', {}, function(data) {
+		$.getJSON('food/setselectall?action=select2', {}, function(data) {
+			var amage = "images/bg_2.jpg"
 			$.each(data, function() {
+				if ("f_id" == '1001'){
 				//$('#foods').append('<option value="' + this.id + '">' + this.name + '</option>');
-				$('#foods')
-						.append(
-								$('<option></option>').val(this.f_id).text(
-										this.f_name));
+				$('#ingredients').append(
+						//$('<input type="button" style="background-image: url(' + amage + ');"/>').val(this.i_name))
+						//$('<td></td>').val(this.i_id).text(this.i_name));
+						$('<li><ul><li></li></ul></li>').val(this.i_id).text(this.i_name));}
 			});
 		});
-
-		$('#foods').change(
-				function() {
-					//alert('changed');
-					//$('#orders option[value!=0]').remove();
-					$('#ingredients').empty().append(
-							'<option value="0">--- 請選擇 ---</option>');
-					$('#sauces').empty().append(
-							'<option value="0">--- 請選擇 ---</option>');
-
-					//var eid = $('#foods :selected').val();
-					var eid = $('#foods').val();
-
-					$.getJSON('food/setselectall?action=select2', {
-						id : eid
-					}, function(data) {
-						$.each(data, function() {
-							//$('#orders').append('<option value="' + this + '">' + this + '</option>');
-							$('#ingredients').append(
-									$('<option></option>').val(this.i_id).text(
-											this.i_name));
-						});
-					});
-				});
-
-		$('#ingredients').change(
-				function() {
-					//alert('changed');
-					//$('#orders option[value!=0]').remove();
-					$('#sauces').empty().append(
-							'<option value="0">--- 請選擇 ---</option>');
-
-					//var eid = $('#foods :selected').val();
-					var eid = $('#ingredients').val();
-
-					$.getJSON('food/setselectall?action=select3', {
-						id : eid
-					}, function(data) {
-						$.each(data, function() {
-							
-							if($('#sauces').text()!='none'){
-							
-							//$('#orders').append('<option value="' + this + '">' + this + '</option>');
-							$('#sauces').append(
-									$('<option></option>').val(this.s_id).text(
-											this.s_name));}
-							$('#id1').val($('#sauces').val());
-						});
-					});
-				});
-
+		$.getJSON('food/setselectall?action=select3', {}, function(data) {
+			var amage = "images/bg_2.jpg"
+			$.each(data, function() {
+				//$('#foods').append('<option value="' + this.id + '">' + this.name + '</option>');
+				$('#sauces').append(
+						$('<input type="button" style="background-image: url(' + amage + ');"/>').val(this.s_name))
+						//$('<td></td>').val(this.s_id).text(this.s_name));
+			});
+		});
 	})
 </script>
 </head>
 <body>
-	<select id="foods">
-		<option value="0">-------- 請選擇 --------</option>
-	</select>
-	<select id="ingredients">
-		<option value="0">--- 請選擇 ---</option>
-	</select>
-	<select id="sauces">
-		<option value="0">--- 請選擇 ---</option>
-	</select>
-<form>
-<input id="id1" type="text"  value="">
-</form>
+	<ul>
+		<li id="food">肉類
+			<ul id="ingredients">
+				<li>
+					<ul>
+						<li></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>乳酪
+			<ul>
+				<li>
+					<ul>
+						<li></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>甜點
+			<ul>
+				<li>
+					<ul>
+						<li></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>穀類
+			<ul>
+				<li>
+					<ul>
+						<li></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>雞鴨
+			<ul>
+				<li>
+					<ul>
+						<li></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>海鮮
+			<ul>
+				<li>
+					<ul>
+						<li></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+
+
+
+	<table id="table1">
+		<tbody>
+			<tr id="foods1">
+			</tr>
+			<tr id="ingredients1">
+			</tr>
+			<tr id="sauces1">
+			</tr>
+		</tbody>
+	</table>
+	<div id="foods"></div>
+	<div id="ingredients"></div>
+
+	<div id="sauces"></div>
 </body>
 </html>

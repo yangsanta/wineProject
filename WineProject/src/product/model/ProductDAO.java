@@ -135,7 +135,7 @@ public class ProductDAO implements ProductDAO_interface {
 	public List<ProductVO> findSomeProduct(String condition,
 			String conditionValue) {
 		Integer values;
-		
+
 		String GET_SOME_STMT = "from ProductVO Where " + condition + " =? ";
 		List<ProductVO> list = null;
 		List list1 = null;
@@ -143,14 +143,14 @@ public class ProductDAO implements ProductDAO_interface {
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_SOME_STMT);
-			if((condition.equals("p_vol"))||(condition.equals("p_price)"))){
-				 values=(Integer)Integer.parseInt(conditionValue);
-					query.setParameter(0, values);
-					list = query.list();
+			if ((condition.equals("p_vol")) || (condition.equals("p_price)"))) {
+				values = (Integer) Integer.parseInt(conditionValue);
+				query.setParameter(0, values);
+				list = query.list();
+			} else {
+				query.setParameter(0, conditionValue);
+				list = query.list();
 			}
-			else{
-			query.setParameter(0, conditionValue);
-			list = query.list();}
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -158,6 +158,30 @@ public class ProductDAO implements ProductDAO_interface {
 		}
 		return list;
 	}
+
+	public List<ProductVO> findTopProduct(String conditionValue) {
+
+		String GET_TOP_STMT = "from ProductVO order by p_buy_count";
+		List<ProductVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_TOP_STMT);
+			query.setFirstResult(0);
+			query.setMaxResults(Integer.parseInt(conditionValue));
+
+			list = query.list();
+			session.getTransaction().commit();
+	
+		}
+
+		catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+
 	public List<String> findCountry(String area) {
 		List list = null;
 
@@ -178,34 +202,61 @@ public class ProductDAO implements ProductDAO_interface {
 		}
 		return list;
 	}
+
 	// -------------------------------------------------------
 	public static void main(String arg[]) {
 		ProductDAO dao = new ProductDAO();
-//		 
-//		List<ProductVO> list = dao.findSomeProduct("p_vol","750");
-//		 for (ProductVO aEmp : list) {
-//				System.out.println(aEmp.getP_no() + ",");
-//				System.out.println(aEmp.getP_name() + ",");
-//				System.out.println(aEmp.getP_pic() + ",");
-//				System.out.println(aEmp.getP_year() + ",");
-//				System.out.println(aEmp.getP_rate() + ",");
-//				System.out.println(aEmp.getP_area() + ",");
-//				System.out.println(aEmp.getP_intro() + ",");
-//				System.out.println(aEmp.getP_num() + ",");
-//				System.out.println(aEmp.getP_price() + ",");
-//				System.out.println(aEmp.getP_status() + ",");
-//				System.out.println(aEmp.getP_winery() + ",");
-//				System.out.println(aEmp.getP_click_count() + ",");
-//				System.out.println(aEmp.getP_buy_count() + ",");
-//				System.out.println(aEmp.getP_style() + ",");
-//				System.out.println(aEmp.getP_sales() + ",");
-//				System.out.println(aEmp.getP_vol() + ",");
-//				System.out.println(aEmp.getP_alcho() + ",");
-//				System.out.println(aEmp.getP_date() + ",");
-//				System.out.println(aEmp.getP_type() + ",");
-//				System.out.println(aEmp.getP_grape());
-//				System.out.println();
-//			}
+
+//		 List<ProductVO> list = dao.findTopProduct("2");
+//				 for (ProductVO aEmp : list) {
+//				 System.out.println(aEmp.getP_no() + ",");
+//				 System.out.println(aEmp.getP_name() + ",");
+//				 System.out.println(aEmp.getP_pic() + ",");
+//				 System.out.println(aEmp.getP_year() + ",");
+//				 System.out.println(aEmp.getP_rate() + ",");
+//				 System.out.println(aEmp.getP_area() + ",");
+//				 System.out.println(aEmp.getP_intro() + ",");
+//				 System.out.println(aEmp.getP_num() + ",");
+//				 System.out.println(aEmp.getP_price() + ",");
+//				 System.out.println(aEmp.getP_status() + ",");
+//				 System.out.println(aEmp.getP_winery() + ",");
+//				 System.out.println(aEmp.getP_click_count() + ",");
+//				 System.out.println(aEmp.getP_buy_count() + ",");
+//				 System.out.println(aEmp.getP_style() + ",");
+//				 System.out.println(aEmp.getP_sales() + ",");
+//				 System.out.println(aEmp.getP_vol() + ",");
+//				 System.out.println(aEmp.getP_alcho() + ",");
+//				 System.out.println(aEmp.getP_date() + ",");
+//				 System.out.println(aEmp.getP_type() + ",");
+//				 System.out.println(aEmp.getP_grape());
+//				 System.out.println();
+//				 }
+//		
+		
+		// List<ProductVO> list = dao.findSomeProduct("p_vol","750");
+		// for (ProductVO aEmp : list) {
+		// System.out.println(aEmp.getP_no() + ",");
+		// System.out.println(aEmp.getP_name() + ",");
+		// System.out.println(aEmp.getP_pic() + ",");
+		// System.out.println(aEmp.getP_year() + ",");
+		// System.out.println(aEmp.getP_rate() + ",");
+		// System.out.println(aEmp.getP_area() + ",");
+		// System.out.println(aEmp.getP_intro() + ",");
+		// System.out.println(aEmp.getP_num() + ",");
+		// System.out.println(aEmp.getP_price() + ",");
+		// System.out.println(aEmp.getP_status() + ",");
+		// System.out.println(aEmp.getP_winery() + ",");
+		// System.out.println(aEmp.getP_click_count() + ",");
+		// System.out.println(aEmp.getP_buy_count() + ",");
+		// System.out.println(aEmp.getP_style() + ",");
+		// System.out.println(aEmp.getP_sales() + ",");
+		// System.out.println(aEmp.getP_vol() + ",");
+		// System.out.println(aEmp.getP_alcho() + ",");
+		// System.out.println(aEmp.getP_date() + ",");
+		// System.out.println(aEmp.getP_type() + ",");
+		// System.out.println(aEmp.getP_grape());
+		// System.out.println();
+		// }
 		// List<String> listStyle = dao.findGrapeType("紅葡萄酒");
 		// for (String aEmp : listStyle) {
 		//
@@ -263,52 +314,52 @@ public class ProductDAO implements ProductDAO_interface {
 		// ------------------------------------------------
 		// 查詢
 
-//		 ProductVO productVOO3 = dao.findByPrimaryKey(2);
-//		 System.out.println(productVOO3.getP_no() + ",");
-//		 System.out.println(productVOO3.getP_name() + ",");
-//		 System.out.println(productVOO3.getP_year() + ",");
-//		 System.out.println(productVOO3.getP_rate() + ",");
-//		 System.out.println(productVOO3.getP_area() + ",");
-//		 System.out.println(productVOO3.getP_intro() + ",");
-//		 System.out.println(productVOO3.getP_num() + ",");
-//		 System.out.println(productVOO3.getP_price() + ",");
-//		 System.out.println(productVOO3.getP_status() + ",");
-//		 System.out.println(productVOO3.getP_winery() + ",");
-//		 System.out.println(productVOO3.getP_click_count() + ",");
-//		 System.out.println(productVOO3.getP_buy_count() + ",");
-//		 System.out.println(productVOO3.getP_style() + ",");
-//		 System.out.println(productVOO3.getP_sales() + ",");
-//		 System.out.println(productVOO3.getP_vol() + ",");
-//		 System.out.println(productVOO3.getP_alcho() + ",");
-//		 System.out.println(productVOO3.getP_date() + ",");
-//		 System.out.println(productVOO3.getP_type() + ",");
-//		 System.out.println(productVOO3.getP_grape() );
-//		 System.out.println();
+		// ProductVO productVOO3 = dao.findByPrimaryKey(2);
+		// System.out.println(productVOO3.getP_no() + ",");
+		// System.out.println(productVOO3.getP_name() + ",");
+		// System.out.println(productVOO3.getP_year() + ",");
+		// System.out.println(productVOO3.getP_rate() + ",");
+		// System.out.println(productVOO3.getP_area() + ",");
+		// System.out.println(productVOO3.getP_intro() + ",");
+		// System.out.println(productVOO3.getP_num() + ",");
+		// System.out.println(productVOO3.getP_price() + ",");
+		// System.out.println(productVOO3.getP_status() + ",");
+		// System.out.println(productVOO3.getP_winery() + ",");
+		// System.out.println(productVOO3.getP_click_count() + ",");
+		// System.out.println(productVOO3.getP_buy_count() + ",");
+		// System.out.println(productVOO3.getP_style() + ",");
+		// System.out.println(productVOO3.getP_sales() + ",");
+		// System.out.println(productVOO3.getP_vol() + ",");
+		// System.out.println(productVOO3.getP_alcho() + ",");
+		// System.out.println(productVOO3.getP_date() + ",");
+		// System.out.println(productVOO3.getP_type() + ",");
+		// System.out.println(productVOO3.getP_grape() );
+		// System.out.println();
 		// 查詢
-//		List<ProductVO> list = dao.getAll();
-//		for (ProductVO aEmp : list) {
-//			System.out.println(aEmp.getP_no() + ",");
-//			System.out.println(aEmp.getP_name() + ",");
-//			System.out.println(aEmp.getP_pic() + ",");
-//			System.out.println(aEmp.getP_year() + ",");
-//			System.out.println(aEmp.getP_rate() + ",");
-//			System.out.println(aEmp.getP_area() + ",");
-//			System.out.println(aEmp.getP_intro() + ",");
-//			System.out.println(aEmp.getP_num() + ",");
-//			System.out.println(aEmp.getP_price() + ",");
-//			System.out.println(aEmp.getP_status() + ",");
-//			System.out.println(aEmp.getP_winery() + ",");
-//			System.out.println(aEmp.getP_click_count() + ",");
-//			System.out.println(aEmp.getP_buy_count() + ",");
-//			System.out.println(aEmp.getP_style() + ",");
-//			System.out.println(aEmp.getP_sales() + ",");
-//			System.out.println(aEmp.getP_vol() + ",");
-//			System.out.println(aEmp.getP_alcho() + ",");
-//			System.out.println(aEmp.getP_date() + ",");
-//			System.out.println(aEmp.getP_type() + ",");
-//			System.out.println(aEmp.getP_grape());
-//			System.out.println();
-//		}
+		// List<ProductVO> list = dao.getAll();
+		// for (ProductVO aEmp : list) {
+		// System.out.println(aEmp.getP_no() + ",");
+		// System.out.println(aEmp.getP_name() + ",");
+		// System.out.println(aEmp.getP_pic() + ",");
+		// System.out.println(aEmp.getP_year() + ",");
+		// System.out.println(aEmp.getP_rate() + ",");
+		// System.out.println(aEmp.getP_area() + ",");
+		// System.out.println(aEmp.getP_intro() + ",");
+		// System.out.println(aEmp.getP_num() + ",");
+		// System.out.println(aEmp.getP_price() + ",");
+		// System.out.println(aEmp.getP_status() + ",");
+		// System.out.println(aEmp.getP_winery() + ",");
+		// System.out.println(aEmp.getP_click_count() + ",");
+		// System.out.println(aEmp.getP_buy_count() + ",");
+		// System.out.println(aEmp.getP_style() + ",");
+		// System.out.println(aEmp.getP_sales() + ",");
+		// System.out.println(aEmp.getP_vol() + ",");
+		// System.out.println(aEmp.getP_alcho() + ",");
+		// System.out.println(aEmp.getP_date() + ",");
+		// System.out.println(aEmp.getP_type() + ",");
+		// System.out.println(aEmp.getP_grape());
+		// System.out.println();
+		// }
 	}
 
 }
