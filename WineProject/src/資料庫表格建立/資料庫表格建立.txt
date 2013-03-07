@@ -244,7 +244,7 @@ drop table ingredient;	--刪除食材
 drop table food;		--刪除食物
 -------------------------------------------------------------------------------------------------------------------------
 create table food ( --[table]食物種類 ok
-f_id				int IDENTITY (1,1) 	not null,	--食物種類ID [ primary key ]
+f_id				int IDENTITY (1001,1) 	not null,	--食物種類ID [ primary key ]
 f_name			varchar(120) 	 not null,		--食物種類name
  constraint food_primary_key primary key (f_id)
 );
@@ -256,7 +256,7 @@ insert into food values ('雞鴨');
 insert into food values ('海鮮');
 -------------------------------------------------------------------------------------------------------------------------
 create table ingredient ( --[table]主要成分 ok
-i_id				int IDENTITY (1,1) 	not null,	--食材ID [ primary key ]
+i_id				int IDENTITY (2001,1) 	not null,	--食材ID [ primary key ]
 f_id				int			not null	,	--食物種類ID [ fo_key f_id]
 i_name			varchar(120)  	not null,		--食材name
  constraint ingredient_primary_key primary key (i_id),
@@ -297,7 +297,7 @@ insert into ingredient values (6,'金槍魚');
 insert into ingredient values (6,'白魚');
 -------------------------------------------------------------------------------------------------------------------------
 create table sauce ( --[table]醬料or風味 ok
-s_id				int IDENTITY (101,1) 	not null,	--醬料ID [ primary key ]
+s_id				int IDENTITY (3001,1) 	not null,	--醬料ID [ primary key ]
 i_id				int                  		not null,	--食材ID[ fo_key i_id]
 s_name			varchar(120)  				--醬料name
 constraint sauce_primary_key primary key (s_id),
@@ -392,7 +392,7 @@ insert into sauce values (33,'炸的');
 -------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------
 create table food_set ( --[table]食物搭配   ok
-Uniid				int IDENTITY (1,1) not null,		--流水號 [ primary key ]
+Uniid				int IDENTITY (4001,1) not null,		--流水號 [ primary key ]
 fs_id				int  not null,	--商品ID  pri
 s_id				int	 not null	--風味ID 
 --constraint food_set_fs_id_fk foreign key (fs_id) references product		(????),		-F-K商品ID
