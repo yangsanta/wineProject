@@ -63,8 +63,8 @@ public class recipefood extends HttpServlet {
 		}
 		if (action.equals("select2")) {
 			IngredientDAO ingredientDAO = new IngredientDAO();
-			Integer id = Integer.parseInt(request.getParameter("id"));
-			List<IngredientVO> list = ingredientDAO.getf_id(id);
+			//Integer id = Integer.parseInt(request.getParameter("id"));
+			List<IngredientVO> list = ingredientDAO.getAll();
 
 			List l2 = new LinkedList();
 
@@ -83,8 +83,8 @@ public class recipefood extends HttpServlet {
 		}
 		if (action.equals("select3")) {
 			SauceDAO SauceDAO = new SauceDAO();
-			Integer id = Integer.parseInt(request.getParameter("id"));
-			List<SauceVO> list = SauceDAO.geti_id(id);
+			//Integer id = Integer.parseInt(request.getParameter("id"));
+			List<SauceVO> list = SauceDAO.getAll();
 
 			List l3 = new LinkedList();
 
