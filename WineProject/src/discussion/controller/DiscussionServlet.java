@@ -175,7 +175,7 @@ public class DiscussionServlet extends HttpServlet {
 
 				req.setAttribute("discussionVO", discussionVO);
 				RequestDispatcher successView = req
-						.getRequestDispatcher("DiscussionOne?action=getOne&d_no="
+						.getRequestDispatcher("DiscussionList?action=getOne&d_no="
 								+ d_no); // 成功轉交
 				successView.forward(req, res);
 			}

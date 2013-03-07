@@ -29,22 +29,6 @@
 		<url-pattern>/DiscussionList</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>DiscussionOne</servlet-name>
-		<servlet-class>discussion.controller.DiscussionServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>DiscussionOne</servlet-name>
-		<url-pattern>/DiscussionOne</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>insertDiscussion</servlet-name>
-		<servlet-class>discussion.controller.DiscussionServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>insertDiscussion</servlet-name>
-		<url-pattern>/insertDiscussion</url-pattern>
-	</servlet-mapping>
-	<servlet>
 		<servlet-name>insertReply</servlet-name>
 		<servlet-class>reply.controller.ReplyServlet</servlet-class>
 	</servlet>

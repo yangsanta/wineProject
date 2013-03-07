@@ -119,7 +119,7 @@ tr:hover {
 							<strong><span class="label label-success">歡迎!</span></strong> <br><span
 								style="margin-left: 50px">你可以在這邊與各方的酒友一起討論酒香的芬芳以及在味蕾上跳動的喜悅。現在就發表一篇文章來與大家認識認識吧。</span>
 						</div>
-
+						
 						<a href="discussion/insertDiscussion.jsp"><button
 								class="btn btn-large btn-primary" style="float: right"
 								type="button">
@@ -142,7 +142,7 @@ tr:hover {
 											<td class="img_type"><img
 												src="images/discussion_paper.gif"></td>
 											<td class="table_title"><a
-												href="DiscussionOne?d_no=${discussionVO.d_no}&action=getOne">${discussionVO.d_title}</a></td>
+												href="DiscussionList?d_no=${discussionVO.d_no}&action=getOne">${discussionVO.d_title}</a></td>
 											<td class="tdcenter">${discussionVO.memberVO.m_id}</td>
 											<td class="tdcenter">${fn:length(discussionVO.replies)}</td>
 											<td class="table_time"><fmt:formatDate
