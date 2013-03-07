@@ -73,7 +73,7 @@ public class DisplayProducts extends HttpServlet {
 
 			// 設定jsp<c:forEach>產出的分頁連結的condition&conditionValue參數
 			String condition = request.getParameter("condition");
-			String conditionValue = request.getParameter("conditionValue");
+			String conditionValue = new String(request.getParameter("conditionValue").getBytes("ISO-8859-1"), "UTF-8");
 			String conditionParam = "&condition=" + condition
 					+ "&conditionValue=" + conditionValue;
 			request.setAttribute("conditionParam", conditionParam);
@@ -89,8 +89,7 @@ public class DisplayProducts extends HttpServlet {
 				request.setAttribute("action",
 						new String("getSome_For_Display"));
 				ProductDAO productDAO = new ProductDAO();
-				conditionValue = new String(
-						conditionValue.getBytes("ISO-8859-1"), "UTF-8");
+
 				if (condition.equals("p_buy_count")) {
 
 					list = productDAO.findTopProduct(conditionValue);
@@ -120,7 +119,7 @@ public class DisplayProducts extends HttpServlet {
 
 	// 分頁
 	private void splitPages(List<ProductVO> list, HttpServletRequest request) {
-		int rowsPerPage = 5; // 每頁的筆數
+		int rowsPerPage = 9; // 每頁的筆數
 		int totalRows = list.size(); // 總筆數
 		int totalPages = 0; // 總頁數
 		int whichPage = 1; // 第幾頁
