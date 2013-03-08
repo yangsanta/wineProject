@@ -34,8 +34,8 @@
 	src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
 <style type="text/css">
 #content {
-	padding: 40px 20px 30px 20px
-}
+	padding: 40px 20px 30px 20px;
+	background: url(<%=request.getContextPath()%>/images/page.png);}
 
 #content h2 {
 	TEXT-ALIGN: center
@@ -130,7 +130,7 @@ $("#buyone").click(function(){ //買一
                <ul class=" primary "><li><a href="#" class="badge badge-success"><span id="listall" class="element-invisible">全部</span></a></li>
 												<li><a href="#" class="badge badge-success"><span id="rg" class="element-invisible">紅配綠</span></a></li>
 												<li><a href="#" class="badge badge-success"><span id="helf" class="element-invisible">第二件半價</span></a></li>
-												<li><a href="#" class="badge badge-success"><span id="buyone" class="element-invisible">買一送一</span></a></li>
+												<li><a href="#" class="badge badge-success"><span id="buyone" class="element-invisible">買A送B</span></a></li>
 </ul>          </div>
 						<div name="allproduct">
 						
