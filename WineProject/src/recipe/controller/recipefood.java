@@ -2,8 +2,6 @@ package recipe.controller;
 
 import ingredient.model.IngredientDAO;
 import ingredient.model.IngredientVO;
-import sauce.model.SauceDAO;
-import sauce.model.SauceVO;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,9 +18,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONValue;
 
+import sauce.model.SauceDAO;
+import sauce.model.SauceVO;
 import food.model.FoodDAO;
 import food.model.FoodVO;
 
+/**
+ * Servlet implementation class recipefood
+ */
+@WebServlet("/recipefood")
 public class recipefood extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -45,60 +50,24 @@ public class recipefood extends HttpServlet {
 
 		String action = request.getParameter("action");
 
-		if (action.equals("select1")) {
-			FoodDAO foodDAO = new FoodDAO();
-			List<FoodVO> list = foodDAO.getAll();
-
-			List l1 = new LinkedList();
-
-			for (FoodVO food : list) {
-				Map m1 = new HashMap();
-				m1.put("f_id", food.getF_id());
-				m1.put("f_name", food.getF_name());
-				l1.add(m1);
-			}
-
-			String jsonString = JSONValue.toJSONString(l1);
-			response.getWriter().println(jsonString);
-		}
-		if (action.equals("select2")) {
+		
 			IngredientDAO ingredientDAO = new IngredientDAO();
-			//Integer id = Integer.parseInt(request.getParameter("id"));
+	
 			List<IngredientVO> list = ingredientDAO.getAll();
+			request.setAttribute("Ingredient", list);
+		
 
-			List l2 = new LinkedList();
-
-			for (IngredientVO ingredient : list) {
-				Map m2 = new HashMap();
-				m2.put("i_id", ingredient.getI_id());
-//				 System.out.println("f_id", ingredient.getf_id());
-				m2.put("i_name", ingredient.getI_name());
-				l2.add(m2);
-
-			}
-
-			String jsonString = JSONValue.toJSONString(l2);
-			//System.out.println(jsonString);
-			response.getWriter().println(jsonString);
-		}
-		if (action.equals("select3")) {
 			SauceDAO SauceDAO = new SauceDAO();
 			//Integer id = Integer.parseInt(request.getParameter("id"));
-			List<SauceVO> list = SauceDAO.getAll();
+			List<SauceVO> list1 = SauceDAO.getAll();
+			request.setAttribute("Sauce", list1);
 
-			List l3 = new LinkedList();
-
-			for (SauceVO sauce : list) {
-				Map m3 = new HashMap();
-				m3.put("s_id", sauce.getS_id());
-				m3.put("s_name", sauce.getS_name());
-				l3.add(m3);
-
-			}
-
-			String jsonString = JSONValue.toJSONString(l3);
-			response.getWriter().println(jsonString);
-		}
+		
+	
+		RequestDispatcher rd=request.getRequestDispatcher("/recipe.jsp");
+		rd.forward(request, response);
+	
+	
 	}
 
 	/**
