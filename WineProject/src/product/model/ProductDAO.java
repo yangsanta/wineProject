@@ -158,6 +158,22 @@ public class ProductDAO implements ProductDAO_interface {
 		}
 		return list;
 	}
+	public List<ProductVO> findSalesProduct() {
+
+		String GET_SALES_STMT = "from ProductVO where p_sales <>'NONE'";
+		List<ProductVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_SALES_STMT);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
 
 	public List<ProductVO> findTopProduct(String conditionValue) {
 

@@ -9,7 +9,7 @@
 <body>
 <a href="product/DisplayProducts?action=getAll&pageNo=1">Product/DisplayProducts(getAll)</a><br/>
 <a href="product/DisplayProducts?action=getSome_For_Display&pageNo=1&condition=p_vol&conditionValue=750">Product/DisplayProducts(getSome_For_Display)</a>
-<a href="product/DisplayProducts?action=getSome_For_Display&condition=p_sales&conditionValue=R">Product/DisplayProducts(getSome_For_Display)</a>
+<a href="product/DisplayProducts?action=getSome_For_Display&condition=p_sales&conditionValue=">Product/DisplayProducts(getSome_For_Display)</a>
 <a href="product/DisplayProducts?action=getSome_For_Display&condition=p_buy_count&conditionValue=10">Product/DisplayProducts(getSome_For_Display)</a>
 
 <hr />

@@ -1,5 +1,4 @@
 ﻿package product.controller;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -93,7 +92,11 @@ public class DisplayProducts extends HttpServlet {
 				if (condition.equals("p_buy_count")) {
 
 					list = productDAO.findTopProduct(conditionValue);
-				} else {
+				}else if (condition.equals("p_sales")) {
+					list = productDAO
+							.findSalesProduct();
+				} 
+				else {
 
 					list = productDAO
 							.findSomeProduct(condition, conditionValue);
@@ -108,7 +111,7 @@ public class DisplayProducts extends HttpServlet {
 				listAllUrl = "/product/PreferenceProductList.jsp";
 			} else if (condition.equals("p_buy_count")) {
 				listAllUrl = "/product/TOP20ProductList.jsp";
-			} else {
+			} else{
 				listAllUrl = "/product/ProductList.jsp";
 			}
 			RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
