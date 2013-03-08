@@ -103,7 +103,7 @@
 								<div class="g_wall">
 									<img src="<%=request.getContextPath()%>/images/label.png"
 										class="label_tag" /><img
-										src="<%=request.getContextPath()%>/images/products/${product.p_pic}.jpg"
+										src="<%=request.getContextPath()%>/images/products/${product.p_pic}"
 										style="width: 50px;" /><span><a
 										href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}">${product.p_name}</a><Br></B>酒莊:${product.p_winery}<Br>地區:${product.p_area}<Br>售價:${product.p_price}<Br>評分:${product.p_rate}</span>
 								</div>

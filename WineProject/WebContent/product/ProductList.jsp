@@ -8,7 +8,7 @@
 <head>
 	<meta http-equiv="Content-Language" content="zh-tw">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>酒迷 1| 歷久彌新的香濃口感</title>
+	<title>酒迷| 歷久彌新的香濃口感</title>
 	<meta content="酒迷 | 歷久彌新的香濃口感。" name="description" />
  	<meta content="酒迷 | 歷久彌新的香濃口感" name="keywords" />
         <link href="<%=request.getContextPath()%>/style/reset.css" rel="stylesheet" type="text/css" />
@@ -22,7 +22,14 @@
 
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
 <style type="text/css">
-
+.show_pro{ border-bottom:#ccc 1px solid;overflow: auto;	width: 100%;border-left: #ccc 1px solid;border-right: #ccc 1px solid;}
+.show_pro:hover{background:rgb(238, 245, 236)}
+.pro_list{float: left;list-style: none;}
+.pro_list2{float: right;list-style: none;margin:30px 30px 0 0;}
+.prod_img{background:#fff; border:#ccc 1px solid;padding:3px;margin:15px;width:100px;height:100px;text-align:center;}
+.buttonbuy{margin-top: 10px;}
+.pro_title{width: 100%;height:21px;background-repeat: repeat-x;background: url(<%=request.getContextPath()%>/images/product_list_top.png);border-left: #ccc 1px solid;
+border-right: #ccc 1px solid;}
 </style>
 <script type="text/javascript">
 
@@ -51,25 +58,19 @@
 					<div id="content">
 					
 <div class="searchResult">
-	搜尋結果共 ${totalRows} 筆，頁數 ${whichPage} / ${totalPages}：
-	<table class="p_outerTable">
-		<tbody>
-		<c:forEach var="product" items="${list}" begin="${pageIndex}" end="${pageIndex+rowsPerPage-1}" >
-			<tr>
-				<td class="p_pic"><a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}"><img src="../images/products/${product.p_pic}.jpg" style="width:50px;"/></a></td>
-				<td>
-				<table class="p_innerTable">
-					<tr><td><a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}">${product.p_name}</a></td></tr>
-					<tr><td>${product.p_winery}</td></tr>
-					<tr><td>${product.p_area}</td></tr>
-					<tr><td>${product.p_price}</td></tr>
-					<tr><td>${product.p_rate}</td></tr>
-				</table>
-				</td>
-			</tr>
-		</c:forEach>
-		</tbody>
-	</table>
+	共 ${totalRows} 項商品，頁數 ${whichPage} / ${totalPages}：
+	<div class="pro_title"> <span style="margin-left:10px">全部商品</span></div>
+	<c:forEach var="product" items="${list}" begin="${pageIndex}" end="${pageIndex+rowsPerPage-1}" >
+		<div class="show_pro">
+		<li class="pro_list"><a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}"><div class="prod_img"><img  src="../images/products/${product.p_pic}" style="width:45px;"/></div></a></li>
+		<li class="pro_list"><a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}">${product.p_name}</a><br><span style='font-size:9px'>酒莊:${product.p_winery}<br>國家:${product.p_area}<br>容量:0ml<br>評分:${product.p_rate}</span></li >	
+		<li class="pro_list2"><span style="color:red;margin-left:10px;font-size: 26px;">$${product.p_price}</span> <br><button class="buttonbuy btn btn-success" type="button"><i class="icon-white icon-shopping-cart"></i>加入購物車</button></li >	
+<br class="clear" />		
+		</div >	
+	</c:forEach>
+	
+	
+	
 	<div class="pageSwitch">
 		第 
 		<c:forEach var="page" begin="1" end="${totalPages}">

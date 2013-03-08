@@ -40,6 +40,8 @@
 #cssmenu ul li:hover > ul {
 	display: block;
   visibility: visible;
+  -moz-opacity: 0.95;
+opacity: 0.95;
 }
 
 
