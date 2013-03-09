@@ -127,7 +127,8 @@ public class MemberHibernateDAO implements MemberDAO_interface {
 			Query query = session.createQuery("FROM MemberVO where m_id=? AND m_pwd=?");
 			query.setParameter(0, id);
 			query.setParameter(1, pwd);
-			memberVO=(MemberVO) query.list().get(0);
+			if(!query.list().isEmpty()){
+			memberVO=(MemberVO) query.list().get(0);}
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();

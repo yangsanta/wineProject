@@ -34,9 +34,11 @@ public class login extends HttpServlet {
 		String m_pwd = request.getParameter("m_pwd").trim();
 		
 		session.setAttribute("access","n") ;
-		MemberVO member=dao.Login(m_id, m_pwd);
+		
 		if(m_id != null  &&  m_id.length() != 0 && 
-				m_pwd != null  &&  m_pwd.length() != 0 ){			
+				m_pwd != null  &&  m_pwd.length() != 0 ){
+			MemberVO member=dao.Login(m_id, m_pwd);
+			
 		if (member != null) {
 			//登入成功狀況
 			session.setAttribute("access","y"); 
