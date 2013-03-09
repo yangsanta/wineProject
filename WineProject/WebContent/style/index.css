@@ -364,7 +364,7 @@ body {
 	background: rgba(102, 57, 31, 0.6);
 	border-top: 1px solid rgba(102, 57, 31, 0.6);;
 }
-
+#copyright .container a{color:rgb(43, 16, 2);}
 #copyright span {
 	color: rgb(43, 16, 2);
 	margin-left: 20px
