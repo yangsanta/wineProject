@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,6 +28,21 @@
 		</div>
 
 		<div class="mem_in_title">訂單查詢</div>
+		<div class="mem_in_orders">
+			<table>
+				<thead>
+					<tr><th>訂單編號</th><th>訂購時間</th><th>訂單金額</th><th>商品名稱</th><th>數量</th><th>處理狀態</th></tr>
+				</thead>
+				<tbody>
+					<c:forEach var="order" items="${theOrders}">
+						<tr><td>${order.o_no}</td><td>${order.o_date}</td><td>${order.o_after_sales}</td><td>商品名稱</td><td>數量</td><td>${order.o_status}</td></tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			<c:forEach var="order" items="${theOrders}">
+				${order.o_date}<br>
+			</c:forEach>
+		</div>
 
 		<div class="bar"></div>
 	</div>
