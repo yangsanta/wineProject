@@ -26,6 +26,7 @@
 .show_pro:hover{background:rgb(238, 245, 236)}
 .pro_list{float: left;list-style: none;}
 .pro_list2{float: right;list-style: none;margin:30px 30px 0 0;}
+.pro_list3{float: left;list-style: none;width: 350px;}
 .prod_img{background:#fff; border:#ccc 1px solid;padding:3px;margin:15px;width:100px;height:100px;text-align:center;}
 .buttonbuy{margin-top: 10px;}
 .pro_title{width: 100%;height:21px;background-repeat: repeat-x;background: url(<%=request.getContextPath()%>/images/product_list_top.png);border-left: #ccc 1px solid;
@@ -63,7 +64,7 @@ border-right: #ccc 1px solid;}
 	<c:forEach var="product" items="${list}" begin="${pageIndex}" end="${pageIndex+rowsPerPage-1}" >
 		<div class="show_pro">
 		<li class="pro_list"><a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}"><div class="prod_img"><img  src="../images/products/${product.p_pic}" style="width:45px;"/></div></a></li>
-		<li class="pro_list"><a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}">${product.p_name}</a><br><span style='font-size:9px'>酒莊:${product.p_winery}<br>國家:${product.p_area}<br>容量:0ml<br>評分:${product.p_rate}</span></li >	
+		<li class="pro_list3"><a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}">${product.p_name}</a><br><span style='font-size:9px'>酒莊:${product.p_winery}<br>國家:${product.p_area}<br>容量:0ml<br>評分:${product.p_rate}</span></li >	
 		<li class="pro_list2"><span style="color:red;margin-left:10px;font-size: 26px;">$${product.p_price}</span> <br><button class="buttonbuy btn btn-success" type="button"><i class="icon-white icon-shopping-cart"></i>加入購物車</button></li >	
 <br class="clear" />		
 		</div >	

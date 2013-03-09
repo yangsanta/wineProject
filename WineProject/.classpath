@@ -13,5 +13,23 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/01-必備知識(JDBC)/javawork_jdbc/SQL Server 2008 (JDBC4.0 Driver)/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/ehcache-1.5.0.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/hibernate3.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/infinispan-core-4.0.0.FINAL.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/proxool-0.8.3.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/slf4j-api-1.5.8.jar"/>
+	<classpathentry kind="lib" path="D:/My Documents/Dropbox/java班/EEIT66_Hibernate課程分享/04_Hibernate/02_myLib_Hibernate/myLib_Hibernate/slf4j-log4j12-1.5.8.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

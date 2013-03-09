@@ -160,6 +160,113 @@ body {
 #nav ul li {
 	float: left;
 }
+/*購物車*/
+#nav22 {
+	width: 132px;
+	overflow: hidden;
+	float: left;
+	margin: 0;
+}
+
+#nav22 .topa em {
+	color: #d97e13;
+	font-weight: bold;
+}
+
+#nav22 .topa {
+	background: url(../images/bg34.gif) no-repeat;
+	padding: 2px 20px 5px 0px;
+}
+
+#nav22 li ul {
+	left: -999em;
+	position: absolute;
+	z-index: 9;
+	margin-top: -9px;
+}
+
+#nav22 .downul {
+	padding: 12px 0 8px 11px;
+	float: left;
+	border: 1px solid #d8d8d8;
+	top: 30px;
+	width: 300px;
+	background: #fff;
+}
+
+#nav22 li ul li {
+	float: left;
+	width: 100%;
+	height: 22px;
+	line-height: 22px;
+}
+
+#nav22 li:hover ul {
+	left: 0;
+}
+
+#nav22 .downnav {
+	padding: 0 9px 0 0;
+	width: 287px;
+	border: 1px solid #e20016;
+	border-top: none;
+}
+
+#nav22 .downul h3 {
+	width: 100%;
+	float: left;
+	padding-bottom: 6px;
+}
+
+#nav22 .babypart {
+	padding-bottom: 8px;
+}
+
+#nav22 .aproimg {
+	width: 36px;
+	border: 1px solid #ccc;
+	height: 40px;
+	float: left;
+}
+
+#nav22 .aproimg:hover {
+	border: 1px solid #ef9b11;
+}
+
+#nav22 .aproimg img {
+	width: 36px;
+	height: 40px;
+}
+
+#nav22 .arr01-hd {
+	padding-left: 5px;
+	width: 153px;
+	float: left;
+}
+
+#nav22 .arr01-hd a {
+	color: #08c;;
+	text-shadow: 0 0 0;
+}
+
+#nav22 .arr02-hd {
+	width: 73px;
+	text-align: right;
+	float: left;
+}
+
+#nav22 .shopcar_buy {
+	width: 73px;
+	text-align: right;
+	float: right;
+	margin-right: 30px
+}
+
+#nav22 .del {
+	font-size: 10px;
+	color: #1a8dc2;
+	cursor: pointer;
+}
 /*主內容 */
 #main {
 	position: relative;
@@ -265,4 +372,17 @@ body {
 
 .font-small {
 	font-size: 12px;
+}
+
+.clear {
+	zoom: 1;
+	clear: both;
+}
+
+.clear:after {
+	content: '';
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 0;
 }
