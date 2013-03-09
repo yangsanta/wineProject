@@ -118,24 +118,22 @@ public class MemberHibernateDAO implements MemberDAO_interface {
 		return totalNO;
 	}
 	
-	public Integer Login(String id ,String pwd) {
-		Integer totalNO = null;
+	public MemberVO Login(String id ,String pwd) {
+		MemberVO memberVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("SELECT count(*) as count FROM MemberVO where m_id=? AND m_pwd=?");
+			Query query = session.createQuery("FROM MemberVO where m_id=? AND m_pwd=?");
 			query.setParameter(0, id);
 			query.setParameter(1, pwd);
-			Long count = (Long)query.list().get(0);
-			totalNO = count.intValue();
-			System.out.println(totalNO);
+			memberVO=(MemberVO) query.list().get(0);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}		
-		return totalNO;
+		return memberVO;
 	}
 	
 	public static void main(String[] args) {

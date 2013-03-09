@@ -34,12 +34,13 @@ public class login extends HttpServlet {
 		String m_pwd = request.getParameter("m_pwd").trim();
 		
 		session.setAttribute("access","n") ;
+		MemberVO member=dao.Login(m_id, m_pwd);
 		if(m_id != null  &&  m_id.length() != 0 && 
 				m_pwd != null  &&  m_pwd.length() != 0 ){			
-		if (dao.Login(m_id, m_pwd) != 0) {
+		if (member != null) {
 			//登入成功狀況
 			session.setAttribute("access","y"); 
-			MemberVO member = dao.findInformation(Integer.valueOf(m_id));
+			
 			session.setAttribute("m_id",member.getM_id()); //會員帳號	
 			session.setAttribute("m_no",member.getM_no()); //會員編號
 			session.setAttribute("m_name",member.getM_name()); //會員姓名
