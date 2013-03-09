@@ -21,6 +21,10 @@
 			<link rel="stylesheet" type="text/css" href="style/index.css?v=1.1"
 				media="screen" />
 			<script type="text/javascript" src="js/index.js?v=1.0"></script>
+			<!-- TinyMCE -->
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/tinymcec/jscripts/tiny_mce.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/tinymcec/tinymac.js"></script>
+<!-- /TinyMCE -->
 			<style type="text/css">
 #main {
 	color: #333
@@ -65,7 +69,7 @@
 						</div>
 	<form action="insertDiscussion" method="post">
 		Title:<input type="text" name="d_title" value="${discussionVO.d_title}"><br /> 
-		Content:<textarea cols="50" rows="3" id="textContext" name="d_context">${discussionVO.d_context}</textarea><br />
+		Content:<textarea cols="170" rows="10" id="textContext" name="d_context">${discussionVO.d_context}</textarea><br />
 		<input type="submit" value="Send">
 		<input type="hidden" name="action" value="update">
 		<input type="hidden" name="d_datetime" value="${discussionVO.d_datetime}">

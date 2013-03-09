@@ -6,9 +6,10 @@
 
 
 
-
+<div class="box-heading"><span class="title">快速選單</span></div>
 <div id='cssmenu'>
-	<span class="title">快速選單</span>
+<div class="box-heading"><span class="title">快速選單</span></div>
+	
 	<ul>
 		<li class=' has-sub'><a href='#'><span>風味</span></a>
 			<ul>

@@ -113,7 +113,7 @@ tr:hover {
 						<div align="center">
 							<h2>討論區</h2>
 						</div>
-						<span>首頁 » 討論區</span>
+						<span>首頁 » <a href="http://localhost:8080/WineProject/DiscussionList?action=getAll"> 討論區</a></span>
 						<div class="well font-small">
 
 							<strong><span class="label label-success">歡迎!</span></strong> <br><span

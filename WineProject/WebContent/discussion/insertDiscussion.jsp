@@ -30,6 +30,10 @@
 				media="screen" />
 			<script type="text/javascript"
 				src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
+							<!-- TinyMCE -->
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/tinymcec/jscripts/tiny_mce.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/tinymcec/tinymac.js"></script>
+<!-- /TinyMCE -->
 			<style type="text/css">
 #main {
 	color: #333

@@ -58,7 +58,9 @@
 	text-align: center;
 	font-size: 24px
 }
-
+#product_one .car {
+	text-align: center;
+}
 .recom-title {
 	margin-top: 30px;
 	background:
@@ -84,6 +86,7 @@
 #recom-ul .shpdollar {
 	color: red
 }
+.pro_info{color:blue;width:70px;display:inline-block;text-align:right}
 .fb-like{margin-top:10px}
 </style>
 				<script type="text/javascript">
@@ -113,7 +116,7 @@
 				</div>
 
 				<div id="content">
-
+首頁>商品
 					<table border="0" width="100%" cellspacing="0" cellpadding="0">
 						<tr>
 							<td style="width: 210px;vertical-align: top;"><div class="prod_img">
@@ -125,37 +128,47 @@
 									data-show-faces="true"></div></td>
 							<td style="text-align: left">
 								<div id="product_one" class="pro_list">
-									<h4>
+									<span style="font-size: 26px;">
 										<strong style="color: rgb(37, 94, 40)">${ productVO.p_name}</strong>
-									</h4>
-									<ul>
-										<li>酒莊:${ productVO.p_winery }</li>
-										<li>國家:${ productVO.p_area }</li>
-										<li>容量:${ productVO.p_vol }ml</li>
-										<li>酒精濃度:5%</li>
-										<li>年份:${ productVO.p_year }</li>
-										<li>評分:${ productVO.p_rate }</li>
-										<li>產區:大陸</li>
-										<li>葡萄種類:${ productVO.p_grape }</li>
+									</span>
+									<ul style="margin-top:20px">
+										<li><span class="pro_info">酒莊：</span> ${ productVO.p_winery }</li>
+										<li><span class="pro_info">國家/地區：</span>${ productVO.p_area }</li>
+										<li><span class="pro_info">容量：</span>${ productVO.p_vol } ml</li>
+										<li><span class="pro_info">酒精濃度：</span>5%</li>
+										<li><span class="pro_info">年份：</span>${ productVO.p_year }</li>
+										<li><span class="pro_info">評分：</span>
+											<c:forEach var="i" begin="1" end="${ productVO.p_rate }" step="1" >
+     										  <img src="<%=request.getContextPath()%>/images/star1.gif" style="width:20px">
+											</c:forEach>	
+											<c:forEach var="i" begin="${ productVO.p_rate }" end="4" step="1" >
+     										    <img src="<%=request.getContextPath()%>/images/star.gif"style="width:20px"> 
+											</c:forEach>
+										</li>
+										<li><span class="pro_info">產區：</span>大陸</li>
+										<li><span class="pro_info">葡萄種類：</span>${ productVO.p_grape }</li>
 									</ul>
-									<div style="text-align: right;">商品編號:153512</div>
+									<div style="text-align: right;">商品編號:365${ productVO.p_no}</div>
 									<hr style="margin: 0">
 										<div class="price">
 											<strong>網路價:</strong><span style="color: red">$${ productVO.p_price }</span>
 										</div>
-										<BR><BR> 數量<select style="width: 80px;">
+											<div class="car">
+										<BR> 數量<select style="width: 80px;">
 													<option>1</option>
 													<option>2</option>
 													<option>${ productVO.p_num }</option>
 											</select>
 												<button class="btn btn-primary" type="button"
-													style="margin: 0 0 10px 5px;">加入購物車</button>
+													style="margin: 0 0 10px 5px;">加入購物車</button>	</div>
 								</div>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2"><div style="margin-top: 20px">
-									${ productVO.p_intro }</div>
+									${ productVO.p_intro }
+
+									</div>
 							</td>
 						</tr>
 					</table>
