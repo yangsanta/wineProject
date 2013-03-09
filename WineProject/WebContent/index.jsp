@@ -68,6 +68,18 @@
 	#abgneBlock ul.playerControl li.current { 
 		background-position: 0 0;
 	}
+	
+	
+	
+	.shopcart {height: 40px;}
+	.shopcartlist{position: absolute;
+padding: 0 ;
+right: 0px;
+top: 41px;
+background-color: white;
+z-index: 1000;width:300px;color:black}
+	 .displayshow {display:inline;}
+	 .displaynone{display:none}
 </style>
 <script type="text/javascript">
 
@@ -197,6 +209,7 @@
 			</div>
 			
 </div>
+
 </body>
 
 </html>

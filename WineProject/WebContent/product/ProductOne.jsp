@@ -1,79 +1,237 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <link rel="shortcut icon" href="favicon.ico" />
-<link rel="icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="<%=request.getContextPath()%>/favicon.ico"
+	type="image/x-icon" />
 <html>
 <head>
-	<meta http-equiv="Content-Language" content="zh-tw">
+<meta http-equiv="Content-Language" content="zh-tw">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>酒迷 1| 歷久彌新的香濃口感</title>
-	<meta content="酒迷 | 歷久彌新的香濃口感。" name="description" />
- 	<meta content="酒迷 | 歷久彌新的香濃口感" name="keywords" />
-        <link href="<%=request.getContextPath()%>/style/reset.css" rel="stylesheet" type="text/css" />
-		<link href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<script src="http://code.jquery.com/jquery.js"></script>
-		<script src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
+		<title>酒迷 | 歷久彌新的香濃口感</title>
+		<meta content="酒迷 | 歷久彌新的香濃口感。" name="description" />
+		<meta content="酒迷 | 歷久彌新的香濃口感" name="keywords" />
+		<link href="<%=request.getContextPath()%>/style/reset.css"
+			rel="stylesheet" type="text/css" />
+		<link
+			href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css"
+			rel="stylesheet" media="screen">
+			<script src="http://code.jquery.com/jquery.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
 
-		<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.fancybox.js?v=2.1.4"></script>
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style/jquery.fancybox.css?v=2.1.4" media="screen" />
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style/index.css?v=1.0" media="screen" />
+			<script type="text/javascript"
+				src="<%=request.getContextPath()%>/js/jquery.fancybox.js?v=2.1.4"></script>
+			<link rel="stylesheet" type="text/css"
+				href="<%=request.getContextPath()%>/style/jquery.fancybox.css?v=2.1.4"
+				media="screen" />
+			<link rel="stylesheet" type="text/css"
+				href="<%=request.getContextPath()%>/style/index.css?v=1.0"
+				media="screen" />
 
-		<script type="text/javascript" src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
-<style type="text/css">
+			<script type="text/javascript"
+				src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
+			<style type="text/css">
+.pro_list {
+	float: left;
+	list-style: none;
+	font-size: 10px;
+	text-align: left;
+	margin-left: 20px
+}
 
+.prod_img {
+	background: #fff;
+	border: #ccc 1px solid;
+	padding: 3px;
+	width: 250px;
+	height: 250px;
+	text-align: center;
+}
+
+#product_one ul li {
+	padding: 1px 0 1px 0;
+	border-top: dashed 1px #b3b3b3;
+}
+
+#product_one .price {
+	text-align: center;
+	font-size: 24px
+}
+
+.recom-title {
+	margin-top: 30px;
+	background:
+		url(<%=request.getContextPath()%>/images/cl_vvrecmd_trans_bg.png)
+		repeat-x;
+	padding-left: 50px
+}
+
+#recom-ul {
+	text-align: center;
+}
+
+#recom-ul  li {
+	float: left;
+	width: 150px;
+	border-top: 0
+}
+
+#recom-ul .desc {
+	font-size: 10px
+}
+
+#recom-ul .shpdollar {
+	color: red
+}
+.fb-like{margin-top:10px}
 </style>
-<link rel="stylesheet" href="../style/ProductOne.css">
-<script type="text/javascript">
-
-
-</script>
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+				<script type="text/javascript">
+					
+				</script>
+				<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+				<!--[if lt IE 9]>
       <script src="twitter.github.com/bootstrap/assets/js/html5shiv.js"></script>
     <![endif]-->
 </head>
 
-<body >
-	<div id="shadow_bg" >
-	<div id="body" >
-				<div id="search">
-					<input name="searchInput" type="text" class="search-query iconsearch" placeholder="搜尋" style="width: 70px; height: 10px; padding-left: 24px;" onfocus="this.style.width='100px'" onblur="this.style.width='70px'">
-					</div>
-						<br class="clear" />
+<body>
+	<div id="shadow_bg">
+		<div id="body">
+			<div id="search">
+				<input name="searchInput" type="text"
+					class="search-query iconsearch" placeholder="搜尋"
+					style="width: 70px; height: 10px; padding-left: 24px;"
+					onfocus="this.style.width='100px'" onblur="this.style.width='70px'">
+			</div>
+			<br class="clear" />
 			<%@ include file="../view_model/index_header.htm"%>
-	<div id="main">
-					<div id="sidebar">
-						<%@ include file="../view_model/product_list.jsp"%>
-						<%@ include file="../view_model/index_left_hotsale.htm"%>	
+			<div id="main">
+				<div id="sidebar">
+					<%@ include file="../view_model/product_list.jsp"%>
+					<%@ include file="../view_model/index_left_hotsale.htm"%>
+				</div>
+
+				<div id="content">
+
+					<table border="0" width="100%" cellspacing="0" cellpadding="0">
+						<tr>
+							<td style="width: 210px;vertical-align: top;"><div class="prod_img">
+									<img src="<%=request.getContextPath()%>/images/products/${ productVO.p_pic }"
+										style="vertical-align: top; width: 100px;">
+								</div>
+								<div class="fb-like" data-href="http://blog.davidou.org"
+									data-send="true" data-layout="button_count" data-width="100"
+									data-show-faces="true"></div></td>
+							<td style="text-align: left">
+								<div id="product_one" class="pro_list">
+									<h4>
+										<strong style="color: rgb(37, 94, 40)">${ productVO.p_name}</strong>
+									</h4>
+									<ul>
+										<li>酒莊:${ productVO.p_winery }</li>
+										<li>國家:${ productVO.p_area }</li>
+										<li>容量:${ productVO.p_vol }ml</li>
+										<li>酒精濃度:5%</li>
+										<li>年份:${ productVO.p_year }</li>
+										<li>評分:${ productVO.p_rate }</li>
+										<li>產區:大陸</li>
+										<li>葡萄種類:${ productVO.p_grape }</li>
+									</ul>
+									<div style="text-align: right;">商品編號:153512</div>
+									<hr style="margin: 0">
+										<div class="price">
+											<strong>網路價:</strong><span style="color: red">$${ productVO.p_price }</span>
+										</div>
+										<BR><BR> 數量<select style="width: 80px;">
+													<option>1</option>
+													<option>2</option>
+													<option>${ productVO.p_num }</option>
+											</select>
+												<button class="btn btn-primary" type="button"
+													style="margin: 0 0 10px 5px;">加入購物車</button>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><div style="margin-top: 20px">
+									${ productVO.p_intro }</div>
+							</td>
+						</tr>
+					</table>
+
+
+					<div class="recom-title">或許你也會喜歡</div>
+					<ul id="recom-ul" style="list-style: none;">
+						<li style="border-top: 0"><div class="img">
+								<a href="#"><img
+									src="http://tw.m.yimg.com/res/gdsale/st_pic/3750/st-3750864-s60.jpg"></a>
+							</div>
+							<div class="desc">
+								<a href="#">《Del Duomo》義大利巴薩米克醋淋醬 (215ml)</a>
+							</div>
+							<div>
+								<span class="shpdollar">$299元</span>
+							</div></li>
+						<li style="border-top: 0"><div class="img">
+								<a href="#"><img
+									src="http://tw.m.yimg.com/res/gdsale/st_pic/3750/st-3750864-s60.jpg"></a>
+							</div>
+							<div class="desc">
+								<a href="#">《Del Duomo》義大利巴薩米克醋淋醬 (215ml)</a>
+							</div>
+							<div>
+								<span class="shpdollar">$299元</span>
+							</div></li>
+						<li style="border-top: 0"><div class="img">
+								<a href="#"><img
+									src="http://tw.m.yimg.com/res/gdsale/st_pic/3750/st-3750864-s60.jpg"></a>
+							</div>
+							<div class="desc">
+								<a href="#">《Del Duomo》義大利巴薩米克醋淋醬 (215ml)</a>
+							</div>
+							<div>
+								<span class="shpdollar">$299元</span>
+							</div></li>
+						<li style="border-top: 0"><div class="img">
+								<a href="#"><img
+									src="http://tw.m.yimg.com/res/gdsale/st_pic/3750/st-3750864-s60.jpg"></a>
+							</div>
+							<div class="desc">
+								<a href="#">《Del Duomo》義大利巴薩米克醋淋醬 (215ml)</a>
+							</div>
+							<div>
+								<span class="shpdollar">$299元</span>
+							</div></li>
+					</ul>
+
+
+					<div id="fb-root"></div>
+					<script>
+						(function(d, s, id) {
+							var js, fjs = d.getElementsByTagName(s)[0];
+							if (d.getElementById(id))
+								return;
+							js = d.createElement(s);
+							js.id = id;
+							js.src = "http://connect.facebook.net/zh_TW/all.js#xfbml=1&appId=326780054097640";
+							fjs.parentNode.insertBefore(js, fjs);
+						}(document, 'script', 'facebook-jssdk'));
+					</script>
+
+<%@ include file="../view_model/index_fast_login.htm"%>
+						
+
+						<br class="clear" />
 					</div>
-	
-					<div id="content">
-
-
-<div class=p_content>
-	<div class="p_pics">${ productVO.p_pic }圖片</div>
-	<div class="p_data">
-		<div class="p_title">${ productVO.p_name} </div>
-		<ul class="p_info1">
-			<li>${ productVO.p_winery }（${ productVO.p_year }年），${ productVO.p_area }，${ productVO.p_area }。</li>
-			<li>葡萄種類:${ productVO.p_grape }</li>
-			<li>評分：${ productVO.p_rate }</li>
-		</ul>
-		<div class="p_intro">${ productVO.p_intro }</div>
-		<ul>
-			<li class="p_info2">容量：${ productVO.p_vol }</li>
-			<li>酒精濃度:${ productVO.p_alcho }</li>
-		</ul>
-		<div class="p_purchase">
-			<ul>
-			<li>價格：${ productVO.p_price }</li>
-			<li>存貨數量：${ productVO.p_num }</li>
-			</ul>
-		</div>
-	</div>
-	<div class="bar"></div>
+					<br class="clear" />
+				</div>
+			</div>
+<%@ include file="../view_model/index_footer.htm"%>
+				
+			</div>
+			
 </div>
-
 </body>
+
 </html>
