@@ -37,52 +37,42 @@
 #main {
 	color: #333
 }
-
 #content {
 	margin: 0px;
 	background: #ad8667
 		url('<%=request.getContextPath()%>/images/disz_bg.png');
 }
-
 table {
 	border-top: 1px solid #ccc;
 	color: #333
 }
-
 thead {
 	background-color: rgba(114, 113, 113, 0.47);
 	text-align: center;
 	font-size: 12px;
 }
-
 thead tr:hover {
 	background-color: rgba(0, 0, 0, 0);
 }
-
 td {
 	border-bottom: 1px solid #ccc;
 	padding: 5px;
 }
-
 tr:hover {
 	background-color: rgb(255, 255, 255);;
 	border-bottom: 1px solid #000;
 }
-
 .img_type {
 	Width: 40px;
 	text-align: center;
 }
-
 .tdcenter {
 	text-align: center;
 }
-
 .table_time {
 	Width: 120px;
 	font-size: 14px;
 }
-
 .table_title {
 	font-weight: bold;
 }
@@ -96,14 +86,6 @@ tr:hover {
 	<body>
 		<div id="shadow_bg">
 			<div id="body">
-				<div id="search">
-					<input name="searchInput" type="text"
-						class="search-query iconsearch" placeholder="搜尋"
-						style="width: 70px; height: 10px; padding-left: 24px;"
-						onfocus="this.style.width='100px'"
-						onblur="this.style.width='70px'">
-				</div>
-				<br class="clear" />
 				<%@ include file="../view_model/index_header.htm"%>
 				<div id="main">
 

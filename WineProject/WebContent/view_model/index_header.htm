@@ -1,26 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<div id="search">
+	<span> <c:if test="${sessionScope.access=='y'}">${sessionScope.m_id}，你好</c:if>
+ <c:if test="${param.login=='y'}">剛登入</c:if>
+	</span><input name="searchInput" type="text" class="search-query iconsearch"
+		placeholder="搜尋"
+		style="width: 70px; height: 10px; padding-left: 24px;"
+		onfocus="this.style.width='100px'" onblur="this.style.width='70px'">
+</div>
+<br class="clear" />
 <div id="header">
 	<div id="logo">
 		<h1>
-			<a href="<%=request.getContextPath()%>/index.jsp"><img  src="<%=request.getContextPath()%>/images/logo.gif" style="margin-top: -50px;margin-left: -50px;width:320px"/></a>
+			<a href="<%=request.getContextPath()%>/index.jsp"><img
+				src="<%=request.getContextPath()%>/images/logo.gif"
+				style="margin-top: -50px; margin-left: -50px; width: 320px" /></a>
 		</h1>
 	</div>
 
 	<div id="little_nav">
 		<ul style="float: left">
-			<li><a href="<%=request.getContextPath()%>/memberRegister.jsp">加入會員</a>
-			</li>
-			<li><a class="fancybox" href="#inline1">登入</a></li>
-			<li><a href="#">會員專區</a></li>
+			<c:if test="${sessionScope.access!='y'}">
+				<li><a href="<%=request.getContextPath()%>/memberRegister.jsp">加入會員</a></li>
+				<li><a class="fancybox" href="#inline1">登入</a></li>
+			</c:if>
+			<c:if test="${sessionScope.access=='y'}"><li><a class="fancybox" href="logout.jsp">登出</a></li></c:if>
+			<li><a href="#">會員專區 </a></li>
 		</ul>
 		<ul id="nav22">
-			<li><a class="topa" href="#"><i class= "icon-shopping-cart icon-white"></i> 購物車(<em>11</em>)件
-			</a>
+			<li><a class="topa" href="#"><i
+					class="icon-shopping-cart icon-white"></i> 購物車(<em>11</em>)件 </a>
 				<ul class="downul">
-					<span>最近加入的商品：</span><br>
-					<span style="margin-left:20px;font-size:10px;">商品</span><span style="font-size:10px;float:right;margin-right:30px" >小計</span>
-					<hr style="margin:  5px 5px 5px 0">
+					<span>最近加入的商品：</span>
+					<br>
+					<span style="margin-left: 20px; font-size: 10px;">商品</span>
+					<span style="font-size: 10px; float: right; margin-right: 30px">小計</span>
+					<hr style="margin: 5px 5px 5px 0">
 					<div>
 						<div class="babypart">
 							<a href="#" class="aproimg"><img
@@ -31,8 +46,8 @@ pageEncoding="UTF-8"%>
 							</div>
 							<div class="arr02-hd">
 								<span>$<strong>114.00</strong></span>
-									<p class="del">删除</p>
-								
+								<p class="del">删除</p>
+
 							</div>
 						</div>
 						<div class="babypart">
@@ -48,9 +63,12 @@ pageEncoding="UTF-8"%>
 							</div>
 						</div>
 						<p class="clear"></p>
-					</div><hr style="margin: 0  5px 5px 0">	
-					<div class="shopcar_buy" >
-						<a href="#" > <button class="btn btn-mini  btn-success" type="button">結帳回家</button></a>
+					</div>
+					<hr style="margin: 0 5px 5px 0">
+					<div class="shopcar_buy">
+						<a href="#">
+							<button class="btn btn-mini  btn-success" type="button">結帳回家</button>
+						</a>
 					</div>
 				</ul></li>
 		</ul>

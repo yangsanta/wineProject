@@ -31,7 +31,7 @@
         <p align="left">
         <input type="password" name="m_pwd" 
        
-        size="20">
+        size="20">president,${sessionScope.access}
         <input type="submit" value="µn¤J" name="loginButton"></td>
     </tr>
   </tr>

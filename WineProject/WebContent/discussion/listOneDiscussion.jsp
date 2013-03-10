@@ -73,14 +73,6 @@
 	<body>
 		<div id="shadow_bg">
 			<div id="body">
-				<div id="search">
-					<input name="searchInput" type="text"
-						class="search-query iconsearch" placeholder="搜尋"
-						style="width: 70px; height: 10px; padding-left: 24px;"
-						onfocus="this.style.width='100px'"
-						onblur="this.style.width='70px'">
-				</div>
-				<br class="clear" />
 				<%@ include file="../view_model/index_header.htm"%>
 				<div id="main">
 

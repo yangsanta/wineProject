@@ -1,7 +1,9 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="Big5"%>
 <html>
-    <head><title>µn¥X</title></head>
+    <head><title>µn¥X</title>
+     <meta http-equiv="refresh" content="3;url=	<%request.getHeader("REFERER"); %>">
+    </head>
     <body>
     <%  
         if(session.getAttribute("access")=="y"  ) {
@@ -14,3 +16,5 @@
      %>
     </body>
 </html>
+
+

@@ -80,7 +80,10 @@ body {
 	float: right;
 	margin: 5px;
 }
-
+#search span{
+line-height: 10px;
+color: #fff;
+}
 .iconsearch {
 	background-image: url("../images/search_icon.png");
 	background-repeat: no-repeat;
