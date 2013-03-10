@@ -404,7 +404,7 @@ constraint food_set_f_id_fk foreign key (f_id)	references food		(f_id),
 constraint ingredient_set_i_id_fk foreign key (i_id)	references ingredient		(i_id),
 constraint sauce_set_s_id_fk foreign key (s_id)	references sauce		(s_id),
 );
---1001	,	2001	,	3001	);
+insert into food_set values (	1	,	1001	,	2001	,	3001	);
 insert into food_set values (	2	,	1001	,	2001	,	3002	);
 insert into food_set values (	3	,	1001	,	2001	,	3003	);
 insert into food_set values (	4	,	1001	,	2001	,	3004	);
