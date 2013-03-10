@@ -50,11 +50,8 @@ public class login extends HttpServlet {
 				System.out.println("success!!");
 				
 				String redirestpage= null;
-				if(request.getHeader("REFERER").indexOf('?')<0){
-					 redirestpage="?login=y";
-				}
-				else
-				{ redirestpage="&login=y";}
+				//跳轉回原頁面
+				redirestpage=(request.getHeader("REFERER").indexOf('?')<0)?"?login2=y":"&login2=y";
 				response.sendRedirect(request.getHeader("REFERER")+redirestpage);
 //				response.sendRedirect("accesspage.jsp");
 			} else {

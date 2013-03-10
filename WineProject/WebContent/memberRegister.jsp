@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//Dtd XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/Dtd/xhtml1-transitional.dtd">
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon" />
@@ -81,7 +82,7 @@ function showDate(date) {
 <div style="float:left">
     <Table>
          <TR>
-             <td align="right">帳號e：<br></td>
+             <td align="right">帳號：<br></td>
              <td align="left"><input	type="text" name="m_id" value="" size="20" class="required" minlength="3"></td>
          </TR>
          <TR>
