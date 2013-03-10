@@ -363,7 +363,7 @@ color: #fff;
 	border-radius: 7px;
 	min-height: 835px;
 }
-
+	#just_login{display: none;}
 #copyright {
 	padding: 30px 0 30px 0;
 	background: rgba(102, 57, 31, 0.6);

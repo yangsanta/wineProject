@@ -1,10 +1,10 @@
-//css¿ï³æ ®ğªw´£¥Ü¥\¯à bootstrap
+//cssé¸å–® æ°£æ³¡æç¤ºåŠŸèƒ½ bootstrap
     $(function () {
         $("[rel='tooltip']").tooltip();
     });
-//css¿ï³æ ®ğªw´£¥Ü¥\¯à bootstrap end
+//cssé¸å–® æ°£æ³¡æç¤ºåŠŸèƒ½ bootstrap end
 
-//fancybox ¼u¥Xµe­± 
+//fancybox å½ˆå‡ºç•«é¢ 
 		$(document).ready(function() {
 			$('.fancybox').fancybox();
 			$("#fancybox-manual-b").click(function() {
@@ -15,40 +15,46 @@
 				});
 			});
 		});
-//fancybox ¼u¥Xµe­± end
+//fancybox å½ˆå‡ºç•«é¢ end
 
-// ¿ï³æ¥ªÃä¼öªù¼s§i½ü¼½
+// é¸å–®å·¦é‚Šç†±é–€å»£å‘Šè¼ªæ’­
 	$(function(){
-		// ¥ı¨ú±o .abgne-news-scroll ul ¤Î li ªº°ª«×
-		// ¨Ã³]©w°T®§²¾°Ê, ²H¤J¤Î½ü¼½®É¶¡
+		// å…ˆå–å¾— .abgne-news-scroll ul åŠ li çš„é«˜åº¦
+		// ä¸¦è¨­å®šè¨Šæ¯ç§»å‹•, æ·¡å…¥åŠè¼ªæ’­æ™‚é–“
 		var $news = $('.abgne-news-scroll ul'), 
 			scrollHeight = $news.find('li').outerHeight(true), 
 			scrollSpeed = 2000, fadeInSpeed = 2000, 
 			timer, speed = 5000;
 		
-		// ¥Î¨Ó±±¨î½ü¼½¥Î
+		// ç”¨ä¾†æ§åˆ¶è¼ªæ’­ç”¨
 		function newsScroll(){
-			// ¥ı§â .abgne-news-scroll ul ©¹¤U²¾
+			// å…ˆæŠŠ .abgne-news-scroll ul å¾€ä¸‹ç§»
 			$news.animate({
 				top: scrollHeight + 'px'
 			}, scrollSpeed, function(){
-				// ·í .abgne-news-scroll ul ²¾°Ê¨ì©wÂI«á
-				// ¥ı§ä¥X³Ì«á¤@­Ó li
+				// ç•¶ .abgne-news-scroll ul ç§»å‹•åˆ°å®šé»å¾Œ
+				// å…ˆæ‰¾å‡ºæœ€å¾Œä¸€å€‹ li
 				var $last = $news.find('li:last');
-				// ½Æ»s¤@¥÷¨Ã¥ıÁôÂÃ°_¨Ó
-				// ±µµÛ§â¥¦¥[¨ì .abgne-news-scroll ul ¤¤ªº²Ä¤@­Ó¶µ¥Ø
-				// ³Ì«á¥Î²H¤Jªº¤è¦¡Åã¥Ü, ·íÅã¥Ü§¹«áÄ~Äò½ü¼½
+				// è¤‡è£½ä¸€ä»½ä¸¦å…ˆéš±è—èµ·ä¾†
+				// æ¥è‘—æŠŠå®ƒåŠ åˆ° .abgne-news-scroll ul ä¸­çš„ç¬¬ä¸€å€‹é …ç›®
+				// æœ€å¾Œç”¨æ·¡å…¥çš„æ–¹å¼é¡¯ç¤º, ç•¶é¡¯ç¤ºå®Œå¾Œç¹¼çºŒè¼ªæ’­
 				$last.clone().hide().prependTo($news).fadeIn(fadeInSpeed, function(){
 					timer = setTimeout(newsScroll, speed);
 				});
-				// °¨¤W§â .abgne-news-scroll ul ²¾¨ì top µ¥©ó 0 ªº¦ì¸m
+				// é¦¬ä¸ŠæŠŠ .abgne-news-scroll ul ç§»åˆ° top ç­‰æ–¼ 0 çš„ä½ç½®
 				$news.css('top', 0);
-				// §â $last ²¾°£±¼
+				// æŠŠ $last ç§»é™¤æ‰
 				$last.remove();
 			});
 		}
 		
-		// ±Ò°Ê½ü¼½­p®É¾¹
+		// å•Ÿå‹•è¼ªæ’­è¨ˆæ™‚å™¨
 		timer = setTimeout(newsScroll, speed);
 	});
-// ¿ï³æ¥ªÃä¼öªù¼s§i½ü¼½end
+// é¸å–®å·¦é‚Šç†±é–€å»£å‘Šè¼ªæ’­end
+	
+	//ç™»å…¥æˆåŠŸçš„æç¤ºè¦–çª—
+    $(document).ready( function(){
+        $('#just_login').fadeIn().delay(4000).fadeOut();
+    });
+	//ç™»å…¥æˆåŠŸçš„æç¤ºè¦–çª—

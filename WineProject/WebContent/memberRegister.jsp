@@ -70,6 +70,7 @@ function showDate(date) {
 					</div>
 	
 					<div id="content">
+					<%@ include file="view_model/page_alert.htm"%>
 <H1>註冊成為酒迷</H1>
 <div class="well font-small">
   <strong><span class="label label-success">歡迎!</span></strong> <br><span style="margin-left:50px">『朋友！你是第一次來這裡嗎？』 酒莊裡的老闆舉起手中的紅酒杯向你致意。 這間坐落在冰天雪地中的小酒館， 陳列了來自各地不同的香醇，或許你曾聽過它，或曾經過這，但無論如何，歡迎你的加入！</span>

@@ -53,7 +53,7 @@ border-right: #ccc 1px solid;}
 					</div>
 	
 					<div id="content">
-					
+					<%@ include file="view_model/page_alert.htm"%>
 
 內容
 
