@@ -96,8 +96,8 @@ public class ProductDAO implements ProductDAO_interface {
 			Query query = session.createQuery("SELECT DISTINCT " + productlist
 					+ "  FROM ProductVO");
 			list1 = query.list();
-
-			for (int i = 0; i < list1.size(); i++) {
+int list1_size=list1.size();
+			for (int i = 0; i < list1_size; i++) {
 				String aaa = list1.get(i).toString();
 
 				list.add(aaa);

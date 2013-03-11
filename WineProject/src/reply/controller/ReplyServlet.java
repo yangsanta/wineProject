@@ -2,7 +2,7 @@ package reply.controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -31,7 +31,7 @@ public class ReplyServlet extends HttpServlet {
 		String action = req.getParameter("action");
 		ReplyHibernateDAO dao = new ReplyHibernateDAO();
 
-		List<String> errorMsgs = new LinkedList<String>();
+		List<String> errorMsgs = new ArrayList<String>();
 		// Store this set in the request scope, in case we need to
 		// send the ErrorPage view.
 		req.setAttribute("errorMsgs", errorMsgs);

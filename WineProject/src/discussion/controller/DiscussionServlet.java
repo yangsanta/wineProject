@@ -2,18 +2,18 @@
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import member.model.MemberVO;
-import discussion.model.*;
+import discussion.model.DiscussionHibernateDAO;
+import discussion.model.DiscussionVO;
 
 public class DiscussionServlet extends HttpServlet {
 
@@ -34,7 +34,7 @@ public class DiscussionServlet extends HttpServlet {
 		String action = req.getParameter("action");
 		DiscussionHibernateDAO dao = new DiscussionHibernateDAO();
 
-		List<String> errorMsgs = new LinkedList<String>();
+		List<String> errorMsgs = new ArrayList<String>();
 		// Store this set in the request scope, in case we need to
 		// send the ErrorPage view.
 		req.setAttribute("errorMsgs", errorMsgs);
@@ -209,11 +209,11 @@ public class DiscussionServlet extends HttpServlet {
 		req.setAttribute("pageNumber", pageNumber);
 
 		pageIndexArray = new int[pageNumber];
-		for (int i = 1; i <= pageIndexArray.length; i++) {
+		int pageIndexArray_length=pageIndexArray.length;//迴圈變數
+		for (int i = 1; i <= pageIndexArray_length; i++) {
 			pageIndexArray[i - 1] = i * rowsPerPage - rowsPerPage;
 			req.setAttribute("pageIndexArray", pageIndexArray);
 		}
-
 		if (req.getParameter("whichPage") != null) {
 			whichPage = Integer.parseInt(req.getParameter("whichPage"));
 			pageIndex = pageIndexArray[whichPage - 1];

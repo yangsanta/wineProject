@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<c:if test="${sessionScope.access=='y'}">
+<c:if test="${param.login=='y'}">
 <div class="alert" id="just_login" >
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <span class="label label-success">Success!</span>  <span >  aaa 你好，你已經成功的登入了!</span>
