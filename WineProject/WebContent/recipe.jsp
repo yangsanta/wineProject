@@ -110,5 +110,8 @@
 			</c:forEach>
 		</li>
 	</ul>
+<form action="">
+<input type="button" value="確認">
+</form>
 </body>
 </html>
