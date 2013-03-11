@@ -8,4 +8,6 @@ public interface Food_setDAO_interface {
           public void delete(Integer Uniid);
           public Food_setVO findByPrimaryKey(Integer Uniid);
           public List<Food_setVO> getAll();
+          public Integer findTotalNOofFood_set();
+          
 }

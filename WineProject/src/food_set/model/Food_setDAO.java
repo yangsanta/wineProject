@@ -15,6 +15,8 @@ public class Food_setDAO implements Food_setDAO_interface {
 		      "SELECT Uniid,fs_id,s_id FROM food_set order by Uniid";
 	private static final String GET_ONE_STMT =
 		      "SELECT Uniid,fs_id,s_id FROM food_set where Uniid=?";
+	private static final String GET_S_ID_STMT =
+		      "SELECT Uniid,fs_id,s_id FROM food_set where s_id=?";
 	private static final String DELETE =
 		      "DELETE FROM food_set where Uniid = ?";
 	private static final String UPDATE =
@@ -229,6 +231,64 @@ public class Food_setDAO implements Food_setDAO_interface {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(GET_ALL_STMT);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				// empVO 也稱為 Domain objects
+				food_setVO = new Food_setVO();
+				food_setVO.setUniid(rs.getInt("Uniid"));
+				food_setVO.setfs_id(rs.getInt("fs_id"));
+				food_setVO.sets_id(rs.getInt("s_id"));	
+				list.add(food_setVO); // Store the row in the list
+			}
+
+			// Handle any driver errors
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
+	public List<Food_setVO> getS_ID() {
+		List<Food_setVO> list = new ArrayList<Food_setVO>();
+		Food_setVO food_setVO = null;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(GET_S_ID_STMT);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
