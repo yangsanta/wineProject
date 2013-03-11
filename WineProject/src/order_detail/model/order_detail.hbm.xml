@@ -6,6 +6,7 @@
 	<class name="order_detail.model.Order_DetailVO" table="order_detail">
 
 		<composite-id>
+<!-- 			<key-many-to-one name="ordersVO" column="o_no" lazy="false" class="orders.model.OrdersVO" /> -->
 			<key-property name="o_no" column="o_no" />
 			<key-property name="p_no" column="p_no" />
 		</composite-id>
@@ -14,6 +15,8 @@
 		<property name="p_num" column="p_num" />
 		<property name="od_sales" column="od_sales" />
 		<property name="od_price" column="od_price" />
+		
+		
 
 
 	</class>

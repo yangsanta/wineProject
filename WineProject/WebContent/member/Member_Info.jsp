@@ -35,13 +35,11 @@
 				</thead>
 				<tbody>
 					<c:forEach var="order" items="${theOrders}">
-						<tr><td>${order.o_no}</td><td>${order.o_date}</td><td>${order.o_after_sales}</td><td>商品名稱</td><td>數量</td><td>${order.o_status}</td></tr>
+						<tr><td>${order.o_no}</td><td>${order.o_date}</td><td>${order.o_after_sales}</td><td><c:forEach var="detail" items="${order.order_details}"> ${detail.p_no} <br></c:forEach></td><td><c:forEach var="detail" items="${order.order_details}"> ${detail.p_num} <br></c:forEach></td><td>${order.o_status}</td></tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			<c:forEach var="order" items="${theOrders}">
-				${order.o_date}<br>
-			</c:forEach>
+			
 		</div>
 
 		<div class="bar"></div>

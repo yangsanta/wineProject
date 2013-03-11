@@ -1,6 +1,9 @@
 ﻿package orders.model;
-import java.awt.Image;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import order_detail.model.Order_DetailVO;
 
 public class OrdersVO implements java.io.Serializable{
 	
@@ -15,7 +18,14 @@ public class OrdersVO implements java.io.Serializable{
 	private String o_recipient_tel;
 	private String o_status;
 	private String o_pic;
+	private Set<Order_DetailVO> order_details = new HashSet<Order_DetailVO>();	//Add by JoJo: one to many
 	
+	public Set<Order_DetailVO> getOrder_details() {
+		return order_details;
+	}
+	public void setOrder_details(Set<Order_DetailVO> order_details) {
+		this.order_details = order_details;
+	}
 	public Integer getO_no() {
 		return o_no;
 	}

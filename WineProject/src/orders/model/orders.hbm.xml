@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="orders.model.OrdersVO" table="orders">
+
+		<id name="o_no" column="o_no">
+			<generator class="identity" />
+		</id>
+
+		<property name="m_no" column="m_no" />
+		<property name="o_date" column="o_date" />
+		<property name="c_key" column="c_key" />
+		<property name="o_shipping" column="o_shipping" />
+		<property name="o_after_sales" column="o_after_sales" />
+		<property name="o_recipient" column="o_recipient" />
+		<property name="o_recipient_addr" column="o_recipient_addr" />
+		<property name="o_recipient_tel" column="o_recipient_tel" />
+		<property name="o_status" column="o_status" />
+		<property name="o_pic" column="o_pic" />
+		
+		<set name="order_details" table="order_detail" cascade="all" lazy="false" inverse="true" order-by="o_no asc">
+		    <key><column name="o_no" /></key>
+		    <one-to-many class="order_detail.model.Order_DetailVO" />		    
+		</set>
+
+	</class>
+</hibernate-mapping>
+

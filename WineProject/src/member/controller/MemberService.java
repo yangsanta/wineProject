@@ -13,6 +13,7 @@ import member.model.MemberDAO;
 import member.model.MemberVO;
 import order_detail.model.Order_DetailDAO;
 import orders.model.OrdersDAO;
+import orders.model.OrdersJDBCDAO;
 import orders.model.OrdersVO;
 
 public class MemberService extends HttpServlet {
@@ -34,13 +35,11 @@ public class MemberService extends HttpServlet {
 		request.getSession().setAttribute("m_id", memberVO.getM_id());
 		
 		Integer m_no = (Integer)request.getSession().getAttribute("m_no");
-//		MemberVO theMember = memberDAO.findByPrimaryKey(m_no);
 		
 		OrdersDAO ordersDAO = new OrdersDAO();
-		List<OrdersVO> theOrders = ordersDAO.getOrdersByM_no(m_no);
+		List<OrdersVO> theOrders = ordersDAO.getOrdersByM_no(m_no);	//Added a method in OrdersDAO.java for this line.
 		request.setAttribute("theOrders", theOrders);
 		
-//		Order_DetailDAO orderDetailDAO = new Order_DetailDAO();
 		
 		String UrlStr = "/member/Member_Info.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(UrlStr);
