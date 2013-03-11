@@ -34,8 +34,8 @@ public class Food_setDAO implements Food_setDAO_interface {
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(INSERT_STMT);
 
-			pstmt.setInt(1, food_setVO.getfs_id());
-			pstmt.setInt(2, food_setVO.gets_id());	
+			pstmt.setInt(1, food_setVO.getFs_id());
+			pstmt.setInt(2, food_setVO.getS_id());	
 
 			pstmt.executeUpdate();
 
@@ -79,8 +79,8 @@ public class Food_setDAO implements Food_setDAO_interface {
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(UPDATE);
 
-			pstmt.setInt(1, food_setVO.getfs_id());
-			pstmt.setInt(2, food_setVO.gets_id());
+			pstmt.setInt(1, food_setVO.getFs_id());
+			pstmt.setInt(2, food_setVO.getS_id());
 			pstmt.setInt(3, food_setVO.getUniid());			
 			pstmt.executeUpdate();
 
@@ -178,8 +178,8 @@ public class Food_setDAO implements Food_setDAO_interface {
 				// empVo 也稱為 Domain objects
 				food_setVO = new Food_setVO();
 				food_setVO.setUniid(rs.getInt("Uniid"));
-				food_setVO.setfs_id(rs.getInt("fs_id"));
-				food_setVO.sets_id(rs.getInt("s_id"));				
+				food_setVO.setFs_id(rs.getInt("fs_id"));
+				food_setVO.setS_id(rs.getInt("s_id"));				
 			}
 
 			// Handle any driver errors
@@ -237,8 +237,8 @@ public class Food_setDAO implements Food_setDAO_interface {
 				// empVO 也稱為 Domain objects
 				food_setVO = new Food_setVO();
 				food_setVO.setUniid(rs.getInt("Uniid"));
-				food_setVO.setfs_id(rs.getInt("fs_id"));
-				food_setVO.sets_id(rs.getInt("s_id"));	
+				food_setVO.setFs_id(rs.getInt("fs_id"));
+				food_setVO.setS_id(rs.getInt("s_id"));	
 				list.add(food_setVO); // Store the row in the list
 			}
 
@@ -295,8 +295,8 @@ public class Food_setDAO implements Food_setDAO_interface {
 				// empVO 也稱為 Domain objects
 				food_setVO = new Food_setVO();
 				food_setVO.setUniid(rs.getInt("Uniid"));
-				food_setVO.setfs_id(rs.getInt("fs_id"));
-				food_setVO.sets_id(rs.getInt("s_id"));	
+				food_setVO.setFs_id(rs.getInt("fs_id"));
+				food_setVO.setS_id(rs.getInt("s_id"));	
 				list.add(food_setVO); // Store the row in the list
 			}
 
@@ -342,15 +342,15 @@ public class Food_setDAO implements Food_setDAO_interface {
 		// 新增
 		Food_setVO food_setVO1 = new Food_setVO();
 
-		food_setVO1.setfs_id(103);
-		food_setVO1.sets_id(103);
+		food_setVO1.setFs_id(103);
+		food_setVO1.setS_id(103);
 		dao.insert(food_setVO1);
 
 		// 修改
 		Food_setVO food_setVO2 = new Food_setVO();
 		food_setVO2.setUniid(1);
-		food_setVO2.setfs_id(1001);
-		food_setVO2.sets_id(1001);
+		food_setVO2.setFs_id(1001);
+		food_setVO2.setS_id(1001);
 		
 		dao.update(food_setVO2);
 
@@ -360,18 +360,25 @@ public class Food_setDAO implements Food_setDAO_interface {
 //		// 查詢
 		Food_setVO food_setVO3 = dao.findByPrimaryKey(3);
 		System.out.print(food_setVO3.getUniid() + ",");
-		System.out.print(food_setVO3.getfs_id());
+		System.out.print(food_setVO3.getFs_id());
 		System.out.println("---------------------");
 
 		// 查詢
 		List<Food_setVO> list = dao.getAll();
 		for (Food_setVO afood_set : list) {
 			System.out.print(afood_set.getUniid() + ",");
-			System.out.print(afood_set.getfs_id() + ",");
+			System.out.print(afood_set.getFs_id() + ",");
 
 			
 			System.out.println("-1---------------1-");
 		}
+	}
+
+
+	@Override
+	public Integer findTotalNOofFood_set() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
