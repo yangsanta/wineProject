@@ -1,385 +1,167 @@
 ﻿package food_set.model;
 
+import hibernate.util.HibernateUtil;
+
 import java.util.*;
 import java.sql.*;
 
+import order_detail.model.Order_DetailHibernateDAO;
+import order_detail.model.Order_DetailVO;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+
+import coupon.model.CouponVO;
+
 public class Food_setDAO implements Food_setDAO_interface {
-	String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	String url = "jdbc:sqlserver://localhost:1433;DatabaseName=WineProject";
-	String userid = "sa";
-	String passwd = "sa123456";
-
-	private static final String INSERT_STMT =
-		      "INSERT INTO food_set (fs_id,s_id) VALUES (?, ?)";
-	private static final String GET_ALL_STMT =
-		      "SELECT Uniid,fs_id,s_id FROM food_set order by Uniid";
-	private static final String GET_ONE_STMT =
-		      "SELECT Uniid,fs_id,s_id FROM food_set where Uniid=?";
-	private static final String GET_S_ID_STMT =
-		      "SELECT Uniid,fs_id,s_id FROM food_set where s_id=?";
-	private static final String DELETE =
-		      "DELETE FROM food_set where Uniid = ?";
-	private static final String UPDATE =
-		      "UPDATE food_set set fs_id=?,s_id=? where Uniid=?";
-
-
+	
+private static final String GET_ALL_STMT = "FROM Food_setVO order by Uniid desc";
+	
+	@Override
 	public void insert(Food_setVO food_setVO) {
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(INSERT_STMT);
-
-			pstmt.setInt(1, food_setVO.getFs_id());
-			pstmt.setInt(2, food_setVO.getS_id());	
-
-			pstmt.executeUpdate();
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			session.saveOrUpdate(food_setVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
+}
 
-	}
-
-
+	@Override
 	public void update(Food_setVO food_setVO) {
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(UPDATE);
-
-			pstmt.setInt(1, food_setVO.getFs_id());
-			pstmt.setInt(2, food_setVO.getS_id());
-			pstmt.setInt(3, food_setVO.getUniid());			
-			pstmt.executeUpdate();
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			session.saveOrUpdate(food_setVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
-
-	}
+}
 
 	@Override
 	public void delete(Integer Uniid) {
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(DELETE);
-
-			pstmt.setInt(1, Uniid);
-
-			pstmt.executeUpdate();
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			Food_setVO food_setVO = new Food_setVO();
+			food_setVO.setUniid(Uniid);
+			session.delete(food_setVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
-
 	}
 
-
+	@Override
 	public Food_setVO findByPrimaryKey(Integer Uniid) {
-
 		Food_setVO food_setVO = null;
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(GET_ONE_STMT);
-
-			pstmt.setInt(1, Uniid);
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				// empVo 也稱為 Domain objects
-				food_setVO = new Food_setVO();
-				food_setVO.setUniid(rs.getInt("Uniid"));
-				food_setVO.setFs_id(rs.getInt("fs_id"));
-				food_setVO.setS_id(rs.getInt("s_id"));				
-			}
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			food_setVO = (Food_setVO) session.get(Food_setVO.class, Uniid);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 		return food_setVO;
 	}
 
-
+	@Override
 	public List<Food_setVO> getAll() {
 		List<Food_setVO> list = new ArrayList<Food_setVO>();
-		Food_setVO food_setVO = null;
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(GET_ALL_STMT);
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				// empVO 也稱為 Domain objects
-				food_setVO = new Food_setVO();
-				food_setVO.setUniid(rs.getInt("Uniid"));
-				food_setVO.setFs_id(rs.getInt("fs_id"));
-				food_setVO.setS_id(rs.getInt("s_id"));	
-				list.add(food_setVO); // Store the row in the list
-			}
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			Query query = session.createQuery(GET_ALL_STMT);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 		return list;
 	}
-	public List<Food_setVO> getS_ID() {
-		List<Food_setVO> list = new ArrayList<Food_setVO>();
-		Food_setVO food_setVO = null;
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(GET_S_ID_STMT);
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				// empVO 也稱為 Domain objects
-				food_setVO = new Food_setVO();
-				food_setVO.setUniid(rs.getInt("Uniid"));
-				food_setVO.setFs_id(rs.getInt("fs_id"));
-				food_setVO.setS_id(rs.getInt("s_id"));	
-				list.add(food_setVO); // Store the row in the list
-			}
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
-		}
-		return list;
-	}
-
-	public static void main(String[] args) {
-
-		Food_setDAO dao = new Food_setDAO();
-
-		// 新增
-		Food_setVO food_setVO1 = new Food_setVO();
-
-		food_setVO1.setFs_id(103);
-		food_setVO1.setS_id(103);
-		dao.insert(food_setVO1);
-
-		// 修改
-		Food_setVO food_setVO2 = new Food_setVO();
-		food_setVO2.setUniid(1);
-		food_setVO2.setFs_id(1001);
-		food_setVO2.setS_id(1001);
-		
-		dao.update(food_setVO2);
-
-//		// 刪除
-		dao.delete(2);
-
-//		// 查詢
-		Food_setVO food_setVO3 = dao.findByPrimaryKey(3);
-		System.out.print(food_setVO3.getUniid() + ",");
-		System.out.print(food_setVO3.getFs_id());
-		System.out.println("---------------------");
-
-		// 查詢
-		List<Food_setVO> list = dao.getAll();
-		for (Food_setVO afood_set : list) {
-			System.out.print(afood_set.getUniid() + ",");
-			System.out.print(afood_set.getFs_id() + ",");
-
-			
-			System.out.println("-1---------------1-");
-		}
-	}
-
 
 	@Override
 	public Integer findTotalNOofFood_set() {
-		// TODO Auto-generated method stub
-		return null;
+		Integer totalNO = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("SELECT count(*) as count FROM Food_setVO ");
+			Long count = (Long)query.list().get(0);
+			totalNO = count.intValue();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}		
+		return totalNO;
 	}
 
+	public static void main(String args[]) {
+		
+		Food_setHibernateDAO dao = new Food_setHibernateDAO();
+		
 
+		
+
+		
+		//測試insert()
+//		DiscussionVO discussionVO1 = new DiscussionVO();
+//		discussionVO1.setM_no(111);
+//		discussionVO1.setD_context("oooxxxoooxxx");
+//		discussionVO1.setD_datetime(new java.sql.Timestamp(new java.util.Date().getTime()));
+//		discussionVO1.setD_status("000");
+//		discussionVO1.setD_final_edit(new java.sql.Timestamp(new java.util.Date().getTime()));
+//		discussionVO1.setD_title("請問聰明人喝的酒跟笨蛋喝的酒的差別?");
+//		dao.insert(discussionVO1);
+		
+		
+		//測試update()
+//		DiscussionVO discussionVO2 = new DiscussionVO();
+//		discussionVO2.setD_no(1010);
+//		discussionVO2.setM_no(111);
+//		discussionVO2.setD_context("11111111111");
+//		discussionVO2.setD_datetime(new java.sql.Timestamp(new java.util.Date().getTime()));
+//		discussionVO2.setD_status("000");
+//		discussionVO2.setD_final_edit(new java.sql.Timestamp(new java.util.Date().getTime()));
+//		discussionVO2.setD_title("請問聰明人喝的酒跟笨蛋喝的酒的差別?");
+//		dao.update(discussionVO2);
+				
+		//測試delete()
+//		dao.delete(1014);
+		
+		//測試findByPrimaryKey()
+//		DiscussionVO aDiscussion= dao.findByPrimaryKey(1013);
+//		System.out.print(aDiscussion.getD_no() + ",");
+//		System.out.print(aDiscussion.getM_no() + ",");
+//		System.out.print(aDiscussion.getD_context() + ",");
+//		System.out.print(aDiscussion.getD_datetime() + ",");
+//		System.out.print(aDiscussion.getD_status() + ",");
+//		System.out.print(aDiscussion.getD_final_edit() + ",");
+//		System.out.print(aDiscussion.getD_title());
+//		System.out.println();	
+		
+		//測試getAll()
+		List<Food_setVO> list = dao.getAll();
+		for (Food_setVO aFood_set : list) {
+			System.out.print(aFood_set.getUniid() + ",");
+			System.out.print(aFood_set.getFs_id() + ",");
+			System.out.print(aFood_set.getS_id());
+			System.out.println();	
+		}		
+		
+		//測試findTotalNOofDiscussion()總留言筆數
+		Integer totalNO = dao.findTotalNOofFood_set();
+		System.out.println("總留言筆數 = " + totalNO);
+	}
 }
