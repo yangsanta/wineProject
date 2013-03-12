@@ -2,15 +2,16 @@
 
 import java.io.Serializable;
 
-import orders.model.OrdersVO;
+import product.model.ProductVO;
 
 
 
 public class Order_DetailVO implements Serializable{
 
-	//private OrdersVO ordersVO;
+//	private OrdersVO ordersVO;
 	private Integer o_no;
-	private Integer p_no;
+//	private Integer p_no;
+	private ProductVO productVO;
 	private Integer p_num;
 	private Boolean od_sales;
 	private Integer od_price;
@@ -21,12 +22,12 @@ public class Order_DetailVO implements Serializable{
 	public void setO_no(Integer o_no) {
 		this.o_no = o_no;
 	}
-	public Integer getP_no() {
-		return p_no;
-	}
-	public void setP_no(Integer p_no) {
-		this.p_no = p_no;
-	}
+//	public Integer getP_no() {
+//		return p_no;
+//	}
+//	public void setP_no(Integer p_no) {
+//		this.p_no = p_no;
+//	}
 	public Integer getP_num() {
 		return p_num;
 	}
@@ -51,6 +52,12 @@ public class Order_DetailVO implements Serializable{
 //	public void setOrdersVO(OrdersVO ordersVO) {
 //		this.ordersVO = ordersVO;
 //	}
+	public ProductVO getProductVO() {
+		return productVO;
+	}
+	public void setProductVO(ProductVO productVO) {
+		this.productVO = productVO;
+	}
 	
 	
 }

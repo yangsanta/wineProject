@@ -8,7 +8,7 @@
 		<composite-id>
 <!-- 			<key-many-to-one name="ordersVO" column="o_no" lazy="false" class="orders.model.OrdersVO" /> -->
 			<key-property name="o_no" column="o_no" />
-			<key-property name="p_no" column="p_no" />
+			<key-many-to-one name="productVO" column="p_no" lazy="false" class="product.model.ProductVO" />
 		</composite-id>
 
 
