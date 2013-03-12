@@ -47,6 +47,7 @@ border-right: #ccc 1px solid;}
 	<div id="body" >
 			<%@ include file="../view_model/index_header.htm"%>
 	<div id="main">
+	<%@ include file="../view_model/page_alert.htm"%>
 					<div id="sidebar">
 						<%@ include file="../view_model/product_list.jsp"%>
 						<%@ include file="../view_model/index_left_hotsale.htm"%>	

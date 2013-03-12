@@ -91,7 +91,7 @@ tr:hover {
 
 
 					<div id="content">
-
+<%-- <%@ include file="../view_model/page_alert.htm"%> --%>
 						<div align="center">
 							<h2>討論區</h2>
 						</div>

@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import java.sql.*;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import member.model.MemberHibernateDAO;
@@ -29,7 +28,7 @@ public class login extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		MemberHibernateDAO dao = new MemberHibernateDAO();
 		HttpSession session = request.getSession();
-		List<String> errorMsgs = new LinkedList<String>();
+		List<String> errorMsgs = new  ArrayList<String>();
 		request.setAttribute("ErrorMsgKey", errorMsgs);
 		String m_id = request.getParameter("m_id").trim();
 		String m_pwd = request.getParameter("m_pwd").trim();
@@ -51,7 +50,7 @@ public class login extends HttpServlet {
 				
 				String redirestpage= null;
 				//跳轉回原頁面
-				redirestpage=(request.getHeader("REFERER").indexOf('?')<0)?"?login2=y":"&login2=y";
+				redirestpage=(request.getHeader("REFERER").indexOf('?')<0)?"?login=y":"&login=y";
 				response.sendRedirect(request.getHeader("REFERER")+redirestpage);
 //				response.sendRedirect("accesspage.jsp");
 			} else {

@@ -79,9 +79,10 @@
 
 					<div id="content">
 						<div align="center">
+						<%@ include file="../view_model/page_alert.htm"%>
 							<h2>文章</h2>
 						</div>
-						<span>首頁 »<a href="http://localhost:8080/WineProject/DiscussionList?action=getAll"> 討論區</a> » 文章</span>
+						<span>首頁 »<a href="<%=request.getContextPath()%>/DiscussionList?action=getAll"> 討論區</a> » 文章</span>
 						<div class="well font-small">
 
 							<strong><span class="label label-success">歡迎!</span></strong> <br><span

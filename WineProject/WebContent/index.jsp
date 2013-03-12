@@ -163,7 +163,7 @@ z-index: 1000;width:300px;color:black}
 					</div>
 	
 					<div id="content">
-					<%-- <%@ include file="view_model/page_alert.htm"%> --%>
+					<%@ include file="view_model/page_alert.htm"%>
 						<div id="abgneBlock">
 		<ul class="list">
 			<li><a href="#"><img src="images/ad/01.jpg"></a></li>

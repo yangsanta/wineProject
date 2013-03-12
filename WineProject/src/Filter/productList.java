@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import product.model.ProductDAO;
 
@@ -19,7 +21,9 @@ import product.model.ProductDAO;
  */
 @WebFilter("/productList")
 public class productList implements Filter {
-
+	 
+	  
+	  
     /**
      * Default constructor. 
      */
@@ -38,11 +42,16 @@ public class productList implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		//計時器
+		long timeStart = 0;  
+		 long timeEnd = 0;  
+		timeStart =System.currentTimeMillis();  
+		//計時器
 		ProductDAO dao = new ProductDAO();
 		List<String> France = dao.findCountry("法國");
-		for(String aaa:France){
-			System.out.println(aaa);
-		}
+//		for(String aaa:France){
+//			System.out.println(aaa);
+//		}
 		request.setAttribute("France", France);
 		List<String> Australia = dao.findCountry("澳洲");
 		request.setAttribute("Australia", Australia);
@@ -74,6 +83,14 @@ public class productList implements Filter {
 		request.setAttribute("bubbleWine", bubbleWine);
 		
 		chain.doFilter(request, response);
+		//計時  ， 網站上線時砍掉
+		HttpServletRequest request2 = (HttpServletRequest) request;
+		HttpServletResponse response2 = (HttpServletResponse) response;
+		timeEnd = System.currentTimeMillis(); 
+		
+		System.out.print("[開始]：" + timeStart + "ms [結束]：" + timeEnd + "ms[ 花費時間]：" + (timeEnd - timeStart) + "ms |"); 
+		System.out.println(request2.getHeader("referer"));
+		//計時
 	}
 
 	/**

@@ -110,6 +110,7 @@
 				</div>
 
 				<div id="content">
+				<%@ include file="../view_model/page_alert.htm"%>
 首頁>商品
 					<table border="0" width="100%" cellspacing="0" cellpadding="0">
 						<tr>

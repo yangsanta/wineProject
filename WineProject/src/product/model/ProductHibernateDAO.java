@@ -97,7 +97,8 @@ public class ProductHibernateDAO implements ProductDAO_interface {
 					+ "  FROM ProductVO");
 			list1 = query.list();
 
-			for (int i = 0; i < list1.size(); i++) {
+			int list1_size=list1.size(); //迴圈變數
+			for (int i = 0; i <list1_size; i++) {
 				String aaa = list1.get(i).toString();
 
 				list.add(aaa);
