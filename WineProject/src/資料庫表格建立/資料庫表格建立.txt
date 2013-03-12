@@ -81,13 +81,13 @@ CONSTRAINT [PK_order_detail] PRIMARY KEY CLUSTERED
 
 ;
 
-insert into order_detail values (0001,1111,12,0,2000);
-insert into order_detail values (0001,2222,1,0,1000);
-insert into order_detail values (0002,123,2,0,500);
-insert into order_detail values (0003,1001,2,1,1000);
-insert into order_detail values (0003,1002,4,1,200);
-insert into order_detail values (0004,9999,1,0,1000);
-insert into order_detail values (0004,9998,2,0,999);
+insert into order_detail values (0001,1,12,0,2000);
+insert into order_detail values (0001,2,1,0,1000);
+insert into order_detail values (0002,3,2,0,500);
+insert into order_detail values (0003,1,2,1,1000);
+insert into order_detail values (0003,2,4,1,200);
+insert into order_detail values (0004,9,1,0,1000);
+insert into order_detail values (0004,8,2,0,999);
 ----------------------------------------------------------------------------------------------------------------------------------
 drop table coupon_set;
 create table coupon_set ( --[table]滿額贈Coupon   ok
