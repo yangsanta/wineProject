@@ -29,10 +29,10 @@ public class MemberService extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//for testing
-		MemberDAO memberDAO = new MemberDAO();
-		MemberVO memberVO = memberDAO.findByPrimaryKey(1001);
-		request.getSession().setAttribute("m_no", memberVO.getM_no());
-		request.getSession().setAttribute("m_id", memberVO.getM_id());
+//		MemberDAO memberDAO = new MemberDAO();
+//		MemberVO memberVO = memberDAO.findByPrimaryKey(1001);
+//		request.getSession().setAttribute("m_no", memberVO.getM_no());
+//		request.getSession().setAttribute("m_id", memberVO.getM_id());
 		
 		Integer m_no = (Integer)request.getSession().getAttribute("m_no");
 		

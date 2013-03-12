@@ -24,7 +24,7 @@ pageEncoding="UTF-8"%>
 				<li><a class="fancybox" href="#inline1">登入</a></li>
 			</c:if>
 			<c:if test="${sessionScope.access=='y'}"><li><a class="fancybox" href="<%=request.getContextPath()%>/logout.jsp">登出</a></li></c:if>
-			<li><a href="#">會員專區 </a></li>
+			<li><a href="<%=request.getContextPath()%>/member/MemberService">會員專區 </a></li>
 		</ul>
 		<ul id="nav22">
 			<li><a class="topa" href="#"><i
