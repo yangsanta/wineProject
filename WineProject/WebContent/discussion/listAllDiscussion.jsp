@@ -86,7 +86,7 @@ tr:hover {
 	<body>
 		<div id="shadow_bg">
 			<div id="body">
-				<%@ include file="../view_model/index_header.jsp"%>
+				<%@ include file="../view_model/index_header.htm"%>
 				<div id="main">
 
 

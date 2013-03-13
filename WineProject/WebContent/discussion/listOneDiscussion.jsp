@@ -23,12 +23,14 @@
 			<script src="http://code.jquery.com/jquery.js"></script>
 			<script src="style/bootstrap/js/bootstrap.js"></script>
 			<script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.4"></script>
+			<script src="<%=request.getContextPath()%>/js/jquery.validate.min.js" type="text/javascript" ></script>
+     		<script src="<%=request.getContextPath()%>/js/messages_tw.js" type="text/javascript" ></script>
 			<link rel="stylesheet" type="text/css"
 				href="style/jquery.fancybox.css?v=2.1.4" media="screen" />
 			<link rel="stylesheet" type="text/css" href="style/index.css?v=1.1"
 				media="screen" />
 			<script type="text/javascript" src="js/index.js?v=1.0"></script>
-			<style type="text/css">
+<style type="text/css">
 #main {
 	color: #333
 }
@@ -63,17 +65,33 @@
 	background-position: 0 0;
 	color: #FFF;
 }
+
+label.error {
+            background:url("<%=request.getContextPath()%>/images/unchecked.gif") no-repeat 0px 0px;
+            padding-left: 16px;
+}
+
+label.success {
+            background:url("<%=request.getContextPath()%>/images/checked.gif") no-repeat 0px 0px;
+            padding-left: 16px;
+}
 </style>
-			<script type="text/javascript">
-				
-			</script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready( function(){
+    $('#commentForm').validate({
+        success: function(label) {
+            label.addClass("success").text("Ok!");
+        }
+    });
+});	
+</script>
 </head>
 <body>
 
 	<body>
 		<div id="shadow_bg">
 			<div id="body">
-				<%@ include file="../view_model/index_header.jsp"%>
+				<%@ include file="../view_model/index_header.htm"%>
 				<div id="main">
 
 
@@ -92,12 +110,12 @@
 						<%-- 發表日期:${discussionVO.d_datetime}<br/> --%>
 						<%-- 作者ID:${discussionVO.m_no}<br/> --%>
 						<%-- 內文:${discussionVO.d_context} --%>
-						<a
+						<c:if test="${sessionScope.m_no==requestScope.discussionVO.memberVO.m_no}"><a
 							href="<c:url value='/DiscussionList'/>?action=edit&d_no=${discussionVO.d_no}"><button
 								class="btn btn-large btn-primary" style="float: right"
 								type="button">
 								<i class="icon-pencil icon-white"></i> 編輯此文章
-							</button> </a>
+							</button> </a></c:if>
 
 
 
@@ -168,9 +186,9 @@
 
 
 						<!-- 	--留言功能 -->
-						<form action="<c:url value='/reply'/>" method="post">
+						<form action="<c:url value='/reply'/>" method="post" id="commentForm" class="cmxform">
 							快速留言：
-							<textarea cols="200" rows="6" name="r_context"></textarea>
+							<textarea cols="200" rows="6" name="r_context" class="required" minlength="10"></textarea>
 							<br /> <input type="submit" value="Send" /> <input
 								type="hidden" name="action" value="insert"> <input
 								type="hidden" name="d_no" value="${discussionVO.d_no}">

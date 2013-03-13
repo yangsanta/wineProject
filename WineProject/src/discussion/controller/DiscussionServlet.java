@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
+import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -81,9 +83,15 @@ public class DiscussionServlet extends HttpServlet {
 			// 新增主題功能
 			if ("insert".equals(action)) {
 				// 之後修改成從session獲取會員編號
-				int m_no = 1001;
-				// if (req.getSession().getAttribute("m_no") != null)
-
+				// int m_no = 1001;
+//				System.out.println(req.getSession().getAttribute("m_no"));
+				if (req.getSession().getAttribute("m_no") == null) {
+					RequestDispatcher failureView = req
+							.getRequestDispatcher("/login.jsp"); // 導入登入頁面
+					failureView.forward(req, res);
+					return;
+				}
+				Integer m_no = (Integer) req.getSession().getAttribute("m_no");
 				String d_title = req.getParameter("d_title");
 				String d_context = req.getParameter("d_context");
 
@@ -96,11 +104,13 @@ public class DiscussionServlet extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("ErrorMsgKey", errorMsgs);
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/error.jsp");// 導入錯誤處理頁面
+							.getRequestDispatcher("/errorReason.jsp");// 導入錯誤處理頁面
 					failureView.forward(req, res);
 					return; // 程式中斷
 				}
-
+				// 防止使用者在內文中，輸入<sricpt>之攻擊
+				d_context = Script2Text(d_context);
+				System.out.println(d_context);
 				// 設定新增之主題物件參數
 				Timestamp time = new java.sql.Timestamp(
 						new java.util.Date().getTime());
@@ -117,23 +127,29 @@ public class DiscussionServlet extends HttpServlet {
 				dao.insert(discussionVO);
 
 				res.sendRedirect("DiscussionList?action=getAll");
-				// RequestDispatcher successView =
-				// req.getRequestDispatcher("/DiscussionList?action=getAll"); //
-				// 成功轉交
-				// successView.forward(req, res);
 			}
 
 			if ("edit".equals(action)) {
-				// 判斷其欲編輯者是否為發文者
-				// if (req.getSession().getAttribute("m_no") !=
-				// req.getParameter("m_no"))
+				// 判斷其欲編輯者是否為發文者  (此處if仍有問題待解)
+				Integer mLogin = (Integer) req.getSession().getAttribute("m_no");
+				System.out.println(mLogin);
 				DiscussionVO discussionVO = new DiscussionVO();
-				Integer d_no = new Integer(req.getParameter("d_no"));
-				discussionVO = dao.findByPrimaryKey(d_no);
-				req.setAttribute("discussionVO", discussionVO);
-				RequestDispatcher successView = req
-						.getRequestDispatcher("/discussion/editDiscussion.jsp"); // 成功轉交
-				successView.forward(req, res);
+				Integer d_no = Integer.valueOf(req.getParameter("d_no"));
+				discussionVO = dao.findByPrimaryKey(d_no);				
+				Integer m_no = dao.findByPrimaryKey(d_no).getMemberVO().getM_no(); //從資料庫找該文章之發文者m_no
+				if (m_no.equals(mLogin)) {
+					req.setAttribute("discussionVO", discussionVO);
+					RequestDispatcher successView = req
+							.getRequestDispatcher("/discussion/editDiscussion.jsp"); // 成功轉交
+					successView.forward(req, res);
+				} else {
+					errorMsgs.add("您不是此篇文章發文者!!!");
+					req.setAttribute("ErrorMsgKey", errorMsgs);
+					RequestDispatcher failureView = req
+							.getRequestDispatcher("/errorReason.jsp");// 導入錯誤處理頁面
+					failureView.forward(req, res);
+					return; // 程式中斷
+				}
 			}
 
 			if ("update".equals(action)) {
@@ -158,7 +174,7 @@ public class DiscussionServlet extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("ErrorMsgKey", errorMsgs);
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/error.jsp");// 導入錯誤處理頁面
+							.getRequestDispatcher("/errorReason.jsp");// 導入錯誤處理頁面
 					failureView.forward(req, res);
 					return; // 程式中斷
 				}
@@ -179,8 +195,8 @@ public class DiscussionServlet extends HttpServlet {
 								+ d_no); // 成功轉交
 				successView.forward(req, res);
 			}
-			
-			//日期排序功能
+
+			// 日期排序功能
 
 		} catch (Exception e) {
 			errorMsgs.add("無法取得資料:" + e.getMessage());
@@ -190,6 +206,7 @@ public class DiscussionServlet extends HttpServlet {
 		}
 	}
 
+	// 分頁功能
 	private void splitPages(List<DiscussionVO> list, HttpServletRequest req) {
 
 		int rowNumber = list.size();
@@ -209,7 +226,7 @@ public class DiscussionServlet extends HttpServlet {
 		req.setAttribute("pageNumber", pageNumber);
 
 		pageIndexArray = new int[pageNumber];
-		int pageIndexArray_length=pageIndexArray.length;//迴圈變數
+		int pageIndexArray_length = pageIndexArray.length;// 迴圈變數
 		for (int i = 1; i <= pageIndexArray_length; i++) {
 			pageIndexArray[i - 1] = i * rowsPerPage - rowsPerPage;
 			req.setAttribute("pageIndexArray", pageIndexArray);
@@ -223,6 +240,29 @@ public class DiscussionServlet extends HttpServlet {
 		}
 		req.setAttribute("whichPage", whichPage);
 		req.setAttribute("pageIndex", pageIndex);
+	}
+
+	// 內文<script>標籤檢查
+	public static String Script2Text(String inputString) {
+		String ScriptStr = inputString; // Script標籤字串
+		String textStr = "";
+		java.util.regex.Pattern p_script;
+		java.util.regex.Matcher m_script;
+
+		try {
+			String regEx_script = "<[\\s]*?script[^>]*?>[\\s\\S]*?<[\\s]*?\\/[\\s]*?script[\\s]*?>"; // 定义script的正则表达式{或<script[^>]*?>[\\s\\S]*?<\\/script>
+																										// }
+			p_script = Pattern.compile(regEx_script, Pattern.CASE_INSENSITIVE);
+			m_script = p_script.matcher(ScriptStr);
+			ScriptStr = m_script.replaceAll("<h1>YOU CAN ATTACK ME!!!!!!</h1>"); // 过滤script标签
+
+			textStr = ScriptStr;
+
+		} catch (Exception e) {
+			System.err.println("Html2Text: " + e.getMessage());
+		}
+
+		return textStr;// 返回文本字符串
 	}
 
 }
