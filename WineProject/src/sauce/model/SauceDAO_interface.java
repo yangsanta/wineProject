@@ -10,5 +10,4 @@ public interface SauceDAO_interface {
           public void delete(Integer s_id);
           public SauceVO findByPrimaryKey(Integer s_id);
           public List<SauceVO> getAll();
-          public List<SauceVO> geti_id(Integer id);
 }

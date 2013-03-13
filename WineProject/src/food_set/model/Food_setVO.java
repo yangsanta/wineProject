@@ -1,35 +1,29 @@
 ﻿package food_set.model;
 
-import member.model.HashSet;
-import member.model.MemberVO;
-import member.model.Set;
-
-
-public class Food_setVO implements java.io.Serializable{
-	private Integer Uniid;
+public class Food_setVO implements java.io.Serializable {
+	
 	private Integer fs_id;
+	private Integer f_id;
+	private Integer i_id;
 	private Integer s_id;
-	private ProductVO productVO;
 	
-	private Set<Food_setVO> food_set = new HashSet<Food_setVO>();
-	public Set<Food_setVO> getFood_set() {
-		return food_set;
-	}
-	public void setFood_set(Set<Food_setVO> food_set) {
-		this.food_set = food_set;
-	}
-	
-	public Integer getUniid() {
-		return Uniid;
-	}
-	public void setUniid(Integer Uniid) {
-		this.Uniid = Uniid;
-	}
 	public Integer getFs_id() {
 		return fs_id;
 	}
 	public void setFs_id(Integer fs_id) {
 		this.fs_id = fs_id;
+	}
+	public Integer getF_id() {
+		return f_id;
+	}
+	public void setF_id(Integer f_id) {
+		this.f_id = f_id;
+	}
+	public Integer getI_id() {
+		return i_id;
+	}
+	public void setI_id(Integer i_id) {
+		this.i_id = i_id;
 	}
 	public Integer getS_id() {
 		return s_id;
@@ -37,6 +31,5 @@ public class Food_setVO implements java.io.Serializable{
 	public void setS_id(Integer s_id) {
 		this.s_id = s_id;
 	}
-
-
+	
 }
