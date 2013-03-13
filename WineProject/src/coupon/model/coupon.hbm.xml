@@ -12,7 +12,7 @@
 		<property name="c_price" column="c_price" />
 		<property name="c_status" column="c_status" />
 		<property name="c_deadline" column="c_deadline" />
-
+		<property name="m_no" column="m_no" />
 		
 
 	</class>

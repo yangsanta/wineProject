@@ -9,12 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.model.MemberDAO;
-import member.model.MemberVO;
-import order_detail.model.Order_DetailDAO;
 import orders.model.OrdersDAO;
-import orders.model.OrdersJDBCDAO;
 import orders.model.OrdersVO;
+import coupon.model.CouponDAO;
+import coupon.model.CouponVO;
 
 public class MemberService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -40,6 +38,9 @@ public class MemberService extends HttpServlet {
 		List<OrdersVO> theOrders = ordersDAO.getOrdersByM_no(m_no);	//Added a method in OrdersDAO.java for this line.
 		request.setAttribute("theOrders", theOrders);
 		
+		CouponDAO couponDAO = new CouponDAO();
+		List<CouponVO> theCoupons = couponDAO.findByM_no(m_no);
+		request.setAttribute("theCoupons", theCoupons);
 		
 		String UrlStr = "/member/Member_Info.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(UrlStr);

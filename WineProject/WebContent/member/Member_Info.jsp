@@ -13,6 +13,11 @@
 	<hr>
 	<div class="mem_in_outer">
 		<div class="mem_in_title">優惠券</div>
+		<div class="mem_in_coupons">
+			<c:forEach var="coupon" items="${theCoupons}">
+				<div>${coupon.c_price}<br>${coupon.c_key}</div>
+			</c:forEach>
+		</div>
 
 		<div class="mem_in_title">各項設定/維護</div>
 		<div class="mem_in_inner">

@@ -58,12 +58,15 @@ create table coupon (
  c_price				  int not null,
  c_status                 bit,
  c_deadline				  datetime,
- constraint coupon_primary_key primary key (c_key));
+ m_no					  int not null,
+ constraint coupon_primary_key primary key (c_key),
+ constraint coupon_m_no_fk foreign key (m_no) references member		(m_no));	
 
-insert into coupon values ('AAAAAAAAAAAAAA1',1000,0,GETDATE());
-insert into coupon values ('BBBBBBBBBBBBBB2',500,0,GETDATE());
-insert into coupon values ('CCCCCCCCCCCCCC3',200,0,GETDATE());
-insert into coupon values ('DDDDDDDDDDDDDD4',100,0,GETDATE());
+
+insert into coupon values ('AAAAAAAAAAAAAA1',1000,0,GETDATE(),1001);
+insert into coupon values ('BBBBBBBBBBBBBB2',500,0,GETDATE(),1001);
+insert into coupon values ('CCCCCCCCCCCCCC3',200,0,GETDATE(),1002);
+insert into coupon values ('DDDDDDDDDDDDDD4',100,1,GETDATE(),1003);
 
 
 create table order_detail (

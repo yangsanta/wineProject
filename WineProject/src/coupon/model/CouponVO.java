@@ -8,7 +8,7 @@ public class CouponVO {
 	private Integer c_price;
 	private Boolean c_status;
 	private Timestamp c_deadline;
-	
+	private Integer m_no;
 	
 	public String getC_key() {
 		return c_key;
@@ -33,6 +33,12 @@ public class CouponVO {
 	}
 	public void setC_deadline(Timestamp c_deadline) {
 		this.c_deadline = c_deadline;
+	}
+	public Integer getM_no() {
+		return m_no;
+	}
+	public void setM_no(Integer m_no) {
+		this.m_no = m_no;
 	}
 	
 	

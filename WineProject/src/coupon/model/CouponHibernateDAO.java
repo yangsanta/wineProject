@@ -10,6 +10,7 @@ import org.hibernate.Session;
 public class CouponHibernateDAO implements CouponDAO_interface {
 
 	private static final String GET_ALL_STMT = "from CouponVO order by c_key";
+	private static final String GET_SOME_byM_no_STMT = "from CouponVO where m_no=? and c_status=? order by c_key";
 
 	@Override
 	public void insert(CouponVO couponVO) {
@@ -83,51 +84,23 @@ public class CouponHibernateDAO implements CouponDAO_interface {
 		}
 		return list;
 	}
-
-	public static void main(String[] args) {
-
-		CouponHibernateDAO dao = new CouponHibernateDAO();
-
-		
-		Long time = new java.util.Date().getTime();
-		
-		// ● 新增 							OK!!!!
-
-//		 CouponVO couponVO1 = new CouponVO();
-//		 couponVO1.setC_key("AAA2");
-//		 couponVO1.setC_price(999);
-//		 couponVO1.setC_deadline(new java.sql.Timestamp(new java.util.Date().getTime()));
-//		 couponVO1.setC_status(true);
-//		 dao.insert(couponVO1);
-
-		// ● 修改 													OK!!
-//		 CouponVO couponVO2 = new CouponVO();
-//		 couponVO2.setC_key("AAA2");
-//		 couponVO2.setC_price(999);
-//		 couponVO2.setC_status(true);
-//		 couponVO2.setC_deadline(new java.sql.Timestamp(new java.util.Date().getTime()));  //java.sql.Timestamp.valueOf("2013-11-12 20:11:20")
-//		 dao.update(couponVO2);
-
-		// ● 刪除											OK!!!!!!!!
-		 dao.delete("AAAAAAAAAAAAAA1");
-
-		// ● 查詢-findByPrimaryKey 							OK!!!!!!!!!
-//		 CouponVO couponVO3 = dao.findByPrimaryKey("AAA2");
-//		 System.out.print(couponVO3.getC_key() + ",");
-//		 System.out.print(couponVO3.getC_price() + ",");
-//		 System.out.print(couponVO3.getC_status() + ",");
-//		 System.out.print(couponVO3.getC_deadline());
-//		 System.out.println();
-
-		// ?!!!!!!!!!!!!!!!!!● 查詢-getAll (多方emp2.hbm.xml必須設為lazy="false")(優!)
-		List<CouponVO> list = dao.getAll();
-		for (CouponVO aCoupon : list) {
-			System.out.print(aCoupon.getC_key() + ",");
-			System.out.print(aCoupon.getC_price() + ",");
-			System.out.print(aCoupon.getC_status() + ",");
-			System.out.print(aCoupon.getC_deadline());
-			System.out.println();
+	
+	@Override
+	public List<CouponVO> findByM_no(Integer m_no) {
+		List<CouponVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_SOME_byM_no_STMT);
+			query.setParameter(0, m_no);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
+		return list;
 	}
+
 
 }
