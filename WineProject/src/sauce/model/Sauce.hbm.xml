@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="sauce.model.SauceVO" table="sauce">
+
+		<id name="s_id" column="s_id">
+			<generator class="identity" />
+		</id>
+
+		<property name="s_name" column="s_name" />
+				
+		<!-- <set name="food_set" table="food_set" cascade="all" lazy="false" inverse="true" order-by="o_no asc">
+		    <key><column name="i_id" /></key>
+		    <one-to-many class="food_set.model.Food_SetVO" />		    
+		</set> -->
+		<!-- <many-to-one name="productVO" column="p_no" lazy="false" class="product.model.ProductVO" /> -->
+
+	</class>
+</hibernate-mapping>
+

@@ -1,6 +1,6 @@
 package recipe.controller;
 
-import ingredient.model.IngredientDAO;
+import ingredient.model.IngredientJDBCDAO;
 import ingredient.model.IngredientVO;
 
 import java.io.IOException;
@@ -51,7 +51,7 @@ public class recipefood extends HttpServlet {
 		String action = request.getParameter("action");
 
 		
-			IngredientDAO ingredientDAO = new IngredientDAO();
+			IngredientJDBCDAO ingredientDAO = new IngredientJDBCDAO();
 	
 			List<IngredientVO> list = ingredientDAO.getAll();
 			request.setAttribute("Ingredient", list);
