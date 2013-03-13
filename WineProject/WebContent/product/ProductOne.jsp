@@ -102,7 +102,7 @@
 <body>
 	<div id="shadow_bg">
 		<div id="body">
-			<%@ include file="../view_model/index_header.htm"%>
+			<%@ include file="../view_model/index_header.jsp"%>
 			<div id="main">
 				<div id="sidebar">
 					<%@ include file="../view_model/product_list.jsp"%>
@@ -149,13 +149,16 @@
 											<strong>網路價:</strong><span style="color: red">$${ productVO.p_price }</span>
 										</div>
 											<div class="car">
-										<BR> 數量<select style="width: 80px;">
-													<option>1</option>
-													<option>2</option>
-													<option>${ productVO.p_num }</option>
+										<BR><form action="shoppingCart" method="post">
+										 數量<select name="num" style="width: 80px;">
+													<option value=1>1</option>
+													<option value=2>2</option>
+													<option value=${ productVO.p_num }>${ productVO.p_num }</option>
 											</select>
-												<button class="btn btn-primary" type="button"
-													style="margin: 0 0 10px 5px;">加入購物車</button>	</div>
+											<Input type='hidden' name="no" value="${productVO.p_no}">
+												<Input class="btn btn-primary" type="submit"
+													style="margin: 0 0 10px 5px;"  value='加入購物車'>
+													</form>	</div>
 								</div>
 							</td>
 						</tr>

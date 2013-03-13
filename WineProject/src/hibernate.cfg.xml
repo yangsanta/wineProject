@@ -41,9 +41,9 @@
 		<mapping resource="rg/model/rg.hbm.xml" />
 		<mapping resource="reply/model/reply.hbm.xml" />
 		<mapping resource="orders/model/orders.hbm.xml" />
-		<mapping resource="food/model/food.hbm.xml" />
-		<mapping resource="ingredient/model/ingredient.hbm.xml" />
-		<mapping resource="sauce/model/sauce.hbm.xml" />
+<!-- 		<mapping resource="food/model/food.hbm.xml" /> -->
+<!-- 		<mapping resource="ingredient/model/ingredient.hbm.xml" /> -->
+<!-- 		<mapping resource="sauce/model/sauce.hbm.xml" /> -->
 	</session-factory>
 
 </hibernate-configuration>

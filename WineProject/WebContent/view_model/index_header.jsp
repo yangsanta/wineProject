@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="search">
 	<span> <c:if test="${sessionScope.access=='y'}">${sessionScope.m_id}，你好&nbsp;&nbsp; &nbsp;</c:if>
 	</span><input name="searchInput" type="text" class="search-query iconsearch"
@@ -23,8 +24,12 @@ pageEncoding="UTF-8"%>
 				<li><a href="<%=request.getContextPath()%>/memberRegister.jsp">加入會員</a></li>
 				<li><a class="fancybox" href="#inline1">登入</a></li>
 			</c:if>
-			<c:if test="${sessionScope.access=='y'}"><li><a class="fancybox" href="<%=request.getContextPath()%>/logout.jsp">登出</a></li></c:if>
-			<li><a href="<%=request.getContextPath()%>/member/MemberService">會員專區 </a></li>
+			<c:if test="${sessionScope.access=='y'}">
+				<li><a class="fancybox"
+					href="<%=request.getContextPath()%>/logout.jsp">登出</a></li>
+			</c:if>
+			<li><a href="<%=request.getContextPath()%>/member/MemberService">會員專區
+			</a></li>
 		</ul>
 		<ul id="nav22">
 			<li><a class="topa" href="#"><i
@@ -36,31 +41,24 @@ pageEncoding="UTF-8"%>
 					<span style="font-size: 10px; float: right; margin-right: 30px">小計</span>
 					<hr style="margin: 5px 5px 5px 0">
 					<div>
-						<div class="babypart">
-							<a href="#" class="aproimg"><img
-								src="http://localhost:8080/WineProject/images/products/SWLA02G_img1.jpg" /></a>
-							<div class="arr01-hd">
-								<span><a href="#">貝林格經典紅葡萄酒</a></span>
-								<p>x2</p>
-							</div>
-							<div class="arr02-hd">
-								<span>$<strong>114.00</strong></span>
-								<p class="del">删除</p>
 
-							</div>
-						</div>
-						<div class="babypart">
-							<a href="#" class="aproimg"><img
-								src="http://localhost:8080/WineProject/images/products/I1507_img1.jpg" /></a>
-							<div class="arr01-hd">
-								<span><a href="#">史創釀酒師施赫紅葡萄酒</a></span>
-								<p>x3</p>
-							</div>
-							<div class="arr02-hd">
-								<span>$<strong>114.00</strong></span>
-								<p class="del">删除</p>
-							</div>
-						</div>
+
+						<c:forEach var="products" items="${sessionScope.ShoppingCart.content}">
+														<div class="babypart">
+															<a href="#" class="aproimg"><img
+																src="http://localhost:8080/WineProject/images/products/SWLA02G_img1.jpg" /></a>
+															<div class="arr01-hd">
+																<span><a href="#">${products.value.productName}</a></span>
+																<p>x${products.value.productNumber}</p>
+															</div>
+															<div class="arr02-hd">
+																<span>$<strong>${products.value.subTatle}</strong></span>
+																<p class="del">删除</p>
+
+															</div>
+						</c:forEach>
+
+
 						<p class="clear"></p>
 					</div>
 					<hr style="margin: 0 5px 5px 0">
@@ -84,8 +82,8 @@ pageEncoding="UTF-8"%>
 				href="<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_sales&conditionValue="
 				rel="tooltip" data-placement="bottom"
 				title="最新的組合套餐優惠，您可以用最優惠的方式購買到此產品">優惠商品</a></li>
-			<li><a href="food/setselectall" rel="tooltip" data-placement="bottom"
-				title="不知道吃甚麼晚餐配甚麼樣的酒最浪漫美味嗎? 來這邊就對了">餐酒搭配</a></li>
+			<li><a href="food/setselectall" rel="tooltip"
+				data-placement="bottom" title="不知道吃甚麼晚餐配甚麼樣的酒最浪漫美味嗎? 來這邊就對了">餐酒搭配</a></li>
 
 			<li class="last"><a
 				href="<%=request.getContextPath()%>/DiscussionList?action=getAll"

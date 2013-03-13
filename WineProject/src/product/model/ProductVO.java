@@ -23,7 +23,7 @@ public class ProductVO implements java.io.Serializable {
 	private Timestamp p_date;
 	private String p_type;
 	private String p_grape;
-	private Integer p_discount;
+
 	private String p_country;
 	
 
@@ -39,13 +39,7 @@ public class ProductVO implements java.io.Serializable {
 		return p_pic;
 	}
 
-	public Integer getP_discount() {
-		return p_discount;
-	}
-
-	public void setP_discount(Integer p_discount) {
-		this.p_discount = p_discount;
-	}
+	
 
 	public void setP_pic(String p_pic) {
 		this.p_pic = p_pic;

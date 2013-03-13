@@ -73,7 +73,7 @@
 	<body>
 		<div id="shadow_bg">
 			<div id="body">
-				<%@ include file="../view_model/index_header.htm"%>
+				<%@ include file="../view_model/index_header.jsp"%>
 				<div id="main">
 
 

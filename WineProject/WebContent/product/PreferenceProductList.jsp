@@ -110,7 +110,7 @@ $("#ab").click(function(){ //買a
 <body>
 	<div id="shadow_bg">
 		<div id="body">
-			<%@ include file="../view_model/index_header.htm"%>
+			<%@ include file="../view_model/index_header.jsp"%>
 			<div id="main">
 			<%@ include file="../view_model/page_alert.htm"%>
 				<div id="sidebar">

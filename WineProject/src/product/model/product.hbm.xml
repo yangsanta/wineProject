@@ -28,7 +28,7 @@
 		<property name="p_type" column="p_type" />
 		<property name="p_grape" column="p_grape" />
 		<property name="p_pic" column="p_pic" />
-		<property name="p_discount" column="p_discount" />
+
 		<property name="p_country" column="p_country" />
 
 

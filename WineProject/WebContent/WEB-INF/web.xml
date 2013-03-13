@@ -85,4 +85,12 @@
 		<servlet-name>MemberService</servlet-name>
 		<url-pattern>/member/MemberService</url-pattern>
 	</servlet-mapping>
+	<servlet>   
+	<servlet-name>shoppingCart</servlet-name>
+    <servlet-class>product.controller.BuyWine</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>shoppingCart</servlet-name>
+    <url-pattern>/product/shoppingCart</url-pattern>
+  </servlet-mapping>
 </web-app>
