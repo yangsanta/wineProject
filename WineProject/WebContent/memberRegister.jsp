@@ -51,6 +51,7 @@ function showDate(date) {
             background:url("<%=request.getContextPath()%>/images/checked.gif") no-repeat 0px 0px;
             padding-left: 16px;
         }
+        .datepick-month-year{width:100px}
 </style>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
