@@ -37,42 +37,52 @@
 #main {
 	color: #333
 }
+
 #content {
 	margin: 0px;
 	background: #ad8667
 		url('<%=request.getContextPath()%>/images/disz_bg.png');
 }
+
 table {
 	border-top: 1px solid #ccc;
 	color: #333
 }
+
 thead {
 	background-color: rgba(114, 113, 113, 0.47);
 	text-align: center;
 	font-size: 12px;
 }
+
 thead tr:hover {
 	background-color: rgba(0, 0, 0, 0);
 }
+
 td {
 	border-bottom: 1px solid #ccc;
 	padding: 5px;
 }
+
 tr:hover {
 	background-color: rgb(255, 255, 255);;
 	border-bottom: 1px solid #000;
 }
+
 .img_type {
 	Width: 40px;
 	text-align: center;
 }
+
 .tdcenter {
 	text-align: center;
 }
+
 .table_time {
 	Width: 120px;
 	font-size: 14px;
 }
+
 .table_title {
 	font-weight: bold;
 }
@@ -91,17 +101,19 @@ tr:hover {
 
 
 					<div id="content">
-<%-- <%@ include file="../view_model/page_alert.htm"%> --%>
+						<%@ include file="../view_model/page_alert.htm"%>
 						<div align="center">
 							<h2>討論區</h2>
 						</div>
-						<span>首頁 » <a href="http://localhost:8080/WineProject/DiscussionList?action=getAll"> 討論區</a></span>
+						<span>首頁 » <a
+							href="http://localhost:8080/WineProject/DiscussionList?action=getAll">
+								討論區</a></span>
 						<div class="well font-small">
 
 							<strong><span class="label label-success">歡迎!</span></strong> <br><span
 								style="margin-left: 50px">你可以在這邊與各方的酒友一起討論酒香的芬芳以及在味蕾上跳動的喜悅。現在就發表一篇文章來與大家認識認識吧。</span>
 						</div>
-						
+
 						<a href="discussion/insertDiscussion.jsp"><button
 								class="btn btn-large btn-primary" style="float: right"
 								type="button">
