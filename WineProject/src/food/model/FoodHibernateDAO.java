@@ -84,9 +84,9 @@ public class FoodHibernateDAO implements FoodDAO_interface {
 		}
 		return list;
 	}
-	public static void main(String[] args) {
-
-		FoodHibernateDAO dao = new FoodHibernateDAO();
+//	public static void main(String[] args) {
+//
+//		FoodHibernateDAO dao = new FoodHibernateDAO();
 
 		// 新增
 //		FoodVO foodVO1 = new FoodVO();
@@ -102,7 +102,7 @@ public class FoodHibernateDAO implements FoodDAO_interface {
 //		dao.update(foodVO2);
 //
 //		// 刪除
-		dao.delete(1007);
+//		dao.delete(1007);
 //
 //		// // 查詢
 //		FoodVO foodVO3 = dao.findByPrimaryKey(102);
@@ -111,14 +111,14 @@ public class FoodHibernateDAO implements FoodDAO_interface {
 //		System.out.println("---------------------");
 //
 		// 查詢
-		List<FoodVO> list = dao.getAll();
-		for (FoodVO afood : list) {
-			System.out.print(afood.getF_id() + ",");
-			System.out.print(afood.getF_name() + ",");
-
-			System.out.println("-1---------------1-");
-		}
-	}
+//		List<FoodVO> list = dao.getAll();
+//		for (FoodVO afood : list) {
+//			System.out.print(afood.getF_id() + ",");
+//			System.out.print(afood.getF_name() + ",");
+//
+//			System.out.println("-1---------------1-");
+//		}
+//	}
 
 
 }

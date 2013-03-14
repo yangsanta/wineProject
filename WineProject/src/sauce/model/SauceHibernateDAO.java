@@ -92,4 +92,43 @@ public class SauceHibernateDAO implements SauceDAO_interface {
 		return list;
 		
 	}
+	
+//	public static void main(String[] args) {
+//
+//		SauceHibernateDAO dao = new SauceHibernateDAO();
+
+		// 新增
+//		SauceVO sauceVO1 = new SauceVO();
+//		sauceVO1.setS_name("番茄醬1");
+//
+//		dao.insert(sauceVO1);
+
+//		// 修改
+//		SauceVO sauceVO2 = new SauceVO();
+//		sauceVO2.setS_id(new Integer(3047));
+//		sauceVO2.setS_name("king番茄醬1");
+//
+//		dao.update(sauceVO2);
+//
+//		// 刪除
+//		dao.delete(3047);
+//
+////		// 查詢
+//		SauceVO sauceVO3 = dao.findByPrimaryKey(102);
+//		System.out.print(sauceVO3.getS_id() + ",");
+//		System.out.print(sauceVO3.getS_name());
+//		System.out.println("---------------------");
+
+//		// 查詢
+//		List<SauceVO> list = dao.getAll();
+//		for (SauceVO asauce : list) {
+//			System.out.print(asauce.getS_id() + ",");
+//			System.out.print(asauce.getS_name() + ",");
+//
+//			
+//			System.out.println("-1---------------1-");
+//		}
+//	}
+
+	
 }

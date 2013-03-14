@@ -1,4 +1,4 @@
-﻿package ingredient.model;
+﻿/*package ingredient.model;
 
 import java.util.*;
 import java.sql.*;
@@ -9,7 +9,7 @@ public class IngredientDAO implements IngredientDAO_interface {
 	String userid = "sa";
 	String passwd = "sa123456";
 
-	private static final String INSERT_STMT = "INSERT INTO ingredient (f_id,i_name) VALUES ( ?)";
+	private static final String INSERT_STMT = "INSERT INTO ingredient (i_id,i_name) VALUES ( ?)";
 	private static final String GET_ALL_STMT = "SELECT i_id,i_name FROM ingredient order by i_id";
 	private static final String GET_ONE_STMT = "SELECT i_id,i_name FROM ingredient where i_id=?";
 	private static final String DELETE = "DELETE FROM ingredient where i_id = ?";
@@ -301,4 +301,4 @@ public class IngredientDAO implements IngredientDAO_interface {
 		}
 	}
 
-}
+}*/

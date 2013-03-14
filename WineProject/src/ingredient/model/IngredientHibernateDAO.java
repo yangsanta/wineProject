@@ -92,4 +92,42 @@ public class IngredientHibernateDAO implements IngredientDAO_interface {
 		return list;
 		
 	}
+	
+	
+//	public static void main(String[] args) {
+//
+//		IngredientHibernateDAO dao = new IngredientHibernateDAO();
+//
+//		// 新增
+////		IngredientVO ingredientVO1 = new IngredientVO();
+////		ingredientVO1.setI_name("新增馬鈴薯泥1");
+////
+////		dao.insert(ingredientVO1);
+//
+////		// 修改
+////		IngredientVO ingredientVO2 = new IngredientVO();
+////		ingredientVO2.setI_id(new Integer(2034));
+////		ingredientVO2.setI_name("修改高麗菜12");
+////
+////		dao.update(ingredientVO2);
+//
+////		// 刪除
+//		dao.delete(2035);
+////
+////		// // 查詢
+////		IngredientVO ingredientVO3 = dao.findByPrimaryKey(102);
+////		System.out.print(ingredientVO3.getI_id() + ",");
+////		System.out.print(ingredientVO3.getI_name());
+////		System.out.println("---------------------");
+////
+//		// 查詢
+//		List<IngredientVO> list = dao.getAll();
+//		for (IngredientVO aingredient : list) {
+//			System.out.print(aingredient.getI_id() + ",");
+//			System.out.print(aingredient.getI_name() + ",");
+//
+//			System.out.println("-1---------------1-");
+//		}
+//	}
+
 }
