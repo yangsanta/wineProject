@@ -149,10 +149,10 @@ $("#ab").click(function(){ //買a
 						<c:set var="preference" scope="page" value="half"/>  </c:when>
 						
 					</c:choose>
-				<a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}"><div  name="${preference}"  class="g_wall">
+				<div  name="${preference}"  class="g_wall">
 				<img src="<%=request.getContextPath()%>/images/product_${preference}.png" class="label_tag" />
 				<img src="<%=request.getContextPath()%>/images/products/${product.p_pic}" style="width:50px;"/>
-				<span><a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}">${product.p_name}</a></span> ${product.p_winery}${product.p_area}${product.p_price}${product.p_rate}${product.p_sales}</div></a>
+				<span><a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}">${product.p_name}</a></span> ${product.p_winery}${product.p_area}${product.p_price}${product.p_rate}${product.p_sales}</div>
 				</c:forEach>
 		<div  name="rg" class="g_wall"><img src="<%=request.getContextPath()%>/images/product_rg.png" class="label_tag" /><img src="<%=request.getContextPath()%>/images/products/I4601_img1.jpg" style="width:50px;border:1px"/><span>rg匯雅粉紅香檳</span> 特價$899！ 3小時前 評價了設計品Ooh La La 動感俏女孩硬殼筆記本</div>
 		<div  name="rg" class="g_wall"><img src="<%=request.getContextPath()%>/images/product_rg.png" class="label_tag" /><img src="<%=request.getContextPath()%>/images/products/I4601_img1.jpg" style="width:50px;"/><span>rga義大利雪之邱</span>  3小時前 評價了設計品Ooh La La 動感俏女孩硬殼筆記本</div>	

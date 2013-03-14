@@ -33,7 +33,7 @@ private int bNumber=0;
 			OldShoppingProduct
 					.setProductNumber(shoppingProduct.getProductNumber()
 							+ OldShoppingProduct.getProductNumber());
-			OldShoppingProduct.setSubTatle(shoppingProduct.getSubTatle()+OldShoppingProduct.getSubTatle());
+			OldShoppingProduct.setSubTotal(shoppingProduct.getSubTotal()+OldShoppingProduct.getSubTotal());
 	
 			// cart.put(bookID, oib);
 		}
@@ -45,7 +45,7 @@ private int bNumber=0;
 		Integer total = 0;
 		Set<Integer> set = cart.keySet();
 		for (Integer n : set) {
-			Integer price =  (Integer)cart.get(n).getSubTatle();
+			Integer price =  (Integer)cart.get(n).getSubTotal();
 			total += price;
 		}
 		return total;

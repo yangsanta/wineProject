@@ -41,12 +41,12 @@ public class BuyWine extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
-		if (session == null) { // 使用逾時
-			request.setAttribute("Errors", "使用逾時，請重新登入");
-			RequestDispatcher rd = request.getRequestDispatcher("#");
-			rd.forward(request, response);
-			return;
-		}
+//		if (session == null) { // 使用逾時
+//			request.setAttribute("Errors", "使用逾時，請重新登入");
+//			RequestDispatcher rd = request.getRequestDispatcher("#");
+//			rd.forward(request, response);
+//			return;
+//		}
 
 		ShipingCart cart = (ShipingCart) session.getAttribute("ShoppingCart");
 		if (cart == null) {
@@ -72,10 +72,9 @@ public class BuyWine extends HttpServlet {
 		if (sales.equals("A")) {
 			// 買A送B
 			// 將所選的商品加入購物車
-			shoppingProduct.setSubTatle(shoppingProduct.getProductPrice());
 			shoppingProduct.setProductNumber(productNumber);
 
-			shoppingProduct.setSubTatle(productNumber * price);
+			shoppingProduct.setSubTotal(productNumber * price);
 			cart.addToCart(productNo, shoppingProduct);
 			// 找出對應的B商品
 			AbDAO abdao = new AbDAO();
@@ -89,7 +88,7 @@ public class BuyWine extends HttpServlet {
 			shoppingProductB.setProductNo(productB.getP_no());
 			shoppingProductB.setProductNumber(productNumber);
 			shoppingProductB.setProductPrice(productB.getP_price());
-			shoppingProductB.setSubTatle(0);
+			shoppingProductB.setSubTotal(0);
 			cart.addToCart(shoppingProductB.getProductNo(), shoppingProductB);
 		} else if (sales.equals("half")) { // 第2件半價
 			Map<Integer, ShoppingProduct> old = cart.getContent();
@@ -99,7 +98,7 @@ public class BuyWine extends HttpServlet {
 			int quotient = num / 2;
 			if (OldShoppingProduct == null) {
 
-				shoppingProduct.setSubTatle((price * num)
+				shoppingProduct.setSubTotal((price * num)
 						- (quotient * price / 2));
 				cart.addToCart(shoppingProduct.getProductNo(), shoppingProduct);
 
@@ -110,9 +109,9 @@ public class BuyWine extends HttpServlet {
 				System.out.println(quotient);
 				System.out.println((price * num) - (quotient * price / 2));
 				System.out.println(OldShoppingProduct.getProductPrice());
-				shoppingProduct.setSubTatle((price * num)
+				shoppingProduct.setSubTotal((price * num)
 						- (quotient * price / 2)
-						- OldShoppingProduct.getSubTatle());
+						- OldShoppingProduct.getSubTotal());
 				cart.addToCart(shoppingProduct.getProductNo(), shoppingProduct);
 
 			}
@@ -136,13 +135,13 @@ public class BuyWine extends HttpServlet {
 		else {
 			// 沒有優惠OR B區商品
 			shoppingProduct.setProductNumber(productNumber);
-			shoppingProduct.setSubTatle(productNumber * price);
+			shoppingProduct.setSubTotal(productNumber * price);
 			cart.addToCart(shoppingProduct.getProductNo(), shoppingProduct);
 
 		}
 		// 計算金額
 
-		response.sendRedirect("http://localhost:8081/WineProject/product/DisplayProducts?action=getAll&pageNo=1");
+		response.sendRedirect("http://localhost:8080/WineProject/product/DisplayProducts?action=getAll&pageNo=1");
 
 	}
 
