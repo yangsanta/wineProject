@@ -51,11 +51,11 @@ public class food_set extends HttpServlet {
 
 		IngredientHibernateDAO ingredientDAO = new IngredientHibernateDAO();
 		List<IngredientVO> list1 = ingredientDAO.getAll();
-		request.setAttribute("Ingredient", list);
+		request.setAttribute("Ingredient", list1);
 
 		SauceHibernateDAO SauceDAO = new SauceHibernateDAO();
 		List<SauceVO> list2 = SauceDAO.getAll();
-		request.setAttribute("Sauce", list1);
+		request.setAttribute("Sauce", list2);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/food_set.jsp");
 		rd.forward(request, response);
