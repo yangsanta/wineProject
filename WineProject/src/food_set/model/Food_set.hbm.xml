@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="food_set.model.Food_setVO" table="food_set">
+		<id name="fs_id" column="fs_id">
+		</id>
+
+<!-- 		<property name="f_id" column="f_id" /> -->
+<!-- 		<property name="i_id" column="i_id" /> -->
+<!-- 		<property name="s_id" column="s_id" /> -->
+
+		<many-to-one name="foodVO" column="f_id" lazy="false"
+			class="food.model.FoodVO" />
+		<many-to-one name="ingredientVO" column="i_id" lazy="false"
+			class="ingredient.model.IngredientVO" />
+		<many-to-one name="sauceVO" column="s_id" lazy="false"
+			class="sauce.model.SauceVO" />
+
+	</class>
+</hibernate-mapping>
+

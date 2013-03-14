@@ -1,11 +1,19 @@
 ﻿package food_set.model;
 
+import food.model.FoodVO;
+import ingredient.model.IngredientVO;
+import sauce.model.SauceVO;
+
 public class Food_setVO implements java.io.Serializable {
 	
 	private Integer fs_id;
-	private Integer f_id;
-	private Integer i_id;
-	private Integer s_id;
+//	private Integer f_id;
+//	private Integer i_id;
+//	private Integer s_id;
+	private FoodVO foodVO;
+	private IngredientVO ingredientVO;
+	private SauceVO sauceVO;
+	
 	
 	public Integer getFs_id() {
 		return fs_id;
@@ -13,23 +21,25 @@ public class Food_setVO implements java.io.Serializable {
 	public void setFs_id(Integer fs_id) {
 		this.fs_id = fs_id;
 	}
-	public Integer getF_id() {
-		return f_id;
+	public FoodVO getFoodVO() {
+		return foodVO;
 	}
-	public void setF_id(Integer f_id) {
-		this.f_id = f_id;
+	public void setFoodVO(FoodVO foodVO) {
+		this.foodVO = foodVO;
 	}
-	public Integer getI_id() {
-		return i_id;
+	public IngredientVO getIngredientVO() {
+		return ingredientVO;
 	}
-	public void setI_id(Integer i_id) {
-		this.i_id = i_id;
+	public void setIngredientVO(IngredientVO ingredientVO) {
+		this.ingredientVO = ingredientVO;
 	}
-	public Integer getS_id() {
-		return s_id;
+	public SauceVO getSauceVO() {
+		return sauceVO;
 	}
-	public void setS_id(Integer s_id) {
-		this.s_id = s_id;
+	public void setSauceVO(SauceVO sauceVO) {
+		this.sauceVO = sauceVO;
 	}
+	
+	
 	
 }
