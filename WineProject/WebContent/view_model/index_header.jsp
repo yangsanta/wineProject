@@ -43,23 +43,25 @@
 					<div>
 
 
-						<c:forEach var="products" items="${sessionScope.ShoppingCart.content}">
-														<div class="babypart">
-															<a href="#" class="aproimg"><img
-																src="http://localhost:8080/WineProject/images/products/SWLA02G_img1.jpg" /></a>
-															<div class="arr01-hd">
-																<span><a href="#">${products.value.productName}</a></span>
-																<p>x${products.value.productNumber}</p>
-															</div>
-															<div class="arr02-hd">
-																<span>$<strong>${products.value.subTatle}</strong></span>
-																<p class="del">删除</p>
-
-															</div>
+						<c:forEach var="products"
+							items="${sessionScope.ShoppingCart.content}">
+							<div class="babypart">
+								<a href="#" class="aproimg"><img
+									src="http://localhost:8080/WineProject/images/products/SWLA02G_img1.jpg" /></a>
+								<div class="arr01-hd">
+									<span><a href="#">${products.value.productName}</a></span>
+									<p>x${products.value.productNumber}</p>
+								</div>
+								<div class="arr02-hd">
+									<span>$<strong>${products.value.subTatle}</strong></span>
+									<p class="del">删除</p>
+								</div>
+							</div>
+							<p class="clear"></p>
 						</c:forEach>
 
 
-						<p class="clear"></p>
+
 					</div>
 					<hr style="margin: 0 5px 5px 0">
 					<div class="shopcar_buy">
@@ -82,8 +84,8 @@
 				href="<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_sales&conditionValue="
 				rel="tooltip" data-placement="bottom"
 				title="最新的組合套餐優惠，您可以用最優惠的方式購買到此產品">優惠商品</a></li>
-			<li><a href="#" rel="tooltip"
-				data-placement="bottom" title="不知道吃甚麼晚餐配甚麼樣的酒最浪漫美味嗎? 來這邊就對了">餐酒搭配</a></li>
+			<li><a href="#" rel="tooltip" data-placement="bottom"
+				title="不知道吃甚麼晚餐配甚麼樣的酒最浪漫美味嗎? 來這邊就對了">餐酒搭配</a></li>
 
 			<li class="last"><a
 				href="<%=request.getContextPath()%>/DiscussionList?action=getAll"
