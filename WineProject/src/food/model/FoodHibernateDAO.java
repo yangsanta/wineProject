@@ -1,8 +1,8 @@
 ﻿package food.model;
 
+import food_set.model.Food_setVO;
 import hibernate.util.HibernateUtil;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,9 +43,9 @@ public class FoodHibernateDAO implements FoodDAO_interface {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			FoodVO foodV = new FoodVO();
-			foodV.setF_id(f_id);
-			session.delete(foodV);
+			FoodVO foodVo = new FoodVO();
+			foodVo.setF_id(f_id);
+			session.delete(foodVo);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -71,7 +71,7 @@ public class FoodHibernateDAO implements FoodDAO_interface {
 
 	@Override
 	public List<FoodVO> getAll() {
-		List<FoodVO> list = null;
+		List<FoodVO> list = new ArrayList<FoodVO>();
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
@@ -84,5 +84,41 @@ public class FoodHibernateDAO implements FoodDAO_interface {
 		}
 		return list;
 	}
+	public static void main(String[] args) {
+
+		FoodHibernateDAO dao = new FoodHibernateDAO();
+
+		// 新增
+//		FoodVO foodVO1 = new FoodVO();
+//		foodVO1.setF_name("新增乳製品");
+//
+//		dao.insert(foodVO1);
+
+//		// 修改
+//		FoodVO foodVO2 = new FoodVO();
+//		foodVO2.setF_id(new Integer(1007));
+//		foodVO2.setF_name("修改乳製品1");
+//		//
+//		dao.update(foodVO2);
+//
+//		// 刪除
+		dao.delete(1007);
+//
+//		// // 查詢
+//		FoodVO foodVO3 = dao.findByPrimaryKey(102);
+//		System.out.print(foodVO3.getF_id() + ",");
+//		System.out.print(foodVO3.getF_name());
+//		System.out.println("---------------------");
+//
+		// 查詢
+		List<FoodVO> list = dao.getAll();
+		for (FoodVO afood : list) {
+			System.out.print(afood.getF_id() + ",");
+			System.out.print(afood.getF_name() + ",");
+
+			System.out.println("-1---------------1-");
+		}
+	}
+
 
 }
