@@ -71,11 +71,19 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>setselectallfood</servlet-name>
-		<servlet-class>recipe.controller.recipefood</servlet-class>
+		<servlet-class>food_set.controller.food_set</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>setselectallfood</servlet-name>
 		<url-pattern>/food/setselectall</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>setselectallfoodset</servlet-name>
+		<servlet-class>food_set.controller.food_set</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>setselectallfoodset</servlet-name>
+		<url-pattern>/food/set</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>MemberService</servlet-name>

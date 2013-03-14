@@ -1,13 +1,10 @@
-package recipe.controller;
+package food_set.controller;
 
-import ingredient.model.IngredientJDBCDAO;
+import ingredient.model.IngredientHibernateDAO;
 import ingredient.model.IngredientVO;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,24 +13,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONValue;
-
-import sauce.model.SauceDAO;
+import sauce.model.SauceHibernateDAO;
 import sauce.model.SauceVO;
-import food.model.FoodDAO;
+import food.model.FoodHibernateDAO;
 import food.model.FoodVO;
 
 /**
  * Servlet implementation class recipefood
  */
 @WebServlet("/recipefood")
-public class recipefood extends HttpServlet {
+public class food_set extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public recipefood() {
+	public food_set() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -50,24 +45,21 @@ public class recipefood extends HttpServlet {
 
 		String action = request.getParameter("action");
 
-		
-			IngredientJDBCDAO ingredientDAO = new IngredientJDBCDAO();
-	
-			List<IngredientVO> list = ingredientDAO.getAll();
-			request.setAttribute("Ingredient", list);
-		
+		FoodHibernateDAO foodHibernateDAO = new FoodHibernateDAO();
+		List<FoodVO> list = foodHibernateDAO.getAll();
+		request.setAttribute("Food", list);
 
-			SauceDAO SauceDAO = new SauceDAO();
-			//Integer id = Integer.parseInt(request.getParameter("id"));
-			List<SauceVO> list1 = SauceDAO.getAll();
-			request.setAttribute("Sauce", list1);
+		IngredientHibernateDAO ingredientDAO = new IngredientHibernateDAO();
+		List<IngredientVO> list1 = ingredientDAO.getAll();
+		request.setAttribute("Ingredient", list);
 
-		
-	
-		RequestDispatcher rd=request.getRequestDispatcher("/recipe.jsp");
+		SauceHibernateDAO SauceDAO = new SauceHibernateDAO();
+		List<SauceVO> list2 = SauceDAO.getAll();
+		request.setAttribute("Sauce", list1);
+
+		RequestDispatcher rd = request.getRequestDispatcher("/food_set.jsp");
 		rd.forward(request, response);
-	
-	
+
 	}
 
 	/**
