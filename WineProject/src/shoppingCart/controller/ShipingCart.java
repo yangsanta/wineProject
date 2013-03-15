@@ -9,8 +9,7 @@ import shoppingCart.model.ShoppingProduct;
 public class ShipingCart {
 	public ShipingCart() {
 	}
-private int aNumber=0;
-private int bNumber=0;
+
 	private Map<Integer, ShoppingProduct> cart = new LinkedHashMap<Integer, ShoppingProduct>();
 
 	public Map<Integer, ShoppingProduct> getContent() {
@@ -33,14 +32,14 @@ private int bNumber=0;
 			OldShoppingProduct
 					.setProductNumber(shoppingProduct.getProductNumber()
 							+ OldShoppingProduct.getProductNumber());
+			
+						// 計算小計
 			OldShoppingProduct.setSubTotal(shoppingProduct.getSubTotal()+OldShoppingProduct.getSubTotal());
 	
-			// cart.put(bookID, oib);
+
 		}
 	}
-
-	
-	public void calculate(){}
+	//計算總商品總價
 	public Integer getTotal() {
 		Integer total = 0;
 		Set<Integer> set = cart.keySet();
@@ -50,22 +49,17 @@ private int bNumber=0;
 		}
 		return total;
 	}
-
-	public int getaNumber() {
-		return aNumber;
+	//計算總商品數量
+	public Integer getBottleNumber() {
+		Integer bottleNumber = 0;
+		Set<Integer> set = cart.keySet();
+		for (Integer n : set) {
+			Integer number =  (Integer)cart.get(n).getProductNumber();
+			bottleNumber += number;
+		}
+		return bottleNumber;
 	}
 
-	public void setaNumber(int aNumber) {
-		this.aNumber = aNumber;
-	}
-
-	public int getbNumber() {
-		return bNumber;
-	}
-
-	public void setbNumber(int bNumber) {
-		this.bNumber = bNumber;
-	}
 	
 	
 	

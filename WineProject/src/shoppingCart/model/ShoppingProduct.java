@@ -7,6 +7,7 @@ public class ShoppingProduct {
 	private Integer productNumber=0;
 	private Integer subTotal=0;
 	private String saleType;
+	private String pic;
 	private Integer salesNumber=0;
 	public Integer getSubTotal() {
 		return subTotal;
@@ -49,6 +50,12 @@ public class ShoppingProduct {
 	}
 	public void setSalesNumber(Integer salesNumber) {
 		this.salesNumber = salesNumber;
+	}
+	public String getPic() {
+		return pic;
+	}
+	public void setPic(String pic) {
+		this.pic = pic;
 	}
 
 	

@@ -33,7 +33,7 @@
 		</ul>
 		<ul id="nav22">
 			<li><a class="topa" href="#"><i
-					class="icon-shopping-cart icon-white"></i> 購物車(<em>11</em>)件 </a>
+					class="icon-shopping-cart icon-white"></i> 購物車(<em><c:if test="${ShoppingCart.bottleNumber==null}"> 0 </c:if><c:if test="${ShoppingCart.bottleNumber<10}"> </c:if>${ShoppingCart.bottleNumber}<c:if test="${ShoppingCart.bottleNumber<10}"> </c:if></em>)件 </a>
 				<ul class="downul">
 					<span>最近加入的商品：</span>
 					<br>
@@ -47,7 +47,7 @@
 							items="${sessionScope.ShoppingCart.content}">
 							<div class="babypart">
 								<a href="#" class="aproimg"><img
-									src="http://localhost:8080/WineProject/images/products/SWLA02G_img1.jpg" /></a>
+									src="<%=request.getContextPath()%>/images/products/${products.value.pic}" /></a>
 								<div class="arr01-hd">
 									<span><a href="#">${products.value.productName}</a></span>
 									<p>x${products.value.productNumber}</p>
@@ -64,6 +64,7 @@
 
 					</div>
 					<hr style="margin: 0 5px 5px 0">
+					總計：${ShoppingCart.total} RMB
 					<div class="shopcar_buy">
 						<a href="#">
 							<button class="btn btn-mini  btn-success" type="button">結帳回家</button>
