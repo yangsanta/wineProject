@@ -5,14 +5,14 @@ public class ShoppingProduct {
 	private String productName;
 	private Integer productPrice=0;
 	private Integer productNumber=0;
-	private Integer SubTotal=0;
+	private Integer subTotal=0;
 	private String saleType;
 	private Integer salesNumber=0;
 	public Integer getSubTotal() {
-		return SubTotal;
+		return subTotal;
 	}
-	public void setSubTotal(Integer SubTotal) {
-		this.SubTotal = SubTotal;
+	public void setSubTotal(Integer subTotal) {
+		this.subTotal = subTotal;
 	}
 	public Integer getProductNo() {
 		return productNo;

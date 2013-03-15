@@ -53,7 +53,7 @@
 									<p>x${products.value.productNumber}</p>
 								</div>
 								<div class="arr02-hd">
-									<span>$<strong>${products.value.subTatle}</strong></span>
+									<span>$<strong>${products.value.subTotal}</strong></span>
 									<p class="del">删除</p>
 								</div>
 							</div>

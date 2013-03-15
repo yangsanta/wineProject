@@ -54,26 +54,32 @@ public class BuyWine extends HttpServlet {
 			cart = new ShipingCart();
 			// 將此新建ShoppingCart的物件放到session物件內
 			session.setAttribute("ShoppingCart", cart);
+			
 		}
-
 		ProductDAO productDAO = new ProductDAO();
 		Integer productNumber = Integer.parseInt(request.getParameter("num"));
+		
 		Integer productNo = Integer.parseInt(request.getParameter("no"));
 		ProductVO productVO = productDAO.findByPrimaryKey(productNo);
 		String productName = productVO.getP_name();
 		Integer price = productVO.getP_price();
 		ShoppingProduct shoppingProduct = new ShoppingProduct();
 		// 設定選取商品要顯示的文字
-		shoppingProduct.setProductNo(productNo);
-		shoppingProduct.setProductName(productName);
-		shoppingProduct.setProductPrice(price);
+		shoppingProduct.setProductNo(productNo);	//物件存商品編號
+		shoppingProduct.setProductName(productName);//物件存商品名稱
+		shoppingProduct.setProductPrice(price);		//物件存商品售價
 		String sales = productVO.getP_sales();
+		shoppingProduct.setSaleType(sales);			//物件存商品優惠狀態
+		System.out.println("名稱"+productName);
+		System.out.println("售價"+price);
+		System.out.println("數量"+productNumber);
+		System.out.println("優惠"+sales);
 		// 判斷優惠狀態
+		
 		if (sales.equals("A")) {
 			// 買A送B
 			// 將所選的商品加入購物車
 			shoppingProduct.setProductNumber(productNumber);
-
 			shoppingProduct.setSubTotal(productNumber * price);
 			cart.addToCart(productNo, shoppingProduct);
 			// 找出對應的B商品
@@ -116,7 +122,28 @@ public class BuyWine extends HttpServlet {
 
 			}
 		}
-		// else if (sales.equals("R")) {
+		 else if (sales.equals("R")) {
+			// 將所選的商品加入購物車
+			//1. 加入清單
+			shoppingProduct.setProductNumber(productNumber);
+			shoppingProduct.setSubTotal(productNumber * price);
+			cart.addToCart(productNo, shoppingProduct);
+			//2.計算所有r g數量 map iterator
+
+			//3.找r g小的數量
+			//4.從低價的開始填
+			
+			cart.addToCart(productNo, shoppingProduct);
+
+			
+//1. 加入清單
+//2.計算所有r g數量 map iterator
+//3.找r g小的數量
+//4.從低價的開始填
+//			Map<Integer, ShoppingProduct> old = cart.getContent();
+//			ShoppingProduct OldShoppingProduct = old.get(productNo);
+//			shoppingProduct.setProductNumber(productNumber);
+			
 		// Map<Integer, ShoppingProduct> old = cart.getContent();
 		// Set<Integer> set=old.keySet();
 		// int rNum=cart.getaNumber()+productNumber;
@@ -131,7 +158,7 @@ public class BuyWine extends HttpServlet {
 		// }
 		// else if(rNum<gNum){}
 		// else{}
-		// }
+		 }
 		else {
 			// 沒有優惠OR B區商品
 			shoppingProduct.setProductNumber(productNumber);
@@ -141,7 +168,7 @@ public class BuyWine extends HttpServlet {
 		}
 		// 計算金額
 
-		response.sendRedirect("http://localhost:8080/WineProject/product/DisplayProducts?action=getAll&pageNo=1");
+		response.sendRedirect("http://localhost:8081/WineProject/product/DisplayProducts?action=getAll&pageNo=1");
 
 	}
 
