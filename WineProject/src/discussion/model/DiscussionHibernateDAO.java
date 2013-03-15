@@ -106,71 +106,6 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 		}		
 		return totalNO;
 	}
-	
-	public Set<DiscussionVO> search(String srchThing,String txtsrch){
-		List<DiscussionVO> list = new ArrayList<DiscussionVO>();
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Set<DiscussionVO> set = new HashSet<DiscussionVO>();
-		String queryText ="";
-		String queryTextOne = "";
-		String queryTextTwo = "";
-		String SEARCH_STMT_ONE = "";
-		String SEARCH_STMT_TWO = "";
-		
-		String[] txt = txtsrch.split(" ");
-		int txtlength = txt.length;
-		
-		if(txtlength >= 2){
-			queryTextOne = "%" + txt[0] + "%";
-			queryTextTwo = txt[1] + "%";
-			System.out.println(queryTextOne);
-			System.out.println(queryTextTwo);
-			
-		}else if (txtlength == 1){
-			queryTextOne = "%" + txt[0] + "%";
-		}
-		for(int i=0;i < txtlength ; i++){
-			queryText += "%" + txt[i];
-		}
-		
-		String SEARCH_STMT = "FROM DiscussionVO WHERE " +  srchThing + " Like '" + queryText + "%'";
-		try {
-			session.beginTransaction();
-			//模糊搜尋ALL SEARCH TEXT
-			Query query = session.createQuery(SEARCH_STMT);
-			list = query.list();
-			for(DiscussionVO vo: list){
-				set.add(vo);
-			}
-			
-			//模糊搜尋FIRST SEARCH TEXT			
-			if(queryTextOne.length()!=0){
-				SEARCH_STMT_ONE = "FROM DiscussionVO WHERE " +  srchThing + " Like '" + queryTextOne + "'";
-				query = session.createQuery(SEARCH_STMT_ONE);
-				list = query.list();
-				for(DiscussionVO vo: list){
-					set.add(vo);
-				}
-				System.out.println("queryTextOne");
-			}
-			
-			//模糊搜尋SECOND SEARCH TEXT
-			if(queryTextTwo.length()!=0){
-				SEARCH_STMT_TWO = "FROM DiscussionVO WHERE " +  srchThing + " Like '" + queryTextTwo + "'";
-				query = session.createQuery(SEARCH_STMT_TWO);
-				list = query.list();
-				for(DiscussionVO vo: list){
-					set.add(vo);
-				}
-				System.out.println("queryTextTwo");
-			}
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return set;
-	}
 
 	public static void main(String args[]) {
 		
@@ -217,46 +152,20 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 //		System.out.println();	
 		
 		//測試getAll()
-//		List<DiscussionVO> list = dao.getAll();
-//		for (DiscussionVO aDiscussion : list) {
-//			System.out.print(aDiscussion.getD_no() + ",");
-////			System.out.print(aDiscussion.getM_no() + ",");
-//			System.out.print(aDiscussion.getD_context() + ",");
-//			System.out.print(aDiscussion.getD_datetime() + ",");
-//			System.out.print(aDiscussion.getD_status() + ",");
-//			System.out.print(aDiscussion.getD_final_edit() + ",");
-//			System.out.print(aDiscussion.getD_title());
-//			System.out.println();	
-//		}		
+		List<DiscussionVO> list = dao.getAll();
+		for (DiscussionVO aDiscussion : list) {
+			System.out.print(aDiscussion.getD_no() + ",");
+//			System.out.print(aDiscussion.getM_no() + ",");
+			System.out.print(aDiscussion.getD_context() + ",");
+			System.out.print(aDiscussion.getD_datetime() + ",");
+			System.out.print(aDiscussion.getD_status() + ",");
+			System.out.print(aDiscussion.getD_final_edit() + ",");
+			System.out.print(aDiscussion.getD_title());
+			System.out.println();	
+		}		
 		
 		//測試findTotalNOofDiscussion()總留言筆數
-//		Integer totalNO = dao.findTotalNOofDiscussion();
-//		System.out.println("總留言筆數 = " + totalNO);
-		
-		
-		//測試search()
-		
-		Set<DiscussionVO> list = dao.search("d_title","的 酒");
-		for (DiscussionVO aDiscussion : list) {
-		System.out.print(aDiscussion.getD_no() + ",");
-//		System.out.print(aDiscussion.getM_no() + ",");
-		System.out.print(aDiscussion.getD_context() + ",");
-		System.out.print(aDiscussion.getD_datetime() + ",");
-		System.out.print(aDiscussion.getD_status() + ",");
-		System.out.print(aDiscussion.getD_final_edit() + ",");
-		System.out.print(aDiscussion.getD_title());
-		System.out.println();	
-	}
-		
-		
-		//測試字串串接成為%xxx%ooo%
-//		String txtsrch = "";
-//		String srch = "111 222 333";
-//		String[] txt = srch.split(" ");
-//		int txtlength = txt.length;
-//		for(int i=0;i < txtlength ; i++){
-//			txtsrch += "%" + txt[i];
-//		}
-//		System.out.println(txtsrch);
+		Integer totalNO = dao.findTotalNOofDiscussion();
+		System.out.println("總留言筆數 = " + totalNO);
 	}
 }

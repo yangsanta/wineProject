@@ -177,7 +177,7 @@ int list1_size=list1.size();
 
 	public List<ProductVO> findTopProduct(String conditionValue) {
 
-		String GET_TOP_STMT = "from ProductVO order by p_buy_count";
+		String GET_TOP_STMT = "from ProductVO order by p_buy_count desc";
 		List<ProductVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {

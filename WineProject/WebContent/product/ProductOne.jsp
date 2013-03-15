@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Language" content="zh-tw">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>酒迷 | 歷久彌新的香濃口感</title>
+		<title>酒迷| 歷久彌新的香濃口感</title>
 		<meta content="酒迷 | 歷久彌新的香濃口感。" name="description" />
 		<meta content="酒迷 | 歷久彌新的香濃口感" name="keywords" />
 		<link href="<%=request.getContextPath()%>/style/reset.css"
@@ -87,7 +87,8 @@
 #recom-ul .shpdollar {
 	color: red
 }
-.pro_info{color:blue;width:70px;display:inline-block;text-align:right}
+.pro_info{color:blue;width:70px;display:inline-block;text-align:right;font-size: 12px;}
+.info_li{font-size: 12px;}
 .fb-like{margin-top:10px}
 </style>
 				<script type="text/javascript">
@@ -127,12 +128,12 @@
 										<strong style="color: rgb(37, 94, 40)">${ productVO.p_name}</strong>
 									</span>
 									<ul style="margin-top:20px">
-										<li><span class="pro_info">酒莊：</span> ${ productVO.p_winery }</li>
-										<li><span class="pro_info">國家/地區：</span>${ productVO.p_area }</li>
-										<li><span class="pro_info">容量：</span>${ productVO.p_vol } ml</li>
-										<li><span class="pro_info">酒精濃度：</span>5%</li>
-										<li><span class="pro_info">年份：</span>${ productVO.p_year }</li>
-										<li><span class="pro_info">評分：</span>
+										<li class="info_li"><span class="pro_info">酒莊：</span> ${ productVO.p_winery }</li>
+										<li class="info_li"><span class="pro_info">國家/地區：</span>${ productVO.p_area }</li>
+										<li class="info_li"><span class="pro_info">容量：</span>${ productVO.p_vol } ml</li>
+										<li class="info_li"><span class="pro_info">酒精濃度：</span>5%</li>
+										<li class="info_li"><span class="pro_info">年份：</span>${ productVO.p_year }</li>
+										<li class="info_li"><span class="pro_info">評分：</span>
 											<c:forEach var="i" begin="1" end="${ productVO.p_rate }" step="1" >
      										  <img src="<%=request.getContextPath()%>/images/star1.gif" style="width:20px">
 											</c:forEach>	
@@ -150,7 +151,7 @@
 										</div>
 											<div class="car">
 										<BR><form action="shoppingCart" method="post">
-										 數量<select name="num" style="width: 80px;">
+										 <span class="font-small">數量</span><select name="num" style="width: 80px;">
 													<option value=1>1</option>
 													<option value=2>2</option>
 													<option value=${ productVO.p_num }>${ productVO.p_num }</option>

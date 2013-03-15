@@ -8,33 +8,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Language" content="zh-tw">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>酒迷 1| 歷久彌新的香濃口感</title>
-<meta content="酒迷 | 歷久彌新的香濃口感。" name="description" />
-<meta content="酒迷 | 歷久彌新的香濃口感" name="keywords" />
-<link href="<%=request.getContextPath()%>/style/reset.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet" media="screen">
-<script src="http://code.jquery.com/jquery.js"></script>
-<script
-	src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>酒迷 | 歷久彌新的香濃口感</title>
+		<meta content="酒迷 | 歷久彌新的香濃口感。" name="description" />
+		<meta content="酒迷 | 歷久彌新的香濃口感" name="keywords" />
+		<link href="<%=request.getContextPath()%>/style/reset.css"
+			rel="stylesheet" type="text/css" />
+		<link
+			href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css"
+			rel="stylesheet" media="screen">
+			<script src="http://code.jquery.com/jquery.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
 
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jquery.fancybox.js?v=2.1.4"></script>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/style/jquery.fancybox.css?v=2.1.4"
-	media="screen" />
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/style/index.css?v=1.0"
-	media="screen" />
+			<script type="text/javascript"
+				src="<%=request.getContextPath()%>/js/jquery.fancybox.js?v=2.1.4"></script>
+			<link rel="stylesheet" type="text/css"
+				href="<%=request.getContextPath()%>/style/jquery.fancybox.css?v=2.1.4"
+				media="screen" />
+			<link rel="stylesheet" type="text/css"
+				href="<%=request.getContextPath()%>/style/index.css?v=1.0"
+				media="screen" />
 
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
-<style type="text/css">
+			<script type="text/javascript"
+				src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
+			<style type="text/css">
 #content {
-	padding: 40px 20px 30px 20px
+	padding: 40px 20px 30px 20px;
+	background: url(<%=request.getContextPath()%>/images/page.png);
 }
 
 #content h2 {
@@ -58,18 +59,33 @@
 	position: relative;
 }
 
+.g_wall:hover {
+	background-color: rgb(244, 248, 255);
+}
+
 .label_tag {
 	width: 70px;
 	position: absolute;
-	top: 0px;
-	right: 0px
+	top: -4px;
+	right: -5px
+}
+
+.drop-shadow {
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px
+		rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px
+		rgba(0, 0, 0, 0.1) inset;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1)
+		inset;
+	-moz-border-radius: 100px/2px;
+	border-radius: 100px/2px;
 }
 </style>
-<script type="text/javascript">
-	
-</script>
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
+			<script type="text/javascript">
+				
+			</script>
+			<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+			<!--[if lt IE 9]>
       <script src="twitter.github.com/bootstrap/assets/js/html5shiv.js"></script>
     <![endif]-->
 </head>
@@ -93,24 +109,34 @@
 							<hr />
 							<c:forEach var="product" items="${list}" begin="${pageIndex}"
 								end="${pageIndex+rowsPerPage-1}">
-								<div class="g_wall">
-									<img src="<%=request.getContextPath()%>/images/label.png"
-										class="label_tag" /><img
-										src="<%=request.getContextPath()%>/images/products/${product.p_pic}"
-										style="width: 50px;" /><span><a
-										href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}">${product.p_name}</a><Br></B>酒莊:${product.p_winery}<Br>地區:${product.p_area}<Br>售價:${product.p_price}<Br>評分:${product.p_rate}</span>
-								</div>
+								<a
+									href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}">
+									<div class="g_wall drop-shadow">
+										<img src="<%=request.getContextPath()%>/images/label.png"
+											class="label_tag" />
+										<div style="height: 140px;">
+											<img
+												src="<%=request.getContextPath()%>/images/products/${product.p_pic}"
+												style="width: 50px; float: left;" /> </br>
+												<span style="color: #333">酒莊:${product.p_winery}<Br>地區:${product.p_area}<Br>評分:${product.p_rate}</span><Br>
+												<span style="display: block; margin: 10px 0 0 65px; color: red; font-size: 26px">$${product.p_price}</span>
+										</div>
+										<p><span>${product.p_name}</span></p>
+									</div>
+								</a>
 							</c:forEach>
 							<br class="clear" />
 						</div>
-						<div class="pageSwitch">
-							第
-							<c:forEach var="page" begin="1" end="${totalPages}">
-								<a
-									href="DisplayProducts?action=${action}&pageNo=${page}${conditionParam}">${page}</a>
-							</c:forEach>
-							頁
+						<div class="pagination pagination-centered"
+							style="margin-top: 50px">
+							<ul>
+								<c:forEach var="page" begin="1" end="${totalPages}">
+									<li><a
+										href="DisplayProducts?action=${action}&pageNo=${page}${conditionParam}">${page}</a></li>
+								</c:forEach>
+							</ul>
 						</div>
+
 					</div>
 
 					<%@ include file="../view_model/index_fast_login.htm"%>

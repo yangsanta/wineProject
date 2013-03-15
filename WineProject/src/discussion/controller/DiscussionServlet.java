@@ -3,9 +3,7 @@
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
@@ -52,6 +50,7 @@ public class DiscussionServlet extends HttpServlet {
 				RequestDispatcher dis = req
 						.getRequestDispatcher("/discussion/listAllDiscussion.jsp");
 				dis.forward(req, res);
+
 			}
 
 			// 觀看主題內文功能
@@ -197,24 +196,8 @@ public class DiscussionServlet extends HttpServlet {
 				successView.forward(req, res);
 			}
 
-			// 搜尋功能
-			if ("search".equals(action)) {
-				String srchThing = req.getParameter("srchThing");
-				String txtsrch = req.getParameter("txtsrch");
-				System.out.println(txtsrch);
-				List<DiscussionVO> list = new ArrayList<DiscussionVO>();
-				dao = new DiscussionHibernateDAO();
-				Set<DiscussionVO> set = dao.search(srchThing, txtsrch);
-				Iterator<DiscussionVO> iterator = set.iterator();
-				while(iterator.hasNext()) {
-					list.add((DiscussionVO) iterator.next());
-//					System.out.println(((DiscussionVO)iterator.next()).getD_title());
-				}				
-				splitPages(list, req);
-				RequestDispatcher dis = req
-						.getRequestDispatcher("/discussion/listAllDiscussion.jsp");
-				dis.forward(req, res);
-			}
+			// 日期排序功能
+
 		} catch (Exception e) {
 			errorMsgs.add("無法取得資料:" + e.getMessage());
 			RequestDispatcher failureView = req

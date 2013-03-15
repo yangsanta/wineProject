@@ -102,24 +102,11 @@ tr:hover {
 
 					<div id="content">
 						<%@ include file="../view_model/page_alert.htm"%>
-<!-- 搜尋功能條						 -->
-						<div align="right">
-							<form action="DiscussionList" method="post">
-								<input type="text" name="txtsrch"/>
-								<select name="srchThing" style="width:100px">
-									<option value="d_title">主題</option>
-									<option value="d_context">文章內容</option>
-								</select>
-								<input type="submit" value="search" class="btn btn-primary"/>
-								<input type="hidden" name="action" value="search"/>
-							</form>
-						</div>
-<!-- ---------------						 -->
 						<div align="center">
 							<h2>討論區</h2>
 						</div>
 						<span>首頁 » <a
-							href="<%=request.getContextPath()%>/DiscussionList?action=getAll">
+							href="http://localhost:8080/WineProject/DiscussionList?action=getAll">
 								討論區</a></span>
 						<div class="well font-small">
 

@@ -35,14 +35,12 @@
 			<li><a class="topa" href="#"><i
 					class="icon-shopping-cart icon-white"></i> 購物車(<em><c:if test="${ShoppingCart.bottleNumber==null}"> 0 </c:if><c:if test="${ShoppingCart.bottleNumber<10}"> </c:if>${ShoppingCart.bottleNumber}<c:if test="${ShoppingCart.bottleNumber<10}"> </c:if></em>)件 </a>
 				<ul class="downul">
-					<span>最近加入的商品：</span>
-					<br>
-					<span style="margin-left: 20px; font-size: 10px;">商品</span>
-					<span style="font-size: 10px; float: right; margin-right: 30px">小計</span>
+					<span style="margin-left: 20px; font-size: 10px;font-weight: bold;color: #4d3126;">商品</span>
+					<span style="font-size: 10px;color: #4d3126;font-weight: bold; float: right; margin-right: 30px">小計</span>
 					<hr style="margin: 5px 5px 5px 0">
 					<div>
 
-
+<c:if test="${sessionScope.ShoppingCart.content==null}"><div style="margin: 30px 30px">目前尚未購買任何商品</div></c:if>
 						<c:forEach var="products"
 							items="${sessionScope.ShoppingCart.content}">
 							<div class="babypart">
@@ -64,7 +62,11 @@
 
 					</div>
 					<hr style="margin: 0 5px 5px 0">
-					總計：${ShoppingCart.total} RMB
+					<div style=" float: right; margin-right: 30px">總計：
+					<c:if test="${ShoppingCart.total==null}"> 0 </c:if><c:if test="${ShoppingCart.total!=0}">${ShoppingCart.total} </c:if>
+					
+					 元</div>
+					<p class="clear"></p>
 					<div class="shopcar_buy">
 						<a href="#">
 							<button class="btn btn-mini  btn-success" type="button">結帳回家</button>
