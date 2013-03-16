@@ -571,3 +571,25 @@ insert into rg values	('100','G','3','2013/3/3','2013/6/30');
 insert into rg values	('74','G','3','2013/3/3','2013/6/30');
 insert into rg values	('53','G','3','2013/3/3','2013/6/30');
 
+
+------------------------------------------------------
+
+--drop table ads;
+
+create table ads(
+ ads_no             int IDENTITY  not null,
+ p_no               int  not null,
+ ads_filename       varchar(100),
+ constraint ads_primary_key primary key (ads_no),
+ constraint ads_p_no_fk foreign key (p_no) references product		(p_no)
+);
+
+insert into ads values	(1,'001.jpg');
+insert into ads values	(2,'002.jpg');
+insert into ads values	(3,'01.jpg');
+insert into ads values	(4,'02.jpg');
+insert into ads values	(5,'03.jpg');
+insert into ads values	(6,'04.jpg');
+insert into ads values	(7,'05.jpg');
+insert into ads values	(8,'1136770_182725066_2.jpg');
+insert into ads values	(9,'5056611_142320247000_2.jpg');

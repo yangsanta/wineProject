@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="ads.model.AdsVO" table="ads">
+
+		<id name="ads_no" column="ads_no">
+
+		</id>
+
+		<many-to-one name="productVO" column="p_no" lazy="false" class="product.model.ProductVO" />
+		<property name="ads_filename" column="ads_filename" />		
+
+	</class>
+</hibernate-mapping>
