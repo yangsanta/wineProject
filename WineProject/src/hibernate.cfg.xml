@@ -8,11 +8,11 @@
 
 		<!-- 連線池c3p0設定 -->
 		<!-- mysql driver -->
-		<property name="hibernate.connection.driver_class"> com.mysql.jdbc.Driver 	</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/WineProject?characterEncoding=UTF-8</property>
+<!-- 		<property name="hibernate.connection.driver_class"> com.mysql.jdbc.Driver 	</property> -->
+<!-- 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/WineProject?characterEncoding=UTF-8</property> -->
 
-<!-- 		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property> -->
-<!-- 		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=WineProject</property> -->
+		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=WineProject</property>
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">sa123456</property>
 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
@@ -22,9 +22,9 @@
 		<property name="hibernate.c3p0.max_statements">50</property>
 
 		<!--SQL方言,以下使用SQLServer -->
-<!-- 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property> -->
+		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
 		<!-- SQL方言，以下使用MySQL -->
-		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+<!-- 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property> -->
 
 		<!--SQL方言,以下使用Oracle -->
 		<property name="hibernate.show_sql">true</property>
