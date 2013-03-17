@@ -12,8 +12,12 @@
 <input type="text" name="search_query" id="search_query" placeholder="What You Are Looking For?" size="50"/>
 <input type="submit" value="Search" id="button_find" />
 <div id="divContent">
-	 <ul id="ulResult">
-	 </ul>
+<!-- 	 <ul id="ulResult"> -->
+<!-- 	 </ul> -->
+	<table>
+		<tbody id="ulResult">
+		</tbody>
+	</table>
 </div>
 </form>
 <div id="display_results"></div>

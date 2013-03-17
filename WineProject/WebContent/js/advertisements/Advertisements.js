@@ -1,6 +1,7 @@
 $(function() {
 	// Ajax search
-	$("#search_query").keyup(function(){
+	
+	$("#search_query").bind("keyup", function(){
 		while (document.getElementById("ulResult").hasChildNodes()){
 			$(document.getElementById("ulResult").removeChild((document.getElementById("ulResult")).firstChild));
 		}
@@ -12,15 +13,15 @@ $(function() {
 			success: function(data){
 				
 				$.each(data, function(){
-					$('#ulResult').append('<li>'+ this +'</li>');
+					$('#ulResult').append('<tr><td>'+ this +'</td></tr>');
 				});
 
 			}
 		});
 	});
-	$(document).on("hover", "#ulResult li", function(){
-		$(this).toggleClass("over");
-	}).on("mouseleave", $("#ulResult li"), function(){
+	$(document).on("mouseenter", "#ulResult tr", function(){
+		$(this).addClass("over");
+	}).on("mouseleave", "#ulResult tr", function(){
 		$(this).removeClass("over");
 	});
 	

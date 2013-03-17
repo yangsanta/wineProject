@@ -28,7 +28,8 @@ public class AjaxSearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String queryProducts = new String(request.getParameter("queryProducts").getBytes("ISO-8859-1"), "UTF-8");
+		String queryProducts = request.getParameter("queryProducts");
+		System.out.println(queryProducts);
 		ProductDAO productDAO = new ProductDAO();
 		List<ProductVO> list = productDAO.findFuzzyProductName(queryProducts);
 		
