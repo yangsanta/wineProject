@@ -3,38 +3,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/style/Advertisements.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/style/reset.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/style/Advertisements.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Advertisements Setting</title>
 </head>
 <body>
-<form id="searchform" method="post">
-<input type="text" name="search_query" id="search_query" placeholder="What You Are Looking For?" size="50"/>
-<input type="submit" value="Search" id="button_find" />
-<div id="divContent">
-<!-- 	 <ul id="ulResult"> -->
-<!-- 	 </ul> -->
-	<table>
-		<tbody id="ulResult">
-		</tbody>
-	</table>
-</div>
-</form>
-<div id="display_results"></div>
-
-</div>
-	<div id="dropbox">
-		<span class="message">Drop images here to upload. <br />
-		<i>(they will only be visible to you)</i></span>
-	</div>
-
+	<form id="searchform" method="post" action="adsToDb">
+		<div id="dropbox">
+			<span class="message">請將圖片拖曳至此處 <br /> <i>(進度條跑完即上傳完成)</i></span>
+		</div>
+		<div id="divContent">
+			<input type="text" name="search_query" id="search_query"
+				placeholder="What You Are Looking For?" size="60" />
+			<table>
+				<tbody id="ulResult">
+				</tbody>
+			</table>
+		</div>
+		
+		<input type="submit" id="btnSubmit" value="設定" id="button_find" />
+		<input type="text" name="fileName" id="fileName" />
+		<input type="text" name="productName" id="productName" />
+	</form>
+	<div id="display_results"></div>
 	<!-- Including The jQuery Library -->
-<!-- 	<script src="http://code.jquery.com/jquery-1.6.3.min.js"></script> -->
+	<!-- 	<script src="http://code.jquery.com/jquery-1.6.3.min.js"></script> -->
 	<script src="<%=request.getContextPath()%>/js/jquery-1.9.0.min.js"></script>
 	<!-- Including the HTML5 Uploader plugin -->
-	<script src="<%=request.getContextPath()%>/js/advertisements/jquery.filedrop.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/js/advertisements/jquery.filedrop.js"></script>
 	<!-- The main script file -->
-	<script src="<%=request.getContextPath()%>/js/advertisements/Advertisements.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/js/advertisements/Advertisements.js"></script>
 
 </body>
 </html>

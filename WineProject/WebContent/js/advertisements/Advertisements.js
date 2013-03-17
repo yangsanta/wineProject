@@ -23,6 +23,9 @@ $(function() {
 		$(this).addClass("over");
 	}).on("mouseleave", "#ulResult tr", function(){
 		$(this).removeClass("over");
+	}).on("click", "#ulResult tr", function(){
+		$("#productName").val($(this).text());
+		$("#search_query").val($(this).text());
 	});
 	
 
@@ -39,6 +42,7 @@ $(function() {
 				url : 'advertisements',
 
 				uploadFinished : function(i, file, response) {
+					recordFileName(file);
 					$.data(file).addClass('done');
 					// response is the JSON object that Ads Controller
 					// returns
@@ -78,8 +82,8 @@ $(function() {
 
 				progressUpdated : function(i, file, progress) {
 					$.data(file).find('.progress').width(progress);
-				}
-
+				},
+				
 			});
 
 	var template = '<div class="preview">' + '<span class="imageHolder">'
@@ -119,6 +123,10 @@ $(function() {
 
 	function showMessage(msg) {
 		message.html(msg);
+	}
+	
+	function recordFileName(file){
+		$("#fileName").val(file.name);
 	}
 
 });

@@ -4,6 +4,7 @@ import hibernate.util.HibernateUtil;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -214,6 +215,23 @@ public class ProductDAO implements ProductDAO_interface {
 			query.setParameter(0, area);
 			list = query.list();
 
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+	
+	@Override
+	public List<ProductVO> findFuzzyProductName(String fuzzyProductName) {
+		List<ProductVO> list = new ArrayList();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("FROM ProductVO where p_name like '%" + fuzzyProductName + "%' order by p_no");
+			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();

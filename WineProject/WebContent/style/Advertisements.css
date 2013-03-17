@@ -6,19 +6,18 @@
 .over{
 	background-color:silver;
  }
-.out{
-	background-color:white;
+ #divContent, #dropbox{
+ 	float:left;
+ 	margin:80px auto 90px;
+ 	width: 400px;
  }
- #divContent{
- 	width:400px;
- 	border:1px solid green;
- }
- #ulResult{
- 	list-style-type:none;
- 	padding:0px;
- 	margin:0px;
- 	padding-left:5px;
- }
+form table, form tr, form td{
+	width: 380px;
+}
+#btnSubmit {
+	margin:80px auto;
+}
+
 
 /*-------------------------
     Dropbox Element

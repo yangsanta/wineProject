@@ -1,7 +1,6 @@
 package ads.controller;
 
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -29,15 +28,14 @@ public class AjaxSearchServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String queryProducts = request.getParameter("queryProducts");
-		System.out.println(queryProducts);
 		ProductDAO productDAO = new ProductDAO();
 		List<ProductVO> list = productDAO.findFuzzyProductName(queryProducts);
 		
 		JSONArray jsonArray = new JSONArray();
-		for (ProductVO theProduct: list ){
-			String p_no = theProduct.getP_no().toString();
-			String p_name = theProduct.getP_name();
-			String str = p_no + " : " + p_name;
+		for (ProductVO productVO : list){
+			String p_no = productVO.getP_no().toString();
+			String p_name = productVO.getP_name();
+			String str = p_no + ": " + p_name;
 			jsonArray.put(str);
 		}
 		
