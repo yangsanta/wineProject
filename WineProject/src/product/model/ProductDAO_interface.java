@@ -19,4 +19,6 @@ public interface ProductDAO_interface {
 
 	public List<ProductVO> findSomeProduct(String lcondition,
 			String conditionValue);
+	
+	public List<ProductVO> findFuzzyProductName(String fuzzyProductName);
 }

@@ -133,4 +133,20 @@
 		<servlet-name>saucein</servlet-name>
 		<url-pattern>/product/saucein</url-pattern>
 	</servlet-mapping>
+	<servlet>
+    	<servlet-name>advertisements</servlet-name>
+    	<servlet-class>ads.controller.AdsServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>advertisements</servlet-name>
+    	<url-pattern>/product/advertisements</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>AjaxProducts</servlet-name>
+    	<servlet-class>ads.controller.AjaxSearchServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>AjaxProducts</servlet-name>
+    	<url-pattern>/product/ajaxProducts</url-pattern>
+  	</servlet-mapping>
 </web-app>
