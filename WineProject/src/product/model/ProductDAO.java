@@ -95,8 +95,9 @@ public class ProductDAO implements ProductDAO_interface {
 			session.beginTransaction();
 			Query query = session.createQuery("SELECT DISTINCT " + productlist
 					+ "  FROM ProductVO");
+			query.setCacheable(true); //啟動Query快取
 			list1 = query.list();
-int list1_size=list1.size();
+			int list1_size=list1.size();
 			for (int i = 0; i < list1_size; i++) {
 				String aaa = list1.get(i).toString();
 
@@ -120,6 +121,7 @@ int list1_size=list1.size();
 
 			Query query = session
 					.createQuery("SELECT DISTINCT p_grape FROM ProductVO where p_type=?");
+			query.setCacheable(true); //啟動Query快取
 			query.setParameter(0, productType);
 			list = query.list();
 
@@ -208,6 +210,7 @@ int list1_size=list1.size();
 
 			Query query = session
 					.createQuery("SELECT DISTINCT p_country FROM ProductVO where p_area=?");
+			query.setCacheable(true); //啟動Query快取
 			query.setParameter(0, area);
 			list = query.list();
 

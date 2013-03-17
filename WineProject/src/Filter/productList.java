@@ -21,26 +21,11 @@ import product.model.ProductDAO;
  */
 @WebFilter("/productList")
 public class productList implements Filter {
-	 
-	  
-	  
-    /**
-     * Default constructor. 
-     */
-    public productList() {
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see Filter#destroy()
-	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
+    public productList() {  }
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
+	public void destroy() {	}
+
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		//計時器
 		long timeStart = 0;  
