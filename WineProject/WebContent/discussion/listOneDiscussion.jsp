@@ -96,6 +96,19 @@ $(document).ready( function(){
 
 
 					<div id="content">
+					<!-- 搜尋功能條						 -->
+						<div align="right">
+							<form action="DiscussionList" method="post" class="form-search">
+								<input type="text" name="txtsrch" class="input-medium search-query"/>
+								<select name="srchThing" style="width:100px">
+									<option value="d_title">主題</option>
+									<option value="d_context">文章內容</option>
+								</select>
+								<input type="submit" value="search" class="btn"/>
+								<input type="hidden" name="action" value="search"/>
+							</form>
+						</div>
+<!-- ---------------			-->
 						<div align="center">
 						<%@ include file="../view_model/page_alert.htm"%>
 							<h2>文章</h2>

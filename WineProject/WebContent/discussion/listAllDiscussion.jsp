@@ -91,7 +91,6 @@ tr:hover {
 				
 			</script>
 </head>
-<body>
 
 	<body>
 		<div id="shadow_bg">
@@ -102,11 +101,24 @@ tr:hover {
 
 					<div id="content">
 						<%@ include file="../view_model/page_alert.htm"%>
+<!-- 搜尋功能條						 -->
+						<div align="right">
+							<form action="DiscussionList" method="post" class="form-search">
+								<input type="text" name="txtsrch" class="input-medium search-query"/>
+								<select name="srchThing" style="width:100px">
+									<option value="d_title">主題</option>
+									<option value="d_context">文章內容</option>
+								</select>
+								<input type="submit" value="search" class="btn"/>
+								<input type="hidden" name="action" value="search"/>
+							</form>
+						</div>
+<!-- ---------------			-->
 						<div align="center">
 							<h2>討論區</h2>
 						</div>
 						<span>首頁 » <a
-							href="http://localhost:8080/WineProject/DiscussionList?action=getAll">
+							href="<%=request.getContextPath()%>/DiscussionList?action=getAll">
 								討論區</a></span>
 						<div class="well font-small">
 
@@ -149,26 +161,26 @@ tr:hover {
 									<ul>
 										<c:if test="${rowsPerPage<rowNumber}">
 											<c:if test="${pageIndex>=rowsPerPage}">
-												<li class=""><a href="${url}?action=getAll&whichPage=1">
+												<li class=""><a href="${url}?action=${action}&whichPage=1">
 														&laquo; </a></li>
 												<li class=""><a
-													href="${url}?action=getAll&whichPage=${whichPage-1}">上一頁</a></li>
+													href="${url}?action=${action}&whichPage=${whichPage-1}">上一頁</a></li>
 											</c:if>
 										</c:if>
 
 										<c:if test="${pageNumber > 1}">
 											<c:forEach var="i" begin="1" end="${pageNumber}">
 												<li class=""><a
-													href="${url}?action=getAll&whichPage=${i}">${i}</a></li>
+													href="${url}?action=${action}&whichPage=${i}">${i}</a></li>
 											</c:forEach>
 										</c:if>
 
 										<c:if test="${rowsPerPage<rowNumber}">
 											<c:if test="${pageIndex<pageIndexArray[pageNumber-1]}">
 												<li class=""><a
-													href="${url}?action=getAll&whichPage=${whichPage+1}">下一頁</a></li>
+													href="${url}?action=${action}&whichPage=${whichPage+1}">下一頁</a></li>
 												<li class=""><a
-													href="${url}?action=getAll&whichPage=${pageNumber}">»</a></li>
+													href="${url}?action=${action}&whichPage=${pageNumber}">»</a></li>
 
 											</c:if>
 										</c:if>

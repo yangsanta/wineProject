@@ -8,7 +8,8 @@ import java.util.*;
     public void delete(Integer d_no);
     public DiscussionVO findByPrimaryKey(Integer d_no);
     public List<DiscussionVO> getAll();
-    public Integer findTotalNOofDiscussion();
+//    public Integer findTotalNOofDiscussion();
+    Set<DiscussionVO> search(String srchThing, String txtsrch);
 }
 
 	
