@@ -1,5 +1,6 @@
 package ingredient.model;
 
+import food.model.FoodVO;
 import hibernate.util.HibernateUtil;
 
 import java.util.*;

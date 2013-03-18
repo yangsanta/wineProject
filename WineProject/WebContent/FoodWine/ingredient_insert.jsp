@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="ingredient.model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,17 +14,24 @@
 </head>
 <body>
 <h1>新增主要食材</h1>
-	<FORM METHOD="post" ACTION="food.do" name="form1">
-		<tr>
-			<td>主要食材:</td>
+	<Form Action="<%=request.getContextPath()%>/product/ingin" method="post" id="commentForm"
+		class="cmxform">
+		<TR>
+			<td>新增食材：<br></td>
+			<td><input type="text" name="i_name" value=""
+				size="10"></td>
+		</TR>
+		<TR>
+			<td colspan="2" align="center"><input type="submit" value="送出"
+				class="btn btn-primary"></td>
+		</TR>
+		<%-- <tr>
+			<td>食物種類:</td>
 			<td><select size="1" name="f_id">
-					<c:forEach var="Ingredient" items="${Ingredient }">
-						<option value="${Ingredient.i_id}">${Ingredient.i_name}</option>
+					<c:forEach var="Food" items="${Food }">
+						<option>${Food.f_name}</option>
 					</c:forEach>
 			</select></td>
-		</tr>
-		<input type="hidden" name="action" value="insert"> <input
-			type="submit" value="送出新增">
-	</FORM>
+		</tr> --%>
 </body>
 </html>

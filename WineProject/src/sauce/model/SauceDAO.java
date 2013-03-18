@@ -92,10 +92,28 @@ public class SauceDAO implements SauceDAO_interface {
 		return list;
 		
 	}
+	public Integer findHaveName(String name) {
+		Integer totalNO = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		try {
+			session.beginTransaction();
+			Query query = session
+					.createQuery("SELECT count(*) as count FROM SauceVO where s_name=?");
+			query.setParameter(0, name);
+			Long count = (Long) query.list().get(0);
+			totalNO = count.intValue();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return totalNO;
+	}
 	
-//	public static void main(String[] args) {
-//
-//		SauceHibernateDAO dao = new SauceHibernateDAO();
+	public static void main(String[] args) {
+
+		SauceHibernateDAO dao = new SauceHibernateDAO();
 
 		// 新增
 //		SauceVO sauceVO1 = new SauceVO();
@@ -128,7 +146,11 @@ public class SauceDAO implements SauceDAO_interface {
 //			
 //			System.out.println("-1---------------1-");
 //		}
-//	}
+		List<SauceVO> list = dao.getAll();
+		for (SauceVO aMember : list) {
+			System.out.print(aMember.getS_name() + ",");
 
-	
+			System.out.println("------------------");
+		}
+	}
 }

@@ -67,22 +67,6 @@
     <url-pattern>/product/selectrecipeaddfoodfidname.do</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>setselectallfood</servlet-name>
-    <servlet-class>food_set.controller.food_set</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>setselectallfood</servlet-name>
-    <url-pattern>/food/setselectall.do</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>setselectallfoodset</servlet-name>
-    <servlet-class>food_set.controller.food_set</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>setselectallfoodset</servlet-name>
-    <url-pattern>/food/set</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>MemberService</servlet-name>
     <servlet-class>member.controller.MemberService</servlet-class>
   </servlet>
@@ -91,11 +75,80 @@
     <url-pattern>/member/MemberService</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>setselectallfood</servlet-name>
+    <servlet-class>food_set.controller.food_set</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>setselectallfood</servlet-name>
+    <url-pattern>/food/setselectall.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>shoppingCart</servlet-name>
     <servlet-class>product.controller.BuyWine</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>shoppingCart</servlet-name>
-    <url-pattern>/product/shoppingCart</url-pattern>
+    <url-pattern>/product/shoppingCart.do</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>setselectallfoodset</servlet-name>
+    <servlet-class>food_set.controller.food_set</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>setselectallfoodset</servlet-name>
+    <url-pattern>/FoodWine/food/set.do</url-pattern>
+  </servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>foodsetins</servlet-name>
+		<servlet-class>food_set.controller.foodserver</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>foodsetins</servlet-name>
+		<url-pattern>/food/ins</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>foodinRegister</servlet-name>
+		<servlet-class>food_set.controller.foodserver</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>foodinRegister</servlet-name>
+		<url-pattern>/product/foodin</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ingin</servlet-name>
+		<servlet-class>food_set.controller.ingredientserver</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ingin</servlet-name>
+		<url-pattern>/product/ingin</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>saucein</servlet-name>
+		<servlet-class>food_set.controller.sauceserver</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>saucein</servlet-name>
+		<url-pattern>/product/saucein</url-pattern>
+	</servlet-mapping>
+	<servlet>
+    	<servlet-name>advertisements</servlet-name>
+    	<servlet-class>ads.controller.AdsServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>advertisements</servlet-name>
+    	<url-pattern>/product/advertisements</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>AjaxProducts</servlet-name>
+    	<servlet-class>ads.controller.AjaxSearchServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>AjaxProducts</servlet-name>
+    	<url-pattern>/product/ajaxProducts</url-pattern>
+  	</servlet-mapping>
 </web-app>

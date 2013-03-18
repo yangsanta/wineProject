@@ -7,8 +7,6 @@ import java.util.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class IngredientDAO implements IngredientDAO_interface {
-
 	private static final String GET_ALL_STMT = "FROM IngredientVO order by i_id";
 
 	@Override

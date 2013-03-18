@@ -1,5 +1,7 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="food.model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,13 +21,12 @@
 			<th>修改</th>
 			<th>刪除</th>
 		</tr>
-		<%@ include file="page1.file"%>
-		<c:forEach var="empVO" items="${list}" begin="<%=pageIndex%>"
-			end="<%=pageIndex+rowsPerPage-1%>">
+		<c:forEach var="Food" items="${Food }">
 			<tr align='center' valign='middle'>
-				<td>${empVO.empno}</td>
-				<td>${empVO.ename}</td>
-				</td>
+
+				<td>${Food.f_id}</td>
+
+				<td>${Food.f_name}</td>
 				<td>
 					<FORM METHOD="post"
 						ACTION="<%=request.getContextPath()%>/emp/emp.do">
@@ -45,6 +46,5 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<%@ include file="page2.file"%>
 </body>
-</html> --%>
+</html>

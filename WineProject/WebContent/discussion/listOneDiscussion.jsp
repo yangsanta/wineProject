@@ -99,6 +99,10 @@ $(document).ready( function(){
 					<!-- 搜尋功能條						 -->
 						<div align="right">
 							<form action="DiscussionList.do" method="post" class="form-search">
+
+							<p style="color:red;font-size:12pt">${msgbox}</p>
+							<form action="DiscussionList.do" method="post" class="form-search">
+
 								<input type="text" name="txtsrch" class="input-medium search-query"/>
 								<select name="srchThing" style="width:100px">
 									<option value="d_title">主題</option>
