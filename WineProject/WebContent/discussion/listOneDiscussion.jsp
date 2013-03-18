@@ -98,7 +98,7 @@ $(document).ready( function(){
 					<div id="content">
 					<!-- 搜尋功能條						 -->
 						<div align="right">
-							<p style="color:red;font-size:16pt">${msgbox}</p>
+							<p style="color:red;font-size:12pt">${msgbox}</p>
 							<form action="DiscussionList" method="post" class="form-search">
 								<input type="text" name="txtsrch" class="input-medium search-query"/>
 								<select name="srchThing" style="width:100px">

@@ -217,6 +217,9 @@ public class DiscussionServlet extends HttpServlet {
 //					System.out.println(((DiscussionVO)iterator.next()).getD_title());
 				}				
 				splitPages(list, req);
+				if(list.size()==0){
+					req.setAttribute("msgbox","沒有符合您所搜尋的文章");
+				}
 				req.getSession().setAttribute("srchThing",srchThing);
 				req.getSession().setAttribute("txtsrch",txtsrch);
 				req.getSession().setAttribute("action", "search");
