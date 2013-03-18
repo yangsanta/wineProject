@@ -6,7 +6,7 @@
 	<class name="ads.model.AdsVO" table="ads">
 
 		<id name="ads_no" column="ads_no">
-
+			<generator class="identity"></generator>
 		</id>
 
 		<many-to-one name="productVO" column="p_no" lazy="false" class="product.model.ProductVO" />

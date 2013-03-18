@@ -17,14 +17,14 @@
 		</div>
 		<div id="divContent">
 			<input type="text" name="search_query" id="search_query"
-				placeholder="What You Are Looking For?" size="60" />
+				placeholder="請直接輸入商品編號或以部分商品名搜尋, 找到商品後請點擊該商品" size="60" />
 			<table>
 				<tbody id="ulResult">
 				</tbody>
 			</table>
 		</div>
 		
-		<input type="submit" id="btnSubmit" value="設定" id="button_find" />
+		<input type="submit" id="btnSubmit" value="設定新廣告" id="button_find" />
 		<input type="text" name="fileName" id="fileName" />
 		<input type="text" name="productName" id="productName" />
 	</form>

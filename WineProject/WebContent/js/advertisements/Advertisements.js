@@ -1,10 +1,14 @@
 $(function() {
-	// Ajax search
+	//隱藏form元件
+	$("#fileName").css("display", "none");
+	$("#productName").css("display", "none");
 	
+	// Ajax search
 	$("#search_query").bind("keyup", function(){
 		while (document.getElementById("ulResult").hasChildNodes()){
 			$(document.getElementById("ulResult").removeChild((document.getElementById("ulResult")).firstChild));
 		}
+		$("#productName").val($(this).val());
 		$.ajax({
 			url: 'ajaxProducts', 
 			type: 'POST',
