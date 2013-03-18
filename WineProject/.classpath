@@ -2,10 +2,14 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_09">
 =======
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 >>>>>>> branch 'master' of https://github.com/yangsanta/wineProject.git
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk7">
+>>>>>>> 359cc5ac95484a84a332a9568b3ac9c969a58d6f
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
