@@ -6,6 +6,8 @@ import hibernate.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import member.model.MemberVO;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -84,41 +86,67 @@ public class FoodDAO implements FoodDAO_interface {
 		}
 		return list;
 	}
-//	public static void main(String[] args) {
-//
-//		FoodHibernateDAO dao = new FoodHibernateDAO();
+
+	public Integer findHaveName(String name) {
+		Integer totalNO = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		try {
+			session.beginTransaction();
+			Query query = session
+					.createQuery("SELECT count(*) as count FROM FoodVO where f_name=?");
+			query.setParameter(0, name);
+			Long count = (Long) query.list().get(0);
+			totalNO = count.intValue();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return totalNO;
+	}
+
+	public static void main(String[] args) {
+
+		FoodHibernateDAO dao = new FoodHibernateDAO();
 
 		// 新增
-//		FoodVO foodVO1 = new FoodVO();
-//		foodVO1.setF_name("新增乳製品");
-//
-//		dao.insert(foodVO1);
+		// FoodVO foodVO1 = new FoodVO();
+		// foodVO1.setF_name("新增乳製品");
+		//
+		// dao.insert(foodVO1);
 
-//		// 修改
-//		FoodVO foodVO2 = new FoodVO();
-//		foodVO2.setF_id(new Integer(1007));
-//		foodVO2.setF_name("修改乳製品1");
-//		//
-//		dao.update(foodVO2);
-//
-//		// 刪除
-//		dao.delete(1007);
-//
-//		// // 查詢
-//		FoodVO foodVO3 = dao.findByPrimaryKey(102);
-//		System.out.print(foodVO3.getF_id() + ",");
-//		System.out.print(foodVO3.getF_name());
-//		System.out.println("---------------------");
-//
+		// // 修改
+		// FoodVO foodVO2 = new FoodVO();
+		// foodVO2.setF_id(new Integer(1007));
+		// foodVO2.setF_name("修改乳製品1");
+		// //
+		// dao.update(foodVO2);
+		//
+		// // 刪除
+		// dao.delete(1007);
+		//
+		// // // 查詢
+		// FoodVO foodVO3 = dao.findByPrimaryKey(102);
+		// System.out.print(foodVO3.getF_id() + ",");
+		// System.out.print(foodVO3.getF_name());
+		// System.out.println("---------------------");
+		//
 		// 查詢
-//		List<FoodVO> list = dao.getAll();
-//		for (FoodVO afood : list) {
-//			System.out.print(afood.getF_id() + ",");
-//			System.out.print(afood.getF_name() + ",");
-//
-//			System.out.println("-1---------------1-");
-//		}
-//	}
+		// List<FoodVO> list = dao.getAll();
+		// for (FoodVO afood : list) {
+		// System.out.print(afood.getF_id() + ",");
+		// System.out.print(afood.getF_name() + ",");
+		//
+		// System.out.println("-1---------------1-");
+		// }
+		// }
+		List<FoodVO> list = dao.getAll();
+		for (FoodVO aMember : list) {
+			System.out.print(aMember.getF_name() + ",");
 
+			System.out.println("------------------");
+		}
+	}
 
 }
