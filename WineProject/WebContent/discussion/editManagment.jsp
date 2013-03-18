@@ -36,50 +36,25 @@
 }
 
 </style>
-			<script type="text/javascript">
-				
-			</script>
+<script type="text/javascript">
+</script>
 </head>
-<body>
-
 	<body>
-		<div id="shadow_bg">
-			<div id="body">
-
-				<%@ include file="../view_model/index_header.jsp"%>
-				<div id="main">
-
-
-					<div id="content">
-						<div align="center">
-							<h2>文章</h2>
-						</div>
-						<span>首頁 » 討論區 » 文章</span>
-						<div class="well font-small">
-
-							<strong><span class="label label-success">歡迎!</span></strong> <br><span
-								style="margin-left: 50px">你可以在這邊與各方的酒友一起討論酒香的芬芳以及在味蕾上跳動的喜悅。現在就發表一篇文章來與大家認識認識吧。</span>
-						</div>
-	<form action="insertDiscussion.do" method="post">
-		Title:<input type="text" name="d_title" value="${discussionVO.d_title}"><br /> 
-		Content:<textarea cols="170" rows="10" id="textContext" name="d_context">${discussionVO.d_context}</textarea><br />
-		<input type="submit" value="Send">
-		<input type="hidden" name="action" value="update">
-		<input type="hidden" name="d_datetime" value="${discussionVO.d_datetime}">
-		<input type="hidden" name="d_status" value="${discussionVO.d_status}">
-		<input type="hidden" name="m_no" value="${discussionVO.memberVO.m_no}">
-		<input type="hidden" name="d_no" value="${discussionVO.d_no}">
-	</form><br/>
-						<br class="clear" />
-						<%@ include file="../view_model/index_fast_login.htm"%>
-					</div>
-					<br class="clear" />
-				</div>
-			</div>
-			<%@ include file="../view_model/index_footer.htm"%>
-
+		<div id="content">
+			<div align="center">
+				<h2>文章</h2>
 		</div>
-
+		<div>		
+		<form action="DiscussionManagment" method="post">
+			Title:<input type="text" name="d_title" value="${discussionVO.d_title}"><br /> 
+			Content:<textarea cols="170" rows="10" id="textContext" name="d_context">${discussionVO.d_context}</textarea><br/>
+			<input type="submit" value="Send"/>
+			<input type="hidden" name="action" value="update"/>
+			<input type="hidden" name="d_datetime" value="${discussionVO.d_datetime}"/>
+			<input type="hidden" name="d_status" value="${discussionVO.d_status}"/>
+			<input type="hidden" name="m_no" value="${discussionVO.memberVO.m_no}"/>
+			<input type="hidden" name="d_no" value="${discussionVO.d_no}"/>
+		</form><br/>
 		</div>
 	</body>
 </html>

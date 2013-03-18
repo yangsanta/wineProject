@@ -15,7 +15,7 @@ import coupon.model.CouponVO;
 
 public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 
-	private static final String GET_ALL_STMT = "FROM DiscussionVO order by d_datetime desc";
+	private static String GET_ALL_STMT = null;
 
 	@Override
 	public void insert(DiscussionVO discussionVO) {
@@ -78,7 +78,25 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 		List<DiscussionVO> list = new ArrayList<DiscussionVO>();
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
+			GET_ALL_STMT = "FROM DiscussionVO WHERE d_status = 'ooo' order by d_datetime desc";
 			session.beginTransaction();
+			Query query = session.createQuery(GET_ALL_STMT);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+	
+	@Override
+	public List<DiscussionVO> getAllMananger() {
+		List<DiscussionVO> list = new ArrayList<DiscussionVO>();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			GET_ALL_STMT = "FROM DiscussionVO order by d_datetime desc";
 			Query query = session.createQuery(GET_ALL_STMT);
 			list = query.list();
 			session.getTransaction().commit();
@@ -121,15 +139,12 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 
 		String[] txt = txtsrch.split(" ");
 		int txtlength = txt.length;
-
 		if (txtlength >= 2) {
 			queryTextOne = "%" + txt[0] + "%";
 			queryTextTwo = txt[1] + "%";
 			System.out.println(queryTextOne);
 			System.out.println(queryTextTwo);
 
-		} else if (txtlength == 1) {
-			queryTextOne = "%" + txt[0] + "%";
 		}
 		for (int i = 0; i < txtlength; i++) {
 			queryText += "%" + txt[i];

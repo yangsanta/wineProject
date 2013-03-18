@@ -38,6 +38,14 @@
 		<url-pattern>/reply.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>DiscussionManagment</servlet-name>
+		<servlet-class>discussion.controller.DiscussionManagment</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DiscussionManagment</servlet-name>
+		<url-pattern>/DiscussionManagment.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>DisplayProducts</servlet-name>
 		<servlet-class>product.controller.DisplayProducts</servlet-class>
 	</servlet>
