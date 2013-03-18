@@ -1,15 +1,14 @@
 ﻿package food_set.model;
 
-import food.model.FoodVO;
 import ingredient.model.IngredientVO;
+import product.model.ProductVO;
 import sauce.model.SauceVO;
+import food.model.FoodVO;
 
 public class Food_setVO implements java.io.Serializable {
 	
 	private Integer fs_id;
-//	private Integer f_id;
-//	private Integer i_id;
-//	private Integer s_id;
+	private ProductVO productVO;
 	private FoodVO foodVO;
 	private IngredientVO ingredientVO;
 	private SauceVO sauceVO;
@@ -39,7 +38,12 @@ public class Food_setVO implements java.io.Serializable {
 	public void setSauceVO(SauceVO sauceVO) {
 		this.sauceVO = sauceVO;
 	}
-	
+	public ProductVO getProductVO() {
+		return productVO;
+	}
+	public void setProductVO(ProductVO productVO) {
+		this.productVO = productVO;
+	}
 	
 	
 }

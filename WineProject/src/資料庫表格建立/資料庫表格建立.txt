@@ -381,11 +381,13 @@ insert into product values('米娜多 黃牌普塞克汽泡酒','K2204_img1.jpg'
 
 -------------------------------------------------------------------------------------------------------------------------
 create table food_set ( --[table]食物搭配   ok
-fs_id				int  not null,	--商品ID  pri
+fs_id				int IDENTITY (1,1),	--商品ID  pri
+p_no				int	 not null,
 f_id				int	 not null,
 i_id				int	 not null,
 s_id				int	 not null,	--風味ID 
-constraint product_fs_id_fk foreign key (fs_id) references product				(p_no),		--F-K商品ID
+constraint food_set_primary_key primary key (fs_id),
+constraint product_p_no_fk foreign key (p_no) references product				(p_no),		--F-K商品ID
 constraint food_set_f_id_fk foreign key (f_id)	references food					(f_id),
 constraint ingredient_set_i_id_fk foreign key (i_id)	references ingredient	(i_id),
 constraint sauce_set_s_id_fk foreign key (s_id)	references sauce				(s_id),
@@ -476,7 +478,6 @@ insert into food_set values (	83	,	1006	,	2033	,	3011	);
 insert into food_set values (	84	,	1006	,	2033	,	3041	);
 insert into food_set values (	85	,	1006	,	2033	,	3042	);
 insert into food_set values (	86	,	1006	,	2033	,	3043	);
-	
 			
 																	
 																			
