@@ -117,4 +117,20 @@
 		<servlet-name>foodinRegister</servlet-name>
 		<url-pattern>/product/foodin</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>ingin</servlet-name>
+		<servlet-class>food_set.controller.ingredientserver</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ingin</servlet-name>
+		<url-pattern>/product/ingin</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>saucein</servlet-name>
+		<servlet-class>food_set.controller.sauceserver</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>saucein</servlet-name>
+		<url-pattern>/product/saucein</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -11,18 +11,16 @@
 </script>
 </head>
 <body>
-	<h1>新增風味特色</h1>
-	<FORM METHOD="post" ACTION="food.do" name="form1">
-		<tr>
-			<td>風味特色:</td>
-			<td><select size="1" name="f_id">
-					<c:forEach var="Sauce" items="${Sauce }">
-						<option value="${Sauce.s_id}">${Sauce.s_name}</option>
-					</c:forEach>
-			</select></td>
-		</tr>
-		<input type="hidden" name="action" value="insert"> <input
-			type="submit" value="送出新增">
-	</FORM>
+	<Form Action="<%=request.getContextPath()%>/product/saucein" method="post" id="commentForm"
+		class="cmxform">
+		<TR>
+			<td>新增風味特色：<br></td>
+			<td><input type="text" name="s_name" value=""
+				size="10"></td>
+		</TR>
+		<TR>
+			<td colspan="2" align="center"><input type="submit" value="送出"
+				class="btn btn-primary"></td>
+		</TR>
 </body>
 </html>

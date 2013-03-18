@@ -21,6 +21,10 @@
 			<td><input type="text" name="f_name" value=""
 				size="10"></td>
 		</TR>
+		<TR>
+			<td colspan="2" align="center"><input type="submit" value="送出"
+				class="btn btn-primary"></td>
+		</TR>
 		<%-- <tr>
 			<td>食物種類:</td>
 			<td><select size="1" name="f_id">
@@ -29,12 +33,5 @@
 					</c:forEach>
 			</select></td>
 		</tr> --%>
-		<TR>
-			<td colspan="2" align="center"><input type="submit" value="送出"
-				class="btn btn-primary"></td>
-		</TR>
-		<!-- <input type="hidden" name="action" value="insert"> <input
-			type="submit" value="送出新增"> -->
-	</FORM>
 </body>
 </html>

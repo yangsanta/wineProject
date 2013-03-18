@@ -1,5 +1,6 @@
 package ingredient.model;
 
+import food.model.FoodVO;
 import hibernate.util.HibernateUtil;
 
 import java.util.*;
@@ -92,11 +93,28 @@ public class IngredientDAO implements IngredientDAO_interface {
 		return list;
 		
 	}
+	public Integer findHaveName(String name) {
+		Integer totalNO = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		try {
+			session.beginTransaction();
+			Query query = session
+					.createQuery("SELECT count(*) as count FROM IngredientVO where i_name=?");
+			query.setParameter(0, name);
+			Long count = (Long) query.list().get(0);
+			totalNO = count.intValue();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return totalNO;
+	}
 	
-	
-//	public static void main(String[] args) {
-//
-//		IngredientHibernateDAO dao = new IngredientHibernateDAO();
+	public static void main(String[] args) {
+
+		IngredientHibernateDAO dao = new IngredientHibernateDAO();
 //
 //		// 新增
 ////		IngredientVO ingredientVO1 = new IngredientVO();
@@ -128,6 +146,11 @@ public class IngredientDAO implements IngredientDAO_interface {
 //
 //			System.out.println("-1---------------1-");
 //		}
-//	}
+		List<IngredientVO> list = dao.getAll();
+		for (IngredientVO aMember : list) {
+			System.out.print(aMember.getI_name() + ",");
 
+			System.out.println("------------------");
+		}
+	}
 }
