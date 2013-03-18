@@ -1,103 +1,42 @@
-﻿/*package ingredient.model;
+package ingredient.model;
+
+import hibernate.util.HibernateUtil;
 
 import java.util.*;
-import java.sql.*;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 public class IngredientDAO implements IngredientDAO_interface {
-	String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	String url = "jdbc:sqlserver://localhost:1433;DatabaseName=WineProject";
-	String userid = "sa";
-	String passwd = "sa123456";
 
-	private static final String INSERT_STMT = "INSERT INTO ingredient (i_id,i_name) VALUES ( ?)";
-	private static final String GET_ALL_STMT = "SELECT i_id,i_name FROM ingredient order by i_id";
-	private static final String GET_ONE_STMT = "SELECT i_id,i_name FROM ingredient where i_id=?";
-	private static final String DELETE = "DELETE FROM ingredient where i_id = ?";
-	private static final String UPDATE = "UPDATE ingredient set i_name=? where i_id=?";
+	private static final String GET_ALL_STMT = "FROM IngredientVO order by i_id";
 
+	@Override
 	public void insert(IngredientVO ingredientVO) {
 
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(INSERT_STMT);
-
-			pstmt.setString(1, ingredientVO.getI_name());
-
-			pstmt.executeUpdate();
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			session.saveOrUpdate(ingredientVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 
 	}
 
+	@Override
 	public void update(IngredientVO ingredientVO) {
 
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(UPDATE);
-
-			pstmt.setString(1, ingredientVO.getI_name());
-			pstmt.setInt(2, ingredientVO.getI_id());
-
-			pstmt.executeUpdate();
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			session.saveOrUpdate(ingredientVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 
 	}
@@ -105,200 +44,90 @@ public class IngredientDAO implements IngredientDAO_interface {
 	@Override
 	public void delete(Integer i_id) {
 
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(DELETE);
-
-			pstmt.setInt(1, i_id);
-
-			pstmt.executeUpdate();
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			IngredientVO ingredientVO = new IngredientVO();
+			ingredientVO.setI_id(i_id);
+			session.delete(ingredientVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 
 	}
 
+	@Override
 	public IngredientVO findByPrimaryKey(Integer i_id) {
 
 		IngredientVO ingredientVO = null;
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(GET_ONE_STMT);
-
-			pstmt.setInt(1, i_id);
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				// empVo 也稱為 Domain objects
-				ingredientVO = new IngredientVO();
-				ingredientVO.setI_id(rs.getInt("i_id"));
-				ingredientVO.setI_name(rs.getString("i_name"));
-
-			}
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			ingredientVO = (IngredientVO) session.get(IngredientVO.class, i_id);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 		return ingredientVO;
 	}
+	
 
+	@Override
 	public List<IngredientVO> getAll() {
+
 		List<IngredientVO> list = new ArrayList<IngredientVO>();
-		IngredientVO ingredientVO = null;
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(GET_ALL_STMT);
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				// empVO 也稱為 Domain objects
-				ingredientVO = new IngredientVO();
-				ingredientVO.setI_id(rs.getInt("i_id"));
-				ingredientVO.setI_name(rs.getString("i_name"));
-
-				list.add(ingredientVO); // Store the row in the list
-			}
-
-			// Handle any driver errors
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			Query query = session.createQuery(GET_ALL_STMT);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 		return list;
+		
 	}
+	
+	
+//	public static void main(String[] args) {
+//
+//		IngredientHibernateDAO dao = new IngredientHibernateDAO();
+//
+//		// 新增
+////		IngredientVO ingredientVO1 = new IngredientVO();
+////		ingredientVO1.setI_name("新增馬鈴薯泥1");
+////
+////		dao.insert(ingredientVO1);
+//
+////		// 修改
+////		IngredientVO ingredientVO2 = new IngredientVO();
+////		ingredientVO2.setI_id(new Integer(2034));
+////		ingredientVO2.setI_name("修改高麗菜12");
+////
+////		dao.update(ingredientVO2);
+//
+////		// 刪除
+//		dao.delete(2035);
+////
+////		// // 查詢
+////		IngredientVO ingredientVO3 = dao.findByPrimaryKey(102);
+////		System.out.print(ingredientVO3.getI_id() + ",");
+////		System.out.print(ingredientVO3.getI_name());
+////		System.out.println("---------------------");
+////
+//		// 查詢
+//		List<IngredientVO> list = dao.getAll();
+//		for (IngredientVO aingredient : list) {
+//			System.out.print(aingredient.getI_id() + ",");
+//			System.out.print(aingredient.getI_name() + ",");
+//
+//			System.out.println("-1---------------1-");
+//		}
+//	}
 
-	public static void main(String[] args) {
-
-		IngredientDAO dao = new IngredientDAO();
-
-		// 新增
-		IngredientVO ingredientVO1 = new IngredientVO();
-		ingredientVO1.setI_name("新增馬鈴薯泥1");
-
-		dao.insert(ingredientVO1);
-
-		// 修改
-		IngredientVO ingredientVO2 = new IngredientVO();
-		ingredientVO2.setI_id(new Integer(102));
-		ingredientVO2.setI_name("修改高麗菜12");
-
-		dao.update(ingredientVO2);
-
-		// 刪除
-		dao.delete(101);
-
-		// // 查詢
-		IngredientVO ingredientVO3 = dao.findByPrimaryKey(102);
-		System.out.print(ingredientVO3.getI_id() + ",");
-		System.out.print(ingredientVO3.getI_name());
-		System.out.println("---------------------");
-
-		// 查詢
-		List<IngredientVO> list = dao.getAll();
-		for (IngredientVO aingredient : list) {
-			System.out.print(aingredient.getI_id() + ",");
-			System.out.print(aingredient.getI_name() + ",");
-
-			System.out.println("-1---------------1-");
-		}
-	}
-
-}*/
+}
