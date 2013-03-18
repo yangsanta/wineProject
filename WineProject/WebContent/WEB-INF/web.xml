@@ -62,6 +62,14 @@
 		<url-pattern>/product/login.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>MemberServlet</servlet-name>
+		<servlet-class>member.controller.MemberServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MemberServlet</servlet-name>
+		<url-pattern>/memberCRUD/mem.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>Disselect</servlet-name>
 		<servlet-class>product.controller.DisplayProducts</servlet-class>
 	</servlet>
