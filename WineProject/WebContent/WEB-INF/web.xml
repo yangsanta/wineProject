@@ -86,7 +86,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>setselectallfood</servlet-name>
-		<servlet-class>food_set.controller.food_set</servlet-class>
+		<servlet-class>food_set.controller.food_all</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>setselectallfood</servlet-name>
@@ -94,7 +94,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>setselectallfoodset</servlet-name>
-		<servlet-class>food_set.controller.food_set</servlet-class>
+		<servlet-class>food_set.controller.food_all</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>setselectallfoodset</servlet-name>
