@@ -98,7 +98,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>setselectallfoodset</servlet-name>
-		<url-pattern>/food/set</url-pattern>
+		<url-pattern>/FoodWine/food/set</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>foodsetins</servlet-name>
