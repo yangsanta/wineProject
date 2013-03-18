@@ -103,7 +103,7 @@ tr:hover {
 						<%@ include file="../view_model/page_alert.htm"%>
 <!-- 搜尋功能條						 -->
 						<div align="right">
-							<form action="DiscussionList" method="post" class="form-search">
+							<form action="DiscussionList.do" method="post" class="form-search">
 								<input type="text" name="txtsrch" class="input-medium search-query"/>
 								<select name="srchThing" style="width:100px">
 									<option value="d_title">主題</option>
@@ -118,7 +118,7 @@ tr:hover {
 							<h2>討論區</h2>
 						</div>
 						<span>首頁 » <a
-							href="<%=request.getContextPath()%>/DiscussionList?action=getAll">
+							href="<%=request.getContextPath()%>/DiscussionList.do?action=getAll">
 								討論區</a></span>
 						<div class="well font-small">
 
@@ -148,7 +148,7 @@ tr:hover {
 											<td class="img_type"><img
 												src="images/discussion_paper.gif"></td>
 											<td class="table_title"><a
-												href="DiscussionList?d_no=${discussionVO.d_no}&action=getOne">${discussionVO.d_title}</a></td>
+												href="DiscussionList.do?d_no=${discussionVO.d_no}&action=getOne">${discussionVO.d_title}</a></td>
 											<td class="tdcenter">${discussionVO.memberVO.m_id}</td>
 											<td class="tdcenter">${fn:length(discussionVO.replies)}</td>
 											<td class="table_time"><fmt:formatDate

@@ -102,7 +102,7 @@ tr:hover {
 
 
 					<div id="content">
-	<form action="<c:url value='/DiscussionList'/>" method="post">
+	<form action="<c:url value='/DiscussionList.do'/>" method="post">
 		Title:<input type="text" name="d_title"><br /> 
 		Content:<textarea cols="50" rows="3" id="textContext" name="d_context"></textarea><br />
 		<input type="submit" value="Send">

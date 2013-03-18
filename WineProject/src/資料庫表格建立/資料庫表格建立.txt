@@ -593,3 +593,23 @@ insert into ads values	(6,'04.jpg');
 insert into ads values	(7,'05.jpg');
 insert into ads values	(8,'1136770_182725066_2.jpg');
 insert into ads values	(9,'5056611_142320247000_2.jpg');
+
+
+--drop table admin_board
+create table admin_board (
+ i_no               int IDENTITY  not null,
+ RemoteAddr         varchar(100),
+ QueryString        varchar(100),
+ ServletPath        varchar(100),
+ UserAgent          varchar(500),
+ viewedate       datetime,
+ user_os         	varchar(100),
+ user_browser       varchar(100),
+ 
+  constraint admin_board_primary_key primary key (i_no)
+
+);
+insert into admin_board values	('RemoteAddrs','QueryString77','ServletPath564','UserAgent66','2013-03-01 13:30:00','ooo','ooo');
+
+
+

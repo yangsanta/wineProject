@@ -2,6 +2,7 @@
 
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.Filter;
@@ -15,6 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import product.model.ProductDAO;
+import product.model.ProductVO;
+import admin_board.model.Admin_boardHibernateDAO;
+import admin_board.model.Admin_boardVO;
+import admin_board.model.User_info_jugement;
 
 /**
  * Servlet Filter implementation class productList
@@ -67,7 +72,16 @@ public class productList implements Filter {
 		List<String> bubbleWine = dao.findGrapeType("氣泡酒");
 		request.setAttribute("bubbleWine", bubbleWine);
 		
+//		首頁的左邊選單熱門商品
+		ProductDAO productDAO = new ProductDAO();
+		List<ProductVO> hot_product2  = productDAO.findTopProduct("10");
+		request.setAttribute("hot_product2", hot_product2);
+		
+		
+		
+		
 		chain.doFilter(request, response);
+		
 		//計時  ， 網站上線時砍掉
 		HttpServletRequest request2 = (HttpServletRequest) request;
 		HttpServletResponse response2 = (HttpServletResponse) response;
@@ -76,6 +90,33 @@ public class productList implements Filter {
 		System.out.print("[開始]：" + timeStart + "ms [結束]：" + timeEnd + "ms[ 花費時間]：" + (timeEnd - timeStart) + "ms |"); 
 		System.out.println(request2.getHeader("referer"));
 		//計時
+		//
+		System.out.println("---   Remote Addr: " + request2.getRemoteAddr()); // Remote Addr: 127.0.0.1
+		System.out.println("---   Query String: " + request2.getQueryString()); // Query String: action=getSome_For_Display&condition=p_sales&conditionValue=
+		System.out.println("---   Servlet Path: " + request2.getServletPath()); // Servlet Path: /admin_board/DisplayAdmin_boards
+		System.out.println("---   Referer : " + request2.getHeader("Referer")); // Referer : http://localhost:8080/WineProject/admin_board/DisplayAdmin_boards?action=getSome_For_Display&condition=p_sales&conditionValue=
+		System.out.println("---   User-Agent : " + request2.getHeader("User-Agent")); // User-Agent : Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.152 Safari/537.22
+		//
+		//判斷user資訊
+		User_info_jugement User_info_jugement=new User_info_jugement();
+		String user_os= User_info_jugement.judgeOs(request2.getHeader("User-Agent"));
+		System.out.println("系統是:"+user_os);
+		String user_Browser= User_info_jugement.judgeBrowser(request2.getHeader("User-Agent"));
+		System.out.println("瀏覽器是:"+user_Browser);		
+		
+		Admin_boardHibernateDAO admindao = new Admin_boardHibernateDAO();
+		 Admin_boardVO admin_boardVOO1 = new Admin_boardVO();
+		 admin_boardVOO1.setQueryString(request2.getQueryString());
+		 admin_boardVOO1.setRemoteAddr(request2.getRemoteAddr());//
+		 admin_boardVOO1.setServletPath(request2.getServletPath());
+		 admin_boardVOO1.setUserAgent(request2.getHeader("User-Agent"));
+		 admin_boardVOO1.setUser_browser(user_Browser);		 
+		 admin_boardVOO1.setUser_os(user_os);
+			Timestamp time = new java.sql.Timestamp(new java.util.Date().getTime());
+		 admin_boardVOO1.setViewedate(time);		 
+		 admindao.insert(admin_boardVOO1);
+		 
+		System.out.println("字串長度"+ request2.getHeader("User-Agent").length());
 	}
 
 	/**

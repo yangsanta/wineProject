@@ -98,7 +98,7 @@ $(document).ready( function(){
 					<div id="content">
 					<!-- 搜尋功能條						 -->
 						<div align="right">
-							<form action="DiscussionList" method="post" class="form-search">
+							<form action="DiscussionList.do" method="post" class="form-search">
 								<input type="text" name="txtsrch" class="input-medium search-query"/>
 								<select name="srchThing" style="width:100px">
 									<option value="d_title">主題</option>
@@ -113,7 +113,7 @@ $(document).ready( function(){
 						<%@ include file="../view_model/page_alert.htm"%>
 							<h2>文章</h2>
 						</div>
-						<span>首頁 »<a href="<%=request.getContextPath()%>/DiscussionList?action=getAll"> 討論區</a> » 文章</span>
+						<span>首頁 »<a href="<%=request.getContextPath()%>/DiscussionList.do?action=getAll"> 討論區</a> » 文章</span>
 						<div class="well font-small">
 
 							<strong><span class="label label-success">歡迎!</span></strong> <br><span
@@ -124,7 +124,7 @@ $(document).ready( function(){
 						<%-- 作者ID:${discussionVO.m_no}<br/> --%>
 						<%-- 內文:${discussionVO.d_context} --%>
 						<c:if test="${sessionScope.m_no==requestScope.discussionVO.memberVO.m_no}"><a
-							href="<c:url value='/DiscussionList'/>?action=edit&d_no=${discussionVO.d_no}"><button
+							href="<c:url value='/DiscussionList.do'/>?action=edit&d_no=${discussionVO.d_no}"><button
 								class="btn btn-large btn-primary" style="float: right"
 								type="button">
 								<i class="icon-pencil icon-white"></i> 編輯此文章
@@ -199,7 +199,7 @@ $(document).ready( function(){
 
 
 						<!-- 	--留言功能 -->
-						<form action="<c:url value='/reply'/>" method="post" id="commentForm" class="cmxform">
+						<form action="<c:url value='/reply.do'/>" method="post" id="commentForm" class="cmxform">
 							快速留言：
 							<textarea cols="200" rows="6" name="r_context" class="required" minlength="10"></textarea>
 							<br /> <input type="submit" value="Send" /> <input

@@ -12,7 +12,7 @@
 			<ul>
 				<c:forEach var="creat" items="${style}">
 					<li class='has-sub'><a
-						href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_style&conditionValue=${creat}'><span>${creat}
+						href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_style&conditionValue=${creat}'><span>${creat}
 						</span></a></li>
 				</c:forEach>
 			</ul></li>
@@ -23,7 +23,7 @@
 						<c:forEach var="country" items="${France}">
 							<c:if test="${not empty country}">
 								<li class='last'><a
-									href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
+									href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
 							</c:if>
 						</c:forEach>
 					</ul></li>
@@ -32,7 +32,7 @@
 						<c:forEach var="country" items="${Australia}">
 							<c:if test="${not empty country}">
 								<li class='last'><a
-									href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
+									href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
 							</c:if>
 						</c:forEach>
 					</ul></li>
@@ -41,7 +41,7 @@
 						<c:forEach var="country" items="${America}">
 							<c:if test="${not empty country}">
 								<li class='last'><a
-									href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
+									href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
 							</c:if>
 						</c:forEach>
 					</ul></li>
@@ -50,7 +50,7 @@
 						<c:forEach var="country" items="${Italy}">
 							<c:if test="${not empty country}">
 								<li class='last'><a
-									href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
+									href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
 							</c:if>
 						</c:forEach>
 					</ul></li>
@@ -59,7 +59,7 @@
 						<c:forEach var="country" items="${Germany}">
 							<c:if test="${not empty country}">
 								<li class='last'><a
-									href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
+									href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
 							</c:if>
 						</c:forEach>
 					</ul></li>
@@ -68,7 +68,7 @@
 						<c:forEach var="country" items="${Spain}">
 							<c:if test="${not empty country}">
 								<li class='last'><a
-									href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
+									href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
 							</c:if>
 						</c:forEach>
 					</ul></li>
@@ -77,7 +77,7 @@
 						<c:forEach var="country" items="${Argentina}">
 							<c:if test="${not empty country}">
 								<li class='last'><a
-									href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
+									href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
 							</c:if>
 						</c:forEach>
 					</ul></li>
@@ -86,7 +86,7 @@
 						<c:forEach var="country" items="${Chile}">
 							<c:if test="${not empty country}">
 								<li class='last'><a
-									href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
+									href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
 							</c:if>
 						</c:forEach>
 					</ul></li>
@@ -95,7 +95,7 @@
 						<c:forEach var="country" items="${Portugal}">
 							<c:if test="${not empty country}}">
 								<li class='last'><a
-									href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
+									href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_country&conditionValue=${country}'><span>${country}</span></a></li>
 							</c:if>
 						</c:forEach>
 					</ul></li>
@@ -104,7 +104,7 @@
 			<ul>
 				<c:forEach var="creat" items="${p_winery}">
 					<li class='has-sub'><a
-						href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_winery&conditionValue=${creat}'><span>${creat}
+						href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_winery&conditionValue=${creat}'><span>${creat}
 						</span></a></li>
 				</c:forEach>
 			</ul></li>
@@ -118,7 +118,7 @@
 			<ul>
 				<c:forEach var="creat" items="${p_vol}">
 					<li class='has-sub'><a
-						href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_vol&conditionValue=${creat}'><span>${creat}ML
+						href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_vol&conditionValue=${creat}'><span>${creat}ML
 						</span></a></li>
 				</c:forEach>
 			</ul></li>
@@ -129,7 +129,7 @@
 
 						<c:forEach var="grape" items="${redWine}">
 							<li class='last'><a
-								href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_grape&conditionValue=${grape}'><span>${grape}</span></a></li>
+								href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_grape&conditionValue=${grape}'><span>${grape}</span></a></li>
 						</c:forEach>
 					</ul></li>
 
@@ -138,7 +138,7 @@
 
 						<c:forEach var="grape" items="${whiteWine}">
 							<li class='last'><a
-								href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_grape&conditionValue=${grape}'><span>${grape}</span></a></li>
+								href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_grape&conditionValue=${grape}'><span>${grape}</span></a></li>
 						</c:forEach>
 					</ul></li>
 				<li class='has-sub'><a href='#'><span>氣泡酒 </span></a>
@@ -146,7 +146,7 @@
 
 						<c:forEach var="grape" items="${bubbleWine}">
 							<li class='last'><a
-								href='<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_grape&conditionValue=${grape}'><span>${grape}</span></a></li>
+								href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_grape&conditionValue=${grape}'><span>${grape}</span></a></li>
 						</c:forEach>
 					</ul></li>
 			</ul></li>

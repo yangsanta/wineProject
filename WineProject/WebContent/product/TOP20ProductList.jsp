@@ -71,7 +71,9 @@
 	box-shadow: 2px 1px 6px #efefef -moz-box-shadow:2px 1px 6px #f2f4f3;
 	-webkit-box-shadow: 2px 1px 6px #f2f4f3;
 	position: relative;
+
 }
+
 .g_wall:hover {
 	background-color: rgb(244, 248, 255);
 }
@@ -161,7 +163,7 @@ right: 19px;
 			<div id="main">
 				<div id="sidebar">
 					<%@ include file="../view_model/product_list.jsp"%>
-					<%@ include file="../view_model/index_left_hotsale.htm"%>
+					<%@ include file="../view_model/index_left_hotsale.jsp"%>
 				</div>
 
 				<div id="content">
@@ -186,8 +188,8 @@ right: 19px;
 							<hr />
 							<c:forEach var="product" items="${list}" begin="${pageIndex}"
 								end="${pageIndex+rowsPerPage-1}">
-								<a
-									href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}">
+								<a style="text-decoration: none;"
+									href="DisplayProducts.do?action=getOne_For_Display&pId=${product.p_no}">
 									<div name="g_wall"class="g_wall drop-shadow" style="position: relative;">
 										<img src="<%=request.getContextPath()%>/images/label.png"
 											class="label_tag" />
@@ -228,7 +230,7 @@ right: 19px;
 							<ul>
 								<c:forEach var="page" begin="1" end="${totalPages}">
 									<li><a
-										href="DisplayProducts?action=${action}&pageNo=${page}${conditionParam}">${page}</a></li>
+										href="DisplayProducts.do?action=${action}&pageNo=${page}${conditionParam}">${page}</a></li>
 								</c:forEach>
 							</ul>
 						</div>

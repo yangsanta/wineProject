@@ -50,7 +50,7 @@ border-right: #ccc 1px solid;}
 	<%@ include file="../view_model/page_alert.htm"%>
 					<div id="sidebar">
 						<%@ include file="../view_model/product_list.jsp"%>
-						<%@ include file="../view_model/index_left_hotsale.htm"%>	
+						<%@ include file="../view_model/index_left_hotsale.jsp"%>	
 					</div>
 	
 					<div id="content">
@@ -60,8 +60,8 @@ border-right: #ccc 1px solid;}
 	<div class="pro_title"> <span style="margin-left:10px">全部商品</span></div>
 	<c:forEach var="product" items="${list}" begin="${pageIndex}" end="${pageIndex+rowsPerPage-1}" >
 		<div class="show_pro">
-		<li class="pro_list"><a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}"><div class="prod_img"><img  src="../images/products/${product.p_pic}" style="width:45px;"/></div></a></li>
-		<li class="pro_list3"><a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}">${product.p_name}</a><br><span style='font-size:9px'>酒莊:${product.p_winery}<br>國家:${product.p_area}<br>容量:0ml<br>評分:${product.p_rate}</span></li >	
+		<li class="pro_list"><a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${product.p_no}"><div class="prod_img"><img  src="../images/products/${product.p_pic}" style="width:45px;"/></div></a></li>
+		<li class="pro_list3"><a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${product.p_no}">${product.p_name}</a><br><span style='font-size:9px'>酒莊:${product.p_winery}<br>國家:${product.p_area}<br>容量:0ml<br>評分:${product.p_rate}</span></li >	
 		<li class="pro_list2"><span style="color:red;margin-left:10px;font-size: 26px;">$${product.p_price}</span> <br><button class="buttonbuy btn btn-success" type="button"><i class="icon-white icon-shopping-cart"></i>加入購物車</button></li >	
 <br class="clear" />		
 		</div >	
@@ -72,7 +72,7 @@ border-right: #ccc 1px solid;}
 	<div class="pageSwitch">
 		第 
 		<c:forEach var="page" begin="1" end="${totalPages}">
-			<a href="DisplayProducts?action=${action}&pageNo=${page}${conditionParam}">${page}</a>
+			<a href="DisplayProducts.do?action=${action}&pageNo=${page}${conditionParam}">${page}</a>
 		</c:forEach>
 		 頁
 	</div>

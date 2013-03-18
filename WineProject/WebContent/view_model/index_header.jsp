@@ -80,18 +80,18 @@
 			<li class="first active"><a href="#" rel="tooltip"
 				data-placement="bottom" title="介紹本月新上市的最新好酒，邀您一同來品嘗">本月新品</a></li>
 			<li><a
-				href="<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_buy_count&conditionValue=10"
+				href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_buy_count&conditionValue=10"
 				rel="tooltip" data-placement="bottom" title="年度暢銷熱賣商品都在這邊，快來搶購!">暢銷商品</a>
 			</li>
 			<li><a
-				href="<%=request.getContextPath()%>/product/DisplayProducts?action=getSome_For_Display&condition=p_sales&conditionValue="
+				href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue="
 				rel="tooltip" data-placement="bottom"
 				title="最新的組合套餐優惠，您可以用最優惠的方式購買到此產品">優惠商品</a></li>
 			<li><a href="#" rel="tooltip" data-placement="bottom"
 				title="不知道吃甚麼晚餐配甚麼樣的酒最浪漫美味嗎? 來這邊就對了">餐酒搭配</a></li>
 
 			<li class="last"><a
-				href="<%=request.getContextPath()%>/DiscussionList?action=getAll"
+				href="<%=request.getContextPath()%>/DiscussionList.do?action=getAll"
 				rel="tooltip" data-placement="bottom"
 				title="相信這世界上一定還有更多與你一樣愛酒的人士，一起討論吧">討論區</a></li>
 		</ul>

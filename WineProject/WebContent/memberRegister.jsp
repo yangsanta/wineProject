@@ -67,7 +67,7 @@ function showDate(date) {
 	<div id="main">
 					<div id="sidebar">
 						<%@ include file="view_model/product_list.jsp"%>
-						<%@ include file="view_model/index_left_hotsale.htm"%>	
+						<%@ include file="view_model/index_left_hotsale.jsp"%>	
 					</div>
 	
 					<div id="content">
@@ -78,7 +78,7 @@ function showDate(date) {
 </div>
 
 <HR>
-<Form Action="product/memberRegister" method="post" id="commentForm" class="cmxform" >
+<Form Action="product/memberRegister.do" method="post" id="commentForm" class="cmxform" >
 <div style="float:left;">
 <img src="images/ic_registrate_200.png"></div>
 <div style="float:left">

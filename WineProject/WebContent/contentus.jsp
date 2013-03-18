@@ -49,7 +49,7 @@ border-right: #ccc 1px solid;}
 	<div id="main">
 					<div id="sidebar">
 						<%@ include file="../view_model/product_list.jsp"%>
-						<%@ include file="../view_model/index_left_hotsale.htm"%>	
+						<%@ include file="../view_model/index_left_hotsale.jsp"%>	
 					</div>
 	
 					<div id="content">

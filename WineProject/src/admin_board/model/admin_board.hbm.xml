@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="admin_board.model.Admin_boardVO" table="admin_board">
+
+		<id name="i_no" column="i_no">
+			<generator class="identity"></generator>
+		</id>
+
+		<property name="RemoteAddr" column="RemoteAddr" />
+		<property name="QueryString" column="QueryString" />
+		<property name="ServletPath" column="ServletPath" />
+		<property name="UserAgent" column="UserAgent" />	
+		<property name="viewedate" column="viewedate" />			
+		<property name="user_os" column="user_os" />			
+		<property name="user_browser" column="user_browser" />	
+				
+	</class>
+</hibernate-mapping>
+

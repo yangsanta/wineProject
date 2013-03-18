@@ -137,7 +137,7 @@
 				<%@ include file="../view_model/page_alert.htm"%>
 				<div id="sidebar">
 					<%@ include file="../view_model/product_list.jsp"%>
-					<%@ include file="../view_model/index_left_hotsale.htm"%>
+					<%@ include file="../view_model/index_left_hotsale.jsp"%>
 				</div>
 
 				<div id="content">
