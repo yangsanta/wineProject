@@ -121,15 +121,12 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 
 		String[] txt = txtsrch.split(" ");
 		int txtlength = txt.length;
-
 		if (txtlength >= 2) {
 			queryTextOne = "%" + txt[0] + "%";
 			queryTextTwo = txt[1] + "%";
 			System.out.println(queryTextOne);
 			System.out.println(queryTextTwo);
 
-		} else if (txtlength == 1) {
-			queryTextOne = "%" + txt[0] + "%";
 		}
 		for (int i = 0; i < txtlength; i++) {
 			queryText += "%" + txt[i];

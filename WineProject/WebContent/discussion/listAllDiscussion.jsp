@@ -103,13 +103,14 @@ tr:hover {
 						<%@ include file="../view_model/page_alert.htm"%>
 <!-- 搜尋功能條						 -->
 						<div align="right">
+							<p style="color:red;font-size:16pt">${msgbox}</p>
 							<form action="DiscussionList" method="post" class="form-search">
 								<input type="text" name="txtsrch" class="input-medium search-query"/>
 								<select name="srchThing" style="width:100px">
 									<option value="d_title">主題</option>
 									<option value="d_context">文章內容</option>
 								</select>
-								<input type="submit" value="search" class="btn"/>
+								<input type="submit" value="search" class="btn btn-primary"/>
 								<input type="hidden" name="action" value="search"/>
 							</form>
 						</div>
