@@ -112,6 +112,7 @@ tr:hover {
 								<select name="srchThing" style="width:100px">
 									<option value="d_title">主題</option>
 									<option value="d_context">文章內容</option>
+									<option value="m_id">會員帳號</option>
 								</select>
 								<input type="submit" value="search" class="btn btn-primary"/>
 								<input type="hidden" name="action" value="search"/>

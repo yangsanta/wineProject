@@ -143,7 +143,7 @@ public class DiscussionManagment extends HttpServlet {
 				discussionVO.setD_status(d_status);
 				dao.update(discussionVO);
 				
-				res.sendRedirect("DiscussionManagment?action=getOne&d_no=" + d_no);
+				res.sendRedirect("DiscussionManagment.do?action=getOne&d_no=" + d_no);
 
 			}
 
@@ -161,7 +161,7 @@ public class DiscussionManagment extends HttpServlet {
 						discussionVO.setD_status("xxx");
 					}
 					dao.update(discussionVO);
-					res.sendRedirect("DiscussionManagment?action=getAll");
+					res.sendRedirect("DiscussionManagment.do?action=getAll");
 //				} else {
 //					errorMsgs.add("您並非管理者，請重新登入帳號或電洽資訊部詢問");
 //					req.setAttribute("ErrorMsgKey", errorMsgs);
@@ -176,6 +176,7 @@ public class DiscussionManagment extends HttpServlet {
 				String srchThing = req.getParameter("srchThing");
 				String txtsrch = req.getParameter("txtsrch");
 				System.out.println(txtsrch);
+				
 				List<DiscussionVO> list = new ArrayList<DiscussionVO>();
 				dao = new DiscussionHibernateDAO();
 				if(srchThing == null){
@@ -196,14 +197,14 @@ public class DiscussionManagment extends HttpServlet {
 				req.getSession().setAttribute("txtsrch",txtsrch);
 				req.getSession().setAttribute("action", "search");
 				RequestDispatcher dis = req
-						.getRequestDispatcher("/discussion/listAllDiscussion.jsp");
+						.getRequestDispatcher("/discussion/managment.jsp");
 				dis.forward(req, res);
 			}
 
 		} catch (Exception e) {
 			errorMsgs.add("無法取得資料:" + e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("DiscussionList");
+					.getRequestDispatcher("/errorReason.jsp");
 			failureView.forward(req, res);
 		}
 	}

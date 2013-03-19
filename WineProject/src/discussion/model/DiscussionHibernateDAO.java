@@ -5,6 +5,8 @@ import hibernate.util.HibernateUtil;
 import java.util.*;
 import java.sql.*;
 
+import member.model.MemberHibernateDAO;
+import member.model.MemberVO;
 import order_detail.model.Order_DetailHibernateDAO;
 import order_detail.model.Order_DetailVO;
 
@@ -128,15 +130,25 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 	
 	@Override
 	public Set<DiscussionVO> search(String srchThing, String txtsrch) {
+		
 		List<DiscussionVO> list = new ArrayList<DiscussionVO>();
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Set<DiscussionVO> set = new HashSet<DiscussionVO>();
 		String queryText = "";
 		String queryTextOne = "";
 		String queryTextTwo = "";
 		String SEARCH_STMT_ONE = "";
 		String SEARCH_STMT_TWO = "";
-
+		
+		//利用會員帳號去搜尋之處理
+		if(srchThing.equals("m_id")){
+			srchThing = "m_no";
+			MemberHibernateDAO dao = new MemberHibernateDAO();
+			txtsrch = dao.findInformationByM_id(txtsrch).getM_no().toString();
+			System.out.println(txtsrch);
+		}
+		
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		
 		String[] txt = txtsrch.split(" ");
 		int txtlength = txt.length;
 		if (txtlength >= 2) {
@@ -150,8 +162,10 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 			queryText += "%" + txt[i];
 		}
 
+		
 		String SEARCH_STMT = "FROM DiscussionVO WHERE " + srchThing + " Like '"
 				+ queryText + "%'";
+		System.out.println(SEARCH_STMT);
 		try {
 			session.beginTransaction();
 			// 模糊搜尋ALL SEARCH TEXT
@@ -236,20 +250,38 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 		// System.out.println();
 
 		// 測試getAll()
-		List<DiscussionVO> list = dao.getAll();
-		for (DiscussionVO aDiscussion : list) {
-			System.out.print(aDiscussion.getD_no() + ",");
-			// System.out.print(aDiscussion.getM_no() + ",");
-			System.out.print(aDiscussion.getD_context() + ",");
-			System.out.print(aDiscussion.getD_datetime() + ",");
-			System.out.print(aDiscussion.getD_status() + ",");
-			System.out.print(aDiscussion.getD_final_edit() + ",");
-			System.out.print(aDiscussion.getD_title());
-			System.out.println();
-		}
+//		List<DiscussionVO> list = dao.getAll();
+//		for (DiscussionVO aDiscussion : list) {
+//			System.out.print(aDiscussion.getD_no() + ",");
+//			// System.out.print(aDiscussion.getM_no() + ",");
+//			System.out.print(aDiscussion.getD_context() + ",");
+//			System.out.print(aDiscussion.getD_datetime() + ",");
+//			System.out.print(aDiscussion.getD_status() + ",");
+//			System.out.print(aDiscussion.getD_final_edit() + ",");
+//			System.out.print(aDiscussion.getD_title());
+//			System.out.println();
+//		}
 
 		// 測試findTotalNOofDiscussion()總留言筆數
 //		Integer totalNO = dao.findTotalNOofDiscussion();
 //		System.out.println("總留言筆數 = " + totalNO);
+		
+		// 測試search()
+//		Set<DiscussionVO> set = dao.search("m_id","aaa");
+//		Iterator<DiscussionVO> it = set.iterator();
+//
+//		while(it.hasNext()){
+//			System.out.println(it.next());
+//		}
+//		for(DiscussionVO aDiscussion:set){
+//			System.out.print(aDiscussion.getD_no() + ",");
+//			// System.out.print(aDiscussion.getM_no() + ",");
+//			System.out.print(aDiscussion.getD_context() + ",");
+//			System.out.print(aDiscussion.getD_datetime() + ",");
+//			System.out.print(aDiscussion.getD_status() + ",");
+//			System.out.print(aDiscussion.getD_final_edit() + ",");
+//			System.out.print(aDiscussion.getD_title());
+//			System.out.println();
+//		}
 	}
 }

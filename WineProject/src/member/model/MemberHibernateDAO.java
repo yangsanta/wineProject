@@ -86,12 +86,28 @@ public class MemberHibernateDAO implements MemberDAO_interface {
 		return list;
 	}
 
-	public MemberVO findInformation(Integer m_id) {
+	public MemberVO findInformation(Integer m_no) {
 		MemberVO memberVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			memberVO = (MemberVO) session.get(MemberVO.class, m_id);
+			memberVO = (MemberVO) session.get(MemberVO.class, m_no);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return memberVO;
+	}
+	//利用帳號去搜尋該會員資訊
+	public MemberVO findInformationByM_id(String m_id) {
+		MemberVO memberVO = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("FROM MemberVO WHERE m_id = ?");
+			query.setParameter(0, m_id);
+			memberVO=(MemberVO) query.list().get(0);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -207,19 +223,33 @@ public class MemberHibernateDAO implements MemberDAO_interface {
 //			System.out.println("------------------");
 //		}
         
-        MemberVO memberVO4 = dao.findInformation(1001);
-        System.out.println(memberVO4.getM_id() + ",");
-		System.out.println(memberVO4.getM_no() + ",");
-		System.out.println(memberVO4.getM_name() + ",");
-		System.out.println(memberVO4.getM_pwd() + ",");
-		System.out.println(memberVO4.getM_mobile() + ",");
-		System.out.println(memberVO4.getM_email() + ",");
-		System.out.println(memberVO4.getM_bday() + ",");
-		System.out.println(memberVO4.getM_addr() + ",");
-		System.out.println(memberVO4.getM_pic() + ",");
-		System.out.println(memberVO4.getM_safety_q() + ",");
-		System.out.println(memberVO4.getM_safety_a() + ",");
-		System.out.println(memberVO4.getM_status());
+//        MemberVO memberVO4 = dao.findInformation(1001);
+//        System.out.println(memberVO4.getM_id() + ",");
+//		System.out.println(memberVO4.getM_no() + ",");
+//		System.out.println(memberVO4.getM_name() + ",");
+//		System.out.println(memberVO4.getM_pwd() + ",");
+//		System.out.println(memberVO4.getM_mobile() + ",");
+//		System.out.println(memberVO4.getM_email() + ",");
+//		System.out.println(memberVO4.getM_bday() + ",");
+//		System.out.println(memberVO4.getM_addr() + ",");
+//		System.out.println(memberVO4.getM_pic() + ",");
+//		System.out.println(memberVO4.getM_safety_q() + ",");
+//		System.out.println(memberVO4.getM_safety_a() + ",");
+//		System.out.println(memberVO4.getM_status());
         
+		
+		MemberVO memberVO5 = dao.findInformationByM_id("bbb");
+        System.out.println(memberVO5.getM_id() + ",");
+		System.out.println(memberVO5.getM_no() + ",");
+		System.out.println(memberVO5.getM_name() + ",");
+		System.out.println(memberVO5.getM_pwd() + ",");
+		System.out.println(memberVO5.getM_mobile() + ",");
+		System.out.println(memberVO5.getM_email() + ",");
+		System.out.println(memberVO5.getM_bday() + ",");
+		System.out.println(memberVO5.getM_addr() + ",");
+		System.out.println(memberVO5.getM_pic() + ",");
+		System.out.println(memberVO5.getM_safety_q() + ",");
+		System.out.println(memberVO5.getM_safety_a() + ",");
+		System.out.println(memberVO5.getM_status());
 	}
 }

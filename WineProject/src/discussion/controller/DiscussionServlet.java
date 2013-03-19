@@ -123,7 +123,7 @@ public class DiscussionServlet extends HttpServlet {
 				discussionVO.setD_status(d_status);
 				dao.insert(discussionVO);
 
-				res.sendRedirect("DiscussionList?action=getAll");
+				res.sendRedirect("DiscussionList.do?action=getAll");
 			}
 
 			if ("edit".equals(action)) {
@@ -186,7 +186,7 @@ public class DiscussionServlet extends HttpServlet {
 				discussionVO.setD_status(d_status);
 				dao.update(discussionVO);
 
-				res.sendRedirect("DiscussionList?action=getOne&d_no=" + d_no);
+				res.sendRedirect("DiscussionList.do?action=getOne&d_no=" + d_no);
 			}
 
 			// 搜尋功能
@@ -221,7 +221,7 @@ public class DiscussionServlet extends HttpServlet {
 		} catch (Exception e) {
 			errorMsgs.add("無法取得資料:" + e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("DiscussionList");
+					.getRequestDispatcher("/errorReason.jsp");
 			failureView.forward(req, res);
 		}
 	}

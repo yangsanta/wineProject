@@ -74,6 +74,22 @@ tr:hover {
 
 </head>
 <body>
+<!-- 搜尋功能條						 -->
+						<div align="right">
+							<p style="color:red;font-size:12pt">${msgbox}</p>
+							<form action="DiscussionManagment.do" method="post" class="form-search">
+
+								<input type="text" name="txtsrch" class="input-medium search-query"/>
+								<select name="srchThing" style="width:100px">
+									<option value="d_title">主題</option>
+									<option value="d_context">文章內容</option>
+									<option value="m_id">會員帳號</option>
+								</select>
+								<input type="submit" value="search" class="btn btn-primary"/>
+								<input type="hidden" name="action" value="search"/>
+							</form>
+						</div>
+<!-- --------------- -->
 <div id="content">
 	<table class="table table-condensed">
 		<thead>
@@ -92,7 +108,7 @@ tr:hover {
 			<tr>
 				<td class="img_type"><img src="images/discussion_paper.gif"></td>
 				<td class="table_title"><a
-					href="DiscussionManagment?d_no=${discussionVO.d_no}&action=getOne">${discussionVO.d_title}</a></td>
+					href="DiscussionManagment.do?d_no=${discussionVO.d_no}&action=getOne">${discussionVO.d_title}</a></td>
 				<td class="tdcenter">${discussionVO.memberVO.m_id}</td>
 				<td class="tdcenter">${fn:length(discussionVO.replies)}</td>
 				<td class="table_time"><fmt:formatDate
