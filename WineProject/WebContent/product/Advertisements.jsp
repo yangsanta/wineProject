@@ -18,7 +18,7 @@
 		</div>
 		<div id="divContent">
 			<input type="text" name="search_query" id="search_query"
-				placeholder="請直接輸入商品編號或以部分商品名搜尋, 找到商品後請點擊該商品" size="60"
+				placeholder="請輸入部分商品名，或輸入 # 號列出全部商品" size="60"
 				autocomplete="off" value="${productName}" />
 			<table>
 				<tbody id="ulResult">

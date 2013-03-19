@@ -28,6 +28,10 @@ public class AjaxSearchServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String queryProducts = request.getParameter("queryProducts");
+		queryProducts = queryProducts.trim();
+		if (queryProducts.equals("#"))
+			queryProducts="";
+		
 		ProductDAO productDAO = new ProductDAO();
 		List<ProductVO> list = productDAO.findFuzzyProductName(queryProducts);
 		

@@ -4,10 +4,13 @@
     Ajax Search Element & Result Div
 --------------------------*/
 form table, form tr, form td{
-	width: 380px;
+	line-height:1.2em;
+	width: 400px;
 }
 .over{
-	background-color:silver;
+	background-color: #ad8667;
+	color: white;
+	font-weight: bold;
  }
 #bar {
 	clear:both;

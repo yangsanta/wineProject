@@ -11,8 +11,9 @@
 <a href="product/DisplayProducts.do?action=getSome_For_Display&pageNo=1&condition=p_vol&conditionValue=750">Product/DisplayProducts(getSome_For_Display)</a>
 <a href="product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue=">Product/DisplayProducts(getSome_For_Display)</a>
 <a href="product/DisplayProducts.do?action=getSome_For_Display&condition=p_buy_count&conditionValue=10">Product/DisplayProducts(getSome_For_Display)</a>
-
-<hr />
+<hr/>
 <a href="member/MemberService">member/MemberService</a>
+<hr/>
+<a href="http://localhost:8080/WineProject/product/Advertisements.jsp">Advertisements.jsp</a>
 </body>
 </html>
