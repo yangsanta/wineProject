@@ -4,7 +4,7 @@ $(function() {
 	$("#productName").css("display", "none");
 	
 	// Ajax search
-	$("#search_query").bind("keyup", function(){
+	$("#search_query").bind("keyup click", function(){
 		while (document.getElementById("ulResult").hasChildNodes()){
 			$(document.getElementById("ulResult").removeChild((document.getElementById("ulResult")).firstChild));
 		}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,9 +13,18 @@
 </head>
 <body>
 	<div>
-	<form id="searchform" method="post" action="adsToDb.do" enctype="MULTIPART/FORM-DATA">
+	<form id="searchform" method="post" action="adsToDb.do">
 		<div id="dropbox">
-			<span class="message">請將圖片拖曳至此處 <br /> <i>(進度條跑完即上傳完成)</i></span>
+			<c:choose>
+				<c:when test="${not empty fileName}">
+					<div class="preview" id="previewbox"><span class="imageHolder">
+					<img src="/WineProject/images/ad/${fileName}" /><span class="uploaded"></span></span></div>
+				</c:when>
+				<c:otherwise>
+					<span class="message">請將圖片拖曳至此處 <br /> <i>(進度條跑完即上傳完成)</i></span>
+				</c:otherwise>
+			</c:choose>
+			
 		</div>
 		<div id="divContent">
 			<input type="text" name="search_query" id="search_query"
@@ -27,7 +37,7 @@
 		</div>
 		
 		<input type="submit" id="btnSubmit" value="設定新廣告" id="button_find" />
-		<input type="text" name="fileName" id="fileName" /> 
+		<input type="text" name="fileName" id="fileName" value="${fileName}"/> 
 		<input type="text" name="productName" id="productName" value="${productName}" />
 		
 	</form>

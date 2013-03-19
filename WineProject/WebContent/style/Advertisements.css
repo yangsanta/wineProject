@@ -89,6 +89,7 @@ form table, form tr, form td{
 #dropbox .imageHolder{
     display: inline-block;
     position:relative;
+    opacity : 0.3;
 }
  
 #dropbox .uploaded{
