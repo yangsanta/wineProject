@@ -30,6 +30,7 @@ public class AdsToDbServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		session.removeAttribute("AdsErrs");
+		session.removeAttribute("productName");
 		session.removeAttribute("AdsSuccess");
 		
 		String fileName = request.getParameter("fileName");
@@ -61,6 +62,7 @@ public class AdsToDbServlet extends HttpServlet {
 		
 		if (!errMap.isEmpty()){
 			session.setAttribute("AdsErrs", errMap);
+			session.setAttribute("productName", productName);
 		} else {
 			AdsVO adsVO = new AdsVO();
 			adsVO.setAds_filename(fileName);

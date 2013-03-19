@@ -30,6 +30,9 @@ $(function() {
 	}).on("click", "#ulResult tr", function(){
 		$("#productName").val($(this).text());
 		$("#search_query").val($(this).text());
+		while (document.getElementById("ulResult").hasChildNodes()){
+			$(document.getElementById("ulResult").removeChild((document.getElementById("ulResult")).firstChild));
+		}
 	});
 	
 
