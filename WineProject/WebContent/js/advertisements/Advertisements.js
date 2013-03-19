@@ -23,6 +23,7 @@ $(function() {
 			}
 		});
 	});
+	//hover effect & click effect
 	$(document).on("mouseenter", "#ulResult tr", function(){
 		$(this).addClass("over");
 	}).on("mouseleave", "#ulResult tr", function(){
@@ -38,7 +39,7 @@ $(function() {
 
 	// drop to upload feature starts
 	var dropbox = $('#dropbox'), message = $('.message', dropbox);
-
+	
 	dropbox
 			.filedrop({
 				// The name of the $_FILES entry:
@@ -48,8 +49,7 @@ $(function() {
 				maxfilesize : 2,
 				url : 'advertisements.do',
 
-				uploadFinished : function(i, file, response) {
-					recordFileName(file);
+				uploadFinished : function(i, file, response) {					
 					$.data(file).addClass('done');
 					// response is the JSON object that Ads Controller
 					// returns
@@ -74,6 +74,8 @@ $(function() {
 
 				// Called before each upload is started
 				beforeEach : function(file) {
+					$("#previewbox").remove();
+					recordFileName(file);
 					if (!file.type.match(/^image\//)) {
 						alert('Only images are allowed!');
 
@@ -93,7 +95,7 @@ $(function() {
 				
 			});
 
-	var template = '<div class="preview">' + '<span class="imageHolder">'
+	var template = '<div class="preview" id="previewbox">' + '<span class="imageHolder">'
 			+ '<img />' + '<span class="uploaded"></span>' + '</span>'
 			+ '<div class="progressHolder">' + '<div class="progress"></div>'
 			+ '</div>' + '</div>';

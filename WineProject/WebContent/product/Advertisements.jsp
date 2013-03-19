@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div>
-	<form id="searchform" method="post" action="adsToDb.do">
+	<form id="searchform" method="post" action="adsToDb.do" enctype="MULTIPART/FORM-DATA">
 		<div id="dropbox">
 			<span class="message">請將圖片拖曳至此處 <br /> <i>(進度條跑完即上傳完成)</i></span>
 		</div>
@@ -25,10 +25,11 @@
 				</tbody>
 			</table>
 		</div>
-
+		
 		<input type="submit" id="btnSubmit" value="設定新廣告" id="button_find" />
-		<input type="text" name="fileName" id="fileName" /> <input
-			type="text" name="productName" id="productName" value="${productName}" />
+		<input type="text" name="fileName" id="fileName" /> 
+		<input type="text" name="productName" id="productName" value="${productName}" />
+		
 	</form>
 	<div id="bar"></div>
 	</div>
