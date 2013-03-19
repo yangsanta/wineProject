@@ -53,6 +53,10 @@ public class foodserver extends HttpServlet {
 			// 2. 檢查使用者輸入資料
 			if (f_name == null || f_name.trim().length() == 0) {
 				errorMsg.add("請輸入「食物種類」");
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/FoodWine/error.jsp");
+				rd.forward(request, response);
+				return;
 			}
 			// 3. 使用DAO.insert()去新增資料
 			FoodVO foodVo = new FoodVO();
