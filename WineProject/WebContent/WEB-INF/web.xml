@@ -119,7 +119,22 @@
 		<url-pattern>/FoodWine/food/set.do</url-pattern>
 	</servlet-mapping>
 
-
+	<servlet>
+		<servlet-name>setingredientset</servlet-name>
+		<servlet-class>food_set.controller.ingredient_all</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>setingredientset</servlet-name>
+		<url-pattern>/FoodWine/ingredient/set.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>sauceset</servlet-name>
+		<servlet-class>food_set.controller.sauce_all</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>sauceset</servlet-name>
+		<url-pattern>/FoodWine/sauce/set.do</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>foodsetins</servlet-name>
@@ -160,7 +175,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>advertisements</servlet-name>
-		<url-pattern>/product/advertisements</url-pattern>
+		<url-pattern>/product/advertisements.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>AjaxProducts</servlet-name>
@@ -168,7 +183,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AjaxProducts</servlet-name>
-		<url-pattern>/product/ajaxProducts</url-pattern>
+		<url-pattern>/product/ajaxProducts.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>AdsToDb</servlet-name>
@@ -176,6 +191,6 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AdsToDb</servlet-name>
-		<url-pattern>/product/adsToDb</url-pattern>
+		<url-pattern>/product/adsToDb.do</url-pattern>
 	</servlet-mapping>
 </web-app>

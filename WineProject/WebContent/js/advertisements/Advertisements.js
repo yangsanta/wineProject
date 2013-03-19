@@ -10,7 +10,7 @@ $(function() {
 		}
 		$("#productName").val($(this).val());
 		$.ajax({
-			url: 'ajaxProducts', 
+			url: 'ajaxProducts.do', 
 			type: 'POST',
 			data: {queryProducts: $("#search_query").val()},
 			dataType: 'json',
@@ -30,6 +30,9 @@ $(function() {
 	}).on("click", "#ulResult tr", function(){
 		$("#productName").val($(this).text());
 		$("#search_query").val($(this).text());
+		while (document.getElementById("ulResult").hasChildNodes()){
+			$(document.getElementById("ulResult").removeChild((document.getElementById("ulResult")).firstChild));
+		}
 	});
 	
 
@@ -43,7 +46,7 @@ $(function() {
 
 				maxfiles : 1,
 				maxfilesize : 2,
-				url : 'advertisements',
+				url : 'advertisements.do',
 
 				uploadFinished : function(i, file, response) {
 					recordFileName(file);

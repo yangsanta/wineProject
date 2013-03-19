@@ -1,22 +1,31 @@
 @CHARSET "UTF-8";
 
 /*-------------------------
-    Ajax Search Element
+    Ajax Search Element & Result Div
 --------------------------*/
-.over{
-	background-color:silver;
- }
- #divContent, #dropbox{
- 	float:left;
- 	margin:80px auto 90px;
- 	width: 400px;
- }
 form table, form tr, form td{
 	width: 380px;
 }
-#btnSubmit {
-	margin:80px auto;
+.over{
+	background-color:silver;
+ }
+#bar {
+	clear:both;
 }
+#btnSubmit {
+	margin:80px 20px;
+}
+#errlist, #okMsg {
+	margin:10px;
+	line-height:2em;
+}
+#divContent{
+ 	float:left;
+ 	margin:80px 5px 90px 20px;
+ 	min-height: 290px;
+ 	width: 400px;
+ }
+
 
 
 /*-------------------------
@@ -24,10 +33,10 @@ form table, form tr, form td{
 --------------------------*/
  
 #dropbox{
- 
+ 	float:left;
     border-radius:3px;
     position: relative;
-    margin:80px auto 90px;
+    margin:80px auto 30px;
     min-height: 290px;
     overflow: hidden;
     padding-bottom: 40px;
