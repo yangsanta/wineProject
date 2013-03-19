@@ -136,7 +136,15 @@ public class User_info_jugement {
 			}
 		} else if (userAgent.contains("Safari")) {
 			return "Safari";
-		} else {
+		} else if (userAgent.contains("opera")) {
+			return "opera";
+		} else if (userAgent.contains("mozilla")) {
+			return "opera";
+		}
+		 else if (userAgent.contains("netscape")) {
+				return "opera";
+			}
+		else {
 			return null;
 		}
 		return null;

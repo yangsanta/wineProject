@@ -43,6 +43,8 @@ background-image: -webkit-linear-gradient(bottom,#ececec,#f9f9f9);}
 .td{ 	
 	padding: 4px 7px 2px;color:#555;
 	}
+.table_a{color: #21759b;}
+.table_a:hover{color: #d54e21;;}
 </style>
 </head>
 <body>
@@ -86,8 +88,8 @@ background-image: -webkit-linear-gradient(bottom,#ececec,#f9f9f9);}
 
 								<tr class="table_head">
 									<td class="table_head_td">Agent</td>
-									<td class="table_head_td">OS</td>
-									<td class="table_head_td">Browser</td>
+									<td class="table_head_td" width="130px">OS</td>
+									<td class="table_head_td" width="150px">Browser</td>
 								</tr>
 
 
@@ -95,16 +97,26 @@ background-image: -webkit-linear-gradient(bottom,#ececec,#f9f9f9);}
 									<tr class="tr">
 										<td class="td">${product.userAgent}</td>
 										<td class="td">
-										<c:if test="${fn:contains(product.user_os, 'Windows7')}">  [Windows7 小圖 ]</c:if>
-										<c:if test="${fn:contains(product.user_os, 'WindowsXP')}">  [WindowsXP 小圖 ]</c:if>
-										<c:if test="${fn:contains(product.user_os, 'mac')}">  [mac 小圖 ]</c:if>
-										<c:if test="${fn:contains(product.user_os, 'Safari')}">  [iPad 小圖 ]</c:if>
-										<c:if test="${fn:contains(product.user_os, 'android')}">  [android 小圖 ]</c:if>	
+										<c:if test="${fn:contains(product.user_os, 'Windows7')}"><img src="images/os/windows_7.png" width="16px"/></c:if>
+										<c:if test="${fn:contains(product.user_os, 'WindowsXP')}"><img src="images/os/windows.png" width="16px"/></c:if>
+										<c:if test="${fn:contains(product.user_os, 'mac')}"><img src="images/os/mac.png" width="16px"/></c:if>
+										<c:if test="${fn:contains(product.user_os, 'Safari')}"><img src="images/os/Safari.png" width="16px"/></c:if>
+										<c:if test="${fn:contains(product.user_os, 'Android')}"><img src="images/os/android.jpg" width="16px"/></c:if>	
+										<c:if test="${fn:contains(product.user_os, 'iPad')}"><img src="images/os/ipad.jpg" width="16px"/></c:if>	
+										<c:if test="${fn:contains(product.user_os, 'iPhone')}"><img src="images/os/iphone.png" width="16px"/></c:if>	
+																				
 										${product.user_os}</td>
-										<td class="td"><c:if test="${fn:contains(product.user_browser, 'Internet ')}">  [Internet 小圖 ]</c:if>
-										<c:if test="${fn:contains(product.user_browser, 'Chrome ')}">  [Chrome 小圖 ]</c:if>
-										<c:if test="${fn:contains(product.user_browser, 'Firefox ')}">  [Firefox 小圖 ]</c:if>
-										<c:if test="${fn:contains(product.user_browser, 'Safari ')}">  [Safari 小圖 ]</c:if>
+										<td class="td">
+										<c:if test="${fn:contains(product.user_browser, 'Internet Explorer 9')}"><img src="images/browsers/internetexplorer6.png" width="16px"/></c:if>
+										<c:if test="${fn:contains(product.user_browser, 'Internet Explorer 8')}"><img src="images/browsers/internetexplorer8.png" width="16px"/></c:if>
+										<c:if test="${fn:contains(product.user_browser, 'Internet Explorer 7')}"><img src="images/browsers/internetexplorer7.png" width="16px"/></c:if>
+										<c:if test="${fn:contains(product.user_browser, 'Internet Explorer 6')}"><img src="images/browsers/internetexplorer6.png" width="16px"/></c:if>
+										<c:if test="${fn:contains(product.user_browser, 'Chrome')}"><img src="images/browsers/chrome.png" width="16px"/></c:if>
+										<c:if test="${fn:contains(product.user_browser, 'Firefox')}"><img src="images/browsers/firefox3.png" width="16px"/></c:if>
+										<c:if test="${fn:contains(product.user_browser, 'Safari')}"><img src="images/browsers/safari.png" width="16px"/></c:if>
+										<c:if test="${fn:contains(product.user_browser, 'mozilla')}"><img src="images/browsers/mozilla.png" width="16px"/></c:if>
+										<c:if test="${fn:contains(product.user_browser, 'netscape')}"><img src="images/browsers/netscape.png" width="16px"/></c:if>
+										<c:if test="${fn:contains(product.user_browser, 'opera')}"><img src="images/browsers/opera.png" width="16px"/></c:if>										
 										${product.user_browser}</td>
 									</tr>
 								</c:forEach>
@@ -113,10 +125,10 @@ background-image: -webkit-linear-gradient(bottom,#ececec,#f9f9f9);}
 							<h1>站外來源 lastReferer</h1>
 							<table class="table">
 							<tr class="table_head">
-									<td class="table_head_td">日期</td>
-									<td class="table_head_td">時間</td>
+									<td class="table_head_td"width="130px">日期</td>
+									<td class="table_head_td"width="130px">時間</td>
 									<td class="table_head_td">來源位址</td>
-									<td class="table_head_td">IP</td>
+									<td class="table_head_td"width="130px">IP</td>
 								</tr>
 
 
@@ -126,7 +138,7 @@ background-image: -webkit-linear-gradient(bottom,#ececec,#f9f9f9);}
 												pattern="yyyy/MM/dd" /></td>
 										<td class="td"><fmt:formatDate value="${lastReferer.viewedate}"
 												pattern="HH:mm:ss" /></td>
-										<td class="td">${lastReferer.lastReferer}</td>
+										<td class="td"><a class="table_a" href="${lastReferer.lastReferer}">${lastReferer.lastReferer}</a></td>
 										<td class="td">${lastReferer.remoteAddr}</td>
 									</tr>
 								</c:forEach>

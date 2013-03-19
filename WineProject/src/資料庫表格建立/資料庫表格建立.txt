@@ -122,10 +122,7 @@ CONSTRAINT [PK_order_detail] PRIMARY KEY CLUSTERED
 (
 [o_no],
 [p_no]
-) ON [PRIMARY] )
-
-
-;
+) ON [PRIMARY] );
 
 insert into order_detail values (0001,1,12,0,2000);
 insert into order_detail values (0001,2,1,0,1000);
@@ -147,15 +144,10 @@ insert into coupon_set values (1500,300);
 insert into coupon_set values (3000,400);
 -------------------------------------------------------------
 drop table shipping_set;
-create table shipping_set ( --[table]滿額免運   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+create table shipping_set ( --[table]滿額免運 
 min_pirce 				int	--最低額度 [ primary key ]
 );
 insert into shipping_set values (300);
--------------------------------------------------------------------------------------------------------------------------
-drop table food_set		--刪除搭配ㄑ
-
-
-
 
 -------------------------------------------------------------------------------------------------------------------------
 drop table food;		--刪除食物
@@ -297,7 +289,7 @@ create table product (
 );
 
 
-insert into product values('西班牙莫緹卡酒莊－托雷多紅酒','I0182_img1.jpg',null,'5','西班牙','西班牙托雷多','西班牙莫緹卡酒莊的葡萄園坐落在海拔722米的坡地上，這區的土地屬於地中海型氣候，特點氣候乾燥，冬季寒冷，夏季炎熱，但有海風調節。這些特殊天然環境條件造就出風味獨特的葡萄酒，這些葡萄樹年齡約10年，總產量有限（約5.5公斤／株葡萄樹），酒莊非常仔細地控制每個環節使莫緹卡酒莊的紅/白酒都保持著完美的平衡。','55','280','已上架','Bodegas Verdúguez','354','35','滑順','B','750','11.40','2013/1/2','紅葡萄酒','Merlot');
+insert into product values('西班牙莫緹卡酒莊－托雷多紅酒','I0182_img1.jpg',null,'5','西班牙','西班牙托雷多','西班牙莫緹卡酒莊的葡萄園坐落在海拔722米的坡地上，這區的土地屬於地中海型氣候，特點氣候乾燥，冬季寒冷，夏季炎熱，但有海風調節。這些特殊天然環境條件造就出風味獨特的葡萄酒，這些葡萄樹年齡約10年，總產量有限（約5.5公斤／株葡萄樹），酒莊非常仔細地控制每個環節使莫緹卡酒莊的紅/白酒都保持著完美的平衡。','55','280','已上架','Bodegas Verduguez','354','35','滑順','B','750','11.40','2013/1/2','紅葡萄酒','Merlot');
 insert into product values('帝露酒坊瑪蕾古堡紅酒 ','I1001_img1.jpg','2004','5','法國','波爾多上梅多克','帝露(Grands Vins De Gironde)酒廠，從航海時代就開始經營，並成為法國波爾多最大酒商之一。帝露酒廠與超過200名的莊園合作，涵蓋所有波爾多的AOC法定產區，提供多樣化且高品質的波爾多葡萄酒已有187年以上的歷史。其葡萄栽種者與酒窖的管理者合作無間的良好關係，以及釀酒師以專業技術及經驗挑選此地多種葡萄品種，用傳統方式釀製，保證了帝露酒廠旗下酒款的優異品質。','45','1200','已上架','帝露酒坊','215','62','口感強勁','NONE','750','13','2013/1/2','紅葡萄酒','55 Merlot、45 Cabernet Sauvignon');
 insert into product values('路易拉圖阿羅斯高登紅葡萄酒','I1101_img1.jpg','2007','3','法國','布根地柏恩丘','路易拉圖所有的自有葡萄園裡所生產的葡萄，皆在阿羅斯-高登 (Aloxe-Corton)的高登格蘭榭堡(Chteau Corton Grancey)裡的酒窖釀製與陳年。這是法國第一個依功能性建造的酒窖，仍維持傳統的運作方式，為固守傳統，至今路易拉圖所有自有葡萄園的酒全部使用人工踩皮，另一特色是紅酒較少使用新橡木桶陳年，而新橡木桶則用於白酒，ㄧ兩年後再使用於紅酒，與某些布根地酒廠方式相反。種種堅持，使路易拉圖白酒富有濃郁的果味與香草、榛果等香氣，紅酒則口感圓潤豐富。路易拉圖酒廠有許多其他與眾不同之處，例如擁有自己的橡木桶酒廠、印刷廠、船運公司，連瓶型也有專用形狀，堅持自己的風格。','32','2250','已上架','路易拉圖','124','45','滑順','R','750','14','2013/3/3','紅葡萄酒','Pinot Noir');
 insert into product values('路易拉圖伯恩丘村莊紅葡萄酒','I1102_img1.jpg','2008','5','法國','布根地柏恩丘','路易拉圖伯恩丘村莊紅葡萄酒集合了三個村莊的葡萄園的精華: Decize-Les-Maranges、聖歐班(Saint-Aubin) 和奧塞-都里斯(Auxey-Duresses)，路易拉圖並嚴格仔細的挑選品質最好的葡萄來釀製。這些黑皮諾葡萄不只要展現出布根地的經典特色，更要展現出屬於自己風格。豐富自然的香氣，與簡單雅致的口感，就是這款路易拉圖伯恩丘村莊紅葡萄酒的特性。','33','1260','已上架','路易拉圖','254','28','輕果香','NONE','750','13','2013/3/3','紅葡萄酒','Pinot Noir');
@@ -406,7 +398,7 @@ insert into product values('米娜多 黃牌普塞克汽泡酒','K2204_img1.jpg'
 
 -------------------------------------------------------------------------------------------------------------------------
 create table food_set ( --[table]食物搭配   ok
-fs_id				int IDENTITY (1,1),	--商品ID  pri
+fs_id				int IDENTITY,	--商品ID  pri
 p_no				int	 not null,
 f_id				int	 not null,
 i_id				int	 not null,
@@ -567,7 +559,7 @@ insert into admins values ('adm6','666','LV_1');
 drop table rg;
 
 create table rg (
- u_id               int IDENTITY (1,1) not null,
+ u_id               int IDENTITY  not null,
  p_no                 int,
  r_or_g                 char(1),
  rg_area                 int,
