@@ -11,24 +11,36 @@
 <title>Advertisements Setting</title>
 </head>
 <body>
-	<form id="searchform" method="post" action="adsToDb">
+	<div>
+	<form id="searchform" method="post" action="adsToDb.do">
 		<div id="dropbox">
 			<span class="message">請將圖片拖曳至此處 <br /> <i>(進度條跑完即上傳完成)</i></span>
 		</div>
 		<div id="divContent">
 			<input type="text" name="search_query" id="search_query"
-				placeholder="請直接輸入商品編號或以部分商品名搜尋, 找到商品後請點擊該商品" size="60" />
+				placeholder="請直接輸入商品編號或以部分商品名搜尋, 找到商品後請點擊該商品" size="60"
+				autocomplete="off" />
 			<table>
 				<tbody id="ulResult">
 				</tbody>
 			</table>
 		</div>
-		
+
 		<input type="submit" id="btnSubmit" value="設定新廣告" id="button_find" />
-		<input type="text" name="fileName" id="fileName" />
-		<input type="text" name="productName" id="productName" />
+		<input type="text" name="fileName" id="fileName" /> <input
+			type="text" name="productName" id="productName" />
 	</form>
+	<div id="bar"></div>
+	</div>
+	<div id="errlist">
+			${AdsErrs.WrongP_no}<br/ > ${AdsErrs.EmptyFile}<br />
+			${AdsErrs.EmptyName}<br /> ${AdsErrs.NoSuchProduct}<br />
+		</div>
+		<div id="okMsg">
+			${AdsSuccess}<br />
+		</div>	
 	<div id="display_results"></div>
+
 	<!-- Including The jQuery Library -->
 	<!-- 	<script src="http://code.jquery.com/jquery-1.6.3.min.js"></script> -->
 	<script src="<%=request.getContextPath()%>/js/jquery-1.9.0.min.js"></script>

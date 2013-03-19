@@ -175,7 +175,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>advertisements</servlet-name>
-		<url-pattern>/product/advertisements</url-pattern>
+		<url-pattern>/product/advertisements.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>AjaxProducts</servlet-name>
@@ -183,7 +183,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AjaxProducts</servlet-name>
-		<url-pattern>/product/ajaxProducts</url-pattern>
+		<url-pattern>/product/ajaxProducts.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>AdsToDb</servlet-name>
@@ -191,6 +191,6 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AdsToDb</servlet-name>
-		<url-pattern>/product/adsToDb</url-pattern>
+		<url-pattern>/product/adsToDb.do</url-pattern>
 	</servlet-mapping>
 </web-app>
