@@ -10,7 +10,7 @@ $(function() {
 		}
 		$("#productName").val($(this).val());
 		$.ajax({
-			url: 'ajaxProducts.do', 
+			url: '../product/ajaxProducts.do', 
 			type: 'POST',
 			data: {queryProducts: $("#search_query").val()},
 			dataType: 'json',
@@ -47,7 +47,7 @@ $(function() {
 
 				maxfiles : 1,
 				maxfilesize : 2,
-				url : 'advertisements.do',
+				url : '../product/advertisements.do',
 
 				uploadFinished : function(i, file, response) {					
 					$.data(file).addClass('done');

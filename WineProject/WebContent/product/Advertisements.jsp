@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div>
-	<form id="searchform" method="post" action="adsToDb.do">
+	<form id="searchform" method="post" action="<%=request.getContextPath()%>/product/adsToDb.do">
 		<div id="dropbox">
 			<c:choose>
 				<c:when test="${not empty fileName}">

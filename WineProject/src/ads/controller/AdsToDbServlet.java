@@ -56,8 +56,10 @@ public class AdsToDbServlet extends HttpServlet {
 			errMap.clear();
 			errMap.put("EmptyName", "請選擇商品。");
 		}
-		if (fileName == null || fileName.trim().length() == 0)
+		if (fileName == null || fileName.trim().length() == 0){
 			errMap.put("EmptyFile", "請選擇圖片。");
+			fileName = null;
+		}
 		if (productVO == null)
 			errMap.put("NoSuchProduct", "您所輸入的商品不存在，請先至商品管理頁面新增商品後再設定廣告。");
 		
@@ -73,7 +75,7 @@ public class AdsToDbServlet extends HttpServlet {
 			adsDAO.insert(adsVO);
 			session.setAttribute("AdsSuccess", "新增廣告已成功，可繼續設定新的廣告。");
 		}
-		response.sendRedirect("Advertisements.jsp");
+		response.sendRedirect(request.getContextPath()+"/wine_admin/ademin_discount.jsp");
 	}
 
 }

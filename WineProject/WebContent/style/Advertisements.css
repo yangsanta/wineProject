@@ -9,6 +9,7 @@ form table, form tr, form td{
 }
 .over{
 	background-color: #ad8667;
+	border-radius:3px;
 	color: white;
 	font-weight: bold;
  }
@@ -16,6 +17,7 @@ form table, form tr, form td{
 	clear:both;
 }
 #btnSubmit {
+	border-radius:3px;
 	margin:80px 20px;
 }
 #errlist, #okMsg {
@@ -28,7 +30,9 @@ form table, form tr, form td{
  	min-height: 290px;
  	width: 400px;
  }
-
+#query_search{
+	border-radius:3px;
+}
 
 
 /*-------------------------
@@ -89,7 +93,7 @@ form table, form tr, form td{
 #dropbox .imageHolder{
     display: inline-block;
     position:relative;
-    opacity : 0.3;
+    opacity : 0.2;
 }
  
 #dropbox .uploaded{
