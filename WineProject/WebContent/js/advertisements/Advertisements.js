@@ -1,4 +1,13 @@
 $(function() {
+	//getAll
+	$("#tabs-2-li").click(function(){
+		alert("li!");
+		$("#getAllForm").submit();
+	});
+	if ($("#testTab2"))
+		alert("not exist！");
+	
+	//jQuery UI
 	$( "#accordion" ).accordion();
 	
 	var availableTags = [

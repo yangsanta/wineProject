@@ -42,7 +42,10 @@ public class AdsToDbServlet extends HttpServlet {
 		
 		Map errMap = new HashMap();
 		ProductVO productVO = new ProductVO();
-		
+		AdsDAO adsDAO = new AdsDAO();
+		List<AdsVO> list = null;
+		AdsVO adsVO = null;
+				
 		//避免直接針對server輸入的productName不合規格
 		try {
 		Integer p_no = Integer.parseInt((productName.split(":"))[0]);
@@ -52,7 +55,7 @@ public class AdsToDbServlet extends HttpServlet {
 			errMap.put("WrongP_no", "請輸入正確商品編號，或由搜尋商品欄搜尋並選擇商品。");
 			e.printStackTrace();
 		}
-		
+		//其他驗證
 		if (productName == null || productName.trim().length() == 0){
 			errMap.clear();
 			errMap.put("EmptyName", "請選擇商品。");
@@ -64,20 +67,13 @@ public class AdsToDbServlet extends HttpServlet {
 		if (productVO == null)
 			errMap.put("NoSuchProduct", "您所輸入的商品不存在，請先至商品管理頁面新增商品。");
 		
+		//錯誤 & 正確的情況
 		if (!errMap.isEmpty()){
 			session.setAttribute("AdsErrs", errMap);
 			session.setAttribute("productName", productName);
-			session.setAttribute("fileName", fileName);
+			session.setAttribute("fileName", fileName);			
 		} else {
-			AdsDAO adsDAO = new AdsDAO();
-			AdsVO adsVO;
-			List<AdsVO> list = adsDAO.findByAds_filename(fileName);
-			
-			//test
-			for (AdsVO ads: list)
-				System.out.println("ADS_NO: " + ads.getAds_no());
-			//end of test
-			
+			list = adsDAO.findByAds_filename(fileName);
 			if ( list.size() == 0){
 				adsVO = new AdsVO();
 				adsVO.setAds_filename(fileName);
@@ -88,10 +84,19 @@ public class AdsToDbServlet extends HttpServlet {
 				adsVO.setProductVO(productVO);
 				adsDAO.update(adsVO);
 			}
-			
-			session.setAttribute("AdsSuccess", "廣告設定成功，可繼續設定其他廣告。");
+			session.setAttribute("AdsSuccess", productName + " " +fileName + " 廣告設定成功。");
 		}
-		response.sendRedirect(request.getContextPath()+"/wine_admin/ademin_discount.jsp");
-	}
+		if (request.getParameter("action") == null){
+			response.sendRedirect(request.getContextPath()+"/wine_admin/ademin_discount.jsp");
+		}
+		
+			
+		//getAll
+		//System.out.println("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTt" + request.getParameter("action"));
+		if (request.getParameter("action").equals("getAll")){
+			response.sendRedirect(request.getContextPath()+"/wine_admin/ademin_discount.jsp?pagetab=2");
+		}
+		
+	} //end of doPost
 
 }
