@@ -25,6 +25,7 @@
 			<td colspan="2" align="center"><input type="submit" value="送出"
 				class="btn btn-primary"></td>
 		</TR>
+		<a href="<%=request.getContextPath()%>/FoodWine/FoodTest.html">回原畫面</a>
 		<%-- <tr>
 			<td>食物種類:</td>
 			<td><select size="1" name="f_id">

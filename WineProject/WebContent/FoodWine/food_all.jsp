@@ -46,5 +46,6 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<a href="<%=request.getContextPath()%>/FoodWine/FoodTest.html">回原畫面</a>
 </body>
 </html>
