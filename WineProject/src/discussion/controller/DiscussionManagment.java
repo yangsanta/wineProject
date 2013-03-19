@@ -79,7 +79,7 @@ public class DiscussionManagment extends HttpServlet {
 
 				req.setAttribute("discussionVO", discussionVO); // 資料庫取出的VO物件,存入req
 				RequestDispatcher successView = req
-						.getRequestDispatcher("/discussion/listOneDiscussion.jsp"); // 成功轉交
+						.getRequestDispatcher("/discussion/listOneManagment.jsp"); // 成功轉交
 				successView.forward(req, res);
 			}
 			

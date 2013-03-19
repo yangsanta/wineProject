@@ -108,7 +108,7 @@ tr:hover {
 			<tr>
 				<td class="img_type"><img src="images/discussion_paper.gif"></td>
 				<td class="table_title"><a
-					href="DiscussionManagment.do?d_no=${discussionVO.d_no}&action=getOne">${discussionVO.d_title}</a></td>
+					href="<%=request.getContextPath()%>/DiscussionManagment.do?d_no=${discussionVO.d_no}&action=getOne">${discussionVO.d_title}</a></td>
 				<td class="tdcenter">${discussionVO.memberVO.m_id}</td>
 				<td class="tdcenter">${fn:length(discussionVO.replies)}</td>
 				<td class="table_time"><fmt:formatDate
