@@ -5,7 +5,7 @@ $(function() {
 		$("#getAllForm").submit();
 	});
 	if ($("#testTab2"))
-		alert("not exist！");
+		//alert("not exist！");
 	
 	//jQuery UI
 	$( "#accordion" ).accordion();

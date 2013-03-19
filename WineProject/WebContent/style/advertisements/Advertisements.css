@@ -10,7 +10,6 @@
 --------------------------*/
 form table, form tr, form td{
 	line-height:1.2em;
-	width: 400px;
 }
 .over{
 	background-color: #ad8667;
@@ -36,17 +35,16 @@ form table, form tr, form td{
  	float:left;
  	margin:1px 5px 30px 20px;
  	min-height: 290px;
- 	width: 400px;
+ 	width: 320px;
  }
 #tabs {
 	margin: 35px auto;
-	width: 90%;
+	width: 1000px;
 }
-#tabs-1, #tabs-2 {
- 	padding: 50px 15%;
+#searchform {
+ 	margin: 50px;
  }
 #query_search{
-	color: black;
 }
 
 
