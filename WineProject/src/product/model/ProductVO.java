@@ -26,6 +26,11 @@ public class ProductVO implements java.io.Serializable {
 
 	private String p_country;
 	
+	public ProductVO(){}
+	
+	public ProductVO(int parseInt) {
+		
+	}
 
 	public String getP_country() {
 		return p_country;

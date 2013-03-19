@@ -5,6 +5,11 @@ public class SauceVO implements java.io.Serializable{
 	private Integer s_id;
 	private String s_name;
 	
+	public SauceVO() {
+	}
+	public SauceVO(int parseInt) {
+		// TODO Auto-generated constructor stub
+	}
 	public Integer getS_id() {
 		return s_id;
 	}

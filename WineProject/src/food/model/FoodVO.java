@@ -4,6 +4,13 @@
 public class FoodVO implements java.io.Serializable{
 	private Integer f_id;
 	private String f_name;
+	
+	public FoodVO(){}
+	
+	public FoodVO(int parseInt) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getF_name() {
 		return f_name;
 	}

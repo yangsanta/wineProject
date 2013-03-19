@@ -4,6 +4,13 @@
 public class IngredientVO implements java.io.Serializable{
 	private Integer i_id;
 	private String i_name;
+	
+	public IngredientVO(){
+	}
+	
+	public IngredientVO(int parseInt) {
+		// TODO Auto-generated constructor stub
+	}
 	public Integer getI_id() {
 		return i_id;
 	}

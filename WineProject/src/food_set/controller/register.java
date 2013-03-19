@@ -1,5 +1,6 @@
-/*package food_set.controller;
+package food_set.controller;
 
+import ingredient.model.IngredientDAO;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,20 +8,19 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import sauce.model.SauceVO;
-import ingredient.model.IngredientVO;
-import food.model.FoodVO;
-import food_set.model.Food_setDAO;
+import product.model.ProductDAO;
+import sauce.model.SauceDAO;
+import food.model.FoodDAO;
 import food_set.model.Food_setHibernateDAO;
 import food_set.model.Food_setVO;
 
 public class register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	public register() {
 		super();
 	}
@@ -34,22 +34,36 @@ public class register extends HttpServlet {
 		Food_setVO food_setVo = new Food_setVO();
 
 		request.setCharacterEncoding("UTF-8");
+		
+		System.out.println(request
+				.getParameter("p_no"));
+		System.out.println(request
+				.getParameter("f_id"));
+		System.out.println(request
+				.getParameter("i_id"));
+		System.out.println(request
+				.getParameter("s_id"));
+		
 		Food_setHibernateDAO DAO = new Food_setHibernateDAO();
-		food_setVo.setFs_id(Integer.parseInt(request.getParameter("fs_id")));
-		food_setVo.setFoodVO(new FoodVO(Integer.parseInt(request.getParameter("f_id"))));
-		food_setVo.setIngredientVO(new IngredientVO(Integer.parseInt(request.getParameter("i_id"))));
-		food_setVo.setSauceVO(new SauceVO(Integer.parseInt(request.getParameter("s_id"))));
+		food_setVo.setProductVO(new ProductDAO().findByPrimaryKey(Integer.parseInt(request
+				.getParameter("p_no"))));
+		food_setVo.setFoodVO(new FoodDAO().findByPrimaryKey(Integer.parseInt(request
+				.getParameter("f_id"))));
+		food_setVo.setIngredientVO(new IngredientDAO().findByPrimaryKey(Integer.parseInt(request
+				.getParameter("i_id"))));
+		food_setVo.setSauceVO(new SauceDAO().findByPrimaryKey(Integer.parseInt(request
+				.getParameter("s_id"))));
 
 		List<String> errorMsg = new ArrayList<String>();
 		request.setAttribute("ErrorMsgKey", errorMsg);
 		// 1. 讀取使用者輸入資料
-		String fs_id = request.getParameter("fs_id");
+		String p_no = request.getParameter("p_no");
 		String f_id = request.getParameter("f_id");
 		String i_id = request.getParameter("i_id");
 		String s_id = request.getParameter("s_id");
 
 		// 3. 檢查使用者輸入資料
-		if (fs_id == null || fs_id.trim().length() == 0) {
+		if (p_no == null || p_no.trim().length() == 0) {
 			errorMsg.add("請輸入「商品」");
 		}
 		if (f_id == null || f_id.trim().length() == 0) {
@@ -62,11 +76,26 @@ public class register extends HttpServlet {
 			errorMsg.add("請輸入「風味」");
 		}
 		if (!errorMsg.isEmpty()) {
-			RequestDispatcher rd = request.getRequestDispatcher("/error.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/FoodWine/error.jsp");
 			rd.forward(request, response);
 			return;
 		}
+		// 4. 使用DAO.insert()去新增資料
+		//Food_setVO food_setVo = new Food_setVO();
+		//food_setVo.setFoodVO(foodVO);
+		
+		DAO.insert(food_setVo);
 
+		if (errorMsg.isEmpty()) {
+			RequestDispatcher rd = request
+					.getRequestDispatcher("/FoodWine/Success.jsp");
+			rd.forward(request, response);
+			return;
+		} else {
+			RequestDispatcher rd = request
+					.getRequestDispatcher("/FoodWine/error.jsp");
+			rd.forward(request, response);
+			return;
+		}
 	}
 }
-*/

@@ -111,32 +111,6 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>setselectallfoodset</servlet-name>
-		<servlet-class>food_set.controller.food_all</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>setselectallfoodset</servlet-name>
-		<url-pattern>/FoodWine/food/set.do</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>setingredientset</servlet-name>
-		<servlet-class>food_set.controller.ingredient_all</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>setingredientset</servlet-name>
-		<url-pattern>/FoodWine/ingredient/set.do</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>sauceset</servlet-name>
-		<servlet-class>food_set.controller.sauce_all</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>sauceset</servlet-name>
-		<url-pattern>/FoodWine/sauce/set.do</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
 		<servlet-name>foodsetins</servlet-name>
 		<servlet-class>food_set.controller.foodserver</servlet-class>
 	</servlet>
@@ -192,5 +166,14 @@
 	<servlet-mapping>
 		<servlet-name>AdsToDb</servlet-name>
 		<url-pattern>/product/adsToDb.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>setfoodinsset</servlet-name>
+		<servlet-class>food_set.controller.food_set_all</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>setfoodinsset</servlet-name>
+		<url-pattern>/FoodWine/food/set/insert.do</url-pattern>
 	</servlet-mapping>
 </web-app>
