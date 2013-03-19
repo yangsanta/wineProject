@@ -9,14 +9,14 @@
 			<generator class="identity"></generator>
 		</id>
 
-		<property name="RemoteAddr" column="RemoteAddr" />
-		<property name="QueryString" column="QueryString" />
-		<property name="ServletPath" column="ServletPath" />
-		<property name="UserAgent" column="UserAgent" />	
+		<property name="remoteAddr" column="remoteAddr" />
+		<property name="queryString" column="queryString" />
+		<property name="servletPath" column="servletPath" />
+		<property name="userAgent" column="userAgent" />	
 		<property name="viewedate" column="viewedate" />			
 		<property name="user_os" column="user_os" />			
 		<property name="user_browser" column="user_browser" />	
-				
+		<property name="lastReferer" column="lastReferer" />							
 	</class>
 </hibernate-mapping>
 

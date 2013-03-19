@@ -184,4 +184,12 @@
 		<servlet-name>setinRegister</servlet-name>
 		<url-pattern>/product/setin.do</url-pattern>
 	</servlet-mapping>
+			<servlet>
+		<servlet-name>adminBoard</servlet-name>
+		<servlet-class>admin_board.controller.admin_board</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>adminBoard</servlet-name>
+		<url-pattern>/wine_admin/admin_board.do</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -182,7 +182,7 @@
 										</c:when>
 
 									</c:choose>
-									<a href="DisplayProducts?action=getOne_For_Display&pId=${product.p_no}">
+									<a href="DisplayProducts.do?action=getOne_For_Display&pId=${product.p_no}">
 									<div name="${preference}" class="g_wall drop-shadow">
 										<img src="<%=request.getContextPath()%>/images/product_${preference}.png" class="label_tag" /> 
 										<div style="height: 140px;">
@@ -202,7 +202,7 @@
 							<ul>
 								<c:forEach var="page" begin="1" end="${totalPages}">
 									<li><a
-										href="DisplayProducts?action=${action}&pageNo=${page}${conditionParam}">${page}</a></li>
+										href="DisplayProducts.do?action=${action}&pageNo=${page}${conditionParam}">${page}</a></li>
 								</c:forEach>
 							</ul>
 						</div>

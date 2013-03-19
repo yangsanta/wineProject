@@ -103,12 +103,19 @@ public class productList implements Filter {
 		System.out.println("系統是:"+user_os);
 		String user_Browser= User_info_jugement.judgeBrowser(request2.getHeader("User-Agent"));
 		System.out.println("瀏覽器是:"+user_Browser);		
-		
+
+		//判斷是否來自外站連結
+		String referer=null;
+		if(request2.getHeader("Referer")!=null){
+		 referer=(request2.getHeader("Referer").startsWith("http://"+request2.getHeader("Host")))?request2.getHeader("Referer") : null;
+		}
+
 		Admin_boardHibernateDAO admindao = new Admin_boardHibernateDAO();
 		 Admin_boardVO admin_boardVOO1 = new Admin_boardVO();
 		 admin_boardVOO1.setQueryString(request2.getQueryString());
-		 admin_boardVOO1.setRemoteAddr(request2.getRemoteAddr());//
+		 admin_boardVOO1.setRemoteAddr(request2.getRemoteAddr());
 		 admin_boardVOO1.setServletPath(request2.getServletPath());
+		 admin_boardVOO1.setLastReferer(referer);	 
 		 admin_boardVOO1.setUserAgent(request2.getHeader("User-Agent"));
 		 admin_boardVOO1.setUser_browser(user_Browser);		 
 		 admin_boardVOO1.setUser_os(user_os);

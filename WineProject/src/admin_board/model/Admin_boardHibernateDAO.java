@@ -4,10 +4,14 @@ import hibernate.util.HibernateUtil;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 
 public class Admin_boardHibernateDAO  {
 	private static final String GET_ALL_STMT = "from Admin_boardVO order by i_no";
@@ -84,7 +88,40 @@ public class Admin_boardHibernateDAO  {
 		return list;
 	}
 
-
+	public List<Admin_boardVO> getagents() {
+		List<Admin_boardVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			SQLQuery query = session.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by UserAgent)");
+			query.addEntity(Admin_boardVO.class);
+			query.setFirstResult(0);
+			query.setMaxResults(10);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+	public List<Admin_boardVO> getlastReferer() {
+		List<Admin_boardVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			SQLQuery query = session.createSQLQuery("  select * from admin_board where lastReferer  IS NOT NULL order by i_no DESC");
+			query.setFirstResult(0);
+			query.setMaxResults(10);
+			query.addEntity(Admin_boardVO.class);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
 	// -------------------------------------------------------
 	public static void main(String arg[]) {
 		Admin_boardHibernateDAO dao = new Admin_boardHibernateDAO();
@@ -95,15 +132,15 @@ public class Admin_boardHibernateDAO  {
 //		 }
 		
 		// 新增
-		 Admin_boardVO admin_boardVOO1 = new Admin_boardVO();
-		 admin_boardVOO1.setQueryString("QueryString路易拉葡萄酒");
-		 admin_boardVOO1.setRemoteAddr("布利一級setRemoteAddr葡萄園白2008");
-		 admin_boardVOO1.setServletPath("布利一級葡萄setServletPath");
-		 admin_boardVOO1.setUserAgent("7圖夏園白setUserAgent");
-		 dao.insert(admin_boardVOO1);
-		 
-//		 admin_boardVOO1.setP_date(new Timestamp(new java.util.Date().getTime()));
-
+//		 Admin_boardVO admin_boardVOO1 = new Admin_boardVO();
+//		 admin_boardVOO1.setQueryString("QueryString路易拉葡萄酒");
+//		 admin_boardVOO1.setRemoteAddr("布利一級setRemoteAddr葡萄園白2008");
+//		 admin_boardVOO1.setServletPath("布利一級葡萄setServletPath");
+//		 admin_boardVOO1.setUserAgent("7圖夏園白setUserAgent");
+//		 admin_boardVOO1.setLastReferer("123");	
+//		 admin_boardVOO1.setViewedate(new Timestamp(new java.util.Date().getTime()));
+//		 admin_boardVOO1.setUser_os("123");		 
+//		 dao.insert(admin_boardVOO1);
 
 		// ------------------------------------------------
 		// 查詢
@@ -116,13 +153,17 @@ public class Admin_boardHibernateDAO  {
 		// System.out.println(admin_boardVOO3.getP_grape() );
 		// System.out.println();
 		// 查詢
-		List<Admin_boardVO> list = dao.getAll();
+		List<Admin_boardVO> list = dao.getlastReferer();
 		for (Admin_boardVO aEmp : list) {
-			 System.out.println(aEmp.geti_no() + ",");
-			 System.out.println(aEmp.getQueryString() + ",");
-			 System.out.println(aEmp.getRemoteAddr() + ",");
-			 System.out.println(aEmp.getServletPath() + ",");
+			 System.out.print(aEmp.getI_no() + ",");
+			 System.out.print(aEmp.getQueryString() + ",");
+			 System.out.print(aEmp.getRemoteAddr() + ",");
+			 System.out.print(aEmp.getServletPath() + ",");
+			 System.out.print(aEmp.getLastReferer() + ",");			 
 			 System.out.println(aEmp.getUserAgent() + ",");
+			 System.out.print(aEmp.getViewedate() + ",");			 
+			 System.out.print(aEmp.getUser_os() + ",");
+			 System.out.println(aEmp.getUser_browser() + ",");
 			 System.out.println();
 		}
 	}

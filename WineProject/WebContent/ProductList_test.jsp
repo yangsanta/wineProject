@@ -11,6 +11,9 @@
 <a href="product/DisplayProducts.do?action=getSome_For_Display&pageNo=1&condition=p_vol&conditionValue=750">Product/DisplayProducts(getSome_For_Display)</a>
 <a href="product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue=">Product/DisplayProducts(getSome_For_Display)</a>
 <a href="product/DisplayProducts.do?action=getSome_For_Display&condition=p_buy_count&conditionValue=10">Product/DisplayProducts(getSome_For_Display)</a>
+
+<br/><br/><br/><br/>
+<a href="wine_admin/admin_board.do">P</a>
 <hr/>
 <a href="member/MemberService">member/MemberService</a>
 <hr/>

@@ -4,53 +4,54 @@ import java.sql.Timestamp;
 
 public class Admin_boardVO implements java.io.Serializable {
 	private Integer i_no;
-	private String RemoteAddr;
-	private String QueryString;
-	private String ServletPath;
-	private String UserAgent;
+	private String remoteAddr;
+	private String queryString;
+	private String servletPath;
+	private String userAgent;
+	private String lastReferer;
 	private Timestamp viewedate;
 	private String user_os;	
 	private String user_browser;
 
-	public Integer geti_no() {
+	public Integer getI_no() {
 		return i_no;
 	}
-	public void seti_no(Integer i_no) {
+	public void setI_no(Integer i_no) {
 		this.i_no = i_no;
 	}
 	public String getQueryString() {
-		return QueryString;
+		return queryString;
 	}
 
 	
 
-	public void setQueryString(String QueryString) {
-		this.QueryString = QueryString;
+	public void setQueryString(String queryString) {
+		this.queryString = queryString;
 	}
 
 	public String getRemoteAddr() {
-		return RemoteAddr;
+		return remoteAddr;
 	}
 
-	public void setRemoteAddr(String RemoteAddr) {
-		this.RemoteAddr = RemoteAddr;
+	public void setRemoteAddr(String remoteAddr) {
+		this.remoteAddr = remoteAddr;
 	}
 
 
 	public String getServletPath() {
-		return ServletPath;
+		return servletPath;
 	}
 
-	public void setServletPath(String ServletPath) {
-		this.ServletPath = ServletPath;
+	public void setServletPath(String servletPath) {
+		this.servletPath = servletPath;
 	}
 
 	public String getUserAgent() {
-		return UserAgent;
+		return userAgent;
 	}
 
-	public void setUserAgent(String UserAgent) {
-		this.UserAgent = UserAgent;
+	public void setUserAgent(String userAgent) {
+		this.userAgent = userAgent;
 	}
 
 	public Timestamp getViewedate() {
@@ -76,7 +77,14 @@ public class Admin_boardVO implements java.io.Serializable {
 	public void setUser_browser(String user_browser) {
 		this.user_browser = user_browser;
 	}
+	
+	public String getLastReferer() {
+		return lastReferer;
+	}
 
+	public void setLastReferer(String lastReferer) {
+		this.lastReferer = lastReferer;
+	}
 	
 	
 }

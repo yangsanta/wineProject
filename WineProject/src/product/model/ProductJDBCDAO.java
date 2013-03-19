@@ -406,6 +406,12 @@ public class ProductJDBCDAO implements ProductDAO_interface {
 		return null;
 	}
 
+	@Override
+	public List<ProductVO> findFuzzyProductName(String fuzzyProductName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

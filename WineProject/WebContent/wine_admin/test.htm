@@ -1,0 +1,353 @@
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<head>
+<meta charset="utf-8">
+<title>酒迷|後台管理系統</title>
+<link media="all" rel="stylesheet" type="text/css" href="css/all.css" />
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+	window.jQuery
+			|| document
+					.write('<script type="text/javascript" src="js/jquery-1.7.2.min.js"><\/script>');
+</script>
+<script type="text/javascript" src="js/jquery.main.js"></script>
+<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
+<style type="text/css">
+.table{-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+ border-bottom-left-radius: 3px;
+  border: 1px solid rgb(223, 223, 223);
+ background-color: rgb(249, 249, 249);
+ border-collapse: collapse;
+border-right: 1px solid fff;
+border-left: 1px solid fff;
+width:100%;}
+ .table_head{
+
+ background: #f1f1f1;
+background-image: -webkit-gradient(linear,left bottom,left top,from(#ececec),to(#f9f9f9));
+background-image: -webkit-linear-gradient(bottom,#ececec,#f9f9f9);}
+ .table_head_td{line-height: 30px;font-size: 14px;color:#555;text-shadow: rgba(255,255,255,0.8) 0 1px 0;padding-left:10px
+}
+ 
+.tr{  border-top: 1px solid #fff;;
+    border-bottom: 1px solid #dfdfdf;line-height: 1.6em;}
+.td{ 	
+	padding: 4px 7px 2px;color:#555;
+	}
+</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="content">
+			<div class="c1">
+				<div class="controls">
+					<nav class="links">
+					<ul>
+						<li><a href="#" class="ico1">訊息 <span class="num">26</span></a></li>
+						<li><a href="#" class="ico2">Alerts <span class="num">5</span></a></li>
+						<li><a href="#" class="ico3">訂單<span class="num">3</span></a></li>
+					</ul>
+					</nav>
+					<div class="profile-box">
+						<span class="profile"> <a href="#" class="section"> <img
+								class="image" src="images/img1.png" alt="image description"
+								width="26" height="26" /> <span class="text-box">
+									Welcome <strong class="name">楊明華</strong>
+							</span>
+						</a> <a href="#" class="opener">opener</a>
+						</span> <a href="#" class="btn-on">On</a>
+					</div>
+				</div>
+				<div class="tabs">
+					<div id="tab-1" class="tab">
+						<article>
+						<div class="text-section">
+							<h1>儀表板</h1>
+							<p>觀看所有的網站系統目前狀態</p>
+						</div>
+<!-- 						<ul class="states"> -->
+<!-- 							<li class="error">錯誤 : 系統錯誤，海尼根綠茶庫存沒了，請盡速補貨</li> -->
+<!-- 							<li class="warning">注意: 您還有三則訂單尚未處理.</li> -->
+<!-- 							<li class="succes">成功 : 你剛完成了5筆訂單.</li> -->
+<!-- 						</ul> -->
+						<div style="width:90%;margin:0 auto">
+
+						<h1>	Last agents</h1>
+							<table class="table">
+
+									<tr class="table_head">
+									<td class="table_head_td">Agent</td>
+									<td class="table_head_td">OS</td>
+									<td class="table_head_td">Browser</td>
+								</tr>
+
+
+								
+									<tr class="tr">
+										<td class="td">UserAgent66</td>
+										<td class="td">user_os44</td>
+										<td class="td">user_browser65</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">7圖夏園白setUserAgent</td>
+										<td class="td"></td>
+										<td class="td"></td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td"></td>
+										<td class="td"></td>
+										<td class="td"></td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">456Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)</td>
+										<td class="td">Windows7</td>
+										<td class="td">
+  [Internet 小圖 ]
+Internet Explorer 9</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)</td>
+										<td class="td">Windows7</td>
+										<td class="td">
+  [Internet 小圖 ]
+Internet Explorer 9</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22</td>
+										<td class="td">Windows7</td>
+										<td class="td">Chrome25.0.1364.172</td>
+									</tr>
+								
+							</table>
+
+							<h1>lastReferer</h1>
+							<table class="table" >
+								<tr class="table_head">
+									<td class="table_head_td">日期</td>
+									<td class="table_head_td">時間</td>
+									<td class="table_head_td">來源位址</td>
+									<td class="table_head_td">IP</td>
+								</tr>
+
+
+								
+									<tr class="tr">
+										<td class="td">2013/03/01</td>
+										<td class="td">13:30:00</td>
+										<td class="td">Referer</td>
+										<td class="td">RemoteAddrs</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:25:26</td>
+										<td class="td">123null</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:25:30</td>
+										<td class="td">123http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:32:42</td>
+										<td class="td">123</td>
+										<td class="td">布利一級setRemoteAddr葡萄園白2008</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:33:14</td>
+										<td class="td">123</td>
+										<td class="td">布利一級setRemoteAddr葡萄園白2008</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:39:38</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:42:27</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:44:21</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:48:30</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:48:35</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:49:08</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:50:12</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:51:13</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:51:50</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:53:09</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:53:44</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:53:47</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:53:49</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:58:22</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:58:26</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:58:48</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:58:49</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+									<tr class="tr">
+										<td class="td">2013/03/19</td>
+										<td class="td">21:58:50</td>
+										<td class="td">http://localhost:8080/WineProject/ProductList_test.jsp</td>
+										<td class="td">127.0.0.1</td>
+									</tr>
+								
+							</table>
+
+<br><br><br><br><br>
+						</div>
+
+
+
+
+
+
+						</article>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<aside id="sidebar"> <strong class="logo"><a href="#">lg</a></strong>
+		<ul class="tabset buttons">
+			<li class="active"><a href="#tab-1" class="ico1"><span>儀表板</span><font
+					class="text_con">儀表板</font><em></em></a> <span class="tooltip"><span>儀表板</span></span>
+			</li>
+			<li><a href="#tab-2" class="ico2"><span>會員管理</span><font
+					class="text_con">會員管理</font><em></em></a> <span class="tooltip"><span>會員管理</span></span>
+			</li>
+			<li><a href="#tab-3" class="ico3"><span>商品管理</span><font
+					class="text_con">商品管理</font><em></em></a> <span class="tooltip"><span>商品管理</span></span>
+			</li>
+			<li><a href="#tab-4" class="ico4"><span>優惠設定</span><font
+					class="text_con">優惠設定</font><em></em></a> <span class="tooltip"><span>優惠設定</span></span>
+			</li>
+			<li><a href="#tab-5" class="ico5"><span>討論區管理</span><font
+					class="text_con">討論區管理</font><em></em></a> <span class="tooltip"><span>討論區管理</span></span>
+			</li>
+			<li><a href="#tab-6" class="ico6"> <span>空的</span><em></em>
+			</a> <span class="num">常用</span> <span class="tooltip"><span>空的</span></span>
+			</li>
+			<li><a href="#tab-7" class="ico7"><span>訂單管理</span><em></em></a>
+				<span class="tooltip"><span>訂單管理</span></span></li>
+			<li><a href="#tab-8" class="ico8"><span>Settings</span><em></em></a>
+				<span class="tooltip"><span>Settings</span></span></li>
+		</ul>
+		<span class="shadow"></span> </aside>
+	</div>
+</body>
+</html>

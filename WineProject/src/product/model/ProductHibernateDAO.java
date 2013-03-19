@@ -2,7 +2,6 @@
 
 import hibernate.util.HibernateUtil;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -242,6 +241,12 @@ public class ProductHibernateDAO implements ProductDAO_interface {
 	@Override
 	public List<ProductVO> findSomeProduct(String lcondition,
 			String conditionValue) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ProductVO> findFuzzyProductName(String fuzzyProductName) {
 		// TODO Auto-generated method stub
 		return null;
 	}

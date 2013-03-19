@@ -44,7 +44,7 @@ public class Admin_boardDAO  {
 		try {
 			session.beginTransaction();
 			Admin_boardVO admin_boardV = new Admin_boardVO();
-			admin_boardV.seti_no(i_no);
+			admin_boardV.setI_no(i_no);
 			session.delete(admin_boardV);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
@@ -357,7 +357,7 @@ public class Admin_boardDAO  {
 		// 查詢
 		 List<Admin_boardVO> list = dao.getAll();
 		 for (Admin_boardVO aEmp : list) {
-		 System.out.println(aEmp.geti_no() + ",");
+		 System.out.println(aEmp.getI_no() + ",");
 		 System.out.println(aEmp.getQueryString() + ",");
 		 System.out.println(aEmp.getRemoteAddr() + ",");
 		 System.out.println(aEmp.getServletPath() + ",");
