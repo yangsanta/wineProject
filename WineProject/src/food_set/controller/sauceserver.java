@@ -42,6 +42,9 @@ public class sauceserver extends HttpServlet {
 		// 2. 檢查使用者輸入資料
 		if (s_name == null || s_name.trim().length() == 0) {
 			errorMsg.add("請輸入「風味特色」");
+			RequestDispatcher rd = request.getRequestDispatcher("/FoodWine/error.jsp");
+			rd.forward(request, response);
+			return;
 		}
 		if (!errorMsg.isEmpty()) {
 			RequestDispatcher rd = request.getRequestDispatcher("/FoodWine/error.jsp");

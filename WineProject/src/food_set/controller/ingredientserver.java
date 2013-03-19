@@ -36,6 +36,9 @@ public class ingredientserver extends HttpServlet {
 		// 2. 檢查使用者輸入資料
 		if (i_name == null || i_name.trim().length() == 0) {
 			errorMsg.add("請輸入「主要食材」");
+			RequestDispatcher rd = request.getRequestDispatcher("/FoodWine/error.jsp");
+			rd.forward(request, response);
+			return;
 		}
 		if (!errorMsg.isEmpty()) {
 			RequestDispatcher rd = request.getRequestDispatcher("/FoodWine/error.jsp");
