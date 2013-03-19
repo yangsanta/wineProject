@@ -1,4 +1,49 @@
 $(function() {
+	$( "#accordion" ).accordion();
+	
+	var availableTags = [
+		"ActionScript",
+		"AppleScript",
+		"Asp",
+		"BASIC",
+		"C",
+		"C++",
+		"Clojure",
+		"COBOL",
+		"ColdFusion",
+		"Erlang",
+		"Fortran",
+		"Groovy",
+		"Haskell",
+		"Java",
+		"JavaScript",
+		"Lisp",
+		"Perl",
+		"PHP",
+		"Python",
+		"Ruby",
+		"Scala",
+		"Scheme"
+	];
+	$( "#autocomplete" ).autocomplete({
+		source: availableTags
+	});
+	
+	$( "#button" ).button();
+	$( "#radioset" ).buttonset();
+	
+	$( "#tabs" ).tabs();
+
+	// Hover states on the static widgets
+	$( "#dialog-link, #icons li" ).hover(
+		function() {
+			$( this ).addClass( "ui-state-hover" );
+		},
+		function() {
+			$( this ).removeClass( "ui-state-hover" );
+		}
+	);
+	
 	//隱藏form元件
 	$("#fileName").css("display", "none");
 	$("#productName").css("display", "none");
@@ -25,9 +70,9 @@ $(function() {
 	});
 	//hover effect & click effect
 	$(document).on("mouseenter", "#ulResult tr", function(){
-		$(this).addClass("over");
+		$( this ).addClass( "ui-state-hover" ); //$(this).addClass("over");
 	}).on("mouseleave", "#ulResult tr", function(){
-		$(this).removeClass("over");
+		$( this ).removeClass( "ui-state-hover" ); //$(this).removeClass("over");
 	}).on("click", "#ulResult tr", function(){
 		$("#productName").val($(this).text());
 		$("#search_query").val($(this).text());
