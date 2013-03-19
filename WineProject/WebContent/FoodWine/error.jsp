@@ -5,10 +5,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>註冊會員失敗</title>
+<title>執行失敗</title>
 </head>
 <body>
-<H1>註冊會員失敗</h1>
+<H1>執行失敗</h1>
 
 <Font color='red' >檢查您的輸入資料時，發現含有下列錯誤，請更正後重新提交</font>
 <c:forEach var="e" items="${ErrorMsgKey}">

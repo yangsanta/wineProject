@@ -11,7 +11,7 @@
 </script>
 </head>
 <body>
-	<Form Action="<%=request.getContextPath()%>/product/saucein" method="post" id="commentForm"
+	<Form Action="<%=request.getContextPath()%>/product/saucein?action=saucein" method="post" id="commentForm"
 		class="cmxform">
 		<TR>
 			<td>新增風味特色：<br></td>

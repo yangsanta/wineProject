@@ -14,7 +14,7 @@
 </head>
 <body>
 <h1>新增主要食材</h1>
-	<Form Action="<%=request.getContextPath()%>/product/ingin" method="post" id="commentForm"
+	<Form Action="<%=request.getContextPath()%>/product/ingin?action=ingin" method="post" id="commentForm"
 		class="cmxform">
 		<TR>
 			<td>新增食材：<br></td>

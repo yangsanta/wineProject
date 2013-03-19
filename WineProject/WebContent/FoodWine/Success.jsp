@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>新增成功</title>
+<title>執行成功</title>
 </head>
 <body>
-<h1>新增成功</h1>
+<h1>執行成功</h1>
 <a href="<%=request.getContextPath()%>/FoodWine/FoodTest.html">回原畫面</a>
 </body>
 </html>
