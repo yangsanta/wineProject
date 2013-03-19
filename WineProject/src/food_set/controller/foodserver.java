@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import food.model.FoodDAO;
 import food.model.FoodHibernateDAO;
 import food.model.FoodVO;
 
@@ -40,35 +41,51 @@ public class foodserver extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		FoodHibernateDAO DAO = new FoodHibernateDAO();
+		String action = request.getParameter("action");
 
+		FoodHibernateDAO DAO = new FoodHibernateDAO();
 		List<String> errorMsg = new ArrayList<String>();
 		request.setAttribute("ErrorMsgKey", errorMsg);
 
-		// 1. 讀取使用者輸入資料
-		String f_name = request.getParameter("f_name");
-		// 2. 檢查使用者輸入資料
-		if (f_name == null || f_name.trim().length() == 0) {
-			errorMsg.add("請輸入「食物種類」");
+		if (action.equals("foodin")) {
+			// 1. 讀取使用者輸入資料
+			String f_name = request.getParameter("f_name");
+			// 2. 檢查使用者輸入資料
+			if (f_name == null || f_name.trim().length() == 0) {
+				errorMsg.add("請輸入「食物種類」");
+			}
+			// 3. 使用DAO.insert()去新增資料
+			FoodVO foodVo = new FoodVO();
+			foodVo.setF_name(f_name);
+			DAO.insert(foodVo);
+
+			if (errorMsg.isEmpty()) {
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/FoodWine/Success.jsp");
+				rd.forward(request, response);
+				return;
+			} else {
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/FoodWine/error.jsp");
+				rd.forward(request, response);
+				return;
+			}
 		}
-		if (!errorMsg.isEmpty()) {
-			RequestDispatcher rd = request.getRequestDispatcher("/FoodWine/error.jsp");
-			rd.forward(request, response);
-			return;
-		}
-		// 3. 使用DAO.insert()去新增資料
-		FoodVO foodVo = new FoodVO();
-		foodVo.setF_name(f_name);
-		DAO.insert(foodVo);
-		
-		if (errorMsg.isEmpty())	{			
-			RequestDispatcher rd = request.getRequestDispatcher("/FoodWine/Success.jsp");
-			rd.forward(request, response);
-			return ; 
-		}  else {
-			RequestDispatcher rd = request.getRequestDispatcher("/FoodWine/error.jsp");
-			rd.forward(request, response);
-			return;
+		// 4 刪除
+		if (action.equals("fooddel")) {
+			int f_id = Integer.parseInt(request.getParameter("f_id"));
+			DAO.delete(f_id);
+			if (errorMsg.isEmpty()) {
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/FoodWine/Success.jsp");
+				rd.forward(request, response);
+				return;
+			} else {
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/FoodWine/error.jsp");
+				rd.forward(request, response);
+				return;
+			}
 		}
 	}
 }

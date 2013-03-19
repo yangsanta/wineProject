@@ -37,9 +37,9 @@
 				</td>
 				<td>
 					<FORM METHOD="post"
-						ACTION="<%=request.getContextPath()%>/emp/emp.do">
+						Action="<%=request.getContextPath()%>/product/foodin?action=fooddel">
 						<input type="submit" value="刪除"> <input type="hidden"
-							name="empno" value="${empVO.empno}"> <input type="hidden"
+							name="f_id" value="${Food.f_id}"> <input type="hidden"
 							name="action" value="delete">
 					</FORM>
 				</td>

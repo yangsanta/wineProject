@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>新增食物搭配</h1>
-	<Form Action="<%=request.getContextPath()%>/product/setin"
+	<Form Action="<%=request.getContextPath()%>/product/setin.do"
 		method="post" id="commentForm" class="cmxform">
 		<tr>
 			<td>商品名稱：<font color=red><b>*</b></font></td>

@@ -14,7 +14,7 @@
 </head>
 <body>
 	<h1>新增食物種類</h1>
-	<Form Action="<%=request.getContextPath()%>/product/foodin" method="post" id="commentForm"
+	<Form Action="<%=request.getContextPath()%>/product/foodin?action=foodin" method="post" id="commentForm"
 		class="cmxform">
 		<TR>
 			<td>新增食物：<br></td>
