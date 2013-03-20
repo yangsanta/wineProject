@@ -13,6 +13,8 @@
 <a href="product/DisplayProducts.do?action=getSome_For_Display&condition=p_buy_count&conditionValue=10">Product/DisplayProducts(getSome_For_Display)</a><br/>
 <a href="product/Maintain?action=getAll&pageNo=1">我是維護資料喔</a><br/>
 
+<br/><br/>
+<a href="wine_admin/admin_board.do">P</a><br/><br/>
 <hr />
 <a href="member/MemberService">member/MemberService</a>
 </body>

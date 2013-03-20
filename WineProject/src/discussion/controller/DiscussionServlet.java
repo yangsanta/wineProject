@@ -228,7 +228,7 @@ public class DiscussionServlet extends HttpServlet {
 
 	// 分頁功能
 	private void splitPages(List<DiscussionVO> list, HttpServletRequest req) {
-		int rowsPerPage = 3; // 每頁的筆數
+		int rowsPerPage = 8; // 每頁的筆數
 		int rowNumber = list.size(); // 總筆數
 		int pageNumber = 0; // 總頁數
 		int whichPage = 1; // 第幾頁
