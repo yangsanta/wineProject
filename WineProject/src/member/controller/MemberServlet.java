@@ -68,7 +68,7 @@ public class MemberServlet extends HttpServlet {
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/memberCRUD/select_page.jsp");
+							.getRequestDispatcher("/wine_admin/ademin_member3.jsp");
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
@@ -83,14 +83,14 @@ public class MemberServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("無法取得資料:" + e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/memberCRUD/select_page.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_member3.jsp");
 				failureView.forward(req, res);
 			}
 		}
 		
 		
 		if ("getOne_For_Update".equals(action)) { // 來自listAllMem.jsp的請求
-
+System.out.println("jakjsdf8907283u4lk2j3kl458907klajkld");
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
@@ -106,7 +106,7 @@ public class MemberServlet extends HttpServlet {
 								
 				/***************************3.查詢完成,準備轉交(Send the Success view)************/
 				req.setAttribute("memberVO", memberVO);         // 資料庫取出的memberVO物件,存入req
-				String url = "/memberCRUD/update_mem_input.jsp";
+				String url = "/wine_admin/ademin_member3.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_mem_input.jsp
 				successView.forward(req, res);
 
@@ -114,7 +114,7 @@ public class MemberServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("無法取得要修改的資料:" + e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/emp/listAllMem.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_member3.jsp.3");
 				failureView.forward(req, res);
 			}
 		}
@@ -184,7 +184,7 @@ public class MemberServlet extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("memberVO", memberVO); // 含有輸入格式錯誤的memberVO物件,也存入req
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/memberCRUD/update_emp_input.jsp");
+							.getRequestDispatcher("/wine_admin/ademin_member3.jsp");
 					failureView.forward(req, res);
 					return; //程式中斷
 				}
@@ -203,7 +203,7 @@ public class MemberServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("修改資料失敗:"+e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/memberCRUD/update_mem_input.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_member3.jsp");
 				failureView.forward(req, res);
 			}
 		}

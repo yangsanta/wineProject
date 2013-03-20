@@ -40,29 +40,29 @@
 	</tr>
 	<tr>
 		<td>m_id</td>
-		<td><input type="TEXT" name="m_id" size="45" value="<%=memberVO.getM_id()%>" /></td>
+		<td><input type="text" name="m_id" size="45" value="<%=memberVO.getM_id()%>" /></td>
 	</tr>
 
 	<tr>
 		<td>m_name</td>
-		<td><input type="TEXT" name="m_name" size="45" value="<%=memberVO.getM_name()%>" /></td>
+		<td><input type="text" name="m_name" size="45" value="<%=memberVO.getM_name()%>" /></td>
 	</tr>
 	<tr>
 		<td>m_pwd</td>
-		<td><input type="TEXT" name="m_pwd" size="45"	value="<%=memberVO.getM_pwd()%>" /></td>
+		<td><input type="text" name="m_pwd" size="45"	value="<%=memberVO.getM_pwd()%>" /></td>
 	</tr>
 	<tr>
 		<td>m_mobile</td>
-		<td><input type="TEXT" name="m_mobile" size="45"	value="<%=memberVO.getM_mobile()%>" /></td>
+		<td><input type="text" name="m_mobile" size="45"	value="<%=memberVO.getM_mobile()%>" /></td>
 	</tr>
 	<tr>
 		<td>m_email</td>
-		<td><input type="TEXT" name="m_email" size="45"	value="<%=memberVO.getM_email()%>" /></td>
+		<td><input type="text" name="m_email" size="45"	value="<%=memberVO.getM_email()%>" /></td>
 	</tr>	
 	<tr>
 		<td>m_bday</td>
 		<td bgcolor="#CCCCFF">
-		    <input class="cal-TextBox"
+		    <input class="cal-textBox"
 			onFocus="this.blur()" size="9" readonly type="text" name="m_bday" value="<%=memberVO.getM_bday()%>">
 			<a class="so-BtnLink"
 			href="javascript:calClick();return false;"
@@ -74,23 +74,23 @@
 	</tr>
 	<tr>
 		<td>m_addr</td>
-		<td><input type="TEXT" name="m_addr" size="45"	value="<%=memberVO.getM_addr()%>" /></td>
+		<td><input type="text" name="m_addr" size="45"	value="<%=memberVO.getM_addr()%>" /></td>
 	</tr>
 	<tr>
 		<td>m_pic</td>
-		<td><input type="TEXT" name="m_pic" size="45"	value="<%=memberVO.getM_pic()%>" /></td>
+		<td><input type="text" name="m_pic" size="45"	value="<%=memberVO.getM_pic()%>" /></td>
 	</tr>
 	<tr>
 		<td>m_safety_q</td>
-		<td><input type="TEXT" name="m_safety_q" size="45"	value="<%=memberVO.getM_safety_q()%>" /></td>
+		<td><input type="text" name="m_safety_q" size="45"	value="<%=memberVO.getM_safety_q()%>" /></td>
 	</tr>
 	<tr>
 		<td>m_safety_a</td>
-		<td><input type="TEXT" name="m_safety_a" size="45"	value="<%=memberVO.getM_safety_a()%>" /></td>
+		<td><input type="text" name="m_safety_a" size="45"	value="<%=memberVO.getM_safety_a()%>" /></td>
 	</tr>
 	<tr>
 		<td>m_status</td>
-		<td><input type="TEXT" name="m_status" size="45"	value="<%=memberVO.getM_status()%>" /></td>
+		<td><input type="text" name="m_status" size="45"	value="<%=memberVO.getM_status()%>" /></td>
 	</tr>					
 	<tr>
 
