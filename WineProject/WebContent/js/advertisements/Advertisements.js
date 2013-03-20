@@ -7,11 +7,15 @@ $(function() {
 	$("#fileName").css("display", "none");
 	$("#productName").css("display", "none");
 
+	// getAll會用到
+	var templateEditRemove1of3 = '<td><a class="btn btn-default adsEdit" href="';
+	var templateEditRemove2of3 = '"><i class="icon-pencil"></i> 修改</a><br/><a class="btn btn-default adsDelete" href="';
+	var templateEditRemove3of3 = '"><i class="icon-trash"></i> 刪除</a></td>';
+
 	// getAll
 	$("#tabs-2-li")
 			.click(
 					function() {
-						// $("#getAllForm").submit();
 						$
 								.ajax({
 									url : '../product/advertisements.do',
@@ -22,24 +26,98 @@ $(function() {
 									dataType : 'json',
 									success : function(data) {
 
-										var templateEditDelete = '<td><form action="#"><div class="btn-group"><a class="btn btn-default" href="#"><i class="icon-pencil"></i>修改</a></div></form><form action="#"><div class="btn-group"><a class="btn btn-default" href="#"><i class="icon-trash"></i>刪除</a></div></form></td>';
+										$
+												.each(
+														data,
+														function() {
+															$("#tabs-2 tbody")
+																	.append(
+																			'<tr><td class="ads_no">'
+																					+ this.ads_no
+																					+ '</td><td><img class="adsImg" src="/WineProject/images/ad/'
+																					+ this.ads_filename
+																					+ '"  /></td><td>'
+																					+ this.p_name
+																					+ '</td>'
+																					+ templateEditRemove1of3
+																					+ this.ads_no
+																					+ templateEditRemove2of3
+																					+ this.ads_no
+																					+ templateEditRemove3of3
+																					+ '</tr>');
 
-										// $("#tabs-2").append("<p>" + data +
-										// "</p>");
-										$.each(data, function() {
-											$("#tabs-2 tbody").append(
-													'<tr><td>' + this.ads_no
-															+ '</td><td><img class="adsImg" src="/WineProject/images/ad/'
-														+ this.ads_filename
-															+ '"  /></td><td>'
-															+ this.p_name
-															+ '</td>'+ templateEditDelete +'</tr>');
-											
-										});
+														});
 
 									}
 								});
 					});
+
+	// Delete
+	$(document)
+			.on(
+					"click",
+					".adsDelete",
+					function(event) {
+						event.preventDefault();
+
+						$
+								.ajax({
+									url : '../product/advertisements.do',
+									type : 'POST',
+									data : {
+										ads_no : $(this).attr("href"),
+										action : "remove"
+									},
+									dataType : 'json',
+									success : function(data) {
+										$('#tabs-2 tbody').empty();
+
+										// 同getAll
+										$
+												.each(
+														data,
+														function() {
+															$("#tabs-2 tbody")
+																	.append(
+																			'<tr><td class="ads_no">'
+																					+ this.ads_no
+																					+ '</td><td><img class="adsImg" src="/WineProject/images/ad/'
+																					+ this.ads_filename
+																					+ '"  /></td><td>'
+																					+ this.p_name
+																					+ '</td>'
+																					+ templateEditRemove1of3
+																					+ this.ads_no
+																					+ templateEditRemove2of3
+																					+ this.ads_no
+																					+ templateEditRemove3of3
+																					+ '</tr>');
+
+														});
+
+									}
+								});
+					});
+
+	// Edit
+	$(document).on("click", ".adsEdit", function(event) {
+		event.preventDefault();
+
+		$.ajax({
+			url : '../product/advertisements.do',
+			type : 'POST',
+			data : {
+				ads_no : $(this).attr("href"),
+				action : "edit"
+			},
+			dataType : 'json',
+			success : function(data) {
+
+				alert("done edit");
+
+			}
+		});
+	});
 
 	// Ajax search
 	$("#search_query").bind("keyup click", function() {
@@ -129,7 +207,7 @@ $(function() {
 				},
 
 				progressUpdated : function(i, file, progress) {
-					$.data(file).find('.progress').width(progress);
+					$.data(file).find('.progressDD').width(progress);
 				},
 
 			});
@@ -137,7 +215,7 @@ $(function() {
 	var template = '<div class="preview" id="previewbox">'
 			+ '<span class="imageHolder">' + '<img />'
 			+ '<span class="uploaded"></span>' + '</span>'
-			+ '<div class="progressHolder">' + '<div class="progress"></div>'
+			+ '<div class="progressHolder">' + '<div class="progressDD"></div>'
 			+ '</div>' + '</div>';
 
 	function createImage(file) {

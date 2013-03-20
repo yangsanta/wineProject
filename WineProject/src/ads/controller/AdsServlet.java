@@ -68,8 +68,18 @@ public class AdsServlet extends HttpServlet {
 			facade.getAll();
 		}
 		
-		if ( action != null && action.equals("")){
+		if ( action != null && action.equals("remove")){
+			Integer ads_no = Integer.valueOf(request.getParameter("ads_no"));
+
+			facade.remove(ads_no);
+			facade.getAll();
+		}
+		
+		if ( action != null && action.equals("edit")){
+			System.out.println("*********************Ads EDIT******************");
 			
+			Integer ads_no = Integer.valueOf(request.getParameter("ads_no"));
+			facade.edit(ads_no);
 		}
 
 	}
