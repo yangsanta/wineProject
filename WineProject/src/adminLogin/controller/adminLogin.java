@@ -29,42 +29,40 @@ public class adminLogin extends HttpServlet {
 		HttpSession session = request.getSession();
 		List<String> errorMsgs = new  ArrayList<String>();
 		request.setAttribute("ErrorMsgKey", errorMsgs);
-		String m_id = request.getParameter("m_id").trim();
-		String m_pwd = request.getParameter("m_pwd").trim();
+		String a_id = request.getParameter("a_id").trim();
+		String a_pwd = request.getParameter("a_pwd").trim();
 
-		session.setAttribute("access", "n");
+		session.setAttribute("admin_access", "n");
 
-		if (m_id != null && m_id.length() != 0 && m_pwd != null
-				&& m_pwd.length() != 0) {
-			AdminLoginVO member = dao.Login(m_id, m_pwd);
+		if (a_id != null && a_id.length() != 0 && a_pwd != null
+				&& a_pwd.length() != 0) {
+			AdminLoginVO member = dao.Login(a_id, a_pwd);
 			if (member != null) {
 				// 登入成功狀況
-				session.setAttribute("access", "y");
+				session.setAttribute("admin_access", "y");
 
-				session.setAttribute("m_id", member.getM_id()); // 會員帳號
-				session.setAttribute("m_no", member.getM_no()); // 會員編號
-				session.setAttribute("m_name", member.getM_name()); // 會員姓名
+				session.setAttribute("a_id", member.getA_id()); // 會員帳號
+				session.setAttribute("a_no", member.getA_no()); // 會員編號
+				session.setAttribute("a_name", member.getA_name()); // 會員姓名
+				session.setAttribute("a_pic", member.getA_pic()); // 會員圖片
 				session.setMaxInactiveInterval(3600);
 				System.out.println("success!!");
 				
-				String redirestpage= null;
-				//跳轉回原頁面
-				redirestpage=(request.getHeader("REFERER").indexOf('?')<0)?"?login=y":"&login=y";
-				response.sendRedirect(request.getHeader("REFERER")+redirestpage);
-//				response.sendRedirect("accesspage.jsp");
+
+				response.sendRedirect("admin_board.do?login=y");
 			} else {
 				System.out.println("failed!!");
 				errorMsgs.add("帳號密碼不符，請重新登入");
 				request.setAttribute("ErrorMsgKey", errorMsgs);
 				RequestDispatcher dis = request
-						.getRequestDispatcher("errorLogin.jsp");
+						.getRequestDispatcher("index.jsp");
 				dis.forward(request, response);
 			}
 		} else {
 			errorMsgs.add("帳號或密碼不能為空白");
 			request.setAttribute("ErrorMsgKey", errorMsgs);
 			RequestDispatcher dis = request
-					.getRequestDispatcher("errorLogin.jsp");
+					.getRequestDispatcher("index.jsp");
 			dis.forward(request, response);
 		}
 

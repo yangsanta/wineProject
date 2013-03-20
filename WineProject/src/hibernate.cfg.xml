@@ -61,6 +61,7 @@
 		<mapping resource="food_set/model/food_set.hbm.xml" />
 		<mapping resource="admin_board/model/admin_board.hbm.xml" />
 		<mapping resource="ads/model/ads.hbm.xml" />
+		<mapping resource="adminLogin/model/adminLogin.hbm.xml" />	
 	</session-factory>
 
 </hibernate-configuration>

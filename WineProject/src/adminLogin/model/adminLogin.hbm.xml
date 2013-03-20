@@ -8,10 +8,11 @@
 		<id name="a_no" column="a_no">
 			<generator class="identity" />
 		</id>
-		<property name="m_id" column="m_id" />
+		<property name="a_id" column="a_id" />
 		<property name="a_name" column="a_name" />
 		<property name="a_pwd" column="a_pwd" />
 		<property name="a_role" column="a_role" />
+		<property name="a_pic" column="a_pic" />	
 		
 	</class>
 </hibernate-mapping>
