@@ -192,4 +192,12 @@
 		<servlet-name>adminBoard</servlet-name>
 		<url-pattern>/wine_admin/admin_board.do</url-pattern>
 	</servlet-mapping>
+		<servlet>
+		<servlet-name>ProductMaintain</servlet-name>
+		<servlet-class>product.controller.ProductMaintain</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProductMaintain</servlet-name>
+		<url-pattern>/product/Maintain</url-pattern>
+	</servlet-mapping>
 </web-app>
