@@ -111,6 +111,24 @@ label.success {
 	<c:if test="${fn:length(discussionVO.replies)!=0}">
 	<c:forEach var="i" begin="0"
 		end="${fn:length(discussionVO.replies) - 1}">
+	<div>
+		<FORM METHOD="post"	ACTION="<%=request.getContextPath()%>/DiscussionManagment.do">
+					<input type="submit" value="隱藏此回文"/>
+					<input type="hidden" name="${discussionVO.replies[i].d_no}" value="d_no"/>
+					<input type="hidden" name="${discussionVO.replies[i].r_no}" value="r_no"/>
+					<input type="hidden" name="${discussionVO.replies[i].r_context}" value="r_context"/>
+					<input type="hidden" name="${discussionVO.replies[i].m_no}" value="m_no"/>
+					<input type="hidden" name="${discussionVO.replies[i].r_datetime}" value="r_datetime"/>
+					<input type="hidden" name="${discussionVO.replies[i].r_status}" value="r_status"/>
+					<input type="hidden" name="${discussionVO.replies[i].r_final_edit}" value="r_final_edit"/>
+					<input type="hidden" name="action" value="invisible"/>
+		</FORM>
+		<form action="DiscussionManagment.do" method="post">
+					<input type="submit" value="刪除此回文"/>
+					<input type="hidden" name="${discussionVO.replies[i].r_no}" value="r_no"/>
+					<input type="hidden" name="action" value="delete"/>
+		</form>
+	</div>	
 		<table border="1" class="dis_table" cellspacing="1"
 			style="margin-top: 20px">
 			<tr>
@@ -125,7 +143,7 @@ label.success {
 							value="${discussionVO.replies[i].r_datetime}"
 							pattern="yyyy/MM/dd HH:mm:ss" /></span>
 					<hr style="margin: 0">
-					<div style="padding: 10px">${discussionVO.replies[i].r_context}</div></td>
+					<div style="padding: 10px">${discussionVO.replies[i].r_context}</div></td>				
 			</tr>
 		</table>
 	</c:forEach>

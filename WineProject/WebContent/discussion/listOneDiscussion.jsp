@@ -171,6 +171,8 @@ $(document).ready( function(){
 						<c:if test="${fn:length(discussionVO.replies)!=0}">
 							<c:forEach var="i" begin="0"
 								end="${fn:length(discussionVO.replies) - 1}">
+								<c:if test="${discussionVO.replies[i].r_status=='ooo'}">
+
 								<table border="1" class="dis_table" cellspacing="1"
 									style="margin-top: 20px">
 									<tr>
@@ -190,8 +192,7 @@ $(document).ready( function(){
 												<div style="padding: 10px">${discussionVO.replies[i].r_context}</div></td>
 									</tr>
 								</table>
-
-
+								</c:if>
 							</c:forEach>
 						</c:if>
 
