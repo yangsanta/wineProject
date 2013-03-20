@@ -150,7 +150,7 @@
 											<strong>網路價:</strong><span style="color: red">$${ productVO.p_price }</span>
 										</div>
 											<div class="car">
-										<BR><form action="shoppingCart" method="post">
+										<BR><form action="shoppingCart.do" method="post">
 										 <span class="font-small">數量</span><select name="num" style="width: 80px;">
 													<option value=1>1</option>
 													<option value=2>2</option>

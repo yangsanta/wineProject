@@ -19,7 +19,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern></url-pattern>
 	</filter-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
@@ -215,5 +215,13 @@
 	<servlet-mapping>
 		<servlet-name>ProductMaintain</servlet-name>
 		<url-pattern>/product/Maintain</url-pattern>
+	</servlet-mapping>
+		<servlet>
+		<servlet-name>adminLogin</servlet-name>
+		<servlet-class>adminLogin.controller.adminLogin</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>adminLogin</servlet-name>
+		<url-pattern>/admin/login</url-pattern>
 	</servlet-mapping>
 </web-app>

@@ -123,25 +123,26 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 		Food_setHibernateDAO dao = new Food_setHibernateDAO();
 
 		// 新增
-		// Food_setVO food_setVO1 = new Food_setVO();
-		//
-		// ProductVO productVO = new ProductVO();
-		// productVO.setP_no(1);
-		//
-		// FoodVO foodVO = new FoodVO();
-		// foodVO.setF_id(1001);
-		//
-		// IngredientVO ingredientVO = new IngredientVO();
-		// ingredientVO.setI_id(2001);
-		//
-		// SauceVO sauceVO = new SauceVO();
-		// sauceVO.setS_id(3001);
-		//
-		// food_setVO1.setProductVO(productVO);
-		// food_setVO1.setFoodVO(foodVO);
-		// food_setVO1.setIngredientVO(ingredientVO);
-		// food_setVO1.setSauceVO(sauceVO);
-		// dao.insert(food_setVO1);
+		 Food_setVO food_setVO = new Food_setVO();
+		 food_setVO.setFs_id(new Integer(1));
+		
+		 ProductVO productVO = new ProductVO();
+		 productVO.setP_no(30);
+		
+		 FoodVO foodVO = new FoodVO();
+		 foodVO.setF_id(1001);
+		
+		 IngredientVO ingredientVO = new IngredientVO();
+		 ingredientVO.setI_id(2001);
+		
+		 SauceVO sauceVO = new SauceVO();
+		 sauceVO.setS_id(3001);
+		
+		 food_setVO.setProductVO(productVO);
+		 food_setVO.setFoodVO(foodVO);
+		 food_setVO.setIngredientVO(ingredientVO);
+		 food_setVO.setSauceVO(sauceVO);
+		 dao.insert(food_setVO);
 
 		// // 刪除
 		// dao.delete(1);

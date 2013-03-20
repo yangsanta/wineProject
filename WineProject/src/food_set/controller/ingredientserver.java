@@ -1,5 +1,6 @@
 package food_set.controller;
 
+import food.model.FoodVO;
 import ingredient.model.IngredientHibernateDAO;
 import ingredient.model.IngredientVO;
 
@@ -44,12 +45,6 @@ public class ingredientserver extends HttpServlet {
 				rd.forward(request, response);
 				return;
 			}
-			if (!errorMsg.isEmpty()) {
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/error.jsp");
-				rd.forward(request, response);
-				return;
-			}
 			// 3. 使用DAO.insert()去新增資料
 			IngredientVO ingredientVo = new IngredientVO();
 			ingredientVo.setI_name(i_name);
@@ -71,6 +66,29 @@ public class ingredientserver extends HttpServlet {
 		if (action.equals("Ingreddel")) {
 			int i_id = Integer.parseInt(request.getParameter("i_id"));
 			DAO.delete(i_id);
+			if (errorMsg.isEmpty()) {
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/FoodWine/Success.jsp");
+				rd.forward(request, response);
+				return;
+			} else {
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/FoodWine/error.jsp");
+				rd.forward(request, response);
+				return;
+			}
+		}
+		// 5修改
+		if (action.equals("ingupdate")) {
+
+			int i_id = Integer.parseInt(request.getParameter("i_id"));
+			String i_name = request.getParameter("i_name");
+
+			IngredientVO ingredientVO3 = new IngredientVO();
+			ingredientVO3.setI_id(new Integer(i_id));
+			ingredientVO3.setI_name(i_name);
+			DAO.update(ingredientVO3);
+
 			if (errorMsg.isEmpty()) {
 				RequestDispatcher rd = request
 						.getRequestDispatcher("/FoodWine/Success.jsp");

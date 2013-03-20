@@ -29,10 +29,10 @@
 				<td>${Food.f_name}</td>
 				<td>
 					<FORM METHOD="post"
-						ACTION="<%=request.getContextPath()%>/emp/emp.do">
+						ACTION="<%=request.getContextPath()%>/FoodWine/food_update.jsp">
 						<input type="submit" value="修改"> <input type="hidden"
-							name="empno" value="${empVO.empno}"> <input type="hidden"
-							name="action" value="getOne_For_Update">
+							name="f_id" value="${Food.f_id}"> <input type="hidden"
+							name="action" value="update">
 					</FORM>
 				</td>
 				<td>

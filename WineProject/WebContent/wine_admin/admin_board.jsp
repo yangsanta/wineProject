@@ -67,6 +67,28 @@
 	color: #d54e21;;
 }
 </style>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['資訊', 'last', 'now'],
+          ['上月/本月訪客',  ${visiter.numlastmonth} ,      ${visiter.nummonth}],
+          ['昨日/今日訪客',  ${visiter.numyesterday},     ${visiter.numday}],
+          ['上月/本月PageView', ${pv.numlastmonth},      ${pv.nummonth}],
+          ['昨日/今日PageView',${pv.numyesterday}, ${pv.numday}]
+        ]);
+
+        var options = {
+          title: '資訊圖表',
+          hAxis: {title: '網站總覽', titleTextStyle: {color: 'red'}}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
 </head>
 <body>
 	<div id="wrapper">
@@ -130,6 +152,7 @@
 										<td class="td">${pv.numday}<span style="background: #ddd;padding: 3px;" > ${(pv.numday-pv.numyesterday)*100/pv.numyesterday}% </span></td>
 									</tr>
 								</table>
+								 <div id="chart_div" style="width: 100%; height: 300px;"></div>
 								<br><br>
 							<h1>Last agents</h1>
 							<table class="table">

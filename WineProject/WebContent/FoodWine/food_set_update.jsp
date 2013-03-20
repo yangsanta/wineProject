@@ -5,12 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>新增食物搭配</title>
+<title>修改食物搭配</title>
 </head>
 <body>
-	<h1>新增食物搭配</h1>
-	<Form Action="<%=request.getContextPath()%>/product/setin.do?action=foodsetin"
+	<h1>修改食物搭配</h1>
+	<Form
+		Action="<%=request.getContextPath()%>/product/setin.do?action=foodsetupdate"
 		method="post" id="commentForm" class="cmxform">
+		搭配編號：<input type="text" readonly name="fs_id" value="${param.fs_id}" /><br>
 		<tr>
 			<td>商品名稱：<font color=red><b>*</b></font></td>
 			<td><select id="product" name="p_no">
@@ -18,7 +20,7 @@
 						<option value="${Product.p_no}">${Product.p_name}</option>
 					</c:forEach>
 			</select></td>
-		</tr>		
+		</tr>
 		<tr>
 			<td>食物種類：<font color=red><b>*</b></font></td>
 			<td><select id="food" name="f_id">
@@ -30,24 +32,19 @@
 		<tr>
 			<td>主要成分：<font color=red><b>*</b></font></td>
 			<td><select id="ingredient" name="i_id">
-		<c:forEach var="Ingredient" items="${Ingredient }">
-			<option value="${Ingredient.i_id}">${Ingredient.i_name}</option>
-		</c:forEach>
-	</select></td>
+					<c:forEach var="Ingredient" items="${Ingredient }">
+						<option value="${Ingredient.i_id}">${Ingredient.i_name}</option>
+					</c:forEach>
+			</select></td>
 		</tr>
 		<tr>
 			<td>風味特色：<font color=red><b>*</b></font></td>
 			<td><select id="sauce" name="s_id">
-		<c:forEach var="Sauce" items="${Sauce }">
-			<option value="${Sauce.s_id}">${Sauce.s_name}</option>
-		</c:forEach>
-	</select></td>
+					<c:forEach var="Sauce" items="${Sauce }">
+						<option value="${Sauce.s_id}">${Sauce.s_name}</option>
+					</c:forEach>
+			</select></td>
 		</tr>
-
-
-
-
-
 		<TR>
 			<td colspan="2" align="center"><input type="submit" value="送出"
 				class="btn btn-primary"></td>
