@@ -243,10 +243,5 @@ public class AdsFacade {
 		adsDAO.delete(ads_no);
 	}
 
-	// 修改廣告設定
-	public void edit(Integer ads_no) throws IOException {
-		System.out.println("*********************Ads EDIT******************");
-	}
-	
 
 }

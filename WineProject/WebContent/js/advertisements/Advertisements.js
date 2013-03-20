@@ -7,10 +7,10 @@ $(function() {
 	$("#fileName").css("display", "none");
 	$("#productName").css("display", "none");
 
+	
 	// getAll會用到
-	var templateEditRemove1of3 = '<td><a class="btn btn-default adsEdit" href="';
-	var templateEditRemove2of3 = '"><i class="icon-pencil"></i> 修改</a><br/><a class="btn btn-default adsDelete" href="';
-	var templateEditRemove3of3 = '"><i class="icon-trash"></i> 刪除</a></td>';
+	var templateRemovePre = '<td><a class="btn btn-default adsDelete" href="';
+	var templateRemovePost = '"><i class="icon-trash"></i> 刪除</a></td>';
 
 	// getAll
 	$("#tabs-2-li")
@@ -39,11 +39,9 @@ $(function() {
 																					+ '"  /></td><td>'
 																					+ this.p_name
 																					+ '</td>'
-																					+ templateEditRemove1of3
+																					+ templateRemovePre
 																					+ this.ads_no
-																					+ templateEditRemove2of3
-																					+ this.ads_no
-																					+ templateEditRemove3of3
+																					+ templateRemovePost
 																					+ '</tr>');
 
 														});
@@ -86,11 +84,9 @@ $(function() {
 																					+ '"  /></td><td>'
 																					+ this.p_name
 																					+ '</td>'
-																					+ templateEditRemove1of3
+																					+ templateRemovePre
 																					+ this.ads_no
-																					+ templateEditRemove2of3
-																					+ this.ads_no
-																					+ templateEditRemove3of3
+																					+ templateRemovePost
 																					+ '</tr>');
 
 														});
@@ -99,25 +95,6 @@ $(function() {
 								});
 					});
 
-	// Edit
-	$(document).on("click", ".adsEdit", function(event) {
-		event.preventDefault();
-
-		$.ajax({
-			url : '../product/advertisements.do',
-			type : 'POST',
-			data : {
-				ads_no : $(this).attr("href"),
-				action : "edit"
-			},
-			dataType : 'json',
-			success : function(data) {
-
-				alert("done edit");
-
-			}
-		});
-	});
 
 	// Ajax search
 	$("#search_query").bind("keyup click", function() {
