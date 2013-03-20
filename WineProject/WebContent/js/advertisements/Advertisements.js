@@ -97,6 +97,7 @@ $(function() {
 
 				uploadFinished : function(i, file, response) {					
 					$.data(file).addClass('done');
+					$(".fNameErr").remove();
 					// response is the JSON object that Ads Controller
 					// returns
 				},
@@ -121,7 +122,6 @@ $(function() {
 				// Called before each upload is started
 				beforeEach : function(file) {
 					$("#previewbox").remove();
-					$(".fNameErr").remove();
 					recordFileName(file);
 					if (!file.type.match(/^image\//)) {
 						alert('Only images are allowed!');

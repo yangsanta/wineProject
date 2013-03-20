@@ -2,6 +2,7 @@ package ads.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -61,19 +62,34 @@ public class AdsToDbServlet extends HttpServlet {
 			fileName = null;
 		}
 		if (productVO == null)
-			errMap.put("NoSuchProduct", "您所輸入的商品不存在，請先至商品管理頁面新增商品後再設定廣告。");
+			errMap.put("NoSuchProduct", "您所輸入的商品不存在，請先至商品管理頁面新增商品。");
 		
 		if (!errMap.isEmpty()){
 			session.setAttribute("AdsErrs", errMap);
 			session.setAttribute("productName", productName);
 			session.setAttribute("fileName", fileName);
 		} else {
-			AdsVO adsVO = new AdsVO();
-			adsVO.setAds_filename(fileName);
-			adsVO.setProductVO(productVO);
 			AdsDAO adsDAO = new AdsDAO();
-			adsDAO.insert(adsVO);
-			session.setAttribute("AdsSuccess", "新增廣告已成功，可繼續設定新的廣告。");
+			AdsVO adsVO;
+			List<AdsVO> list = adsDAO.findByAds_filename(fileName);
+			
+			//test
+			for (AdsVO ads: list)
+				System.out.println("ADS_NO: " + ads.getAds_no());
+			//end of test
+			
+			if ( list.size() == 0){
+				adsVO = new AdsVO();
+				adsVO.setAds_filename(fileName);
+				adsVO.setProductVO(productVO);
+				adsDAO.insert(adsVO);
+			} else {
+				adsVO = list.get(0);
+				adsVO.setProductVO(productVO);
+				adsDAO.update(adsVO);
+			}
+			
+			session.setAttribute("AdsSuccess", "廣告設定成功，可繼續設定其他廣告。");
 		}
 		response.sendRedirect(request.getContextPath()+"/wine_admin/ademin_discount.jsp");
 	}

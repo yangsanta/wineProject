@@ -1,6 +1,27 @@
-﻿use WineProject;
+﻿-- DROP DATABASE WineProject;
+
+use WineProject;
 
 drop table discussion;
+drop table reply;
+drop table coupon;
+drop table coupon_set;
+drop table orders;
+drop table order_detail;
+drop table shipping_set;
+drop table food_set;
+drop table ingredient;	--刪除食材
+drop table food;		--刪除食物
+drop table sauce;		--刪除風味
+drop table ab;
+drop table admins;
+drop table rg;
+drop table ads;
+drop table admin_board;
+drop table member;
+drop table product;		--刪除商品
+
+
 
 create table discussion (
  d_no               int IDENTITY (1001,1) not null,
@@ -14,15 +35,15 @@ create table discussion (
 
 );
 
-insert into discussion values ('1001','<p><span><span>上周到內湖分店去逛逛, 發現Baileys又出現了! 而且價格跟先前一樣$479</span><br /><span>過年期間,老婆和小姨子們頗受好評, 這次又回來了, 一次買了4瓶,免得又被搶光光。。。</span><br /><br /><span>網路上介紹可搭咖啡，還有伯爵茶！！！好像很不錯，推薦給各位喜好者</span><img src="http://www.costcobbs.com/static/image/smiley/onion_custom_emoticons/019.gif" border="0" alt="" /><br /><br /><img id="aimg_15731" class="zoom" title="20130307_Baileys 700ml.jpg" src="http://www.costcobbs.com/data/attachment/forum/201303/11/112531l02h2m9h12rbl1m6.jpg" alt="20130307_Baileys 700ml.jpg" width="480" /></span></p>','2013-03-01 12:10:00','ooo','2013-03-01 12:10:00','[分享]Baileys又回來了');
-insert into discussion values ('1001','<table cellspacing="0" cellpadding="0">  <tbody>  <tr>  <td id="postmessage_35833" class="t_f"><br /><br /><img id="aimg_8591" class="zoom" title="M1.jpg" src="http://www.costcobbs.com/data/attachment/forum/201112/24/101852knklgll5r5rngnha.jpg" alt="M1.jpg" width="600" />&nbsp;<br />CERETTOS&nbsp;&nbsp;Moscato d''Asti Santo Stefano DOCG<br /><br />這款 Moscato d''Asti 是在密閉溫控不銹鋼槽中進行發酵，因此發酵產生的二氧化碳氣泡仍保留在酒中；一旦酒精濃度達到酒廠所要的標準，會以急速降溫的方式中止發酵程序，此時仍有一些殘餘糖分在酒中，賦予這款酒鮮活的甜味。這是 Ceretto 呈獻給世人的 "La Dolce Vita (the sweet life)"！<br /><br />酒的色澤是明亮的稻草黃，並帶有氣泡。其香氣是濃厚持久的荔枝般果香，聞起來活潑而沁人心脾。在口中甜味、酸味和豐富的果味形成和諧的平衡，低酒精度又含有一些氣泡的特色，讓口感十分清爽怡人。可以做為開胃酒，餐後搭配水果更是理想。</td>  </tr>  </tbody>  </table>','2013-03-01 12:15:00','ooo','2013-03-01 12:15:00','[情報]義大利 慕司卡多微甜白酒Moscato d''Asti I Vignaioli di Santo Stefano  ');
-insert into discussion values ('1003','<p>  <div id="aimg_14714_menu" class="tip tip_4 aimg_tip">  <div class="tip_c xs0">  <div class="y"><img id="aimg_14713" class="zoom" title="IMAG0412.jpg" src="http://www.costcobbs.com/data/attachment/forum/201301/21/002639p5ml33nbg6lru3lr.jpg" alt="IMAG0412.jpg" width="577" /><span>&nbsp;</span></div>  </div>  </div>  <br /><br /><span>此商品為這次年節特惠商品 我已經注意很久了 嘿嘿</span><br /><span>19號特別去買 當場還有試飲 果真好喝</span><br /><span>很適合女生,喝起來甜甜的香香的&nbsp;</span><br /><span>冰冰的喝更好喝 就類似香檳的口感</span><br /><span>不過氣泡酒麻煩的就是開瓶後就要馬上喝光&nbsp;</span><br /><span>不然就會變苦澀&nbsp;</span><br /><span>試飲小姐說這是長榮桂冠酒坊代理的</span><br /><span>一瓶外面要賣699&nbsp;</span><br /><span>趁著這次特價可以快去購入,過年應該蠻適合喝的</span></p>','2013-03-01 12:20:00','ooo','2013-03-01 12:20:00','[分享]布朗兄弟粉紅氣泡酒');
-insert into discussion values ('1005','幾天前在香港的國際葡萄酒展中，一位女士對我說，要找尋一些有濃木香的酒很困難。這令我想起幾年前在一個國際公司的酒會上，遇到一些國內企業的管理層，最初他們也是期待當日飲的澳洲優質酒，帶有濃的木味。其實釀工精細的酒，反而木的香氣會來得輕柔。經過筆者的一番解釋，這些國內的高層才明白精細與粗劣的分別。
+insert into discussion values ('1','<p><span><span>上周到內湖分店去逛逛, 發現Baileys又出現了! 而且價格跟先前一樣$479</span><br /><span>過年期間,老婆和小姨子們頗受好評, 這次又回來了, 一次買了4瓶,免得又被搶光光。。。</span><br /><br /><span>網路上介紹可搭咖啡，還有伯爵茶！！！好像很不錯，推薦給各位喜好者</span><img src="http://www.costcobbs.com/static/image/smiley/onion_custom_emoticons/019.gif" border="0" alt="" /><br /><br /><img id="aimg_15731" class="zoom" title="20130307_Baileys 700ml.jpg" src="http://www.costcobbs.com/data/attachment/forum/201303/11/112531l02h2m9h12rbl1m6.jpg" alt="20130307_Baileys 700ml.jpg" width="480" /></span></p>','2013-03-01 12:10:00','ooo','2013-03-01 12:10:00','[分享]Baileys又回來了');
+insert into discussion values ('1','<table cellspacing="0" cellpadding="0">  <tbody>  <tr>  <td id="postmessage_35833" class="t_f"><br /><br /><img id="aimg_8591" class="zoom" title="M1.jpg" src="http://www.costcobbs.com/data/attachment/forum/201112/24/101852knklgll5r5rngnha.jpg" alt="M1.jpg" width="600" />&nbsp;<br />CERETTOS&nbsp;&nbsp;Moscato d''Asti Santo Stefano DOCG<br /><br />這款 Moscato d''Asti 是在密閉溫控不銹鋼槽中進行發酵，因此發酵產生的二氧化碳氣泡仍保留在酒中；一旦酒精濃度達到酒廠所要的標準，會以急速降溫的方式中止發酵程序，此時仍有一些殘餘糖分在酒中，賦予這款酒鮮活的甜味。這是 Ceretto 呈獻給世人的 "La Dolce Vita (the sweet life)"！<br /><br />酒的色澤是明亮的稻草黃，並帶有氣泡。其香氣是濃厚持久的荔枝般果香，聞起來活潑而沁人心脾。在口中甜味、酸味和豐富的果味形成和諧的平衡，低酒精度又含有一些氣泡的特色，讓口感十分清爽怡人。可以做為開胃酒，餐後搭配水果更是理想。</td>  </tr>  </tbody>  </table>','2013-03-01 12:15:00','ooo','2013-03-01 12:15:00','[情報]義大利 慕司卡多微甜白酒Moscato d''Asti I Vignaioli di Santo Stefano  ');
+insert into discussion values ('3','<p>  <div id="aimg_14714_menu" class="tip tip_4 aimg_tip">  <div class="tip_c xs0">  <div class="y"><img id="aimg_14713" class="zoom" title="IMAG0412.jpg" src="http://www.costcobbs.com/data/attachment/forum/201301/21/002639p5ml33nbg6lru3lr.jpg" alt="IMAG0412.jpg" width="577" /><span>&nbsp;</span></div>  </div>  </div>  <br /><br /><span>此商品為這次年節特惠商品 我已經注意很久了 嘿嘿</span><br /><span>19號特別去買 當場還有試飲 果真好喝</span><br /><span>很適合女生,喝起來甜甜的香香的&nbsp;</span><br /><span>冰冰的喝更好喝 就類似香檳的口感</span><br /><span>不過氣泡酒麻煩的就是開瓶後就要馬上喝光&nbsp;</span><br /><span>不然就會變苦澀&nbsp;</span><br /><span>試飲小姐說這是長榮桂冠酒坊代理的</span><br /><span>一瓶外面要賣699&nbsp;</span><br /><span>趁著這次特價可以快去購入,過年應該蠻適合喝的</span></p>','2013-03-01 12:20:00','ooo','2013-03-01 12:20:00','[分享]布朗兄弟粉紅氣泡酒');
+insert into discussion values ('5','幾天前在香港的國際葡萄酒展中，一位女士對我說，要找尋一些有濃木香的酒很困難。這令我想起幾年前在一個國際公司的酒會上，遇到一些國內企業的管理層，最初他們也是期待當日飲的澳洲優質酒，帶有濃的木味。其實釀工精細的酒，反而木的香氣會來得輕柔。經過筆者的一番解釋，這些國內的高層才明白精細與粗劣的分別。
 	在釀酒的時候，用橡木桶盛載，目的是要讓木桶的天然分子滲入酒裏，木桶在製造過程中，可以因應酒廠的要求，造出不同的燻煙程度，這些燻煙過的特性，也會滲入酒裏。酒中有時釋放出燻香味，就是這個原因。若釀酒師不想酒中帶有木的香氣和個性，在釀酒和存酒時，索性用其他的酒缸便可，例如不銹鋼的大酒缸。
 	新世界的產酒國，尤其是澳洲，個別的酒廠在釀製Chardonnay莎多妮時，會用上全新的橡木桶，這樣令酒帶一些硬殼果如榛子、合桃的氣味，但這種木香味，因為過濃，並非每個飲家都喜歡。事實上過濃的木味，反而會把原本的酒香特色掩蓋了。
 	筆者認為有輕微的木香較濃烈的優雅，要做到不同的木香風格，需要在發酵時使用木桶，或在發酵完成後才放入桶陳年。至於用美國木桶還是法國木桶，這也是依釀酒師風格而定。有些人覺得法國的木桶略帶草酸，而美國木桶則略帶硬殼果味道，價錢上法國的肯定比美國的要昂貴。
 	由於一些低劣的葡萄酒，果香和層次欠奉，於是要依賴木的氣味來增加酒的複雜性，同時它的劣質也可以瞞天過海。為了降低成本，有些酒廠將橡木碎浸在酒裏，這個做法，成本低，木味濃，不過橡木碎的氣味來得霸道，酒的香氣可以說是雜亂無章。','2013-03-01 12:25:00','ooo','2013-03-01 12:25:00','[分享]別讓木香味騙了你');
-insert into discussion values ('1002',' 波爾多終於在2009的世紀年份、2010的絕佳年份之後；在2011年迎來了天候有大幅變化的「釀酒師年份」。
+insert into discussion values ('2',' 波爾多終於在2009的世紀年份、2010的絕佳年份之後；在2011年迎來了天候有大幅變化的「釀酒師年份」。
 
 	這是一個被認為將會有極端表現，需要有經驗豐富的釀酒師在正確的時間點做出適切的判斷，才能主宰成敗關鍵；更需要仰賴人力而並非像過去那樣單單仰賴自然就能輕易成就好酒的年份。事實是，2011年的天候狀況也能以「極端」來總結，不但氣溫總是在過冷和過熱之間擺盪、連降雨都遊走在乾旱和過於潮濕之間；在本來應該溫和的春季就出現了直比夏天的前所未有高溫；夏季的持續乾旱甚至讓波爾多在六月就出現了讓葡萄樹幾乎要被「烤乾」的40度高溫，卡本內的收成甚至因此就損失了近兩成，葉子生得更寬闊的梅洛則稍微幸運地勉強逃過一劫。
 
@@ -34,18 +55,18 @@ insert into discussion values ('1002',' 波爾多終於在2009的世紀年份、
 	至於那些可能真讓人傷腦筋的紅酒，如今多數品嚐過新酒的酒評家們都同意：唯有那些最頂尖，擁有最雄厚財力、最豐富人力資源能應付繁雜更勝以往的葡萄園工作、在各方面都願意進行最嚴格篩選的酒廠，才可能產出風格優雅細膩的古典年份。這些最頂尖的酒廠，能透過對葡萄品質的嚴格篩選，而依然保持清新的酸度，有足夠的單寧和酒精構成典雅的結構，達到整體的均衡；至於那些疏於篩選葡萄、重視產量甚過品質的酒廠，則很可能會出現風味和濃縮度不足的問題。總的來說，種植在粘土和石灰岩土壤上的梅洛、種在礫石土壤或礫石混和粘土的卡本內蘇維濃；所有的卡本內弗朗，都是在這個極端年份適應較佳的紅酒贏家。不只聖愛美濃的生產者開心地表示，2011是個絕佳的卡本內弗朗年份；波爾多右岸主要為粘土和石灰岩土壤為主的梅洛產區，生產者也都表示2011年的梅洛可口極了。
 
 	至於價格，由於外在經濟環境並不穩定；因此一般預料，波爾多的酒莊應該會有所節制，以一種更平穩的心態、比去年可能收斂兩三成的價格，來面對這個天候極端、得來不易的2011年。','2013-03-01 12:30:00','ooo','2013-03-01 12:30:00','[新聞]2011 波爾多 「釀酒師的年份」');
-insert into discussion values ('1002','<p><img src="http://www.top100wine.com.tw/uploads/tadnews/image/First%20Press(1).jpg" alt="" width="187" height="300" align="left" /><span style="color: #0000ff;">&lt;品醇客世界葡萄酒大賞&gt;Decanter World Wine Award (DWWA)，</span>每年都會依據價錢、產區、品種等類目，嚴評世界各地送選的好酒。這不見得是一份最理想的名單，但獲獎酒款絕對有不錯的實力。有趣的是，你在DWWA中看不到什麼世界名酒或是膜拜酒，<span style="color: #0000ff;">有的卻是物超所值／真正可以買來佐餐／話家常的實惠酒款。</span></p>  <p><span style="color: #0000ff;"><br /><br /></span><span style="color: #0000ff;">來自Delicato酒廠的<span style="color: #ff0000;">First Press（一番榨－實在是很讚的名字）</span>出自知名的納帕谷，榮獲DWWA銀牌。</span>拜2007年份之賜（加州酒近10年最好的年份），<span style="color: #800080;">這款酒有著黑莓、黑醋栗和摩卡咖啡香氣；夾雜著黑櫻桃、無花果和黑巧克力的濃醇味道；厚實的酒體結構，層次豐富複雜而多變。</span>事實上，Delicato是加州的葡萄酒巨人之一，它的San Bernabe是世界最大的葡萄園，光是葡萄樹就種了9400英畝，這個義裔家族建立的葡萄酒王國，旗下結合了優秀的釀酒師，<span style="color: #ff0000;">在2007年榮獲＜Wine Enthusiast＞的American Winery of the Year 2007。</span></p>','2013-03-01 12:30:00','ooo','2013-03-01 12:30:00','[分享]加州納帕一番榨 Delicato First Press, CS, Napa Valley, 2007');
-insert into discussion values ('1002','　　Domaine Leflaive(樂飛酒莊)是珍品酒款，它很好認，兩隻黃色公雞中間夾了一個像是家徽的圖樣，所以酒友均稱它「公雞牌」。它早在1717年成立，葡萄園多半位於布根地最佳的白酒村莊Puligny-Montrachet，四個特級園都有作品，瓶瓶都是上萬元身價。尤其它的Montrachet一酒難求，近年開出的行情都是6位數起跳，瓶瓶都落入收藏家酒窖。 
+insert into discussion values ('2','<p><img src="http://www.top100wine.com.tw/uploads/tadnews/image/First%20Press(1).jpg" alt="" width="187" height="300" align="left" /><span style="color: #0000ff;">&lt;品醇客世界葡萄酒大賞&gt;Decanter World Wine Award (DWWA)，</span>每年都會依據價錢、產區、品種等類目，嚴評世界各地送選的好酒。這不見得是一份最理想的名單，但獲獎酒款絕對有不錯的實力。有趣的是，你在DWWA中看不到什麼世界名酒或是膜拜酒，<span style="color: #0000ff;">有的卻是物超所值／真正可以買來佐餐／話家常的實惠酒款。</span></p>  <p><span style="color: #0000ff;"><br /><br /></span><span style="color: #0000ff;">來自Delicato酒廠的<span style="color: #ff0000;">First Press（一番榨－實在是很讚的名字）</span>出自知名的納帕谷，榮獲DWWA銀牌。</span>拜2007年份之賜（加州酒近10年最好的年份），<span style="color: #800080;">這款酒有著黑莓、黑醋栗和摩卡咖啡香氣；夾雜著黑櫻桃、無花果和黑巧克力的濃醇味道；厚實的酒體結構，層次豐富複雜而多變。</span>事實上，Delicato是加州的葡萄酒巨人之一，它的San Bernabe是世界最大的葡萄園，光是葡萄樹就種了9400英畝，這個義裔家族建立的葡萄酒王國，旗下結合了優秀的釀酒師，<span style="color: #ff0000;">在2007年榮獲＜Wine Enthusiast＞的American Winery of the Year 2007。</span></p>','2013-03-01 12:30:00','ooo','2013-03-01 12:30:00','[分享]加州納帕一番榨 Delicato First Press, CS, Napa Valley, 2007');
+insert into discussion values ('2','　　Domaine Leflaive(樂飛酒莊)是珍品酒款，它很好認，兩隻黃色公雞中間夾了一個像是家徽的圖樣，所以酒友均稱它「公雞牌」。它早在1717年成立，葡萄園多半位於布根地最佳的白酒村莊Puligny-Montrachet，四個特級園都有作品，瓶瓶都是上萬元身價。尤其它的Montrachet一酒難求，近年開出的行情都是6位數起跳，瓶瓶都落入收藏家酒窖。 
 　　值得一提的是，此莊園雖然名氣非凡，但在Anne Claude Leflaive手上，更是竭心自我挑戰。她領先業界改採自然動力法，讓整個Leflaive在飽滿與堅實之外，還多了那難以忘懷的純淨與深遂，系列品項一向靈韻十足，不愧世界標竿。不論「世界最偉大的酒莊」R. Parker所著，或是「稀世珍釀」陳新民所著，任何一本討論頂級酒款的書，就必有Domaine Leflaive。 
 　　畢竟是一等一的酒莊，大部分玩家只要喝過Domaine Leflaive，就能輕易感覺它精采的實力。百大此次的品項，領軍的是特級園Batard Montrachet 2007 (巴塔蒙哈榭)，這是功力深厚的酒莊總管Pierre Morey自1989年起，在Domaine Leflaive仕事的最後一個年份，玩家可以珍藏。 ','2013-03-01 12:30:00','ooo','2013-03-01 12:30:00','[分享]白酒第一名莊 Domaine Leflaive（樂飛酒莊，又稱公雞牌）');
 
 -------------------------------------------------------------------------------
 
 
-drop table member;
+
 
 create table member (
- m_no               int IDENTITY (1001,1) not null,
+ m_no               int IDENTITY not null,
  m_id                 varchar(20),
  m_name               varchar(10),
  m_pwd                 varchar(16),
@@ -69,7 +90,7 @@ insert into member values ('fff','king6','president','0955959888','kk.jj@yahoo.c
 
 
 
-drop table reply;
+
 
 create table reply (
  d_no               int  not null,
@@ -81,19 +102,18 @@ create table reply (
  r_final_edit       datetime,
  constraint reply_r_no_pk primary key (r_no));
 
-insert into reply values ('1001','xxx','1003','2013-03-01 13:10:00','ooo','2013-03-01 13:10:00');
-insert into reply values ('1001','xxx','1003','2013-03-01 13:15:00','ooo','2013-03-01 13:15:00');
-insert into reply values ('1001','xxx','1003','2013-03-01 13:20:00','ooo','2013-03-01 13:20:00');
-insert into reply values ('1001','xxx','1003','2013-03-01 13:25:00','ooo','2013-03-01 13:25:00');
-insert into reply values ('1001','xxx','1003','2013-03-01 13:30:00','ooo','2013-03-01 13:30:00');
+insert into reply values ('1001','xxx','3','2013-03-01 13:10:00','ooo','2013-03-01 13:10:00');
+insert into reply values ('1001','xxx','3','2013-03-01 13:15:00','ooo','2013-03-01 13:15:00');
+insert into reply values ('1001','xxx','3','2013-03-01 13:20:00','ooo','2013-03-01 13:20:00');
+insert into reply values ('1001','xxx','3','2013-03-01 13:25:00','ooo','2013-03-01 13:25:00');
+insert into reply values ('1001','xxx','3','2013-03-01 13:30:00','ooo','2013-03-01 13:30:00');
 
 
 
 --------------------------------------------------------------------------------------------------------
 
 
-drop table coupon;
-drop table order_detail;
+
 
 
 create table coupon (
@@ -106,10 +126,10 @@ create table coupon (
  constraint coupon_m_no_fk foreign key (m_no) references member		(m_no));	
 
 
-insert into coupon values ('AAAAAAAAAAAAAA1',1000,0,GETDATE(),1001);
-insert into coupon values ('BBBBBBBBBBBBBB2',500,0,GETDATE(),1001);
-insert into coupon values ('CCCCCCCCCCCCCC3',200,0,GETDATE(),1002);
-insert into coupon values ('DDDDDDDDDDDDDD4',100,1,GETDATE(),1003);
+insert into coupon values ('AAAAAAAAAAAAAA1',1000,0,GETDATE(),1);
+insert into coupon values ('BBBBBBBBBBBBBB2',500,0,GETDATE(),1);
+insert into coupon values ('CCCCCCCCCCCCCC3',200,0,GETDATE(),2);
+insert into coupon values ('DDDDDDDDDDDDDD4',100,1,GETDATE(),3);
 
 
 create table order_detail (
@@ -132,7 +152,7 @@ insert into order_detail values (0003,2,4,1,200);
 insert into order_detail values (0004,9,1,0,1000);
 insert into order_detail values (0004,8,2,0,999);
 ----------------------------------------------------------------------------------------------------------------------------------
-drop table coupon_set;
+
 create table coupon_set ( --[table]滿額贈Coupon   ok
 cs_limit_price			int,	--金額區間/下限  [ primary key ]
 cs_price				int		--Coupon面額
@@ -143,14 +163,14 @@ insert into coupon_set values (1000,200);
 insert into coupon_set values (1500,300);
 insert into coupon_set values (3000,400);
 -------------------------------------------------------------
-drop table shipping_set;
+
 create table shipping_set ( --[table]滿額免運 
 min_pirce 				int	--最低額度 [ primary key ]
 );
 insert into shipping_set values (300);
 
 -------------------------------------------------------------------------------------------------------------------------
-drop table food;		--刪除食物
+
 create table food ( --[table]食物種類 ok
 f_id				int IDENTITY (1001,1) 	not null,	--食物種類ID [ primary key ]
 f_name			varchar(120) 	 not null,		--食物種類name
@@ -163,7 +183,7 @@ insert into food values ('穀類');
 insert into food values ('雞鴨');
 insert into food values ('海鮮');
 -------------------------------------------------------------------------------------------------------------------------
-drop table ingredient;	--刪除食材
+
 create table ingredient ( --[table]主要成分 ok
 i_id				int IDENTITY (2001,1) 	not null,	--食材ID [ primary key ]
 i_name			varchar(120)  	not null,		--食材name
@@ -203,7 +223,7 @@ insert into ingredient values ('壽司');
 insert into ingredient values ('金槍魚');
 insert into ingredient values ('白魚');
 -------------------------------------------------------------------------------------------------------------------------
-drop table sauce;		--刪除風味
+
 create table sauce ( --[table]醬料or風味 ok
 s_id				int IDENTITY (3001,1) 	not null,	--醬料ID [ primary key ]
 s_name			varchar(120)  				--醬料name
@@ -258,7 +278,7 @@ insert into sauce values (	'	冰淇淋	'	);
 -------------------------------------------------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------------------------------------------------
-drop table product;		--刪除商品
+
 
 create table product (
  p_no               int IDENTITY  not null,
@@ -498,7 +518,7 @@ insert into food_set values (	86	,	1006	,	2033	,	3043	);
 
 																			
 -------------------------------------------------------------
-drop table ab;
+
 create table ab ( --[table]AB 
 Uniid				int IDENTITY  not null,	--流水號 [ primary key ]
 ab_a_p_id				int  not null,	--AID
@@ -512,7 +532,7 @@ insert into ab values	('11','34')	;
 insert into ab values	('46','92')	;
 insert into ab values	('24','91')	;
 -----------------------------------------------------------
-drop table orders;
+
 
 create table orders (
 o_no			    Integer IDENTITY  not null,
@@ -528,17 +548,17 @@ o_status			varchar(10),
 o_pic				varchar(100),
 constraint orders_primary_key primary key (o_no));
 
-insert into orders values ('1001','2013-2-16','N','50','9999','sa','捷運大安站','0987654321','F','1.png');
-insert into orders values ('1001','2013-2-16','Y','0','1234','sa','捷運大安站','0987654321','T','2.png');
-insert into orders values ('1002','2013-2-16','N','50','4999','sa','捷運大安站','0987654321','T','3.png');
-insert into orders values ('1003','2013-2-16','Y','50','6999','sa','捷運大安站','0987654321','T','4.png');
-insert into orders values ('1005','2013-2-16','N','50','7999','sa','捷運大安站','0987654321','F','5.png');
-insert into orders values ('1006','2013-2-16','N','50','6999','sa','捷運大安站','0987654321','F','6.png');
-insert into orders values ('1006','2013-2-16','Y','50','5999','sa','捷運大安站','0987654321','T','7.png');
-insert into orders values ('1008','2013-2-16','N','50','8999','sa','捷運大安站','0987654321','F','8.png');
+insert into orders values ('1','2013-2-16','N','50','9999','sa','捷運大安站','0987654321','F','1.png');
+insert into orders values ('1','2013-2-16','Y','0','1234','sa','捷運大安站','0987654321','T','2.png');
+insert into orders values ('2','2013-2-16','N','50','4999','sa','捷運大安站','0987654321','T','3.png');
+insert into orders values ('3','2013-2-16','Y','50','6999','sa','捷運大安站','0987654321','T','4.png');
+insert into orders values ('5','2013-2-16','N','50','7999','sa','捷運大安站','0987654321','F','5.png');
+insert into orders values ('6','2013-2-16','N','50','6999','sa','捷運大安站','0987654321','F','6.png');
+insert into orders values ('6','2013-2-16','Y','50','5999','sa','捷運大安站','0987654321','T','7.png');
+insert into orders values ('8','2013-2-16','N','50','8999','sa','捷運大安站','0987654321','F','8.png');
 -----------------------------------------------------------------------
 
-drop table admins;
+
 
 create table admins (
  a_no               int IDENTITY  not null,
@@ -556,7 +576,7 @@ insert into admins values ('adm5','555','LV_3');
 insert into admins values ('adm6','666','LV_1');
 -------------------------------------------------------
 
-drop table rg;
+
 
 create table rg (
  u_id               int IDENTITY  not null,
@@ -599,7 +619,7 @@ insert into rg values	('53','G','3','2013/3/3','2013/6/30');
 
 
 
---drop table ads;
+
 
 create table ads(
  ads_no             int IDENTITY  not null,
@@ -621,7 +641,7 @@ insert into ads values	(9,'5056611_142320247000_2.jpg');
 
 
 
---drop table admin_board
+
 create table admin_board (
  i_no               int IDENTITY  not null,
  remoteAddr         varchar(100),

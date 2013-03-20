@@ -25,10 +25,10 @@ form table, form tr, form td{
 #errlist {
 	color: #915608;
 	line-height:2em;
-	margin:10px 0px;
+	margin:10px 5px;
 }
 #okMsg {
-	color: ##3f5a04;
+	color: #3f5a04;
 	line-height:2em;
 	margin:10px 5px;
 }

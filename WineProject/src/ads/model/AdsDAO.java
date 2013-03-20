@@ -11,6 +11,7 @@ import org.hibernate.Session;
 public class AdsDAO implements AdsDAO_interface {
 	private static final String GET_ALL_STMT = "from AdsVO order by ads_no";
 	private static final String GET_SOME_byP_no_STMT = "from AdsVO where p_no=? order by ads_no";
+	private static final String GET_SOME_byAds_filename_STMT = "from AdsVO where ads_filename=? order by ads_no";
 
 	@Override
 	public void insert(AdsVO adsVO) {
@@ -92,6 +93,23 @@ public class AdsDAO implements AdsDAO_interface {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_SOME_byP_no_STMT);
 			query.setParameter(0, p_no);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+
+	@Override
+	public List<AdsVO> findByAds_filename(String ads_filename) {
+		List<AdsVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_SOME_byAds_filename_STMT);
+			query.setParameter(0, ads_filename);
 			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
