@@ -41,26 +41,24 @@
 					<input type="text" name="search_query" id="search_query"
 						placeholder="請輸入部分商品名，或輸入 # 號列出全部商品" size="40" autocomplete="off"
 						value="${productName}" />
+					<div id="errlist">
+						<p class="pNameErr">${AdsErrs.WrongP_no}</p>
+						<p class="fNameErr">${AdsErrs.EmptyFile}</p>
+						<p class="pNameErr">${AdsErrs.EmptyName}</p>
+						<p class="pNameErr">${AdsErrs.NoSuchProduct}</p>
+					</div>
+					<div id="okMsg">${AdsSuccess}</div>
 					<table>
 						<tbody id="ulResult">
 						</tbody>
 					</table>
 				</div>
-
-				<input type="submit" value="設定新廣告" id="button" /> <input
-					type="text" name="fileName" id="fileName" value="${fileName}" /> <input
-					type="text" name="productName" id="productName"
-					value="${productName}" />
-
+				<input type="submit" value="設定廣告" id="button" /> 
+				<input type="text" name="fileName" id="fileName" value="${fileName}" /> 
+				<input type="text" name="productName" id="productName" value="${productName}" />
 			</form>
 			<div id="bar"></div>
-			<div id="errlist">
-				${AdsErrs.WrongP_no}<br/ > ${AdsErrs.EmptyFile}<br />
-				${AdsErrs.EmptyName}<br /> ${AdsErrs.NoSuchProduct}<br />
-			</div>
-			<div id="okMsg">
-				${AdsSuccess}<br />
-			</div>
+
 		</div>
 
 		<div id="tabs-2">Phasellus mattis tincidunt nibh. Cras orci

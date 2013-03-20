@@ -76,13 +76,14 @@ $(function() {
 	}).on("click", "#ulResult tr", function(){
 		$("#productName").val($(this).text());
 		$("#search_query").val($(this).text());
+		$(".pNameErr").remove();
 		while (document.getElementById("ulResult").hasChildNodes()){
 			$(document.getElementById("ulResult").removeChild((document.getElementById("ulResult")).firstChild));
 		}
 	});
 	
 
-	// drop to upload feature starts
+	// drop to upload feature
 	var dropbox = $('#dropbox'), message = $('.message', dropbox);
 	
 	dropbox
@@ -120,6 +121,7 @@ $(function() {
 				// Called before each upload is started
 				beforeEach : function(file) {
 					$("#previewbox").remove();
+					$(".fNameErr").remove();
 					recordFileName(file);
 					if (!file.type.match(/^image\//)) {
 						alert('Only images are allowed!');

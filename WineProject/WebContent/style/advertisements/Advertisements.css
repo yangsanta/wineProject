@@ -22,17 +22,27 @@ form table, form tr, form td{
 	clear:both;
 }
 
-#errlist, #okMsg {
-	margin:10px;
+#errlist {
+	color: #915608;
 	line-height:2em;
+	margin:10px 0px;
+}
+#okMsg {
+	color: ##3f5a04;
+	line-height:2em;
+	margin:10px 5px;
 }
 #divContent{
  	float:left;
- 	margin:10px 5px 30px 20px;
+ 	margin:1px 5px 30px 20px;
  	min-height: 290px;
  	width: 400px;
  }
- #tabs-1 {
+#tabs {
+	margin: 35px auto;
+	width: 90%;
+}
+#tabs-1, #tabs-2 {
  	padding: 50px 15%;
  }
 #query_search{
@@ -48,7 +58,7 @@ form table, form tr, form td{
  	float:left;
     border-radius:3px;
     position: relative;
-    margin:10px auto 30px;
+    margin:1px auto 30px;
     min-height: 290px;
     overflow: hidden;
     padding-bottom: 40px;
