@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,21 +24,10 @@ public class foodserver extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// request.setCharacterEncoding("UTF-8");
-		// response.setCharacterEncoding("UTF-8");
-		//
-		// String action = request.getParameter("action");
-		//
-		// FoodHibernateDAO foodHibernateDAO = new FoodHibernateDAO();
-		// List<FoodVO> list = foodHibernateDAO.getAll();
-		// request.setAttribute("Food", list);
-		//
-		// RequestDispatcher rd =
-		// request.getRequestDispatcher("/FoodWine/food_insert.jsp");
-		// rd.forward(request, response);
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -79,6 +69,29 @@ public class foodserver extends HttpServlet {
 		if (action.equals("fooddel")) {
 			int f_id = Integer.parseInt(request.getParameter("f_id"));
 			DAO.delete(f_id);
+			if (errorMsg.isEmpty()) {
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/FoodWine/Success.jsp");
+				rd.forward(request, response);
+				return;
+			} else {
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/FoodWine/error.jsp");
+				rd.forward(request, response);
+				return;
+			}
+		}
+		// 5修改
+		if (action.equals("foodup")) {
+
+			int f_id = Integer.parseInt(request.getParameter("f_id"));
+			String f_name = request.getParameter("f_name");
+
+			FoodVO foodVO2 = new FoodVO();
+			foodVO2.setF_id(new Integer(f_id));
+			foodVO2.setF_name(f_name);
+			DAO.update(foodVO2);
+
 			if (errorMsg.isEmpty()) {
 				RequestDispatcher rd = request
 						.getRequestDispatcher("/FoodWine/Success.jsp");
