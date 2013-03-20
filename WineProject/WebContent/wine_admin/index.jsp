@@ -31,10 +31,10 @@
       }
 
       .form-signin {
-        max-width: 300px;
+        max-width: 400px;
         padding: 19px 29px 29px;
         margin: 0 auto 20px;
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.64);
         border: 1px solid #e5e5e5;
         -webkit-border-radius: 5px;
            -moz-border-radius: 5px;
@@ -63,14 +63,14 @@
     <![endif]-->
   </head>
 
-  <body>
-
+  <body style="background: url('<%=request.getContextPath()%>/images/wood.jpg') top left repeat-y;">
+<br /><br /><br /><br />
     <div class="container">
 
-      <form class="form-signin"  action = "admin/login" method="post">
+      <form class="form-signin"  action = "adminlogin" method="post">
         <h2 class="form-signin-heading">酒迷後台管理系統</h2>
-        <input name="m_id"  type="text" class="input-block-level" placeholder="Email address">
-        <input name="m_pwd" type="password" class="input-block-level" placeholder="Password">
+        <input name="a_id"  type="text" class="input-block-level" placeholder="Account">
+        <input name="a_pwd" type="password" class="input-block-level" placeholder="Password">
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>

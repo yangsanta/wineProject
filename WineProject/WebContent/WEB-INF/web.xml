@@ -222,6 +222,6 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>adminLogin</servlet-name>
-		<url-pattern>/admin/login</url-pattern>
+		<url-pattern>/wine_admin/adminlogin</url-pattern>
 	</servlet-mapping>
 </web-app>

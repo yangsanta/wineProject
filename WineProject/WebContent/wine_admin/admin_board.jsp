@@ -10,6 +10,7 @@
 <meta charset="utf-8">
 	<title>酒迷|後台管理系統</title>
 	<link media="all" rel="stylesheet" type="text/css" href="css/all.css" />
+	 <c:if test="${sessionScope.admin_access!='y'}"><meta http-equiv="refresh" content="0; url=index.jsp"></c:if>
 	<script type="text/javascript"
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript">
@@ -106,7 +107,7 @@
 						<span class="profile"> <a href="#" class="section"> <img
 								class="image" src="images/img1.png" alt="image description"
 								width="26" height="26" /> <span class="text-box">
-									Welcome <strong class="name">楊明華</strong>
+									Welcome <strong class="name">${sessionScope.a_name}</strong>
 							</span>
 						</a> <a href="#" class="opener">opener</a>
 						</span> <a href="#" class="btn-on">On</a>

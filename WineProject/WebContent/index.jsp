@@ -175,25 +175,37 @@ z-index: 1000;width:300px;color:black}
 	</div>
 						<div id="box1">
 							<h2>
-								Welcome to Coffeelike
+								限時特賣!
 							</h2>
-								<h2>倒安由爭隊同它心實</h2>
-引是和什式聲，理個有流，落除速熱行民散會關，起集得舉物月配苦場會要冷西道智識見就可我、可路資……會更的排卻上能資錢總華的無中可成入全了轉來身？打叫來收人不死，來子樂多她類，以長黑要反開倒創經陸檢運次三水新了如獨可石行服二三呢片北不對公發任高院性路許生畫賽能北。世可們局是星加的場長懷氣，們的滿是類未苦商而冷治一了實，愛背痛的者總不是女的下個。爸刻用新接頭者百。有滿的賽子孩計保的才這頭報的青務文我，許己。
+								<h3>美味的香濃紅葡萄酒 來自奧茲大地的甜美風味</h3>
+								<img src="http://img1.groupon.com.tw/pi/19861-1-big.jpg?1363158213">
+								<div style="background-color: #d7f1f7;background-image:url(images/lightbg.jpg);position:relative;margin:0 -40px 0 -40px">
+								<div>
+								<span style="font-size:16px">原價 $250<br>
+ 折扣 64折 <br>
+ 現省 $90<br>
+ 1477人已購買
+好康已成立</span>
+倒數計時 <button class="btn btn-large  btn-success" type="button">我要買</button>
+fb推薦</div>
 
-說樓接道建經為樹壓的改；來合告嚴是聽園不。
-
-兒大民好過該現量。出一們時保不知滿人食？告幾子的叫，極快馬文隨的這定非人團響……科靜日說果子學愛其帶辦來懷影之因……開心同其家教下因起臺。發門獨？式水外合管路在回期驗天靜人下舉滿德力這子沒點視，治各房母華公是：處再開皮感說；不花沒頭和年養境才話！字度學久地，智見朋？率華地年為部這作言行息教四愛此師戲是現、看單即兒黃爭事：打是打工保建人開生否致們照文，然體當價高、學有場叫不面望情火反線到形星往常。
-<h2>有以分百比業全企</h2>
-體分格舉發！見東之千之心！情率金不一事動果始花戲當願的灣出，自來指臺是人每治：國過用一香演頭了一你合了。不家文多魚一車機發數今石童，論參共各親不反成教展斯成身開身角的成力之的個品，面子河前了去以明但利歡。
-
-又起寶可相列全市、十國從夠外次叫經心研有通他員出得女是論子電毒己圖房排清：們等灣才會，辦選一，最顧統畫有來風有後製相我德感無。心坡一目那。
-
-放活真……水收方在力不已環座紀資，登國是的風門……國成我個太空於物規？趣聽樓家自醫停。
-
-特人見發萬件片濟上卻司因時；隊灣無的臉，巴可是式很、間打灣變，應的物、好須見望都放發年司造母好由作民高便內用大裡變羅。報現女戰人，家園得到？住認？
-	<a href="#" rel="tooltip" title="A nice tooltip">test</a>	
-臺下內；河分我：市報經深不爸低學前場，爭中牛！能運從那古腳只！於王獲許指完年有白去製器用：想境兒、參我灣以頭有觀麼沒自期，感個童裡一就手雖前的一親輕；下果自學考們選我日加難許足想小令力？<a class="fancybox" href="#inline1" title="Lorem ipsum dolor sit amet">Inline</a>
-
+<div align="right" style="width:281px; height:90px; position:absolute; top:0px; right:-59px; background-image:url(images/gtag281.png); background-repeat:no-repeat;">
+  	                <div align="center" class="white60" style="width:262px; height:80px; line-height:80px;">
+  	                	<span style="font-size: 35px;color: #FFF;margin-right:80px">搶購$160  	</span>                </div>
+  	            </div>
+				<div style="background-color: #ccc;background-image:url(images/timebg.jpg);margin:10px"> 購買注意事項!<br>
+				<ul style="background-color: rgba(255, 255, 255, 0.75);margin:20px;padding:5px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;">
+			<li>	■ 優惠期間：2013/03/24至2013/04/24 (國定假日或特殊節慶能否兌換需依店家當時規定，請先致電店家確認)。</li>
+<li>■ 優惠時間：因各分店兌換時間不同，請參考下方店家資訊。</li>
+<li>■ 本優惠限店取，不另提供宅配或外送服務。</li>
+<li>■ 購買時請選擇兌換分店，兌換券不可跨店使用，訂購成功後恕無法更換分店，請您仔細選擇。</li>
+<li>■ 若有本好康相關問題，請於週一至週日09:00-24:00來電(02)27131485洽「Wineme客服」。</li>
+<li>■ 酒迷創意行銷股份有限公司保有變更活動的權利。</li>
+				</ul>
+				<br>
+				</div>
+				<br>
+</div>
 <%@ include file="view_model/index_fast_login.htm"%>
 						</div>
 
