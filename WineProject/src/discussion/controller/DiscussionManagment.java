@@ -51,7 +51,7 @@ public class DiscussionManagment extends HttpServlet {
 				splitPages(list, req);
 				req.getSession().setAttribute("action", "getAll");
 				RequestDispatcher dis = req
-						.getRequestDispatcher("/discussion/managment.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_discussion.jsp");
 				dis.forward(req, res);
 
 			}
@@ -79,7 +79,7 @@ public class DiscussionManagment extends HttpServlet {
 
 				req.setAttribute("discussionVO", discussionVO); // 資料庫取出的VO物件,存入req
 				RequestDispatcher successView = req
-						.getRequestDispatcher("/discussion/listOneManagment.jsp"); // 成功轉交
+						.getRequestDispatcher("/wine_admin/admin_listOneDisc.jsp"); // 成功轉交
 				successView.forward(req, res);
 			}
 			
@@ -94,7 +94,7 @@ public class DiscussionManagment extends HttpServlet {
 //				if (a_no != null) {
 					req.setAttribute("discussionVO", discussionVO);
 					RequestDispatcher successView = req
-							.getRequestDispatcher("/discussion/editManagment.jsp"); // 成功轉交
+							.getRequestDispatcher("/wine_admin/admin_editDisc.jsp"); // 成功轉交
 					successView.forward(req, res);
 //				} else {
 //					errorMsgs.add("您並非管理者，請重新登入帳號或電洽資訊部詢問");
@@ -175,10 +175,11 @@ public class DiscussionManagment extends HttpServlet {
 			if ("search".equals(action)) {
 				String srchThing = req.getParameter("srchThing");
 				String txtsrch = req.getParameter("txtsrch");
-				System.out.println(txtsrch);
+//				System.out.println(txtsrch);
 				
 				List<DiscussionVO> list = new ArrayList<DiscussionVO>();
 				dao = new DiscussionHibernateDAO();
+				//換頁時使用session資料
 				if(srchThing == null){
 					srchThing = (String) req.getSession().getAttribute("srchThing");
 					txtsrch = (String) req.getSession().getAttribute("txtsrch");
@@ -197,7 +198,7 @@ public class DiscussionManagment extends HttpServlet {
 				req.getSession().setAttribute("txtsrch",txtsrch);
 				req.getSession().setAttribute("action", "search");
 				RequestDispatcher dis = req
-						.getRequestDispatcher("/discussion/managment.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_discussion.jsp");
 				dis.forward(req, res);
 			}
 
@@ -211,7 +212,7 @@ public class DiscussionManagment extends HttpServlet {
 
 	// 分頁功能
 	private void splitPages(List<DiscussionVO> list, HttpServletRequest req) {
-		int rowsPerPage = 3; // 每頁的筆數
+		int rowsPerPage = 10; // 每頁的筆數
 		int rowNumber = list.size(); // 總筆數
 		int pageNumber = 0; // 總頁數
 		int whichPage = 1; // 第幾頁

@@ -24,7 +24,6 @@ public class sauceserver extends HttpServlet {
 	public sauceserver() {
 		super();
 	}
-
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 	}
@@ -78,6 +77,29 @@ public class sauceserver extends HttpServlet {
 		if (action.equals("saucedel")) {
 			int s_id = Integer.parseInt(request.getParameter("s_id"));
 			DAO.delete(s_id);
+			if (errorMsg.isEmpty()) {
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/FoodWine/Success.jsp");
+				rd.forward(request, response);
+				return;
+			} else {
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/FoodWine/error.jsp");
+				rd.forward(request, response);
+				return;
+			}
+		}
+		// 5修改
+		if (action.equals("sauceupdate")) {
+			// sauce
+			int s_id = Integer.parseInt(request.getParameter("s_id"));
+			String s_name = request.getParameter("s_name");
+
+			SauceVO sauceVO2 = new SauceVO();
+			sauceVO2.setS_id(new Integer(s_id));
+			sauceVO2.setS_name(s_name);
+			DAO.update(sauceVO2);
+
 			if (errorMsg.isEmpty()) {
 				RequestDispatcher rd = request
 						.getRequestDispatcher("/FoodWine/Success.jsp");

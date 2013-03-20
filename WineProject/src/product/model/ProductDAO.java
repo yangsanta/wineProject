@@ -254,8 +254,12 @@ public class ProductDAO implements ProductDAO_interface {
 				
 			} else {
 				
-				query.setParameter(0,0);
-				query.setParameter(1, 10000);
+				Timestamp now =new Timestamp(System.currentTimeMillis());
+				Timestamp oneMonth =new Timestamp(System.currentTimeMillis()-21*24*3600*1000-10*24*3600*1000);
+				System.out.println(now);
+				System.out.println(oneMonth);
+				query.setParameter(0,oneMonth);
+				query.setParameter(1,now);
 				list = query.list();
 			}
 			session.getTransaction().commit();
@@ -285,9 +289,9 @@ public class ProductDAO implements ProductDAO_interface {
 	// -------------------------------------------------------
 	public static void main(String arg[]) {
 		ProductDAO dao = new ProductDAO();
-
+		List<ProductVO> list = dao.findProductBetween("p_date", "0");
 //		 List<ProductVO> list = dao.findTopProduct("2");
-//				 for (ProductVO aEmp : list) {
+				 for (ProductVO aEmp : list) {
 //				 System.out.println(aEmp.getP_no() + ",");
 //				 System.out.println(aEmp.getP_name() + ",");
 //				 System.out.println(aEmp.getP_pic() + ",");
@@ -305,11 +309,11 @@ public class ProductDAO implements ProductDAO_interface {
 //				 System.out.println(aEmp.getP_sales() + ",");
 //				 System.out.println(aEmp.getP_vol() + ",");
 //				 System.out.println(aEmp.getP_alcho() + ",");
-//				 System.out.println(aEmp.getP_date() + ",");
+				 System.out.println(aEmp.getP_date() + ",");
 //				 System.out.println(aEmp.getP_type() + ",");
 //				 System.out.println(aEmp.getP_grape());
-//				 System.out.println();
-//				 }
+				 System.out.println();
+				 }
 //		
 		
 		// List<ProductVO> list = dao.findSomeProduct("p_vol","750");

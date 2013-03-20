@@ -77,7 +77,7 @@
 	</div>
 	<div id="nav">
 		<ul>
-			<li class="first active"><a href="#" rel="tooltip"
+			<li class="first active"><a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_date&conditionValue=0" rel="tooltip"
 				data-placement="bottom" title="介紹本月新上市的最新好酒，邀您一同來品嘗">本月新品</a></li>
 			<li><a
 				href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_buy_count&conditionValue=10"

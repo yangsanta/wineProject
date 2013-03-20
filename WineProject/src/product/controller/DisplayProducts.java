@@ -96,7 +96,7 @@ public class DisplayProducts extends HttpServlet {
 					list = productDAO
 							.findSalesProduct();
 				}
-				else if (condition.equals("p_price")){
+				else if (condition.equals("p_price")||condition.equals("p_date")){
 					list = productDAO
 							.findProductBetween(condition,conditionValue);
 					
