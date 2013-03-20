@@ -222,7 +222,49 @@ public class ProductDAO implements ProductDAO_interface {
 		}
 		return list;
 	}
-	
+	public List<ProductVO> findProductBetween(String condition,
+			String conditionValue) {
+		Integer values;
+
+		String GET_SOME_STMT = "from ProductVO Where " + condition + " between ? and ? ";
+		List<ProductVO> list = null;
+		List list1 = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_SOME_STMT);
+			System.out.println(condition);
+			Integer value=Integer.parseInt(conditionValue);
+			if ((condition.equals("p_price"))) {
+				
+				if(value==0){
+					query.setParameter(0,value);
+					query.setParameter(1,1000);
+					list = query.list();
+				}
+				else if(value==1000){
+					query.setParameter(0,value);
+					query.setParameter(1,2000);
+					list = query.list();
+				}
+				else{
+					query.setParameter(0,2000);
+					query.setParameter(1,65535);}
+				list = query.list();
+				
+			} else {
+				
+				query.setParameter(0,0);
+				query.setParameter(1, 10000);
+				list = query.list();
+			}
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
 	@Override
 	public List<ProductVO> findFuzzyProductName(String fuzzyProductName) {
 		List<ProductVO> list = new ArrayList();

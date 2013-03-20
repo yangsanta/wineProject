@@ -110,9 +110,9 @@
 			</ul></li>
 		<li class=' has-sub'><a href='#'><span>價格</span></a>
 			<ul>
-				<li class='has-sub'><a href='#'><span>400元以下 </span></a></li>
-				<li class='has-sub'><a href='#'><span>400元~800元</span></a></li>
-				<li class='has-sub'><a href='#'><span>800元以上 </span></a></li>
+				<li class='has-sub'><a href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_price&conditionValue=0'><span>1000元以下 </span></a></li>
+				<li class='has-sub'><a href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_price&conditionValue=1000'><span>1000元~2000元</span></a></li>
+				<li class='has-sub'><a href='<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_price&conditionValue=2000'><span>2000元以上 </span></a></li>
 			</ul></li>
 		<li class=' has-sub'><a href='#'><span>容量</span></a>
 			<ul>
