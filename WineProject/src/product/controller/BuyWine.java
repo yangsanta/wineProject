@@ -252,7 +252,7 @@ public class BuyWine extends HttpServlet {
 		}
 		// 計算金額
 
-		response.sendRedirect("http://localhost:8081/WineProject/product/DisplayProducts?action=getSome_For_Display&condition=p_sales&conditionValue=");
+		response.sendRedirect("http://localhost:8081/WineProject/product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue=");
 
 	}
 
