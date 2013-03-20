@@ -2,6 +2,7 @@ package admin_board.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,6 +41,14 @@ public class admin_board extends HttpServlet {
 		List<Admin_boardVO> lastReferer = null;
 		lastReferer = Admin_boardHibernateDAO.getlastReferer();
 		request.getSession().setAttribute("lastReferer", lastReferer);
+		
+		//取得訪客數
+		Map<String, String> visiter = Admin_boardHibernateDAO.getvisiter();
+		request.getSession().setAttribute("visiter", visiter);	
+		//取得pv
+		Map<String, String> pv =  Admin_boardHibernateDAO.getpv();
+		request.getSession().setAttribute("pv", pv);	
+				
 		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/wine_admin/admin_board.jsp");
