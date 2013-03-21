@@ -29,78 +29,71 @@ public class ReplyManagment extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
 		ReplyHibernateDAO dao = new ReplyHibernateDAO();
-
+		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"+action);
 		List<String> errorMsgs = new ArrayList<String>();
 		// Store this set in the request scope, in case we need to
 		// send the ErrorPage view.
 		req.setAttribute("errorMsgs", errorMsgs);
 
 		try {
-			if ("insert".equals(action)) {
-				ReplyVO replyVO = new ReplyVO();
-				String url = req.getRequestURI();
-				req.setAttribute("url", url);
-				Integer d_no = Integer.valueOf(req.getParameter("d_no"));
-				String r_context = req.getParameter("r_context");
-				Timestamp time = new java.sql.Timestamp(
-						new java.util.Date().getTime());
-				// 之後修改成從session獲取會員編號
-				int m_no = 1001;
-				MemberVO memberVO = new MemberVO();
-				memberVO.setM_no(m_no);
+//			if ("insert".equals(action)) {
+//				ReplyVO replyVO = new ReplyVO();
+//				String url = req.getRequestURI();
+//				req.setAttribute("url", url);
+//				Integer d_no = Integer.valueOf(req.getParameter("d_no"));
+//				String r_context = req.getParameter("r_context");
+//				Timestamp time = new java.sql.Timestamp(
+//						new java.util.Date().getTime());
+//				// 之後修改成從session獲取會員編號
+//				int m_no = 1001;
+//				MemberVO memberVO = new MemberVO();
+//				memberVO.setM_no(m_no);
+//
+//				if(r_context.trim().length() < 10){				//推文的檢查
+//					errorMsgs.add("推文內容請輸入超過10字");
+//				}
+//				if (!errorMsgs.isEmpty()) {
+//					req.setAttribute("ErrorMsgKey", errorMsgs);
+//					RequestDispatcher failureView = req
+//							.getRequestDispatcher("/error.jsp");//導入錯誤處理頁面
+//					failureView.forward(req, res);
+//					return;										// 程式中斷
+//				}
+//				
+//				replyVO.setD_no(d_no);
+//				replyVO.setR_context(r_context);
+//				replyVO.setR_status("0");
+//				replyVO.setR_datetime(time);
+//				replyVO.setR_final_edit(time);
+//				replyVO.setMemberVO(memberVO);
+//				dao.insert(replyVO);
+//				res.sendRedirect("DiscussionList?action=getOne&d_no=" + d_no);
+//			}
 
-				if(r_context.trim().length() < 10){				//推文的檢查
-					errorMsgs.add("推文內容請輸入超過10字");
-				}
-				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("ErrorMsgKey", errorMsgs);
-					RequestDispatcher failureView = req
-							.getRequestDispatcher("/error.jsp");//導入錯誤處理頁面
-					failureView.forward(req, res);
-					return;										// 程式中斷
-				}
-				
-				replyVO.setD_no(d_no);
-				replyVO.setR_context(r_context);
-				replyVO.setR_status("0");
-				replyVO.setR_datetime(time);
-				replyVO.setR_final_edit(time);
-				replyVO.setMemberVO(memberVO);
-				dao.insert(replyVO);
-				res.sendRedirect("DiscussionList?action=getOne&d_no=" + d_no);
-			}
 
-			
 			if ("invisible".equals(action)) {
-				Integer d_no = Integer.valueOf(req.getParameter("d_no"));
 				Integer r_no = Integer.valueOf(req.getParameter("r_no"));
-				String r_context = req.getParameter("r_context");
-				Integer m_no = Integer.valueOf(req.getParameter("m_no"));
-				Timestamp r_datetime = Timestamp.valueOf(req
-						.getParameter("r_datetime"));
-				String r_status = req.getParameter("r_status");
-				Timestamp r_final_edit = Timestamp.valueOf(req
-						.getParameter("r_final_edit"));
-				
+				ReplyVO replyVO = new ReplyVO();
+				replyVO = dao.findByPrimaryKey(r_no);
+				String r_status =  replyVO.getR_status();
+				Integer d_no = replyVO.getD_no();
 				if(r_status.equals("ooo")){
 					r_status = "xxx";
 				} else{
 					r_status = "ooo";
 				}
-				MemberVO memberVO = new MemberVO();
-				memberVO.setM_no(m_no);
+				System.out.println("----------invisible Reply-------------");
 				
-				ReplyVO replyVO = new ReplyVO();
-				replyVO.setD_no(d_no);
-				replyVO.setMemberVO(memberVO);
-				replyVO.setR_context(r_context);
-				replyVO.setR_datetime(r_datetime);
-				replyVO.setR_final_edit(r_final_edit);
-				replyVO.setR_no(r_no);
 				replyVO.setR_status(r_status);
+				
+				dao.update(replyVO);
+				res.sendRedirect("DiscussionManagment?action=getOne&d_no=" + d_no);
 			}
 		} catch (Exception e) {
-
+			errorMsgs.add("無法取得資料:" + e.getMessage());
+			RequestDispatcher failureView = req
+					.getRequestDispatcher("/errorReason.jsp");
+			failureView.forward(req, res);		
 		}
 
 	}

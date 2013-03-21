@@ -190,7 +190,7 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 			// 模糊搜尋SECOND SEARCH TEXT
 			if (queryTextTwo.length() != 0) {
 				SEARCH_STMT_TWO = "FROM DiscussionVO WHERE " + srchThing
-						+ " Like '" + queryTextTwo + "'";
+						+ " Like '%" + queryTextTwo + "'";
 				query = session.createQuery(SEARCH_STMT_TWO);
 				list = query.list();
 				for (DiscussionVO vo : list) {
@@ -267,9 +267,9 @@ public class DiscussionHibernateDAO implements DiscussionDAO_interface {
 //		System.out.println("總留言筆數 = " + totalNO);
 		
 		// 測試search()
-//		Set<DiscussionVO> set = dao.search("m_id","aaa");
+//		Set<DiscussionVO> set = dao.search("d_title","我 的");
 //		Iterator<DiscussionVO> it = set.iterator();
-//
+
 //		while(it.hasNext()){
 //			System.out.println(it.next());
 //		}
