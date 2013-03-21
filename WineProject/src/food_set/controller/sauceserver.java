@@ -24,6 +24,7 @@ public class sauceserver extends HttpServlet {
 	public sauceserver() {
 		super();
 	}
+
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 	}
@@ -98,6 +99,14 @@ public class sauceserver extends HttpServlet {
 			SauceVO sauceVO2 = new SauceVO();
 			sauceVO2.setS_id(new Integer(s_id));
 			sauceVO2.setS_name(s_name);
+			if (s_name == null || s_name.trim().length() == 0) {
+				errorMsg.add("請輸入「風味特色」");
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/FoodWine/error.jsp");
+				rd.forward(request, response);
+				return;
+			}
+
 			DAO.update(sauceVO2);
 
 			if (errorMsg.isEmpty()) {

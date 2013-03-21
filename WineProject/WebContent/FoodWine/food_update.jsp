@@ -20,7 +20,7 @@
 
 		食物編號：<input type="text" readonly name="f_id" value="${param.f_id}" /><br>
 
-		食物名稱：<input type="text" name="f_name" value="" size="10"><br>
+		食物名稱：<input type="text" name="f_name" value="" size="10" maxlength="12"><br>
 
 		<input type="text" name="action" value="foodup" size="10" style="display:none"><br>
 		<input type="submit" value="送出" class="btn btn-primary">

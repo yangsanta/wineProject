@@ -87,6 +87,14 @@ public class ingredientserver extends HttpServlet {
 			IngredientVO ingredientVO3 = new IngredientVO();
 			ingredientVO3.setI_id(new Integer(i_id));
 			ingredientVO3.setI_name(i_name);
+			if (i_name == null || i_name.trim().length() == 0) {
+				errorMsg.add("請輸入「主要食材」");
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/FoodWine/error.jsp");
+				rd.forward(request, response);
+				return;
+			}
+
 			DAO.update(ingredientVO3);
 
 			if (errorMsg.isEmpty()) {
