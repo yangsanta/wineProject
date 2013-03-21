@@ -19,7 +19,7 @@
 		method="post" id="commentForm" class="cmxform">
 		<TR>
 			<td>新增食物：<br></td>
-			<td><input type="text" name="f_name" value="" size="10"></td>
+			<td><input type="text" name="f_name" value="" size="10" maxlength="12"></td>
 		</TR>
 		<TR>
 			<td colspan="2" align="center"><input type="submit" value="送出"

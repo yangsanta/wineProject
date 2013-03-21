@@ -143,7 +143,7 @@ public class DiscussionManagment extends HttpServlet {
 				discussionVO.setD_status(d_status);
 				dao.update(discussionVO);
 				
-				res.sendRedirect("DiscussionManagment.do?action=getOne&d_no=" + d_no);
+				res.sendRedirect("DiscussionManagment?action=getOne&d_no=" + d_no);
 
 			}
 
@@ -161,7 +161,7 @@ public class DiscussionManagment extends HttpServlet {
 						discussionVO.setD_status("xxx");
 					}
 					dao.update(discussionVO);
-					res.sendRedirect("DiscussionManagment.do?action=getAll");
+					res.sendRedirect("DiscussionManagment?action=getAll");
 //				} else {
 //					errorMsgs.add("您並非管理者，請重新登入帳號或電洽資訊部詢問");
 //					req.setAttribute("ErrorMsgKey", errorMsgs);
@@ -173,13 +173,12 @@ public class DiscussionManagment extends HttpServlet {
 			}
 			// 搜尋功能
 			if ("search".equals(action)) {
+				try{
 				String srchThing = req.getParameter("srchThing");
 				String txtsrch = req.getParameter("txtsrch");
-//				System.out.println(txtsrch);
-				
+				System.out.println(txtsrch);
 				List<DiscussionVO> list = new ArrayList<DiscussionVO>();
 				dao = new DiscussionHibernateDAO();
-				//換頁時使用session資料
 				if(srchThing == null){
 					srchThing = (String) req.getSession().getAttribute("srchThing");
 					txtsrch = (String) req.getSession().getAttribute("txtsrch");
@@ -193,6 +192,10 @@ public class DiscussionManagment extends HttpServlet {
 				splitPages(list, req);
 				if(list.size()==0){
 					req.setAttribute("msgbox","沒有符合您所搜尋的文章");
+					RequestDispatcher dis = req
+							.getRequestDispatcher("DiscussionManagment?action=getAll");
+					dis.forward(req, res);
+					return;
 				}
 				req.getSession().setAttribute("srchThing",srchThing);
 				req.getSession().setAttribute("txtsrch",txtsrch);
@@ -200,6 +203,13 @@ public class DiscussionManagment extends HttpServlet {
 				RequestDispatcher dis = req
 						.getRequestDispatcher("/wine_admin/ademin_discussion.jsp");
 				dis.forward(req, res);
+				} catch(Exception e){
+					req.setAttribute("msgbox","沒有符合您所搜尋的文章");
+					req.setAttribute("list", "");
+					RequestDispatcher dis = req
+							.getRequestDispatcher("DiscussionManagment?action=getAll");
+					dis.forward(req, res);
+				}
 			}
 
 		} catch (Exception e) {

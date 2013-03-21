@@ -19,7 +19,7 @@
 		method="post" id="commentForm" class="cmxform">
 		食材編號：<input type="text" readonly name="i_id" value="${param.i_id}" /><br>
 
-		食物名稱：<input type="text" name="i_name" value="" size="10"><br>
+		食物名稱：<input type="text" name="i_name" value="" size="10" maxlength="12"><br>
 
 		<input type="text" name="action" value="ingupdate" size="10" style="display:none"><br>
 		<input type="submit" value="送出" class="btn btn-primary">

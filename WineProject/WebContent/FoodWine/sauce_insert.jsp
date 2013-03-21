@@ -16,7 +16,7 @@
 		method="post" id="commentForm" class="cmxform">
 		<TR>
 			<td>新增風味特色：<br></td>
-			<td><input type="text" name="s_name" value="" size="10"></td>
+			<td><input type="text" name="s_name" value="" size="10" maxlength="12"></td>
 		</TR>
 		<TR>
 			<td colspan="2" align="center"><input type="submit" value="送出"

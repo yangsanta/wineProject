@@ -17,7 +17,7 @@
 		method="post" id="commentForm" class="cmxform">
 		風味編號：<input type="text" readonly name="s_id" value="${param.s_id}" /><br>
 
-		風味名稱：<input type="text" name="s_name" value="" size="10"><br>
+		風味名稱：<input type="text" name="s_name" value="" size="10" maxlength="20"><br>
 
 		<input type="text" name="action" value="sauceupdate" size="10" style="display:none"><br>
 		<input type="submit" value="送出" class="btn btn-primary">

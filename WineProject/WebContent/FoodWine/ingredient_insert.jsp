@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="ingredient.model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,13 +13,13 @@
 </script>
 </head>
 <body>
-<h1>新增主要食材</h1>
-	<Form Action="<%=request.getContextPath()%>/product/ingin.do?action=ingin" method="post" id="commentForm"
-		class="cmxform">
+	<h1>新增主要食材</h1>
+	<Form
+		Action="<%=request.getContextPath()%>/product/ingin.do?action=ingin"
+		method="post" id="commentForm" class="cmxform">
 		<TR>
 			<td>新增食材：<br></td>
-			<td><input type="text" name="i_name" value=""
-				size="10"></td>
+			<td><input type="text" name="i_name" value="" size="10" maxlength="12"></td>
 		</TR>
 		<TR>
 			<td colspan="2" align="center"><input type="submit" value="送出"

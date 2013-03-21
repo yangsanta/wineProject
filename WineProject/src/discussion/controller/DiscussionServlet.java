@@ -191,6 +191,7 @@ public class DiscussionServlet extends HttpServlet {
 
 			// 搜尋功能
 			if ("search".equals(action)) {
+				try{
 				String srchThing = req.getParameter("srchThing");
 				String txtsrch = req.getParameter("txtsrch");
 				System.out.println(txtsrch);
@@ -209,6 +210,10 @@ public class DiscussionServlet extends HttpServlet {
 				splitPages(list, req);
 				if(list.size()==0){
 					req.setAttribute("msgbox","沒有符合您所搜尋的文章");
+					RequestDispatcher dis = req
+							.getRequestDispatcher("DiscussionList.do?action=getAll");
+					dis.forward(req, res);
+					return;
 				}
 				req.getSession().setAttribute("srchThing",srchThing);
 				req.getSession().setAttribute("txtsrch",txtsrch);
@@ -216,6 +221,13 @@ public class DiscussionServlet extends HttpServlet {
 				RequestDispatcher dis = req
 						.getRequestDispatcher("/discussion/listAllDiscussion.jsp");
 				dis.forward(req, res);
+				} catch(Exception e){
+					req.setAttribute("msgbox","沒有符合您所搜尋的文章");
+					req.setAttribute("list", "");
+					RequestDispatcher dis = req
+							.getRequestDispatcher("DiscussionList.do?action=getAll");
+					dis.forward(req, res);
+				}
 			}
 
 		} catch (Exception e) {
