@@ -14,7 +14,7 @@
 </head>
 <body>
 	<h1>食物搭配</h1>
-	<table border='1' bordercolor='#CCCCFF' width='800'>
+	<table border='1' bordercolor='#CCCCFF' width='1000'>
 		<tr>
 			<th>搭配編號</th>
 			<th>商品名稱</th>
@@ -34,9 +34,9 @@
 				<td>
 					<FORM METHOD="post"
 						ACTION="<%=request.getContextPath()%>/FoodWine/food/set/insert.do?action=Foodsetupdate">
-						<input type="submit" value="修改"> <%-- <input type="hidden"
+						<input type="submit" value="修改"> <input type="hidden"
 							name="fs_id" value="${food_set.fs_id}"> <input
-							type="hidden" name="action" value="update"> --%>
+							type="hidden" name="action" value="update">
 					</FORM>
 				</td>
 				<td>

@@ -63,8 +63,8 @@ public class food_set_all extends HttpServlet {
 		}
 		if (action.equals("Foodsetall")) {
 			ProductHibernateDAO productHibernateDAO = new ProductHibernateDAO();
-			List<ProductVO> listˇ = productHibernateDAO.getAll();
-			request.setAttribute("Product", listˇ);
+			List<ProductVO> list3 = productHibernateDAO.getAll();
+			request.setAttribute("Product", list3);
 
 			Food_setHibernateDAO food_setHibernateDAO = new Food_setHibernateDAO();
 			List<Food_setVO> list4 = food_setHibernateDAO.getAll();
@@ -87,10 +87,10 @@ public class food_set_all extends HttpServlet {
 			rd.forward(request, response);
 
 		}
-		if (action.equals("Foodsetupdate")) {
+		if (action.equals("Foodset2")) {
 			ProductHibernateDAO productHibernateDAO = new ProductHibernateDAO();
-			List<ProductVO> listˇ = productHibernateDAO.getAll();
-			request.setAttribute("Product", listˇ);
+			List<ProductVO> list3 = productHibernateDAO.getAll();
+			request.setAttribute("Product", list3);
 
 			Food_setHibernateDAO food_setHibernateDAO = new Food_setHibernateDAO();
 			List<Food_setVO> list4 = food_setHibernateDAO.getAll();
@@ -100,6 +100,34 @@ public class food_set_all extends HttpServlet {
 			List<FoodVO> list = foodHibernateDAO.getAll();
 			request.setAttribute("Food", list);
 
+			IngredientHibernateDAO ingredientDAO = new IngredientHibernateDAO();
+			List<IngredientVO> list1 = ingredientDAO.getAll();
+			request.setAttribute("Ingredient", list1);
+
+			SauceHibernateDAO SauceDAO = new SauceHibernateDAO();
+			List<SauceVO> list2 = SauceDAO.getAll();
+			request.setAttribute("Sauce", list2);
+
+			RequestDispatcher rd = request
+					.getRequestDispatcher("/food_set.jsp");
+			rd.forward(request, response);
+
+		}
+		if (action.equals("Foodsetupdate")) {
+			ProductHibernateDAO productHibernateDAO = new ProductHibernateDAO();
+			List<ProductVO> list3 = productHibernateDAO.getAll();
+			request.setAttribute("Product", list3);
+						
+//			Food_setHibernateDAO food_setHibernateDAO = new Food_setHibernateDAO();
+//			List<Food_setVO> list4 = food_setHibernateDAO.getAll();
+//			request.setAttribute("Food_set", list4);
+
+			FoodHibernateDAO foodHibernateDAO = new FoodHibernateDAO();
+			List<FoodVO> list = foodHibernateDAO.getAll();
+			request.setAttribute("Food", list);
+
+			request.setAttribute("fs_id",request.getParameter("fs_id"));
+			
 			IngredientHibernateDAO ingredientDAO = new IngredientHibernateDAO();
 			List<IngredientVO> list1 = ingredientDAO.getAll();
 			request.setAttribute("Ingredient", list1);

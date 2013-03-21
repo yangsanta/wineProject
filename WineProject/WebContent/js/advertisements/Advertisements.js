@@ -1,68 +1,25 @@
 $(function() {
-	//getAll
-	$("#tabs-2-li").click(function(){
-		alert("li!");
-		$("#getAllForm").submit();
-	});
-	
-	
 	//jQuery UI
-	$( "#accordion" ).accordion();
-	
-	var availableTags = [
-		"ActionScript",
-		"AppleScript",
-		"Asp",
-		"BASIC",
-		"C",
-		"C++",
-		"Clojure",
-		"COBOL",
-		"ColdFusion",
-		"Erlang",
-		"Fortran",
-		"Groovy",
-		"Haskell",
-		"Java",
-		"JavaScript",
-		"Lisp",
-		"Perl",
-		"PHP",
-		"Python",
-		"Ruby",
-		"Scala",
-		"Scheme"
-	];
-	$( "#autocomplete" ).autocomplete({
-		source: availableTags
-	});
-	
 	$( "#button" ).button();
-	$( "#radioset" ).buttonset();
-	
 	$( "#tabs" ).tabs();
-
-	// Hover states on the static widgets
-	$( "#dialog-link, #icons li" ).hover(
-		function() {
-			$( this ).addClass( "ui-state-hover" );
-		},
-		function() {
-			$( this ).removeClass( "ui-state-hover" );
-		}
-	);
-	
 	
 	//隱藏form元件
 	$("#fileName").css("display", "none");
 	$("#productName").css("display", "none");
 	
+
+	
+	//getAll
+	$("#tabs-2-li").click(function(){
+		$("#getAllForm").submit();
+	});
+	
+	
 	
 	// Ajax search
 	$("#search_query").bind("keyup click", function(){
-		while (document.getElementById("ulResult").hasChildNodes()){
-			$(document.getElementById("ulResult").removeChild((document.getElementById("ulResult")).firstChild));
-		}
+		$('#ulResult').empty();
+		$("#errlist").empty();
 		$("#productName").val($(this).val());
 		$.ajax({
 			url: '../product/advertisements.do', 
@@ -86,10 +43,8 @@ $(function() {
 	}).on("click", "#ulResult tr", function(){
 		$("#productName").val($(this).text());
 		$("#search_query").val($(this).text());
-		$(".pNameErr").remove();
-		while (document.getElementById("ulResult").hasChildNodes()){
-			$(document.getElementById("ulResult").removeChild((document.getElementById("ulResult")).firstChild));
-		}
+		$("#errlist").empty();
+		$('#ulResult').empty();
 	});
 	
 
@@ -107,7 +62,7 @@ $(function() {
 
 				uploadFinished : function(i, file, response) {					
 					$.data(file).addClass('done');
-					$(".fNameErr").remove();
+					$("#errlist").empty();
 					// response is the JSON object that Ads Controller
 					// returns
 				},
@@ -194,5 +149,32 @@ $(function() {
 	function recordFileName(file){
 		$("#fileName").val(file.name);
 	}
+	
+	
+	
+	//設定廣告 in DB
+	$( "#button" ).click(function(){
+		$("#okMsg").empty();
+		$("#errlist").empty();
+		
+		var fileName = $("#fileName").val();
+		var productName = $("#search_query").val();
+		
+		$.ajax({
+			url: '../product/advertisements.do', 
+			type: 'POST',
+			data: {fileName: fileName, productName: productName, action: "setAds"},
+			dataType: 'json',
+			success: function(data){
+				
+				if (data.AdsSuccess != undefined)
+					$("#okMsg").append("<p>" + data.AdsSuccess + "</p>");
+				$.each(data.AdsErr, function(){
+					$("#errlist").append("<p>" + this + "</p>");
+				});
+
+			}
+		});
+	});
 
 });

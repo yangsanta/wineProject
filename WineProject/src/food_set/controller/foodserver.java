@@ -86,6 +86,14 @@ public class foodserver extends HttpServlet {
 
 			int f_id = Integer.parseInt(request.getParameter("f_id"));
 			String f_name = request.getParameter("f_name");
+			
+			if (f_name == null || f_name.trim().length() == 0) {
+				errorMsg.add("請輸入「食物種類」");
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/FoodWine/error.jsp");
+				rd.forward(request, response);
+				return;
+			}
 
 			FoodVO foodVO2 = new FoodVO();
 			foodVO2.setF_id(new Integer(f_id));
