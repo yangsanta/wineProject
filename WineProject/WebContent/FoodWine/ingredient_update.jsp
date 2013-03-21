@@ -15,7 +15,7 @@
 <body>
 	<h1>修改主要食材</h1>
 	<Form
-		Action="<%=request.getContextPath()%>/product/ingin"
+		Action="<%=request.getContextPath()%>/product/ingin.do"
 		method="post" id="commentForm" class="cmxform">
 		食材編號：<input type="text" readonly name="i_id" value="${param.i_id}" /><br>
 

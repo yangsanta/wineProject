@@ -13,7 +13,7 @@
 <body>
 	<h1>修改風味特色</h1>
 	<Form
-		Action="<%=request.getContextPath()%>/product/saucein"
+		Action="<%=request.getContextPath()%>/product/saucein.do"
 		method="post" id="commentForm" class="cmxform">
 		風味編號：<input type="text" readonly name="s_id" value="${param.s_id}" /><br>
 

@@ -36,7 +36,7 @@
 				</td>
 				<td>
 					<FORM METHOD="post"
-						Action="<%=request.getContextPath()%>/product/saucein?action=saucedel">
+						Action="<%=request.getContextPath()%>/product/saucein.do?action=saucedel">
 						<input type="submit" value="刪除"> <input type="hidden"
 							name="s_id" value="${Sauce.s_id}"> <input type="hidden"
 							name="action" value="delete">

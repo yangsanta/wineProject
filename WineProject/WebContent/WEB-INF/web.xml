@@ -127,21 +127,12 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>foodsetins</servlet-name>
-		<servlet-class>food_set.controller.foodserver</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>foodsetins</servlet-name>
-		<url-pattern>/food/ins</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
 		<servlet-name>foodinRegister</servlet-name>
 		<servlet-class>food_set.controller.foodserver</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>foodinRegister</servlet-name>
-		<url-pattern>/product/foodin</url-pattern>
+		<url-pattern>/product/foodin.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>ingin</servlet-name>
@@ -149,7 +140,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ingin</servlet-name>
-		<url-pattern>/product/ingin</url-pattern>
+		<url-pattern>/product/ingin.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>saucein</servlet-name>
@@ -157,7 +148,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>saucein</servlet-name>
-		<url-pattern>/product/saucein</url-pattern>
+		<url-pattern>/product/saucein.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>advertisements</servlet-name>

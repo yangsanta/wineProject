@@ -15,7 +15,7 @@
 <body>
 	<h1>修改食物種類</h1>
 	<Form
-		Action="<%=request.getContextPath()%>/product/foodin"
+		Action="<%=request.getContextPath()%>/product/foodin.do"
 		method="post" id="commentForm" class="cmxform">
 
 		食物編號：<input type="text" readonly name="f_id" value="${param.f_id}" /><br>

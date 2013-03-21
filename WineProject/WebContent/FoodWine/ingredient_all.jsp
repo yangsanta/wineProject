@@ -37,7 +37,7 @@
 				</td>
 				<td>
 					<FORM METHOD="post"
-						Action="<%=request.getContextPath()%>/product/ingin?action=Ingreddel">
+						Action="<%=request.getContextPath()%>/product/ingin.do?action=Ingreddel">
 						<input type="submit" value="刪除"> <input type="hidden"
 							name="i_id" value="${Ingredient.i_id}"> <input
 							type="hidden" name="action" value="delete">
