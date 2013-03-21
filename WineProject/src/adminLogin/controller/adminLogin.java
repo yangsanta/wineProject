@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import adminLogin.model.AdminLoginHibernateDAO;
 import adminLogin.model.AdminLoginVO;
 
-@WebServlet("/login")
 public class adminLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
