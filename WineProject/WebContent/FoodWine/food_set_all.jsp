@@ -34,9 +34,9 @@
 				<td>
 					<FORM METHOD="post"
 						ACTION="<%=request.getContextPath()%>/FoodWine/food/set/insert.do?action=Foodsetupdate">
-						<input type="submit" value="修改"> <%-- <input type="hidden"
+						<input type="submit" value="修改"> <input type="hidden"
 							name="fs_id" value="${food_set.fs_id}"> <input
-							type="hidden" name="action" value="update"> --%>
+							type="hidden" name="action" value="update">
 					</FORM>
 				</td>
 				<td>

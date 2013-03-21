@@ -12,7 +12,7 @@
 	<Form
 		Action="<%=request.getContextPath()%>/product/setin.do?action=foodsetupdate"
 		method="post" id="commentForm" class="cmxform">
-		搭配編號：<input type="text" readonly name="fs_id" value="${param.fs_id}" /><br>
+		搭配編號：<input type="text" readonly name="fs_id" value="${fs_id}" /><br>
 		<tr>
 			<td>商品名稱：<font color=red><b>*</b></font></td>
 			<td><select id="product" name="p_no">
@@ -49,6 +49,7 @@
 			<td colspan="2" align="center"><input type="submit" value="送出"
 				class="btn btn-primary"></td>
 		</TR>
-		<a href="<%=request.getContextPath()%>/FoodWine/FoodTest.html">回原畫面</a>
+	</Form>
+	<a href="<%=request.getContextPath()%>/FoodWine/FoodTest.html">回原畫面</a>
 </body>
 </html>
