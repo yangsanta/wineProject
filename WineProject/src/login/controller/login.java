@@ -16,7 +16,6 @@ import java.util.List;
 import member.model.MemberHibernateDAO;
 import member.model.MemberVO;
 
-@WebServlet("/login")
 public class login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -17,7 +17,6 @@ import member.model.MemberVO;
 import reply.model.ReplyHibernateDAO;
 import reply.model.ReplyVO;
 
-@WebServlet("/ReplyServlet")
 public class ReplyServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
