@@ -25,7 +25,18 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/tinymcec/jscripts/tiny_mce.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/tinymcec/tinymac.js"></script>
 <!-- /TinyMCE -->
-			<style type="text/css">
+<script src="<%=request.getContextPath()%>/js/jquery.validate.min.js" type="text/javascript" ></script>
+<script src="<%=request.getContextPath()%>/js/messages_tw.js" type="text/javascript" ></script>
+<script type="text/javascript" charset="utf-8">
+        $(document).ready( function(){
+            $('#commentForm').validate({
+                success: function(label) {
+                    label.addClass("success").text("Ok!");
+                }
+            });
+});
+</script>  
+<style type="text/css">
 #main {
 	color: #333
 }
@@ -35,13 +46,17 @@
 	background: #ad8667 url('images/disz_bg.png');
 }
 
-</style>
-			<script type="text/javascript">
-				
-			</script>
-</head>
-<body>
+label.error {
+            background:url("<%=request.getContextPath()%>/images/unchecked.gif") no-repeat 0px 0px;
+            padding-left: 16px;
+}
 
+label.success {
+            background:url("<%=request.getContextPath()%>/images/checked.gif") no-repeat 0px 0px;
+            padding-left: 16px;
+}
+</style>
+</head>
 	<body>
 		<div id="shadow_bg">
 			<div id="body">
@@ -60,15 +75,15 @@
 							<strong><span class="label label-success">歡迎!</span></strong> <br><span
 								style="margin-left: 50px">你可以在這邊與各方的酒友一起討論酒香的芬芳以及在味蕾上跳動的喜悅。現在就發表一篇文章來與大家認識認識吧。</span>
 						</div>
-	<form action="insertDiscussion.do" method="post">
-		Title:<input type="text" name="d_title" value="${discussionVO.d_title}"><br /> 
-		Content:<textarea cols="170" rows="10" id="textContext" name="d_context">${discussionVO.d_context}</textarea><br />
-		<input type="submit" value="Send">
-		<input type="hidden" name="action" value="update">
-		<input type="hidden" name="d_datetime" value="${discussionVO.d_datetime}">
-		<input type="hidden" name="d_status" value="${discussionVO.d_status}">
-		<input type="hidden" name="m_no" value="${discussionVO.memberVO.m_no}">
-		<input type="hidden" name="d_no" value="${discussionVO.d_no}">
+	<form action="insertDiscussion.do"  method="post" id="commentForm" class="cmxform" >
+		文章標題:<input type="text" name="d_title" value="${discussionVO.d_title}" class="required" minlength="5"/><br /> 
+		文章內容:<textarea cols="170" rows="10" id="textContext" name="d_context" class="required" minlength="10">${discussionVO.d_context}</textarea><br />
+		<input type="submit" value="Send"/>
+		<input type="hidden" name="action" value="update"/>
+		<input type="hidden" name="d_datetime" value="${discussionVO.d_datetime}"/>
+		<input type="hidden" name="d_status" value="${discussionVO.d_status}"/>
+		<input type="hidden" name="m_no" value="${discussionVO.memberVO.m_no}"/>
+		<input type="hidden" name="d_no" value="${discussionVO.d_no}"/>
 	</form><br/>
 						<br class="clear" />
 						<%@ include file="../view_model/index_fast_login.htm"%>
@@ -77,8 +92,6 @@
 				</div>
 			</div>
 			<%@ include file="../view_model/index_footer.htm"%>
-
-		</div>
 
 		</div>
 	</body>

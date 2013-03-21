@@ -45,7 +45,14 @@ public class ReplyServlet extends HttpServlet {
 				Timestamp time = new java.sql.Timestamp(
 						new java.util.Date().getTime());
 				// 之後修改成從session獲取會員編號
-				int m_no = 1001;
+//				int m_no = 1001;
+				if (req.getSession().getAttribute("m_no") == null) {
+					RequestDispatcher failureView = req
+							.getRequestDispatcher("/login.jsp"); // 導入登入頁面
+					failureView.forward(req, res);
+					return;
+				}
+				Integer m_no = (Integer) req.getSession().getAttribute("m_no");
 				MemberVO memberVO = new MemberVO();
 				memberVO.setM_no(m_no);
 

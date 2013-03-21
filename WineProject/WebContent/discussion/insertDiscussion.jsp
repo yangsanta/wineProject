@@ -33,8 +33,19 @@
 							<!-- TinyMCE -->
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/tinymcec/jscripts/tiny_mce.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/tinymcec/tinymac.js"></script>
+<script src="<%=request.getContextPath()%>/js/jquery.validate.min.js" type="text/javascript" ></script>
+<script src="<%=request.getContextPath()%>/js/messages_tw.js" type="text/javascript" ></script>
+<script type="text/javascript" charset="utf-8">
+        $(document).ready( function(){
+            $('#commentForm').validate({
+                success: function(label) {
+                    label.addClass("success").text("Ok!");
+                }
+            });
+});
+</script>  
 <!-- /TinyMCE -->
-			<style type="text/css">
+<style type="text/css">
 #main {
 	color: #333
 }
@@ -87,12 +98,18 @@ tr:hover {
 .table_title {
 	font-weight: bold;
 }
+
+label.error {
+            background:url("<%=request.getContextPath()%>/images/unchecked.gif") no-repeat 0px 0px;
+            padding-left: 16px;
+        }
+
+label.success {
+            background:url("<%=request.getContextPath()%>/images/checked.gif") no-repeat 0px 0px;
+            padding-left: 16px;
+}
 </style>
-			<script type="text/javascript">
-				
-			</script>
 </head>
-<body>
 
 	<body>
 		<div id="shadow_bg">
@@ -102,11 +119,11 @@ tr:hover {
 
 
 					<div id="content">
-	<form action="<c:url value='/DiscussionList.do'/>" method="post">
-		Title:<input type="text" name="d_title"><br /> 
-		Content:<textarea cols="50" rows="3" id="textContext" name="d_context"></textarea><br />
-		<input type="submit" value="Send">
-		<input type="hidden" name="action" value="insert">
+	<form action="<c:url value='/DiscussionList.do'/>" method="post" id="commentForm" class="cmxform" >
+		文章標題:<input type="text" name="d_title" class="required" minlength="5"/><br /> 
+		文章內容:<textarea cols="50" rows="3" id="textContext" name="d_context" class="required" minlength="10"></textarea><br />
+		<input type="submit" value="Send"/>
+		<input type="hidden" name="action" value="insert"/>
 	</form>
 	<%@ include file="../view_model/index_fast_login.htm"%>
 						<br class="clear" />
@@ -118,7 +135,7 @@ tr:hover {
 				
 			</div>
 			
-</div>
+
 </body>
 
 </html>
