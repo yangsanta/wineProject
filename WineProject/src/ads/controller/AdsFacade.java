@@ -211,4 +211,28 @@ public class AdsFacade {
 
 	}
 
+
+	// 撈所有的廣告
+	public void getAll() throws IOException {
+		JSONObject jsonObj = null;
+		JSONArray jsonArray = new JSONArray();
+		
+		List<AdsVO> list = new AdsDAO().getAll();
+		for (AdsVO adsVO : list){
+			try {
+				jsonObj = new JSONObject();
+				jsonObj.put("ads_no" ,adsVO.getAds_no());
+				jsonObj.put("ads_filename" ,adsVO.getAds_filename());
+				jsonObj.put("p_name" ,adsVO.getProductVO().getP_no() +": "+ adsVO.getProductVO().getP_name());
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			jsonArray.put(jsonObj);
+		}
+		
+		System.out.println("********JSON************"+jsonArray.toString());
+		response.getWriter().write(jsonArray.toString());
+		
+	}
+
 }

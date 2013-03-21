@@ -64,10 +64,11 @@ public class AdsServlet extends HttpServlet {
 		}
 		
 		if ( action != null && action.equals("getAll")){
-			
+			System.out.println("*********************Ads GETALL******************");
+			facade.getAll();
 		}
 		
-		if ( action != null && action.equals("getAll")){
+		if ( action != null && action.equals("")){
 			
 		}
 

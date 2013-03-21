@@ -1,56 +1,83 @@
 $(function() {
-	//jQuery UI
-	$( "#button" ).button();
-	$( "#tabs" ).tabs();
-	
-	//隱藏form元件
+	// jQuery UI
+	$("#button").button();
+	$("#tabs").tabs();
+
+	// 隱藏form元件
 	$("#fileName").css("display", "none");
 	$("#productName").css("display", "none");
-	
 
-	
-	//getAll
-	$("#tabs-2-li").click(function(){
-		$("#getAllForm").submit();
-	});
-	
-	
-	
+	// getAll
+	$("#tabs-2-li")
+			.click(
+					function() {
+						// $("#getAllForm").submit();
+						$
+								.ajax({
+									url : '../product/advertisements.do',
+									type : 'POST',
+									data : {
+										action : "getAll"
+									},
+									dataType : 'json',
+									success : function(data) {
+
+										var templateEditDelete = '<td><form action="#"><div class="btn-group"><a class="btn btn-default" href="#"><i class="icon-pencil"></i>修改</a></div></form><form action="#"><div class="btn-group"><a class="btn btn-default" href="#"><i class="icon-trash"></i>刪除</a></div></form></td>';
+
+										// $("#tabs-2").append("<p>" + data +
+										// "</p>");
+										$.each(data, function() {
+											$("#tabs-2 tbody").append(
+													'<tr><td>' + this.ads_no
+															+ '</td><td><img class="adsImg" src="/WineProject/images/ad/'
+														+ this.ads_filename
+															+ '"  /></td><td>'
+															+ this.p_name
+															+ '</td>'+ templateEditDelete +'</tr>');
+											
+										});
+
+									}
+								});
+					});
+
 	// Ajax search
-	$("#search_query").bind("keyup click", function(){
+	$("#search_query").bind("keyup click", function() {
 		$('#ulResult').empty();
 		$("#errlist").empty();
 		$("#productName").val($(this).val());
 		$.ajax({
-			url: '../product/advertisements.do', 
-			type: 'POST',
-			data: {queryProducts: $("#search_query").val(), action: "queryProducts"},
-			dataType: 'json',
-			success: function(data){
-				
-				$.each(data, function(){
-					$('#ulResult').append('<tr><td>'+ this +'</td></tr>');
+			url : '../product/advertisements.do',
+			type : 'POST',
+			data : {
+				queryProducts : $("#search_query").val(),
+				action : "queryProducts"
+			},
+			dataType : 'json',
+			success : function(data) {
+
+				$.each(data, function() {
+					$('#ulResult').append('<tr><td>' + this + '</td></tr>');
 				});
 
 			}
 		});
 	});
-	//hover effect & click effect
-	$(document).on("mouseenter", "#ulResult tr", function(){
-		$( this ).addClass( "ui-state-hover" ); //$(this).addClass("over");
-	}).on("mouseleave", "#ulResult tr", function(){
-		$( this ).removeClass( "ui-state-hover" ); //$(this).removeClass("over");
-	}).on("click", "#ulResult tr", function(){
+	// hover effect & click effect
+	$(document).on("mouseenter", "#ulResult tr", function() {
+		$(this).addClass("ui-state-hover"); // $(this).addClass("over");
+	}).on("mouseleave", "#ulResult tr", function() {
+		$(this).removeClass("ui-state-hover"); // $(this).removeClass("over");
+	}).on("click", "#ulResult tr", function() {
 		$("#productName").val($(this).text());
 		$("#search_query").val($(this).text());
 		$("#errlist").empty();
 		$('#ulResult').empty();
 	});
-	
 
 	// drop to upload feature
 	var dropbox = $('#dropbox'), message = $('.message', dropbox);
-	
+
 	dropbox
 			.filedrop({
 				// The name of the $_FILES entry:
@@ -60,7 +87,7 @@ $(function() {
 				maxfilesize : 2,
 				url : '../product/advertisements.do',
 
-				uploadFinished : function(i, file, response) {					
+				uploadFinished : function(i, file, response) {
 					$.data(file).addClass('done');
 					$("#errlist").empty();
 					// response is the JSON object that Ads Controller
@@ -104,11 +131,12 @@ $(function() {
 				progressUpdated : function(i, file, progress) {
 					$.data(file).find('.progress').width(progress);
 				},
-				
+
 			});
 
-	var template = '<div class="preview" id="previewbox">' + '<span class="imageHolder">'
-			+ '<img />' + '<span class="uploaded"></span>' + '</span>'
+	var template = '<div class="preview" id="previewbox">'
+			+ '<span class="imageHolder">' + '<img />'
+			+ '<span class="uploaded"></span>' + '</span>'
 			+ '<div class="progressHolder">' + '<div class="progress"></div>'
 			+ '</div>' + '</div>';
 
@@ -145,31 +173,33 @@ $(function() {
 	function showMessage(msg) {
 		message.html(msg);
 	}
-	
-	function recordFileName(file){
+
+	function recordFileName(file) {
 		$("#fileName").val(file.name);
 	}
-	
-	
-	
-	//設定廣告 in DB
-	$( "#button" ).click(function(){
+
+	// 設定廣告 in DB
+	$("#button").click(function() {
 		$("#okMsg").empty();
 		$("#errlist").empty();
-		
+
 		var fileName = $("#fileName").val();
 		var productName = $("#search_query").val();
-		
+
 		$.ajax({
-			url: '../product/advertisements.do', 
-			type: 'POST',
-			data: {fileName: fileName, productName: productName, action: "setAds"},
-			dataType: 'json',
-			success: function(data){
-				
+			url : '../product/advertisements.do',
+			type : 'POST',
+			data : {
+				fileName : fileName,
+				productName : productName,
+				action : "setAds"
+			},
+			dataType : 'json',
+			success : function(data) {
+
 				if (data.AdsSuccess != undefined)
 					$("#okMsg").append("<p>" + data.AdsSuccess + "</p>");
-				$.each(data.AdsErr, function(){
+				$.each(data.AdsErr, function() {
 					$("#errlist").append("<p>" + this + "</p>");
 				});
 
