@@ -23,7 +23,8 @@
 </c:if>
 
 <ul>
-  <li><a href='listAllMem.jsp'>List</a> 會員列表 </li> <br><br>
+<!--   <li><a href='listAllMem.jsp'>List</a> 會員列表 </li> <br><br> -->
+  <li><a href='../wine_admin/ademin_member2.jsp'>List</a> 會員列表 </li> <br><br>
   
   <li>
     <FORM METHOD="post" ACTION="mem.do" >
