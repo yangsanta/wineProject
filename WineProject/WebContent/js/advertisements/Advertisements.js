@@ -4,8 +4,7 @@ $(function() {
 		alert("li!");
 		$("#getAllForm").submit();
 	});
-	if ($("#testTab2"))
-		//alert("not exist！");
+	
 	
 	//jQuery UI
 	$( "#accordion" ).accordion();
@@ -53,9 +52,11 @@ $(function() {
 		}
 	);
 	
+	
 	//隱藏form元件
 	$("#fileName").css("display", "none");
 	$("#productName").css("display", "none");
+	
 	
 	// Ajax search
 	$("#search_query").bind("keyup click", function(){
@@ -64,9 +65,9 @@ $(function() {
 		}
 		$("#productName").val($(this).val());
 		$.ajax({
-			url: '../product/ajaxProducts.do', 
+			url: '../product/advertisements.do', 
 			type: 'POST',
-			data: {queryProducts: $("#search_query").val()},
+			data: {queryProducts: $("#search_query").val(), action: "queryProducts"},
 			dataType: 'json',
 			success: function(data){
 				
