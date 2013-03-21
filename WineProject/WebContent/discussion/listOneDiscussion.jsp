@@ -108,7 +108,7 @@ $(document).ready( function(){
 									<option value="d_title">主題</option>
 									<option value="d_context">文章內容</option>
 								</select>
-								<input type="submit" value="search" class="btn"/>
+								<input type="submit" value="search" class="btn btn-primary "/>
 								<input type="hidden" name="action" value="search"/>
 							</form>
 						</div>
