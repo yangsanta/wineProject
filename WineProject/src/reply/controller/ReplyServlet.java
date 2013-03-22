@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -66,15 +67,16 @@ public class ReplyServlet extends HttpServlet {
 					failureView.forward(req, res);
 					return;										// 程式中斷
 				}
-				
+				// 防止使用者在內文中，輸入<sricpt>之攻擊
+				r_context = Script2Text(r_context);
 				replyVO.setD_no(d_no);
 				replyVO.setR_context(r_context);
-				replyVO.setR_status("0");
+				replyVO.setR_status("ooo");
 				replyVO.setR_datetime(time);
 				replyVO.setR_final_edit(time);
 				replyVO.setMemberVO(memberVO);
 				dao.insert(replyVO);
-				res.sendRedirect("DiscussionList?action=getOne&d_no=" + d_no);
+				res.sendRedirect("DiscussionList.do?action=getOne&d_no=" + d_no);
 			}
 		} catch (Exception e) {
 
@@ -82,4 +84,26 @@ public class ReplyServlet extends HttpServlet {
 
 	}
 
+	// 內文<script>標籤檢查
+	public static String Script2Text(String inputString) {
+		String ScriptStr = inputString; // Script標籤字串
+		String textStr = "";
+		java.util.regex.Pattern p_script;
+		java.util.regex.Matcher m_script;
+
+		try {
+			String regEx_script = "<[\\s]*?script[^>]*?>[\\s\\S]*?<[\\s]*?\\/[\\s]*?script[\\s]*?>"; // 定义script的正则表达式{或<script[^>]*?>[\\s\\S]*?<\\/script>
+																										// }
+			p_script = Pattern.compile(regEx_script, Pattern.CASE_INSENSITIVE);
+			m_script = p_script.matcher(ScriptStr);
+			ScriptStr = m_script.replaceAll("<h1>YOU CAN ATTACK ME!!!!!!</h1>"); // 过滤script标签
+
+			textStr = ScriptStr;
+
+		} catch (Exception e) {
+			System.err.println("Html2Text: " + e.getMessage());
+		}
+
+		return textStr;// 返回文本字符串
+	}
 }

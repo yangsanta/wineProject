@@ -25,6 +25,8 @@
 			<script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.4"></script>
 			<script src="<%=request.getContextPath()%>/js/jquery.validate.min.js" type="text/javascript" ></script>
      		<script src="<%=request.getContextPath()%>/js/messages_tw.js" type="text/javascript" ></script>
+     		<script type="text/javascript" src="<%=request.getContextPath()%>/js/tinymcec/jscripts/tiny_mce.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/tinymcec/tinymac.js"></script>
 			<link rel="stylesheet" type="text/css"
 				href="style/jquery.fancybox.css?v=2.1.4" media="screen" />
 			<link rel="stylesheet" type="text/css" href="style/index.css?v=1.1"
@@ -156,10 +158,6 @@ $(document).ready( function(){
 											pattern="yyyy/MM/dd HH:mm:ss" /></span>
 								<hr style="margin: 0">
 										<div style="padding: 10px">
-											<span>${discussionVO.d_title}</span><br>
-
-
-
 												${discussionVO.d_context}
 										</div></td>
 							</tr>
@@ -195,19 +193,13 @@ $(document).ready( function(){
 								</c:if>
 							</c:forEach>
 						</c:if>
-
-
-
-
-
-
-
-
+						<hr style="margin: 0">
+						<br />
 						<!-- 	--留言功能 -->
 						<form action="<c:url value='/reply.do'/>" method="post" id="commentForm" class="cmxform">
 							快速留言：
-							<textarea cols="200" rows="6" name="r_context" class="required" minlength="10"></textarea>
-							<br /> <input type="submit" value="Send" /> <input
+							<textarea cols="200" rows="6" name="r_context" class="required" minlength="10" style="margin:0px 0px 10px;width:866px;height:200px"></textarea>
+							<br /> <input type="submit" value="Send" class="btn btn-primary"/> <input
 								type="hidden" name="action" value="insert"> <input
 								type="hidden" name="d_no" value="${discussionVO.d_no}">
 						</form>

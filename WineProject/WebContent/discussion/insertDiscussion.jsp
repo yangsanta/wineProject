@@ -120,10 +120,10 @@ label.success {
 
 					<div id="content">
 	<form action="<c:url value='/DiscussionList.do'/>" method="post" id="commentForm" class="cmxform" >
-		文章標題:<input type="text" name="d_title" class="required" minlength="5"/><br /> 
+		文章標題:<input type="text" name="d_title" class="required" minlength="5" style="width:796px"/><br /> 
 		文章內容:<textarea cols="50" rows="3" id="textContext" name="d_context" class="required" minlength="10"></textarea><br />
-		<input type="submit" value="Send"/>
-		<input type="hidden" name="action" value="insert"/>
+		<input type="submit" value="Send" class="btn btn-primary"/>
+		<input type="hidden" name="action" value="insert" style="margin:0px auto"/>
 	</form>
 	<%@ include file="../view_model/index_fast_login.htm"%>
 						<br class="clear" />

@@ -111,7 +111,7 @@ public class DiscussionServlet extends HttpServlet {
 				// 設定新增之主題物件參數
 				Timestamp time = new java.sql.Timestamp(
 						new java.util.Date().getTime());
-				String d_status = "1";
+				String d_status = "ooo";
 				DiscussionVO discussionVO = new DiscussionVO();
 				MemberVO memberVO = new MemberVO();
 				memberVO.setM_no(m_no);
