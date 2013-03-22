@@ -41,7 +41,7 @@
 <!-- 				<td></td> -->
 <!-- 			</tr> -->
 			<c:forEach var="shoppingProduct" items="${sessionScope.ShoppingCart.content}">
-				<tr><td><img src="<%=request.getContextPath()%>/images/products/${shoppingProduct.value.pic}">${shoppingProduct.value.productName}</td><td>$ （先放p_no ${shoppingProduct.value.productNo}）</td><td>${products.value.productNumber}</td><td><i>原價 : $ 2500</i><br>${products.value.saleType}折扣後: $ ${products.value.subTotal}</td></tr>
+				<tr><td><img src="<%=request.getContextPath()%>/images/products/${shoppingProduct.value.pic}">${shoppingProduct.value.productName}</td><td>$ （先放p_no ${shoppingProduct.value.productNo}）</td><td>${shoppingProduct.value.productNumber}</td><td><i>原價 : $ 2500</i><br>${shoppingProduct.value.saleType}折扣後: $ ${shoppingProduct.value.subTotal}</td></tr>
 			</c:forEach>
 		</tbody>
 	</table>
