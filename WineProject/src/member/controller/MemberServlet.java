@@ -90,7 +90,7 @@ public class MemberServlet extends HttpServlet {
 		
 		
 		if ("getOne_For_Update".equals(action)) { // 來自listAllMem.jsp的請求
-System.out.println("jakjsdf8907283u4lk2j3kl458907klajkld");
+
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
@@ -114,7 +114,7 @@ System.out.println("jakjsdf8907283u4lk2j3kl458907klajkld");
 			} catch (Exception e) {
 				errorMsgs.add("無法取得要修改的資料:" + e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/wine_admin/ademin_member3.jsp.3");
+						.getRequestDispatcher("/wine_admin/ademin_member3.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -195,7 +195,7 @@ System.out.println("jakjsdf8907283u4lk2j3kl458907klajkld");
 						m_safety_a, m_status);
 				/***************************3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("memberVO", memberVO); // 資料庫update成功後,正確的的memberVO物件,存入req
-				String url = "/memberCRUD/listOneMem.jsp";
+				String url = "/wine_admin/ademin_member4.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneMem.jsp
 				successView.forward(req, res);
 
