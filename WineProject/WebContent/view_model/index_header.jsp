@@ -68,7 +68,7 @@
 					 元</div>
 					<p class="clear"></p>
 					<div class="shopcar_buy">
-						<a href="#">
+						<a href="/WineProject/orders/checkout.do?action=checkout">
 							<button class="btn btn-mini  btn-success" type="button">結帳回家</button>
 						</a>
 					</div>

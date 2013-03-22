@@ -35,8 +35,9 @@ public class food_set_all extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-//		response.setCharacterEncoding("UTF-8");
-
+		// response.setCharacterEncoding("UTF-8");
+		//HttpSession Session = request.getSession();
+		
 		String action = request.getParameter("action");
 
 		if (action.equals("Foodsetinsert")) {
@@ -57,8 +58,10 @@ public class food_set_all extends HttpServlet {
 			request.setAttribute("Sauce", list2);
 
 			RequestDispatcher rd = request
-					.getRequestDispatcher("/FoodWine/food_set_insert.jsp");
+					.getRequestDispatcher("/wine_admin/ademin_Fs_FsInsert.jsp");
 			rd.forward(request, response);
+			
+			//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_FsInsert.jsp");
 
 		}
 		if (action.equals("Foodsetall")) {
@@ -83,8 +86,10 @@ public class food_set_all extends HttpServlet {
 			request.setAttribute("Sauce", list2);
 
 			RequestDispatcher rd = request
-					.getRequestDispatcher("/FoodWine/food_set_all.jsp");
+					.getRequestDispatcher("/wine_admin/ademin_Fs_FsAll.jsp");
 			rd.forward(request, response);
+					
+		//	response.sendRedirect("/WineProject/wine_admin/ademin_Fs_FsAll.jsp");
 
 		}
 		if (action.equals("Foodset2")) {
@@ -117,17 +122,18 @@ public class food_set_all extends HttpServlet {
 			ProductHibernateDAO productHibernateDAO = new ProductHibernateDAO();
 			List<ProductVO> list3 = productHibernateDAO.getAll();
 			request.setAttribute("Product", list3);
-						
-//			Food_setHibernateDAO food_setHibernateDAO = new Food_setHibernateDAO();
-//			List<Food_setVO> list4 = food_setHibernateDAO.getAll();
-//			request.setAttribute("Food_set", list4);
+
+			// Food_setHibernateDAO food_setHibernateDAO = new
+			// Food_setHibernateDAO();
+			// List<Food_setVO> list4 = food_setHibernateDAO.getAll();
+			// request.setAttribute("Food_set", list4);
 
 			FoodHibernateDAO foodHibernateDAO = new FoodHibernateDAO();
 			List<FoodVO> list = foodHibernateDAO.getAll();
 			request.setAttribute("Food", list);
 
-			request.setAttribute("fs_id",request.getParameter("fs_id"));
-			
+			request.setAttribute("fs_id", request.getParameter("fs_id"));
+
 			IngredientHibernateDAO ingredientDAO = new IngredientHibernateDAO();
 			List<IngredientVO> list1 = ingredientDAO.getAll();
 			request.setAttribute("Ingredient", list1);
@@ -137,8 +143,10 @@ public class food_set_all extends HttpServlet {
 			request.setAttribute("Sauce", list2);
 
 			RequestDispatcher rd = request
-					.getRequestDispatcher("/FoodWine/food_set_update.jsp");
+					.getRequestDispatcher("/wine_admin/ademin_Fs_FsUpdate.jsp");
 			rd.forward(request, response);
+			
+			//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_FsUpdate.jsp");
 
 		} else if (action.equals("FoodAll")) {
 			FoodHibernateDAO foodHibernateDAO = new FoodHibernateDAO();
@@ -146,8 +154,10 @@ public class food_set_all extends HttpServlet {
 			request.setAttribute("Food", list);
 
 			RequestDispatcher rd = request
-					.getRequestDispatcher("/FoodWine/food_all.jsp");
+					.getRequestDispatcher("/wine_admin/ademin_Fs_FAll.jsp");
 			rd.forward(request, response);
+			
+			//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_FAll.jsp");
 
 		} else if (action.equals("IngredientAll")) {
 
@@ -156,8 +166,11 @@ public class food_set_all extends HttpServlet {
 			request.setAttribute("Ingredient", list1);
 
 			RequestDispatcher rd = request
-					.getRequestDispatcher("/FoodWine/ingredient_all.jsp");
+					.getRequestDispatcher("/wine_admin/ademin_Fs_IAll.jsp");
 			rd.forward(request, response);
+			
+			//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_IAll.jsp");
+
 		} else if (action.equals("SauceAll")) {
 
 			SauceHibernateDAO SauceDAO = new SauceHibernateDAO();
@@ -165,15 +178,18 @@ public class food_set_all extends HttpServlet {
 			request.setAttribute("Sauce", list2);
 
 			RequestDispatcher rd = request
-					.getRequestDispatcher("/FoodWine/sauce_all.jsp");
+					.getRequestDispatcher("/wine_admin/ademin_Fs_SAll.jsp");
 			rd.forward(request, response);
+			
+			//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_SAll.jsp");
+
 		}
 
 	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		doGet(request,response);
+		doGet(request, response);
 
 	}
 

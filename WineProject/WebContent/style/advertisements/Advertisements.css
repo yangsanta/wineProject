@@ -8,19 +8,18 @@
 /*-------------------------
     Ajax Search Element & Result Div
 --------------------------*/
-form table, form tr, form td{
+#searchform table, #searchform tr, #searchform td{
+	color: black;
 	line-height:1.2em;
 }
-.over{
-	background-color: #ad8667;
-	border-radius:3px;
-	color: white;
-	font-weight: bold;
- }
+.adsImg{
+	margin-bottom: 3px;
+	height: 100px;
+	width: 170px;
+}
 #bar {
 	clear:both;
 }
-
 #errlist {
 	color: #915608;
 	line-height:2em;
@@ -43,7 +42,11 @@ form table, form tr, form td{
 }
 #searchform {
  	margin: 50px;
- }
+}
+#search_query {
+	width: 300px;
+ 
+}
 
 
 
@@ -60,7 +63,6 @@ form table, form tr, form td{
     overflow: hidden;
     padding-bottom: 40px;
     width: 400px;
- 
     box-shadow:0 0 4px rgba(0,0,0,0.3) inset,0 -3px 2px rgba(0,0,0,0.1);
 }
  
@@ -105,7 +107,7 @@ form table, form tr, form td{
 #dropbox .imageHolder{
     display: inline-block;
     position:relative;
-    opacity : 0.2;
+    opacity : 1;
 }
  
 #dropbox .uploaded{
@@ -114,7 +116,7 @@ form table, form tr, form td{
     left:0;
     height:100%;
     width:100%;
-    background: url('../img/done.png') no-repeat center center rgba(255,255,255,0.5);
+/*     background: url('../img/done.png') no-repeat center center rgba(255,255,255,0.5); */
     display: none;
 }
  
@@ -137,7 +139,7 @@ form table, form tr, form td{
     box-shadow:0 0 2px #000;
 }
  
-#dropbox .progress{
+#dropbox .progressDD{
     background-color:#2586d0;
     position: absolute;
     height:100%;
@@ -152,6 +154,6 @@ form table, form tr, form td{
     transition:0.25s;
 }
  
-#dropbox .preview.done .progress{
+#dropbox .preview.done .progressDD{
     width:100% !important;
 }

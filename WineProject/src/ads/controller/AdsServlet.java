@@ -43,7 +43,7 @@ public class AdsServlet extends HttpServlet {
 		//取參數
 		String action = request.getParameter("action");
 		
-		//轉給facade
+		//準備facade
 		AdsFacade facade = new AdsFacade(request, response);
 		
 		if ( action == null ){
@@ -64,12 +64,17 @@ public class AdsServlet extends HttpServlet {
 		}
 		
 		if ( action != null && action.equals("getAll")){
-			
+			System.out.println("*********************Ads GETALL******************");
+			facade.getAll();
 		}
 		
-		if ( action != null && action.equals("getAll")){
-			
+		if ( action != null && action.equals("remove")){
+			Integer ads_no = Integer.valueOf(request.getParameter("ads_no"));
+
+			facade.remove(ads_no);
+			facade.getAll();
 		}
+		
 
 	}
 
