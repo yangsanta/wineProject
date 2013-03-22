@@ -43,7 +43,7 @@ public class AdsServlet extends HttpServlet {
 		//取參數
 		String action = request.getParameter("action");
 		
-		//轉給facade
+		//準備facade
 		AdsFacade facade = new AdsFacade(request, response);
 		
 		if ( action == null ){
