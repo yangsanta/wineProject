@@ -68,7 +68,8 @@
 					 元</div>
 					<p class="clear"></p>
 					<div class="shopcar_buy">
-						<a href="/WineProject/orders/checkout.do?action=checkout">
+						<a href="<%=request.getContextPath()%>/orders/checkout.do?action=checkout">
+<%-- 						<a href="<%=request.getContextPath()%>/orders/confirmcheckout.jsp"> --%>
 							<button class="btn btn-mini  btn-success" type="button">結帳回家</button>
 						</a>
 					</div>

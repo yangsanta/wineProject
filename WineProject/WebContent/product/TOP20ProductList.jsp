@@ -186,8 +186,7 @@ right: 19px;
 								</ul>
 							</div></div>
 							<hr />
-							<c:forEach var="product" items="${list}" begin="${pageIndex}"
-								end="${pageIndex+rowsPerPage-1}">
+							<c:forEach var="product" items="${list}" >
 								<a style="text-decoration: none;"
 									href="DisplayProducts.do?action=getOne_For_Display&pId=${product.p_no}">
 									<div name="g_wall"class="g_wall drop-shadow" style="position: relative;">
