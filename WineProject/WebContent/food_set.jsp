@@ -13,7 +13,82 @@
 </script>
 </head>
 <body>
-	食物種類：
+	<ul>
+		<li>肉類</li>
+		<ul>
+			<c:forEach var="food_set" items="${food_set_fid1}">
+				<li>${food_set.ingredientVO.i_name}</li>
+			</c:forEach>
+		</ul>
+	</ul>
+	<ul>
+		<li>乳酪</li>
+		<ul>
+			<c:forEach var="food_set" items="${food_set_fid2}">
+				<li>${food_set.ingredientVO.i_name}</li>
+			</c:forEach>
+		</ul>
+
+	</ul>
+	<ul>
+		<li>甜點</li>
+		<ul>
+			<c:forEach var="food_set" items="${food_set_fid3}">
+				<li>${food_set.ingredientVO.i_name}</li>
+			</c:forEach>
+		</ul>
+
+	</ul>
+	<ul>
+		<li>穀類</li>
+		<ul>
+			<c:forEach var="food_set" items="${food_set_fid4}">
+				<li>${food_set.ingredientVO.i_name}</li>
+			</c:forEach>
+		</ul>
+
+	</ul>
+	<ul>
+		<li>雞鴨</li>
+		<ul>
+			<c:forEach var="food_set" items="${food_set_fid5}">
+				<li>${food_set.ingredientVO.i_name}</li>
+			</c:forEach>
+		</ul>
+
+	</ul>
+	<ul>
+		<li>海鮮</li>
+		<ul>
+			<c:forEach var="food_set" items="${food_set_fid6}">
+				<li>${food_set.ingredientVO.i_name}</li>
+			</c:forEach>
+		</ul>
+	</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<%-- 	食物種類：
 	<select id="food">
 		<option>請選擇種類</option>
 		<c:forEach var="Food" items="${Food }">
@@ -30,18 +105,18 @@
 		<option>請選擇風味</option>
 		<c:forEach var="Sauce" items="${Sauce }">
 			<option>${Sauce.s_name}</option>
-		</c:forEach>
-	</select>
-<!-- 	<FORM METHOD="post" ACTION="food.do" name="form1"> -->
-<!-- 		<table border="0"> -->
-<!-- 			<tr> -->
-<!-- 				<td>食物種類：</td> -->
-<!-- 				<td><input type="TEXT" name="f_name" size="45" -->
-<%-- 					value="<%=(foodVO == null) ? "AAAAA" : foodVO.getF_name()%>" /></td> --%>
-<!-- 			</tr> -->
-<!-- 		</table> -->
-<!-- 		<input type="hidden" name="action" value="insert">  -->
-<!-- 		<input type="submit" value="送出新增"> -->
-<!-- 	</FORM> -->
+		</c:forEach> --%>
+	<!-- 	</select> -->
+	<!-- 	<FORM METHOD="post" ACTION="food.do" name="form1"> -->
+	<!-- 		<table border="0"> -->
+	<!-- 			<tr> -->
+	<!-- 				<td>食物種類：</td> -->
+	<!-- 				<td><input type="TEXT" name="f_name" size="45" -->
+	<%-- 					value="<%=(foodVO == null) ? "AAAAA" : foodVO.getF_name()%>" /></td> --%>
+	<!-- 			</tr> -->
+	<!-- 		</table> -->
+	<!-- 		<input type="hidden" name="action" value="insert">  -->
+	<!-- 		<input type="submit" value="送出新增"> -->
+	<!-- 	</FORM> -->
 </body>
 </html>

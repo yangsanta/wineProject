@@ -44,6 +44,54 @@ public class DiscussionManagment extends HttpServlet {
 		req.setAttribute("errorMsgs", errorMsgs);
 
 		try {
+//			 新增主題功能
+			if ("insert".equals(action)) {
+				// 之後修改成從session獲取管理員編號
+
+//				System.out.println(req.getSession().getAttribute("a_no"));
+//				if (req.getSession().getAttribute("a_no") == null) {
+//					RequestDispatcher failureView = req
+//							.getRequestDispatcher("/login.jsp"); // 導入登入頁面
+//					failureView.forward(req, res);
+//					return;
+//				}
+				Integer a_no = (Integer) req.getSession().getAttribute("a_no");
+				String d_title = req.getParameter("d_title");
+				String d_context = req.getParameter("d_context");
+
+				if (d_title.trim().length() < 5) { // 主題字串的檢查
+					errorMsgs.add("請輸入文章主題，並超過5字");
+				}
+				if (d_context.trim().length() < 10) { // 內文的檢查
+					errorMsgs.add("文章內容請輸入超過10字");
+				}
+				if (!errorMsgs.isEmpty()) {
+					req.setAttribute("ErrorMsgKey", errorMsgs);
+					RequestDispatcher failureView = req
+							.getRequestDispatcher("/errorReason.jsp");// 導入錯誤處理頁面
+					failureView.forward(req, res);
+					return; // 程式中斷
+				}
+				// 防止使用者在內文中，輸入<sricpt>之攻擊
+				d_context = Script2Text(d_context);
+				System.out.println(d_context);
+				// 設定新增之主題物件參數
+				Timestamp time = new java.sql.Timestamp(
+						new java.util.Date().getTime());
+				String d_status = "ooo";
+				DiscussionVO discussionVO = new DiscussionVO();
+				MemberVO memberVO = new MemberVO();
+				memberVO.setM_no(a_no);
+				discussionVO.setMemberVO(memberVO);
+				discussionVO.setD_title(d_title);
+				discussionVO.setD_context(d_context);
+				discussionVO.setD_datetime(time);
+				discussionVO.setD_final_edit(time);
+				discussionVO.setD_status(d_status);
+				dao.insert(discussionVO);
+
+				res.sendRedirect("DiscussionManagment?action=getAll");
+			}
 			// 觀看所有文章列表
 			if ("getAll".equals(action)) {
 				dao = new DiscussionHibernateDAO();
