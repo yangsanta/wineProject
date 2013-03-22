@@ -17,7 +17,7 @@ import product.model.ProductVO;
 public class Food_setDAO implements Food_setDAO_interface {
 
 	private static final String GET_ALL_STMT = "FROM Food_setVO order by fs_id";
-	private static final String GET_SOME_STMT_f_i_s_id = "FROM Food_setVO where f_id=? and i_id=? and s_id=?";
+	private static final String GET_SOME_STMT_f_i_s_id = "FROM Food_setVO where f_id=? ";
 
 	@Override
 	public void insert(Food_setVO food_setVO) {
@@ -99,7 +99,7 @@ public class Food_setDAO implements Food_setDAO_interface {
 
 	}
 
-	public List<Food_setVO> getSome(Integer f_id, Integer i_id, Integer s_id) {
+	public List<Food_setVO> getSome(Integer f_id) {
 
 		List<Food_setVO> list = new ArrayList<Food_setVO>();
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -107,8 +107,6 @@ public class Food_setDAO implements Food_setDAO_interface {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_SOME_STMT_f_i_s_id);
 			query.setParameter(0, f_id);
-			query.setParameter(1, i_id);
-			query.setParameter(2, s_id);
 			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
