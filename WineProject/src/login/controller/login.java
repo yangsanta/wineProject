@@ -22,16 +22,30 @@ public class login extends HttpServlet {
 	public login() {
 		super();
 	}
-
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		doPost(request,response);
+	}
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		MemberHibernateDAO dao = new MemberHibernateDAO();
 		HttpSession session = request.getSession();
+		//登出功能
+		String action = request.getParameter("action");
+		if("logout".equals(action)){
+			if(session.getAttribute("access")=="y"  ) {
+	            session.invalidate();
+	            response.sendRedirect(request.getContextPath()+"/index.jsp?loginout=y") ; 
+	        }else{            
+	            response.sendRedirect(request.getContextPath()+"login.jsp") ; 
+	        }
+			return; //停止
+		} 
+		//登入功能
+		MemberHibernateDAO dao = new MemberHibernateDAO();
 		List<String> errorMsgs = new  ArrayList<String>();
 		request.setAttribute("ErrorMsgKey", errorMsgs);
 		String m_id = request.getParameter("m_id").trim();
 		String m_pwd = request.getParameter("m_pwd").trim();
-
 		session.setAttribute("access", "n");
 
 		if (m_id != null && m_id.length() != 0 && m_pwd != null
@@ -67,7 +81,7 @@ public class login extends HttpServlet {
 					.getRequestDispatcher("errorLogin.jsp");
 			dis.forward(request, response);
 		}
-
+	
 		// if(request.getParameter("m_id") != null &&
 		// request.getParameter("m_id").trim().length() != 0 &&
 		// request.getParameter("m_pwd") != null &&

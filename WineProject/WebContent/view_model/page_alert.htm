@@ -3,5 +3,11 @@
 <c:if test="${param.login=='y'}">
 <div class="alert" id="just_login" >
   <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <span class="label label-success">Success!</span>  <span >  aaa 你好，你已經成功的登入了!</span>
+  <span class="label label-success">Success!</span>  <span >  ${m_id}你好，你已經成功的登入了!</span>
+</div></c:if>
+
+<c:if test="${param.loginout=='y'}">
+<div class="alert" id="just_login" >
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <span class="label label-success">Success!</span>  <span > 您已經登出成功，期待您的再度光臨</span>
 </div></c:if>

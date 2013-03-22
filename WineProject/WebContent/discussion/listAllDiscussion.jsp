@@ -131,7 +131,7 @@ tr:hover {
 								style="margin-left: 50px">你可以在這邊與各方的酒友一起討論酒香的芬芳以及在味蕾上跳動的喜悅。現在就發表一篇文章來與大家認識認識吧。</span>
 						</div>
 
-						<a href="discussion/insertDiscussion.jsp"><button
+						<a href="<c:if test="${m_no!=null}">discussion/insertDiscussion.jsp</c:if><c:if test="${m_no==null}">login.jsp</c:if>"><button
 								class="btn btn-large btn-primary" style="float: right"
 								type="button">
 								<i class="icon-pencil icon-white"></i> 發表文章
