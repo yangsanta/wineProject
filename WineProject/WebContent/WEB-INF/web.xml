@@ -181,7 +181,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>setfoodinsset</servlet-name>
-		<url-pattern>/FoodWine/food/set/insert.do</url-pattern>
+		<url-pattern>/wine_admin/food/set/insert.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>setinRegister</servlet-name>

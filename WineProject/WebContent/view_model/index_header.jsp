@@ -26,7 +26,7 @@
 			</c:if>
 			<c:if test="${sessionScope.access=='y'}">
 				<li><a class="fancybox"
-					href="<%=request.getContextPath()%>/logout.jsp">登出</a></li>
+					href="<%=request.getContextPath()%>/product/login.do?action=logout">登出</a></li>
 			</c:if>
 			<li><a href="<%=request.getContextPath()%>/member/MemberService">會員專區
 			</a></li>

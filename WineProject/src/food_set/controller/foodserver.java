@@ -43,8 +43,10 @@ public class foodserver extends HttpServlet {
 			// 2. 檢查使用者輸入資料
 			if (f_name == null || f_name.trim().length() == 0) {
 				errorMsg.add("請輸入「食物種類」");
+
+				// response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/error.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
 				rd.forward(request, response);
 				return;
 			}
@@ -54,14 +56,22 @@ public class foodserver extends HttpServlet {
 			DAO.insert(foodVo);
 
 			if (errorMsg.isEmpty()) {
+
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/Success.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
 				rd.forward(request, response);
+
+				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Success.jsp");
+
 				return;
 			} else {
+
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/error.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
 				rd.forward(request, response);
+				
+				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
+
 				return;
 			}
 		}
@@ -70,14 +80,22 @@ public class foodserver extends HttpServlet {
 			int f_id = Integer.parseInt(request.getParameter("f_id"));
 			DAO.delete(f_id);
 			if (errorMsg.isEmpty()) {
+
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/Success.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
 				rd.forward(request, response);
+				
+				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Success.jsp");
+
 				return;
 			} else {
+
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/error.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
 				rd.forward(request, response);
+				
+				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
+
 				return;
 			}
 		}
@@ -86,12 +104,16 @@ public class foodserver extends HttpServlet {
 
 			int f_id = Integer.parseInt(request.getParameter("f_id"));
 			String f_name = request.getParameter("f_name");
-			
+
 			if (f_name == null || f_name.trim().length() == 0) {
 				errorMsg.add("請輸入「食物種類」");
+
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/error.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
 				rd.forward(request, response);
+								
+				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
+
 				return;
 			}
 
@@ -101,14 +123,22 @@ public class foodserver extends HttpServlet {
 			DAO.update(foodVO2);
 
 			if (errorMsg.isEmpty()) {
+
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/Success.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
 				rd.forward(request, response);
+				
+				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Success.jsp");
+
 				return;
 			} else {
+
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/error.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
 				rd.forward(request, response);
+				
+				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
+
 				return;
 			}
 		}

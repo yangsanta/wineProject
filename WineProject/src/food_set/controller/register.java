@@ -76,7 +76,7 @@ public class register extends HttpServlet {
 			}
 			if (!errorMsg.isEmpty()) {
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/error.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
 				rd.forward(request, response);
 				return;
 			}
@@ -88,12 +88,12 @@ public class register extends HttpServlet {
 
 			if (errorMsg.isEmpty()) {
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/Success.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
 				rd.forward(request, response);
 				return;
 			} else {
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/error.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
 				rd.forward(request, response);
 				return;
 			}
@@ -105,12 +105,12 @@ public class register extends HttpServlet {
 
 			if (errorMsg.isEmpty()) {
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/Success.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
 				rd.forward(request, response);
 				return;
 			} else {
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/error.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
 				rd.forward(request, response);
 				return;
 			}
@@ -141,7 +141,7 @@ public class register extends HttpServlet {
 
 			if (!errorMsg.isEmpty()) {
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/error.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
 				rd.forward(request, response);
 				return;
 
@@ -151,12 +151,12 @@ public class register extends HttpServlet {
 
 			if (errorMsg.isEmpty()) {
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/Success.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
 				rd.forward(request, response);
 				return;
 			} else {
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/FoodWine/error.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
 				rd.forward(request, response);
 				return;
 			}
