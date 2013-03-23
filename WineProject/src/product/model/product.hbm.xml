@@ -31,7 +31,6 @@
 
 		<property name="p_country" column="p_country" />
 
-
-	</class>
+    </class> 
 </hibernate-mapping>
 

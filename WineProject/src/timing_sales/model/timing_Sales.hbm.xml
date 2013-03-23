@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="timing_sales.model.Timing_Sales" table=" timing_sales">
+
+		<id name="ts_id" column="ts_id">
+			<generator class="identity" />
+		</id>
+
+		<property name="ts_price" column="ts_price " />
+		<property name="ts_slogan" column="ts_slogan" />
+		<property name="ts_pic" column="ts_pic" />
+		<property name="ts_content" column="ts_content" />
+		<property name="ts_date" column="ts_date" />
+		<property name="ts_totalsale" column="ts_totalsale" />
+		
+		<many-to-one name="productVO" 
+                     column="p_id" 
+                     class="product.model.ProductVO"
+                     cascade="none"
+                     outer-join="true"
+                     lazy="false"
+                     unique="true"/>    
+	</class>
+</hibernate-mapping>
+

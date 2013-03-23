@@ -22,27 +22,30 @@ public class login extends HttpServlet {
 	public login() {
 		super();
 	}
+
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+		doPost(request, response);
 	}
+
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		//登出功能
+		// 登出功能
 		String action = request.getParameter("action");
-		if("logout".equals(action)){
-			if(session.getAttribute("access")=="y"  ) {
-	            session.invalidate();
-	            response.sendRedirect(request.getContextPath()+"/index.jsp?loginout=y") ; 
-	        }else{            
-	            response.sendRedirect(request.getContextPath()+"login.jsp") ; 
-	        }
-			return; //停止
-		} 
-		//登入功能
+		if ("logout".equals(action)) {
+//			if (session.getAttribute("access") == "y") {
+				session.invalidate();
+				response.sendRedirect(request.getContextPath()
+						+ "/index.jsp?loginout=y");
+//			} else {
+//				response.sendRedirect(request.getContextPath() + "/login.jsp");
+//			}
+			return; // 停止
+		}
+		// 登入功能
 		MemberHibernateDAO dao = new MemberHibernateDAO();
-		List<String> errorMsgs = new  ArrayList<String>();
+		List<String> errorMsgs = new ArrayList<String>();
 		request.setAttribute("ErrorMsgKey", errorMsgs);
 		String m_id = request.getParameter("m_id").trim();
 		String m_pwd = request.getParameter("m_pwd").trim();
@@ -54,18 +57,26 @@ public class login extends HttpServlet {
 			if (member != null) {
 				// 登入成功狀況
 				session.setAttribute("access", "y");
+				// 讀取前次來源網址 (referer)
+				String referer = (String) request.getAttribute("referer");
 
 				session.setAttribute("m_id", member.getM_id()); // 會員帳號
 				session.setAttribute("m_no", member.getM_no()); // 會員編號
 				session.setAttribute("m_name", member.getM_name()); // 會員姓名
 				session.setMaxInactiveInterval(3600);
 				System.out.println("success!!");
-				
-				String redirestpage= null;
-				//跳轉回原頁面
-				redirestpage=(request.getHeader("REFERER").indexOf('?')<0)?"?login=y":"&login=y";
-				response.sendRedirect(request.getHeader("REFERER")+redirestpage);
-//				response.sendRedirect("accesspage.jsp");
+
+				String redirestpage = null;
+				// 跳轉回原頁面
+				if (referer != null) {
+					response.sendRedirect(referer);
+				} else{
+				redirestpage = (request.getHeader("REFERER").indexOf('?') < 0) ? "?login=y"
+						: "&login=y";
+				response.sendRedirect(request.getHeader("REFERER")
+						+ redirestpage);
+				// response.sendRedirect("accesspage.jsp");
+				}
 			} else {
 				System.out.println("failed!!");
 				errorMsgs.add("帳號密碼不符，請重新登入");
@@ -81,7 +92,7 @@ public class login extends HttpServlet {
 					.getRequestDispatcher("errorLogin.jsp");
 			dis.forward(request, response);
 		}
-	
+
 		// if(request.getParameter("m_id") != null &&
 		// request.getParameter("m_id").trim().length() != 0 &&
 		// request.getParameter("m_pwd") != null &&
