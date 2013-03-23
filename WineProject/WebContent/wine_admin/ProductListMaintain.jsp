@@ -49,19 +49,32 @@
 				</div>
 				<div class="tabs">
 					<div id="tab-1" class="tab">
-						<article>
+
 						<div class="text-section">
 							<h1>商品專區</h1>
 							<p>可在這邊修改商品喔!!!</p>
 						</div>
-						<!-- 							<ul class="states"> --> <!-- 								<li class="error">錯誤 : 系統錯誤，海尼根綠茶庫存沒了，請盡速補貨</li> -->
-						<!-- 								<li class="warning">注意: 您還有三則訂單尚未處理.</li> --> <!-- 								<li class="succes">成功 : 你剛完成了5筆訂單.</li> -->
-						<!-- 							</ul> -->
+
 						<div style="width: 80%; margin: 0 auto">
 							<!--------------------------分頁----------------------------------------------------------- -->
-							
-							<div class="pagination" style="float:left">
-							共 ${totalRows} 項商品，頁數 ${whichPage} / ${totalPages}<br/>
+
+							<div align="right">
+
+								<form action="DiscussionList.do" method="post"
+									class="form-search">
+									<p style="color: red; font-size: 12pt">${msgbox}</p>
+									<form action="DiscussionList.do" method="post"
+										class="form-search">
+
+										<input type="text" name="txtsrch"
+											class="input-medium search-query" placeholder="商品名稱" /> <input
+											type="submit" value="search" class="btn" /> <input
+											type="hidden" name="action" value="search"  />
+									</form>
+							</div>
+							<br class="clear" />
+							<div class="pagination" style="float: left">
+								共 ${totalRows} 項商品，頁數 ${whichPage} / ${totalPages}<br />
 								<ul>
 									<c:choose>
 										<c:when test="${whichPage==1}">
@@ -75,7 +88,8 @@
 									<c:forEach var="page" begin="1" end="${totalPages}">
 										<c:choose>
 											<c:when test="${page==whichPage}">
-												<li class="disabled"><a style="background:#CCC;color:black" href="#">${page}</a></span></li>
+												<li class="disabled"><a
+													style="background: #CCC; color: black" href="#">${page}</a></span></li>
 											</c:when>
 											<c:when test="${page!=whichPage}">
 												<li><a
@@ -96,8 +110,12 @@
 									</c:choose>
 								</ul>
 							</div>
-							<div style="float:right; margin-top:45px; margin-right:45px">
-								<input type="button" class="btn btn-success" value="新增商品"/>
+
+
+
+
+							<div style="float: right; margin-top: 45px; margin-right: 45px">
+								<input type="button" class="btn btn-success" value="新增商品" />
 							</div>
 							<!-------------------------顯示商品清單----------------------------------------------------------- -->
 							<table class="table table-hover">
@@ -123,14 +141,15 @@
 												src="../images/products/${product.p_pic}"
 												style="width: 45px; height: 65px" />
 												</div> </a></td>
-											<td >${product.p_name}</td>
-											<td ><span style='font-size: 15px'>${product.p_price}</span></td>
+											<td>${product.p_name}</td>
+											<td><span style='font-size: 15px'>${product.p_price}</span></td>
 											<td><span style='font-size: 15px'>${product.p_num}</span></td>
-											<td ><span style='font-size: 15px'>${product.p_status}<br />
+											<td><span style='font-size: 15px'>${product.p_status}<br />
 											</span></td>
-											<td ><span style='font-size: 15px'>${product.p_sales}</span></td>
-											<td ><a href="<%=request.getContextPath()%>/product/Maintain?action=getOne_For_Display&pId=${product.p_no}"><input type="button"
-												class="btn btn-primary" value="修改"/></a></td>
+											<td><span style='font-size: 15px'>${product.p_sales}</span></td>
+											<td><a
+												href="<%=request.getContextPath()%>/product/Maintain?action=getOne_For_Display&pId=${product.p_no}"><input
+													type="button" class="btn btn-primary" value="修改" /></a></td>
 										</tr>
 
 
@@ -154,7 +173,8 @@
 									<c:forEach var="page" begin="1" end="${totalPages}">
 										<c:choose>
 											<c:when test="${page==whichPage}">
-												<li  class="disabled"><a style="background:#CCC;color:black"  href="#">${page}</a></span></li>
+												<li class="disabled"><a
+													style="background: #CCC; color: black" href="#">${page}</a></span></li>
 											</c:when>
 											<c:when test="${page!=whichPage}">
 												<li><a

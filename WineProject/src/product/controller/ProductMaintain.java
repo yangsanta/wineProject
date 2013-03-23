@@ -1,5 +1,6 @@
 package product.controller;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -7,6 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import product.model.ProductDAO;
 import product.model.ProductVO;
@@ -27,7 +34,7 @@ public class ProductMaintain extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
-
+		System.out.println(action);
 		if ("getAll".equals(action)) {
 			List<ProductVO> list = null;
 
@@ -59,7 +66,7 @@ public class ProductMaintain extends HttpServlet {
 			Integer p_no = Integer.parseInt(request.getParameter("pId"));
 			ProductDAO productDAO = new ProductDAO();
 			ProductVO productVO = productDAO.findByPrimaryKey(p_no);
-
+			request.setAttribute("ErrMsg", request.getAttribute("ErrMsg"));
 			request.setAttribute("productVO", productVO);
 			String listAllUrl = "/wine_admin/ProductOneMaintain.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
@@ -119,6 +126,8 @@ public class ProductMaintain extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
+		
+		
 	}
 
 	// 分頁

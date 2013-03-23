@@ -230,4 +230,12 @@
 		<servlet-name>foodsetaab</servlet-name>
 		<url-pattern>/food/all/sat.do</url-pattern>
 	</servlet-mapping>
+		<servlet>
+		<servlet-name>UpdateProduct</servlet-name>
+		<servlet-class>product.controller.UpdateProduct</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateProduct</servlet-name>
+		<url-pattern>/product/UpdateProduct</url-pattern>
+	</servlet-mapping>
 </web-app>
