@@ -12,7 +12,7 @@
 				<img
 					src="<%=request.getContextPath()%>/images/products/${product.p_pic}"
 					style="width: 50px;" /> <span>${product.p_name}<br> <br>特價$${product.p_price}！
-					<a href="DisplayProducts.do?action=getOne_For_Display&pId=${product.p_no}"><br>
+					<a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${product.p_no}"><br>
 					  <button style="margin-top:10px;" class="btn btn-mini btn-danger" type="button">熱烈搶購!</button></a>
 				</span>
 			</div>

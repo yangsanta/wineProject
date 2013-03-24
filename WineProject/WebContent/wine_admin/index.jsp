@@ -63,7 +63,7 @@
     <![endif]-->
   </head>
 
-  <body style="background: url('<%=request.getContextPath()%>/images/wood.jpg') top left repeat-y;">
+  <body style="background: url('<%=request.getContextPath()%>/images/wood.jpg') top left repeat;">
 <br /><br /><br /><br />
     <div class="container">
 

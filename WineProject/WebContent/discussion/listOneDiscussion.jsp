@@ -23,16 +23,20 @@
 			<script src="http://code.jquery.com/jquery.js"></script>
 			<script src="style/bootstrap/js/bootstrap.js"></script>
 			<script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.4"></script>
-			<script src="<%=request.getContextPath()%>/js/jquery.validate.min.js" type="text/javascript" ></script>
-     		<script src="<%=request.getContextPath()%>/js/messages_tw.js" type="text/javascript" ></script>
-     		<script type="text/javascript" src="<%=request.getContextPath()%>/js/tinymcec/jscripts/tiny_mce.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/tinymcec/tinymac.js"></script>
+			<script src="<%=request.getContextPath()%>/js/jquery.validate.min.js"
+				type="text/javascript"></script>
+			<script src="<%=request.getContextPath()%>/js/messages_tw.js"
+				type="text/javascript"></script>
+			<script type="text/javascript"
+				src="<%=request.getContextPath()%>/js/tinymcec/jscripts/tiny_mce.js"></script>
+			<script type="text/javascript"
+				src="<%=request.getContextPath()%>/js/tinymcec/tinymac.js"></script>
 			<link rel="stylesheet" type="text/css"
 				href="style/jquery.fancybox.css?v=2.1.4" media="screen" />
 			<link rel="stylesheet" type="text/css" href="style/index.css?v=1.1"
 				media="screen" />
 			<script type="text/javascript" src="js/index.js?v=1.0"></script>
-<style type="text/css">
+			<style type="text/css">
 #main {
 	color: #333
 }
@@ -69,24 +73,26 @@
 }
 
 label.error {
-            background:url("<%=request.getContextPath()%>/images/unchecked.gif") no-repeat 0px 0px;
-            padding-left: 16px;
+	background: url("<%=request.getContextPath()%>/images/unchecked.gif")
+		no-repeat 0px 0px;
+	padding-left: 16px;
 }
 
 label.success {
-            background:url("<%=request.getContextPath()%>/images/checked.gif") no-repeat 0px 0px;
-            padding-left: 16px;
+	background: url("<%=request.getContextPath()%>/images/checked.gif")
+		no-repeat 0px 0px;
+	padding-left: 16px;
 }
 </style>
-<script type="text/javascript" charset="utf-8">
-$(document).ready( function(){
-    $('#commentForm').validate({
-        success: function(label) {
-            label.addClass("success").text("Ok!");
-        }
-    });
-});	
-</script>
+			<script type="text/javascript" charset="utf-8">
+				$(document).ready(function() {
+					$('#commentForm').validate({
+						success : function(label) {
+							label.addClass("success").text("Ok!");
+						}
+					});
+				});
+			</script>
 </head>
 <body>
 
@@ -98,28 +104,39 @@ $(document).ready( function(){
 
 
 					<div id="content">
-					<!-- 搜尋功能條						 -->
+						<!-- 搜尋功能條						 -->
 						<div align="right">
-							<form action="DiscussionList.do" method="post" class="form-search">
+							<form action="DiscussionList.do" method="post"
+								class="form-search">
 
-							<p style="color:red;font-size:12pt">${msgbox}</p>
-							<form action="DiscussionList.do" method="post" class="form-search">
+								<c:if test="${msgbox!=null}">
+									<div class="alert" id="just_login">
+										<button type="button" class="close" data-dismiss="alert">&times;</button>
+										<span class="label label-warning">warning!</span> <span>
+											${msgbox}</span>
+									</div>
+								</c:if>
+								<form action="DiscussionList.do" method="post"
+									class="form-search">
 
-								<input type="text" name="txtsrch" class="input-medium search-query"/>
-								<select name="srchThing" style="width:100px">
-									<option value="d_title">主題</option>
-									<option value="d_context">文章內容</option>
-								</select>
-								<input type="submit" value="search" class="btn btn-primary "/>
-								<input type="hidden" name="action" value="search"/>
-							</form>
+									<input type="text" name="txtsrch"
+										class="input-medium search-query" /> <select name="srchThing"
+										style="width: 100px">
+										<option value="d_title">主題</option>
+										<option value="d_context">文章內容</option>
+									</select> <input type="submit" value="search" class="btn btn-primary " />
+									<input type="hidden" name="action" value="search" />
+								</form>
 						</div>
-<!-- ---------------			-->
+						<!-- ---------------			-->
 						<div align="center">
-						<%@ include file="../view_model/page_alert.htm"%>
+							<%@ include file="../view_model/page_alert.htm"%>
 							<h2>文章</h2>
 						</div>
-						<span>首頁 »<a href="<%=request.getContextPath()%>/DiscussionList.do?action=getAll"> 討論區</a> » 文章</span>
+						<span>首頁 »<a
+							href="<%=request.getContextPath()%>/DiscussionList.do?action=getAll">
+								討論區</a> » 文章
+						</span>
 						<div class="well font-small">
 
 							<strong><span class="label label-success">歡迎!</span></strong> <br><span
@@ -129,12 +146,15 @@ $(document).ready( function(){
 						<%-- 發表日期:${discussionVO.d_datetime}<br/> --%>
 						<%-- 作者ID:${discussionVO.m_no}<br/> --%>
 						<%-- 內文:${discussionVO.d_context} --%>
-						<c:if test="${sessionScope.m_no==requestScope.discussionVO.memberVO.m_no}"><a
-							href="<c:url value='/DiscussionList.do'/>?action=edit&d_no=${discussionVO.d_no}"><button
-								class="btn btn-large btn-primary" style="float: right"
-								type="button">
-								<i class="icon-pencil icon-white"></i> 編輯此文章
-							</button> </a></c:if>
+						<c:if
+							test="${sessionScope.m_no==requestScope.discussionVO.memberVO.m_no}">
+							<a
+								href="<c:url value='/DiscussionList.do'/>?action=edit&d_no=${discussionVO.d_no}"><button
+									class="btn btn-large btn-primary" style="float: right"
+									type="button">
+									<i class="icon-pencil icon-white"></i> 編輯此文章
+								</button> </a>
+						</c:if>
 
 
 
@@ -146,20 +166,19 @@ $(document).ready( function(){
 							<tr>
 								<td class="table_member">
 									<div class="defalut">
-										作者帳號:${discussionVO.memberVO.m_id}<br> <img
+										<br> <img
 											src="http://placekitten.com/100/100"
 											style="background: #ededed; padding: 5px;"><br>
-													初入社會<br>UID:1438832 <br>帖子:9 <br>精華:0 <br>積分:4
-																	<br>註冊時間:2006-3-18 
+													作者帳號:${discussionVO.memberVO.m_id}<br>
+													UID:1438832 <br>
+													註冊時間:2006-3-18 
 									</div>
 								</td>
 								<td style="background: #fff"><span style="font-size: 10px">發表日期:<fmt:formatDate
 											value="${discussionVO.d_datetime}"
 											pattern="yyyy/MM/dd HH:mm:ss" /></span>
-								<hr style="margin: 0">
-										<div style="padding: 10px">
-												${discussionVO.d_context}
-										</div></td>
+									<hr style="margin: 0">
+										<div style="padding: 10px">${discussionVO.d_context}</div></td>
 							</tr>
 						</table>
 
@@ -171,45 +190,48 @@ $(document).ready( function(){
 								end="${fn:length(discussionVO.replies) - 1}">
 								<c:if test="${discussionVO.replies[i].r_status=='ooo'}">
 
-								<table border="1" class="dis_table" cellspacing="1"
-									style="margin-top: 20px">
-									<tr>
-										<td class="table_member"><div class="defalut">
-												${discussionVO.replies[i].memberVO.m_id}<br> <img
-													src="http://placekitten.com/100/100"
-													style="background: #ededed; padding: 5px;"><br>
-															初入社會<br> UID:1438832 <br> 帖子:9 <br> 精華:0 <br>
-																			積分:4 <br> 遊樂幣:0 代幣 <br> 閱讀權限:10 <br>
-																						註冊時間:2006-3-18 
-											</div></td>
-										<td style="background: #fff"><span
-											style="font-size: 10px">發表日期:<fmt:formatDate
-													value="${discussionVO.replies[i].r_datetime}"
-													pattern="yyyy/MM/dd HH:mm:ss" /></span>
-										<hr style="margin: 0">
-												<div style="padding: 10px">${discussionVO.replies[i].r_context}</div></td>
-									</tr>
-								</table>
+									<table border="1" class="dis_table" cellspacing="1"
+										style="margin-top: 20px">
+										<tr>
+											<td class="table_member"><div class="defalut">
+													${discussionVO.replies[i].memberVO.m_id}<br> <img
+														src="http://placekitten.com/100/100"
+														style="background: #ededed; padding: 5px;"><br>
+																初入社會<br> UID:1438832 <br> 帖子:9 <br> 精華:0
+																			<br> 積分:4 <br> 遊樂幣:0 代幣 <br> 閱讀權限:10 <br>
+																							註冊時間:2006-3-18 
+												</div></td>
+											<td style="background: #fff"><span
+												style="font-size: 10px">發表日期:<fmt:formatDate
+														value="${discussionVO.replies[i].r_datetime}"
+														pattern="yyyy/MM/dd HH:mm:ss" /></span>
+												<hr style="margin: 0">
+													<div style="padding: 10px">${discussionVO.replies[i].r_context}</div></td>
+										</tr>
+									</table>
 								</c:if>
 							</c:forEach>
 						</c:if>
 						<hr style="margin: 0">
-						<br />
-						<!-- 	--留言功能 -->
-						<form action="<c:url value='/reply.do'/>" method="post" id="commentForm" class="cmxform">
-							快速留言：
-							<textarea cols="200" rows="6" name="r_context" class="required" minlength="10" style="margin:0px 0px 10px;width:866px;height:200px"></textarea>
-							<br /> <input type="submit" value="Send" class="btn btn-primary"/> <input
-								type="hidden" name="action" value="insert"> <input
-								type="hidden" name="d_no" value="${discussionVO.d_no}">
-						</form>
+							<br /> <!-- 	--留言功能 -->
+							<form action="<c:url value='/reply.do'/>" method="post"
+								id="commentForm" class="cmxform">
+								快速留言：
+								<textarea cols="200" rows="6" name="r_context" class="required"
+									minlength="10"
+									style="margin: 0px 0px 10px; width: 866px; height: 200px"></textarea>
+								<br /> <input type="submit" value="Send"
+									class="btn btn-primary" /> <input type="hidden" name="action"
+									value="insert"> <input type="hidden" name="d_no"
+									value="${discussionVO.d_no}">
+							</form>
 
 
 
 
 
-						<br class="clear" />
-						<%@ include file="../view_model/index_fast_login.htm"%>
+							<br class="clear" /> <%@ include
+								file="../view_model/index_fast_login.htm"%>
 					</div>
 					<br class="clear" />
 				</div>

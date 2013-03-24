@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="<%=request.getContextPath()%>/favicon.ico"
@@ -59,13 +59,14 @@
 	text-align: center;
 	font-size: 24px
 }
+
 #product_one .car {
 	text-align: center;
 }
+
 .recom-title {
 	margin-top: 30px;
-	background:
-		url(<%=request.getContextPath()%>/images/cl_vvrecmd_trans_bg.png)
+	background: url(<%=request.getContextPath()%>/images/cl_vvrecmd_trans_bg.png)
 		repeat-x;
 	padding-left: 50px
 }
@@ -87,15 +88,28 @@
 #recom-ul .shpdollar {
 	color: red
 }
-.pro_info{color:blue;width:70px;display:inline-block;text-align:right;font-size: 12px;}
-.info_li{font-size: 12px;}
-.fb-like{margin-top:10px}
+
+.pro_info {
+	color: blue;
+	width: 70px;
+	display: inline-block;
+	text-align: right;
+	font-size: 12px;
+}
+
+.info_li {
+	font-size: 12px;
+}
+
+.fb-like {
+	margin-top: 10px
+}
 </style>
-				<script type="text/javascript">
-					
-				</script>
-				<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-				<!--[if lt IE 9]>
+			<script type="text/javascript">
+				
+			</script>
+			<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+			<!--[if lt IE 9]>
       <script src="twitter.github.com/bootstrap/assets/js/html5shiv.js"></script>
     <![endif]-->
 </head>
@@ -111,64 +125,99 @@
 				</div>
 
 				<div id="content">
-				<%@ include file="../view_model/page_alert.htm"%>
-首頁>商品
+					<%@ include file="../view_model/page_alert.htm"%>
+					首頁>商品
 					<table border="0" width="100%" cellspacing="0" cellpadding="0">
 						<tr>
-							<td style="width: 210px;vertical-align: top;"><div class="prod_img">
-									<img src="<%=request.getContextPath()%>/images/products/${ productVO.p_pic }"
+							<td style="width: 262px; vertical-align: top;"><div
+									class="prod_img">
+									<img
+										src="<%=request.getContextPath()%>/images/products/${ productVO.p_pic }"
 										style="vertical-align: top; width: 100px;">
 								</div>
-								<div class="fb-like" data-href="http://blog.davidou.org"
+								<a href="javascript: void(window.open('http://www.plurk.com/?qualifier=shares&amp;status=' .concat(encodeURIComponent(location.href)) .concat(' ') .concat('(') .concat(encodeURIComponent(document.title)) .concat(')')));"><img
+				src="<%=request.getContextPath()%>/images/plurk.png"	title="分享至plurk"	style="width:20px" /></a>
+				<a href="javascript: void(window.open('http://twitter.com/home/?status='.concat(encodeURIComponent(document.title)) .concat(' ') .concat(encodeURIComponent(location.href))));"><img
+				src="<%=request.getContextPath()%>/images/Twitter.jpg"	title="分享至Twitter"	style="width:20px" /></a>
+								<div class="fb-like" data-href="http://wine.davidou.org:8080/WineProject"
 									data-send="true" data-layout="button_count" data-width="100"
-									data-show-faces="true"></div></td>
+									data-show-faces="true"></div> 
+									<!-- google+ --> <g:plusone
+									size="medium"></g:plusone> <script type="text/javascript">
+										window.___gcfg = {
+											lang : 'zh-TW'
+										};
+
+										(function() {
+											var po = document
+													.createElement('script');
+											po.type = 'text/javascript';
+											po.async = true;
+											po.src = 'https://apis.google.com/js/plusone.js';
+											var s = document
+													.getElementsByTagName('script')[0];
+											s.parentNode.insertBefore(po, s);
+										})();
+									</script>
+									
+									</td>
 							<td style="text-align: left">
 								<div id="product_one" class="pro_list">
-									<span style="font-size: 26px;">
-										<strong style="color: rgb(37, 94, 40)">${ productVO.p_name}</strong>
+									<span style="font-size: 26px;"> <strong
+										style="color: rgb(37, 94, 40)">${ productVO.p_name}</strong>
 									</span>
-									<ul style="margin-top:20px">
-										<li class="info_li"><span class="pro_info">酒莊：</span> ${ productVO.p_winery }</li>
-										<li class="info_li"><span class="pro_info">國家/地區：</span>${ productVO.p_area }</li>
-										<li class="info_li"><span class="pro_info">容量：</span>${ productVO.p_vol } ml</li>
+									<ul style="margin-top: 20px">
+										<li class="info_li"><span class="pro_info">酒莊：</span> ${
+											productVO.p_winery }</li>
+										<li class="info_li"><span class="pro_info">國家/地區：</span>${
+											productVO.p_area }</li>
+										<li class="info_li"><span class="pro_info">容量：</span>${
+											productVO.p_vol } ml</li>
 										<li class="info_li"><span class="pro_info">酒精濃度：</span>5%</li>
-										<li class="info_li"><span class="pro_info">年份：</span>${ productVO.p_year }</li>
-										<li class="info_li"><span class="pro_info">評分：</span>
-											<c:forEach var="i" begin="1" end="${ productVO.p_rate }" step="1" >
-     										  <img src="<%=request.getContextPath()%>/images/star1.gif" style="width:20px">
-											</c:forEach>	
-											<c:forEach var="i" begin="${ productVO.p_rate }" end="4" step="1" >
-     										    <img src="<%=request.getContextPath()%>/images/star.gif"style="width:20px"> 
-											</c:forEach>
-										</li>
+										<li class="info_li"><span class="pro_info">年份：</span>${
+											productVO.p_year }</li>
+										<li class="info_li"><span class="pro_info">評分：</span> <c:forEach
+												var="i" begin="1" end="${ productVO.p_rate }" step="1">
+												<img src="<%=request.getContextPath()%>/images/star1.gif"
+													style="width: 20px">
+											</c:forEach> <c:forEach var="i" begin="${ productVO.p_rate }" end="4"
+												step="1">
+												<img src="<%=request.getContextPath()%>/images/star.gif"
+													style="width: 20px">
+											</c:forEach></li>
 										<li><span class="pro_info">產區：</span>大陸</li>
-										<li><span class="pro_info">葡萄種類：</span>${ productVO.p_grape }</li>
+										<li><span class="pro_info">葡萄種類：</span>${
+											productVO.p_grape }</li>
 									</ul>
-									<div style="text-align: right;">商品編號:365${ productVO.p_no}</div>
+									<div style="text-align: right;">商品編號:365${
+										productVO.p_no}</div>
 									<hr style="margin: 0">
 										<div class="price">
-											<strong>網路價:</strong><span style="color: red">$${ productVO.p_price }</span>
+											<strong>網路價:</strong><span style="color: red">$${
+												productVO.p_price }</span>
 										</div>
-											<div class="car">
-										<BR><form action="shoppingCart.do" method="post">
-										 <span class="font-small">數量</span><select name="num" style="width: 80px;">
-													<option value=1>1</option>
-													<option value=2>2</option>
-													<option value=${ productVO.p_num }>${ productVO.p_num }</option>
-											</select>
-											<Input type='hidden' name="no" value="${productVO.p_no}">
-												<Input class="btn btn-primary" type="submit"
-													style="margin: 0 0 10px 5px;"  value='加入購物車'>
-													</form>	</div>
+										<div class="car">
+											<BR><form action="shoppingCart.do" method="post">
+													<span class="font-small">數量</span><select name="num"
+														style="width: 80px;">
+														<c:forEach var="i" begin="1" end="20">
+															<c:if test="${productVO.p_num > i}">
+																<option value=${i}>${i}</option>
+															</c:if>
+														</c:forEach>
+
+
+													</select> <Input type='hidden' name="no" value="${productVO.p_no}">
+														<Input class="btn btn-primary" type="submit"
+														style="margin: 0 0 10px 5px;" value='加入購物車'>
+												</form>
+										</div>
 								</div>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2"><div style="margin-top: 20px">
-									${ productVO.p_intro }
-
-									</div>
-							</td>
+							<td colspan="2"><div style="margin-top: 20px">${
+									productVO.p_intro }</div></td>
 						</tr>
 					</table>
 
@@ -231,19 +280,19 @@
 						}(document, 'script', 'facebook-jssdk'));
 					</script>
 
-<%@ include file="../view_model/index_fast_login.htm"%>
-						
+					<%@ include file="../view_model/index_fast_login.htm"%>
 
-						<br class="clear" />
-					</div>
+
 					<br class="clear" />
 				</div>
+				<br class="clear" />
 			</div>
-<%@ include file="../view_model/index_footer.htm"%>
-				
-			</div>
-			
-</div>
+		</div>
+		<%@ include file="../view_model/index_footer.htm"%>
+
+	</div>
+
+	</div>
 </body>
 
 </html>

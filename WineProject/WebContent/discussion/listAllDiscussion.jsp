@@ -92,114 +92,124 @@ tr:hover {
 			</script>
 </head>
 
-	<body>
-		<div id="shadow_bg">
-			<div id="body">
-				<%@ include file="../view_model/index_header.jsp"%>
-				<div id="main">
+<body>
+	<div id="shadow_bg">
+		<div id="body">
+			<%@ include file="../view_model/index_header.jsp"%>
+			<div id="main">
 
 
-					<div id="content">
-						<%@ include file="../view_model/page_alert.htm"%>
-<!-- 搜尋功能條						 -->
-						<div align="right">
+				<div id="content">
+					<%@ include file="../view_model/page_alert.htm"%>
+					<!-- 搜尋功能條						 -->
+					<div align="right">
 
-							<form action="DiscussionList.do" method="post" class="form-search">
-							<p style="color:red;font-size:12pt">${msgbox}</p>
-							<form action="DiscussionList.do" method="post" class="form-search">
+						<form action="DiscussionList.do" method="post" class="form-search">
 
-								<input type="text" name="txtsrch" class="input-medium search-query"/>
-								<select name="srchThing" style="width:100px">
+							<c:if test="${msgbox!=null}">
+								<div class="alert" id="just_login">
+									<button type="button" class="close" data-dismiss="alert">&times;</button>
+									<span class="label label-warning">warning!</span> <span>
+										${msgbox}</span>
+								</div>
+							</c:if>
+							<form action="DiscussionList.do" method="post"
+								class="form-search">
+
+								<input type="text" name="txtsrch"
+									class="input-medium search-query" /> <select name="srchThing"
+									style="width: 100px">
 									<option value="d_title">主題</option>
 									<option value="d_context">文章內容</option>
 									<option value="m_id">會員帳號</option>
-								</select>
-								<input type="submit" value="search" class="btn btn-primary"/>
-								<input type="hidden" name="action" value="search"/>
+								</select> <input type="submit" value="search" class="btn btn-primary" />
+								<input type="hidden" name="action" value="search" />
 							</form>
-						</div>
-<!-- ---------------			-->
-						<div align="center">
-							<h2>討論區</h2>
-						</div>
-						<span><a href="<%=request.getContextPath()%>/index.jsp">首頁</a> » 討論區</span>
-						<div class="well font-small">
-
-							<strong><span class="label label-success">歡迎!</span></strong> <br><span
-								style="margin-left: 50px">你可以在這邊與各方的酒友一起討論酒香的芬芳以及在味蕾上跳動的喜悅。現在就發表一篇文章來與大家認識認識吧。</span>
-						</div>
-
-						<a href="<c:if test="${m_no!=null}">discussion/insertDiscussion.jsp</c:if><c:if test="${m_no==null}">login.jsp</c:if>"><button
-								class="btn btn-large btn-primary" style="float: right"
-								type="button">
-								<i class="icon-pencil icon-white"></i> 發表文章
-							</button> </a> <br><br>
-								<table border="0" width="100%" cellspacing="0" cellpadding="0">
-									<thead>
-										<tr>
-											<td>類型</td>
-											<td>主題</td>
-											<td>作者</td>
-											<td>回復數</td>
-											<td>發表時間</td>
-										</tr>
-									</thead>
-
-									<c:forEach var="discussionVO" items="${list}"
-										begin="${pageIndex}" end="${pageIndex+rowsPerPage-1}">
-										<tr>
-											<td class="img_type"><img
-												src="images/discussion_paper.gif"></td>
-											<td class="table_title"><a
-												href="DiscussionList.do?d_no=${discussionVO.d_no}&action=getOne">${discussionVO.d_title}</a></td>
-											<td class="tdcenter">${discussionVO.memberVO.m_id}</td>
-											<td class="tdcenter">${fn:length(discussionVO.replies)}</td>
-											<td class="table_time"><fmt:formatDate
-													value="${discussionVO.d_datetime}"
-													pattern="yyyy/MM/dd HH:mm:ss" /></td>
-									</c:forEach>
-								</table>
-								<div class="pagination pagination-centered"
-									style="margin-top: 50px">
-									<ul>
-										<c:if test="${rowsPerPage<rowNumber}">
-											<c:if test="${pageIndex>=rowsPerPage}">
-												<li class=""><a href="${url}?action=${action}&whichPage=1">
-														&laquo; </a></li>
-												<li class=""><a
-													href="${url}?action=${action}&whichPage=${whichPage-1}">上一頁</a></li>
-											</c:if>
-										</c:if>
-
-										<c:if test="${pageNumber > 1}">
-											<c:forEach var="i" begin="1" end="${pageNumber}">
-												<li class=""><a
-													href="${url}?action=${action}&whichPage=${i}">${i}</a></li>
-											</c:forEach>
-										</c:if>
-
-										<c:if test="${rowsPerPage<rowNumber}">
-											<c:if test="${pageIndex<pageIndexArray[pageNumber-1]}">
-												<li class=""><a
-													href="${url}?action=${action}&whichPage=${whichPage+1}">下一頁</a></li>
-												<li class=""><a
-													href="${url}?action=${action}&whichPage=${pageNumber}">»</a></li>
-
-											</c:if>
-										</c:if>
-									</ul>
-								</div> <br class="clear" /> <%@ include
-									file="../view_model/index_fast_login.htm"%>
 					</div>
-					<br class="clear" />
+					<!-- ---------------			-->
+					<div align="center">
+						<h2>討論區</h2>
+					</div>
+					<span><a href="<%=request.getContextPath()%>/index.jsp">首頁</a>
+						» 討論區</span>
+					<div class="well font-small">
+
+						<strong><span class="label label-success">歡迎!</span></strong> <br><span
+							style="margin-left: 50px">你可以在這邊與各方的酒友一起討論酒香的芬芳以及在味蕾上跳動的喜悅。現在就發表一篇文章來與大家認識認識吧。</span>
+					</div>
+
+					<a
+						href="<c:if test="${m_no!=null}">discussion/insertDiscussion.jsp</c:if><c:if test="${m_no==null}">login.jsp</c:if>"><button
+							class="btn btn-large btn-primary" style="float: right"
+							type="button">
+							<i class="icon-pencil icon-white"></i> 發表文章
+						</button> </a> <br><br>
+							<table border="0" width="100%" cellspacing="0" cellpadding="0">
+								<thead>
+									<tr>
+										<td>類型</td>
+										<td>主題</td>
+										<td style="width: 100px;">作者</td>
+										<td style="width: 100px;">回復數</td>
+										<td>發表時間</td>
+									</tr>
+								</thead>
+
+								<c:forEach var="discussionVO" items="${list}"
+									begin="${pageIndex}" end="${pageIndex+rowsPerPage-1}">
+									<tr>
+										<td class="img_type"><img
+											src="images/discussion_paper.gif"></td>
+										<td class="table_title"><a
+											href="DiscussionList.do?d_no=${discussionVO.d_no}&action=getOne">${discussionVO.d_title}</a></td>
+										<td class="tdcenter">${discussionVO.memberVO.m_id}</td>
+										<td class="tdcenter">${fn:length(discussionVO.replies)}</td>
+										<td class="table_time"><fmt:formatDate
+												value="${discussionVO.d_datetime}"
+												pattern="yyyy/MM/dd HH:mm" /></td>
+								</c:forEach>
+							</table>
+							<div class="pagination pagination-centered"
+								style="margin-top: 50px">
+								<ul>
+									<c:if test="${rowsPerPage<rowNumber}">
+										<c:if test="${pageIndex>=rowsPerPage}">
+											<li class=""><a
+												href="${url}?action=${action}&whichPage=1"> &laquo; </a></li>
+											<li class=""><a
+												href="${url}?action=${action}&whichPage=${whichPage-1}">上一頁</a></li>
+										</c:if>
+									</c:if>
+
+									<c:if test="${pageNumber > 1}">
+										<c:forEach var="i" begin="1" end="${pageNumber}">
+											<li class=""><a
+												href="${url}?action=${action}&whichPage=${i}">${i}</a></li>
+										</c:forEach>
+									</c:if>
+
+									<c:if test="${rowsPerPage<rowNumber}">
+										<c:if test="${pageIndex<pageIndexArray[pageNumber-1]}">
+											<li class=""><a
+												href="${url}?action=${action}&whichPage=${whichPage+1}">下一頁</a></li>
+											<li class=""><a
+												href="${url}?action=${action}&whichPage=${pageNumber}">»</a></li>
+
+										</c:if>
+									</c:if>
+								</ul>
+							</div> <br class="clear" /> <%@ include
+								file="../view_model/index_fast_login.htm"%>
 				</div>
+				<br class="clear" />
 			</div>
-			<%@ include file="../view_model/index_footer.htm"%>
-
 		</div>
+		<%@ include file="../view_model/index_footer.htm"%>
 
-		</div>
-	</body>
+	</div>
+
+	</div>
+</body>
 </html>
 
 
