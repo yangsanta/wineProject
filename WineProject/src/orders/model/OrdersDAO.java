@@ -14,7 +14,6 @@ import org.hibernate.criterion.Restrictions;
 public class OrdersDAO implements OrdersDAO_interface {
 
 	private static final String GET_ALL_STMT = "FROM OrdersVO order by o_no";
-	private static final String GET_SOME_STMT_M_no = "FROM OrdersVO where m_no=:m_no order by o_no";
 
 	@Override
 	public void insert(OrdersVO orderVO) {
@@ -87,7 +86,7 @@ public class OrdersDAO implements OrdersDAO_interface {
 		try {
 			session.beginTransaction();
 			Criteria query = session.createCriteria(OrdersVO.class);
-			query.addOrder(Order.asc("o_no"));
+			query.addOrder(Order.desc("o_no"));
 			query.add( Restrictions.eq("m_no", m_no) );
 			list = query.list();
 			session.getTransaction().commit();
