@@ -20,7 +20,7 @@ drop table ads;
 drop table admin_board;
 drop table member;
 drop table product;		--刪除商品
-
+drop table timing_sales; --刪除限惠
 
 
 create table discussion (
@@ -1100,3 +1100,16 @@ insert into admin_board values ('	192.168.36.3	','	NULL	','	/contentus.jsp	','	h
 insert into admin_board values ('	168.95.1.1	','	NULL	','	/contentus.jsp	','	http://192.168.36.3:8081/WineProject/product/DisplayProducts.do?action=getSome_For_Display&condition=p_grape&conditionValue=55%20Merlot%E3%80%8145%20Cabernet%20Sauvignon	','	Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-us) AppleWebKit/531.21.8 (KHTML, like Gecko) Version/4.0.4 Safari/5	','2013/3/19 09:48','	mac	','	Safari	');
 insert into admin_board values ('	192.168.36.4	','	NULL	','	/contentus.jsp	','	http://192.168.36.3:8081/WineProject/product/DisplayProducts.do?action=getSome_For_Display&condition=p_grape&conditionValue=55%20Merlot%E3%80%8145%20Cabernet%20Sauvignon	','	Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-us) AppleWebKit/531.21.8 (KHTML, like Gecko) Version/4.0.4 Safari/5	','2013-3-19 09:48','	mac	','	Safari	');
 insert into admin_board values ('	168.95.1.1	','	NULL	','	/contentus.jsp	','	http://192.168.36.3:8081/WineProject/product/DisplayProducts.do?action=getSome_For_Display&condition=p_grape&conditionValue=55%20Merlot%E3%80%8145%20Cabernet%20Sauvignon	','	Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-us) AppleWebKit/531.21.8 (KHTML, like Gecko) Version/4.0.4 Safari/5	','2013-03-19 09:48:11.783','	mac	','	Safari	');
+
+
+create table timing_sales (
+	ts_id	 int IDENTITY not null,
+	p_id int not null,
+	ts_price int not null,
+	ts_slogan text,
+	ts_pic varchar(50),
+	ts_content text,
+	ts_date date,
+	ts_totalsale int,
+constraint timing_sales_primary_key primary key (ts_id)
+);

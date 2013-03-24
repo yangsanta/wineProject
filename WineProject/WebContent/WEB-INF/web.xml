@@ -254,5 +254,12 @@
 		<servlet-name>DeleteWine</servlet-name>
 		<url-pattern>/product/DeleteWine</url-pattern>
 	</servlet-mapping>
-
+  <servlet>
+    <servlet-name>set_timing_sales</servlet-name>
+    <servlet-class>timing_sales.controller.Timing_Sales_Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>set_timing_sales</servlet-name>
+    <url-pattern>/set_timing_sales</url-pattern>
+  </servlet-mapping>
 </web-app>
