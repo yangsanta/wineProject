@@ -61,12 +61,11 @@ public class DeleteWine extends HttpServlet {
 			session.setAttribute("ShoppingCart", cart);
 
 		}
-		//從購物車中找出商品清單
 		Map<Integer, ShoppingProduct> oldProduct = cart.getContent();
 		Integer productNo = Integer.parseInt(request.getParameter("no"));
 		ShoppingProduct oldShoppingProduct = oldProduct.get(productNo);
-		String sales = oldShoppingProduct.getSaleType();   //找出USER愈刪除商品之優惠狀態
-		Integer number = oldShoppingProduct.getProductNumber(); //該商品之數量 買A送B要判斷用的
+		String sales = oldShoppingProduct.getSaleType();
+		Integer number = oldShoppingProduct.getProductNumber();
 
 		if (sales.equals("A")) {
 			cart.deleteProduct(productNo);

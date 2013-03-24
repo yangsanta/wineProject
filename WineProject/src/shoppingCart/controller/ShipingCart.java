@@ -17,12 +17,11 @@ public class ShipingCart {
 	}
 
 	public void addToCart(Integer productNumber, ShoppingProduct shoppingProduct) {
-
+		if (shoppingProduct.getProductNumber() <= 0) {
+			return;
+		}
 		// 如果客戶在伺服器端沒有此項商品的資料，則客戶第一次購買此項商品
 		if (cart.get(productNumber) ==null ) {
-			if (shoppingProduct.getProductNumber() <= 0) {
-				return;
-			}else
 			cart.put(productNumber, shoppingProduct);
 			
 		} else {
