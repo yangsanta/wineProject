@@ -47,7 +47,7 @@ public class ProductJDBCDAO implements ProductDAO_interface {
 			pstmt.setString(13, productVO.getP_sales());
 			pstmt.setInt(14, productVO.getP_vol());
 			pstmt.setDouble(15, productVO.getP_alcho());
-			pstmt.setTimestamp(16, productVO.getP_date());
+			pstmt.setDate(16, productVO.getP_date());
 			pstmt.setString(17, productVO.getP_type());
 			pstmt.setString(18, productVO.getP_grape());
 			pstmt.executeUpdate();
@@ -106,7 +106,7 @@ public class ProductJDBCDAO implements ProductDAO_interface {
 			pstmt.setString(13, productVO.getP_sales());
 			pstmt.setInt(14, productVO.getP_vol());
 			pstmt.setDouble(15, productVO.getP_alcho());
-			pstmt.setTimestamp(16, productVO.getP_date());
+			pstmt.setDate(16, productVO.getP_date());
 			pstmt.setString(17, productVO.getP_type());
 			pstmt.setString(18, productVO.getP_grape());
 			pstmt.setInt(19, productVO.getP_no());
@@ -220,7 +220,7 @@ public class ProductJDBCDAO implements ProductDAO_interface {
 				productVO.setP_sales(rs.getString("p_sales"));
 				productVO.setP_vol(rs.getInt("p_vol"));
 				productVO.setP_alcho(rs.getDouble("p_alcho"));
-				productVO.setP_date(rs.getTimestamp("p_date"));
+				productVO.setP_date(rs.getDate("p_date"));
 				productVO.setP_type(rs.getString("p_type"));
 				productVO.setP_grape(rs.getString("p_grape"));
 
@@ -296,7 +296,7 @@ public class ProductJDBCDAO implements ProductDAO_interface {
 				productVO.setP_sales(rs.getString("p_sales"));
 				productVO.setP_vol(rs.getInt("p_vol"));
 				productVO.setP_alcho(rs.getDouble("p_alcho"));
-				productVO.setP_date(rs.getTimestamp("p_date"));
+				productVO.setP_date(rs.getDate("p_date"));
 				productVO.setP_type(rs.getString("p_type"));
 				productVO.setP_grape(rs.getString("p_grape"));
 				list.add(productVO);

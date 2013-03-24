@@ -115,7 +115,9 @@
 
 
 							<div style="float: right; margin-top: 45px; margin-right: 45px">
+							<a href="/WineProject/wine_admin/ProductInsert.jsp">
 								<input type="button" class="btn btn-success" value="新增商品" />
+								</a>
 							</div>
 							<!-------------------------顯示商品清單----------------------------------------------------------- -->
 							<table class="table table-hover">
@@ -148,7 +150,7 @@
 											</span></td>
 											<td><span style='font-size: 15px'>${product.p_sales}</span></td>
 											<td><a
-												href="<%=request.getContextPath()%>/product/Maintain?action=getOne_For_Display&pId=${product.p_no}"><input
+												href="<%=request.getContextPath()%>/product/Maintain?action=getOne_For_Display&pId=${product.p_no}&page=${whichPage}"><input
 													type="button" class="btn btn-primary" value="修改" /></a></td>
 										</tr>
 

@@ -238,4 +238,13 @@
 		<servlet-name>UpdateProduct</servlet-name>
 		<url-pattern>/product/UpdateProduct</url-pattern>
 	</servlet-mapping>
+			<servlet>
+		<servlet-name>InsertProduct</servlet-name>
+		<servlet-class>product.controller.InsertProduct</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InsertProduct</servlet-name>
+		<url-pattern>/wine_admin/InsertProduct</url-pattern>
+	</servlet-mapping>
+
 </web-app>

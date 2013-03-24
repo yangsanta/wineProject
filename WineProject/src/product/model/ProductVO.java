@@ -1,5 +1,6 @@
 ﻿package product.model;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class ProductVO implements java.io.Serializable {
@@ -20,7 +21,7 @@ public class ProductVO implements java.io.Serializable {
 	private String p_sales;
 	private Integer p_vol;
 	private Double p_alcho;
-	private Timestamp p_date;
+	private Date p_date;
 	private String p_type;
 	private String p_grape;
 
@@ -50,11 +51,11 @@ public class ProductVO implements java.io.Serializable {
 		this.p_pic = p_pic;
 	}
 
-	public Timestamp getP_date() {
+	public Date getP_date() {
 		return p_date;
 	}
 
-	public void setP_date(Timestamp p_date) {
+	public void setP_date(Date p_date) {
 		this.p_date = p_date;
 	}
 
