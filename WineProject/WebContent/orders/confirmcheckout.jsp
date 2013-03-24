@@ -85,8 +85,8 @@
 	<div>
 		<form method="POST" action="<%=request.getContextPath()%>/orders/checkout.do?">
 			<input type="text" name="o_recipient" placeholder="收件人姓名" value="${o_recipient}">${errMap.errRName}<br>
-			<input type="text" name="o_recipient_tel" placeholder="聯絡電話" value="${o_recipient_tel}">${errMap.errRPhone}<br>
-			<input type="text" name="o_recipient_addr" placeholder="收件地址" value="${o_recipient_addr}">${errMap.errRAddr}<br>
+			<input type="text" name="o_recipient_tel" placeholder="聯絡電話" value="${o_recipient_tel}">${errMap.errRPhone}<br> <input type="text" name="o_recipient_addr" placeholder="收件地址"
+						value="${o_recipient_addr}">${errMap.errRAddr}<br>
 			
 			<c:if test="${not empty theCoupons}">
 				<div>您擁有的折價券:<br>

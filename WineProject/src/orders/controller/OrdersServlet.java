@@ -49,7 +49,7 @@ public class OrdersServlet extends HttpServlet {
 					.forward(request, response);
 		} else {
 			cart = (ShipingCart) session.getAttribute("ShoppingCart");
-			
+
 			CouponDAO couponDAO = new CouponDAO();
 			List<CouponVO> theCoupons = couponDAO.findByM_no((Integer) session
 					.getAttribute("m_no"));
@@ -60,27 +60,32 @@ public class OrdersServlet extends HttpServlet {
 
 			// 從購物車點 "結帳回家"
 			if (action.equals("checkout")) {
-				System.out.println("*********************Order Checkout******************");
+				System.out
+						.println("*********************Order Checkout******************");
 
 				facade.checkout(memberVO, cart);
 
 				request.getRequestDispatcher("/orders/confirmcheckout.jsp")
 						.forward(request, response);
 			}
-			
+
 			// 從確認訂購話畫面點 "確認結帳"
 			if (action.equals("confirmed")) {
-				System.out.println("*********************Order confirmed******************");
-				
+				System.out
+						.println("*********************Order confirmed******************");
+
 				boolean isSuccess = facade.confirmed(memberVO, cart);
 				if (isSuccess) {
-					
+					request.getSession().removeAttribute("ShoppingCart");
+					request.setAttribute("ShoppingCart", cart);
+					request.getRequestDispatcher("/orders/checkoutok.jsp")
+							.forward(request, response);
 				} else {
-				request.getRequestDispatcher("/orders/confirmcheckout.jsp")
-				.forward(request, response);
+					request.getRequestDispatcher("/orders/confirmcheckout.jsp")
+							.forward(request, response);
 				}
 			}
-			
+
 		} // end of if-else of "no shopping cart?"
 
 	}
