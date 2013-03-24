@@ -74,6 +74,18 @@ public class OrdersFacade {
 		} else {
 			request.getSession().setAttribute("ShippingCost", 50);
 		}
+		
+		// 自動帶入 user 最近一次的訂單收件人資訊
+		try {
+			OrdersVO ordersVO = (new OrdersDAO().getOrdersByM_no(memberVO.getM_no())).get(0);
+			request.setAttribute("o_recipient", ordersVO.getO_recipient());
+			request.setAttribute("o_recipient_tel", ordersVO.getO_recipient_tel());
+			request.setAttribute("o_recipient_addr", ordersVO.getO_recipient_addr());
+		} catch (NullPointerException e) {
+			System.out.println("No order of this user at the moment");
+			e.printStackTrace();
+		}
+		
 	}
 
 	public boolean confirmed(MemberVO memberVO, ShipingCart cart)
@@ -202,7 +214,7 @@ public class OrdersFacade {
 			// 寫入明細 & 扣庫存
 			List<OrdersVO> listOs = ordersDAO.getOrdersByM_no(memberVO
 					.getM_no());
-			ordersVO = listOs.get(listOs.size() - 1);
+			ordersVO = listOs.get(0);
 			ProductDAO productDAO = new ProductDAO();
 			ProductVO productVO;
 			for (Order_DetailVO theOrder_Detail : listODs) {
