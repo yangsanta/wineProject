@@ -6,18 +6,27 @@ import hibernate.util.HibernateUtil;
 import ingredient.model.IngredientVO;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
 import sauce.model.SauceVO;
+import product.model.ProductDAO;
 import product.model.ProductVO;
 
 public class Food_setHibernateDAO implements Food_setDAO_interface {
 
 	private static final String GET_ALL_STMT = "FROM Food_setVO order by fs_id";
 	private static final String GET_SOME_STMT_f_id = "FROM Food_setVO where f_id=? ";
+	private static final String GET_SOME_STMT_i_id = " FROM Food_setVO where i_id=? ";
 
 	@Override
 	public void insert(Food_setVO food_setVO) {
@@ -99,6 +108,73 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 
 	}
 
+	public List<Integer> getSomebyDI_id(Integer f_id) {
+		List<Integer> list = new ArrayList<Integer>();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			SQLQuery query = session
+					.createSQLQuery("select distinct l.i_id from(select * from food_set where f_id = ?)as l");
+			query.setParameter(0, f_id);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+
+	public List<String> getSomebydF_id(Integer f_id) {
+		List<Food_setVO> list = new ArrayList<Food_setVO>();
+		List<String> list2 = new ArrayList<String>();
+		List<IngredientVO> list3 = new ArrayList<IngredientVO>();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			SQLQuery query = session
+					.createSQLQuery("select * from food_set where i_id in (select Distinct i_id from food_set where f_id = ?)");
+			query.setParameter(0, f_id);
+			query.addEntity(Food_setVO.class);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		Set<Object> set = new HashSet<Object>();
+		for(Food_setVO a:list){
+			set.add(a.getIngredientVO().getI_name());
+		}
+		Iterator<Object> it = set.iterator();
+		while(it.hasNext()){
+			list2.add((String) it.next());
+		}
+		return list2;
+	}
+	
+	
+	
+	
+	public List<Food_setVO> getSomebyI_id(Integer i_id) {
+		List<Food_setVO> list = new ArrayList<Food_setVO>();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_SOME_STMT_i_id);
+			query.setParameter(0, i_id);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+
+	}
+	
+	
+
 	// public List<Food_setVO> getSome(Integer f_id, Integer i_id, Integer s_id)
 	// {
 	//
@@ -136,4 +212,21 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 		return list;
 
 	}
+
+	public static void main(String arg[]) {
+		Food_setHibernateDAO dao = new Food_setHibernateDAO();
+		List<String> list = dao.getSomebydF_id(1);
+		for (String a : list) {
+			System.out.println(a);
+		}
+
+		// public static void main(String arg[]) {
+		// Food_setHibernateDAO dao = new Food_setHibernateDAO();
+		// List<Integer> list = dao.getSomebyDI_id(1);
+		// for (Integer a : list) {
+		// System.out.println(a);
+		// }
+		//
+	}
+
 }

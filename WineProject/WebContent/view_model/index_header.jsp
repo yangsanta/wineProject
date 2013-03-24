@@ -44,15 +44,15 @@
 						<c:forEach var="products"
 							items="${sessionScope.ShoppingCart.content}">
 							<div class="babypart">
-								<a href="#" class="aproimg"><img
+								<a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${products.value.productNo}" class="aproimg"><img
 									src="<%=request.getContextPath()%>/images/products/${products.value.pic}" /></a>
 								<div class="arr01-hd">
-									<span><a href="#">${products.value.productName}</a></span>
+									<span><a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${products.value.productNo}">${products.value.productName}</a></span>
 									<p>x${products.value.productNumber}</p>
 								</div>
 								<div class="arr02-hd">
 									<span>$<strong>${products.value.subTotal}</strong></span>
-									<a href="DeleteWine?no=${products.value.productNo}"><p class="del">删除</p></a>
+									<a href="<%=request.getContextPath()%>/product/DeleteWine?no=${products.value.productNo}"><p class="del">删除</p></a>
 								</div>
 							</div>
 							<p class="clear"></p>

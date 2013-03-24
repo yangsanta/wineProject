@@ -93,46 +93,73 @@ public class food_set_all extends HttpServlet {
 
 		}
 		if (action.equals("Foodset001")) {
-			ProductHibernateDAO productHibernateDAO = new ProductHibernateDAO();
-			List<ProductVO> list3 = productHibernateDAO.getAll();
-			request.setAttribute("Product", list3);
 
-			
-			Food_setHibernateDAO food_setHibernateDAO1 = new Food_setHibernateDAO();
-			List<Food_setVO> food_set_fid1 = food_setHibernateDAO1.getSomebyF_id(1);
-			request.setAttribute("food_set_fid1", food_set_fid1);
-			
-			Food_setHibernateDAO food_setHibernateDAO2 = new Food_setHibernateDAO();
-			List<Food_setVO> food_set_fid2 = food_setHibernateDAO2.getSomebyF_id(2);
-			request.setAttribute("food_set_fid2", food_set_fid2);
-			
-			Food_setHibernateDAO food_setHibernateDAO3 = new Food_setHibernateDAO();
-			List<Food_setVO> food_set_fid3 = food_setHibernateDAO3.getSomebyF_id(3);
-			request.setAttribute("food_set_fid3", food_set_fid3);
-			
-			Food_setHibernateDAO food_setHibernateDAO4 = new Food_setHibernateDAO();
-			List<Food_setVO> food_set_fid4 = food_setHibernateDAO4.getSomebyF_id(4);
-			request.setAttribute("food_set_fid4", food_set_fid4);
-			
-			Food_setHibernateDAO food_setHibernateDAO5 = new Food_setHibernateDAO();
-			List<Food_setVO> food_set_fid5 = food_setHibernateDAO5.getSomebyF_id(5);
-			request.setAttribute("food_set_fid5", food_set_fid5);
-			
-			Food_setHibernateDAO food_setHibernateDAO6 = new Food_setHibernateDAO();
-			List<Food_setVO> food_set_fid6 = food_setHibernateDAO6.getSomebyF_id(6);
-			request.setAttribute("food_set_fid6", food_set_fid6);
+			Food_setHibernateDAO food_setHibernateDAO = new Food_setHibernateDAO();
 
-			FoodHibernateDAO foodHibernateDAO = new FoodHibernateDAO();
-			List<FoodVO> list = foodHibernateDAO.getAll();
-			request.setAttribute("Food", list);
+			for (int j = 1; j < 7; j++) {
+				if (j == 1) {
+					List<Food_setVO> getSomebyI_id = food_setHibernateDAO
+							.getSomebyI_id(j);
+					request.setAttribute("getSomebyI_id", getSomebyI_id);
+				}
 
-			IngredientHibernateDAO ingredientDAO = new IngredientHibernateDAO();
-			List<IngredientVO> list1 = ingredientDAO.getAll();
-			request.setAttribute("Ingredient", list1);
+				if (j == 2) {
+					List<Food_setVO> getSomebyI_id = food_setHibernateDAO
+							.getSomebyI_id(j);
+					request.setAttribute("getSomebyI_id", getSomebyI_id);
+				}
 
-			SauceHibernateDAO SauceDAO = new SauceHibernateDAO();
-			List<SauceVO> list2 = SauceDAO.getAll();
-			request.setAttribute("Sauce", list2);
+			}
+
+			for (int i = 1; i < 7; i++) {
+
+				if (i == 1) {
+					List<String> getSomebydF_id1 = food_setHibernateDAO
+							.getSomebydF_id(i);
+					request.setAttribute("getSomebydF_id1", getSomebydF_id1);
+				}
+				if (i == 2) {
+					List<String> getSomebydF_id2 = food_setHibernateDAO
+							.getSomebydF_id(i);
+					request.setAttribute("getSomebydF_id2", getSomebydF_id2);
+				}
+				if (i == 3) {
+					List<String> getSomebydF_id3 = food_setHibernateDAO
+							.getSomebydF_id(i);
+					request.setAttribute("getSomebydF_id3", getSomebydF_id3);
+				}
+				if (i == 4) {
+					List<String> getSomebydF_id4 = food_setHibernateDAO
+							.getSomebydF_id(i);
+					request.setAttribute("getSomebydF_id4", getSomebydF_id4);
+				}
+				if (i == 5) {
+					List<String> getSomebydF_id5 = food_setHibernateDAO
+							.getSomebydF_id(i);
+					request.setAttribute("getSomebydF_id5", getSomebydF_id5);
+				}
+				if (i == 6) {
+					List<String> getSomebydF_id6 = food_setHibernateDAO
+							.getSomebydF_id(i);
+					request.setAttribute("getSomebydF_id6", getSomebydF_id6);
+				}
+			}
+
+			// List<String> getSomebydF_id =
+			// food_setHibernateDAO.getSomebydF_id(1);
+			// request.setAttribute("getSomebydF_id", getSomebydF_id);
+			// FoodHibernateDAO foodHibernateDAO = new FoodHibernateDAO();
+			// List<FoodVO> list5 = foodHibernateDAO.getAll();
+			// request.setAttribute("Food", list5);
+			//
+			// IngredientHibernateDAO ingredientDAO = new
+			// IngredientHibernateDAO();
+			// List<IngredientVO> list1 = ingredientDAO.getAll();
+			// request.setAttribute("Ingredient", list1);
+			//
+			// SauceHibernateDAO SauceDAO = new SauceHibernateDAO();
+			// List<SauceVO> list2 = SauceDAO.getAll();
+			// request.setAttribute("Sauce", list2);
 
 			RequestDispatcher rd = request
 					.getRequestDispatcher("/food_set.jsp");
