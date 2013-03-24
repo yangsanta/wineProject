@@ -19,20 +19,25 @@
 		<property name="m_safety_q" column="m_safety_q" />
 		<property name="m_safety_a" column="m_safety_a" />
 		<property name="m_status" column="m_status" />
+		<property name="m_smscheck" column="m_smscheck" />
+		<property name="m_fbuid" column="m_fbuid" />
 
+		<set name="members" table="discussion" lazy="false" cascade="all"
+			inverse="true" order-by="m_no asc">
+			<key>
+				<column name="m_no" />
+			</key>
+			<one-to-many class="discussion.model.DiscussionVO" />
+		</set>
 
-		<set name="members" table="discussion" lazy="false"
-		    cascade="all" inverse="true" order-by="m_no asc" >
-            <key><column name="m_no"/></key>
-		    <one-to-many class="discussion.model.DiscussionVO"/>
+		<set name="memberss" table="reply" lazy="false" cascade="all"
+			inverse="true" order-by="m_no asc">
+			<key>
+				<column name="m_no" />
+			</key>
+			<one-to-many class="reply.model.ReplyVO" />
 		</set>
-		
-		<set name="memberss" table="reply" lazy="false"
-		    cascade="all" inverse="true" order-by="m_no asc" >
-            <key><column name="m_no"/></key>
-		    <one-to-many class="reply.model.ReplyVO"/>
-		</set>
-		
+
 	</class>
 </hibernate-mapping>
 

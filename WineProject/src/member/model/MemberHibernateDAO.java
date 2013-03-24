@@ -153,6 +153,23 @@ public class MemberHibernateDAO implements MemberDAO_interface {
 		return memberVO;
 	}
 	
+	public MemberVO FBLogin(String id) { //fb登入用 會員登入 檢查是否有該UID
+		MemberVO memberVO = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("FROM MemberVO where m_fbuid=? ");
+			query.setParameter(0, id);
+			if(!query.list().isEmpty()){
+			memberVO=(MemberVO) query.list().get(0);}
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}		
+		return memberVO;
+	}
 	public static void main(String[] args) {
 
 		MemberHibernateDAO dao = new MemberHibernateDAO();

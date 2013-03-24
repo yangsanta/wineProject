@@ -295,34 +295,30 @@ insert into discussion values ('2','　　Domaine Leflaive(樂飛酒莊)是珍�
 
 -------------------------------------------------------------------------------
 
-
-
-
 create table member (
  m_no               int IDENTITY not null,
- m_id                 varchar(20),
- m_name               varchar(10),
- m_pwd                 varchar(16),
- m_mobile            char(10),
- m_email                 varchar(40),
- m_bday                date,
- m_addr              varchar(100),
- m_pic				varchar(100),
+ m_id					varchar(20),
+ m_name					varchar(10),
+ m_pwd					varchar(16),
+ m_mobile            	char(10),
+ m_email                varchar(40),
+ m_bday					date,
+ m_addr              	varchar(100),
+ m_pic					varchar(100),
  m_safety_q				varchar(120),
  m_safety_a				varchar(120),
  m_status				int,
+ m_smscheck				int,
+ m_fbuid				varchar(40),
  constraint member_m_no_pk primary key (m_no));
 
-insert into member values ('aaa','king1','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1);
-insert into member values ('bbb','king2','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1);
-insert into member values ('ccc','king3','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1);
-insert into member values ('ddd','king4','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1);
-insert into member values ('eee','king5','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1);
-insert into member values ('fff','king6','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1);
+insert into member values ('aaa','king1','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1,1,'');
+insert into member values ('bbb','king2','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1,0,'');
+insert into member values ('ccc','king3','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1,0,'');
+insert into member values ('ddd','king4','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1,1,'');
+insert into member values ('eee','king5','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1,1,'');
+insert into member values ('fff','king6','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1,1,'');
 -----------------------------------------------------------------------------------
-
-
-
 
 
 create table reply (

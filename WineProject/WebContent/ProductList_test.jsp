@@ -14,7 +14,22 @@
 <a href="product/Maintain?action=getAll&pageNo=1">我是維護資料喔</a><br/>
 
 <br/><br/>
-<a href="wine_admin/admin_board.do">P</a><br/><br/>
+<a href="wine_admin/admin_board.do">P</a><br/>
+<a href="fbajaxlogin">fblogin</a><br/>
+
+
+
+<form action = "fbajaxlogin" method="post" id="user-login">
+<input class="span3" name="uid"  type="text" maxlength="128">
+<input class="span3" name="cname"  type="text" maxlength="128">
+<input class="span3" name="email"  type="text" maxlength="128">
+<input class="span3" name="birthday"  type="text" maxlength="128">
+<input type="submit"  value="登入" class="btn btn-success" style="Width:150px;Height:40px;"/>
+
+123
+</form>
+
+<br/>
 <hr />
 <a href="member/MemberService">member/MemberService</a>
 </body>

@@ -262,4 +262,13 @@
     <servlet-name>set_timing_sales</servlet-name>
     <url-pattern>/set_timing_sales</url-pattern>
   </servlet-mapping>
+  
+  	<servlet>
+		<servlet-name>fbajaxlogin</servlet-name>
+		<servlet-class>member.controller.fbajaxlogin</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fbajaxlogin</servlet-name>
+		<url-pattern>/fbajaxlogin</url-pattern>
+	</servlet-mapping>	
 </web-app>
