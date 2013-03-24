@@ -27,18 +27,18 @@ import ab.model.AbVO;
 /**
  * Servlet implementation class shopping_cart
  */
-@WebServlet("/shopping_cart")
-public class BuyWine extends HttpServlet {
+
+public class DeleteWine extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public BuyWine() {
+	public DeleteWine() {
 		super();
 
 	}
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request,
@@ -61,89 +61,31 @@ public class BuyWine extends HttpServlet {
 			session.setAttribute("ShoppingCart", cart);
 
 		}
-		ProductDAO productDAO = new ProductDAO();
-		Integer productNumber = Integer.parseInt(request.getParameter("num"));
-
+		Map<Integer, ShoppingProduct> oldProduct = cart.getContent();
 		Integer productNo = Integer.parseInt(request.getParameter("no"));
-		ProductVO productVO = productDAO.findByPrimaryKey(productNo);
-		String productName = productVO.getP_name();
-		Integer price = productVO.getP_price();
-		ShoppingProduct shoppingProduct = new ShoppingProduct();
-		// 設定選取商品要顯示的文字
-		shoppingProduct.setProductNo(productNo); // 物件存商品編號
-		shoppingProduct.setProductName(productName);// 物件存商品名稱
-		shoppingProduct.setProductPrice(price); // 物件存商品售價
-		String sales = productVO.getP_sales();
-		shoppingProduct.setPic(productVO.getP_pic());
-		shoppingProduct.setSaleType(sales); // 物件存商品優惠狀態
-		System.out.println("名稱" + productName);
-		System.out.println("售價" + price);
-		System.out.println("數量" + productNumber);
-		System.out.println("優惠" + sales);
-		// 判斷優惠狀態
+		ShoppingProduct oldShoppingProduct = oldProduct.get(productNo);
+		String sales = oldShoppingProduct.getSaleType();
+		Integer number = oldShoppingProduct.getProductNumber();
 
 		if (sales.equals("A")) {
-			// 買A送B
-			// 將所選的商品加入購物車
-			shoppingProduct.setProductNumber(productNumber);
-			shoppingProduct.setSubTotal(productNumber * price);
-			cart.addToCart(productNo, shoppingProduct);
-			// 找出對應的B商品
+			cart.deleteProduct(productNo);
 			AbDAO abdao = new AbDAO();
 			AbVO abVO = abdao.findByAKey(productNo);
 			Integer b_no = abVO.getAb_b_p_id();
-		
-			ProductVO productB = new ProductDAO().findByPrimaryKey(b_no);
-			ShoppingProduct shoppingProductB = new ShoppingProduct();
-			// 將B商品加入購物車
-			shoppingProductB.setProductName(productB.getP_name());
-			shoppingProductB.setProductNo(productB.getP_no());
-			shoppingProductB.setProductNumber(productNumber);
-			shoppingProductB.setProductPrice(productB.getP_price());
-			shoppingProductB.setPic(productVO.getP_pic());
-			shoppingProductB.setSaleType("B");
-			shoppingProductB.setSubTotal(0);
-			cart.addToCart(shoppingProductB.getProductNo(), shoppingProductB);
-		} else if (sales.equals("half")) { // 第2件半價
-			Map<Integer, ShoppingProduct> old = cart.getContent();
-			ShoppingProduct OldShoppingProduct = old.get(productNo);
-			shoppingProduct.setProductNumber(productNumber);
-			int num = productNumber;
-			int quotient = num / 2;
-			if (OldShoppingProduct == null) {
-
-				shoppingProduct.setSubTotal((price * num)
-						- (quotient * price / 2));
-				cart.addToCart(shoppingProduct.getProductNo(), shoppingProduct);
-
-			} else {
-				num = OldShoppingProduct.getProductNumber() + productNumber;
-				quotient = num / 2;
-				System.out.println(num);
-				System.out.println(quotient);
-				System.out.println((price * num) - (quotient * price / 2));
-				System.out.println(OldShoppingProduct.getProductPrice());
-				shoppingProduct.setSubTotal((price * num)
-						- (quotient * price / 2));
-				cart.addToCart(shoppingProduct.getProductNo(), shoppingProduct);
-
+			ShoppingProduct shoppingProductB = oldProduct.get(b_no);
+			if (shoppingProductB != null) {
+				Integer productNumber = shoppingProductB.getProductNumber();
+				Integer bNum = productNumber - number;
+				if (bNum <= 0) {
+					cart.deleteProduct(b_no);
+				} else {
+					shoppingProductB.setProductNumber(bNum);
+				}
 			}
 		} else if (sales.equals("R") || sales.equals("G")) {
-
-			// 將所選的商品加入購物車
-			// |-------邏輯流程 ---------------------------------------------------|
-			// |1. 加入清單(將這次買的商品加入session) 此時小計是錯的，要從新計算(2.3.4.即此功能) |
-			// |2.計算所有r g數量 map iterator |
-			// |3.找r g小的數量 |
-			// |4.從低價的開始填 |
-			// |________________________________________________________________|
-			// 1. 加入清單
+			Integer price;
 			int rNum = 0, gNum = 0;
-			shoppingProduct.setProductNumber(productNumber);
-			shoppingProduct.setSubTotal(productNumber * price);
-			cart.addToCart(productNo, shoppingProduct);
-
-			// 2.計算所有r g數量 map iterator
+			cart.deleteProduct(productNo);
 			Map<Integer, Integer> rMap = new HashMap<Integer, Integer>();
 			Map<Integer, Integer> gMap = new HashMap<Integer, Integer>();
 			Map<Integer, ShoppingProduct> oldShoppingCart = cart.getContent();
@@ -224,35 +166,12 @@ public class BuyWine extends HttpServlet {
 					matchNumberG = 0;
 				}
 			}
-
-			// Map<Integer, ShoppingProduct> old = cart.getContent();
-			// ShoppingProduct OldShoppingProduct = old.get(productNo);
-			// shoppingProduct.setProductNumber(productNumber);
-
-			// Map<Integer, ShoppingProduct> old = cart.getContent();
-			// Set<Integer> set=old.keySet();
-			// int rNum=cart.getaNumber()+productNumber;
-			// int gNum=cart.getbNumber();
-			// if(rNum>gNum){
-			// for (Integer n : set) {
-			// if(old.get(n).getSaleType().equals("R")){
-			//
-			// }
-			// }
-			//
-			// }
-			// else if(rNum<gNum){}
-			// else{}
 		} else {
-			// 沒有優惠OR B區商品
-			shoppingProduct.setProductNumber(productNumber);
-			shoppingProduct.setSubTotal(productNumber * price);
-			cart.addToCart(shoppingProduct.getProductNo(), shoppingProduct);
-
+			cart.deleteProduct(productNo);
 		}
-		// 計算金額
 
-		response.sendRedirect(request.getContextPath() + "/product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue=");
+		response.sendRedirect(request.getContextPath()
+				+ "/product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue=");
 
 	}
 

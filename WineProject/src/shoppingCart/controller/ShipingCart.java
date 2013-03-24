@@ -59,7 +59,9 @@ public class ShipingCart {
 		}
 		return bottleNumber;
 	}
-
+	public void deleteProduct(Integer productNo){
+		cart.remove(productNo);
+		}
 	
 	
 	

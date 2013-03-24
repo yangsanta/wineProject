@@ -52,7 +52,7 @@
 								</div>
 								<div class="arr02-hd">
 									<span>$<strong>${products.value.subTotal}</strong></span>
-									<p class="del">删除</p>
+									<a href="DeleteWine?no=${products.value.productNo}"><p class="del">删除</p></a>
 								</div>
 							</div>
 							<p class="clear"></p>
