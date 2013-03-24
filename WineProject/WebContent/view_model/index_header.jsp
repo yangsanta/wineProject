@@ -32,7 +32,7 @@
 			</a></li>
 		</ul>
 		<ul id="nav22">
-			<li><a class="topa" href="#"><i
+			<li><a class="topa" href="<%=request.getContextPath()%>/product/ShoppinCart.jsp"><i
 					class="icon-shopping-cart icon-white"></i> 購物車(<em><c:if test="${ShoppingCart.bottleNumber==null}"> 0 </c:if><c:if test="${ShoppingCart.bottleNumber<10}"> </c:if>${ShoppingCart.bottleNumber}<c:if test="${ShoppingCart.bottleNumber<10}"> </c:if></em>)件 </a>
 				<ul class="downul">
 					<span style="margin-left: 20px; font-size: 10px;font-weight: bold;color: #4d3126;">商品</span>
