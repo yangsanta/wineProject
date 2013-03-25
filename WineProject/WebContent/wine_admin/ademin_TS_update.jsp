@@ -73,7 +73,7 @@ function showDate(date) {
 		限惠標語：<input type="text" name="ts_slogan" value="${ts.ts_slogan}"/><span>${ErrMsg.errTs_slogan}</span><br/>
 		限惠圖片：<input type="file" name="file" value="選擇圖片"/><span><img src="<%=request.getContextPath()%>/images/timingSales/${ts.ts_pic}" />${ErrMsg.errTs_pic}</span><br/>
 		限惠文宣：<textarea rows="20" cols="400" name="ts_content" >${ts.ts_content}</textarea><span>${ErrMsg.errTs_content}</span><br/>
-		已購人數：<input type="text" name="ts_totalsale" value="${ts.ts_totalsale}"/><span>${ErrMsg.errTs_totalsale}</span><br/>
+		已購人數：<input type="text" name="ts_totalsale" value="${ts.ts_totalsale}" readonly="readonly"/><span>${ErrMsg.errTs_totalsale}</span><br/>
 		<input type="submit" value="送出"/>			
 	</form>
 </body>
