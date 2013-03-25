@@ -1,9 +1,6 @@
 package orders.controller;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +12,6 @@ import member.model.MemberDAO;
 import member.model.MemberVO;
 
 import shoppingCart.controller.ShipingCart;
-import shoppingCart.model.ShoppingProduct;
 
 public class OrdersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -53,6 +49,7 @@ public class OrdersServlet extends HttpServlet {
 			// 準備facade
 			OrdersFacade facade = new OrdersFacade(request, response);
 
+			// 從購物車點 "結帳回家"
 			if (action.equals("checkout")) {
 				System.out.println("*********************Order Checkout******************");
 
@@ -62,11 +59,17 @@ public class OrdersServlet extends HttpServlet {
 						.forward(request, response);
 			}
 			
+			// 從確認訂購話畫面點 "確認結帳"
 			if (action.equals("confirmed")) {
-				System.out.println("*********************Order Checkout******************");
+				System.out.println("*********************Order confirmed******************");
 				
-				facade.confirmed(memberVO, cart);
-				
+				boolean isSuccess = facade.confirmed(memberVO, cart);
+				if (isSuccess) {
+					
+				} else {
+				request.getRequestDispatcher("/orders/confirmcheckout.jsp")
+				.forward(request, response);
+				}
 			}
 			
 		} // end of if-else of "no shopping cart?"

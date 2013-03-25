@@ -19,9 +19,15 @@
 </head>
 <body>
 
+<c:if test="${empty sessionScope.ShoppingCart}">
+<c:if test="${empty sessionScope.ShoppingCart.content}">
 如果購物車內沒東西的 request attribute： ${cartNoContent}
 <hr>
+</c:if>
+</c:if>
 
+<c:if test="${not empty sessionScope.ShoppingCart}">
+<c:if test="${not empty sessionScope.ShoppingCart.content}">
 	<table>
 		<thead>
 			<tr><th>商品</th><th>單價</th><th>數量</th><th>總價</th></tr>
@@ -49,7 +55,7 @@
 						 <c:if test="${shoppingProduct.value.saleType eq 'B'}">【B】</c:if>
 					</td>
 					<td>$ ${shoppingProduct.value.productVO.p_price}</td>
-					<td>${shoppingProduct.value.productNumber}</td>
+					<td><c:if test="${shoppingProduct.value.productVO.p_num < shoppingProduct.value.productNumber}"><i>庫存數量 (${shoppingProduct.value.productVO.p_num}) 不足！</i><br></c:if>${shoppingProduct.value.productNumber}</td>
 					<td>
 <%-- 					<td><i>原價 : $ ${shoppingProduct.value.productVO.p_price*shoppingProduct.value.productNumber}</i><br>${shoppingProduct.value.saleType}折扣後: $ ${shoppingProduct.value.subTotal}</td> --%>
 						<c:choose>
@@ -70,12 +76,21 @@
 					</td>
 				</tr>
 			</c:forEach>
-			<tr><td></td><td></td><td></td><td>總計： $ ${ShoppingCart.total}</td></tr>
+			<tr><td></td><td></td><td></td><td><i>運費： ${ShippingCost}</i><br>總計： $ ${ShoppingCart.total + ShippingCost}</td></tr>
 		</tbody>
 	</table>
 	
-	<a href="<%=request.getContextPath()%>/index.jsp"><input type="button" value="繼續選購"></a>
-	<a href="<%=request.getContextPath()%>/orders/checkout.do?action=confirmed"><input type="button" value="確認結帳"></a>
-
+	<div>
+		<form method="POST" action="<%=request.getContextPath()%>/orders/checkout.do?">
+			<input type="text" name="o_recipient" placeholder="收件人姓名" value="${o_recipient}">${errMap.errRName}<br>
+			<input type="text" name="o_recipient_addr" placeholder="聯絡電話" value="${o_recipient_addr}">${errMap.errRAddr}<br>
+			<input type="text" name="o_recipient_tel" placeholder="收件地址" value="${o_recipient_tel}">${errMap.errRPhone}<br>
+			<a href="<%=request.getContextPath()%>/index.jsp"><input type="button" value="繼續選購"></a>
+			<input type="submit" value="確認結帳">
+			<input type="hidden" name="action" value="confirmed">
+		</form>
+	</div>
+</c:if>
+</c:if>
 </body>
 </html>
