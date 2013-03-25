@@ -31,6 +31,20 @@ public class OrdersAdminServlet extends HttpServlet {
 			facade.getall();
 			request.getRequestDispatcher("/wine_admin/ademin_orders.jsp").forward(request, response);
 		}
+		
+		if (action.equals("delete")) {
+			Integer o_no = Integer.valueOf(request.getParameter("o_no"));
+			facade.detete(o_no);
+			facade.getall();
+			request.getRequestDispatcher("/wine_admin/ademin_orders.jsp").forward(request, response);
+		}
+		
+		if (action.equals("edit")) {
+			Integer o_no = Integer.valueOf(request.getParameter("o_no"));
+			facade.edit(o_no);
+			facade.getall();
+			request.getRequestDispatcher("/wine_admin/ademin_orders.jsp").forward(request, response);
+		}
 	}
 
 }

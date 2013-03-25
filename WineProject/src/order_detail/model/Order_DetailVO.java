@@ -2,6 +2,8 @@
 
 import java.io.Serializable;
 
+import orders.model.OrdersVO;
+
 import product.model.ProductVO;
 
 
