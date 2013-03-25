@@ -1,5 +1,8 @@
 package shoppingCart.model;
 
+import product.model.ProductDAO;
+import product.model.ProductVO;
+
 public class ShoppingProduct {
 	private Integer productNo;
 	private String productName;
@@ -9,6 +12,13 @@ public class ShoppingProduct {
 	private String saleType;
 	private String pic;
 	private Integer salesNumber=0;
+	
+	//add by JoJo: for check-out function
+	private ProductVO productVO;
+	public ProductVO getProductVO() {
+		return productVO;
+	}
+	
 	public Integer getSubTotal() {
 		return subTotal;
 	}
@@ -20,6 +30,7 @@ public class ShoppingProduct {
 	}
 	public void setProductNo(Integer productNo) {
 		this.productNo = productNo;
+		productVO = new ProductDAO().findByPrimaryKey(productNo);
 	}
 	public String getProductName() {
 		return productName;

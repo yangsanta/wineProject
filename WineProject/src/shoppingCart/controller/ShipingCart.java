@@ -35,6 +35,7 @@ public class ShipingCart {
 			
 						// 計算小計
 			OldShoppingProduct.setSubTotal(shoppingProduct.getSubTotal()+OldShoppingProduct.getSubTotal());
+			OldShoppingProduct.setSalesNumber(shoppingProduct.getSalesNumber()+OldShoppingProduct.getSalesNumber());
 	
 
 		}

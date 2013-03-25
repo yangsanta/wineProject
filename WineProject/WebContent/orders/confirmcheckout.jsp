@@ -41,10 +41,41 @@
 <!-- 				<td></td> -->
 <!-- 			</tr> -->
 			<c:forEach var="shoppingProduct" items="${sessionScope.ShoppingCart.content}">
-				<tr><td><img src="<%=request.getContextPath()%>/images/products/${shoppingProduct.value.pic}">${shoppingProduct.value.productName}</td><td>$ （先放p_no ${shoppingProduct.value.productNo}）</td><td>${shoppingProduct.value.productNumber}</td><td><i>原價 : $ 2500</i><br>${shoppingProduct.value.saleType}折扣後: $ ${shoppingProduct.value.subTotal}</td></tr>
+				<tr>
+					<td><img src="<%=request.getContextPath()%>/images/products/${shoppingProduct.value.pic}">${shoppingProduct.value.productName}
+						 <c:if test="${shoppingProduct.value.saleType eq 'R'}">【紅】</c:if>
+						 <c:if test="${shoppingProduct.value.saleType eq 'G'}">【綠】</c:if>
+						 <c:if test="${shoppingProduct.value.saleType eq 'A'}">【A】</c:if>
+						 <c:if test="${shoppingProduct.value.saleType eq 'B'}">【B】</c:if>
+					</td>
+					<td>$ ${shoppingProduct.value.productVO.p_price}</td>
+					<td>${shoppingProduct.value.productNumber}</td>
+					<td>
+<%-- 					<td><i>原價 : $ ${shoppingProduct.value.productVO.p_price*shoppingProduct.value.productNumber}</i><br>${shoppingProduct.value.saleType}折扣後: $ ${shoppingProduct.value.subTotal}</td> --%>
+						<c:choose>
+							<c:when test="${shoppingProduct.value.saleType eq 'R' && shoppingProduct.value.salesNumber > 0}">
+								<i>原價 : $ ${shoppingProduct.value.productVO.p_price*shoppingProduct.value.productNumber}</i>
+								<br>紅配綠折扣後: $ ${shoppingProduct.value.subTotal}</c:when>
+							<c:when test="${shoppingProduct.value.saleType eq 'G' && shoppingProduct.value.salesNumber > 0}">
+								<i>原價 : $ ${shoppingProduct.value.productVO.p_price*shoppingProduct.value.productNumber}</i>
+								<br>紅配綠折扣後: $ ${shoppingProduct.value.subTotal}</c:when>
+							<c:when test="${shoppingProduct.value.saleType eq 'B' && shoppingProduct.value.salesNumber > 0}">
+								<i>原價 : $ ${shoppingProduct.value.productVO.p_price*shoppingProduct.value.productNumber}</i>
+								<br>買A送B折扣後: $ ${shoppingProduct.value.subTotal}</c:when>
+							<c:otherwise>
+								<c:if test="${shoppingProduct.value.saleType eq 'R'}"><a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue="><i>加購綠標商品享紅配綠優惠價</i></a><br></c:if>
+								<c:if test="${shoppingProduct.value.saleType eq 'B'}"><a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue="><i>加購A標商品享買A送B免費贈送</i></a><br></c:if>
+								小計： $ ${shoppingProduct.value.subTotal}</c:otherwise>
+						</c:choose>
+					</td>
+				</tr>
 			</c:forEach>
+			<tr><td></td><td></td><td></td><td>總計： $ ${ShoppingCart.total}</td></tr>
 		</tbody>
 	</table>
+	
+	<a href="<%=request.getContextPath()%>/index.jsp"><input type="button" value="繼續選購"></a>
+	<a href="<%=request.getContextPath()%>/orders/checkout.do?action=confirmed"><input type="button" value="確認結帳"></a>
 
 </body>
 </html>

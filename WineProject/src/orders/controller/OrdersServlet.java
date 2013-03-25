@@ -54,15 +54,21 @@ public class OrdersServlet extends HttpServlet {
 			OrdersFacade facade = new OrdersFacade(request, response);
 
 			if (action.equals("checkout")) {
-				System.out
-						.println("*********************Order Checkout******************");
+				System.out.println("*********************Order Checkout******************");
 
 				facade.checkout(memberVO, cart);
 
 				request.getRequestDispatcher("/orders/confirmcheckout.jsp")
 						.forward(request, response);
-
 			}
+			
+			if (action.equals("confirmed")) {
+				System.out.println("*********************Order Checkout******************");
+				
+				facade.confirmed(memberVO, cart);
+				
+			}
+			
 		} // end of if-else of "no shopping cart?"
 
 	}

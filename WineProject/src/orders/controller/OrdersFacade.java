@@ -40,6 +40,10 @@ public class OrdersFacade {
 			System.out.println("ProductSalesNumber: " + contentMap.get(key).getSalesNumber());
 			System.out.println("SubTotal: " + contentMap.get(key).getSubTotal());
 		}
+	}
+
+	public void confirmed(MemberVO memberVO, ShipingCart cart) {
+		System.out.println("*********************Order Checkout******************");
 		
 	}
 

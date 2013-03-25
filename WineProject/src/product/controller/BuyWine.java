@@ -102,6 +102,7 @@ public class BuyWine extends HttpServlet {
 			shoppingProductB.setProductPrice(productB.getP_price());
 			shoppingProductB.setPic(productVO.getP_pic());
 			shoppingProductB.setSaleType("B");
+			shoppingProductB.setSalesNumber(new Integer(1));
 			shoppingProductB.setSubTotal(0);
 			cart.addToCart(shoppingProductB.getProductNo(), shoppingProductB);
 		} else if (sales.equals("half")) { // 第2件半價
