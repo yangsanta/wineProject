@@ -88,21 +88,20 @@ public class productList implements Filter {
 		timeEnd = System.currentTimeMillis(); 
 		
 		System.out.print("[開始]：" + timeStart + "ms [結束]：" + timeEnd + "ms[ 花費時間]：" + (timeEnd - timeStart) + "ms |"); 
-		System.out.println(request2.getHeader("referer"));
 		//計時
 		//
-		System.out.println("---   Remote Addr: " + request2.getRemoteAddr()); // Remote Addr: 127.0.0.1
-		System.out.println("---   Query String: " + request2.getQueryString()); // Query String: action=getSome_For_Display&condition=p_sales&conditionValue=
-		System.out.println("---   Servlet Path: " + request2.getServletPath()); // Servlet Path: /admin_board/DisplayAdmin_boards
-		System.out.println("---   Referer : " + request2.getHeader("Referer")); // Referer : http://localhost:8080/WineProject/admin_board/DisplayAdmin_boards?action=getSome_For_Display&condition=p_sales&conditionValue=
-		System.out.println("---   User-Agent : " + request2.getHeader("User-Agent")); // User-Agent : Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.152 Safari/537.22
+//		System.out.println("---   Remote Addr: " + request2.getRemoteAddr()); // Remote Addr: 127.0.0.1
+//		System.out.println("---   Query String: " + request2.getQueryString()); // Query String: action=getSome_For_Display&condition=p_sales&conditionValue=
+//		System.out.println("---   Servlet Path: " + request2.getServletPath()); // Servlet Path: /admin_board/DisplayAdmin_boards
+//		System.out.println("---   Referer : " + request2.getHeader("Referer")); // Referer : http://localhost:8080/WineProject/admin_board/DisplayAdmin_boards?action=getSome_For_Display&condition=p_sales&conditionValue=
+//		System.out.println("---   User-Agent : " + request2.getHeader("User-Agent")); // User-Agent : Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.152 Safari/537.22
 		//
 		//判斷user資訊
 		User_info_jugement User_info_jugement=new User_info_jugement();
 		String user_os= User_info_jugement.judgeOs(request2.getHeader("User-Agent"));
-		System.out.println("系統是:"+user_os);
+//		System.out.println("系統是:"+user_os);
 		String user_Browser= User_info_jugement.judgeBrowser(request2.getHeader("User-Agent"));
-		System.out.println("瀏覽器是:"+user_Browser);		
+//		System.out.println("瀏覽器是:"+user_Browser);		
 
 		//判斷是否來自外站連結
 		String referer=null;
@@ -122,8 +121,7 @@ public class productList implements Filter {
 			Timestamp time = new java.sql.Timestamp(new java.util.Date().getTime());
 		 admin_boardVOO1.setViewedate(time);		 
 		 admindao.insert(admin_boardVOO1);
-		 
-		System.out.println("字串長度"+ request2.getHeader("User-Agent").length());
+
 	}
 
 	/**

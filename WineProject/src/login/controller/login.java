@@ -82,14 +82,14 @@ public class login extends HttpServlet {
 				errorMsgs.add("帳號密碼不符，請重新登入");
 				request.setAttribute("ErrorMsgKey", errorMsgs);
 				RequestDispatcher dis = request
-						.getRequestDispatcher("errorLogin.jsp");
+						.getRequestDispatcher("../errorLogin.jsp");
 				dis.forward(request, response);
 			}
 		} else {
 			errorMsgs.add("帳號或密碼不能為空白");
 			request.setAttribute("ErrorMsgKey", errorMsgs);
 			RequestDispatcher dis = request
-					.getRequestDispatcher("errorLogin.jsp");
+					.getRequestDispatcher("../errorLogin.jsp");
 			dis.forward(request, response);
 		}
 

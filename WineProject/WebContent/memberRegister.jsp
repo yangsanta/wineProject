@@ -32,7 +32,7 @@
                 }
             });
    
-	$('#m_bday').datepick();
+	$('#m_bday').datepick({dateFormat: 'yyyy-mm-dd'});
 	$('#inlineDatepicker').datepick({onSelect: showDate});
 });
 
@@ -101,11 +101,11 @@ function showDate(date) {
          </TR>             
          <TR>
              <td align="right">手機：</td>
-             <td align="left" > <input type="text" name="m_mobile" value="" class="required number" minlength="10" maxlength="11"></td>
+             <td align="left" > <input type="text" name="m_mobile" value="" class="required number" minlength="10" maxlength="10"></td>
          </TR>             
          <TR>
              <td align="right">生日：</td>
-             <td align="left" > <input type="text" id="m_bday" name="m_bday" value="2000-11-11" ></td>
+             <td align="left" > <input type="text" id="m_bday" name="m_bday" value="2000-11-11" readonly style="cursor:pointer"></td>
          </TR>
          <TR>
              <td align="right">地址：</td>

@@ -56,9 +56,11 @@ border-right: #ccc 1px solid;}
 					<%@ include file="view_model/page_alert.htm"%>
 
 <h1>註冊會員成功</h1>
-<Font color='blue' >親愛的${ m_idKey }您好，您的輸入資料已經處理完畢</font>
-<p/>感謝您加入成為會員，請開始使用本系統<p/>
 
+<div class="well font-small">
+  <strong><span class="label label-success">歡迎!</span></strong> <br><span style="margin-left:50px">Hello 親愛的${ m_idKey }您好:<br><br>您的資料已經處理完畢溜</font>
+感謝您加入成為我們的一份子，歡迎你的加入！</span>
+</div>
 
 <%@ include file="/view_model/index_fast_login.htm"%>
 						
