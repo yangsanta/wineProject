@@ -186,6 +186,7 @@ public class ProductDAO implements ProductDAO_interface {
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_TOP_STMT);
+			query.setCacheable(true); //啟動Query快取
 			query.setFirstResult(0);
 			query.setMaxResults(Integer.parseInt(conditionValue));
 
@@ -200,7 +201,30 @@ public class ProductDAO implements ProductDAO_interface {
 		}
 		return list;
 	}
+	public List<ProductVO> findRandTopProduct(String conditionValue) {
+			//隨機搜尋幾筆商品出來
+		int rndNumber=(int)(Math.random()*10+1);
+		String GET_TOP_STMT = "from ProductVO order by " +rndNumber;
+		List<ProductVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_TOP_STMT);
+			query.setFirstResult(0);
+			query.setMaxResults(Integer.parseInt(conditionValue));
 
+			list = query.list();
+			session.getTransaction().commit();
+	
+		}
+
+		catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+	
 	public List<String> findCountry(String area) {
 		List list = null;
 
@@ -289,11 +313,11 @@ public class ProductDAO implements ProductDAO_interface {
 	// -------------------------------------------------------
 	public static void main(String arg[]) {
 		ProductDAO dao = new ProductDAO();
-		List<ProductVO> list = dao.findProductBetween("p_date", "0");
-//		 List<ProductVO> list = dao.findTopProduct("2");
+//		List<ProductVO> list = dao.findProductBetween("p_date", "0");
+		 List<ProductVO> list = dao.findRandTopProduct("4");
 				 for (ProductVO aEmp : list) {
 //				 System.out.println(aEmp.getP_no() + ",");
-//				 System.out.println(aEmp.getP_name() + ",");
+				 System.out.println(aEmp.getP_name() + ",");
 //				 System.out.println(aEmp.getP_pic() + ",");
 //				 System.out.println(aEmp.getP_year() + ",");
 //				 System.out.println(aEmp.getP_rate() + ",");
@@ -309,7 +333,7 @@ public class ProductDAO implements ProductDAO_interface {
 //				 System.out.println(aEmp.getP_sales() + ",");
 //				 System.out.println(aEmp.getP_vol() + ",");
 //				 System.out.println(aEmp.getP_alcho() + ",");
-				 System.out.println(aEmp.getP_date() + ",");
+//				 System.out.println(aEmp.getP_date() + ",");
 //				 System.out.println(aEmp.getP_type() + ",");
 //				 System.out.println(aEmp.getP_grape());
 				 System.out.println();
@@ -443,6 +467,7 @@ public class ProductDAO implements ProductDAO_interface {
 		// System.out.println(aEmp.getP_grape());
 		// System.out.println();
 		// }
+				 
 	}
 
 }

@@ -59,8 +59,11 @@ public class DisplayProducts extends HttpServlet {
 			Integer p_no = Integer.parseInt(request.getParameter("pId"));
 			ProductDAO productDAO = new ProductDAO();
 			ProductVO productVO = productDAO.findByPrimaryKey(p_no);
-
 			request.setAttribute("productVO", productVO);
+			//或許你也會喜歡
+			List<ProductVO> maylike = productDAO.findRandTopProduct("4");
+			request.setAttribute("maylike", maylike);
+			
 			String listAllUrl = "/product/ProductOne.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
 			rd.forward(request, response);

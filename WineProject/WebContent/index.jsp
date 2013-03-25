@@ -134,6 +134,22 @@
 .displaynone {
 	display: none
 }
+.timelimit_title{background-image: url(images/ppopTittleBG_02.png);
+background-repeat: repeat-x;
+float: left;
+height: 33px;
+font-size: 20px;
+color: #fff;
+font-weight: bold;
+font-family: "微軟正黑體";
+line-height: 30px;
+padding-left: 5px;
+padding-right: 5px;}
+.timelimit_titleRight{background-image: url(images/ppopTittleBG_03.png);
+background-repeat: no-repeat;
+float: left;
+height: 33px;
+width: 16px;}
 </style>
 			<script type="text/javascript">
 				//右邊輪播式廣告
@@ -229,9 +245,10 @@
 							<li><a href="#"><img src="images/ad/05.jpg"></a></li>
 						</ul>
 					</div>
-					<div id="box1">
-						<h2>限時特賣!</h2>
-						<h3>美味的香濃紅葡萄酒 來自奧茲大地的甜美風味</h3>
+					<div id="box1"><br>
+					<div class="timelimit_title"> 限時特賣! </div>
+                <div class="timelimit_titleRight" style="display: inline">  </div><br>
+                	<h3 class="ct2">美味的香濃紅葡萄酒 來自奧茲大地的甜美風味</h3>
 						<img
 							src="http://img1.groupon.com.tw/pi/19861-1-big.jpg?1363158213">
 							<div
@@ -284,7 +301,7 @@
 									style="background-color: #ccc; background-image: url(images/timebg.jpg); margin: 10px">
 									購買注意事項!<br>
 										<ul
-											style="background-color: rgba(255, 255, 255, 0.75); margin: 20px; padding: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
+											style="background-color: rgba(255, 255, 255, 0.75);font-size: 10px; margin: 20px; padding: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
 											<li>■ 優惠期間：2013/03/24至2013/04/24
 												(國定假日或特殊節慶能否兌換需依店家當時規定，請先致電店家確認)。</li>
 											<li>■ 優惠時間：因各分店兌換時間不同，請參考下方店家資訊。</li>
@@ -295,7 +312,7 @@
 											<li>■ 酒迷創意行銷股份有限公司保有變更活動的權利。</li>
 										</ul> <br>
 								</div>
-								
+							
 							</div><%@ include file="view_model/index_fast_login.htm"%>
 					</div>
 

@@ -185,7 +185,8 @@
 												<img src="<%=request.getContextPath()%>/images/star.gif"
 													style="width: 20px">
 											</c:forEach></li>
-										<li><span class="pro_info">產區：</span>大陸</li>
+										<li><span class="pro_info">產區：</span>${
+											productVO.p_country }</li>
 										<li><span class="pro_info">葡萄種類：</span>${
 											productVO.p_grape }</li>
 									</ul>
@@ -221,49 +222,21 @@
 						</tr>
 					</table>
 
-
 					<div class="recom-title">或許你也會喜歡</div>
 					<ul id="recom-ul" style="list-style: none;">
-						<li style="border-top: 0"><div class="img">
-								<a href="#"><img
-									src="http://tw.m.yimg.com/res/gdsale/st_pic/3750/st-3750864-s60.jpg"></a>
+						
+							<c:forEach var="maylike" items="${maylike}" >
+							<li style="border-top: 0"><div class="img">
+								<a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${maylike.p_no}"><img
+									src="<%=request.getContextPath()%>/images/products/${maylike.p_pic}" style="width:40px"></a>
 							</div>
 							<div class="desc">
-								<a href="#">《Del Duomo》義大利巴薩米克醋淋醬 (215ml)</a>
+								<a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${maylike.p_no}">${maylike.p_name}</a>
 							</div>
 							<div>
-								<span class="shpdollar">$299元</span>
+								<span class="shpdollar">$${maylike.p_price}元</span>
 							</div></li>
-						<li style="border-top: 0"><div class="img">
-								<a href="#"><img
-									src="http://tw.m.yimg.com/res/gdsale/st_pic/3750/st-3750864-s60.jpg"></a>
-							</div>
-							<div class="desc">
-								<a href="#">《Del Duomo》義大利巴薩米克醋淋醬 (215ml)</a>
-							</div>
-							<div>
-								<span class="shpdollar">$299元</span>
-							</div></li>
-						<li style="border-top: 0"><div class="img">
-								<a href="#"><img
-									src="http://tw.m.yimg.com/res/gdsale/st_pic/3750/st-3750864-s60.jpg"></a>
-							</div>
-							<div class="desc">
-								<a href="#">《Del Duomo》義大利巴薩米克醋淋醬 (215ml)</a>
-							</div>
-							<div>
-								<span class="shpdollar">$299元</span>
-							</div></li>
-						<li style="border-top: 0"><div class="img">
-								<a href="#"><img
-									src="http://tw.m.yimg.com/res/gdsale/st_pic/3750/st-3750864-s60.jpg"></a>
-							</div>
-							<div class="desc">
-								<a href="#">《Del Duomo》義大利巴薩米克醋淋醬 (215ml)</a>
-							</div>
-							<div>
-								<span class="shpdollar">$299元</span>
-							</div></li>
+	</c:forEach>
 					</ul>
 
 
@@ -279,7 +252,7 @@
 							fjs.parentNode.insertBefore(js, fjs);
 						}(document, 'script', 'facebook-jssdk'));
 					</script>
-
+<div class="fb-comments" data-href="http://wine.davidou.org:8080/WineProject/product/DisplayProducts.do?action=getOne_For_Display&amp;pId=2" data-width="600" data-num-posts="10" ></div>
 					<%@ include file="../view_model/index_fast_login.htm"%>
 
 
