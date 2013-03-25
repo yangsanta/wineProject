@@ -68,7 +68,7 @@ public class MemberServlet extends HttpServlet {
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/wine_admin/ademin_member3.jsp");
+							.getRequestDispatcher("/wine_admin/ademin_member_update.jsp");
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
@@ -83,7 +83,7 @@ public class MemberServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("無法取得資料:" + e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/wine_admin/ademin_member3.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_member_update.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -106,7 +106,7 @@ public class MemberServlet extends HttpServlet {
 								
 				/***************************3.查詢完成,準備轉交(Send the Success view)************/
 				req.setAttribute("memberVO", memberVO);         // 資料庫取出的memberVO物件,存入req
-				String url = "/wine_admin/ademin_member3.jsp";
+				String url = "/wine_admin/ademin_member_update.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_mem_input.jsp
 				successView.forward(req, res);
 
@@ -114,7 +114,7 @@ public class MemberServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("無法取得要修改的資料:" + e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/wine_admin/ademin_member3.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_member_update.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -184,7 +184,7 @@ public class MemberServlet extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("memberVO", memberVO); // 含有輸入格式錯誤的memberVO物件,也存入req
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/wine_admin/ademin_member3.jsp");
+							.getRequestDispatcher("/wine_admin/ademin_member_update.jsp");
 					failureView.forward(req, res);
 					return; //程式中斷
 				}
@@ -195,7 +195,7 @@ public class MemberServlet extends HttpServlet {
 						m_safety_a, m_status);
 				/***************************3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("memberVO", memberVO); // 資料庫update成功後,正確的的memberVO物件,存入req
-				String url = "/wine_admin/ademin_member4.jsp";
+				String url = "/wine_admin/ademin_member_updateOK.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneMem.jsp
 				successView.forward(req, res);
 
@@ -203,7 +203,7 @@ public class MemberServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("修改資料失敗:"+e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/wine_admin/ademin_member3.jsp");
+						.getRequestDispatcher("/wine_admin/ademin_member_update.jsp");
 				failureView.forward(req, res);
 			}
 		}
