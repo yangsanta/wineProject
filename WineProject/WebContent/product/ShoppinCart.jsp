@@ -12,6 +12,13 @@
 <script src="http://code.jquery.com/jquery.js"></script>
 <script
 	src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
+	<script>
+	function modify(productNo){
+		var no=productNo;
+		var newQty = document.getElementById(no).value;
+		window.location="ModifyBuyWine?no="+productNo+"&num="+newQty;
+	}
+	</script>
 </head>
 <body>
 	<div style="width: 650px; text-align: center">
@@ -41,22 +48,22 @@
 				items="${sessionScope.ShoppingCart.content}">
 
 				<tr>
-					<td style="width: 35px"><a href="#"> <img
+					<td style="width: 35px"><a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${products.value.productNo}"> <img
 							src="<%=request.getContextPath()%>/images/products/${products.value.pic}"
 							style="height: 50px; width: 30px" />
 					</a></td>
-					<td style="width: 400px"><span><a href="#">${products.value.productName}</a></span></td>
+					<td style="width: 400px"><span><a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${products.value.productNo}">${products.value.productName}</a></span></td>
 					<td style="width: 50px"><span>$</span>${products.value.productPrice}</td>
-					<td style="width: 10px"><input type="text" value="${products.value.productNumber}"  maxlength="2"style="width: 18px;"></td>
+					<td style="width: 10px"><input id="${products.value.productNo}" type="text" value="${products.value.productNumber}"  maxlength="2"style="width: 18px;"onChange="modify(${products.value.productNo})"></td>
 					<td>$<strong>${products.value.subTotal}</strong></td>
 					<td style="width: 150px">
-					<input type="button"class="btn" value="修改" onClick="modify"/>
+					<input type="button"class="btn" value="修改" onClick="modify(${products.value.productNo})"/>
 					<a href="DeleteWine?no=${products.value.productNo}"><input type="button"class="btn" value="删除"/></a>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
-<input type="button"class="btn btn-info" value="繼續購物" onclick="javascript:history.back(-1)"/> 
+<input type="button"class="btn btn-info" value="繼續購物" onclick="window.location='<%=request.getContextPath()%>/index.jsp'"/> 
         <a href="#"><input type="button"class="btn btn-info" value="清空購物車"/></a>
         <a href="#"><input type="button"class="btn btn-info" value="購買回家"/></a>
 	</div>

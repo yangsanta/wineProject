@@ -246,7 +246,7 @@
 		<servlet-name>InsertProduct</servlet-name>
 		<url-pattern>/wine_admin/InsertProduct</url-pattern>
 	</servlet-mapping>
-		<servlet>
+	<servlet>
 		<servlet-name>DeleteWine</servlet-name>
 		<servlet-class>product.controller.DeleteWine</servlet-class>
 	</servlet>
@@ -254,32 +254,40 @@
 		<servlet-name>DeleteWine</servlet-name>
 		<url-pattern>/product/DeleteWine</url-pattern>
 	</servlet-mapping>
-  <servlet>
-    <servlet-name>set_timing_sales</servlet-name>
-    <servlet-class>timing_sales.controller.Timing_Sales_Servlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>set_timing_sales</servlet-name>
-    <url-pattern>/set_timing_sales</url-pattern>
-  </servlet-mapping>
-  
-  	<servlet>
+	<servlet>
+		<servlet-name>set_timing_sales</servlet-name>
+		<servlet-class>timing_sales.controller.Timing_Sales_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>set_timing_sales</servlet-name>
+		<url-pattern>/set_timing_sales</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>fbajaxlogin</servlet-name>
 		<servlet-class>member.controller.fbajaxlogin</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>fbajaxlogin</servlet-name>
 		<url-pattern>/fbajaxlogin</url-pattern>
-	</servlet-mapping>	
-	
-  	<servlet>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>smschecktomail</servlet-name>
 		<servlet-class>member.controller.smschecktomail</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>smschecktomail</servlet-name>
 		<url-pattern>/product/smschecktomail</url-pattern>
-	</servlet-mapping>		
-	
-	
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ModifyBuyWine</servlet-name>
+		<servlet-class>product.controller.ModifyBuyWine</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ModifyBuyWine</servlet-name>
+		<url-pattern>/product/ModifyBuyWine</url-pattern>
+	</servlet-mapping>
+
+
 </web-app>
