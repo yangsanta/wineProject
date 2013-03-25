@@ -271,4 +271,15 @@
 		<servlet-name>fbajaxlogin</servlet-name>
 		<url-pattern>/fbajaxlogin</url-pattern>
 	</servlet-mapping>	
+	
+  	<servlet>
+		<servlet-name>smschecktomail</servlet-name>
+		<servlet-class>member.controller.smschecktomail</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>smschecktomail</servlet-name>
+		<url-pattern>/product/smschecktomail</url-pattern>
+	</servlet-mapping>		
+	
+	
 </web-app>

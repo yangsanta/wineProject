@@ -11,7 +11,7 @@
 
 	// 設定參數
 	String username = "davidou"; // 帳號
-	String password = ""; // 密碼
+	String password = "davideric"; // 密碼
 	String mobile = "0971091213"; // 電話
 	String message = "簡訊內容 java班"; // 簡訊內容
 
