@@ -53,7 +53,7 @@ public class Timing_Sales_Servlet extends HttpServlet {
 			ts = dao.findByPrimaryKey(ts_id);
 			request.setAttribute("ts", ts);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("wine_admin/admin_GetOne_TS.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("wine_admin/ademin_TS_GetOne.jsp");
 			rd.forward(request, response);
 			return;
 		}
