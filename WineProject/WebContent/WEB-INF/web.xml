@@ -107,7 +107,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MemberService</servlet-name>
-		<url-pattern>/member/MemberService</url-pattern>
+		<url-pattern>/member/MemberService.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>setselectallfood</servlet-name>

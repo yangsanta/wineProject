@@ -22,15 +22,14 @@
 
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
 <style type="text/css">
-.show_pro{ border-bottom:#ccc 1px solid;overflow: auto;	width: 100%;border-left: #ccc 1px solid;border-right: #ccc 1px solid;}
-.show_pro:hover{background:rgb(238, 245, 236)}
-.pro_list{float: left;list-style: none;}
-.pro_list2{float: right;list-style: none;margin:30px 30px 0 0;}
-.pro_list3{float: left;list-style: none;width: 350px;}
-.prod_img{background:#fff; border:#ccc 1px solid;padding:3px;margin:15px;width:100px;height:100px;text-align:center;}
-.buttonbuy{margin-top: 10px;}
-.pro_title{width: 100%;height:21px;background-repeat: repeat-x;background: url(<%=request.getContextPath()%>/images/product_list_top.png);border-left: #ccc 1px solid;
-border-right: #ccc 1px solid;}
+.msg{padding: 8px 35px 8px 14px;
+margin-bottom: 20px;
+text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+background-color: #fcf8e3;
+border: 1px solid #fbeed5;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;}
 </style>
 <script type="text/javascript">
 
@@ -55,15 +54,19 @@ border-right: #ccc 1px solid;}
 					<div id="content">
 					<%@ include file="view_model/page_alert.htm"%>
 
-<H1>登入會員失敗</h1>
+<H2>登入會員失敗</h2><hr>
+<div class="msg"  >
+  <span class="label label-important">警告!</span><br>
 
-<Font color='red' >檢查您的輸入資料時，發現含有下列錯誤，請更正後重新送出</font>
+<span>檢查您的輸入資料時，發現含有下列錯誤，請更正後重新送出</span><br><br>
 <c:forEach var="e" items="${ErrorMsgKey}">
     <li>${ e }</li>
 </c:forEach>
 <br>
-<p/>
-<small>&lt;&lt;<a href="login.jsp">回登入畫面</a>&gt;&gt;</small>
+</div>
+
+
+<small>&lt;&lt;<a href="<%=request.getContextPath()%>/login.jsp">回登入畫面</a>&gt;&gt;</small>
 
 <%@ include file="/view_model/index_fast_login.htm"%>
 						

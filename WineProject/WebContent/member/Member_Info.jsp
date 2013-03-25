@@ -77,7 +77,7 @@
 
 				<div id="content">
 					<%@ include file="/view_model/page_alert.htm"%>
-
+<c:if test="${sessionScope.access=='y'}">
 					${m_id} 您好
 					<hr>
 						<div class="mem_in_outer">
@@ -138,7 +138,12 @@
 							</div>
 
 							<div class="bar"></div>
-						</div><%@ include file="/view_model/index_fast_login.htm"%>
+						</div>
+						</c:if>
+						<c:if test="${sessionScope.access!='y'}">
+						請先登入來使用完整的會員功能
+							</c:if>
+						<%@ include file="/view_model/index_fast_login.htm"%>
 
 
 					<br class="clear" />

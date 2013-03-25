@@ -23,38 +23,32 @@ public class register extends HttpServlet {
     public register() {
         super();
     }
-
+    public  String inputfilter(String input,int num){
+    	String output=input.trim(); //如果字串長度超過num則截斷、去除空白
+    	if ( input.length()>num){
+    		output=input.trim().substring(0,num);
+    	}
+    	return output;
+    }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	MemberVO memberVo = new MemberVO();
+
 	
 	request.setCharacterEncoding("UTF-8");
-	MemberHibernateDAO DAO = new MemberHibernateDAO();
-	memberVo.setM_id(request.getParameter("m_id")); 
-	memberVo.setM_pwd(request.getParameter("m_pwd"));
-	memberVo.setM_name(request.getParameter("m_name"));
-	memberVo.setM_email(request.getParameter("m_email"));
-	memberVo.setM_mobile(request.getParameter("m_mobile"));
-	memberVo.setM_bday(new java.sql.Date(new java.util.Date().getTime()));
-//	Long.parseLong(request.getParameter("m_bday")
-	memberVo.setM_addr(request.getParameter("m_addr"));
-	
-	
-	
 	
 	List<String> errorMsg = new ArrayList<String>();
 	request.setAttribute("ErrorMsgKey", errorMsg);
 	// 1. 讀取使用者輸入資料
-	String m_id = request.getParameter("m_id");
-	String m_name = request.getParameter("m_name");
-	String m_pwd = request.getParameter("m_pwd");
-	String m_mobile = request.getParameter("m_mobile");
-	String m_email = request.getParameter("m_email");
-	String m_bday = request.getParameter("m_bday");
-	String m_addr = request.getParameter("m_addr");
+	String m_id = inputfilter(request.getParameter("m_id"),20);
+	String m_name = inputfilter(request.getParameter("m_name"),10);
+	String m_pwd = inputfilter(request.getParameter("m_pwd"),16);
+	String m_mobile = inputfilter(request.getParameter("m_mobile"),10);
+	String m_email =inputfilter( request.getParameter("m_email"),40);
+	String m_bday = inputfilter(request.getParameter("m_bday"),20);
+	String m_addr = inputfilter(request.getParameter("m_addr"),100);
 
 	// 3. 檢查使用者輸入資料
 	if (m_id == null || m_id.trim().length() == 0) {
@@ -83,12 +77,26 @@ public class register extends HttpServlet {
 		rd.forward(request, response);
 		return;
 	}
+	
+	
+	MemberHibernateDAO DAO = new MemberHibernateDAO();
+	MemberVO memberVo = new MemberVO();
+	memberVo.setM_id(m_id); 
+	memberVo.setM_pwd(m_pwd);
+	memberVo.setM_name(m_name);
+	memberVo.setM_email(m_email);
+	memberVo.setM_mobile(m_mobile);
+	memberVo.setM_bday(new java.sql.Date(new java.util.Date().getTime()));
+	memberVo.setM_addr(m_addr);
+	
+
+	
+
 	// 4. 進行 Business Logic 運算
 			
 			if (DAO.findHaveName(m_id)!=0) {
 				errorMsg.add("帳號 (" +  m_id  + ") 已存在，請選擇其它的帳號");
 			} else {
-				
 				DAO.insert(memberVo);
 			}
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面
@@ -105,3 +113,4 @@ public class register extends HttpServlet {
 	}
 
 }
+
