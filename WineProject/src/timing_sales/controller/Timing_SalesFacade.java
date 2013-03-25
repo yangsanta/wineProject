@@ -19,6 +19,7 @@ import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import product.model.ProductDAO;
+import product.model.ProductHibernateDAO;
 import product.model.ProductVO;
 
 import timing_sales.model.Timing_Sales;
@@ -44,6 +45,16 @@ public class Timing_SalesFacade {
 					"Request is not multipart, please 'multipart/form-data' enctype for your form.");
 		}
 		System.out.println("Timing_SalesFacade is running!!!!!!!!!!!!");
+		
+		String requestURI = request.getHeader("Referer");
+		System.out.println("the previous page is ===== "+ requestURI);
+		System.out.println(requestURI.replaceFirst("http://localhost:8081/WineProject", ""));
+		requestURI = requestURI.replaceFirst("http://localhost:8081/", "");
+		System.out.println("getRequestURL========"+request.getRequestURL());
+		System.out.println("getRequestURI========"+request.getRequestURI());
+		System.out.println("getContextPath=============="+request.getContextPath());
+//		String requestURI =(String) request.getAttribute("requestURI");
+//		System.out.println("requestURI============" + requestURI);
 		Map<String, String> errorMsgs = new HashMap<String, String>();
 		// HttpSession session = request.getSession();
 
@@ -68,15 +79,37 @@ public class Timing_SalesFacade {
 				String fldName = fi.getFieldName();
 				System.out.println(fldName);
 				if (fi.isFormField()) { // 如果是文字域
+					if ("ts_id".equals(fldName)) {
+						System.out.println("ts_id....................started");
+						ts_id = new String(fi.getString().getBytes(),
+								"UTF-8");
+						System.out.println("ts_id =============" + ts_id);
+						if (ts_id == null || ts_id.trim().length() == 0) {
+							errorMsgs.put("errTs_id", "限惠編號錯誤");
+						} else {
+							ts = new Timing_SalesDAO().findByPrimaryKey(Integer.parseInt(ts_id));
+							ts.setTs_id(Integer.valueOf(ts_id));
+						}
+					}
 					if ("p_no".equals(fldName)) { // 取出各個值
 						p_no = new String(fi.getString().getBytes(), "UTF-8");
 						System.out.println("p_no====================" + p_no);
 						if (p_no == null || p_no.trim().length() == 0) {
 							errorMsgs.put("errP_no", "產品編號錯誤");
 						} else {
+							System.out.println("開始檢查productVO!!!!!!!!");
 							ProductVO productVO = new ProductVO();
-							productVO.setP_no(Integer.parseInt(p_no));
-							ts.setProductVO(productVO);
+							ProductHibernateDAO pdao = new ProductHibernateDAO();
+							Integer tempP_no = Integer.parseInt((p_no.split(":"))[0]);
+							
+							
+								productVO = pdao.findByPrimaryKey(tempP_no);
+								if(productVO!=null){
+									productVO.setP_no(tempP_no);
+									ts.setProductVO(productVO);
+								} else{
+									errorMsgs.put("errP_no", "產品編號不存在");
+								}			
 						}
 					}
 					else if ("ts_price".equals(fldName)) {
@@ -107,7 +140,7 @@ public class Timing_SalesFacade {
 								+ ts_content);
 						if (ts_content == null
 								|| ts_content.trim().length() == 0) {
-							errorMsgs.put("errTs_content", "限惠標語錯誤");
+							errorMsgs.put("errTs_content", "限惠文宣錯誤");
 						} else {
 							ts.setTs_content(ts_content);
 						}
@@ -135,11 +168,8 @@ public class Timing_SalesFacade {
 							
 							try{
 								System.out.println(dateString);
-								String[] x = dateString.split("/");
-								dateString = x[2] + "-" + x[1] + "-" + x[0];
 								SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 								java.util.Date utildate = sdf.parse(dateString);
-								System.out.println(utildate + "utildate =======Class======" + utildate.getClass());
 								ts_date = new java.sql.Date(utildate.getTime());
 								System.out.println( ts_date + " ts_date =======Class======" + ts_date.getClass());
 							} catch(Exception e){
@@ -154,7 +184,6 @@ public class Timing_SalesFacade {
 					if ("file".equals(fldName)) {
 
 						if (fldName != null && fi.getName().trim().length() > 0) {
-
 //							String targetPath = request.getServletContext()
 //									.getRealPath("\\")
 //									+ "images\\timingSales\\";
@@ -165,8 +194,6 @@ public class Timing_SalesFacade {
 							File file = new File(fileUrl, fi.getName());
 							fi.write(file);
 							ts.setTs_pic(fi.getName());
-
-
 						}
 					}
 				}
@@ -176,7 +203,7 @@ public class Timing_SalesFacade {
 				request.setAttribute("ErrMsg", errorMsgs);
 
 				RequestDispatcher rd = request
-						.getRequestDispatcher("wine_admin/ademin_TS_insert.jsp");
+						.getRequestDispatcher("");          //新增或編輯頁面!!!!
 				rd.forward(request, response);
 				return;
 			}
