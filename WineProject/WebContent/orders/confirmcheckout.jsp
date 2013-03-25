@@ -28,6 +28,8 @@
 
 <c:if test="${not empty sessionScope.ShoppingCart}">
 <c:if test="${not empty sessionScope.ShoppingCart.content}">
+
+
 	<table>
 		<thead>
 			<tr><th>商品</th><th>單價</th><th>數量</th><th>總價</th></tr>
@@ -83,8 +85,20 @@
 	<div>
 		<form method="POST" action="<%=request.getContextPath()%>/orders/checkout.do?">
 			<input type="text" name="o_recipient" placeholder="收件人姓名" value="${o_recipient}">${errMap.errRName}<br>
-			<input type="text" name="o_recipient_addr" placeholder="聯絡電話" value="${o_recipient_addr}">${errMap.errRAddr}<br>
-			<input type="text" name="o_recipient_tel" placeholder="收件地址" value="${o_recipient_tel}">${errMap.errRPhone}<br>
+			<input type="text" name="o_recipient_tel" placeholder="聯絡電話" value="${o_recipient_tel}">${errMap.errRPhone}<br>
+			<input type="text" name="o_recipient_addr" placeholder="收件地址" value="${o_recipient_addr}">${errMap.errRAddr}<br>
+			
+			<c:if test="${not empty theCoupons}">
+				<div>您擁有的折價券:<br>
+					<c:forEach var="coupon" items="${theCoupons}">
+						<div>
+						${coupon.c_price}<br>${coupon.c_key}<br>
+						<input type="radio" name="useCoupon" value="${coupon.c_key}">使用這張折價券 
+						</div>
+					</c:forEach>
+				</div>
+			</c:if>
+			
 			<a href="<%=request.getContextPath()%>/index.jsp"><input type="button" value="繼續選購"></a>
 			<input type="submit" value="確認結帳">
 			<input type="hidden" name="action" value="confirmed">

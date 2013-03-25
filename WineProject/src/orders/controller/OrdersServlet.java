@@ -1,12 +1,16 @@
 package orders.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import coupon.model.CouponDAO;
+import coupon.model.CouponVO;
 
 import member.model.MemberDAO;
 import member.model.MemberVO;
@@ -45,6 +49,11 @@ public class OrdersServlet extends HttpServlet {
 					.forward(request, response);
 		} else {
 			cart = (ShipingCart) session.getAttribute("ShoppingCart");
+			
+			CouponDAO couponDAO = new CouponDAO();
+			List<CouponVO> theCoupons = couponDAO.findByM_no((Integer) session
+					.getAttribute("m_no"));
+			request.setAttribute("theCoupons", theCoupons);
 
 			// 準備facade
 			OrdersFacade facade = new OrdersFacade(request, response);

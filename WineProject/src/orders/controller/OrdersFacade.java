@@ -1,28 +1,24 @@
 package orders.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import coupon.model.CouponDAO;
+import coupon.model.CouponVO;
 
 import orders.model.OrdersDAO;
 import orders.model.OrdersVO;
 
 import member.model.MemberVO;
 import shipping_set.model.Shipping_setDAO;
-import shipping_set.model.Shipping_setVO;
 import shoppingCart.controller.ShipingCart;
 import shoppingCart.model.ShoppingProduct;
 
@@ -59,9 +55,9 @@ public class OrdersFacade {
 		Integer min_price = new Shipping_setDAO().getAll().get(0).getmin_pirce();
 		System.out.println("--------------------"+cart.getTotal());
 		if (cart.getTotal() >= min_price){
-			request.setAttribute("ShippingCost", 0);
+			request.getSession().setAttribute("ShippingCost", 0);
 		} else {
-			request.setAttribute("ShippingCost", 50);
+			request.getSession().setAttribute("ShippingCost", 50);
 		}
 	}
 
@@ -110,10 +106,11 @@ public class OrdersFacade {
 		if (o_recipient_tel == null || o_recipient_tel.trim().length() <6) {
 			errMap.put("errRPhone", "請輸入完整電話號碼");
 			o_recipient_tel = o_recipient_tel.trim();
-		} else if (pattern.matcher(o_recipient_tel).matches()) {
-			errMap.put("errRPhone", "請輸入正確電話號碼");
-			o_recipient_tel = o_recipient_tel.trim();
 		}
+//		 else if (pattern.matcher(o_recipient_tel).matches()) {
+//			errMap.put("errRPhone", "請輸入正確電話號碼");
+//			o_recipient_tel = o_recipient_tel.trim();
+//		}
 	
 		// 如果收件人資訊驗證不 OK
 		if(!errMap.isEmpty() || isSuccess==false){
@@ -126,6 +123,30 @@ public class OrdersFacade {
 		// 如果收件人資訊驗證 OK
 		} else {
 			System.out.println("OOOOOOOOOOOOOKKKKKKKKKKKKKKKKKK");
+			
+			OrdersVO ordersVO = new OrdersVO();
+			ordersVO.setM_no(memberVO.getM_no());
+			ordersVO.setO_date(new java.sql.Date(new java.util.Date().getTime()));
+			ordersVO.setO_shipping((Double) request.getAttribute("ShippingCost"));
+			ordersVO.setO_recipient(o_recipient);
+			ordersVO.setO_recipient_addr(o_recipient_addr);
+			ordersVO.setO_recipient_tel(o_recipient_tel);
+			ordersVO.setO_status("F");
+			
+			if (request.getParameter("useCoupon") != null){
+				CouponDAO couponDAO = new CouponDAO();
+				ordersVO.setC_key("Y");
+				ordersVO.setO_after_sales(new Integer(cart.getTotal() + (Integer)(request.getSession().getAttribute("ShippingCost")) - (couponDAO.findByPrimaryKey(request.getParameter("useCoupon"))).getC_price()).doubleValue());
+				
+				CouponVO couponVO = couponDAO.findByPrimaryKey(request.getParameter("useCoupon"));
+				couponVO.setC_status(true); //used
+				couponDAO.update(couponVO);
+				
+			} else {
+				ordersVO.setO_after_sales(new Integer(cart.getTotal() + (Integer)(request.getSession().getAttribute("ShippingCost"))).doubleValue());
+			}
+			
+			new OrdersDAO().update(ordersVO);
 		}
 		
 		return isSuccess;
