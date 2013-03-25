@@ -4,7 +4,7 @@ $(function() {
 		$('#ulResult').empty();
 		$("#errlist").empty();
 		$.ajax({
-			url : '../product/advertisements.do',
+			url : '/WineProject/product/advertisements.do',
 			type : 'POST',
 			data : {
 				queryProducts : $("#search_query").val(),
