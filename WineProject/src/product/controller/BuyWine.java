@@ -95,16 +95,6 @@ public class BuyWine extends HttpServlet {
 			
 			ProductVO productB = new ProductDAO().findByPrimaryKey(b_no);
 			ShoppingProduct shoppingProductB = new ShoppingProduct();
-			// 確認目前購物車內 A B 商品數量
-//			if (((Map<Integer, ShoppingProduct>) cart).get(b_no).getProductNumber() != null) {
-//				Integer productANumber = ((Map<Integer, ShoppingProduct>) cart).get(productNumber).getProductNumber();
-//				Integer productBNumber = ((Map<Integer, ShoppingProduct>) cart).get(b_no).getProductNumber();
-//				if (productBNumber >= productANumber){
-//
-//				} else {
-//					
-//				}
-//			}
 			
 			// 將B商品加入購物車
 			shoppingProductB.setProductName(productB.getP_name());

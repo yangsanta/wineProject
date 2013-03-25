@@ -31,9 +31,14 @@ public class ShipingCart {
 			// 原有的數量：OldShoppingProduct.getProductNumber()
 
 			// 如果新加入的商品為買A送B的B商品，若用戶原已選購B商品，且贈送的B商品數量>=原購買的B商品數量，則扣抵原購B商品的價格（而非直接增加B商品的數量）
-			if (shoppingProduct.getSaleType().equals("B") && (shoppingProduct.getProductNumber() >= OldShoppingProduct.getProductNumber()) && (OldShoppingProduct.getSubTotal() != 0)){
+			if (shoppingProduct.getSaleType().equals("B")  && (OldShoppingProduct.getSubTotal() != 0) && (shoppingProduct.getProductNumber() >= OldShoppingProduct.getProductNumber())){
 				OldShoppingProduct.setProductNumber(shoppingProduct.getProductNumber());
 				OldShoppingProduct.setSubTotal(shoppingProduct.getSubTotal());
+			} else if (shoppingProduct.getSaleType().equals("B") && (OldShoppingProduct.getSubTotal() != 0) && (shoppingProduct.getProductNumber() < OldShoppingProduct.getProductNumber())) {
+				OldShoppingProduct
+				.setProductNumber(OldShoppingProduct.getProductNumber());
+				OldShoppingProduct.setSubTotal(OldShoppingProduct.getSubTotal() - shoppingProduct.getProductPrice()*shoppingProduct.getProductNumber());
+			// 此外則照原規則
 			} else {
 				OldShoppingProduct
 						.setProductNumber(shoppingProduct.getProductNumber()
@@ -42,9 +47,7 @@ public class ShipingCart {
 				OldShoppingProduct.setSubTotal(shoppingProduct.getSubTotal()+OldShoppingProduct.getSubTotal());
 			}
 			
-			
-			
-			// 如果新加入的商品B為買A送B的結果，SalesNumber往上加
+			// 如果新加入的商品B為買A送B的結果，SalesNumber往上加，以便確認訂單頁面判斷是否顯示已折扣
 			if (shoppingProduct.getSaleType().equals("B")){
 				OldShoppingProduct.setSalesNumber(shoppingProduct.getSalesNumber()+OldShoppingProduct.getSalesNumber());
 			}
