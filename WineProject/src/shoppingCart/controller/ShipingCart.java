@@ -29,14 +29,25 @@ public class ShipingCart {
 			ShoppingProduct OldShoppingProduct = cart.get(productNumber);
 			// 加購的數量：shoppingProduct.getProductNumber()
 			// 原有的數量：OldShoppingProduct.getProductNumber()
-			OldShoppingProduct
-					.setProductNumber(shoppingProduct.getProductNumber()
-							+ OldShoppingProduct.getProductNumber());
+
+			// 如果新加入的商品為買A送B的B商品，若用戶原已選購B商品，且贈送的B商品數量>=原購買的B商品數量，則扣抵原購B商品的價格（而非直接增加B商品的數量）
+			if (shoppingProduct.getSaleType().equals("B") && (shoppingProduct.getProductNumber() >= OldShoppingProduct.getProductNumber()) && (OldShoppingProduct.getSubTotal() != 0)){
+				OldShoppingProduct.setProductNumber(shoppingProduct.getProductNumber());
+				OldShoppingProduct.setSubTotal(shoppingProduct.getSubTotal());
+			} else {
+				OldShoppingProduct
+						.setProductNumber(shoppingProduct.getProductNumber()
+								+ OldShoppingProduct.getProductNumber());
+				// 計算小計
+				OldShoppingProduct.setSubTotal(shoppingProduct.getSubTotal()+OldShoppingProduct.getSubTotal());
+			}
 			
-						// 計算小計
-			OldShoppingProduct.setSubTotal(shoppingProduct.getSubTotal()+OldShoppingProduct.getSubTotal());
-			OldShoppingProduct.setSalesNumber(shoppingProduct.getSalesNumber()+OldShoppingProduct.getSalesNumber());
-	
+			
+			
+			// 如果新加入的商品B為買A送B的結果，SalesNumber往上加
+			if (shoppingProduct.getSaleType().equals("B")){
+				OldShoppingProduct.setSalesNumber(shoppingProduct.getSalesNumber()+OldShoppingProduct.getSalesNumber());
+			}
 
 		}
 	}
