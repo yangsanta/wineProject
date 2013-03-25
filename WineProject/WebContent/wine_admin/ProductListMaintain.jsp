@@ -60,17 +60,15 @@
 
 							<div align="right">
 
-								<form action="DiscussionList.do" method="post"
-									class="form-search">
+								<form action="Maintain" method="get" class="form-search">
 									<p style="color: red; font-size: 12pt">${msgbox}</p>
-									<form action="DiscussionList.do" method="post"
-										class="form-search">
-
-										<input type="text" name="txtsrch"
-											class="input-medium search-query" placeholder="商品名稱" /> <input
-											type="submit" value="search" class="btn" /> <input
-											type="hidden" name="action" value="search"  />
-									</form>
+									<input type="hidden" name="action" value="getSome_For_Display" />
+									<input type="hidden" name="condition" value="p_name" /> <input
+										type="text" name="conditionValue" class="input-medium search-query"
+										placeholder="商品名稱" /> <input type="submit" value="search"
+										class="btn" /> <input type="hidden" name="action"
+										value="search" />
+								</form>
 							</div>
 							<br class="clear" />
 							<div class="pagination" style="float: left">
@@ -115,8 +113,8 @@
 
 
 							<div style="float: right; margin-top: 45px; margin-right: 45px">
-							<a href="/WineProject/wine_admin/ProductInsert.jsp">
-								<input type="button" class="btn btn-success" value="新增商品" />
+								<a href="/WineProject/wine_admin/ProductInsert.jsp"> <input
+									type="button" class="btn btn-success" value="新增商品" />
 								</a>
 							</div>
 							<!-------------------------顯示商品清單----------------------------------------------------------- -->

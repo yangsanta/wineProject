@@ -331,5 +331,93 @@ public class MemberServlet extends HttpServlet {
 				failureView.forward(req, res);
 			}
 		}
+		
+			if ("member_update".equals(action)) { // 來自update_mem_input.jsp的請求
+			
+			List<String> errorMsgs = new LinkedList<String>();
+			// Store this set in the request scope, in case we need to
+			// send the ErrorPage view.
+			req.setAttribute("errorMsgs", errorMsgs);
+		
+			try {
+				/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
+				Integer m_no = new Integer(req.getParameter("m_no").trim());
+				String m_id = req.getParameter("m_id").trim();
+				String m_name = req.getParameter("m_name").trim();
+				String m_pwd = req.getParameter("m_pwd").trim();
+				String m_mobile = req.getParameter("m_mobile").trim();
+				String m_email = req.getParameter("m_email").trim();
+				String m_addr = req.getParameter("m_addr").trim();
+				String m_pic = req.getParameter("m_pic").trim();
+				String m_safety_q = req.getParameter("m_safety_q").trim();
+				String m_safety_a = req.getParameter("m_safety_a").trim();
+				Integer m_status = new Integer(req.getParameter("m_status").trim());
+				
+				java.sql.Date m_bday = null;
+				try {
+					m_bday = java.sql.Date.valueOf(req.getParameter("m_bday").trim());
+				} catch (IllegalArgumentException e) {
+					m_bday = new java.sql.Date(System.currentTimeMillis());
+					errorMsgs.add("請輸入日期!");
+				}
+
+//				Double sal = null;
+//				try {
+//					sal = new Double(req.getParameter("sal").trim());
+//				} catch (NumberFormatException e) {
+//					sal = 0.0;
+//					errorMsgs.add("薪水請填數字.");
+//				}
+//
+//				Double comm = null;
+//				try {
+//					comm = new Double(req.getParameter("comm").trim());
+//				} catch (NumberFormatException e) {
+//					comm = 0.0;
+//					errorMsgs.add("獎金請填數字.");
+//				}
+
+				MemberVO memberVO = new MemberVO();
+				
+				memberVO.setM_no(m_no);
+				memberVO.setM_id(m_id);				
+				memberVO.setM_name(m_name);
+				memberVO.setM_pwd(m_pwd);
+				memberVO.setM_mobile(m_mobile);
+				memberVO.setM_email(m_email);
+				memberVO.setM_bday(m_bday);
+				memberVO.setM_addr(m_addr);
+				memberVO.setM_pic(m_pic);
+				memberVO.setM_safety_q(m_safety_q);
+				memberVO.setM_safety_a(m_safety_a);
+				memberVO.setM_status(m_status);
+				
+				// Send the use back to the form, if there were errors
+				if (!errorMsgs.isEmpty()) {
+					req.setAttribute("memberVO", memberVO); // 含有輸入格式錯誤的memberVO物件,也存入req
+					RequestDispatcher failureView = req
+							.getRequestDispatcher("/memberCRUD/listOneMem.jsp");
+					failureView.forward(req, res);
+					return; //程式中斷
+				}
+				
+				/***************************2.開始修改資料*****************************************/
+				MemberService memSvc = new MemberService();
+				memberVO = memSvc.updateMem(m_no, m_id, m_name, m_pwd, m_mobile, m_email, m_bday, m_addr, m_pic, m_safety_q,
+						m_safety_a, m_status);
+				/***************************3.修改完成,準備轉交(Send the Success view)*************/
+				req.setAttribute("memberVO", memberVO); // 資料庫update成功後,正確的的memberVO物件,存入req
+				String url = "/memberCRUD/listOneMemOK.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneMem.jsp
+				successView.forward(req, res);
+
+				/***************************其他可能的錯誤處理*************************************/
+			} catch (Exception e) {
+				errorMsgs.add("修改資料失敗:"+e.getMessage());
+				RequestDispatcher failureView = req
+						.getRequestDispatcher("/memberCRUD/listOneMem.jsp");
+				failureView.forward(req, res);
+			}
+		}
 	}
 }
