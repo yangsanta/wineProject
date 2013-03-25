@@ -16,77 +16,62 @@
 	<ul>
 		<li>肉類</li>
 		<ul>
-			<c:forEach var="food_set" items="${food_set_fid1}">
-				<li>${food_set.ingredientVO.i_name}</li>
+			<c:forEach var="food_set" items="${getSomebydF_id1}">
+				<li>${food_set} <c:forEach var="food_set"
+						items="${getSomebyI_id}">
+						<ul>
+							<li>${food_set.sauceVO.s_name}
+
+								<ul>
+									<li>${food_set.productVO.p_name}</li>
+								</ul>
+							</li>
+						</ul>
+					</c:forEach>
+				</li>
 			</c:forEach>
 		</ul>
 	</ul>
 	<ul>
 		<li>乳酪</li>
 		<ul>
-			<c:forEach var="food_set" items="${food_set_fid2}">
-				<li>${food_set.ingredientVO.i_name}</li>
+			<c:forEach var="food_set" items="${getSomebydF_id2}">
+				<li>${food_set}</li>
 			</c:forEach>
 		</ul>
-
 	</ul>
 	<ul>
 		<li>甜點</li>
 		<ul>
-			<c:forEach var="food_set" items="${food_set_fid3}">
-				<li>${food_set.ingredientVO.i_name}</li>
+			<c:forEach var="food_set" items="${getSomebydF_id3}">
+				<li>${food_set}</li>
 			</c:forEach>
 		</ul>
-
 	</ul>
 	<ul>
 		<li>穀類</li>
 		<ul>
-			<c:forEach var="food_set" items="${food_set_fid4}">
-				<li>${food_set.ingredientVO.i_name}</li>
+			<c:forEach var="food_set" items="${getSomebydF_id4}">
+				<li>${food_set}</li>
 			</c:forEach>
 		</ul>
-
 	</ul>
 	<ul>
 		<li>雞鴨</li>
 		<ul>
-			<c:forEach var="food_set" items="${food_set_fid5}">
-				<li>${food_set.ingredientVO.i_name}</li>
+			<c:forEach var="food_set" items="${getSomebydF_id5}">
+				<li>${food_set}</li>
 			</c:forEach>
 		</ul>
-
 	</ul>
 	<ul>
 		<li>海鮮</li>
 		<ul>
-			<c:forEach var="food_set" items="${food_set_fid6}">
-				<li>${food_set.ingredientVO.i_name}</li>
+			<c:forEach var="food_set" items="${getSomebydF_id6}">
+				<li>${food_set}</li>
 			</c:forEach>
 		</ul>
 	</ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	<%-- 	食物種類：
 	<select id="food">
