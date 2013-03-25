@@ -1,6 +1,6 @@
 package timing_sales.model;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import product.model.ProductVO;
 
@@ -11,7 +11,7 @@ public class Timing_Sales implements java.io.Serializable{
 	String ts_slogan; 
 	String ts_pic;
 	String ts_content;
-	Timestamp ts_date;
+	Date ts_date;
 	Integer ts_totalsale;
 	
 	public Integer getTs_id() {
@@ -50,10 +50,10 @@ public class Timing_Sales implements java.io.Serializable{
 	public void setTs_content(String ts_content) {
 		this.ts_content = ts_content;
 	}
-	public Timestamp getTs_date() {
+	public Date getTs_date() {
 		return ts_date;
 	}
-	public void setTs_date(Timestamp ts_date) {
+	public void setTs_date(Date ts_date) {
 		this.ts_date = ts_date;
 	}
 	public Integer getTs_totalsale() {

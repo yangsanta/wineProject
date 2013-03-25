@@ -48,7 +48,7 @@ public class Timing_SalesFacade {
 		// HttpSession session = request.getSession();
 
 		String p_no, ts_price, ts_slogan, ts_content, ts_totalsales, dateString;
-		Date ts_date;
+		Date ts_date = null;
 		String ts_id = null;
 		ServletFileUpload uploadHandler = new ServletFileUpload(
 				new DiskFileItemFactory());
@@ -127,19 +127,26 @@ public class Timing_SalesFacade {
 					else if ("ts_date".equals(fldName)) {
 						dateString = new String(fi.getString().getBytes(),
 								"UTF-8");
-						System.out.println("ts_date =======String======"
-								+ dateString);
+
 						if (dateString == null
 								|| dateString.trim().length() == 0) {
 							errorMsgs.put("errTs_date", "限惠日期錯誤");
 						} else {
-							System.out.println(dateString);
-							SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-							java.util.Date utildate = sdf.parse(dateString);
-							System.out.println(utildate + "utildate =======Class======" + utildate.getClass());
-							ts_date = new java.sql.Date(utildate.getTime());
-							System.out.println( ts_date + " ts_date =======Class======" + ts_date.getClass());
-							ts.setTs_date(ts_date);
+							
+							try{
+								System.out.println(dateString);
+								String[] x = dateString.split("/");
+								dateString = x[2] + "-" + x[1] + "-" + x[0];
+								SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+								java.util.Date utildate = sdf.parse(dateString);
+								System.out.println(utildate + "utildate =======Class======" + utildate.getClass());
+								ts_date = new java.sql.Date(utildate.getTime());
+								System.out.println( ts_date + " ts_date =======Class======" + ts_date.getClass());
+							} catch(Exception e){
+								errorMsgs.put("errTs_date", "日期(" + ts_date + ") 格式錯誤");
+							}
+							
+						ts.setTs_date(ts_date);
 
 						}
 					}
