@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import tools.InputFilter;
+
 import member.model.MemberDAO;
 import member.model.MemberHibernateDAO;
 import member.model.MemberVO;
@@ -23,13 +25,7 @@ public class register extends HttpServlet {
     public register() {
         super();
     }
-    public  String inputfilter(String input,int num){
-    	String output=input.trim(); //如果字串長度超過num則截斷、去除空白
-    	if ( input.length()>num){
-    		output=input.trim().substring(0,num);
-    	}
-    	return output;
-    }
+   InputFilter inputfilter = new InputFilter();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 	}
 
@@ -42,13 +38,13 @@ public class register extends HttpServlet {
 	List<String> errorMsg = new ArrayList<String>();
 	request.setAttribute("ErrorMsgKey", errorMsg);
 	// 1. 讀取使用者輸入資料
-	String m_id = inputfilter(request.getParameter("m_id"),20);
-	String m_name = inputfilter(request.getParameter("m_name"),10);
-	String m_pwd = inputfilter(request.getParameter("m_pwd"),16);
-	String m_mobile = inputfilter(request.getParameter("m_mobile"),10);
-	String m_email =inputfilter( request.getParameter("m_email"),40);
-	String m_bday = inputfilter(request.getParameter("m_bday"),20);
-	String m_addr = inputfilter(request.getParameter("m_addr"),100);
+	String m_id = inputfilter.sizeFomat(request.getParameter("m_id"),20);
+	String m_name = inputfilter.sizeFomat(request.getParameter("m_name"),10);
+	String m_pwd = inputfilter.sizeFomat(request.getParameter("m_pwd"),16);
+	String m_mobile = inputfilter.sizeFomat(request.getParameter("m_mobile"),10);
+	String m_email =inputfilter.sizeFomat( request.getParameter("m_email"),40);
+	String m_bday = inputfilter.sizeFomat(request.getParameter("m_bday"),20);
+	String m_addr = inputfilter.sizeFomat(request.getParameter("m_addr"),100);
 
 	// 3. 檢查使用者輸入資料
 	if (m_id == null || m_id.trim().length() == 0) {
