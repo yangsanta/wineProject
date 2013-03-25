@@ -27,7 +27,7 @@ public class OrdersAdminServlet extends HttpServlet {
 		// 準備facade
 		OrdersAdminFacade facade = new OrdersAdminFacade(request, response);
 
-		if (action.equals("getall")) {
+		if (action.equals("getall") || action == null) {
 			facade.getall();
 			request.getRequestDispatcher("/wine_admin/ademin_orders.jsp").forward(request, response);
 		}
@@ -36,14 +36,11 @@ public class OrdersAdminServlet extends HttpServlet {
 			Integer o_no = Integer.valueOf(request.getParameter("o_no"));
 			facade.detete(o_no);
 			facade.getall();
-			request.getRequestDispatcher("/wine_admin/ademin_orders.jsp").forward(request, response);
 		}
 		
 		if (action.equals("edit")) {
 			Integer o_no = Integer.valueOf(request.getParameter("o_no"));
 			facade.edit(o_no);
-			facade.getall();
-			request.getRequestDispatcher("/wine_admin/ademin_orders.jsp").forward(request, response);
 		}
 	}
 
