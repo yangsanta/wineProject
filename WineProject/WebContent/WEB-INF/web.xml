@@ -203,7 +203,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ProductMaintain</servlet-name>
-		<url-pattern>/product/Maintain</url-pattern>
+		<url-pattern>/wine_admin/Maintain</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>adminLogin</servlet-name>
@@ -236,7 +236,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>UpdateProduct</servlet-name>
-		<url-pattern>/product/UpdateProduct</url-pattern>
+		<url-pattern>/wine_admin/UpdateProduct</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>InsertProduct</servlet-name>
@@ -260,7 +260,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>set_timing_sales</servlet-name>
-		<url-pattern>/set_timing_sales</url-pattern>
+		<url-pattern>/wine_admin/set_timing_sales</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

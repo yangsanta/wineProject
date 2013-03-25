@@ -3,7 +3,9 @@ package timing_sales.model;
 import hibernate.util.HibernateUtil;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -85,6 +87,29 @@ public class Timing_SalesDAO implements Timing_Sales_interface{
 		}
 		return list;
 	}
+	
+	public Timing_Sales getDailySales() {
+		Timing_Sales timing_Sales = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Date date = new Date(); //現在時間
+		SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
+		String str = bartDateFormat.format(date); 
+		str = "'" + str + "'";
+		System.out.println("Today is : "+str);
+		String queryString = "from Timing_Sales where ts_date = " + str;
+		try {
+		session.beginTransaction();
+		Query query = session.createQuery(queryString);
+		List<Timing_Sales> list = query.list();
+		timing_Sales = list.get(0);
+		session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+		session.getTransaction().rollback();
+		throw ex;
+		}
+		return timing_Sales;
+		}
+	
 	public static void main(String arg[]) {
 		Timing_SalesDAO dao = new Timing_SalesDAO();
 		

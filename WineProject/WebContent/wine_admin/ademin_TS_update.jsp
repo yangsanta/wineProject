@@ -59,7 +59,8 @@ function showDate(date) {
 </style>
 </head>
 <body>
-	<form action="<%=request.getContextPath()%>/set_timing_sales" method="post" enctype="multipart/form-data" id="commentForm">
+	<form action="<%=request.getContextPath()%>/wine_admin/set_timing_sales" method="post" enctype="multipart/form-data" id="commentForm">
+		<input type="hidden" name="action" value="update"/>
 		限惠編號：<input type="text" name="ts_id" value="${ts.ts_id}" readonly="readonly"/><span>${ErrMsg.errTs_id}</span><br/>
 		<div id="divContent">
 		限惠商品：<input type="text" name="p_no" value="10" id="search_query"/><span>${ErrMsg.errP_no}</span><br/>

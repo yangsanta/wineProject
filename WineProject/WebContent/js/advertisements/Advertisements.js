@@ -13,26 +13,16 @@ $(function() {
 	var templateRemovePost = '"><i class="icon-trash"></i> 刪除</a></td>';
 
 	// getAll
-	$("#tabs-2-li")
-			.click(
-					function() {
-						$
-								.ajax({
-									url : '/WineProject/product/advertisements.do',
-									type : 'POST',
-									data : {
-										action : "getAll"
-									},
-									dataType : 'json',
-									success : function(data) {
-
-										$
-												.each(
-														data,
-														function() {
+	$("#tabs-2-li").click(function() {
+						$.ajax({url : '/WineProject/product/advertisements.do',
+								type : 'POST',
+								data : {action : "getAll"},
+								dataType : 'json',
+								success : function(data) {
+										$.each(
+												data,function() {
 															$("#tabs-2 tbody")
-																	.append(
-																			'<tr><td class="ads_no">'
+																	.append('<tr><td class="ads_no">'
 																					+ this.ads_no
 																					+ '</td><td><img class="adsImg" src="/WineProject/images/ad/'
 																					+ this.ads_filename
@@ -99,7 +89,7 @@ $(function() {
 	// Ajax search
 	$("#search_query").bind("keyup click", function() {
 		$('#ulResult').empty();
-		$("#errlist").empty();
+		$("#errlist").empty().removeClass('warning');
 		$("#productName").val($(this).val());
 		$.ajax({
 			url : '/WineProject/product/advertisements.do',
@@ -126,7 +116,7 @@ $(function() {
 	}).on("click", "#ulResult tr", function() {
 		$("#productName").val($(this).text());
 		$("#search_query").val($(this).text());
-		$("#errlist").empty();
+		$("#errlist").empty().removeClass('warning');
 		$('#ulResult').empty();
 	});
 
@@ -144,7 +134,7 @@ $(function() {
 
 				uploadFinished : function(i, file, response) {
 					$.data(file).addClass('done');
-					$("#errlist").empty();
+					$("#errlist").empty().removeClass('warning');
 					// response is the JSON object that Ads Controller
 					// returns
 				},
@@ -235,8 +225,8 @@ $(function() {
 
 	// 設定廣告 in DB
 	$("#button").click(function() {
-		$("#okMsg").empty();
-		$("#errlist").empty();
+		$("#okMsg").empty().removeClass('succes');
+		$("#errlist").empty().removeClass('warning');
 
 		var fileName = $("#fileName").val();
 		var productName = $("#search_query").val();
@@ -252,12 +242,18 @@ $(function() {
 			dataType : 'json',
 			success : function(data) {
 
-				if (data.AdsSuccess != undefined)
-					$("#okMsg").append("<p>" + data.AdsSuccess + "</p>");
-				$.each(data.AdsErr, function() {
-					$("#errlist").append("<p>" + this + "</p>");
+				if (data.AdsSuccess != undefined){
+					$("#okMsg").append("成功 : <span>" + data.AdsSuccess + "</span>");
+				$("#okMsg").addClass('succes');}
+				
+				if (data.AdsErr != undefined)
+					$("#errlist").addClass('warning').append("<span> 注意: </span>");
+				
+				$.each(data.AdsErr, function() {  
+					$("#errlist").append("<span>" + this + "</span>");
 				});
 
+				
 			}
 		});
 	});

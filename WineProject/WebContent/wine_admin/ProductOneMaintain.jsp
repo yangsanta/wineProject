@@ -3,20 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <link rel="shortcut icon" href="favicon.ico" />
-<link rel="icon" href="<%=request.getContextPath()%>/favicon.ico"
-	type="image/x-icon" />
-
-<html>
+<link rel="icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon" />
 <head>
-
-
-<meta http-equiv="Content-Language" content="zh-tw">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-		<title>酒迷| 歷久彌新的香濃口感</title>
-		<meta content="酒迷 | 歷久彌新的香濃口感。" name="description" />
-		<meta content="酒迷 | 歷久彌新的香濃口感" name="keywords" />
-	<style>
+<meta charset="utf-8">
+	<title>酒迷|後台管理系統</title>
+	<link media="all" rel="stylesheet" type="text/css"
+		href="<%=request.getContextPath()%>/wine_admin/css/all.css" />
+		 <c:if test="${sessionScope.admin_access!='y'}"><meta http-equiv="refresh" content="0; url=index.jsp"></c:if>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script type="text/javascript">
+		window.jQuery|| document.write('<script type="text/javascript" src="js/jquery-1.7.2.min.js"><\/script>');
+	</script>
+	<link href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
+		<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
+			<style>
 	.error{color:red}
 	</style>
 
@@ -25,16 +27,26 @@
 					2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
 					2010, 2011, 2012);
 		</script>
-	
-<script type="text/javascript"
+		<script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/tinymcec/jscripts/tiny_mce.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/tinymcec/tinymac.js"></script>
 <!-- /TinyMCE -->
 </head>
-
 <body>
+	<div id="wrapper">
+		<div id="content">
+			<div class="c1">
+		<%@ include file="view_model/total_tab.jsp"%>
+				<div class="tabs">
+					<div id="tab-1" class="tab">
 
+						<div class="text-section">
+							<h1>商品專區</h1>
+							<p>可在這邊修改商品喔!!!</p>
+						</div>
+
+						<div style="width: 80%; margin: 0 auto">
 	<form action="UpdateProduct" method="post" enctype="multipart/form-data">
 
 	    <input type="hidden" size="30" name="page" value="${param.page}" />
@@ -42,7 +54,7 @@
 		<img src="<%=request.getContextPath()%>/images/products/${ productVO.p_pic }" style="vertical-align: top; width: 100px;"/><br/> <input
 			style="background: #FFFFFF" type="file" name="p_pic" size="40" /><br/> 
 			<span>商品編號:${productVO.p_no}</span><br /> 
-			<span>商品名稱:</span><input type="text" size="30"name="p_name" value="${productVO.p_name}" /> <span class="error">${ErrMsg.errArea}</span><br/> 
+			<span>商品名稱:</span><input type="text" size="30"name="p_name" value="${productVO.p_name}" /> <span class="error">${ErrMsg.errName}</span><br/> 
 			<span>生產年分:</span><select name="p_year">
 				<c:forEach var="years"
 					items="1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012">
@@ -54,7 +66,7 @@
 					</c:if>
 				</c:forEach>
 		</select> <br/> 
-		     <span>生產國家:</span><input type="text" size="30" name="p_area"value="${productVO.p_area}" /> <span class="error">${ErrMsg.errName}</span><br/> 
+		     <span>生產國家:</span><input type="text" size="30" name="p_area"value="${productVO.p_area}" /> <span class="error">${ErrMsg.errArea}</span><br/> 
 		         <span>  生產地區:</span><input type="text" size="30" name="p_country" value="${productVO.p_country}" /><br/>
 			<span>庫存貨量:</span><input type="text" size="30" name="p_num"value="${productVO.p_num}" /><span class="error">${ErrMsg.errNum}</span><br/>
 			<span> 商品價錢:</span><input type="text"	size="30" name="p_price" value="${productVO.p_price}" /><span class="error">${ErrMsg.errPrice}</span><br/>
@@ -94,6 +106,18 @@
 			<input type="submit"
 			value="修改" />
 	</form>
-</body>
 
+						
+					<%@ include file="view_model/footer.jsp"%>
+						</div>
+
+						</article>
+					</div>
+
+				</div>
+			</div>
+		</div>
+<%@ include file="view_model/admin_menu.jsp"%>
+	</div>
+</body>
 </html>

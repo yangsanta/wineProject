@@ -58,7 +58,7 @@ public class Timing_SalesFacade {
 		Map<String, String> errorMsgs = new HashMap<String, String>();
 		// HttpSession session = request.getSession();
 
-		String p_no, ts_price, ts_slogan, ts_content, ts_totalsales, dateString;
+		String action = null, p_no, ts_price, ts_slogan, ts_content, ts_totalsales, dateString;
 		Date ts_date = null;
 		String ts_id = null;
 		ServletFileUpload uploadHandler = new ServletFileUpload(
@@ -79,6 +79,11 @@ public class Timing_SalesFacade {
 				String fldName = fi.getFieldName();
 				System.out.println(fldName);
 				if (fi.isFormField()) { // 如果是文字域
+					if("action".equals(fldName)){
+						action = new String(fi.getString().getBytes(),
+								"UTF-8");
+						System.out.println("action =============" + action);
+					}
 					if ("ts_id".equals(fldName)) {
 						System.out.println("ts_id....................started");
 						ts_id = new String(fi.getString().getBytes(),
@@ -91,7 +96,7 @@ public class Timing_SalesFacade {
 							ts.setTs_id(Integer.valueOf(ts_id));
 						}
 					}
-					if ("p_no".equals(fldName)) { // 取出各個值
+					else if ("p_no".equals(fldName)) { // 取出各個值
 						p_no = new String(fi.getString().getBytes(), "UTF-8");
 						System.out.println("p_no====================" + p_no);
 						if (p_no == null || p_no.trim().length() == 0) {
@@ -108,7 +113,8 @@ public class Timing_SalesFacade {
 									productVO.setP_no(tempP_no);
 									ts.setProductVO(productVO);
 								} else{
-									errorMsgs.put("errP_no", "產品編號不存在");
+									errorMsgs.put("errP_no", "產品編號不存在");	
+									ts.setProductVO(productVO);
 								}			
 						}
 					}
@@ -187,13 +193,16 @@ public class Timing_SalesFacade {
 //							String targetPath = request.getServletContext()
 //									.getRealPath("\\")
 //									+ "images\\timingSales\\";
-//							System.out.println("目標儲存路徑" + targetPath);
+							System.out.println("目標儲存路徑" + fi.getName());
 							String fileUrl = request.getServletContext()
 									.getRealPath("\\")
 									+ "images\\timingSales\\";
 							File file = new File(fileUrl, fi.getName());
 							fi.write(file);
 							ts.setTs_pic(fi.getName());
+						} else{
+							if(action.equals("insert"))
+								errorMsgs.put("errTs_pic", "限惠圖片錯誤");
 						}
 					}
 				}
@@ -201,16 +210,22 @@ public class Timing_SalesFacade {
 			}
 			if (!errorMsgs.isEmpty()) {
 				request.setAttribute("ErrMsg", errorMsgs);
-
-				RequestDispatcher rd = request
-						.getRequestDispatcher("");          //新增或編輯頁面!!!!
-				rd.forward(request, response);
+				request.setAttribute("ts", ts);
+				if(action.equals("insert")){
+					RequestDispatcher rd = request
+							.getRequestDispatcher("ademin_TS_insert.jsp");          //新增頁面!!!!
+					rd.forward(request, response);
+				} else if(action.equals("update")){
+					RequestDispatcher rd = request
+							.getRequestDispatcher("ademin_TS_update.jsp");          //編輯頁面!!!!
+					rd.forward(request, response);
+				}				
 				return;
 			}
 
 			new Timing_SalesDAO().update(ts);
 			errorMsgs.put("success", "資料新增成功");
-			response.sendRedirect("wine_admin/ademin_TS_List.jsp");
+			response.sendRedirect("set_timing_sales?action=getAll");
 
 		} catch (FileUploadException e) {
 			// TODO Auto-generated catch block
