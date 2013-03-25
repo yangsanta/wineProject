@@ -47,17 +47,17 @@
 					</a></td>
 					<td style="width: 400px"><span><a href="#">${products.value.productName}</a></span></td>
 					<td style="width: 50px"><span>$</span>${products.value.productPrice}</td>
-					<td style="width: 10px"><input type="text" value="${products.value.productNumber}"  max="2"style="width: 18px;"></td>
+					<td style="width: 10px"><input type="text" value="${products.value.productNumber}"  maxlength="2"style="width: 18px;"></td>
 					<td>$<strong>${products.value.subTotal}</strong></td>
 					<td style="width: 150px">
-					<a href="DeleteWine?no=${products.value.productNo}"><input type="button"class="btn" value="修改"/></a>
+					<input type="button"class="btn" value="修改" onClick="modify"/>
 					<a href="DeleteWine?no=${products.value.productNo}"><input type="button"class="btn" value="删除"/></a>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
-        <a href="DisplayProducts.do?action=getAll&pageNo=1"><input type="button"class="btn btn-info" value="繼續購物"/></a>  
-        <a href="#"><input type="button"class="btn btn-info" value="放棄購物"/></a>
+<input type="button"class="btn btn-info" value="繼續購物" onclick="javascript:history.back(-1)"/> 
+        <a href="#"><input type="button"class="btn btn-info" value="清空購物車"/></a>
         <a href="#"><input type="button"class="btn btn-info" value="購買回家"/></a>
 	</div>
 </body>
