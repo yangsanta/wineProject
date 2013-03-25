@@ -193,8 +193,9 @@ public class BuyWine extends HttpServlet {
 			// | matchNumber=0;} |
 			// |________________________________________________
 			// 跑r
+			int matchNumberR = matchNumber;
 			for (Entry<Integer, Integer> r : rList) {
-				int matchNumberR = matchNumber;
+				
 				ShoppingProduct temp = oldShoppingCart.get(r.getKey());
 				price = temp.getProductPrice();
 				if (temp.getProductNumber() <= matchNumberR) {
@@ -210,8 +211,9 @@ public class BuyWine extends HttpServlet {
 				}
 			}
 			// 跑g
+			int matchNumberG = matchNumber;
 			for (Entry<Integer, Integer> g : gList) {
-				int matchNumberG = matchNumber;
+				
 				ShoppingProduct tempG = oldShoppingCart.get(g.getKey());
 				price = tempG.getProductPrice();
 				if (tempG.getProductNumber() <= matchNumberG) {
@@ -253,9 +255,7 @@ public class BuyWine extends HttpServlet {
 
 		}
 		// 計算金額
-
-		response.sendRedirect(request.getContextPath() + "/product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue=");
-
+		response.sendRedirect(request.getHeader("Referer"));
 	}
 
 }

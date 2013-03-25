@@ -26,7 +26,9 @@ public class Timing_Sales_Servlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		System.out.println("Timing Salessssssssss Servlet doPost is running up.");
+		
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
@@ -37,6 +39,9 @@ public class Timing_Sales_Servlet extends HttpServlet {
 		Timing_SalesFacade facade = new Timing_SalesFacade(request, response);
 
 		if(action == null){
+			String requestURI = request.getHeader("Referer");
+			System.out.println("the previous page is ===== "+ requestURI);
+//			request.setAttribute("requestURI", requestURI);
 			System.out.println("action = insert Or Update");
 			facade.saveOrUpdate();
 		}
@@ -59,7 +64,7 @@ public class Timing_Sales_Servlet extends HttpServlet {
 			Integer ts_id = Integer.parseInt(request.getParameter("ts_id"));
 			ts = dao.findByPrimaryKey(ts_id);
 			request.setAttribute("ts", ts);
-			RequestDispatcher rd = request.getRequestDispatcher("wine_admin/admin_update_TS.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("wine_admin/ademin_TS_update.jsp");
 			rd.forward(request, response);
 			return;
 		}
