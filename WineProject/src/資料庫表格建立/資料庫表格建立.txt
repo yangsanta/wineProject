@@ -318,6 +318,7 @@ insert into member values ('ccc','king3','president','0955959888','kk.jj@yahoo.c
 insert into member values ('ddd','king4','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1,1,'');
 insert into member values ('eee','king5','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1,1,'');
 insert into member values ('fff','king6','president','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1,1,'');
+insert into member values ('管理員','Manager','supreme','0955959888','kk.jj@yahoo.com','1981-11-17','Taipei,Taiwan,ROC.','D:/userimages/00000.jpg','Whats the name of my best classmate in elementary school?','Queen',1,1,'');
 -----------------------------------------------------------------------------------
 
 

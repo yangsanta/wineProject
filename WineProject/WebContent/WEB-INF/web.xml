@@ -51,7 +51,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DiscussionManagment</servlet-name>
-		<url-pattern>/DiscussionManagment</url-pattern>
+		<url-pattern>/wine_admin/DiscussionManagment</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>ReplyManagment</servlet-name>
@@ -59,7 +59,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ReplyManagment</servlet-name>
-		<url-pattern>/ReplyManagment</url-pattern>
+		<url-pattern>/wine_admin/ReplyManagment</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>DisplayProducts</servlet-name>

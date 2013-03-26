@@ -21,12 +21,6 @@ import discussion.model.DiscussionVO;
 
 public class DiscussionManagment extends HttpServlet {
 
-	static final int rowsPerPage = 3;
-	static int pageNumber = 0;
-	static int whichPage = 1;
-	static int pageIndexArray[] = null;
-	static int pageIndex = 0;
-
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -41,21 +35,20 @@ public class DiscussionManagment extends HttpServlet {
 		List<String> errorMsgs = new ArrayList<String>();
 		// Store this set in the request scope, in case we need to
 		// send the ErrorPage view.
-		req.setAttribute("errorMsgs", errorMsgs);
+		req.setAttribute("ErrorMsgKey", errorMsgs);
 
 		try {
 //			 新增主題功能
 			if ("insert".equals(action)) {
 				// 之後修改成從session獲取管理員編號
 
-//				System.out.println(req.getSession().getAttribute("a_no"));
-//				if (req.getSession().getAttribute("a_no") == null) {
-//					RequestDispatcher failureView = req
-//							.getRequestDispatcher("/login.jsp"); // 導入登入頁面
-//					failureView.forward(req, res);
-//					return;
-//				}
 				Integer a_no = (Integer) req.getSession().getAttribute("a_no");
+				if(a_no==null){
+					RequestDispatcher failureView = req
+							.getRequestDispatcher("/admin_login.htm"); //導入後台豋入頁面
+					failureView.forward(req, res);
+					return;
+				}
 				String d_title = req.getParameter("d_title");
 				String d_context = req.getParameter("d_context");
 
@@ -81,7 +74,7 @@ public class DiscussionManagment extends HttpServlet {
 				String d_status = "ooo";
 				DiscussionVO discussionVO = new DiscussionVO();
 				MemberVO memberVO = new MemberVO();
-				memberVO.setM_no(a_no);
+				memberVO.setM_no(7);
 				discussionVO.setMemberVO(memberVO);
 				discussionVO.setD_title(d_title);
 				discussionVO.setD_context(d_context);
