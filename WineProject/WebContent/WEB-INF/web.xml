@@ -278,7 +278,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>smschecktomail</servlet-name>
-		<url-pattern>/product/smschecktomail</url-pattern>
+		<url-pattern>/product/smschecktomail.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>ModifyBuyWine</servlet-name>

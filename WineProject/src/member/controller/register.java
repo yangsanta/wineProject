@@ -111,7 +111,7 @@ public class register extends HttpServlet {
 //				// 設定參數
 //				String username = "davidou"; // 帳號
 //				String password = ""; // 密碼
-//				String mobile = "0971091213"; // 電話  m_mobile
+//				String mobile = m_mobile; // 電話  m_mobile 0971091213
 //				String message = "hello!"+username+" 感謝您註冊成為酒迷的會員 以下是您的酒迷驗證碼:"+rand; // 簡訊內容
 //
 //				msg = "http://api.twsms.com/smsSend.php?username=" + username
@@ -129,7 +129,7 @@ public class register extends HttpServlet {
 //				} catch (Exception e) {
 //					System.out.println(e.getMessage());		//無法連結網站
 //				}
-		
+				//// 簡訊結束
 				MemberHibernateDAO dao = new MemberHibernateDAO();
 				MemberVO member = dao.Login(m_id, m_pwd);
 				

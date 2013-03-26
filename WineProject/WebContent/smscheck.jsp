@@ -108,7 +108,13 @@
 					<%@ include file="view_model/page_alert.htm"%>
 
 					<h2>快要成功溜!</h2>
-
+					<c:if test="${not empty errorMsgs}">
+						<font color='red'> <c:forEach var="message"
+								items="${errorMsgs}">
+														${message}<br>
+							</c:forEach>
+						</font>
+					</c:if>
 					<div class="well font-small">
 						<strong><span class="label label-success">安全!</span></strong><span>Hello
 							親愛的${ m_idKey }您好:<br><span style="margin-left: 40px">協助我們確保您的帳戶安全性
@@ -117,36 +123,36 @@
 					<img style="display: block; margin: auto;"
 						/ src="<%=request.getContextPath()%>/images/verifiedphone_2.png"
 						width="500px"> <br>
-					<div
-							style="background: #f1f1f1; border: 1px solid #e5e5e5; padding: 1em 1.5em 1.5em;">
-							<form id="theform" method="post" action="smschecktomail">
-								<h3>驗證您的手機號碼</h3>
-								<span style="line-height: 17px; font-size: 10px">
-									您的手機號碼只會用於本網站使用， 我們只會將這組號碼用於網站交易以及確保您的帳戶安全性。</span><br> <br>
-										<c:if test="${not empty errorMsgs}">
-											<font color='red'>
-													<c:forEach var="message" items="${errorMsgs}">
+							<div
+								style="background: #f1f1f1; border: 1px solid #e5e5e5; padding: 1em 1.5em 1.5em;">
+								<form id="theform" method="post" action="smschecktomail.do">
+									<h3>驗證您的手機號碼</h3>
+									<span style="line-height: 17px; font-size: 10px">
+										您的手機號碼只會用於本網站使用， 我們只會將這組號碼用於網站交易以及確保您的帳戶安全性。</span><br> <br>
+											<c:if test="${not empty errorMsgs}">
+												<font color='red'> <c:forEach var="message"
+														items="${errorMsgs}">
 														${message}<br>
 													</c:forEach>
-											</font>
-										</c:if>
-								<span style="font-size: 10px">輸入驗證碼</span><span
-									style="margin-left: 30px; font-size: 10px"> 範例:123456</span><br>
-									<input type="text" id="smscheck" name="smscheck">
-								<input type="submit" id="send-code-button"
-									class="btn btn-success btn-small" value="傳送驗證碼">${sessionScope.smscheck_num}沒收到嗎?
-								
-							</form>
-						</div> <%@ include file="/view_model/index_fast_login.htm"%>
+												</font>
+											</c:if> <span style="font-size: 10px">輸入驗證碼</span><span
+											style="margin-left: 30px; font-size: 10px"> 範例:123456</span><br>
+												<input type="text" id="smscheck" name="smscheck"> <input
+													type="submit" id="send-code-button"
+													class="btn btn-success btn-small" value="傳送驗證碼">沒收到嗎?
+
+												
+								</form>
+							</div> <%@ include file="/view_model/index_fast_login.htm"%>
 
 
-						<br class="clear" />
+							<br class="clear" />
 				</div>
 				<br class="clear" />
 			</div>
 		</div>
 		<%@ include file="/view_model/index_footer.htm"%>
-
+		<span style="font-size: 8px">${sessionScope.smscheck_num}</span>
 	</div>
 
 	</div>
