@@ -173,7 +173,8 @@
 											productVO.p_area }</li>
 										<li class="info_li"><span class="pro_info">容量：</span>${
 											productVO.p_vol } ml</li>
-										<li class="info_li"><span class="pro_info">酒精濃度：</span>5%</li>
+										<li class="info_li"><span class="pro_info">酒精濃度：</span>${
+											productVO.p_alcho}%</li>
 										<li class="info_li"><span class="pro_info">年份：</span>${
 											productVO.p_year }</li>
 										<li class="info_li"><span class="pro_info">評分：</span> <c:forEach
