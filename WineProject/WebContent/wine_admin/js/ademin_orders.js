@@ -70,5 +70,35 @@ $(function() {
 								});
 			
 					});
+	
+	
+	//table search
+	//add index column with all content.
+//	 $(".filterable1 tr:has(td)").each(function(){
+//	   var t = $(this).text().toLowerCase(); //all row text
+//	   $("<td class='indexColumn'></td>")
+//	    .hide().text(t).appendTo(this);
+//	 });//each tr
+	$(".filterable1 tr:has(td)").each(function(){
+		   var t = $(this).children('.filterData').text().toLowerCase() + $(this).children().children('i').text().toLowerCase();; //all row text
+		   var row = $(this).closest('tr');
+		   $("<td class='indexColumn'></td>")
+		    .hide().text(t).appendTo(row);
+		 });//each tr
+	 $("#FilterTextBox").keyup(function(){
+	   var s = $(this).val().toLowerCase().split(" ");
+	 
+	   if (s != ""){
+		 //show all rows.
+		   $(".filterable1 tr:hidden").show();
+	   $.each(s, function(){
+	       $(".filterable1 tr:visible .indexColumn:not(:contains('"
+	          + this + "'))").parent().hide();
+	   });//each
+	   } else {
+		   $(".filterable1 tr").show();
+	   }
+	   
+	 });//key up.
 
 });
