@@ -108,6 +108,18 @@ label.success {
             background:url("<%=request.getContextPath()%>/images/checked.gif") no-repeat 0px 0px;
             padding-left: 16px;
 }
+.drop-shadow {
+-moz-border-radius: 4px;
+border-radius: 4px;
+position: relative;
+
+padding: 1em;
+margin: 2em 10px 4em;
+background: #fff;
+-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
 </style>
 </head>
 
@@ -117,14 +129,22 @@ label.success {
 				<%@ include file="../view_model/index_header.jsp"%>
 				<div id="main">
 
-
 					<div id="content">
+					<img src="<%=request.getContextPath()%>/images/news.png" style="margin-top: -85px;margin-left: -20px; width:70px" />
 	<form action="<c:url value='/DiscussionList.do'/>" method="post" id="commentForm" class="cmxform" >
-		文章標題:<input type="text" name="d_title" class="required" minlength="5" style="width:796px"/><br /> 
-		文章內容:<textarea cols="50" rows="3" id="textContext" name="d_context" class="required" minlength="10"></textarea><br />
-		<input type="submit" value="Send" class="btn btn-primary"/>
+		<img src="<%=request.getContextPath()%>/images/array.png" style="width:30px" /><span style="font-size: 22px;font-weight: bold;">文章標題:</span><br><input type="text" name="d_title" class="required" minlength="5" style="width:796px;margin-top:10px;height: 30px;"/><br /> 
+		<div class="drop-shadow ">
+		<br><img src="<%=request.getContextPath()%>/images/array.png" style="width:30px" /><span style="font-size: 22px;font-weight: bold;">文章內容:</span>
+		<div style="float:right;margin-right: 150px;margin-bottom: 10px;"><button class="btn  btn-primary" type="submit"><i class=" icon-ok icon-white"></i> 送出文章</button> </div>
+		<br><div style="padding-left: 50px;width: 800px;height: 600px;"><textarea cols="90" rows="30"  id="textContext" name="d_context" class="required" minlength="10"></textarea></div><br />
+		
 		<input type="hidden" name="action" value="insert" style="margin:0px auto"/>
+		
+           
+        </div>
 	</form>
+	
+	
 	<%@ include file="../view_model/index_fast_login.htm"%>
 						<br class="clear" />
 					</div>

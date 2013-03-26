@@ -8,6 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import member.model.MemberHibernateDAO;
+import member.model.MemberVO;
 
 import orders.model.OrdersDAO;
 import orders.model.OrdersVO;
@@ -41,6 +45,12 @@ public class MemberService extends HttpServlet {
 		CouponDAO couponDAO = new CouponDAO();
 		List<CouponVO> theCoupons = couponDAO.findByM_no(m_no);
 		request.setAttribute("theCoupons", theCoupons);
+		
+		
+
+		MemberHibernateDAO dao=new MemberHibernateDAO();
+		MemberVO memberVO=dao.findByPrimaryKey(m_no);
+		request.setAttribute("memberVO", memberVO);
 		
 		String UrlStr = "/member/Member_Info.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(UrlStr);

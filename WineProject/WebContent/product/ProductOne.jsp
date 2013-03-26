@@ -191,8 +191,7 @@
 										<li><span class="pro_info">葡萄種類：</span>${
 											productVO.p_grape }</li>
 									</ul>
-									<div style="text-align: right;">商品編號:365${
-										productVO.p_no}</div>
+									<div style="text-align: right;">商品編號:365${productVO.p_no}</div>
 									<hr style="margin: 0">
 										<div class="price">
 											<strong>網路價:</strong><span style="color: red">$${
@@ -253,7 +252,7 @@
 							fjs.parentNode.insertBefore(js, fjs);
 						}(document, 'script', 'facebook-jssdk'));
 					</script>
-<div class="fb-comments" data-href="http://wine.davidou.org:8080/WineProject/product/DisplayProducts.do?action=getOne_For_Display&amp;pId=2" data-width="600" data-num-posts="10" ></div>
+<div class="fb-comments" data-href="http://wine.davidou.org:8080/WineProject/product/DisplayProducts.do?action=getOne_For_Display&amp;pId=${productVO.p_no}" data-width="600" data-num-posts="10" ></div>
 					<%@ include file="../view_model/index_fast_login.htm"%>
 
 

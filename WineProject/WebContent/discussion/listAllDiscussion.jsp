@@ -122,7 +122,11 @@ tr:hover {
 									<option value="d_title">主題</option>
 									<option value="d_context">文章內容</option>
 									<option value="m_id">會員帳號</option>
-								</select> <input type="submit" value="search" class="btn btn-primary" />
+								</select>								
+								<button class="btn btn-success"  type="submit">
+									<i class="icon-search icon-white"></i> search
+								</button>
+						
 								<input type="hidden" name="action" value="search" />
 							</form>
 					</div>
@@ -139,9 +143,8 @@ tr:hover {
 					</div>
 
 					<a
-						href="<c:if test="${m_no!=null}">discussion/insertDiscussion.jsp</c:if><c:if test="${m_no==null}">login.jsp</c:if>"><button
-							class="btn btn-large btn-primary" style="float: right"
-							type="button">
+						href="<c:if test="${m_no!=null}">discussion/insertDiscussion.jsp</c:if><c:if test="${m_no==null}">login.jsp</c:if>">
+						<button class="btn btn-large btn-primary" style="float: right" type="button">
 							<i class="icon-pencil icon-white"></i> 發表文章
 						</button> </a> <br><br>
 							<table border="0" width="100%" cellspacing="0" cellpadding="0">

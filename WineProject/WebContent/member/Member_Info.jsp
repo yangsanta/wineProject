@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="<%=request.getContextPath()%>/favicon.ico"
@@ -33,16 +34,19 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
 <style type="text/css">
-.coupons {
-	border-width: 2px;
-	border-style: solid;
-	background: rgb(255, 205, 47);
-	width: 100px;
-	float: left;
-	margin: 30px;
-}
 
-.mem_in_coupons {
+.mem_in_coupons{background-color: #FBFBFB;
+padding: 20px;
+margin:10px 0;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+-o-border-radius: 4px;
+-khtml-border-radius: 4px;
+-webkit-box-shadow: rgba(0,0,0,0.35) 0 1px 3px;
+-moz-box-shadow: rgba(0,0,0,0.35) 0 1px 3px;
+box-shadow: rgba(0,0,0,0.35) 0 1px 3px;
+overflow: auto;}
+.mem_div {
 	overflow: auto;
 }
 
@@ -53,8 +57,13 @@
 }
 
 .mem_in_title {
-	font-weight: bold
+	font-weight: bold;
+	margin-bottom:10px;
 }
+#content{background: url('<%=request.getContextPath()%>/images/mem_infobg.png');
+background-repeat: no-repeat;
+background-position: bottom right;
+background-color: #fff;}
 </style>
 <script type="text/javascript">
 	
@@ -80,36 +89,53 @@
 <c:if test="${sessionScope.access=='y'}">
 					${m_id} 您好
 					<hr>
+					<table>
+					<tr>
+					<td>${memberVO.m_pic}<br></td>
+					<td style="padding-left:10px">E-mail：${memberVO.m_email}<br>
+			姓名：${memberVO.m_name}<br>
+			生日：${memberVO.m_bday}<br>
+			行動電話：${memberVO.m_mobile}<br>
+			通訊地址：${memberVO.m_addr}<br>
+			
+			狀態：${memberVO.m_status}<br></td>
+					</tr>
+					</table>
+			
+			
 						<div class="mem_in_outer">
-							<span class="mem_in_title"><b>優惠券</b></span>
+							<span class="mem_in_title"><b>優惠券(${fn:length(theCoupons)}張)</b></span>
 							<div class="mem_in_coupons">
 								<c:forEach var="coupon" items="${theCoupons}">
-									<div class="coupons">
-										${coupon.c_price}<br>${coupon.c_key} 
-									</div>
+							<a href="#" rel="tooltip" data-placement="bottom" style="margin-right:10px" title="優惠卷序號:${coupon.c_key} ">
+							<img src="<%=request.getContextPath()%>/images/ticket${coupon.c_price}.png" width=50px /></a> 
 								</c:forEach>
 							</div>
+							
+							<span class="mem_in_title"><b>各項設定/維護</b></span><br>
 							<div class="mem_in_coupons">
-								<span class="mem_in_title"><b>各項設定/維護</b></span><br>
 								<a href="#"><b>可訂購時通知我</b></a>
 							</div>
+							
 							<span class="mem_in_title">會員資料</span>
-							<div class="mem_in_coupons">
-								<div class="mem_in_inner">
-									<a href="../memberCRUD/listOneMem">修改會員資料</a>
+							<div class="mem_div">
+								<div class="mem_in_inner" style="text-align :center">
+								<a href="../memberCRUD/listOneMem"><img src="<%=request.getContextPath()%>/images/nav_safety.png" width=150px /><br>
+									修改會員資料</a>
 								</div>
-								<div class="mem_in_inner">
-									<a href="#">修改密碼</a>
+								<div class="mem_in_inner" style="text-align :center">
+								<a href="#"><img src="<%=request.getContextPath()%>/images/mem_safety.png" width=150px /><br>
+									修改密碼</a>
 								</div>
 							</div>
 							<div class="mem_in_title">
 								<b>訂單查詢</b>
 							</div>
 							<div class="mem_in_orders">
-								<table border="1">
+								<table border="1" class="table table-bordered table-hover">
 									<thead style="background: #ccc">
 										<tr>
-											<th>訂單編號</th>
+											<th>編號</th>
 											<th>訂購時間</th>
 											<th>訂單金額</th>
 											<th>商品名稱</th>
@@ -121,13 +147,13 @@
 										<c:forEach var="order" items="${theOrders}">
 											<tr>
 												<td>${order.o_no}</td>
-												<td>${order.o_date}</td>
-												<td>${order.o_after_sales}</td>
+												<td vertical-align:middle>${order.o_date}</td>
+												<td vertical-align:middle>${order.o_after_sales}</td>
 												<td><c:forEach var="detail"
 														items="${order.order_details}"> ${detail.productVO.p_name} <br>
 													</c:forEach></td>
 												<td><c:forEach var="detail"
-														items="${order.order_details}"> ${detail.p_num} <br>
+														items="${order.order_details}"> ${detail.p_num} 瓶<br>
 													</c:forEach></td>
 												<td>${order.o_status}</td>
 											</tr>
@@ -136,7 +162,6 @@
 								</table>
 
 							</div>
-
 							<div class="bar"></div>
 						</div>
 						</c:if>

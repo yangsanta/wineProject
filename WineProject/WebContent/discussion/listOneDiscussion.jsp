@@ -216,11 +216,12 @@ label.success {
 							<br /> <!-- 	--留言功能 -->
 							<form action="<c:url value='/reply.do'/>" method="post"
 								id="commentForm" class="cmxform">
-								快速留言：
+								<img src="<%=request.getContextPath()%>/images/fast_discus.png" width=30px style="margin-bottom: 20px;">
+								<span style="margin-bottom:10px;font-weight: bold;font-size:16px">快速留言：</span>
 								<textarea cols="200" rows="6" name="r_context" class="required"
 									minlength="10"
 									style="margin: 0px 0px 10px; width: 866px; height: 200px"></textarea>
-								<br /> <input type="submit" value="Send"
+								<br /> <input type="submit" value="送出"
 									class="btn btn-primary" /> <input type="hidden" name="action"
 									value="insert"> <input type="hidden" name="d_no"
 									value="${discussionVO.d_no}">

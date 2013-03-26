@@ -34,7 +34,7 @@
         max-width: 400px;
         padding: 19px 29px 29px;
         margin: 0 auto 20px;
-        background-color: rgba(255, 255, 255, 0.64);
+        background-color: rgba(255, 255, 255, 0.72);
         border: 1px solid #e5e5e5;
         -webkit-border-radius: 5px;
            -moz-border-radius: 5px;
@@ -42,6 +42,9 @@
         -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
                 box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
       }
       .form-signin .form-signin-heading,
       .form-signin .checkbox {
@@ -54,7 +57,7 @@
         margin-bottom: 15px;
         padding: 7px 9px;
       }
-
+.container{ max-width: 410px;}
     </style>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -66,10 +69,12 @@
   <body style="background: url('<%=request.getContextPath()%>/images/wood.jpg') top left repeat;">
 <br /><br /><br /><br />
     <div class="container">
-
+<div style="text-align:center"><img src="images/admin_title.png" title="酒迷後台管理系統"/></div><br><br><br>
       <form class="form-signin"  action = "adminlogin" method="post">
-        <h2 class="form-signin-heading">酒迷後台管理系統</h2>
+        <h2 class="form-signin-heading" style="color:rgb(25, 75, 163);">Login</h2><hr>
         <input name="a_id"  type="text" class="input-block-level" placeholder="Account">
+        
+        
         <input name="a_pwd" type="password" class="input-block-level" placeholder="Password">
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
@@ -77,7 +82,7 @@
         <button class="btn btn-large btn-primary" type="submit">Sign in</button>
       </form>
 
-    </div> <!-- /container -->
+    </div>
 
 
   </body>

@@ -29,7 +29,9 @@
 			<script language="JavaScript">
 				var DifferenceMinute = -1
 				var DifferenceSecond = -1
-				var Tday = new Date("3 21, 2013 23:59:59")
+				today = new Date();
+				var str=today.getMonth()+1+" "+today.getDate()+","+today.getFullYear()+" 23:59:59"
+				var Tday = new Date(str)
 				var hoursms = 60 * 60 * 1000
 				var Secondms = 60 * 1000
 				var microsecond = 1000
@@ -135,6 +137,21 @@
 .displaynone {
 	display: none
 }
+.timelimit_title{background-image: url(images/ppopTittleBG_02.png);
+background-repeat: repeat-x;
+float: left;
+height: 33px;
+font-size: 20px;
+color: #fff;
+font-weight: bold;
+line-height: 30px;
+padding-left: 5px;
+padding-right: 5px;}
+.timelimit_titleRight{background-image: url(images/ppopTittleBG_03.png);
+background-repeat: no-repeat;
+float: left;
+height: 33px;
+width: 16px;}
 </style>
 			<script type="text/javascript">
 				//右邊輪播式廣告
@@ -233,7 +250,8 @@
 <!-- 					限時特惠廣告起始位置 -->
 					<div id="box1">
 					<jsp:useBean class="timing_sales.model.Timing_SalesDAO" id="ts">
-						<h2>限時特賣!</h2>
+						<div class="timelimit_title"> 限時特賣! </div>
+						<div class="timelimit_titleRight" style="display: inline">  </div><br>
 						<h3>${ts.dailySales.ts_slogan}</h3>
 						<img
 							src="<%=request.getContextPath()%>/images/timingSales/${ts.dailySales.ts_pic}">
@@ -264,9 +282,9 @@
 									<div
 										style="float: right; color: white; background-image: url(images/clock.png); width: 210px; height: 42px; margin-right: 10px;">
 										<span
-											style="color: white; width: 30px; display: inline-block; margin: 5px 0 0 40px;"
+											style="color: white; width: 50px; display: inline-block; margin: 5px 0 0 30px;"
 											id="hr"></span> <span
-											style="color: white; width: 60px; display: inline-block;"
+											style="color: white; width: 50px; display: inline-block;"
 											id="min"></span> <span
 											style="color: white; width: 30px; display: inline-block;"
 											id="sec"></span>
@@ -287,7 +305,7 @@
 	
 								<div
 									style="background-color: #ccc; background-image: url(images/timebg.jpg); margin: 10px">
-									購買注意事項!<br>
+									<img src="<%=request.getContextPath()%>/images/time_note.png" width=30px; style="margin:5px 5px 0 10px"><span style="font-weight: bold;">購買注意事項!</span><br>
 										<ul
 											style="background-color: rgba(255, 255, 255, 0.75);font-size: 10px; margin: 20px; padding: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
 											<li>■ 優惠期間：2013/03/24至2013/04/24
