@@ -18,7 +18,7 @@ $(function() {
 					function() {
 						$
 								.ajax({
-									url : '../product/advertisements.do',
+									url : '/WineProject/product/advertisements.do',
 									type : 'POST',
 									data : {
 										action : "getAll"
@@ -60,7 +60,7 @@ $(function() {
 
 						$
 								.ajax({
-									url : '../product/advertisements.do',
+									url : '/WineProject/product/advertisements.do',
 									type : 'POST',
 									data : {
 										ads_no : $(this).attr("href"),
@@ -102,7 +102,7 @@ $(function() {
 		$("#errlist").empty();
 		$("#productName").val($(this).val());
 		$.ajax({
-			url : '../product/advertisements.do',
+			url : '/WineProject/product/advertisements.do',
 			type : 'POST',
 			data : {
 				queryProducts : $("#search_query").val(),
@@ -140,7 +140,7 @@ $(function() {
 
 				maxfiles : 1,
 				maxfilesize : 2,
-				url : '../product/advertisements.do',
+				url : '/WineProject/product/advertisements.do',
 
 				uploadFinished : function(i, file, response) {
 					$.data(file).addClass('done');
@@ -242,7 +242,7 @@ $(function() {
 		var productName = $("#search_query").val();
 
 		$.ajax({
-			url : '../product/advertisements.do',
+			url : '/WineProject/product/advertisements.do',
 			type : 'POST',
 			data : {
 				fileName : fileName,
