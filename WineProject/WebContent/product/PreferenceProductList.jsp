@@ -157,10 +157,8 @@
 								</ul>
 							</div>
 							<div name="allproduct">
-								<div class="searchResult">搜尋結果共 ${totalRows} 筆，頁數
-									${whichPage} / ${totalPages}：</div>
-								<c:forEach var="product" items="${list}" begin="${pageIndex}"
-									end="${pageIndex+rowsPerPage-1}">
+								
+								<c:forEach var="product" items="${list}" >
 									<c:choose>
 										<c:when test="${product.p_sales =='R'}">
 											<c:set var="preference" scope="page" value="rg" />
@@ -197,16 +195,6 @@
 								</c:forEach>
 							</div>
 						<br class="clear" />
-
-						<div class="pagination pagination-centered"	style="margin-top: 50px">
-							<ul>
-								<c:forEach var="page" begin="1" end="${totalPages}">
-									<li><a
-										href="DisplayProducts.do?action=${action}&pageNo=${page}${conditionParam}">${page}</a></li>
-								</c:forEach>
-							</ul>
-						</div>
-
 
 
 						<br class="clear" />

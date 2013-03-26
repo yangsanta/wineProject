@@ -60,10 +60,10 @@ public class DisplayProducts extends HttpServlet {
 			ProductDAO productDAO = new ProductDAO();
 			ProductVO productVO = productDAO.findByPrimaryKey(p_no);
 			request.setAttribute("productVO", productVO);
-			//或許你也會喜歡
+			// 或許你也會喜歡
 			List<ProductVO> maylike = productDAO.findRandTopProduct("4");
 			request.setAttribute("maylike", maylike);
-			
+
 			String listAllUrl = "/product/ProductOne.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
 			rd.forward(request, response);
@@ -89,33 +89,34 @@ public class DisplayProducts extends HttpServlet {
 							.equals("getSome_For_Display"))) {
 				list = (List<ProductVO>) request.getSession().getAttribute(
 						"list");
+				splitPages(list, request);
+				
 			} else {
 				request.setAttribute("action",
 						new String("getSome_For_Display"));
 				ProductDAO productDAO = new ProductDAO();
 
-				if (condition.equals("p_buy_count")) {
-					list = productDAO.findTopProduct(conditionValue);
+				if (condition.equals("p_sales")) {
+					list = productDAO.findSalesProduct();
 
 				} else {
-
-					if (condition.equals("p_sales")) {
-						list = productDAO.findSalesProduct();
+					if (condition.equals("p_buy_count")) {
+						list = productDAO.findTopProduct(conditionValue);
 					} else if (condition.equals("p_price")
 							|| condition.equals("p_date")) {
 						list = productDAO.findProductBetween(condition,
 								conditionValue);
-
 					} else {
-
 						list = productDAO.findSomeProduct(condition,
 								conditionValue);
 					}
 					splitPages(list, request);
 				}
 				request.setAttribute("list", list);
+				
 			}
 			
+
 			String listAllUrl;
 			if (condition.equals("p_date")) {
 				listAllUrl = "/product/NewarriveProductList.jsp";
