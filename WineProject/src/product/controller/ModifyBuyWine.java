@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +39,7 @@ public class ModifyBuyWine extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request,
@@ -52,19 +53,48 @@ public class ModifyBuyWine extends HttpServlet {
 		// rd.forward(request, response);
 		// return;
 		// }
-        System.out.println("xxxxxxxxxxxxxxx");
+
 		ShipingCart cart = (ShipingCart) session.getAttribute("ShoppingCart");
 		if (cart == null) {
 			// 就新建ShoppingCart物件
 			cart = new ShipingCart();
 			// 將此新建ShoppingCart的物件放到session物件內
 			session.setAttribute("ShoppingCart", cart);
+			response.sendRedirect(request.getHeader("Referer"));
+			return;
 
 		}
-		ProductDAO productDAO = new ProductDAO();
-		Integer productNumber = Integer.parseInt(request.getParameter("num"));
-
+		String error="正確";
+		
+		try {
+		Integer.parseInt(request.getParameter("num"));
+		Integer productNumber = Integer.parseInt(request.getParameter("num"));// 該商品修改後的數量
+		
+		System.out.println(productNumber);
 		Integer productNo = Integer.parseInt(request.getParameter("no"));
+		// 從購物車中找出商品清單
+		Map<Integer, ShoppingProduct> oldProduct = cart.getContent();
+		ShoppingProduct oldShoppingProduct = oldProduct.get(productNo);
+		String sales = oldShoppingProduct.getSaleType(); // 找出USER愈修改品之優惠狀態
+		Integer number = oldShoppingProduct.getProductNumber(); // 該商品之數量
+		
+		if (productNumber < 0) {
+			error = "數量不可為負值";
+			session.setAttribute("errorNumber", error);
+			response.sendRedirect(request.getHeader("Referer"));
+			return;
+		} else if (productNumber == 0) {
+			
+			response.sendRedirect(request.getContextPath()+"/product/DeleteWine?no="+request.getParameter("no"));
+			return;
+		}
+		
+		
+		
+		session.removeAttribute("errorNumber");
+		ProductDAO productDAO = new ProductDAO();
+		productNumber=productNumber-number;
+		System.out.println(productNumber);
 		ProductVO productVO = productDAO.findByPrimaryKey(productNo);
 		String productName = productVO.getP_name();
 		Integer price = productVO.getP_price();
@@ -73,13 +103,10 @@ public class ModifyBuyWine extends HttpServlet {
 		shoppingProduct.setProductNo(productNo); // 物件存商品編號
 		shoppingProduct.setProductName(productName);// 物件存商品名稱
 		shoppingProduct.setProductPrice(price); // 物件存商品售價
-		String sales = productVO.getP_sales();
+		sales = productVO.getP_sales();
 		shoppingProduct.setPic(productVO.getP_pic());
 		shoppingProduct.setSaleType(sales); // 物件存商品優惠狀態
-		System.out.println("名稱" + productName);
-		System.out.println("售價" + price);
-		System.out.println("數量" + productNumber);
-		System.out.println("優惠" + sales);
+
 		// 判斷優惠狀態
 
 		if (sales.equals("A")) {
@@ -92,10 +119,10 @@ public class ModifyBuyWine extends HttpServlet {
 			AbDAO abdao = new AbDAO();
 			AbVO abVO = abdao.findByAKey(productNo);
 			Integer b_no = abVO.getAb_b_p_id();
-			
+
 			ProductVO productB = new ProductDAO().findByPrimaryKey(b_no);
 			ShoppingProduct shoppingProductB = new ShoppingProduct();
-			
+
 			// 將B商品加入購物車
 			shoppingProductB.setProductName(productB.getP_name());
 			shoppingProductB.setProductNo(productB.getP_no());
@@ -103,7 +130,7 @@ public class ModifyBuyWine extends HttpServlet {
 			shoppingProductB.setProductPrice(productB.getP_price());
 			shoppingProductB.setPic(productVO.getP_pic());
 			shoppingProductB.setSaleType("B");
-			shoppingProductB.setSalesNumber(new Integer(productNumber));
+			shoppingProductB.setSalesNumber(productNumber);
 			shoppingProductB.setSubTotal(0);
 			cart.addToCart(shoppingProductB.getProductNo(), shoppingProductB);
 		} else if (sales.equals("half")) { // 第2件半價
@@ -121,10 +148,7 @@ public class ModifyBuyWine extends HttpServlet {
 			} else {
 				num = OldShoppingProduct.getProductNumber() + productNumber;
 				quotient = num / 2;
-				System.out.println(num);
-				System.out.println(quotient);
-				System.out.println((price * num) - (quotient * price / 2));
-				System.out.println(OldShoppingProduct.getProductPrice());
+
 				shoppingProduct.setSubTotal((price * num)
 						- (quotient * price / 2));
 				cart.addToCart(shoppingProduct.getProductNo(), shoppingProduct);
@@ -195,7 +219,7 @@ public class ModifyBuyWine extends HttpServlet {
 			// 跑r
 			int matchNumberR = matchNumber;
 			for (Entry<Integer, Integer> r : rList) {
-				
+
 				ShoppingProduct temp = oldShoppingCart.get(r.getKey());
 				price = temp.getProductPrice();
 				if (temp.getProductNumber() <= matchNumberR) {
@@ -213,7 +237,7 @@ public class ModifyBuyWine extends HttpServlet {
 			// 跑g
 			int matchNumberG = matchNumber;
 			for (Entry<Integer, Integer> g : gList) {
-				
+
 				ShoppingProduct tempG = oldShoppingCart.get(g.getKey());
 				price = tempG.getProductPrice();
 				if (tempG.getProductNumber() <= matchNumberG) {
@@ -229,24 +253,6 @@ public class ModifyBuyWine extends HttpServlet {
 				}
 			}
 
-			// Map<Integer, ShoppingProduct> old = cart.getContent();
-			// ShoppingProduct OldShoppingProduct = old.get(productNo);
-			// shoppingProduct.setProductNumber(productNumber);
-
-			// Map<Integer, ShoppingProduct> old = cart.getContent();
-			// Set<Integer> set=old.keySet();
-			// int rNum=cart.getaNumber()+productNumber;
-			// int gNum=cart.getbNumber();
-			// if(rNum>gNum){
-			// for (Integer n : set) {
-			// if(old.get(n).getSaleType().equals("R")){
-			//
-			// }
-			// }
-			//
-			// }
-			// else if(rNum<gNum){}
-			// else{}
 		} else {
 			// 沒有優惠OR B區商品
 			shoppingProduct.setProductNumber(productNumber);
@@ -256,6 +262,12 @@ public class ModifyBuyWine extends HttpServlet {
 		}
 		// 計算金額
 		response.sendRedirect(request.getHeader("Referer"));
-	}
+		} catch (Exception e) {
 
+			error ="數量請輸入數字";
+			session.setAttribute("errorNumber", error);
+			response.sendRedirect(request.getHeader("Referer"));
+			return;
+		}
+	}
 }
