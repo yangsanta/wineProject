@@ -1,8 +1,11 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.*"%>
 <%@ page import="member.model.*"%>
+
 <%
-	MemberVO memberVO = (MemberVO) request.getAttribute("memberVO"); //MemberServlet.java (Controller), ¦s¤JreqªºmemberVOª«¥ó (¥]¬AÀ°¦£¨ú¥XªºmemberVO, ¤]¥]¬A¿é¤J¸ê®Æ¿ù»~®ÉªºmemberVOª«¥ó)
+	MemberVO memberVO = (MemberVO) request.getAttribute("memberVO"); //MemberServlet.java (Controller), å­˜å…¥reqçš„memberVOç‰©ä»¶ (åŒ…æ‹¬å¹«å¿™å–å‡ºçš„memberVO, ä¹ŸåŒ…æ‹¬è¼¸å…¥è³‡æ–™éŒ¯èª¤æ™‚çš„memberVOç‰©ä»¶)
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,63 +20,29 @@ $(document).ready(function()
    });
 </script>
 
-<title>·|­û¸ê®Æ­×§ï</title>
+<title>æœƒå“¡è³‡æ–™ä¿®æ”¹</title>
 </head>
-<body bgcolor='white'>
-
-	<table border='1' cellpadding='5' cellspacing='0' width='800'>
-		<tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
-			<td><h3>·|­û¸ê®Æ­×§ï</h3>
-		              <a href="select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">¦^­º­¶</a></td></tr></table>
-
-<%-- 	<div>
-		<form id="MyForm" width="300px" title="°s°gºô" subtitle="·|­û¸ê®Æ­×§ï" method="post" action="mem.do">
-			¬y¤ô¸¹¡G&nbsp;&nbsp;&nbsp;<input type="text" name="m_id" value="<%=memberVO.getM_no()%>" readonly="readonly" /><br>
-			±b¸¹¡G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="m_id" value="<%=memberVO.getM_id()%>" readonly="readonly" /><br>
-			±K½X¡G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="m_pwd" require="true" label="±K½X" value="<%=memberVO.getM_pwd()%>" /><br>
-			e-Mail¡G&nbsp;&nbsp;&nbsp;<input type="text" name="m_email" value="<%=memberVO.getM_email()%>" /><br>
-			©m¦W¡G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="m_name" require="true" label="½ã¸¹" 	value="<%=memberVO.getM_name()%>" /><br>
-			¥Í¤é¡G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="m_bday" value="<%=memberVO.getM_bday()%>" /><br> 
-			¦æ°Ê¹q¸Ü¡G<input type="text" name="m_mobile" value="<%=memberVO.getM_mobile()%>" /><br>
-			³q°T¦a§}¡G<input type="text" name="m_addr" 	value="<%=memberVO.getM_addr()%>" /><br>
-			¹Ï¤ù¡G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="m_pic" value="<%=memberVO.getM_pic()%>" /><br> 
-			¦w¥ş´£°İ¡G<input type="text" name="m_safety_q" value="<%=memberVO.getM_safety_q()%>" /><br>
-			µª®×¡G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="m_safety_a" value="<%=memberVO.getM_safety_a()%>" /><br>
-			ª¬ºA¡G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="m_status" value="<%=memberVO.getM_status()%>" /><br> 
-			<input type="hidden" name="action" value="update"> 
-			<input type="hidden" name="m_no" value="<%=memberVO.getM_no()%>">
-			<input type="submit" value="°e¥X­×§ï" /> <input type="reset" value="²M°£" />
+<body >
+	<div>
+		<form id="MyForm" width="300px" align=center title="é…’è¿·ç¶²" subtitle="æœƒå“¡è³‡æ–™ä¿®æ”¹" method="post" action="mem.do">
+		
+			<p align=right>å¸³è™Ÿï¼š<input type="text" name="m_id" value="${m_id}" readonly="readonly"/></p>
+			<p align=right>å¯†ç¢¼ï¼š<input type="password" name="m_pwd" require="true" label="å¯†ç¢¼" value="${m_pwd}"/></p>
+			<p align=right>e-Mailï¼š<input type="text" name="m_email" value="${m_email}"/></p>
+			<p align=right>å§“åï¼š<input type="text" name="m_name" require="true" label="è³¬è™Ÿ" value="${m_name}"/></p>
+			<p align=right>ç”Ÿæ—¥ï¼š<input type="text" name="m_bday" value="${m_bday}"/></p>
+			<p align=right>è¡Œå‹•é›»è©±ï¼š<input type="text" name="m_mobile" value="${m_mobile}"/></p>
+			<p align=right>é€šè¨Šåœ°å€ï¼š<input type="text" name="m_addr" 	value="${m_addr}"/></p>
+			<p align=right>åœ–ç‰‡ï¼š<input type="text" name="m_pic" value="${m_pic}"/></p>
+			<p align=right>å®‰å…¨æå•ï¼š<input type="text" name="m_safety_q" value="${m_safety_q}"/></p>
+			<p align=right>ç­”æ¡ˆï¼š<input type="text" name="m_safety_a" value="${m_safety_a}"/></p>
+			<p align=right>ç‹€æ…‹ï¼š<input type="text" name="m_status" value="${m_status}"/></p>
+			
+			<input type="hidden" name="action" value="member_update"> 
+			<input type="hidden" name="m_no" value="${m_no}">
+			<input type="submit" value="é€å‡ºä¿®æ”¹" /> <input type="reset" value="æ¸…é™¤" />
+			
 		</form>
-	</div> --%>
-	
-	<tr>
-		<th>¬y¤ô¸¹</th>
-		<th>±b¸¹</th>
-		<th>±K½X</th>
-		<th>e-Mail</th>
-		<th>©m¦W</th>
-		<th>¥Í¤é</th>
-		<th>¦æ°Ê¹q¸Ü</th>
-		<th>³q°T¦a§}</th>
-		<th>¹Ï¤ù</th>
-		<th>¦w¥ş´£°İ</th>
-		<th>µª®×</th>
-		<th>ª¬ºA</th>
-	</tr>
-	<tr align='center' valign='middle'>
-		     <td>${memberVO.m_no}</td>
-			 <td>${memberVO.m_id}</td>
-			 <td>${memberVO.m_pwd}</td>
-			 <td>${memberVO.m_email}</td>
-			 <td>${memberVO.m_name}</td>
-			 <td>${memberVO.m_bday}</td>
-			 <td>${memberVO.m_mobile}</td>
-			 <td>${memberVO.m_addr}</td>
-			 <td>${memberVO.m_pic}</td>
-			 <td>${memberVO.m_safety_q}</td>
-			 <td>${memberVO.m_safety_a}</td>
-			 <td>${memberVO.m_status}</td>
-			 </tr>
-
+	</div>
 </body>
 </html>

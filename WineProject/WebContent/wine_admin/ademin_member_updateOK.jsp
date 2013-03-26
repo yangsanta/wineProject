@@ -56,27 +56,26 @@ $(document).ready(function()
 				<div class="tabs">
 					<div id="tab-1" class="tab">
 						<article>				
-						<div >
-						
-						<form id="MyForm" width="300px" title="會員資料修改完成！" method="post" action="mem.do" >						
-							流水號：&nbsp;&nbsp;&nbsp;<input type="text" name="m_no" value="<%=memberVO.getM_no()%>" readonly="readonly" /><br>
-							帳號：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="m_id" value="<%=memberVO.getM_id()%>" readonly="readonly" /><br>
-							密碼：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="m_pwd" require="true" label="密碼" readonly="readonly" value="<%=memberVO.getM_pwd()%>" /><br>
-							e-Mail：&nbsp;&nbsp;&nbsp;<input type="text" name="m_email" readonly="readonly" value="<%=memberVO.getM_email()%>" /><br>
-							姓名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="m_name" require="true" label="賬號" readonly="readonly" value="<%=memberVO.getM_name()%>" /><br>														
-							生日：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="m_bday" readonly="readonly" value="<%=memberVO.getM_bday()%>" /><br>
-							行動電話：<input type="text" name="m_mobile" readonly="readonly" value="<%=memberVO.getM_mobile()%>" /><br>
-							通訊地址：<input type="text" name="m_addr" readonly="readonly" value="<%=memberVO.getM_addr()%>" /><br>
-							圖片：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="m_pic" readonly="readonly" value="<%=memberVO.getM_pic()%>" /><br>
-							安全提問：<input type="text" name="m_safety_q" readonly="readonly" value="<%=memberVO.getM_safety_q()%>" /><br>
-							答案：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="m_safety_a" readonly="readonly" value="<%=memberVO.getM_safety_a()%>" /><br>
-							狀態：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="m_status" readonly="readonly" value="<%=memberVO.getM_status()%>" /><br>
+						<div >						
+						<form id="MyForm" width="300px" align=center title="會員資料修改完成！" method="post" action="mem.do" >						
+							
+							<p align=right>流水號：<input type="text" name="m_no" value="<%=memberVO.getM_no()%>" readonly="readonly"/></p>
+							<p align=right>帳號：<input type="text" name="m_id" value="<%=memberVO.getM_id()%>" readonly="readonly"/></p>
+							<p align=right>密碼：<input type="password" name="m_pwd" require="true" label="密碼" readonly="readonly" value="<%=memberVO.getM_pwd()%>"/></p>
+							<p align=right>e-Mail：<input type="text" name="m_email" readonly="readonly" value="<%=memberVO.getM_email()%>" /></p>
+							<p align=right>姓名：<input type="text" name="m_name" require="true" label="賬號" readonly="readonly" value="<%=memberVO.getM_name()%>"/></p>														
+							<p align=right>生日：<input type="text" name="m_bday" readonly="readonly" value="<%=memberVO.getM_bday()%>"/></p>
+							<p align=right>行動電話：<input type="text" name="m_mobile" readonly="readonly" value="<%=memberVO.getM_mobile()%>"/></p>
+							<p align=right>通訊地址：<input type="text" name="m_addr" readonly="readonly" value="<%=memberVO.getM_addr()%>"/></p>
+							<p align=right>圖片：<input type="text" name="m_pic" readonly="readonly" value="<%=memberVO.getM_pic()%>"/></p>
+							<p align=right>安全提問：<input type="text" name="m_safety_q" readonly="readonly" value="<%=memberVO.getM_safety_q()%>"/></p>
+							<p align=right>答案：<input type="text" name="m_safety_a" readonly="readonly" value="<%=memberVO.getM_safety_a()%>"/></p>
+							<p align=right>狀態：<input type="text" name="m_status" readonly="readonly" value="<%=memberVO.getM_status()%>"/></p>
 														
 							<input type="button" value="返回會員列表" onclick="window.location='../wine_admin/ademin_member.jsp'">
-						
+													
 						</form>
-						</div>
-						
+						</div>						
 						</article>
 					</div>
 
