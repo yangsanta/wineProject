@@ -3,26 +3,21 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="member.model.*"%>
-
 <%
 	MemberVO memberVO = (MemberVO) request.getAttribute("memberVO"); //MemberServlet.java (Controller), 存入req的memberVO物件 (包括幫忙取出的memberVO, 也包括輸入資料錯誤時的memberVO物件)
 %>
-<link rel="shortcut icon" href="../wine_admin/images/favicon.ico" />
-<link rel="icon" href="favicon.ico" type="../wine_admin/images/image/x-icon" />
+<link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico" />
+<link rel="icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon" />
 <head>
 <meta charset="utf-8">
 <title>酒迷|後台管理系統</title>
 <link media="all" rel="stylesheet" type="text/css" href="../wine_admin/css/all.css" />
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript">
-	window.jQuery
-			|| document
-					.write('<script type="text/javascript" src="j../wine_admin/s/jquery-1.7.2.min.js"><\/script>');
-</script>
-<script type="text/javascript" src="../wine_admin/js/jquery.main.js"></script>
+		 <c:if test="${sessionScope.admin_access!='y'}"><meta http-equiv="refresh" content="0; url=index.jsp"></c:if>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script type="text/javascript">
+		window.jQuery|| document.write('<script type="text/javascript" src="js/jquery-1.7.2.min.js"><\/script>');
+	</script>
 <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="../wine_admin/js/ademin_member.js"></script>
 <link rel="stylesheet" href="../wine_admin/css/ademin_member.css" type="text/css" />
 <script type="text/javascript">
@@ -35,79 +30,40 @@ $(document).ready(function()
 	<div id="wrapper">
 		<div id="content">
 			<div class="c1">
-				<div class="controls">
-					<nav class="links">
-					<ul>
-						<li><a href="#" class="ico1">訊息 <span class="num">26</span></a></li>
-						<li><a href="#" class="ico2">Alerts <span class="num">5</span></a></li>
-						<li><a href="#" class="ico3">訂單<span class="num">3</span></a></li>
-					</ul>
-					</nav>
-					<div class="profile-box">
-						<span class="profile"> <a href="#" class="section"> <img
-								class="image" src="../wine_admin/images/img1.png" alt="image description"
-								width="26" height="26" /> <span class="text-box">
-									Welcome <strong class="name">楊明華</strong>
-							</span>
-						</a> <a href="#" class="opener">opener</a>
-						</span> <a href="#" class="btn-on">On</a>
-					</div>
-				</div>
+				<%@ include file="view_model/total_tab.jsp"%>
 				<div class="tabs">
 					<div id="tab-1" class="tab">
-						<article>				
-						<div >						
+						<article>			
+						<div style="margin:0 auto;width:1000px;">
+						<h2>會員資料修改完成！</h2>
+						<div style="margin:0 auto; width:400px;">						
 						<form id="MyForm" width="300px" align=center title="會員資料修改完成！" method="post" action="mem.do" >						
 							
-							<p align=right>流水號：<input type="text" name="m_no" value="<%=memberVO.getM_no()%>" readonly="readonly"/></p>
-							<p align=right>帳號：<input type="text" name="m_id" value="<%=memberVO.getM_id()%>" readonly="readonly"/></p>
-							<p align=right>密碼：<input type="password" name="m_pwd" require="true" label="密碼" readonly="readonly" value="<%=memberVO.getM_pwd()%>"/></p>
-							<p align=right>e-Mail：<input type="text" name="m_email" readonly="readonly" value="<%=memberVO.getM_email()%>" /></p>
-							<p align=right>姓名：<input type="text" name="m_name" require="true" label="賬號" readonly="readonly" value="<%=memberVO.getM_name()%>"/></p>														
-							<p align=right>生日：<input type="text" name="m_bday" readonly="readonly" value="<%=memberVO.getM_bday()%>"/></p>
-							<p align=right>行動電話：<input type="text" name="m_mobile" readonly="readonly" value="<%=memberVO.getM_mobile()%>"/></p>
-							<p align=right>通訊地址：<input type="text" name="m_addr" readonly="readonly" value="<%=memberVO.getM_addr()%>"/></p>
-							<p align=right>圖片：<input type="text" name="m_pic" readonly="readonly" value="<%=memberVO.getM_pic()%>"/></p>
-							<p align=right>安全提問：<input type="text" name="m_safety_q" readonly="readonly" value="<%=memberVO.getM_safety_q()%>"/></p>
-							<p align=right>答案：<input type="text" name="m_safety_a" readonly="readonly" value="<%=memberVO.getM_safety_a()%>"/></p>
-							<p align=right>狀態：<input type="text" name="m_status" readonly="readonly" value="<%=memberVO.getM_status()%>"/></p>
+							<p align=left>流水號：<%=memberVO.getM_no()%></p>
+							<p align=left>帳號：<%=memberVO.getM_id()%></p>
+							<p align=left>密碼：<%=memberVO.getM_pwd()%></p>
+							<p align=left>e-Mail：<%=memberVO.getM_email()%></p>
+							<p align=left>姓名：<%=memberVO.getM_name()%></p>														
+							<p align=left>生日：<%=memberVO.getM_bday()%></p>
+							<p align=left>行動電話：<%=memberVO.getM_mobile()%></p>
+							<p align=left>通訊地址：<%=memberVO.getM_addr()%></p>
+							<p align=left>圖片：<%=memberVO.getM_pic()%></p>
+							<p align=left>安全提問：<%=memberVO.getM_safety_q()%></p>
+							<p align=left>答案：<%=memberVO.getM_safety_a()%></p>
+							<p align=left>狀態：<%=memberVO.getM_status()%></p>
 														
 							<input type="button" value="返回會員列表" onclick="window.location='../wine_admin/ademin_member.jsp'">
 													
-						</form>
-						</div>						
+						</form></div>
+						<%@ include file="view_model/footer.jsp"%>
+							</div>						
 						</article>
 					</div>
 
 				</div>
 			</div>
 		</div>
-		<aside id="sidebar"> <strong class="logo"><a href="#">lg</a></strong>
-		<ul class="tabset buttons">
-			<li class="active"><a href="#tab-1" class="ico1"><span>儀表板</span><font
-					class="text_con">儀表板</font><em></em></a> <span class="tooltip"><span>儀表板</span></span>
-			</li>
-			<li><a href="#tab-2" class="ico2"><span>會員管理</span><font
-					class="text_con">會員管理</font><em></em></a> <span class="tooltip"><span>會員管理</span></span>
-			</li>
-			<li><a href="#tab-3" class="ico3"><span>商品管理</span><font
-					class="text_con">商品管理</font><em></em></a> <span class="tooltip"><span>商品管理</span></span>
-			</li>
-			<li><a href="#tab-4" class="ico4"><span>優惠設定</span><font
-					class="text_con">優惠設定</font><em></em></a> <span class="tooltip"><span>優惠設定</span></span>
-			</li>
-			<li><a href="#tab-5" class="ico5"><span>討論區管理</span><font
-					class="text_con">討論區管理</font><em></em></a> <span class="tooltip"><span>討論區管理</span></span>
-			</li>
-			<li><a href="#tab-6" class="ico6"> <span>空的</span><em></em>
-			</a> <span class="num">常用</span> <span class="tooltip"><span>空的</span></span>
-			</li>
-			<li><a href="#tab-7" class="ico7"><span>訂單管理</span><em></em></a>
-				<span class="tooltip"><span>訂單管理</span></span></li>
-			<li><a href="#tab-8" class="ico8"><span>Settings</span><em></em></a>
-				<span class="tooltip"><span>Settings</span></span></li>
-		</ul>
-		<span class="shadow"></span> </aside>
+<%@ include file="view_model/admin_menu.jsp"%>
 	</div>
 </body>
 </html>
