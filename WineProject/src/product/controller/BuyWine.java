@@ -116,15 +116,16 @@ public class BuyWine extends HttpServlet {
 
 				shoppingProduct.setSubTotal((price * num)
 						- (quotient * price / 2));
-				cart.addToCart(shoppingProduct.getProductNo(), shoppingProduct);
+				cart.addToCart(productNo, shoppingProduct);
 
 			} else {
 				num = OldShoppingProduct.getProductNumber() + productNumber;
-				quotient = num / 2;
 				
+				quotient = num / 2;
+			
 				shoppingProduct.setSubTotal((price * num)
-						- (quotient * price / 2));
-				cart.addToCart(shoppingProduct.getProductNo(), shoppingProduct);
+						- (quotient * price / 2)-OldShoppingProduct.getSubTotal());
+				cart.addToCart(productNo, shoppingProduct);
 
 			}
 		} else if (sales.equals("R") || sales.equals("G")) {

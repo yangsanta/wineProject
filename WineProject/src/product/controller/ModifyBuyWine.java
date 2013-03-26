@@ -150,7 +150,7 @@ public class ModifyBuyWine extends HttpServlet {
 				quotient = num / 2;
 
 				shoppingProduct.setSubTotal((price * num)
-						- (quotient * price / 2));
+						- (quotient * price / 2)-OldShoppingProduct.getSubTotal());
 				cart.addToCart(shoppingProduct.getProductNo(), shoppingProduct);
 
 			}
