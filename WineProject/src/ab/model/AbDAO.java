@@ -12,7 +12,7 @@ public class AbDAO implements AbDAO_interface {
 	private static final String INSERT_STMT = "INSERT INTO ab (ab_a_p_id,ab_b_p_id) VALUES (?, ?)";
 	private static final String GET_ALL_STMT = "SELECT Uniid,ab_a_p_id,ab_b_p_id FROM ab order by Uniid";
 	private static final String GET_A_STMT = "SELECT Uniid,ab_a_p_id,ab_b_p_id FROM ab where ab_a_p_id=?";
-	
+	private static final String GET_B_STMT = "SELECT Uniid,ab_a_p_id,ab_b_p_id FROM ab where ab_b_p_id=?";
 	private static final String DELETE = "DELETE FROM ab where Uniid = ?";
 	private static final String UPDATE = "UPDATE ab set ab_a_p_id=?,ab_b_p_id=? where Uniid=?";
 
@@ -163,6 +163,66 @@ public class AbDAO implements AbDAO_interface {
 			pstmt = con.prepareStatement(GET_A_STMT);
 
 			pstmt.setInt(1, Aid);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				// empVo 也稱為 Domain objects
+				abVO = new AbVO();
+				abVO.setUniid(rs.getInt("Uniid"));
+				abVO.setAb_a_p_id(rs.getInt("ab_a_p_id"));
+				abVO.setAb_b_p_id(rs.getInt("ab_b_p_id"));
+			}
+
+			// Handle any driver errors
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return abVO;
+	}
+	
+	public AbVO findByBKey(Integer Bid) {
+
+		AbVO abVO = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(GET_B_STMT);
+
+			pstmt.setInt(1, Bid);
 
 			rs = pstmt.executeQuery();
 
