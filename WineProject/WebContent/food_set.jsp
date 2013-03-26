@@ -5,103 +5,178 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/style/styles.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 <script type="text/javascript" src="Scripts/jquery-1.9.1.js"></script>
 <script type="text/javascript">
 	
 </script>
 </head>
 <body>
-	<ul>
-		<li>肉類</li>
+	<div id='cssmenu'>
+		<div class="box-heading">
+			<span class="title">餐酒搭配</span>
+		</div>
 		<ul>
-			<c:forEach var="food_set" items="${getSomebydF_id1}">
-				<li>${food_set} <c:forEach var="food_set"
-						items="${getSomebyI_id}">
-						<ul>
-							<li>${food_set.sauceVO.s_name}
+			<li><a href="#"> 肉類</a>
+				<ul>
+					<c:forEach var="food_set" items="${getSomebydF_id1}">
+						<li><a href="#">${food_set.value}</a>
+							<ul>
+								<c:forEach var="food_set1" items="${getSomebyI_id1}">
+									<c:forEach var="food_set2" items="${food_set1}">
 
-								<ul>
-									<li>${food_set.productVO.p_name}</li>
-								</ul>
-							</li>
-						</ul>
+										<c:if test="${food_set.key == food_set2.ingredientVO.i_id}">
+
+											<li><a href="#">${food_set2.sauceVO.s_name}</a>
+
+												<ul>
+													<li class=' has-sub'><a
+														href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${food_set2.productVO.p_no}">
+															${food_set2.productVO.p_name}</a></li>
+												</ul></li>
+
+										</c:if>
+									</c:forEach>
+								</c:forEach>
+							</ul></li>
 					</c:forEach>
-				</li>
-			</c:forEach>
-		</ul>
-	</ul>
-	<ul>
-		<li>乳酪</li>
-		<ul>
-			<c:forEach var="food_set" items="${getSomebydF_id2}">
-				<li>${food_set}</li>
-			</c:forEach>
-		</ul>
-	</ul>
-	<ul>
-		<li>甜點</li>
-		<ul>
-			<c:forEach var="food_set" items="${getSomebydF_id3}">
-				<li>${food_set}</li>
-			</c:forEach>
-		</ul>
-	</ul>
-	<ul>
-		<li>穀類</li>
-		<ul>
-			<c:forEach var="food_set" items="${getSomebydF_id4}">
-				<li>${food_set}</li>
-			</c:forEach>
-		</ul>
-	</ul>
-	<ul>
-		<li>雞鴨</li>
-		<ul>
-			<c:forEach var="food_set" items="${getSomebydF_id5}">
-				<li>${food_set}</li>
-			</c:forEach>
-		</ul>
-	</ul>
-	<ul>
-		<li>海鮮</li>
-		<ul>
-			<c:forEach var="food_set" items="${getSomebydF_id6}">
-				<li>${food_set}</li>
-			</c:forEach>
-		</ul>
-	</ul>
 
-	<%-- 	食物種類：
-	<select id="food">
-		<option>請選擇種類</option>
-		<c:forEach var="Food" items="${Food }">
-			<option>${Food.f_name}</option>
-		</c:forEach>
-	</select> 主要成分:
-	<select id="ingredient">
-		<option>請選擇主要成分</option>
-		<c:forEach var="Ingredient" items="${Ingredient }">
-			<option>${Ingredient.i_name}</option>
-		</c:forEach>
-	</select> 風味特色:
-	<select id="sauce">
-		<option>請選擇風味</option>
-		<c:forEach var="Sauce" items="${Sauce }">
-			<option>${Sauce.s_name}</option>
-		</c:forEach> --%>
-	<!-- 	</select> -->
-	<!-- 	<FORM METHOD="post" ACTION="food.do" name="form1"> -->
-	<!-- 		<table border="0"> -->
-	<!-- 			<tr> -->
-	<!-- 				<td>食物種類：</td> -->
-	<!-- 				<td><input type="TEXT" name="f_name" size="45" -->
-	<%-- 					value="<%=(foodVO == null) ? "AAAAA" : foodVO.getF_name()%>" /></td> --%>
-	<!-- 			</tr> -->
-	<!-- 		</table> -->
-	<!-- 		<input type="hidden" name="action" value="insert">  -->
-	<!-- 		<input type="submit" value="送出新增"> -->
-	<!-- 	</FORM> -->
+				</ul></li>
+		</ul>
+		<ul>
+			<li><a href="#">乳酪</a>
+				<ul>
+					<c:forEach var="food_set" items="${getSomebydF_id2}">
+						<li><a href="#">${food_set.value}</a>
+							<ul>
+								<c:forEach var="food_set1" items="${getSomebyI_id2}">
+									<c:forEach var="food_set2" items="${food_set1}">
+
+										<c:if test="${food_set.key == food_set2.ingredientVO.i_id}">
+
+											<li><a href="#">${food_set2.sauceVO.s_name}</a>
+
+												<ul>
+
+													<li><a
+														href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${food_set2.productVO.p_no}">${food_set2.productVO.p_name}</a></li>
+												</ul></li>
+
+										</c:if>
+									</c:forEach>
+								</c:forEach>
+							</ul></li>
+					</c:forEach>
+				</ul></li>
+		</ul>
+		<ul>
+			<li><a href="#">甜點</a>
+				<ul>
+					<c:forEach var="food_set" items="${getSomebydF_id3}">
+						<li><a href="#">${food_set.value}</a>
+							<ul>
+								<c:forEach var="food_set1" items="${getSomebyI_id3}">
+									<c:forEach var="food_set2" items="${food_set1}">
+
+										<c:if test="${food_set.key == food_set2.ingredientVO.i_id}">
+
+											<li><a href="#">${food_set2.sauceVO.s_name}</a>
+
+												<ul>
+
+													<li><a
+														href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${food_set2.productVO.p_no}">${food_set2.productVO.p_name}</a></li>
+												</ul></li>
+
+										</c:if>
+									</c:forEach>
+								</c:forEach>
+							</ul></li>
+					</c:forEach>
+				</ul></li>
+		</ul>
+		<ul>
+			<li><a href="#">穀類</a>
+				<ul>
+					<c:forEach var="food_set" items="${getSomebydF_id4}">
+						<li><a href="#">${food_set.value}</a>
+							<ul>
+								<c:forEach var="food_set1" items="${getSomebyI_id4}">
+									<c:forEach var="food_set2" items="${food_set1}">
+
+										<c:if test="${food_set.key == food_set2.ingredientVO.i_id}">
+
+											<li><a href="#">${food_set2.sauceVO.s_name}</a>
+
+												<ul>
+
+													<li><a
+														href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${food_set2.productVO.p_no}">${food_set2.productVO.p_name}</a></li>
+												</ul></li>
+
+										</c:if>
+									</c:forEach>
+								</c:forEach>
+							</ul></li>
+					</c:forEach>
+				</ul></li>
+		</ul>
+		<ul>
+			<li><a href="#">雞鴨</a>
+				<ul>
+					<c:forEach var="food_set" items="${getSomebydF_id5}">
+						<li><a href="#">${food_set.value}</a>
+							<ul>
+								<c:forEach var="food_set1" items="${getSomebyI_id5}">
+									<c:forEach var="food_set2" items="${food_set1}">
+
+										<c:if test="${food_set.key == food_set2.ingredientVO.i_id}">
+
+											<li><a href="#">${food_set2.sauceVO.s_name}</a>
+
+												<ul>
+
+													<li><a
+														href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${food_set2.productVO.p_no}">${food_set2.productVO.p_name}</a></li>
+												</ul></li>
+
+										</c:if>
+									</c:forEach>
+								</c:forEach>
+							</ul></li>
+					</c:forEach>
+				</ul></li>
+		</ul>
+		<ul>
+			<li><a href="#">海鮮</a>
+				<ul>
+					<c:forEach var="food_set" items="${getSomebydF_id6}">
+						<li><a href="#">${food_set.value}</a>
+							<ul>
+								<c:forEach var="food_set1" items="${getSomebyI_id6}">
+									<c:forEach var="food_set2" items="${food_set1}">
+
+										<c:if test="${food_set.key == food_set2.ingredientVO.i_id}">
+
+											<li><a href="#">${food_set2.sauceVO.s_name}</a>
+
+												<ul>
+
+													<li><a
+														href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${food_set2.productVO.p_no}">${food_set2.productVO.p_name}</a></li>
+												</ul></li>
+
+										</c:if>
+									</c:forEach>
+								</c:forEach>
+							</ul></li>
+					</c:forEach>
+				</ul></li>
+		</ul>
+	</div>
 </body>
 </html>

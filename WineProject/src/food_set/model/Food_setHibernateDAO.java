@@ -1,26 +1,19 @@
 package food_set.model;
 
-import food.model.FoodHibernateDAO;
-import food.model.FoodVO;
 import hibernate.util.HibernateUtil;
 import ingredient.model.IngredientVO;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
-
-import sauce.model.SauceVO;
-import product.model.ProductDAO;
-import product.model.ProductVO;
 
 public class Food_setHibernateDAO implements Food_setDAO_interface {
 
@@ -124,8 +117,26 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 		}
 		return list;
 	}
+	//food 不重複最大值
+	public Integer getlastReferer() {
+		Integer list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			SQLQuery query = session
+					.createSQLQuery("select COUNT( DISTINCT f_id) from food_set ");
+			list =(Integer)query.uniqueResult();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
 
-	public List<String> getSomebydF_id(Integer f_id) {
+	
+
+	public Map<Integer,String> getSomebydF_id(Integer f_id) {
 		List<Food_setVO> list = new ArrayList<Food_setVO>();
 		List<String> list2 = new ArrayList<String>();
 		List<IngredientVO> list3 = new ArrayList<IngredientVO>();
@@ -142,15 +153,14 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 			session.getTransaction().rollback();
 			throw ex;
 		}
-		Set<Object> set = new HashSet<Object>();
+
+		Map<Integer,String> map=new HashMap<Integer,String>();
 		for(Food_setVO a:list){
-			set.add(a.getIngredientVO().getI_name());
-		}
-		Iterator<Object> it = set.iterator();
-		while(it.hasNext()){
-			list2.add((String) it.next());
-		}
-		return list2;
+			map.put(a.getIngredientVO().getI_id(), 	a.getIngredientVO().getI_name());
+			}
+		
+		return map;
+//		return list;
 	}
 	
 	
@@ -215,17 +225,20 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 
 	public static void main(String arg[]) {
 		Food_setHibernateDAO dao = new Food_setHibernateDAO();
-		List<String> list = dao.getSomebydF_id(1);
-		for (String a : list) {
+		System.out.println(dao.getlastReferer());
+		Map<Integer,String> map = dao.getSomebydF_id(1);
+		Set<Integer>  set=map.keySet();
+		for(Integer a :set){
 			System.out.println(a);
+			System.out.println(map.get(a));
 		}
-
-		// public static void main(String arg[]) {
-		// Food_setHibernateDAO dao = new Food_setHibernateDAO();
-		// List<Integer> list = dao.getSomebyDI_id(1);
-		// for (Integer a : list) {
-		// System.out.println(a);
-		// }
+		
+//		 public static void main(String arg[]) {
+//		 Food_setHibernateDAO dao = new Food_setHibernateDAO();
+//		 List<Integer> list = dao.getSomebyDI_id(1);
+//		 for (Integer a : list) {
+//		 System.out.println(a);
+//		 }
 		//
 	}
 
