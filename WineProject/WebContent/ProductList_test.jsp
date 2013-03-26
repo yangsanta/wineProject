@@ -32,5 +32,8 @@
 <br/>
 <hr />
 <a href="member/MemberService">member/MemberService</a>
+
+<hr />
+<a href="<%=request.getContextPath()%>/orders/ordersadmin.do?action=getall">Orders CRUD</a>
 </body>
 </html>
