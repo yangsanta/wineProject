@@ -121,10 +121,7 @@ public class BuyWine extends HttpServlet {
 			} else {
 				num = OldShoppingProduct.getProductNumber() + productNumber;
 				quotient = num / 2;
-				System.out.println(num);
-				System.out.println(quotient);
-				System.out.println((price * num) - (quotient * price / 2));
-				System.out.println(OldShoppingProduct.getProductPrice());
+				
 				shoppingProduct.setSubTotal((price * num)
 						- (quotient * price / 2));
 				cart.addToCart(shoppingProduct.getProductNo(), shoppingProduct);
@@ -229,24 +226,7 @@ public class BuyWine extends HttpServlet {
 				}
 			}
 
-			// Map<Integer, ShoppingProduct> old = cart.getContent();
-			// ShoppingProduct OldShoppingProduct = old.get(productNo);
-			// shoppingProduct.setProductNumber(productNumber);
-
-			// Map<Integer, ShoppingProduct> old = cart.getContent();
-			// Set<Integer> set=old.keySet();
-			// int rNum=cart.getaNumber()+productNumber;
-			// int gNum=cart.getbNumber();
-			// if(rNum>gNum){
-			// for (Integer n : set) {
-			// if(old.get(n).getSaleType().equals("R")){
-			//
-			// }
-			// }
-			//
-			// }
-			// else if(rNum<gNum){}
-			// else{}
+			
 		} else {
 			// 沒有優惠OR B區商品
 			shoppingProduct.setProductNumber(productNumber);

@@ -288,6 +288,12 @@
 		<servlet-name>ModifyBuyWine</servlet-name>
 		<url-pattern>/product/ModifyBuyWine</url-pattern>
 	</servlet-mapping>
-
-
+<servlet>
+    <servlet-name>OrdersAdminServlet</servlet-name>
+    <servlet-class>orders.controller.OrdersAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrdersAdminServlet</servlet-name>
+    <url-pattern>/orders/ordersadmin.do</url-pattern>
+  </servlet-mapping>
 </web-app>
