@@ -96,7 +96,7 @@
 							<span class="mem_in_title">會員資料</span>
 							<div class="mem_in_coupons">
 								<div class="mem_in_inner">
-									<a href="../memberCRUD/listOneMem.jsp">修改會員資料</a>
+									<a href="../memberCRUD/listOneMem">修改會員資料</a>
 								</div>
 								<div class="mem_in_inner">
 									<a href="#">修改密碼</a>

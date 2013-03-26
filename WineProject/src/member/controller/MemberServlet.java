@@ -414,6 +414,7 @@ public class MemberServlet extends HttpServlet {
 				/***************************其他可能的錯誤處理*************************************/
 			} catch (Exception e) {
 				errorMsgs.add("修改資料失敗:"+e.getMessage());
+				
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/memberCRUD/listOneMem.jsp");
 				failureView.forward(req, res);

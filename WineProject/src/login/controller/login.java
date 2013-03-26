@@ -63,17 +63,9 @@ public class login extends HttpServlet {
 				session.setAttribute("m_id", member.getM_id()); // 會員帳號
 				session.setAttribute("m_no", member.getM_no()); // 會員編號
 				session.setAttribute("m_name", member.getM_name()); // 會員姓名
-				session.setAttribute("m_pwd", member.getM_pwd()); // 會員密碼
-				session.setAttribute("m_mobile", member.getM_mobile()); // 會員行動電話
-				session.setAttribute("m_email", member.getM_email()); // 會員電子信箱
-				session.setAttribute("m_bday", member.getM_bday()); // 會員生日
-				session.setAttribute("m_addr", member.getM_addr()); // 會員地址
-				session.setAttribute("m_pic", member.getM_pic()); // 會員圖片
-				session.setAttribute("m_safety_q", member.getM_safety_q()); // 會員安全提問
-				session.setAttribute("m_safety_a", member.getM_safety_a()); // 會員安全提問-回答
-				session.setAttribute("m_status", member.getM_status()); // 會員狀態			
+				
 				session.setMaxInactiveInterval(3600);
-				System.out.println("success!!");
+				
 
 				String redirestpage = null;
 				// 跳轉回原頁面

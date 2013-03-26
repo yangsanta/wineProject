@@ -94,7 +94,7 @@ public class register extends HttpServlet {
 				memberVo.setM_mobile(m_mobile);
 				memberVo.setM_bday(new java.sql.Date(new java.util.Date().getTime()));
 				memberVo.setM_addr(m_addr);
-					
+				memberVo.setM_status(1);
 				DAO.insert(memberVo);
 				
 				

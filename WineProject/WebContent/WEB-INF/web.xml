@@ -296,4 +296,12 @@
     <servlet-name>OrdersAdminServlet</servlet-name>
     <url-pattern>/orders/ordersadmin.do</url-pattern>
   </servlet-mapping>
+      <servlet>
+    <servlet-name>listOneMem</servlet-name>
+    <servlet-class>member.controller.listOneMem</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>listOneMem</servlet-name>
+    <url-pattern>/memberCRUD/listOneMem</url-pattern>
+  </servlet-mapping>
 </web-app>
