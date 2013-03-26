@@ -54,7 +54,7 @@
 		<img src="<%=request.getContextPath()%>/images/products/${ productVO.p_pic }" style="vertical-align: top; width: 100px;"/><br/> <input
 			style="background: #FFFFFF" type="file" name="p_pic" size="40" /><br/> 
 			<span>商品編號:${productVO.p_no}</span><br /> 
-			<span>商品名稱:</span><input type="text" size="30"name="p_name" value="${productVO.p_name}" /> <span class="error">${ErrMsg.errArea}</span><br/> 
+			<span>商品名稱:</span><input type="text" size="30"name="p_name" value="${productVO.p_name}" /> <span class="error">${ErrMsg.errName}</span><br/> 
 			<span>生產年分:</span><select name="p_year">
 				<c:forEach var="years"
 					items="1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012">
@@ -66,7 +66,7 @@
 					</c:if>
 				</c:forEach>
 		</select> <br/> 
-		     <span>生產國家:</span><input type="text" size="30" name="p_area"value="${productVO.p_area}" /> <span class="error">${ErrMsg.errName}</span><br/> 
+		     <span>生產國家:</span><input type="text" size="30" name="p_area"value="${productVO.p_area}" /> <span class="error">${ErrMsg.errArea}</span><br/> 
 		         <span>  生產地區:</span><input type="text" size="30" name="p_country" value="${productVO.p_country}" /><br/>
 			<span>庫存貨量:</span><input type="text" size="30" name="p_num"value="${productVO.p_num}" /><span class="error">${ErrMsg.errNum}</span><br/>
 			<span> 商品價錢:</span><input type="text"	size="30" name="p_price" value="${productVO.p_price}" /><span class="error">${ErrMsg.errPrice}</span><br/>

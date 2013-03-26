@@ -236,7 +236,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>UpdateProduct</servlet-name>
-		<url-pattern>/product/UpdateProduct</url-pattern>
+		<url-pattern>/wine_admin/UpdateProduct</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>InsertProduct</servlet-name>

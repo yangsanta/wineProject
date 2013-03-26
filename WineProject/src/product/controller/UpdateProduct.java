@@ -276,7 +276,7 @@ public class UpdateProduct extends HttpServlet {
 				request.setAttribute("ErrMsg", errorMsgs);
 				
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/product/Maintain?action=getOne_For_Display&pId="+p_no);
+						.getRequestDispatcher("/wine_admin/Maintain?action=getOne_For_Display&pId="+p_no);
 				rd.forward(request, response);
 				return;
 			}
