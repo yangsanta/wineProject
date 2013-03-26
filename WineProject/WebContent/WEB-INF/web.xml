@@ -260,7 +260,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>set_timing_sales</servlet-name>
-		<url-pattern>/set_timing_sales</url-pattern>
+		<url-pattern>/wine_admin/set_timing_sales</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

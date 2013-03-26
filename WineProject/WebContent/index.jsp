@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -134,22 +135,6 @@
 .displaynone {
 	display: none
 }
-.timelimit_title{background-image: url(images/ppopTittleBG_02.png);
-background-repeat: repeat-x;
-float: left;
-height: 33px;
-font-size: 20px;
-color: #fff;
-font-weight: bold;
-font-family: "微軟正黑體";
-line-height: 30px;
-padding-left: 5px;
-padding-right: 5px;}
-.timelimit_titleRight{background-image: url(images/ppopTittleBG_03.png);
-background-repeat: no-repeat;
-float: left;
-height: 33px;
-width: 16px;}
 </style>
 			<script type="text/javascript">
 				//右邊輪播式廣告
@@ -245,32 +230,33 @@ width: 16px;}
 							<li><a href="#"><img src="images/ad/05.jpg"></a></li>
 						</ul>
 					</div>
-					<div id="box1"><br>
-					<div class="timelimit_title"> 限時特賣! </div>
-                <div class="timelimit_titleRight" style="display: inline">  </div><br>
-                	<h3 class="ct2">美味的香濃紅葡萄酒 來自奧茲大地的甜美風味</h3>
+<!-- 					限時特惠廣告起始位置 -->
+					<div id="box1">
+					<jsp:useBean class="timing_sales.model.Timing_SalesDAO" id="ts">
+						<h2>限時特賣!</h2>
+						<h3>${ts.dailySales.ts_slogan}</h3>
 						<img
-							src="http://img1.groupon.com.tw/pi/19861-1-big.jpg?1363158213">
+							src="<%=request.getContextPath()%>/images/timingSales/${ts.dailySales.ts_pic}">
 							<div
 								style="background-color: #d7f1f7; background-image: url(images/lightbg.jpg); position: relative; margin: 0 -40px 0 -40px">
 								<div style="margin-left: 30px; padding-top: 10px;">
 									<div style="width: 150px; float: left;">
 										<span style="font-size: 16px; font-weight: bold;">原價 </span></br> <span
-											style="font-size: 36px; color: red; text-decoration: line-through;">$2500</span><br>
+											style="font-size: 36px; color: red; text-decoration: line-through;">${ts.dailySales.productVO.p_price}</span><br>
 									</div>
 
 									<div style="width: 150px; float: left;">
 										<span style="font-size: 16px; font-weight: bold;"> 折扣</span><br><span
-											style="font-size: 36px; font-weight: bold;"> 64折</span> <br>
+											style="font-size: 36px; font-weight: bold;"> <fmt:formatNumber value="${ts.dailySales.ts_price / ts.dailySales.productVO.p_price * 10}" pattern="0.0"/>折</span> <br/>
 									</div>
 									<div style="width: 150px; float: left;">
 										<span style="font-size: 16px; font-weight: bold;"> 現省</span><br><span
-											style="font-size: 36px; font-weight: bold;"> $91</span><br>
+											style="font-size: 36px; font-weight: bold;">${ts.dailySales.productVO.p_price - ts.dailySales.ts_price }</span><br>
 									</div>
-									<br class="clear" />
+<!-- 									<br class="clear" /> -->
 
 									<hr style="width: 450px">
-										<div style="width: 250px; float: left;">1377人已購買 <Br>好康已成立</div>
+										<div style="width: 250px; float: left;">${ts.dailySales.ts_totalsale}人已購買 <Br>好康已成立</div>
 										<div style="width: 150px; float: left;">
 										<button class="btn btn-large  btn-success"
 												type="button">我要買</button>
@@ -286,17 +272,19 @@ width: 16px;}
 											id="sec"></span>
 									</div>
 									
-									<br class="clear" />
+<!-- 									<br class="clear" /> -->
+													<span>${ts.dailySales.ts_content}</span>
 								</div>
 
 								<div align="right"
 									style="width: 281px; height: 90px; position: absolute; top: 0px; right: -59px; background-image: url(images/gtag281.png); background-repeat: no-repeat;">
 									<div align="center" class="white60"
 										style="width: 262px; height: 80px; line-height: 80px;">
-										<span style="font-size: 35px; color: #FFF; margin-right: 80px">搶購價$160
+										<span style="font-size: 35px; color: #FFF; margin-right: 80px">搶購價$ ${ts.dailySales.ts_price}
 										</span>
 									</div>
 								</div>
+	
 								<div
 									style="background-color: #ccc; background-image: url(images/timebg.jpg); margin: 10px">
 									購買注意事項!<br>
@@ -312,7 +300,7 @@ width: 16px;}
 											<li>■ 酒迷創意行銷股份有限公司保有變更活動的權利。</li>
 										</ul> <br>
 								</div>
-							
+						</jsp:useBean>
 							</div><%@ include file="view_model/index_fast_login.htm"%>
 					</div>
 

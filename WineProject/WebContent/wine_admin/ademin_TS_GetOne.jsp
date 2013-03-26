@@ -14,7 +14,7 @@
 </head>
 <body>
 <div align="right">
-	<form action="<%=request.getContextPath()%>/set_timing_sales" method="post">
+	<form action="<%=request.getContextPath()%>/wine_admin/set_timing_sales" method="post">
 							<input type="submit" value="修改" class="btn btn-primary"/>
 							<input type="hidden" name="ts_id" value="${ts.ts_id}" />
 							<input type="hidden" name="action" value="edit" />
