@@ -21,14 +21,8 @@
 	clear:both;
 }
 #errlist {
-	color: #915608;
-	line-height:2em;
-	margin:10px 5px;
 }
 #okMsg {
-	color: #3f5a04;
-	line-height:2em;
-	margin:10px 5px;
 }
 #divContent{
  	float:left;
