@@ -70,7 +70,7 @@ public class ModifyBuyWine extends HttpServlet {
 		Integer.parseInt(request.getParameter("num"));
 		Integer productNumber = Integer.parseInt(request.getParameter("num"));// 該商品修改後的數量
 		
-		System.out.println(productNumber);
+		
 		Integer productNo = Integer.parseInt(request.getParameter("no"));
 		// 從購物車中找出商品清單
 		Map<Integer, ShoppingProduct> oldProduct = cart.getContent();
@@ -119,20 +119,75 @@ public class ModifyBuyWine extends HttpServlet {
 			AbDAO abdao = new AbDAO();
 			AbVO abVO = abdao.findByAKey(productNo);
 			Integer b_no = abVO.getAb_b_p_id();
+			Map<Integer, ShoppingProduct> old = cart.getContent();
+			ShoppingProduct OldShoppingProductB = old.get(b_no);
 
-			ProductVO productB = new ProductDAO().findByPrimaryKey(b_no);
-			ShoppingProduct shoppingProductB = new ShoppingProduct();
+			if (OldShoppingProductB == null) {
+				ProductVO productB = new ProductDAO().findByPrimaryKey(b_no);
+				ShoppingProduct shoppingProductB = new ShoppingProduct();
 
-			// 將B商品加入購物車
-			shoppingProductB.setProductName(productB.getP_name());
-			shoppingProductB.setProductNo(productB.getP_no());
-			shoppingProductB.setProductNumber(productNumber);
-			shoppingProductB.setProductPrice(productB.getP_price());
-			shoppingProductB.setPic(productVO.getP_pic());
-			shoppingProductB.setSaleType("B");
-			shoppingProductB.setSalesNumber(productNumber);
-			shoppingProductB.setSubTotal(0);
-			cart.addToCart(shoppingProductB.getProductNo(), shoppingProductB);
+				// 將B商品加入購物車
+				shoppingProductB.setProductName(productB.getP_name());
+				shoppingProductB.setProductNo(productB.getP_no());
+				shoppingProductB.setProductNumber(Integer.parseInt(request.getParameter("num")));
+				shoppingProductB.setProductPrice(productB.getP_price());
+				shoppingProductB.setPic(productVO.getP_pic());
+				shoppingProductB.setSaleType("B");
+				shoppingProductB.setSalesNumber(new Integer(productNumber));
+				shoppingProductB.setSubTotal(0);
+				cart.addToCart(productB.getP_no(), shoppingProductB);
+			} else {
+
+				ShoppingProduct OldShoppingProductA = old.get(productNo);
+
+				int aNum = OldShoppingProductA.getProductNumber();
+				int bNum = OldShoppingProductB.getProductNumber();
+				// -----------------重新計算B價錢----------
+				if (bNum >= aNum) {
+					OldShoppingProductB.setSalesNumber(aNum);
+					OldShoppingProductB.setProductNumber(bNum);
+					OldShoppingProductB.setSubTotal(OldShoppingProductB
+							.getProductPrice() * (bNum - aNum));
+
+				} else {
+					OldShoppingProductB.setSalesNumber(bNum);
+					OldShoppingProductB.setProductNumber(aNum);
+					OldShoppingProductB.setSubTotal(0);
+				}
+
+			}
+		}
+		else if (sales.equals("B")) {
+			shoppingProduct.setProductNumber(productNumber);
+			shoppingProduct.setSubTotal(productNumber * price);
+			cart.addToCart(shoppingProduct.getProductNo(), shoppingProduct);
+			AbDAO abdao = new AbDAO();
+			AbVO abVO = abdao.findByBKey(productNo);
+			Integer a_no = abVO.getAb_a_p_id();
+			Map<Integer, ShoppingProduct> old = cart.getContent();
+			ShoppingProduct OldShoppingProductA = old.get(a_no);
+			if(OldShoppingProductA==null){
+				return;
+			}else{
+				ShoppingProduct OldShoppingProductB = old.get(productNo);
+
+				int aNum = OldShoppingProductA.getProductNumber();
+				int bNum = OldShoppingProductB.getProductNumber();
+				// -----------------重新計算B價錢----------
+				if (bNum >= aNum) {
+					OldShoppingProductB.setSalesNumber(aNum);
+					OldShoppingProductB.setProductNumber(bNum);
+					OldShoppingProductB.setSubTotal(OldShoppingProductB
+							.getProductPrice() * (bNum - aNum));
+
+				} else {
+					OldShoppingProductB.setSalesNumber(bNum);
+					OldShoppingProductB.setProductNumber(aNum);
+					OldShoppingProductB.setSubTotal(0);
+				}
+				
+			}
+			
 		} else if (sales.equals("half")) { // 第2件半價
 			Map<Integer, ShoppingProduct> old = cart.getContent();
 			ShoppingProduct OldShoppingProduct = old.get(productNo);
