@@ -143,7 +143,7 @@ tr:hover {
 					</div>
 
 					<a
-						href="<c:if test="${m_no!=null}">discussion/insertDiscussion.jsp</c:if><c:if test="${m_no==null}">login.jsp</c:if>">
+						href="discussion/insertDiscussion">
 						<button class="btn btn-large btn-primary" style="float: right" type="button">
 							<i class="icon-pencil icon-white"></i> 發表文章
 						</button> </a> <br><br>

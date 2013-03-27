@@ -23,6 +23,7 @@
 		<url-pattern>/member/MemberService</url-pattern>
 		<url-pattern>/orders/checkout</url-pattern>
 		<url-pattern>/insertDiscussion.jsp</url-pattern>
+		<url-pattern>/discussion/insertDiscussion</url-pattern>
 	</filter-mapping>
 	<filter>
 		<filter-name>struts2</filter-name>
@@ -315,4 +316,12 @@
     <servlet-name>listOneMem</servlet-name>
     <url-pattern>/memberCRUD/listOneMem</url-pattern>
   </servlet-mapping>
+  <servlet>
+		<servlet-name>insertDiscussion</servlet-name>
+		<servlet-class>discussion.controller.insertDiscussion</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>insertDiscussion</servlet-name>
+		<url-pattern>/discussion/insertDiscussion</url-pattern>
+	</servlet-mapping>
 </web-app>
