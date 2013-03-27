@@ -41,11 +41,11 @@ $(document).ready(function()
 						
 							<p align=right>流水號：<input type="text" name="m_no" value="<%=memberVO.getM_no()%>" readonly="readonly"/></p>
 							<p align=right>帳號：<input type="text" name="m_id" value="<%=memberVO.getM_id()%>" readonly="readonly"/></p>
+							<p align=right>姓名：<input type="text" name="m_name" require="true" label="姓名" value="<%=memberVO.getM_name()%>"/></p>
 							<p align=right>密碼：<input type="password" name="m_pwd" require="true" label="密碼" value="<%=memberVO.getM_pwd()%>"/></p>
-							<p align=right>e-Mail：<input type="text" name="m_email" value="<%=memberVO.getM_email()%>" /></p>
-							<p align=right>姓名：<input type="text" name="m_name" require="true" label="賬號" value="<%=memberVO.getM_name()%>"/></p>													
-							<p align=right>生日：<input type="text" name="m_bday" value="<%=memberVO.getM_bday()%>"/><br>
-							<p align=right>行動電話：<input type="text" name="m_mobile" value="<%=memberVO.getM_mobile()%>"/></p>
+							<p align=right>e-Mail：<input type="text" validate="email" name="m_email" value="<%=memberVO.getM_email()%>" /></p>																				
+							<p align=right>生日：<input type="text" validate="bday" name="m_bday" value="<%=memberVO.getM_bday()%>"/><br>
+							<p align=right>行動電話：<input type="text" validate="mobile" name="m_mobile" value="<%=memberVO.getM_mobile()%>"/></p>
 							<p align=right>通訊地址：<input type="text" name="m_addr" value="<%=memberVO.getM_addr()%>"/></p>
 							<p align=right>圖片：<input type="text" name="m_pic" value="<%=memberVO.getM_pic()%>"/></p>
 							<p align=right>安全提問：<input type="text" name="m_safety_q" value="<%=memberVO.getM_safety_q()%>"/></p>
