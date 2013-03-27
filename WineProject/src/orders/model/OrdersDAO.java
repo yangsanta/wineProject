@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -114,5 +115,20 @@ public class OrdersDAO implements OrdersDAO_interface {
 		}
 		return list;
 		
+	}
+	public Integer getNewodercount() {
+		Integer newodercount ;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			SQLQuery query = session
+					.createSQLQuery("select COUNT(o_no) from orders where o_status = 'F'");
+			newodercount = (Integer)query.uniqueResult();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return newodercount;
 	}
 }

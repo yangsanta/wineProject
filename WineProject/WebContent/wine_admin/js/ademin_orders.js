@@ -9,20 +9,19 @@ $(function() {
 						event.preventDefault();
 						$(this).closest('tr').hide();
 
-						$
-								.ajax({
-									url : '/WineProject/orders/ordersadmin.do',
+						$.ajax({
+									url : '/WineProject/wine_admin/ordersadmin.do',
 									type : 'POST',
 									data : {
 										o_no : $(this).attr("href"),
 										action : "delete"
 									},
 									dataType : 'json',
-									success : function(data) {
-										
-
+									success : function() {
 									}
-								});
+								}).always(function() {
+									$("#warning_info").fadeIn("slow").delay(1800).fadeOut("slow");
+								})
 					});
 	
 	// EditStatus
@@ -41,20 +40,35 @@ $(function() {
 						}
 						$(this).closest('tr').css('background-color', '#DFEDBE').css('color', '#3f5a04');
 
-						$
-								.ajax({
-									url : '/WineProject/orders/ordersadmin.do',
-									type : 'POST',
-									data : {
+						$.ajax({
+								url : '/WineProject/wine_admin/ordersadmin.do',
+								type : 'POST',
+								data : {
 										o_no : $(this).attr("href"),
 										action : "edit"
 									},
 									dataType : 'json',
-									success : function(data) {
-										
-
+									success : function() {
 									}
+								})
+								.always(function() { 
+									$.ajax({
+										url : '/WineProject/wine_admin/ordersadmin.do',
+										type : 'POST',
+										data : {
+												o_no : $(this).attr("href"),
+												action : "ordernumber"
+											},
+											dataType : 'text',
+											success : function(data) {
+												$("#ordernumber").slideUp(300).delay(500).html(data).fadeIn(400);
+												$("#succes_info").fadeIn("slow").delay(1800).fadeOut("slow");
+											}
+										});
+								
+								
 								});
+			
 					});
 
 });
