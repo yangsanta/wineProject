@@ -101,20 +101,21 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 
 	}
 
-	public Integer getSecendcountI_id() {
-		Integer getSecendcountI_id ;
+	public List<Integer> getSomebyDI_id(Integer f_id) {
+		List<Integer> list = new ArrayList<Integer>();
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			SQLQuery query = session
-					.createSQLQuery(" select COUNT(a.i_id) from (select distinct i_id from food_set)as a");
-			getSecendcountI_id = (Integer)query.uniqueResult();
+					.createSQLQuery("select distinct l.i_id from(select * from food_set where f_id = ?)as l");
+			query.setParameter(0, f_id);
+			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}
-		return getSecendcountI_id;
+		return list;
 	}
 	//food 不重複最大值
 	public Integer getlastReferer() {
@@ -146,7 +147,6 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 					.createSQLQuery("select * from food_set where i_id in (select Distinct i_id from food_set where f_id = ?)");
 			query.setParameter(0, f_id);
 			query.addEntity(Food_setVO.class);
-			
 			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
@@ -173,7 +173,6 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_SOME_STMT_i_id);
 			query.setParameter(0, i_id);
-			query.setCacheable(true); //啟動Query快取
 			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
@@ -234,7 +233,13 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 			System.out.println(map.get(a));
 		}
 		
-
+//		 public static void main(String arg[]) {
+//		 Food_setHibernateDAO dao = new Food_setHibernateDAO();
+//		 List<Integer> list = dao.getSomebyDI_id(1);
+//		 for (Integer a : list) {
+//		 System.out.println(a);
+//		 }
+		//
 	}
 
 }
