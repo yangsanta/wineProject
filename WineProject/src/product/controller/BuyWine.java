@@ -140,7 +140,7 @@ public class BuyWine extends HttpServlet {
 			Map<Integer, ShoppingProduct> old = cart.getContent();
 			ShoppingProduct OldShoppingProductA = old.get(a_no);
 			if(OldShoppingProductA==null){
-				return;
+				
 			}else{
 				ShoppingProduct OldShoppingProductB = old.get(productNo);
 
@@ -154,7 +154,7 @@ public class BuyWine extends HttpServlet {
 							.getProductPrice() * (bNum - aNum));
 
 				} else {
-					OldShoppingProductB.setSalesNumber(bNum);
+					OldShoppingProductB.setSalesNumber(productNumber);
 					OldShoppingProductB.setProductNumber(aNum);
 					OldShoppingProductB.setSubTotal(0);
 				}

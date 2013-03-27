@@ -145,12 +145,11 @@ public class ModifyBuyWine extends HttpServlet {
 				// -----------------重新計算B價錢----------
 				if (bNum >= aNum) {
 					OldShoppingProductB.setSalesNumber(aNum);
-					OldShoppingProductB.setProductNumber(bNum);
-					OldShoppingProductB.setSubTotal(OldShoppingProductB
-							.getProductPrice() * (bNum - aNum));
+					OldShoppingProductB.setProductNumber(aNum);
+					OldShoppingProductB.setSubTotal(0);
 
 				} else {
-					OldShoppingProductB.setSalesNumber(bNum);
+					OldShoppingProductB.setSalesNumber(aNum);
 					OldShoppingProductB.setProductNumber(aNum);
 					OldShoppingProductB.setSubTotal(0);
 				}
@@ -167,7 +166,7 @@ public class ModifyBuyWine extends HttpServlet {
 			Map<Integer, ShoppingProduct> old = cart.getContent();
 			ShoppingProduct OldShoppingProductA = old.get(a_no);
 			if(OldShoppingProductA==null){
-				return;
+				
 			}else{
 				ShoppingProduct OldShoppingProductB = old.get(productNo);
 
