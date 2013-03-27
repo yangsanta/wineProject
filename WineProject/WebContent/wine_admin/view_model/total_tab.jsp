@@ -5,8 +5,8 @@
 	<nav class="links">
 		<ul>
 			<li><a href="#" class="ico1">訊息 <span class="num">216</span></a></li>
-			<li><a href="#" class="ico2">Alerts <span class="num">5</span></a></li>
-			<li><a href="#" class="ico3">訂單<span class="num">3</span></a></li>
+			<li><a href="#" class="ico2">庫存警報 <span class="num">5</span></a></li>
+			<li><a href="ordersadmin.do?action=getall" class="ico3">新訂單<span id="ordernumber" class="num"><jsp:useBean id="od" class="orders.model.OrdersDAO">${od.newodercount}</jsp:useBean></span></a></li>
 		</ul>
 	</nav>
 	<div class="profile-box">

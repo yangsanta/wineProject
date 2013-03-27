@@ -1,6 +1,8 @@
 package orders.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +19,6 @@ public class OrdersAdminServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		System.out
-				.println("OOOOOOOOOOOrdersAdminServlet doPost is running up.");
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 
@@ -41,6 +41,15 @@ public class OrdersAdminServlet extends HttpServlet {
 		if (action.equals("edit")) {
 			Integer o_no = Integer.valueOf(request.getParameter("o_no"));
 			facade.edit(o_no);
+		}
+		if (action.equals("ordernumber")) {
+			Integer ordernumber=facade.ordernumber();
+			System.out.println("吐回來"+ordernumber);
+			
+			request.setCharacterEncoding("UTF-8");
+			request.setAttribute("ordernumber", ordernumber);
+			RequestDispatcher dis = request.getRequestDispatcher("/wine_admin/ajaxordernumber.jsp");
+			dis.forward(request, response);
 		}
 	}
 

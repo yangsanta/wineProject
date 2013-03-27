@@ -291,8 +291,8 @@ form,fieldset{
 .buttons .active .ico7 span {background-position:-4px -352px;}
 .buttons .ico8 span {background-position:-4px -380px;}
 .buttons .active .ico8 span {background-position:-4px -415px;}
-.buttons li:hover .tooltip {display:block;}
-.buttons .tooltip {
+.buttons li:hover .menu_tooltip {display:block;}
+.buttons .menu_tooltip {
 	position:absolute;
 	left:61px;
 	top:9px;
@@ -303,13 +303,14 @@ form,fieldset{
 	display:none;
 	white-space:nowrap;
 }
-.buttons .tooltip span {
+.buttons .menu_tooltip span {
 	height:20px;
 	float:left;
 	padding:4px 3px 0 10px;
 	background:url(../images/sprite.png) no-repeat -39px -125px;
 }
 .buttons .num {
+	line-height: 20px;
 	display:block;
 	text-align:center;
 	color:#fff;
@@ -324,7 +325,10 @@ form,fieldset{
 	border-top:2px solid #b01919;
 }
 
+#ordernumber.ordernumber{font-size: 26px;
+color: #ffff00;}
+#ordernumber.ordernumber2{font-size: 26px;
+color: #ff0000;}
 
 
-
-.text_con{ width: 19px;text-align: center; }
+.text_con{ width: 19px;text-align: center;line-height: 10px; }

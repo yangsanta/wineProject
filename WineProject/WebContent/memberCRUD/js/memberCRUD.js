@@ -1,9 +1,3 @@
-// Formly v1.0 by Daniel Raftery
-//
-// http://thrivingkings.com/formly
-// http://twitter.com/ThrivingKings
-
-
 (function($)
 	{
 	
@@ -224,7 +218,6 @@
 			{
 			validateString : function(type, string)
 				{
-				// Validate email regular expression
 				if(type=='email')
 					{
 					var filter = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
@@ -233,14 +226,21 @@
 					else
 						{ return false; }
 					}
-				// Validate a simple URL regular expression
-				else if(type=='http')
+				else if(type=='bday')
 					{
-					var filter = /http:\/\/[A-Za-z0-9\.-]{3,}\.[A-Za-z]{2,3}/i
-					if(filter.test(string))
-						{ return true; }
-					else
-						{ return false; }
+					var filter = /^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-))$/i
+						if(filter.test(string))
+							{ return true; }
+						else
+							{ return false; }
+					}
+				else if(type=='mobile')
+					{
+					var filter = /(09)+[0-9]{8}/i
+						if(filter.test(string))
+							{ return true; }
+						else
+							{ return false; }
 					}
 				},
 			validate : function(item)
@@ -251,10 +251,15 @@
 					var valid = functions.validateString('email', $(item).val());
 					var validType = '電子郵件';
 					}
-				else if($(item).attr('validate')=='http')
+				else if($(item).attr('validate')=='bday')
 					{
-					var valid = functions.validateString('http', $(item).val());
-					var validType = '網址';
+					var valid = functions.validateString('bday', $(item).val());
+					var validType = '生日';
+					}
+				else if($(item).attr('validate')=='mobile')
+					{
+					var valid = functions.validateString('mobile', $(item).val());
+					var validType = '行動電話';
 					}
 				if(!valid) 
 					{
@@ -288,7 +293,7 @@
 					{
 					if(!$('#' + alertName).is(':visible'))
 						{
-						$('#' + formName).find('.formlyAlerts').append('<div class="formlyRequired formlyAlert" id="' + alertName + '">必填：'+label+'</div>')
+						$('#' + formName).find('.formlyAlerts').append('<div class="formlyRequired formlyAlert" id="' + alertName + '">此欄位為必填：'+label+'</div>')
 						$('#' + alertName).fadeIn();
 						}
 					var borderColor = $('#' + alertName).css('background-color');
@@ -301,7 +306,7 @@
 					{
 					if(!$('#' + alertName).is(':visible'))
 						{
-						$('#' + formName).find('.formlyAlerts').append('<div class="formlyRequired formlyAlert" id="' + alertName + '">必填：'+label+'</div>')
+						$('#' + formName).find('.formlyAlerts').append('<div class="formlyRequired formlyAlert" id="' + alertName + '">此欄位為必填：'+label+'</div>')
 						$('#' + alertName).fadeIn();
 						$(item).focus();
 						}
