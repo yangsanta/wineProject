@@ -11,12 +11,13 @@
 
 		<property name="s_name" column="s_name" />
 				
-		<!-- <set name="food_set" table="food_set" cascade="all" lazy="false" inverse="true" order-by="o_no asc">
-		    <key><column name="i_id" /></key>
-		    <one-to-many class="food_set.model.Food_SetVO" />		    
-		</set> -->
-		<!-- <many-to-one name="productVO" column="p_no" lazy="false" class="product.model.ProductVO" /> -->
-
+		<set name="emps2" table="food_set" lazy="false" cascade= "delete"
+			inverse="true" order-by="fs_id asc">
+			<key>
+				<column name="s_id" />
+			</key>
+			<one-to-many class="food_set.model.Food_setVO" />
+		</set>
 	</class>
 </hibernate-mapping>
 

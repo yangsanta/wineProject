@@ -76,9 +76,9 @@ public class BuyWine extends HttpServlet {
 		String sales = productVO.getP_sales();
 		shoppingProduct.setPic(productVO.getP_pic());
 		shoppingProduct.setSaleType(sales); // 物件存商品優惠狀態
-		System.out.println("名稱" + productName);
-		System.out.println("售價" + price);
-		System.out.println("數量" + productNumber);
+		// System.out.println("名稱" + productName);
+		// System.out.println("售價" + price);
+		// System.out.println("數量" + productNumber);
 		System.out.println("優惠" + sales);
 		// 判斷優惠狀態
 
@@ -92,20 +92,75 @@ public class BuyWine extends HttpServlet {
 			AbDAO abdao = new AbDAO();
 			AbVO abVO = abdao.findByAKey(productNo);
 			Integer b_no = abVO.getAb_b_p_id();
+			Map<Integer, ShoppingProduct> old = cart.getContent();
+			ShoppingProduct OldShoppingProductB = old.get(b_no);
+
+			if (OldShoppingProductB == null) {
+				ProductVO productB = new ProductDAO().findByPrimaryKey(b_no);
+				ShoppingProduct shoppingProductB = new ShoppingProduct();
+
+				// 將B商品加入購物車
+				shoppingProductB.setProductName(productB.getP_name());
+				shoppingProductB.setProductNo(productB.getP_no());
+				shoppingProductB.setProductNumber(productNumber);
+				shoppingProductB.setProductPrice(productB.getP_price());
+				shoppingProductB.setPic(productVO.getP_pic());
+				shoppingProductB.setSaleType("B");
+				shoppingProductB.setSalesNumber(new Integer(productNumber));
+				shoppingProductB.setSubTotal(0);
+				cart.addToCart(productB.getP_no(), shoppingProductB);
+			} else {
+
+				ShoppingProduct OldShoppingProductA = old.get(productNo);
+
+				int aNum = OldShoppingProductA.getProductNumber();
+				int bNum = OldShoppingProductB.getProductNumber();
+				// -----------------重新計算B價錢----------
+				if (bNum >= aNum) {
+					OldShoppingProductB.setSalesNumber(aNum);
+					OldShoppingProductB.setProductNumber(bNum);
+					OldShoppingProductB.setSubTotal(OldShoppingProductB
+							.getProductPrice() * (bNum - aNum));
+
+				} else {
+					OldShoppingProductB.setSalesNumber(bNum);
+					OldShoppingProductB.setProductNumber(aNum);
+					OldShoppingProductB.setSubTotal(0);
+				}
+
+			}
+		}
+		else if (sales.equals("B")) {
+			shoppingProduct.setProductNumber(productNumber);
+			shoppingProduct.setSubTotal(productNumber * price);
+			cart.addToCart(shoppingProduct.getProductNo(), shoppingProduct);
+			AbDAO abdao = new AbDAO();
+			AbVO abVO = abdao.findByBKey(productNo);
+			Integer a_no = abVO.getAb_a_p_id();
+			Map<Integer, ShoppingProduct> old = cart.getContent();
+			ShoppingProduct OldShoppingProductA = old.get(a_no);
+			if(OldShoppingProductA==null){
+				
+			}else{
+				ShoppingProduct OldShoppingProductB = old.get(productNo);
+
+				int aNum = OldShoppingProductA.getProductNumber();
+				int bNum = OldShoppingProductB.getProductNumber();
+				// -----------------重新計算B價錢----------
+				if (bNum >= aNum) {
+					OldShoppingProductB.setSalesNumber(aNum);
+					OldShoppingProductB.setProductNumber(bNum);
+					OldShoppingProductB.setSubTotal(OldShoppingProductB
+							.getProductPrice() * (bNum - aNum));
+
+				} else {
+					OldShoppingProductB.setSalesNumber(productNumber);
+					OldShoppingProductB.setProductNumber(aNum);
+					OldShoppingProductB.setSubTotal(0);
+				}
+				
+			}
 			
-			ProductVO productB = new ProductDAO().findByPrimaryKey(b_no);
-			ShoppingProduct shoppingProductB = new ShoppingProduct();
-			
-			// 將B商品加入購物車
-			shoppingProductB.setProductName(productB.getP_name());
-			shoppingProductB.setProductNo(productB.getP_no());
-			shoppingProductB.setProductNumber(productNumber);
-			shoppingProductB.setProductPrice(productB.getP_price());
-			shoppingProductB.setPic(productVO.getP_pic());
-			shoppingProductB.setSaleType("B");
-			shoppingProductB.setSalesNumber(new Integer(productNumber));
-			shoppingProductB.setSubTotal(0);
-			cart.addToCart(shoppingProductB.getProductNo(), shoppingProductB);
 		} else if (sales.equals("half")) { // 第2件半價
 			Map<Integer, ShoppingProduct> old = cart.getContent();
 			ShoppingProduct OldShoppingProduct = old.get(productNo);
@@ -120,11 +175,12 @@ public class BuyWine extends HttpServlet {
 
 			} else {
 				num = OldShoppingProduct.getProductNumber() + productNumber;
-				
+
 				quotient = num / 2;
-			
+
 				shoppingProduct.setSubTotal((price * num)
-						- (quotient * price / 2)-OldShoppingProduct.getSubTotal());
+						- (quotient * price / 2)
+						- OldShoppingProduct.getSubTotal());
 				cart.addToCart(productNo, shoppingProduct);
 
 			}
@@ -193,7 +249,7 @@ public class BuyWine extends HttpServlet {
 			// 跑r
 			int matchNumberR = matchNumber;
 			for (Entry<Integer, Integer> r : rList) {
-				
+
 				ShoppingProduct temp = oldShoppingCart.get(r.getKey());
 				price = temp.getProductPrice();
 				if (temp.getProductNumber() <= matchNumberR) {
@@ -211,7 +267,7 @@ public class BuyWine extends HttpServlet {
 			// 跑g
 			int matchNumberG = matchNumber;
 			for (Entry<Integer, Integer> g : gList) {
-				
+
 				ShoppingProduct tempG = oldShoppingCart.get(g.getKey());
 				price = tempG.getProductPrice();
 				if (tempG.getProductNumber() <= matchNumberG) {
@@ -227,7 +283,6 @@ public class BuyWine extends HttpServlet {
 				}
 			}
 
-			
 		} else {
 			// 沒有優惠OR B區商品
 			shoppingProduct.setProductNumber(productNumber);

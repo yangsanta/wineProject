@@ -45,10 +45,15 @@ public class FoodHibernateDAO implements FoodDAO_interface {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			FoodVO foodVo = new FoodVO();
-			foodVo.setF_id(f_id);
+			FoodVO foodVo = (FoodVO) session.get(FoodVO.class, f_id);
 			session.delete(foodVo);
 			session.getTransaction().commit();
+			
+//			session.beginTransaction();
+//			FoodVO foodVo = new FoodVO();
+//			foodVo.setF_id(f_id);
+//			session.delete(foodVo);
+//			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;

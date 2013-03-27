@@ -6,10 +6,18 @@
 	<class name="food.model.FoodVO" table="food">
 
 		<id name="f_id" column="f_id">
-			<generator class="identity"></generator>
+			<generator class="identity" />
 		</id>
 
 		<property name="f_name" column="f_name" />
+
+		<set name="emps" table="food_set" lazy="false" cascade= "delete"
+			inverse="true" order-by="fs_id asc">
+			<key>
+				<column name="f_id" />
+			</key>
+			<one-to-many class="food_set.model.Food_setVO" />
+		</set>
 
 	</class>
 </hibernate-mapping>

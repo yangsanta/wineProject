@@ -2,6 +2,7 @@ package sauce.model;
 
 import food.model.FoodVO;
 import hibernate.util.HibernateUtil;
+import ingredient.model.IngredientVO;
 
 import java.util.*;
 
@@ -44,20 +45,35 @@ public class SauceHibernateDAO implements SauceDAO_interface {
 
 	@Override
 	public void delete(Integer s_id) {
-
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			SauceVO sauceVO = new SauceVO();
-			sauceVO.setS_id(s_id);
+			SauceVO sauceVO = (SauceVO) session.get(SauceVO.class, s_id);
 			session.delete(sauceVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}
-
 	}
+	
+	
+//	@Override
+//	public void delete(Integer s_id) {
+//
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		try {
+//			session.beginTransaction();
+//			SauceVO sauceVO = new SauceVO();
+//			sauceVO.setS_id(s_id);
+//			session.delete(sauceVO);
+//			session.getTransaction().commit();
+//		} catch (RuntimeException ex) {
+//			session.getTransaction().rollback();
+//			throw ex;
+//		}
+//
+//	}
 
 	@Override
 	public SauceVO findByPrimaryKey(Integer s_id) {

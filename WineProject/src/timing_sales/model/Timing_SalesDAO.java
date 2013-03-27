@@ -14,7 +14,7 @@ import org.hibernate.Session;
 import product.model.ProductVO;
 
 public class Timing_SalesDAO implements Timing_Sales_interface{
-	private static final String GET_ALL_STMT = "from Timing_Sales order by ts_id";
+	private static final String GET_ALL_STMT = "from Timing_Sales order by ts_date desc";
 	
 	@Override
 	public void insert(Timing_Sales timing_salesBean) {
@@ -96,7 +96,7 @@ public class Timing_SalesDAO implements Timing_Sales_interface{
 		String str = bartDateFormat.format(date); 
 		str = "'" + str + "'";
 		System.out.println("Today is : "+str);
-		String queryString = "from Timing_Sales where ts_date = " + str;
+		String queryString = "from Timing_Sales where ts_date = " + str + "order by ts_date desc";
 		try {
 		session.beginTransaction();
 		Query query = session.createQuery(queryString);
@@ -108,7 +108,23 @@ public class Timing_SalesDAO implements Timing_Sales_interface{
 		throw ex;
 		}
 		return timing_Sales;
+	}
+	
+	public List<Timing_Sales> search(String srchString) {
+		List<Timing_Sales> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			String SEARCH_STMT = "FROM Timing_Sales WHERE ts_date ='" + srchString + "'";
+			Query query = session.createQuery(SEARCH_STMT);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
+		return list;
+	}
 	
 	public static void main(String arg[]) {
 		Timing_SalesDAO dao = new Timing_SalesDAO();
@@ -171,5 +187,19 @@ public class Timing_SalesDAO implements Timing_Sales_interface{
 //			System.out.print(ts.getTs_price() + ",");
 //			System.out.print(ts.getTs_totalsale());
 //		}
+		
+		//search()
+		List<Timing_Sales> list = new ArrayList<Timing_Sales>();
+		list = dao.search("2013-4-1");
+		for(Timing_Sales ts:list){
+			System.out.print(ts.getTs_content() + ",");
+			System.out.print(ts.getTs_pic() + ",");
+			System.out.print(ts.getTs_slogan() + ",");
+			System.out.print(ts.getProductVO().getP_name() + ",");
+			System.out.print(ts.getTs_date() + ",");
+			System.out.print(ts.getTs_id() + ",");
+			System.out.print(ts.getTs_price() + ",");
+			System.out.print(ts.getTs_totalsale());
+		}
 	}
 }

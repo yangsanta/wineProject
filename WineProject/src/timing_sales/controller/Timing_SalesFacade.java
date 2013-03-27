@@ -3,6 +3,7 @@ package timing_sales.controller;
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -46,13 +47,13 @@ public class Timing_SalesFacade {
 		}
 		System.out.println("Timing_SalesFacade is running!!!!!!!!!!!!");
 		
-		String requestURI = request.getHeader("Referer");
-		System.out.println("the previous page is ===== "+ requestURI);
-		System.out.println(requestURI.replaceFirst("http://localhost:8081/WineProject", ""));
-		requestURI = requestURI.replaceFirst("http://localhost:8081/", "");
-		System.out.println("getRequestURL========"+request.getRequestURL());
-		System.out.println("getRequestURI========"+request.getRequestURI());
-		System.out.println("getContextPath=============="+request.getContextPath());
+//		String requestURI = request.getHeader("Referer");
+//		System.out.println("the previous page is ===== "+ requestURI);
+//		System.out.println(requestURI.replaceFirst("http://localhost:8081/WineProject", ""));
+//		requestURI = requestURI.replaceFirst("http://localhost:8081/", "");
+//		System.out.println("getRequestURL========"+request.getRequestURL());
+//		System.out.println("getRequestURI========"+request.getRequestURI());
+//		System.out.println("getContextPath=============="+request.getContextPath());
 //		String requestURI =(String) request.getAttribute("requestURI");
 //		System.out.println("requestURI============" + requestURI);
 		Map<String, String> errorMsgs = new HashMap<String, String>();
@@ -80,13 +81,13 @@ public class Timing_SalesFacade {
 				System.out.println(fldName);
 				if (fi.isFormField()) { // 如果是文字域
 					if("action".equals(fldName)){
-						action = new String(fi.getString().getBytes(),
+						action = new String(fi.getString().getBytes("ISO-8859-1"),
 								"UTF-8");
 						System.out.println("action =============" + action);
 					}
 					if ("ts_id".equals(fldName)) {
 						System.out.println("ts_id....................started");
-						ts_id = new String(fi.getString().getBytes(),
+						ts_id = new String(fi.getString().getBytes("ISO-8859-1"),
 								"UTF-8");
 						System.out.println("ts_id =============" + ts_id);
 						if (ts_id == null || ts_id.trim().length() == 0) {
@@ -97,7 +98,7 @@ public class Timing_SalesFacade {
 						}
 					}
 					else if ("p_no".equals(fldName)) { // 取出各個值
-						p_no = new String(fi.getString().getBytes(), "UTF-8");
+						p_no = new String(fi.getString().getBytes("ISO-8859-1"), "UTF-8");
 						System.out.println("p_no====================" + p_no);
 						if (p_no == null || p_no.trim().length() == 0) {
 							errorMsgs.put("errP_no", "產品編號錯誤");
@@ -119,7 +120,7 @@ public class Timing_SalesFacade {
 						}
 					}
 					else if ("ts_price".equals(fldName)) {
-						ts_price = new String(fi.getString().getBytes(),
+						ts_price = new String(fi.getString().getBytes("ISO-8859-1"),
 								"UTF-8");
 						System.out.println("ts_price =============" + ts_price);
 						if (ts_price == null || ts_price.trim().length() == 0) {
@@ -129,7 +130,7 @@ public class Timing_SalesFacade {
 						}
 					}
 					else if ("ts_slogan".equals(fldName)) {
-						ts_slogan = new String(fi.getString().getBytes(),
+						ts_slogan = new String(fi.getString().getBytes("ISO-8859-1"),
 								"UTF-8");
 						System.out.println("ts_slogan ============="
 								+ ts_slogan);
@@ -140,7 +141,7 @@ public class Timing_SalesFacade {
 						}
 					}
 					else if ("ts_content".equals(fldName)) {
-						ts_content = new String(fi.getString().getBytes(),
+						ts_content = new String(fi.getString().getBytes("ISO-8859-1"),
 								"UTF-8");
 						System.out.println("ts_content ============="
 								+ ts_content);
@@ -148,11 +149,12 @@ public class Timing_SalesFacade {
 								|| ts_content.trim().length() == 0) {
 							errorMsgs.put("errTs_content", "限惠文宣錯誤");
 						} else {
+							System.out.println("限惠文宣"+ts_content);
 							ts.setTs_content(ts_content);
 						}
 					}
 					else if ("ts_totalsales".equals(fldName)) {
-						ts_totalsales = new String(fi.getString().getBytes(),
+						ts_totalsales = new String(fi.getString().getBytes("ISO-8859-1"),
 								"UTF-8");
 						System.out.println("ts_totalsales ============="
 								+ ts_totalsales);
@@ -164,7 +166,7 @@ public class Timing_SalesFacade {
 						}
 					}
 					else if ("ts_date".equals(fldName)) {
-						dateString = new String(fi.getString().getBytes(),
+						dateString = new String(fi.getString().getBytes("ISO-8859-1"),
 								"UTF-8");
 
 						if (dateString == null
@@ -224,8 +226,11 @@ public class Timing_SalesFacade {
 			}
 
 			new Timing_SalesDAO().update(ts);
-			errorMsgs.put("success", "資料新增成功");
-			response.sendRedirect("set_timing_sales?action=getAll");
+			if(action.equals("insert")){
+				response.sendRedirect("set_timing_sales?action=getAll");
+			} else if(action.equals("update")){
+				response.sendRedirect("set_timing_sales?action=getOne&result=success&ts_id=" + ts_id);
+			}
 
 		} catch (FileUploadException e) {
 			// TODO Auto-generated catch block
