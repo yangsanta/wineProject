@@ -45,4 +45,10 @@ public class OrdersAdminFacade {
 		
 	}
 
+	public  Integer ordernumber() {
+		OrdersDAO ordersDAO = new OrdersDAO();
+		Integer ordersVO = ordersDAO.getNewodercount();
+	System.out.println("跑了ordernumber");
+	 return ordersVO;
+	}
 }

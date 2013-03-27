@@ -9,6 +9,7 @@
 <head>
 <meta charset="utf-8">
 	<title>酒迷|後台管理系統</title>
+	
 	<link media="all" rel="stylesheet" type="text/css" href="css/all.css" />
 	 <c:if test="${sessionScope.admin_access!='y'}"><meta http-equiv="refresh" content="0; url=index.jsp"></c:if>
 	<script src="http://code.jquery.com/jquery.js"></script>
