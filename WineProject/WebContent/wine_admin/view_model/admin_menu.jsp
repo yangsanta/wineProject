@@ -20,7 +20,7 @@
 			<li><a href="ademin_discount.jsp" class="ico5"><span>>首頁廣告</span><font
 					class="text_con">首頁廣告</font><em></em></a> <span class="menu_tooltip"><span>首頁右邊的廣告</span></span>
 			</li>
-			<li><a href="set_timing_sales?action=getAll" class="ico5"><span>>每日限時</span><font
+			<li><a href="set_timing_sales?action=getAll" class="ico5"><span>每日限時</span><font
 					class="text_con">每日限時</font><em></em></a> <span class="menu_tooltip"><span>首頁的每日限時商品</span></span>
 			</li>			
 			
@@ -28,6 +28,9 @@
 			 <span class="num">常用</span>
 			<li><a href="DiscussionManagment?action=getAll" class="ico3"><span>討論區管理</span><font
 					class="text_con">討論區管理</font><em></em></a> <span class="menu_tooltip"><span>討論區管理</span></span>
+			</li>
+			<li><a href="ademin_Fs_index.jsp" class="ico3"><span>餐酒搭配</span><font
+					class="text_con">餐酒搭配</font><em></em></a> <span class="menu_tooltip"><span>餐酒搭配</span></span>
 			</li>
 			
 			<li><a href="ordersadmin.do?action=getall" class="ico7"><span>>訂單管理</span><font
@@ -37,5 +40,10 @@
 
 			<li><a href="#tab-8" class="ico8"><span>Settings</span><em></em></a>
 				<span class="menu_tooltip"><span>Settings</span></span></li>
+				<span class="num">前台</span>
+			<li><a href="../index.jsp" class="ico7"><span>>回到前台</span><font
+					class="text_con">回到前台</font><em></em></a> <span class="menu_tooltip"><span>回到網站前台頁面</span></span>
+			</li>
+				
 		</ul>
 		<span class="shadow"></span> </aside>
