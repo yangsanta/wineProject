@@ -5,8 +5,6 @@ import ingredient.model.IngredientVO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -52,19 +50,34 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 	}
 
 	@Override
-	public void delete(Integer i_id) {
+	public void delete(Integer fs_id) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			IngredientVO ingredientVO = (IngredientVO) session.get(
-					IngredientVO.class, i_id);
-			session.delete(ingredientVO);
+			Food_setVO food_setVO = new Food_setVO();
+			food_setVO.setFs_id(fs_id);
+			session.delete(food_setVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}
 	}
+
+	// @Override
+	// public void delete(Integer i_id) {
+	// Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	// try {
+	// session.beginTransaction();
+	// IngredientVO ingredientVO = (IngredientVO) session.get(
+	// IngredientVO.class, i_id);
+	// session.delete(ingredientVO);
+	// session.getTransaction().commit();
+	// } catch (RuntimeException ex) {
+	// session.getTransaction().rollback();
+	// throw ex;
+	// }
+	// }
 
 	// @Override
 	// public void delete(Integer fs_id) {
