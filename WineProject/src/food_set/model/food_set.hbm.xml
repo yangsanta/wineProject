@@ -6,7 +6,7 @@
 
 	<class name="food_set.model.Food_setVO" table="food_set">
 		<id name="fs_id" column="fs_id">
-		    <generator class="native"/>
+			<generator class="identity" />
 		</id>
 
 		<many-to-one name="productVO" column="p_no" lazy="false"
