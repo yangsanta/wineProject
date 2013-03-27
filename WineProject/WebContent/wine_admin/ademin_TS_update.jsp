@@ -99,6 +99,7 @@ label.success {
 								action="<%=request.getContextPath()%>/wine_admin/set_timing_sales"
 								method="post" enctype="multipart/form-data" id="commentForm">
 								<input type="hidden" name="action" value="update" />
+								<input type="hidden" name="ts_id" value="${ts.ts_id}" />
 								限惠編號：${ts.ts_id} <span>${ErrMsg.errTs_id}</span><br />
 								<br />
 
