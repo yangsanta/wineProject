@@ -13,6 +13,17 @@
 		<url-pattern>*.jsp</url-pattern>
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
+		<filter>
+		<filter-name>MemberFilter</filter-name>
+		<filter-class>Filter.MemberFilter</filter-class>
+
+	</filter>
+	<filter-mapping>
+		<filter-name>MemberFilter</filter-name>
+		<url-pattern>/member/MemberService</url-pattern>
+		<url-pattern>/orders/checkout</url-pattern>
+		<url-pattern>/insertDiscussion.jsp</url-pattern>
+	</filter-mapping>
 	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -107,7 +118,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MemberService</servlet-name>
-		<url-pattern>/member/MemberService.do</url-pattern>
+		<url-pattern>/member/MemberService</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>setselectallfood</servlet-name>
@@ -219,7 +230,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>OrdersServlet</servlet-name>
-		<url-pattern>/orders/checkout.do</url-pattern>
+		<url-pattern>/orders/checkout</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

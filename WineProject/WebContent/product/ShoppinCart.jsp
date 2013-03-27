@@ -65,7 +65,7 @@
 		</table>
 <input type="button"class="btn btn-info" value="繼續購物" onclick="window.location='<%=request.getContextPath()%>/index.jsp'"/> 
         <a href="#"><input type="button"class="btn btn-info" value="清空購物車"/></a>
-        <a href="<%=request.getContextPath()%>/orders/checkout.do?action=checkout"><input type="button"class="btn btn-info" value="購買回家"/></a>
+        <a href="<%=request.getContextPath()%>/orders/checkout?action=checkout"><input type="button"class="btn btn-info" value="購買回家"/></a>
 	</div>
 </body>
 </html>

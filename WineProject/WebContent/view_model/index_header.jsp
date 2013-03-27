@@ -28,7 +28,7 @@
 				<li><a class="fancybox"
 					href="<%=request.getContextPath()%>/product/login.do?action=logout">登出</a></li>
 			</c:if>
-			<li><a href="<%=request.getContextPath()%>/member/MemberService.do">會員專區
+			<li><a href="<%=request.getContextPath()%>/member/MemberService">會員專區
 			</a></li>
 		</ul>
 		<ul id="nav22">
@@ -68,7 +68,7 @@
 					 元</div>
 					<p class="clear"></p>
 					<div class="shopcar_buy">
-						<a href="<%=request.getContextPath()%>/orders/checkout.do?action=checkout">
+						<a href="<%=request.getContextPath()%>/orders/checkout?action=checkout">
 							<button class="btn btn-mini  btn-success" type="button">結帳回家</button>
 						</a>
 					</div>
