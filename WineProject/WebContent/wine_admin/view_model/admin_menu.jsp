@@ -29,7 +29,7 @@
 			<li><a href="DiscussionManagment?action=getAll" class="ico3"><span>討論區管理</span><font
 					class="text_con">討論區管理</font><em></em></a> <span class="menu_tooltip"><span>討論區管理</span></span>
 			</li>
-			<li><a href="ademin_Fs_index.jsp" class="ico3"><span>餐酒搭配</span><font
+			<li><a href="food.do?action=Foodsetinsert" class="ico3"><span>餐酒搭配</span><font
 					class="text_con">餐酒搭配</font><em></em></a> <span class="menu_tooltip"><span>餐酒搭配</span></span>
 			</li>
 			
