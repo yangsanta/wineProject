@@ -26,7 +26,7 @@
 					<c:forEach var="food_set" items="${getSomebydF_id1}">
 						<li><a href="#">${food_set.value}</a>
 							<ul>
-								<c:forEach var="food_set1" items="${getSomebyI_id1}">
+								<c:forEach var="food_set1" items="${getSomebyI_id}">
 									<c:forEach var="food_set2" items="${food_set1}">
 
 										<c:if test="${food_set.key == food_set2.ingredientVO.i_id}">
@@ -53,7 +53,7 @@
 					<c:forEach var="food_set" items="${getSomebydF_id2}">
 						<li><a href="#">${food_set.value}</a>
 							<ul>
-								<c:forEach var="food_set1" items="${getSomebyI_id2}">
+								<c:forEach var="food_set1" items="${getSomebyI_id}">
 									<c:forEach var="food_set2" items="${food_set1}">
 
 										<c:if test="${food_set.key == food_set2.ingredientVO.i_id}">
@@ -79,7 +79,7 @@
 					<c:forEach var="food_set" items="${getSomebydF_id3}">
 						<li><a href="#">${food_set.value}</a>
 							<ul>
-								<c:forEach var="food_set1" items="${getSomebyI_id3}">
+								<c:forEach var="food_set1" items="${getSomebyI_id}">
 									<c:forEach var="food_set2" items="${food_set1}">
 
 										<c:if test="${food_set.key == food_set2.ingredientVO.i_id}">
@@ -102,11 +102,11 @@
 		<ul>
 			<li><a href="#">穀類</a>
 				<ul>
-					<c:forEach var="food_set" items="${getSomebydF_id4}">
+					<c:forEach var="food_set" items="${getSomebydF_id4}"> <!-- 第二層 -->
 						<li><a href="#">${food_set.value}</a>
 							<ul>
-								<c:forEach var="food_set1" items="${getSomebyI_id4}">
-									<c:forEach var="food_set2" items="${food_set1}">
+								<c:forEach var="food_set1" items="${getSomebyI_id}"> <!-- 3層 -->
+									<c:forEach var="food_set2" items="${food_set1}">  <!--  4層 -->
 
 										<c:if test="${food_set.key == food_set2.ingredientVO.i_id}">
 
@@ -131,7 +131,7 @@
 					<c:forEach var="food_set" items="${getSomebydF_id5}">
 						<li><a href="#">${food_set.value}</a>
 							<ul>
-								<c:forEach var="food_set1" items="${getSomebyI_id5}">
+								<c:forEach var="food_set1" items="${getSomebyI_id}">
 									<c:forEach var="food_set2" items="${food_set1}">
 
 										<c:if test="${food_set.key == food_set2.ingredientVO.i_id}">
@@ -157,7 +157,7 @@
 					<c:forEach var="food_set" items="${getSomebydF_id6}">
 						<li><a href="#">${food_set.value}</a>
 							<ul>
-								<c:forEach var="food_set1" items="${getSomebyI_id6}">
+								<c:forEach var="food_set1" items="${getSomebyI_id}">
 									<c:forEach var="food_set2" items="${food_set1}">
 
 										<c:if test="${food_set.key == food_set2.ingredientVO.i_id}">

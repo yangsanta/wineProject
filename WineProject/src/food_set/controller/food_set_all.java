@@ -31,12 +31,10 @@ public class food_set_all extends HttpServlet {
 
 	public food_set_all() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		// response.setCharacterEncoding("UTF-8");
 		// HttpSession Session = request.getSession();
@@ -96,129 +94,35 @@ public class food_set_all extends HttpServlet {
 
 		}
 		if (action.equals("Foodset001")) {
-
+				//第三層
 			Food_setHibernateDAO food_setHibernateDAO = new Food_setHibernateDAO();
-
+			List<Food_setVO> DAOgetAll = food_setHibernateDAO.getAll();
 			
 			//-------------------------------------------------------------
-			List<Food_setVO> getAll6 = food_setHibernateDAO.getAll();
-			request.setAttribute("getAll", getAll6);
-
-			List<List<Food_setVO> > list6 = new ArrayList<List<Food_setVO>>();
-			
-			for (int j = 1; j <= 100; j++) {
-
-				List<Food_setVO> getSomebyI_id = food_setHibernateDAO
-						.getSomebyI_id(j);
-				list6.add(getSomebyI_id);
-
-			}
-			request.setAttribute("getSomebyI_id6", list6);
-			//-------------------------------------------------------------
-			List<Food_setVO> getAll5 = food_setHibernateDAO.getAll();
-			request.setAttribute("getAll", getAll5);
-
-			List<List<Food_setVO> > list5 = new ArrayList<List<Food_setVO>>();
-			
-			for (int j = 1; j <= 100; j++) {
-
-				List<Food_setVO> getSomebyI_id = food_setHibernateDAO
-						.getSomebyI_id(j);
-				list5.add(getSomebyI_id);
-
-			}
-			request.setAttribute("getSomebyI_id5", list5);
-			//-------------------------------------------------------------
-			List<Food_setVO> getAll4 = food_setHibernateDAO.getAll();
-			request.setAttribute("getAll", getAll4);
-
-			List<List<Food_setVO> > list4 = new ArrayList<List<Food_setVO>>();
-			
-			for (int j = 1; j <= 100; j++) {
-
-				List<Food_setVO> getSomebyI_id = food_setHibernateDAO
-						.getSomebyI_id(j);
-				list4.add(getSomebyI_id);
-
-			}
-			request.setAttribute("getSomebyI_id4", list4);
-			//-------------------------------------------------------------
-			List<Food_setVO> getAll3 = food_setHibernateDAO.getAll();
-			request.setAttribute("getAll", getAll3);
-
-			List<List<Food_setVO> > list3 = new ArrayList<List<Food_setVO>>();
-			
-			for (int j = 1; j <= 100; j++) {
-
-				List<Food_setVO> getSomebyI_id = food_setHibernateDAO
-						.getSomebyI_id(j);
-				list3.add(getSomebyI_id);
-
-			}
-			request.setAttribute("getSomebyI_id3", list3);
-			//-------------------------------------------------------------
-			List<Food_setVO> getAll2 = food_setHibernateDAO.getAll();
-			request.setAttribute("getAll", getAll2);
-
-			List<List<Food_setVO> > list2 = new ArrayList<List<Food_setVO>>();
-			
-			for (int j = 1; j <= 100; j++) {
-
-				List<Food_setVO> getSomebyI_id = food_setHibernateDAO
-						.getSomebyI_id(j);
-				list2.add(getSomebyI_id);
-
-			}
-			request.setAttribute("getSomebyI_id2", list2);
-			//-------------------------------------------------------------
-			List<Food_setVO> getAll = food_setHibernateDAO.getAll();
-			request.setAttribute("getAll", getAll);
+			request.setAttribute("getAll", DAOgetAll);
 
 			List<List<Food_setVO> > list = new ArrayList<List<Food_setVO>>();
 			
-			for (int j = 1; j <= 100; j++) {
+			Integer getSecendcountI_id= food_setHibernateDAO.getSecendcountI_id(); //找出第二層不重複數
+			
+			for (int j = 1; j <= getSecendcountI_id; j++) {
 
 				List<Food_setVO> getSomebyI_id = food_setHibernateDAO
 						.getSomebyI_id(j);
 				list.add(getSomebyI_id);
 
 			}
-			request.setAttribute("getSomebyI_id1", list);
+			request.setAttribute("getSomebyI_id", list);
+			
 			//-------------------------------------------------------------
 			Integer getlastReferer = food_setHibernateDAO.getlastReferer();
-
+				//前台顯示 第二層
 			for (int i = 1; i <= getlastReferer; i++) {
 
-				if (i == 1) {
 					Map<Integer, String> getSomebydF_id = food_setHibernateDAO
 							.getSomebydF_id(i);
-					request.setAttribute("getSomebydF_id1", getSomebydF_id);
-				}
-				if (i == 2) {
-					Map<Integer, String> getSomebydF_id2 = food_setHibernateDAO
-							.getSomebydF_id(i);
-					request.setAttribute("getSomebydF_id2", getSomebydF_id2);
-				}
-				if (i == 3) {
-					Map<Integer, String> getSomebydF_id3 = food_setHibernateDAO
-							.getSomebydF_id(i);
-					request.setAttribute("getSomebydF_id3", getSomebydF_id3);
-				}
-				if (i == 4) {
-					Map<Integer, String> getSomebydF_id4 = food_setHibernateDAO
-							.getSomebydF_id(i);
-					request.setAttribute("getSomebydF_id4", getSomebydF_id4);
-				}
-				if (i == 5) {
-					Map<Integer, String> getSomebydF_id5 = food_setHibernateDAO
-							.getSomebydF_id(i);
-					request.setAttribute("getSomebydF_id5", getSomebydF_id5);
-				}
-				if (i == 6) {
-					Map<Integer, String> getSomebydF_id6 = food_setHibernateDAO
-							.getSomebydF_id(i);
-					request.setAttribute("getSomebydF_id6", getSomebydF_id6);
-				}
+					request.setAttribute("getSomebydF_id"+i, getSomebydF_id);
+				
 			}
 
 			// List<String> getSomebydF_id =

@@ -87,7 +87,7 @@
 				href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue="
 				rel="tooltip" data-placement="bottom"
 				title="最新的組合套餐優惠，您可以用最優惠的方式購買到此產品">優惠商品</a></li>
-			<li><a href="food/all/sat.do?action=Foodset001" rel="tooltip" data-placement="bottom"
+			<li><a href="<%=request.getContextPath()%>/food/all/sat.do?action=Foodset001" rel="tooltip" data-placement="bottom"
 				title="不知道吃甚麼晚餐配甚麼樣的酒最浪漫美味嗎? 來這邊就對了">餐酒搭配</a></li>
 
 			<li class="last"><a
