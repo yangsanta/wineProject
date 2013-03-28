@@ -22,6 +22,8 @@ import product.model.ProductDAO;
 import product.model.ProductVO;
 import shoppingCart.controller.ShipingCart;
 import shoppingCart.model.ShoppingProduct;
+import timing_sales.model.Timing_Sales;
+import timing_sales.model.Timing_SalesDAO;
 import ab.model.AbDAO;
 import ab.model.AbVO;
 
@@ -187,7 +189,16 @@ public class ModifyBuyWine extends HttpServlet {
 				
 			}
 			
-		} else if (sales.equals("half")) { // 第2件半價
+		}else if (sales.equals("TIME")){
+			
+			Timing_SalesDAO timeProduct=new Timing_SalesDAO();
+			Timing_Sales  timing_Sales=timeProduct.getDailySales();
+			price=timing_Sales.getTs_price();
+			shoppingProduct.setProductNumber(productNumber);
+			shoppingProduct.setSubTotal(productNumber * price);
+			cart.addToCart(productNo, shoppingProduct);
+		}
+		else if (sales.equals("half")) { // 第2件半價
 			Map<Integer, ShoppingProduct> old = cart.getContent();
 			ShoppingProduct OldShoppingProduct = old.get(productNo);
 			shoppingProduct.setProductNumber(productNumber);
