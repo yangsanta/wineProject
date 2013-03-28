@@ -1,12 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon" />
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
-<style>
+	<meta http-equiv="Content-Language" content="zh-tw">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>酒迷| 歷久彌新的香濃口感</title>
+	<meta content="酒迷 | 歷久彌新的香濃口感。" name="description" />
+ 	<meta content="酒迷 | 歷久彌新的香濃口感" name="keywords" />
+        <link href="<%=request.getContextPath()%>/style/reset.css" rel="stylesheet" type="text/css" />
+		<link href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
+
+		<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.fancybox.js?v=2.1.4"></script>
+		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style/jquery.fancybox.css?v=2.1.4" media="screen" />
+		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style/index.css?v=1.0" media="screen" />
+
+		<script type="text/javascript" src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
 	img {
 		display: block;
 		height: 150px;
@@ -15,9 +33,27 @@
 		border: 1px silver solid;
 		width: 240px;
 	}
-</style>
+
+</script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="twitter.github.com/bootstrap/assets/js/html5shiv.js"></script>
+    <![endif]-->
 </head>
-<body>
+
+<body >
+	<div id="shadow_bg" >
+	<div id="body" >
+			<%@ include file="../view_model/index_header.jsp"%>
+	<div id="main">
+					<div id="sidebar">
+						<%@ include file="../view_model/product_list.jsp"%>
+						<%@ include file="../view_model/index_left_hotsale.jsp"%>	
+					</div>
+	
+					<div id="content">
+					<%@ include file="../view_model/page_alert.htm"%>
+
 
 <c:if test="${empty sessionScope.ShoppingCart.content}">
 如果購物車內沒東西的 request attribute： ${cartNoContent}
@@ -48,7 +84,7 @@
 <!-- 			</tr> -->
 			<c:forEach var="shoppingProduct" items="${sessionScope.ShoppingCart.content}">
 				<tr>
-					<td><img src="<%=request.getContextPath()%>/images/products/${shoppingProduct.value.pic}">${shoppingProduct.value.productName}
+					<td><img src="<%=request.getContextPath()%>/images/products/${shoppingProduct.value.pic}" width=50px;>${shoppingProduct.value.productName}
 						 <c:if test="${shoppingProduct.value.saleType eq 'R'}">【紅】</c:if>
 						 <c:if test="${shoppingProduct.value.saleType eq 'G'}">【綠】</c:if>
 						 <c:if test="${shoppingProduct.value.saleType eq 'A'}">【A】</c:if>
@@ -81,7 +117,7 @@
 	</table>
 	
 	<div>
-		<form method="POST" action="<%=request.getContextPath()%>/orders/checkout.do?">
+		<form method="post" action="<%=request.getContextPath()%>/orders/checkout.do?">
 			收件人姓名：<input type="text" name="o_recipient" placeholder="收件人姓名" value="${o_recipient}">${errMap.errRName}<br>
 			聯絡電話：<input type="text" name="o_recipient_tel" placeholder="聯絡電話" value="${o_recipient_tel}">${errMap.errRPhone}<br> 
 			收件地址：<input type="text" name="o_recipient_addr" placeholder="收件地址"
@@ -105,5 +141,20 @@
 	</div>
 </c:if>
 </c:if>
+
+<%@ include file="../view_model/index_fast_login.htm"%>
+						
+
+						<br class="clear" />
+					</div>
+					<br class="clear" />
+				</div>
+			</div>
+<%@ include file="../view_model/index_footer.htm"%>
+				
+			</div>
+			
+</div>
 </body>
+
 </html>

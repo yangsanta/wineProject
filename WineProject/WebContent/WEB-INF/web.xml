@@ -20,7 +20,7 @@
 	<filter-mapping>
 		<filter-name>MemberFilter</filter-name>
 		<url-pattern>/MemberService</url-pattern>
-		<url-pattern>/orders/checkout</url-pattern>
+		<url-pattern>/orders/checkout.do</url-pattern>
 		<url-pattern>/insertDiscussion.jsp</url-pattern>
 		<url-pattern>/discussion/insertDiscussion</url-pattern>
 	</filter-mapping>
@@ -239,7 +239,7 @@
 		</servlet>
 		<servlet-mapping>
 			<servlet-name>OrdersServlet</servlet-name>
-			<url-pattern>/orders/checkout</url-pattern>
+			<url-pattern>/orders/checkout.do</url-pattern>
 		</servlet-mapping>
 		<servlet>
 			<servlet-name>foodsetaab</servlet-name>
