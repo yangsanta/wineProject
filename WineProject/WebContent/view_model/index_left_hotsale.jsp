@@ -7,7 +7,7 @@
 	</div>
 	<ul>
 					<c:forEach var="product" items="${hot_product2}" >				
-		<li>
+		<li style="height:110px">
 			<div>
 				<img
 					src="<%=request.getContextPath()%>/images/products/${product.p_pic}"

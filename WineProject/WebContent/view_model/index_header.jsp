@@ -22,7 +22,7 @@ color: white;">頁面跳轉中，請稍候</span>
 		<h1>
 			<a href="<%=request.getContextPath()%>/index.jsp"><img
 				src="<%=request.getContextPath()%>/images/logo.gif"
-				style="margin-top: -50px; margin-left: -50px; width: 320px" /></a>
+				style="margin-top: -50px; margin-left: -50px; width: 245px" /></a>
 		</h1>
 	</div>
 

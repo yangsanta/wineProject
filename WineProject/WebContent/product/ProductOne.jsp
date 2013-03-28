@@ -98,7 +98,7 @@
 }
 
 .info_li {
-	font-size: 12px;
+	font-size: 12px;line-height: 20px;padding: 1px 0 1px 0 !important;
 }
 
 .fb-like {
@@ -161,7 +161,7 @@
 									</script>
 									
 									</td>
-							<td style="text-align: left">
+							<td style="text-align: left;width: 368px;>
 								<div id="product_one" class="pro_list">
 									<span style="font-size: 26px;"> <strong
 										style="color: rgb(37, 94, 40)">${ productVO.p_name}</strong>
