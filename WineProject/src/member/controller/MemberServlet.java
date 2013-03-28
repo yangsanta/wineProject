@@ -210,50 +210,6 @@ public class MemberServlet extends HttpServlet {
 			}
 		}
 
-		if ("updatePass".equals(action)) { // 來自update_mem_input.jsp的請求
-
-			List<String> errorMsgs = new LinkedList<String>();
-			// Store this set in the request scope, in case we need to
-			// send the ErrorPage view.
-			req.setAttribute("errorMsgs", errorMsgs);
-
-			try {
-				/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
-				Integer m_no = new Integer(req.getParameter("m_no").trim());
-				String m_pwd = req.getParameter("m_pwd").trim();
-
-				MemberVO memberVO = new MemberVO();
-
-				memberVO.setM_no(m_no);
-				memberVO.setM_pwd(m_pwd);
-
-//				// Send the use back to the form, if there were errors
-//				if (!errorMsgs.isEmpty()) {
-//					req.setAttribute("memberVO", memberVO); // 含有輸入格式錯誤的memberVO物件,也存入req
-//					RequestDispatcher failureView = req
-//							.getRequestDispatcher("/wine_admin/ademin_member_update.jsp");
-//					failureView.forward(req, res);
-//					return; // 程式中斷
-//				}
-
-				/*************************** 2.開始修改資料 *****************************************/
-				MemberService memSvc = new MemberService();
-				memberVO = memSvc.updateMemPass(m_no, m_pwd);
-				/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
-				req.setAttribute("memberVO", memberVO); // 資料庫update成功後,正確的的memberVO物件,存入req
-				String url = "/wine_admin/ademin_member_updateOK.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneMem.jsp
-				successView.forward(req, res);
-
-				/*************************** 其他可能的錯誤處理 *************************************/
-			} catch (Exception e) {
-				errorMsgs.add("修改資料失敗:" + e.getMessage());
-				RequestDispatcher failureView = req
-						.getRequestDispatcher("/wine_admin/ademin_member_update.jsp");
-				failureView.forward(req, res);
-			}
-		}
-
 		if ("insert".equals(action)) { // 來自addMem.jsp的請求
 
 			List<String> errorMsgs = new LinkedList<String>();
@@ -376,6 +332,51 @@ public class MemberServlet extends HttpServlet {
 				errorMsgs.add("刪除資料失敗:" + e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/memberCRUD/listAllMem.jsp");
+				failureView.forward(req, res);
+			}
+		}
+
+		if ("updatePass".equals(action)) { // 來自update_mem_input.jsp的請求
+
+			List<String> errorMsgs = new LinkedList<String>();
+			// Store this set in the request scope, in case we need to
+			// send the ErrorPage view.
+			req.setAttribute("errorMsgs", errorMsgs);
+
+			try {
+				/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
+				Integer m_no = new Integer(req.getParameter("m_no").trim());
+				String m_pwd = req.getParameter("m_pwd").trim();
+
+				MemberVO memberVO = new MemberVO();
+
+				memberVO.setM_no(m_no);
+				memberVO.setM_pwd(m_pwd);
+
+				// Send the use back to the form, if there were errors
+				// if (!errorMsgs.isEmpty()) {
+				// req.setAttribute("memberVO", memberVO); //
+				// 資料庫update成功後,正確的的memberVO物件,存入req
+				// String url = "/memberCRUD/listOneMemOK.jsp";
+				// RequestDispatcher successView = req
+				// .getRequestDispatcher(url); // 修改成功後,轉交listOneMem.jsp
+				// successView.forward(req, res);
+				// }
+
+				/*************************** 2.開始修改資料 *****************************************/
+				MemberService memSvc = new MemberService();
+				memberVO = memSvc.updateMemPass(m_no, m_pwd);
+				/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
+				req.setAttribute("memberVO", memberVO); // 資料庫update成功後,正確的的memberVO物件,存入req
+				String url = "/memberCRUD/listOneMemOK.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneMem.jsp
+				successView.forward(req, res);
+
+				/*************************** 其他可能的錯誤處理 *************************************/
+			} catch (Exception e) {
+				errorMsgs.add("修改資料失敗:" + e.getMessage());
+				RequestDispatcher failureView = req
+						.getRequestDispatcher("/wine_admin/ademin_member_update.jsp");
 				failureView.forward(req, res);
 			}
 		}
