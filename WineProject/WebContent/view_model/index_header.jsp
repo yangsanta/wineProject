@@ -68,9 +68,21 @@
 					 元</div>
 					<p class="clear"></p>
 					<div class="shopcar_buy">
-						<a href="<%=request.getContextPath()%>/orders/checkout?action=checkout">
-							<button class="btn btn-mini  btn-success" type="button">結帳回家</button>
-						</a>
+						<c:if test="${empty sessionScope.ShoppingCart.content}">
+							<a href="#">
+								<button class="btn btn-mini  btn-success" type="button" disable>結帳回家</button>
+							</a>
+
+						</c:if>
+						<c:if test="${not empty sessionScope.ShoppingCart.content}">
+							<a
+								href="<%=request.getContextPath()%>/orders/checkout?action=checkout">
+								<button class="btn btn-mini  btn-success" type="button">結帳回家</button>
+							</a>
+
+						</c:if>
+
+
 					</div>
 				</ul></li>
 		</ul>

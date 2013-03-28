@@ -108,7 +108,13 @@ background-color: #fff;}
 		</table>
 <input type="button"class="btn btn-info" value="繼續購物" onclick="window.location='<%=request.getContextPath()%>/index.jsp'"/> 
         <input type="button"class="btn btn-info" value="清空購物車" onClick="confirmDelete()"/>
-        <a href="<%=request.getContextPath()%>/orders/checkout?action=checkout"><input type="button"class="btn btn-info" value="購買回家"/></a>
+       	<c:if test="${empty sessionScope.ShoppingCart.content}">
+							  <a href="#"><input type="button"class="btn btn-info" value="購買回家" disable/></a>
+						</c:if>
+						<c:if test="${not empty sessionScope.ShoppingCart.content}">
+							  <a href="<%=request.getContextPath()%>/orders/checkout?action=checkout"><input type="button"class="btn btn-info" value="購買回家"/></a>
+						</c:if>
+
 	</div>
 
 <%@ include file="../view_model/index_fast_login.htm"%>
