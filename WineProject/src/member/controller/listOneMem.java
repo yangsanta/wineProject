@@ -29,7 +29,7 @@ public class listOneMem extends HttpServlet {
 		MemberHibernateDAO dao=new MemberHibernateDAO();
 		MemberVO memberVO=dao.findByPrimaryKey(no);
 		request.setAttribute("memberVO", memberVO);
-		RequestDispatcher rd=request.getRequestDispatcher("/memberCRUD/listOneMem.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/listOneMem.jsp");
 		rd.forward(request, response);
 		
 	}
