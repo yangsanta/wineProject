@@ -84,6 +84,9 @@ public class OrdersFacade {
 		} catch (NullPointerException e) {
 			System.out.println("No order of this user at the moment");
 			e.printStackTrace();
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("No order of this user at the moment");
+			e.printStackTrace();
 		}
 		
 	}
