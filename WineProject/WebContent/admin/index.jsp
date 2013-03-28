@@ -69,7 +69,7 @@ box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 
   <body style="background: url('<%=request.getContextPath()%>/images/wood.jpg') top left repeat;">
 <br /><br /><br /><br />
     <div class="container">
-<div style="text-align:center"><img src="images/admin_title.png" title="酒迷後台管理系統"/></div><br><br><br>
+<div style="text-align:center"><img src="<%=request.getContextPath()%>/admin/admin_title.png" title="酒迷後台管理系統"/></div><br><br><br>
       <form class="form-signin"  action = "adminlogin" method="post">
         <h2 class="form-signin-heading" style="color:rgb(25, 75, 163);">Login</h2><hr>
         <input name="a_id"  type="text" class="input-block-level" placeholder="Account">

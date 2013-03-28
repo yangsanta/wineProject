@@ -48,7 +48,7 @@ public class adminLogin extends HttpServlet {
 				System.out.println("success!!");
 				
 
-				response.sendRedirect("admin_board.do?login=y");
+				response.sendRedirect(request.getContextPath()+"/wine_admin/admin_board.do?login=y");
 			} else {
 				System.out.println("failed!!");
 				errorMsgs.add("帳號密碼不符，請重新登入");
