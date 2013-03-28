@@ -214,6 +214,8 @@ label.success {
 						</c:if>
 						<hr style="margin: 0">
 							<br /> <!-- 	--留言功能 -->
+						<c:if test="${m_no==null}">欲回文請登入會員</c:if>
+						<c:if test="${m_no!=null}">
 							<form action="<c:url value='/reply.do'/>" method="post"
 								id="commentForm" class="cmxform">
 								<img src="<%=request.getContextPath()%>/images/fast_discus.png" width=30px style="margin-bottom: 20px;">
@@ -226,7 +228,7 @@ label.success {
 									value="insert"> <input type="hidden" name="d_no"
 									value="${discussionVO.d_no}">
 							</form>
-
+						</c:if>
 
 
 

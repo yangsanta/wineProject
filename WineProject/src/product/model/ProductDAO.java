@@ -310,6 +310,21 @@ public class ProductDAO implements ProductDAO_interface {
 		return list;
 	}
 
+	public List<ProductVO> getProductSales(String p_sales) {
+		List<ProductVO> list = new ArrayList();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("FROM ProductVO where p_sales = '" + p_sales + "' order by p_no");
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
 	// -------------------------------------------------------
 	public static void main(String arg[]) {
 		ProductDAO dao = new ProductDAO();
@@ -468,6 +483,28 @@ public class ProductDAO implements ProductDAO_interface {
 		// System.out.println();
 		// }
 				 
+				 
+//		list = dao.getProductSales("A");
+//		
+//		System.out.println(list.size());
+//		 for (ProductVO aEmp : list) {
+//				 System.out.println(aEmp.getP_no() + ",");
+//				 System.out.println(aEmp.getP_name() + ",");
+//				 System.out.println(aEmp.getP_pic() + ",");
+//				 System.out.println(aEmp.getP_year() + ",");
+//				 System.out.println(aEmp.getP_rate() + ",");
+//				 System.out.println(aEmp.getP_area() + ",");
+//				 System.out.println(aEmp.getP_intro() + ",");
+//				 System.out.println(aEmp.getP_num() + ",");
+//				 System.out.println(aEmp.getP_price() + ",");
+//				 System.out.println(aEmp.getP_status() + ",");
+//				 System.out.println(aEmp.getP_winery() + ",");
+//				 System.out.println(aEmp.getP_click_count() + ",");
+//				 System.out.println(aEmp.getP_buy_count() + ",");
+//				 System.out.println(aEmp.getP_style() + ",");
+//				 System.out.println(aEmp.getP_sales() + ",");
+//		 }
+		
 	}
 
 }

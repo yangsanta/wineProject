@@ -11,6 +11,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import product.model.ProductDAO;
 import product.model.ProductVO;
 
 public class Timing_SalesDAO implements Timing_Sales_interface{
@@ -88,7 +89,7 @@ public class Timing_SalesDAO implements Timing_Sales_interface{
 		return list;
 	}
 	
-	public Timing_Sales getDailySales() {
+	public Timing_Sales getDailySales() {    //查詢當天之限時特惠廣告
 		Timing_Sales timing_Sales = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Date date = new Date(); //現在時間
@@ -101,8 +102,23 @@ public class Timing_SalesDAO implements Timing_Sales_interface{
 		session.beginTransaction();
 		Query query = session.createQuery(queryString);
 		List<Timing_Sales> list = query.list();
-		timing_Sales = list.get(0);
+		timing_Sales = list.get(0);                   //查詢當天廣告之第一筆
+	
 		session.getTransaction().commit();
+		
+		//更改前天之product優惠狀態回"NONE" (全改)
+		ProductDAO productDAO = new ProductDAO();
+		List<ProductVO> pList = productDAO.getProductSales("TIME");
+		for(ProductVO p: pList){
+			p.setP_sales("NONE");
+			productDAO.update(p);
+		}
+		//同時更改當天product優惠狀態 "TIME"
+		Integer p_no =  timing_Sales.getProductVO().getP_no();
+		ProductVO productVO = productDAO.findByPrimaryKey(p_no);
+		productVO.setP_sales("TIME");
+		productDAO.update(productVO);
+		
 		} catch (RuntimeException ex) {
 		session.getTransaction().rollback();
 		throw ex;
