@@ -60,21 +60,29 @@ $(document).ready(function()
 					<div id="tab-1" class="tab">
 						<article>				
 						<div >						
-					<form id="MyForm" width="300px" align=center title="酒迷網" subtitle="會員資料修改" method="post" action="mem.do" >
+					<p >圖片：</p>
+					<form method="post" action="mempic"enctype="multipart/form-data">
+					<input type="hidden" name="m_no" value="${memberVO.m_no}"/>
+					<img src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}" style="vertical-align: top; width: 100px;"/><br/>
+					 <input	style="background: #FFFFFF" type="file" name="p_pic" size="40" /><br/> 
+					 <input type="submit" value="上傳圖片" />
+					</form>
+					<p >會員編號：${memberVO.m_no}
+					<form  title="酒迷網" subtitle="會員資料修改" method="post" action="mem" >
 						
-							<p align=right>會員帳號：<sapn></sapn>
+							<input type="hidden" name="m_pic" value="${memberVO.m_pic}"/>
 							<input type="hidden" name="m_no" value="${memberVO.m_no}"/></p>
-							<p align=right>帳號：<input type="text" name="m_id" value="${memberVO.m_id}" readonly="readonly"/></p>
-							<p align=right>姓名：<input type="text" name="m_name" require="true" label="姓名" value="${memberVO.m_name}"/></p>
-							<p align=right>密碼：<input type="password" name="m_pwd" require="true" label="密碼" value="${memberVO.m_pwd}"/></p>
-							<p align=right>e-Mail：<input type="text" validate="email" name="m_email" value="${memberVO.m_email}" /></p>																				
-							<p align=right>生日：<input type="text" validate="bday" name="m_bday" value="${memberVO.m_bday}"/><br>
-							<p align=right>行動電話：<input type="text" validate="mobile" name="m_mobile" value="${memberVO.m_mobile}"/></p>
-							<p align=right>通訊地址：<input type="text" name="m_addr" value="${memberVO.m_addr}"/></p>
-							<p align=right>圖片：<input type="text" name="m_pic" value="${memberVO.m_pic}"/></p>
-							<p align=right>安全提問：<input type="text" name="m_safety_q" value="${memberVO.m_safety_q}"/></p>
-							<p align=right>答案：<input type="text" name="m_safety_a" value="${memberVO.m_safety_a}"/></p>
-							<p align=right>狀態：<input type="text" name="m_status" value="${memberVO.m_status}"/></p>
+							<p >帳號：${memberVO.m_id}<input type="hidden" name="m_id" value="${memberVO.m_id}""/></p>
+							<p >姓名：<input type="text" name="m_name" require="true" label="姓名" value="${memberVO.m_name}"/></p>
+							<input type="hidden" name="m_pwd" require="true" label="密碼" value="${memberVO.m_pwd}"/></p>
+							<p >e-Mail：<input type="text" validate="email" name="m_email" value="${memberVO.m_email}" /></p>																				
+							<p >生日：<input type="text" validate="bday" name="m_bday" value="${memberVO.m_bday}"/><br>
+							<p >行動電話：<input type="text" validate="mobile" name="m_mobile" value="${memberVO.m_mobile}"/></p>
+							<p >通訊地址：<input type="text" name="m_addr" value="${memberVO.m_addr}"/></p>
+							
+							<p >安全提問：<input type="text" name="m_safety_q" value="${memberVO.m_safety_q}"/></p>
+							<p >答案：<input type="text" name="m_safety_a" value="${memberVO.m_safety_a}"/></p>
+							<p >狀態：<input type="text" name="m_status" value="${memberVO.m_status}"/></p>
 							
 							<input type="hidden" name="action" value="update">
 							<input type="hidden" name="m_no" value="<%=memberVO.getM_no()%>">

@@ -60,24 +60,24 @@ $(document).ready(function()
 						<div style="margin:0 auto;width:1000px;">
 						<h2>會員資料修改完成！</h2>
 						<div style="margin:0 auto; width:400px;">						
-						<form id="MyForm" width="300px" align=center title="會員資料修改完成！" method="post" action="mem.do" >						
-							
-							<p align=left>流水號：<%=memberVO.getM_no()%></p>
-							<p align=left>帳號：<%=memberVO.getM_id()%></p>
-							<p align=left>密碼：<%=memberVO.getM_pwd()%></p>
-							<p align=left>e-Mail：<%=memberVO.getM_email()%></p>
-							<p align=left>姓名：<%=memberVO.getM_name()%></p>														
-							<p align=left>生日：<%=memberVO.getM_bday()%></p>
-							<p align=left>行動電話：<%=memberVO.getM_mobile()%></p>
-							<p align=left>通訊地址：<%=memberVO.getM_addr()%></p>
-							<p align=left>圖片：<%=memberVO.getM_pic()%></p>
-							<p align=left>安全提問：<%=memberVO.getM_safety_q()%></p>
-							<p align=left>答案：<%=memberVO.getM_safety_a()%></p>
-							<p align=left>狀態：<%=memberVO.getM_status()%></p>
+					會員資料修改完成！				
+							<img src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}" style="vertical-align: top; width: 100px;"/>
+							<p >會員編號：${memberVO.m_no}</p>
+							<p >帳號：${memberVO.m_id}</p>
+							<p >密碼：${memberVO.m_pwd}</p>
+							<p >e-Mail：${memberVO.m_email}</p>
+							<p >姓名：${memberVO.m_name}</p>														
+							<p >生日：${memberVO.m_bday}</p>
+							<p >行動電話：${memberVO.m_mobile}</p>
+							<p >通訊地址：${memberVO.m_addr}</p>
+							<p >圖片：${memberVO.m_pic}</p>
+							<p >安全提問：${memberVO.m_safety_q}</p>
+							<p >答案：${memberVO.m_safety_a}</p>
+							<p >狀態：${memberVO.m_status}</p>
 														
 							<input type="button" value="返回會員列表" onclick="window.location='../wine_admin/ademin_member.jsp'">
 													
-						</form></div>
+					
 						<%@ include file="view_model/footer.jsp"%>
 							</div>						
 						</article>
