@@ -112,7 +112,7 @@ background-color: #fff;}
 							  <a href="#"><input type="button"class="btn btn-info" value="購買回家" disable/></a>
 						</c:if>
 						<c:if test="${not empty sessionScope.ShoppingCart.content}">
-							  <a href="<%=request.getContextPath()%>/orders/checkout?action=checkout"><input type="button"class="btn btn-info" value="購買回家"/></a>
+							  <a href="<%=request.getContextPath()%>/orders/checkout.do?action=checkout"><input type="button"class="btn btn-info" value="購買回家"/></a>
 						</c:if>
 
 	</div>
