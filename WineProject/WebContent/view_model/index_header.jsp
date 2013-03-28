@@ -4,14 +4,18 @@
 <div id="search">
 	<span> <c:if test="${sessionScope.access=='y'}">${sessionScope.m_id}，你好&nbsp;&nbsp; &nbsp;</c:if>
 	</span><input id="searchInput" type="text" class="search-query iconsearch"
-		placeholder="搜尋"
-		style="width: 70px; height: 10px; padding-left: 24px;"
-		onfocus="this.style.width='100px'" onblur="this.style.width='70px'">
+		placeholder="全站搜尋"
+		onfocus="this.style.width='200px';this.style.height='20px';this.placeholder='你想找甚麼?'" onblur="inputsearcharea();this.placeholder='全站搜尋'">
+		<div class="indexallsearch" >
 		<table>
 			<tbody id="ulResultIndex">
 			</tbody>
-		</table>
+		</table></div>
 </div>
+<div id="ajaxLoadingImg" style="background-color:rgba(0, 0, 0, 0.78);width:300px;text-align: center;height:300px;left: 40%;top: 40%;z-index: 999;position: absolute;display:none;-webkit-border-radius: 10px;
+-moz-border-radius: 10px;border-radius: 10px;padding: 10px;"><span style="font-size: 30px;
+color: white;">頁面跳轉中，請稍候</span>
+<img src="<%=request.getContextPath()%>/images/ajax-load.gif" style="width:200px;margin-top: 30px;"></div>
 <br class="clear" />
 <div id="header">
 	<div id="logo">
