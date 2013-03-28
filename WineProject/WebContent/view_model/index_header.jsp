@@ -76,7 +76,7 @@
 						</c:if>
 						<c:if test="${not empty sessionScope.ShoppingCart.content}">
 							<a
-								href="<%=request.getContextPath()%>/orders/checkout?action=checkout">
+								href="<%=request.getContextPath()%>/orders/checkout.do?action=checkout">
 								<button class="btn btn-mini  btn-success" type="button">結帳回家</button>
 							</a>
 
