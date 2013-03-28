@@ -124,7 +124,7 @@ background-color: #fff;}
 									修改會員資料</a>
 								</div>
 								<div class="mem_in_inner" style="text-align :center">
-								<a href="#"><img src="<%=request.getContextPath()%>/images/mem_safety.png" width=150px /><br>
+								<a href="listOneMemPass"><img src="<%=request.getContextPath()%>/images/mem_safety.png" width=150px /><br>
 									修改密碼</a>
 								</div>
 							</div>

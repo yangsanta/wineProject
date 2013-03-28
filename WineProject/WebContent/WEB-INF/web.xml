@@ -313,6 +313,17 @@
 			<servlet-name>OrdersAdminServlet</servlet-name>
 			<url-pattern>/wine_admin/ordersadmin.do</url-pattern>
 		</servlet-mapping>
+		
+		<servlet>
+			<servlet-name>listOneMemPass</servlet-name>
+			<servlet-class>member.controller.listOneMemPass</servlet-class>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>listOneMemPass</servlet-name>
+			<url-pattern>/listOneMemPass</url-pattern>
+		</servlet-mapping>
+		
+		
 		<servlet>
 			<servlet-name>listOneMem</servlet-name>
 			<servlet-class>member.controller.listOneMem</servlet-class>
