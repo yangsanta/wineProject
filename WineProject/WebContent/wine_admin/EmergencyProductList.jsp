@@ -114,10 +114,10 @@
 										<th>商品編號</th>
 										<th>圖片</th>
 										<th>商品名稱</th>
+										<th>優惠狀態</th>
 										<th>商品價格</th>
 										<th>商品數量</th>
 										<th>商品狀態</th>
-										<th>優惠狀態</th>
 										<th>管理</th>
 									</tr>
 								</thead>
@@ -132,19 +132,18 @@
 												style="width: 45px; height: 65px" />
 												</div> </a></td>
 											<td>${product.p_name}</td>
-											<td><span style='font-size: 15px'>${product.p_price}</span></td>
-										<form action="UpdateProduct" method="post" enctype="multipart/form-data">
-											<input type="hidden" size="30" name="page" value="${whichPage}" />
-											<input type="hidden" size="30" name="p_no" value="${product.p_no}" />	
-											<td><span style='font-size: 15px'><input type="text" name="p_num" value="${product.p_num}"/></span></td>
-											<td><span style='font-size: 15px'><select name="p_status">
+											<td><span style='font-size: 15px'>${product.p_sales}</span></td>
+											<td><span style='font-size: 15px'>${product.p_price}</span></td>											
+										<form action="" method="post">
+											<input type="hidden" size="30" name="page" value="${whichPage}" class="page"/>
+											<input type="hidden" size="30" name="p_no" value="${product.p_no}" class="p_no" />												
+											<td><span style='font-size: 15px'><input type="text" name="p_num" value="${product.p_num}" class="p_num"/></span></td>
+											<td><span style='font-size: 15px'><select name="p_status" class="p_status">
 													<option <c:if test="${product.p_status == '已上架'}">selected</c:if>>已上架</option>
 													<option <c:if test="${product.p_status == '已下架'}">selected</c:if>>已下架</option>
 											    </select><br /></span>
 											</td>
-											<td><span style='font-size: 15px'>${product.p_sales}</span></td>
-											<td><input type="submit" class="btn btn-primary" value="修改" /></a></td>
-											<input type="hidden" name="source" value="emergency"/>
+											<td><input type="button" class="editEmergency btn btn-primary" value="修改" /></td>
 										</form>
 										</tr>
 
@@ -204,5 +203,7 @@
 		</div>
 <%@ include file="view_model/admin_menu.jsp"%>
 	</div>
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/wine_admin/js/ademin_emergency.js"></script>
 </body>
 </html>

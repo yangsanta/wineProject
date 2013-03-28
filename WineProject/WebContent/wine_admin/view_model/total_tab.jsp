@@ -5,7 +5,7 @@
 	<nav class="links">
 		<ul>
 			<li><a href="#" class="ico1">訊息 <span class="num">216</span></a></li>
-			<li><a href="Maintain?action=getEmergency&pageNo=1" class="ico2">庫存警報 <span class="num"><jsp:useBean id="pd" class="product.model.ProductDAO">${pd.emergnecyStorage}</jsp:useBean></span></a></li>
+			<li><a href="Maintain?action=getEmergency&pageNo=1" class="ico2">庫存警報 <span id="emergencyNum" class="num"><jsp:useBean id="pd" class="product.model.ProductDAO">${pd.emergnecyStorage}</jsp:useBean></span></a></li>
 			<li><a href="ordersadmin.do?action=getall" class="ico3">新訂單<span id="ordernumber" class="num"><jsp:useBean id="od" class="orders.model.OrdersDAO">${od.newodercount}</jsp:useBean></span></a></li>
 		</ul>
 	</nav>

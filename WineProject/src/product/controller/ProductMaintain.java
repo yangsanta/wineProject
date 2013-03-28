@@ -131,6 +131,17 @@ public class ProductMaintain extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
+		
+		if (action.equals("emergencyNum")) {
+			ProductDAO dao = new ProductDAO();
+			Integer emergencyNum = dao.getEmergnecyStorage();
+			System.out.println("吐回來" + emergencyNum);
+			
+			request.setCharacterEncoding("UTF-8");
+			request.setAttribute("emergencyNum", emergencyNum);
+			RequestDispatcher dis = request.getRequestDispatcher("/wine_admin/ajaxordernumber.jsp");
+			dis.forward(request, response);
+		}
 	}
 
 	// 分頁
