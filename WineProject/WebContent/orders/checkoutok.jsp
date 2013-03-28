@@ -21,6 +21,14 @@ td {
 <body>
 
 	您的訂單（no. ${ordersVO.o_no}）已成立：
+	
+	<c:if test="${not empty newCoupon}">
+		<div>感謝您的購買！您獲得了新的折價券:<br>
+				<div>
+				${newCoupon.c_price}<br>${newCoupon.c_key}<br>
+				</div>
+		</div>
+	</c:if>
 
 	<div>
 		<ul>

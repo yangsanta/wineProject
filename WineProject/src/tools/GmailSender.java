@@ -39,7 +39,7 @@ package tools;
 	        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {  
 	  
 	            protected PasswordAuthentication getPasswordAuthentication() {  //帳號密碼
-	                return new PasswordAuthentication("davidou1234", "");  
+	                return new PasswordAuthentication("davidou1234", "13124685");  
 	            }  
 	        });  
 	  

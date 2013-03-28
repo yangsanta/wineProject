@@ -1,7 +1,9 @@
 package orders.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,8 +15,11 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import coupon.controller.CouponFacade;
 import coupon.model.CouponDAO;
 import coupon.model.CouponVO;
+import coupon_set.model.Coupon_setDAO;
+import coupon_set.model.Coupon_setVO;
 
 import order_detail.model.Order_DetailDAO;
 import order_detail.model.Order_DetailVO;
@@ -144,7 +149,7 @@ public class OrdersFacade {
 
 		// 收參數（收件人資訊）
 		String o_recipient = request.getParameter("o_recipient");
-		String o_recipient_addr = request.getParameter("o_recipient_addr");
+		String o_recipient_addr = new String(request.getParameter("o_recipient_addr").getBytes("ISO8859-1"), "UTF-8");
 		String o_recipient_tel = request.getParameter("o_recipient_tel");
 
 		Map<String, String> errMap = new HashMap<String, String>();
@@ -231,6 +236,31 @@ public class OrdersFacade {
 
 			}
 			request.setAttribute("ordersVO", ordersVO);
+			
+			//訂單成立贈送coupon
+			List<Coupon_setVO> cs = new Coupon_setDAO().getAll();
+			Integer c_price = new Integer(0);
+			for (Coupon_setVO coupon_setVO: cs){
+				if (ordersVO.getO_after_sales() >= coupon_setVO.getcs_limit_price()){
+					c_price = coupon_setVO.getcs_price();
+				}
+			}
+			if (c_price!=0){
+				String c_key = CouponFacade.createCoupon();
+				CouponVO couponVO = new CouponVO();
+				couponVO.setC_key(c_key);
+				couponVO.setC_price(c_price);
+				couponVO.setM_no((Integer) request.getSession().getAttribute("m_no"));
+				couponVO.setC_status(true);
+				couponVO.setC_deadline(new Timestamp(new java.util.Date().getTime()+30*60*60*24));
+				new CouponDAO().insert(couponVO);
+				
+				System.out.println(c_key);
+				System.out.println(c_price);
+				
+				request.setAttribute("newCoupon", couponVO);
+			}
+			
 			isSuccess = true;
 
 		}

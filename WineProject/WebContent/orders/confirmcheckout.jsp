@@ -117,7 +117,7 @@
 	</table>
 	
 	<div>
-		<form method="post" action="<%=request.getContextPath()%>/orders/checkout.do?">
+		<form method="post" action="<%=request.getContextPath()%>/orders/checkout.do">
 			收件人姓名：<input type="text" name="o_recipient" placeholder="收件人姓名" value="${o_recipient}">${errMap.errRName}<br>
 			聯絡電話：<input type="text" name="o_recipient_tel" placeholder="聯絡電話" value="${o_recipient_tel}">${errMap.errRPhone}<br> 
 			收件地址：<input type="text" name="o_recipient_addr" placeholder="收件地址"

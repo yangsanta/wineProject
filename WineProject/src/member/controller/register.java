@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import coupon.controller.CouponFacade;
+import coupon.model.CouponDAO;
+import coupon.model.CouponVO;
+import coupon_set.model.Coupon_setDAO;
 
 import member.model.MemberHibernateDAO;
 import member.model.MemberVO;
@@ -148,17 +154,25 @@ public class register extends HttpServlet {
 				
 				
 				
-				
-				
-				
-				
-				
-				
 			}
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面
 			request.setAttribute("m_idKey", m_id);
 			
-			if (errorMsg.isEmpty())	{			
+			if (errorMsg.isEmpty())	{	
+				//註冊成功贈送coupon
+				String c_key = CouponFacade.createCoupon();
+				Integer c_price = new Coupon_setDAO().getAll().get(0).getcs_price();
+				CouponVO couponVO = new CouponVO();
+				couponVO.setC_key(c_key);
+				couponVO.setC_price(c_price);
+				couponVO.setM_no((Integer) request.getSession().getAttribute("m_no"));
+				couponVO.setC_status(true);
+				couponVO.setC_deadline(new Timestamp(new java.util.Date().getTime()+30*60*60*24));
+				new CouponDAO().insert(couponVO);
+				
+				System.out.println(c_key);
+				request.setAttribute("newCoupon", couponVO);
+				
 				RequestDispatcher rd = request.getRequestDispatcher("/smscheck.jsp");
 				rd.forward(request, response);
 				return ; 

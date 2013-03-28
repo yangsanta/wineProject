@@ -35,5 +35,8 @@
 
 <hr />
 <a href="<%=request.getContextPath()%>/orders/ordersadmin.do?action=getall">Orders CRUD</a>
+
+<hr />
+<a href="<%=request.getContextPath()%>/MemberService">Forgot Password</a>
 </body>
 </html>

@@ -57,6 +57,13 @@ $(document).ready(function()
 					<div id="content">
 					<%@ include file="../view_model/page_alert.htm"%>
 
+	<c:if test="${not empty newCoupon}">
+		<div>感謝您的註冊！您獲得了新的折價券:<br/>
+				<div>
+				${newCoupon.c_price}<br/>${newCoupon.c_key}<br/>
+				</div>
+		</div>
+	</c:if>
 	<div>
 
 			<span>帳號：${memberVO.m_id}</span><br>
