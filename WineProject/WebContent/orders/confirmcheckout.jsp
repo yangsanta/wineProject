@@ -29,10 +29,7 @@
 		display: block;
 		height: 150px;
 	}
-	td {
-		border: 1px silver solid;
-		width: 240px;
-	}
+	table{font-size: 12px;}
 
 </script>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -64,9 +61,9 @@
 <c:if test="${not empty sessionScope.ShoppingCart.content}">
 
 
-	<table>
+	<table style="border: 1px double rgb(109, 2, 107);" >
 		<thead>
-			<tr><th>商品</th><th>單價</th><th>數量</th><th>總價</th></tr>
+			<tr><th>商品</th><th width=100px>單價</th><th  width=100px>數量</th><th>總價</th></tr>
 		</thead>
 		<tbody>
 <!-- 			<tr> -->
@@ -84,14 +81,14 @@
 <!-- 			</tr> -->
 			<c:forEach var="shoppingProduct" items="${sessionScope.ShoppingCart.content}">
 				<tr>
-					<td><img src="<%=request.getContextPath()%>/images/products/${shoppingProduct.value.pic}" width=50px;>${shoppingProduct.value.productName}
+					<td><img src="<%=request.getContextPath()%>/images/products/${shoppingProduct.value.pic}" width=30px;><span style="font-size:10px">${shoppingProduct.value.productName}</span>
 						 <c:if test="${shoppingProduct.value.saleType eq 'R'}">【紅】</c:if>
 						 <c:if test="${shoppingProduct.value.saleType eq 'G'}">【綠】</c:if>
 						 <c:if test="${shoppingProduct.value.saleType eq 'A'}">【A】</c:if>
 						 <c:if test="${shoppingProduct.value.saleType eq 'B'}">【B】</c:if>
 					</td>
-					<td>$ ${shoppingProduct.value.productVO.p_price}</td>
-					<td><c:if test="${shoppingProduct.value.productVO.p_num < shoppingProduct.value.productNumber}"><i>庫存數量 (${shoppingProduct.value.productVO.p_num}) 不足！</i><br></c:if>${shoppingProduct.value.productNumber}</td>
+					<td align="center">$ ${shoppingProduct.value.productVO.p_price}</td>
+					<td align="center"><c:if test="${shoppingProduct.value.productVO.p_num < shoppingProduct.value.productNumber}"><i>庫存數量 (${shoppingProduct.value.productVO.p_num}) 不足！</i><br></c:if>${shoppingProduct.value.productNumber}</td>
 					<td>
 <%-- 					<td><i>原價 : $ ${shoppingProduct.value.productVO.p_price*shoppingProduct.value.productNumber}</i><br>${shoppingProduct.value.saleType}折扣後: $ ${shoppingProduct.value.subTotal}</td> --%>
 						<c:choose>
@@ -105,18 +102,18 @@
 								<i>原價 : $ ${shoppingProduct.value.productVO.p_price*shoppingProduct.value.productNumber}</i>
 								<br>買A送B折扣後: $ ${shoppingProduct.value.subTotal}</c:when>
 							<c:otherwise>
-								<c:if test="${shoppingProduct.value.saleType eq 'R'}"><a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue="><i>加購綠標商品享紅配綠優惠價</i></a><br></c:if>
-								<c:if test="${shoppingProduct.value.saleType eq 'B'}"><a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue="><i>加購A標商品享買A送B免費贈送</i></a><br></c:if>
+								<c:if test="${shoppingProduct.value.saleType eq 'R'}"><a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue="><i><span style="font-size:10px">加購綠標商品享紅配綠優惠價</span></i></a><br></c:if>
+								<c:if test="${shoppingProduct.value.saleType eq 'B'}"><a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue="><i><span style="font-size:10px">加購A標商品享買A送B免費贈送</span></i></a><br></c:if>
 								小計： $ ${shoppingProduct.value.subTotal}</c:otherwise>
 						</c:choose>
 					</td>
 				</tr>
 			</c:forEach>
-			<tr><td></td><td></td><td></td><td><i>運費： ${ShippingCost}</i><br>總計： $ ${ShoppingCart.total + ShippingCost}</td></tr>
+			<tr><td style="padding-right:10px;padding-bottom:10px;" COLSPAN=4 align="right"><hr><span style="margin:0 20px 20px 0">運費： ${ShippingCost} 總計： $ ${ShoppingCart.total + ShippingCost}</span></td></tr>
 		</tbody>
 	</table>
 	
-	<div>
+	<div style="margin-top:30px;">
 		<form method="post" action="<%=request.getContextPath()%>/orders/checkout.do?">
 			收件人姓名：<input type="text" name="o_recipient" placeholder="收件人姓名" value="${o_recipient}">${errMap.errRName}<br>
 			聯絡電話：<input type="text" name="o_recipient_tel" placeholder="聯絡電話" value="${o_recipient_tel}">${errMap.errRPhone}<br> 
@@ -124,11 +121,15 @@
 						value="${o_recipient_addr}">${errMap.errRAddr}<br>
 			
 			<c:if test="${not empty theCoupons}">
-				<div>您擁有的折價券:<br>
+				<div style="overflow: auto;">您擁有的折價券:<br>
 					<c:forEach var="coupon" items="${theCoupons}">
-						<div>
-						${coupon.c_price}<br>${coupon.c_key}<br>
-						<input type="radio" name="useCoupon" value="${coupon.c_key}">使用這張折價券 
+						<div style="float:left;margin-right:30px">
+						
+						<label for="${coupon.c_key}">
+							<img rel="tooltip" data-placement="bottom" title="優惠卷序號:${coupon.c_key}"  src="/WineProject/images/ticket${coupon.c_price}.png" width=50px style="margin-left:30px"/></label>
+						
+						<br><br>
+						<input id="${coupon.c_key}" type="radio" name="useCoupon" value="${coupon.c_key}">使用${coupon.c_price}折價券 
 						</div>
 					</c:forEach>
 				</div>
