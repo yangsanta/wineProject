@@ -48,6 +48,7 @@ public class login extends HttpServlet {
 		String m_id = request.getParameter("m_id").trim();
 		String m_pwd = request.getParameter("m_pwd").trim();
 		session.setAttribute("access", "n");
+		System.out.println("m_pwd==========>["+m_pwd+"]");
 
 		if (m_id != null && m_id.length() != 0 && m_pwd != null
 				&& m_pwd.length() != 0) {
@@ -61,9 +62,8 @@ public class login extends HttpServlet {
 				session.setAttribute("m_id", member.getM_id()); // 會員帳號
 				session.setAttribute("m_no", member.getM_no()); // 會員編號
 				session.setAttribute("m_name", member.getM_name()); // 會員姓名
-
+				session.setAttribute("m_pwd", member.getM_pwd()); // 會員密碼
 				session.setMaxInactiveInterval(3600);
-
 				String redirestpage = null;
 				// 跳轉回原頁面
 				String uri = (String) session.getAttribute("uri");
