@@ -82,7 +82,7 @@ $(function() {
 		    .hide().text(t).appendTo(row);
 		 });//each tr
 	 $("#FilterTextBox").keyup(function(){
-	   var s = $(this).val().toLowerCase().split(" ");
+	   var s = $(this).val().toLowerCase().trim().split(" ");
 	 
 	   if (s != ""){
 		 //show all rows.
@@ -99,23 +99,15 @@ $(function() {
 	 
 	//table search
 	//search o_no
-	//add index column with all content.
-		$(".filterable1 tr:has(td)").each(function(){
-			   var t = $(this).children('.o_no').text().toLowerCase(); //all row text
-			   var row = $(this).closest('tr');
-			   $("<td class='indexColumnO_no'></td>")
-			    .hide().text(t).appendTo(row);
-			 });//each tr
 		 $("#FilterTextBoxO_no").keyup(function(){
-		   var s = $(this).val().toLowerCase().split(" ");
+		   var s = $(this).val().toLowerCase().trim().split(" ");
 		 
 		   if (s != ""){
-			 //show all rows.
-			   $(".filterable1 tr:hidden").show();
+			   $(".filterable1 tr:visible").hide();
 		   $.each(s, function(){
-		       $(".filterable1 tr:visible .indexColumnO_no:not(:contains('"
-		          + this + "'))").parent().hide();
-		   });//each
+		       $(".filterable1 tr:hidden .o_no:contains('"
+		          + this + "')").parent().show();
+		   });
 		   } else {
 			   $(".filterable1 tr").show();
 		   }
@@ -124,22 +116,14 @@ $(function() {
 	 
 	//table search
 	//search m_no
-	//add index column with all content.
-		 $(".filterable1 tr:has(td)").each(function(){
-			   var t = $(this).children('.m_no').text().toLowerCase(); //all row text
-			   var row = $(this).closest('tr');
-			   $("<td class='indexColumnM_no'></td>")
-			    .hide().text(t).appendTo(row);
-			 });//each tr
 		 $("#FilterTextBoxM_no").keyup(function(){
-		   var s = $(this).val().toLowerCase().split(" ");
+		   var s = $(this).val().toLowerCase().trim().split(" ");
 		 
 		   if (s != ""){
-			 //show all rows.
-			   $(".filterable1 tr:hidden").show();
-		   $.each(s, function(){
-		       $(".filterable1 tr:visible .indexColumnM_no:not(:contains('"
-		          + this + "'))").parent().hide();
+			   $(".filterable1 tr:visible").hide();
+			   $.each(s, function(){
+			       $(".filterable1 tr:hidden .m_no:contains('"
+			          + this + "')").parent().show();
 		   });//each
 		   } else {
 			   $(".filterable1 tr").show();
