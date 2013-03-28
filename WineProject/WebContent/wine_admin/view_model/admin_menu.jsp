@@ -33,7 +33,7 @@
 					class="text_con">餐酒搭配</font><em></em></a> <span class="menu_tooltip"><span>餐酒搭配</span></span>
 			</li>
 			
-			<li><a href="ordersadmin.do?action=getall" class="ico7"><span>>訂單管理</span><font
+			<li class="order"><a href="ordersadmin.do?action=getall" class="ico7"><span>>訂單管理</span><font
 					class="text_con">訂單管理</font><em></em></a> <span class="menu_tooltip"><span>訂單管理</span></span>
 			</li>	
 			

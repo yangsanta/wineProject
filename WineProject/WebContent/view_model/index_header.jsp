@@ -28,7 +28,7 @@
 				<li><a class="fancybox"
 					href="<%=request.getContextPath()%>/product/login.do?action=logout">登出</a></li>
 			</c:if>
-			<li><a href="<%=request.getContextPath()%>/member/MemberService">會員專區
+			<li><a href="<%=request.getContextPath()%>/MemberService">會員專區
 			</a></li>
 		</ul>
 		<ul id="nav22">

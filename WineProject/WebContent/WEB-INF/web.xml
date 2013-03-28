@@ -19,7 +19,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>MemberFilter</filter-name>
-		<url-pattern>/member/MemberService</url-pattern>
+		<url-pattern>/MemberService</url-pattern>
 		<url-pattern>/orders/checkout</url-pattern>
 		<url-pattern>/insertDiscussion.jsp</url-pattern>
 		<url-pattern>/discussion/insertDiscussion</url-pattern>
@@ -111,7 +111,7 @@
 		</servlet>
 		<servlet-mapping>
 			<servlet-name>MemberServlet</servlet-name>
-			<url-pattern>/memberCRUD/mem.do</url-pattern>
+			<url-pattern>/mem.do</url-pattern>
 		</servlet-mapping>
 		<servlet>
 			<servlet-name>Disselect</servlet-name>
@@ -127,7 +127,7 @@
 		</servlet>
 		<servlet-mapping>
 			<servlet-name>MemberService</servlet-name>
-			<url-pattern>/member/MemberService</url-pattern>
+			<url-pattern>/MemberService</url-pattern>
 		</servlet-mapping>
 		<servlet>
 			<servlet-name>setselectallfood</servlet-name>
@@ -319,7 +319,7 @@
 		</servlet>
 		<servlet-mapping>
 			<servlet-name>listOneMem</servlet-name>
-			<url-pattern>/memberCRUD/listOneMem</url-pattern>
+			<url-pattern>/listOneMem</url-pattern>
 		</servlet-mapping>
 		<servlet>
 			<servlet-name>insertDiscussion</servlet-name>

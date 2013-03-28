@@ -38,7 +38,7 @@ $(document).ready(function()
 			<p align=right>答案：<input type="text" name="m_safety_a" value="${memberVO.getM_safety_a()}" readonly="readonly"/></p>
 			<p align=right><input type="hidden" name="m_status" value="${memberVO.getM_status()}" readonly="readonly"/></p>
 			
-			<input type="button" value="返回會員專區" onclick="window.location='../member/Member_Info.jsp'">
+			<input type="button" value="返回會員專區" onclick="window.location='Member_Info.jsp'">
 			
 		</form>
 	</div>
