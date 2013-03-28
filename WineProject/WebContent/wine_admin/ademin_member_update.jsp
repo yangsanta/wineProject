@@ -27,6 +27,29 @@ $(document).ready(function()
   { $('#MyForm').formly({'onBlur':false});
    });
 </script>
+	<style type="text/css">
+	.buttons li.member a {
+	background:url(<%=request.getContextPath()%>/wine_admin/images/sprite.png) no-repeat -113px -2px;
+	margin:0 -21px 0 0;
+	padding:0 21px 0 0;
+}
+.buttons li.member a :hover{color:yellow;}
+.buttons li.member a em {top:40px;}
+.buttons .member .ico1 span {background-position:0 -23px;}
+.buttons .member .ico2 span {background-position:-2px -73px;}
+.buttons .ico3 span {background-position:-2px -97px;}
+.buttons .member .ico3 span {background-position:-2px -126px;}
+.buttons .ico4 span {background-position:-2px -153px;}
+.buttons .member .ico4 span {background-position:-2px -178px;}
+.buttons .ico5 span {background-position:-1px -206px;}
+.buttons .member .ico5 span {background-position:-2px -232px;}
+.buttons .ico6 span {background-position:-2px -262px;}
+.buttons .member .ico6 span {background-position:-3px -291px;}
+.buttons .ico7 span {background-position:-4px -321px;}
+.buttons .member .ico7 span {background-position:-4px -352px;}
+.buttons .ico8 span {background-position:-4px -380px;}
+.buttons .member .ico8 span {background-position:-4px -415px;}
+</style>
 </head>
 <body>
 	<div id="wrapper">

@@ -32,7 +32,7 @@ public class MemberFilter implements Filter {
 		HttpServletResponse resp=  (HttpServletResponse)response;
 		HttpSession	session =req.getSession();
 		
-		if(req.getParameter("action")!=null){session.setAttribute("action", "action="+req.getAttribute("action"));}
+		if(req.getParameter("action")!=null){session.setAttribute("action", "action="+req.getParameter("action"));}
 		 String uri=req.getRequestURI();
 		if(session.getAttribute("access")==null){
 			System.out.println(uri);

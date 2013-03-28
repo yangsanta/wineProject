@@ -18,7 +18,7 @@
 </style>
 </head>
 <body>
-
+11
 <c:if test="${empty sessionScope.ShoppingCart}">
 <c:if test="${empty sessionScope.ShoppingCart.content}">
 如果購物車內沒東西的 request attribute： ${cartNoContent}

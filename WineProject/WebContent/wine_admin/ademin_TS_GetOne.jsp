@@ -17,6 +17,29 @@
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
 		<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
+			<style type="text/css">
+	.buttons li.TS a {
+	background:url(<%=request.getContextPath()%>/wine_admin/images/sprite.png) no-repeat -113px -2px;
+	margin:0 -21px 0 0;
+	padding:0 21px 0 0;
+}
+.buttons li.TS a :hover{color:yellow;}
+.buttons li.TS a em {top:40px;}
+.buttons .TS .ico1 span {background-position:0 -23px;}
+.buttons .TS .ico2 span {background-position:-2px -73px;}
+.buttons .ico3 span {background-position:-2px -97px;}
+.buttons .TS .ico3 span {background-position:-2px -126px;}
+.buttons .ico4 span {background-position:-2px -153px;}
+.buttons .TS .ico4 span {background-position:-2px -178px;}
+.buttons .ico5 span {background-position:-1px -206px;}
+.buttons .TS .ico5 span {background-position:-2px -232px;}
+.buttons .ico6 span {background-position:-2px -262px;}
+.buttons .TS .ico6 span {background-position:-3px -291px;}
+.buttons .ico7 span {background-position:-4px -321px;}
+.buttons .TS .ico7 span {background-position:-4px -352px;}
+.buttons .ico8 span {background-position:-4px -380px;}
+.buttons .TS .ico8 span {background-position:-4px -415px;}
+</style>
 </head>
 <body>
 	<div id="wrapper">

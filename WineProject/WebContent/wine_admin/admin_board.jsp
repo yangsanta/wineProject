@@ -19,6 +19,29 @@
 <!-- 	<script type="text/javascript" src="js/jquery.main.js"></script> -->
 	<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
 	<style type="text/css">
+	.buttons li.adminboard a {
+	background:url(<%=request.getContextPath()%>/wine_admin/images/sprite.png) no-repeat -113px -2px;
+	margin:0 -21px 0 0;
+	padding:0 21px 0 0;
+}
+.buttons li.adminboard a :hover{color:yellow;}
+.buttons li.adminboard a em {top:40px;}
+.buttons .adminboard .ico1 span {background-position:0 -23px;}
+.buttons .adminboard .ico2 span {background-position:-2px -73px;}
+.buttons .ico3 span {background-position:-2px -97px;}
+.buttons .adminboard .ico3 span {background-position:-2px -126px;}
+.buttons .ico4 span {background-position:-2px -153px;}
+.buttons .adminboard .ico4 span {background-position:-2px -178px;}
+.buttons .ico5 span {background-position:-1px -206px;}
+.buttons .adminboard .ico5 span {background-position:-2px -232px;}
+.buttons .ico6 span {background-position:-2px -262px;}
+.buttons .adminboard .ico6 span {background-position:-3px -291px;}
+.buttons .ico7 span {background-position:-4px -321px;}
+.buttons .adminboard .ico7 span {background-position:-4px -352px;}
+.buttons .ico8 span {background-position:-4px -380px;}
+.buttons .adminboard .ico8 span {background-position:-4px -415px;}
+
+	
 .table {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
