@@ -149,6 +149,39 @@ public class AdsFacade {
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(jsonArray.toString());
 	}
+	
+	//Index的ajax搜尋商品
+	public void querySearchProductsIndex(String queryProductsIndex) throws IOException {
+		ProductDAO productDAO = new ProductDAO();
+		List<ProductVO> list = productDAO.findFuzzyProductName(queryProductsIndex);
+
+		JSONArray jsonArray = new JSONArray();
+		String p_noStr = null;
+		String p_name = null;
+		String str = null;
+//		// 搜尋產品編號的結果
+//		try {
+//			Integer p_no = Integer.parseInt(queryProductsIndex);
+//			ProductVO productVO_Pk = (new ProductDAO()).findByPrimaryKey(p_no);
+//			p_noStr = productVO_Pk.getP_no().toString();
+//			p_name = productVO_Pk.getP_name();
+//			str = p_no + ": " + p_name;
+//			jsonArray.put(str);
+//		} catch (NumberFormatException e) {
+//		}
+		// 搜尋產品名的結果
+		for (ProductVO productVO : list) {
+			p_noStr = productVO.getP_no().toString();
+			p_name = productVO.getP_name();
+			str = "<a href='/WineProject/product/DisplayProducts.do?action=getOne_For_Display&pId=" + p_noStr + "'>" + p_name + "</a>";
+			jsonArray.put(str);
+		}
+
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(jsonArray.toString());
+		
+	}
+	
 
 	// 新增或修改 DB 裡的廣告資料
 	public void setAds(String fileName, String productName) throws IOException {
@@ -242,6 +275,8 @@ public class AdsFacade {
 		AdsDAO adsDAO = new AdsDAO();
 		adsDAO.delete(ads_no);
 	}
+
+	
 
 
 }

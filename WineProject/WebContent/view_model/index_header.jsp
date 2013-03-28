@@ -3,10 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="search">
 	<span> <c:if test="${sessionScope.access=='y'}">${sessionScope.m_id}，你好&nbsp;&nbsp; &nbsp;</c:if>
-	</span><input name="searchInput" type="text" class="search-query iconsearch"
+	</span><input id="searchInput" type="text" class="search-query iconsearch"
 		placeholder="搜尋"
 		style="width: 70px; height: 10px; padding-left: 24px;"
 		onfocus="this.style.width='100px'" onblur="this.style.width='70px'">
+		<table>
+			<tbody id="ulResultIndex">
+			</tbody>
+		</table>
 </div>
 <br class="clear" />
 <div id="header">

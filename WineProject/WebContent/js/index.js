@@ -58,3 +58,35 @@
         $('#just_login').fadeIn().delay(4000).fadeOut();
     });
 	//登入成功的提示視窗
+    
+    //ajax product-name-search
+    $(document).ready( function(){
+    	$("#searchInput").bind("keyup", function() {
+    		$('#ulResultIndex').empty();
+    		$.ajax({
+    			url : '/WineProject/product/advertisements.do',
+    			type : 'POST',
+    			data : {
+    				queryProductsIndex : $("#searchInput").val(),
+    				action : "queryProductsIndex"
+    			},
+    			dataType : 'json',
+    			success : function(data) {
+
+    				$.each(data, function() {
+    					$('#ulResultIndex').append('<tr><td>' + this + '</td></tr>');
+    				});
+
+    			}
+    		});
+    	});
+    	// hover effect & click effect
+    	$(document).on("mouseenter", "#ulResultIndex tr", function() {
+    		$(this).addClass("hoverSearchIndex");
+    	}).on("mouseleave", "#ulResultIndex tr", function() {
+    		$(this).removeClass("hoverSearchIndex");
+    	}).on("click", "#ulResultIndex tr", function() {
+    		$("#searchInput").val($(this).text());
+    		$('#ulResultIndex').empty();
+    	});
+    });

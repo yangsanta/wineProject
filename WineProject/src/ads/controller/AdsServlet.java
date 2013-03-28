@@ -56,6 +56,13 @@ public class AdsServlet extends HttpServlet {
 			facade.querySearchProducts(queryProducts);
 		}
 		
+		if ( action != null && action.equals("queryProductsIndex")){
+			String queryProductsIndex = request.getParameter("queryProductsIndex").trim();
+			
+			if (!queryProductsIndex.equals(""))
+			facade.querySearchProductsIndex(queryProductsIndex);
+		}
+		
 		if ( action != null && action.equals("setAds")){
 			String fileName = request.getParameter("fileName");
 			String productName = request.getParameter("productName");
