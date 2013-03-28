@@ -53,7 +53,7 @@ public class UpdateProduct extends HttpServlet {
 		int number, price, vol;
 		double alcho;
 		
-		String page,p_no, p_name, p_year, p_area, p_country, p_num, p_price, p_status, p_winery, p_style, p_sales, p_vol, p_alcho, p_date, p_type, p_grape, p_intro;
+		String page,p_no, p_name, p_year, p_area, p_country, p_num, p_price, p_status, p_winery, p_style, p_sales, p_vol, p_alcho, p_date, p_type, p_grape, p_intro, source = null;
 
 		ServletFileUpload uploadHandler = new ServletFileUpload(
 				new DiskFileItemFactory());
@@ -249,6 +249,9 @@ public class UpdateProduct extends HttpServlet {
 						} else {
 						productVO.setP_intro(p_intro);
 						}
+					} else if (fldName.equals("source")) { // 將p_intro包進物件
+						source = new String(item.getString().getBytes(
+								"ISO-8859-1"), "UTF-8");
 					}
 
 				} else {
@@ -274,7 +277,6 @@ public class UpdateProduct extends HttpServlet {
 			}
 			if (!errorMsgs.isEmpty()) {
 				request.setAttribute("ErrMsg", errorMsgs);
-				
 				RequestDispatcher rd = request
 						.getRequestDispatcher("/wine_admin/Maintain?action=getOne_For_Display&pId="+p_no);
 				rd.forward(request, response);
@@ -282,6 +284,9 @@ public class UpdateProduct extends HttpServlet {
 			}
 			new ProductDAO().update(productVO);
 			errorMsgs.put("success" , "資料新增成功");
+			if(source.equals("emergency")){
+				response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/wine_admin/Maintain?action=getEmergency&pageNo="+page));
+			}
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/product/Maintain?action=getAll&pageNo="+page));
 		} catch (FileUploadException e) {
 

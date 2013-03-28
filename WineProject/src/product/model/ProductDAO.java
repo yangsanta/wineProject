@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 
 public class ProductDAO implements ProductDAO_interface {
@@ -325,14 +326,47 @@ public class ProductDAO implements ProductDAO_interface {
 		}
 		return list;
 	}
+	
+	public Integer getEmergnecyStorage() {
+		Integer storageNum ;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			SQLQuery query = session
+					.createSQLQuery("select COUNT(p_no) from product where p_num < 24");
+			storageNum = (Integer)query.uniqueResult();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return storageNum;
+	}
+	
+	public List<ProductVO> getEmergencyProduct() {
+		List<ProductVO> list = new ArrayList();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("FROM ProductVO where p_num < 24  order by p_num");
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+	
 	// -------------------------------------------------------
 	public static void main(String arg[]) {
 		ProductDAO dao = new ProductDAO();
 //		List<ProductVO> list = dao.findProductBetween("p_date", "0");
-		 List<ProductVO> list = dao.findRandTopProduct("4");
-				 for (ProductVO aEmp : list) {
+//		 List<ProductVO> list = dao.findRandTopProduct("4");
+//				 for (ProductVO aEmp : list) {
 //				 System.out.println(aEmp.getP_no() + ",");
-				 System.out.println(aEmp.getP_name() + ",");
+//				 System.out.println(aEmp.getP_name() + ",");
 //				 System.out.println(aEmp.getP_pic() + ",");
 //				 System.out.println(aEmp.getP_year() + ",");
 //				 System.out.println(aEmp.getP_rate() + ",");
@@ -351,8 +385,8 @@ public class ProductDAO implements ProductDAO_interface {
 //				 System.out.println(aEmp.getP_date() + ",");
 //				 System.out.println(aEmp.getP_type() + ",");
 //				 System.out.println(aEmp.getP_grape());
-				 System.out.println();
-				 }
+//				 System.out.println();
+//				 }
 //		
 		
 		// List<ProductVO> list = dao.findSomeProduct("p_vol","750");
@@ -504,6 +538,12 @@ public class ProductDAO implements ProductDAO_interface {
 //				 System.out.println(aEmp.getP_style() + ",");
 //				 System.out.println(aEmp.getP_sales() + ",");
 //		 }
+		
+//		Integer a = dao.getEmergnecyStorage();
+//		System.out.println("達到緊張庫存(24隻以下)之商品總共有 = " + a + "隻");
+//		
+//		List<ProductVO> list = dao.getEmergencyProduct();
+//		System.out.println(list.size());
 		
 	}
 

@@ -194,8 +194,16 @@
 									<div style="text-align: right;">商品編號:365${productVO.p_no}</div>
 									<hr style="margin: 0">
 										<div class="price">
-											<strong>網路價:</strong><span style="color: red">$${
-												productVO.p_price }</span>
+											<strong>
+											<c:if test="${productVO.p_sales!='TIME'}">網路價</c:if>
+											<c:if test="${productVO.p_sales=='TIME'}">限時搶購價</c:if>
+											:</strong>
+											<span style="color: red">$
+												<c:if test="${productVO.p_sales!='TIME'}">${productVO.p_price}</c:if>
+												<c:if test="${productVO.p_sales=='TIME'}">
+													<jsp:useBean id="ts" class="timing_sales.model.Timing_SalesDAO">${ts.dailySales.ts_price}</jsp:useBean>
+												</c:if>
+											</span>
 										</div>
 										<div class="car">
 											<BR><form action="shoppingCart.do" method="post">
