@@ -276,8 +276,8 @@ width: 16px;}
 									<hr style="width: 450px">
 										<div style="width: 250px; float: left;">${ts.dailySales.ts_totalsale}人已購買 <Br>好康已成立</div>
 										<div style="width: 150px; float: left;">
-										<button class="btn btn-large  btn-success"
-												type="button">我要買</button>
+										<a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${ts.dailySales.productVO.p_no}"><button class="btn btn-large  btn-success"
+												type="button">我要買</button><a>
 									</div>
 									<div
 										style="float: right; color: white; background-image: url(images/clock.png); width: 210px; height: 42px; margin-right: 10px;">
