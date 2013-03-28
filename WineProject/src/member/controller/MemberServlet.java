@@ -1,11 +1,18 @@
 package member.controller;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import member.model.MemberDAO_interface;
+import member.model.MemberHibernateDAO;
 import member.model.MemberService;
 import member.model.MemberVO;
 
@@ -26,8 +33,6 @@ public class MemberServlet extends HttpServlet {
 		if ("getOne_For_Display".equals(action)) { // 來自select_page.jsp的請求
 
 			List<String> errorMsgs = new LinkedList<String>();
-			// Store this set in the request scope, in case we need to
-			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			try {
@@ -92,8 +97,6 @@ public class MemberServlet extends HttpServlet {
 		if ("getOne_For_Update".equals(action)) { // 來自listAllMem.jsp的請求
 
 			List<String> errorMsgs = new LinkedList<String>();
-			// Store this set in the request scope, in case we need to
-			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
 			
 			try {
@@ -123,8 +126,6 @@ public class MemberServlet extends HttpServlet {
 		if ("update".equals(action)) { // 來自update_mem_input.jsp的請求
 			
 			List<String> errorMsgs = new LinkedList<String>();
-			// Store this set in the request scope, in case we need to
-			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
 		
 			try {
@@ -148,22 +149,6 @@ public class MemberServlet extends HttpServlet {
 					m_bday = new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-
-//				Double sal = null;
-//				try {
-//					sal = new Double(req.getParameter("sal").trim());
-//				} catch (NumberFormatException e) {
-//					sal = 0.0;
-//					errorMsgs.add("薪水請填數字.");
-//				}
-//
-//				Double comm = null;
-//				try {
-//					comm = new Double(req.getParameter("comm").trim());
-//				} catch (NumberFormatException e) {
-//					comm = 0.0;
-//					errorMsgs.add("獎金請填數字.");
-//				}
 
 				MemberVO memberVO = new MemberVO();
 				
@@ -211,8 +196,6 @@ public class MemberServlet extends HttpServlet {
         if ("insert".equals(action)) { // 來自addMem.jsp的請求  
 			
 			List<String> errorMsgs = new LinkedList<String>();
-			// Store this set in the request scope, in case we need to
-			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			try {
@@ -239,25 +222,7 @@ public class MemberServlet extends HttpServlet {
 				} catch (IllegalArgumentException e) {
 					m_bday = new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
-				}
-				
-//				Double sal = null;
-//				try {
-//					sal = new Double(req.getParameter("sal").trim());
-//				} catch (NumberFormatException e) {
-//					sal = 0.0;
-//					errorMsgs.add("薪水請填數字.");
-//				}
-//				
-//				Double comm = null;
-//				try {
-//					comm = new Double(req.getParameter("comm").trim());
-//				} catch (NumberFormatException e) {
-//					comm = 0.0;
-//					errorMsgs.add("獎金請填數字.");
-//				}
-//				
-//				Integer deptno = new Integer(req.getParameter("deptno").trim());
+				}				
 				
 				MemberVO memberVO = new MemberVO();
 				
@@ -306,8 +271,6 @@ public class MemberServlet extends HttpServlet {
 		if ("delete".equals(action)) { // 來自listAllMem.jsp
 
 			List<String> errorMsgs = new LinkedList<String>();
-			// Store this set in the request scope, in case we need to
-			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
 	
 			try {
@@ -335,8 +298,6 @@ public class MemberServlet extends HttpServlet {
 			if ("member_update".equals(action)) { // 來自update_mem_input.jsp的請求
 			
 			List<String> errorMsgs = new LinkedList<String>();
-			// Store this set in the request scope, in case we need to
-			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
 		
 			try {
@@ -361,28 +322,12 @@ public class MemberServlet extends HttpServlet {
 					errorMsgs.add("請輸入日期!");
 				}
 
-//				Double sal = null;
-//				try {
-//					sal = new Double(req.getParameter("sal").trim());
-//				} catch (NumberFormatException e) {
-//					sal = 0.0;
-//					errorMsgs.add("薪水請填數字.");
-//				}
-//
-//				Double comm = null;
-//				try {
-//					comm = new Double(req.getParameter("comm").trim());
-//				} catch (NumberFormatException e) {
-//					comm = 0.0;
-//					errorMsgs.add("獎金請填數字.");
-//				}
-
 				MemberVO memberVO = new MemberVO();
 				
 				memberVO.setM_no(m_no);
 				memberVO.setM_id(m_id);				
 				memberVO.setM_name(m_name);
-				memberVO.setM_pwd(m_pwd);
+				/*memberVO.setM_pwd(m_pwd);*/
 				memberVO.setM_mobile(m_mobile);
 				memberVO.setM_email(m_email);
 				memberVO.setM_bday(m_bday);
@@ -420,5 +365,41 @@ public class MemberServlet extends HttpServlet {
 				failureView.forward(req, res);
 			}
 		}
+			
+			
+			if ("password_update".equals(action)) { // 來自update_mem_input.jsp的請求
+				
+				List<String> errorMsgs = new LinkedList<String>();
+				req.setAttribute("errorMsgs", errorMsgs);
+			
+				try {
+					/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
+					Integer m_no = new Integer(req.getParameter("m_no").trim());
+				     
+					String m_pwd = req.getParameter("m_pwd").trim();
+					String Password = req.getParameter("Password").trim();
+					
+					MemberDAO_interface dao =new MemberHibernateDAO();
+					MemberVO memberVO	= dao.findByPrimaryKey(m_no);
+					memberVO.setM_pwd(Password);
+					dao.update(memberVO);			
+					
+					req.setAttribute("memberVO", memberVO); // 資料庫update成功後,正確的的memberVO物件,存入req
+					String url = "/member/Member_Info.jsp";
+					
+					HttpSession session = req.getSession();
+					
+					RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneMem.jsp
+					successView.forward(req, res);
+
+					/***************************其他可能的錯誤處理*************************************/
+				} catch (Exception e) {
+					errorMsgs.add("修改資料失敗:"+e.getMessage());
+					
+					RequestDispatcher failureView = req
+							.getRequestDispatcher("/memberCRUD/pwdChange.jsp");
+					failureView.forward(req, res);
+				}
+			}
 	}
 }

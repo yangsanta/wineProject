@@ -68,7 +68,7 @@ package tools;
 	        
 //	        String[] sendTomail = { "davidou1234@gmail.com" }; 
 //	        new GmailSender().sendSSLMessage(sendTomail, "酒迷官方網站測試標題", "酒迷官方網站測試標題 這是一封重要的信", "davidou123@hotmail.com");  
-//	       // new GmailSender().sendSSLMessage(sendTo, emailSubjectTxt, emailMsgTxt, emailFromAddress);  
+//	        new GmailSender().sendSSLMessage(sendTo, emailSubjectTxt, emailMsgTxt, emailFromAddress);  
 //	        System.out.println("Sucessfully Sent mail to All Users");  
 	   
 	    } 

@@ -120,11 +120,11 @@ background-color: #fff;}
 							<span class="mem_in_title">會員資料</span>
 							<div class="mem_div">
 								<div class="mem_in_inner" style="text-align :center">
-								<a href="listOneMem"><img src="<%=request.getContextPath()%>/images/nav_safety.png" width=150px /><br>
+								<a href="<%=request.getContextPath()%>/memberCRUD/listOneMem.jsp"><img src="<%=request.getContextPath()%>/images/nav_safety.png" width=150px /><br>
 									修改會員資料</a>
 								</div>
 								<div class="mem_in_inner" style="text-align :center">
-								<a href="#"><img src="<%=request.getContextPath()%>/images/mem_safety.png" width=150px /><br>
+								<a href="<%=request.getContextPath()%>/memberCRUD/pwdChange.jsp"><img src="<%=request.getContextPath()%>/images/mem_safety.png" width=150px /><br>
 									修改密碼</a>
 								</div>
 							</div>

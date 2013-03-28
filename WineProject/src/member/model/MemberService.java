@@ -70,4 +70,28 @@ public class MemberService {
 	public List<MemberVO> getAll() {
 		return dao.getAll();
 	}
+	
+	public MemberVO updateMemPass(Integer m_no,  String m_pwd ) {
+
+		MemberVO memberVO = dao.findByPrimaryKey(m_no);
+		
+		memberVO.setM_pwd(m_pwd);
+		dao.update(memberVO);
+
+		return memberVO;
+	}
+
+	public void deleteMemPass(Integer m_no) {
+		dao.delete(m_no);
+	}
+
+	public MemberVO getOneMemPass(Integer m_no) {
+		return dao.findByPrimaryKey(m_no);
+	}
+
+	public List<MemberVO> getAll1() {
+		return dao.getAll();
+	}
+	
+	
 }
