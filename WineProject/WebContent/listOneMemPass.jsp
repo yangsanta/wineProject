@@ -39,13 +39,7 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#MyForm').formly({
-			'onBlur' : false
-		});
-	});
-</script>
+
 <style type="text/css">
 </style>
 <script type="text/javascript">
@@ -69,26 +63,32 @@
 
 				<div id="content">
 					<%@ include file="../view_model/page_alert.htm"%>
-
 					<div>
-						<form id="MyForm" width="300px" align=center title="酒迷網"
-							subtitle="會員資料修改" method="post" action="mem.do">
 
-							<p align=right>
-								帳號：<input type="text" name="m_id" value="${memberVO.m_id}"
-									readonly="readonly" />
+						<form id="MyForm" width="300px" align=center title="酒迷網"
+							subtitle="密碼修改" method="post"
+							action="<%request.getContextPath();%>/WineProject/MemberUpdate">
+
+							<input type="hidden" name="action" value="password_update">
+								<input type="hidden" name="m_no" value="${m_no}"> <input
+									type="hidden" name="action1" match="m_pwd"
+									value="${sessionScope.m_pwd}"> <sapn style="color:red">${error}<c:forEach
+											var="errorMsg" items="${errorMsgs}">${errorMsg}</c:forEach></sapn>
+							<p align=center>
+								請輸入舊密碼：<input type="text" name="m_pwd" require="true"
+									label="舊密碼" "/>
 							</p>
-							<p align=right>
-								密碼：<input type="password" name="m_pwd" require="true" label="密碼"
-									value="${memberVO.m_pwd}" />
+							<p align=center>
+								請輸入新的密碼<input type="password" name="Password" require="true"
+									label="新的密碼" "/>
 							</p>
-							<p align=right>
-								<input type="hidden" name="m_status"
-									value="${memberVO.m_status}" />
+							<p align=center>
+								確認新密碼<input type="password" name="PasswordChecked" match="Password"
+									label="確認新密碼" />
 							</p>
-							<input type="hidden" name="action" value="updatePass">
-							<input type="hidden" name="m_no" value="${m_no}"> <input
-								type="submit" value="送出修改" /> <input type="reset" value="清除" />
+
+							<input type="submit" value="送出修改" /> <input type="reset"
+								value="清除" />
 
 						</form>
 					</div>

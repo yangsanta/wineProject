@@ -80,7 +80,7 @@ public class MenberPicByUser extends HttpServlet {
 			
 			new MemberDAO().update(memberVO);
 			
-			response.sendRedirect(request.getContextPath()+"/memberCRUD/MemberUpdate?action=getOne_For_Display&m_no="+m_no);
+			response.sendRedirect(request.getContextPath()+"/MemberUpdate?action=getOne_For_Display&m_no="+m_no);
 			
 			
 		} catch (FileUploadException e) {
