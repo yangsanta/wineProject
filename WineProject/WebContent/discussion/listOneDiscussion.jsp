@@ -83,6 +83,8 @@ label.success {
 		no-repeat 0px 0px;
 	padding-left: 16px;
 }
+
+.m_pic {width: 140px;}
 </style>
 			<script type="text/javascript" charset="utf-8">
 				$(document).ready(function() {
@@ -167,11 +169,11 @@ label.success {
 								<td class="table_member">
 									<div class="defalut">
 										<br> <img
-											src="http://placekitten.com/100/100"
-											style="background: #ededed; padding: 5px;"><br>
+											src="<%=request.getContextPath() %>/images/${discussionVO.memberVO.m_pic}"
+											style="background: #ededed; padding: 5px;" class="m_pic"><br>
 													作者帳號:${discussionVO.memberVO.m_id}<br>
-													UID:1438832 <br>
-													註冊時間:2006-3-18 
+													UID:14381${discussionVO.memberVO.m_no} <br>
+													
 									</div>
 								</td>
 								<td style="background: #fff"><span style="font-size: 10px">發表日期:<fmt:formatDate
@@ -195,11 +197,9 @@ label.success {
 										<tr>
 											<td class="table_member"><div class="defalut">
 													${discussionVO.replies[i].memberVO.m_id}<br> <img
-														src="http://placekitten.com/100/100"
-														style="background: #ededed; padding: 5px;"><br>
-																初入社會<br> UID:1438832 <br> 帖子:9 <br> 精華:0
-																			<br> 積分:4 <br> 遊樂幣:0 代幣 <br> 閱讀權限:10 <br>
-																							註冊時間:2006-3-18 
+														src="<%=request.getContextPath() %>/images/${discussionVO.replies[i].memberVO.m_pic}"
+														style="background: #ededed; padding: 5px;" class="m_pic"><br>
+															UID:14381${discussionVO.replies[i].memberVO.m_no} 	
 												</div></td>
 											<td style="background: #fff"><span
 												style="font-size: 10px">發表日期:<fmt:formatDate
