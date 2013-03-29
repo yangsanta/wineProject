@@ -66,8 +66,8 @@
 
 .recom-title {
 	margin-top: 30px;
-	background: url(<%=request.getContextPath()%>/images/cl_vvrecmd_trans_bg.png)
-		repeat-x;
+	background: url(<%=request.getContextPath()%>/images/cl_vvrecmd_trans_bg.png
+		) repeat-x;
 	padding-left: 50px
 }
 
@@ -98,7 +98,9 @@
 }
 
 .info_li {
-	font-size: 12px;line-height: 20px;padding: 1px 0 1px 0 !important;
+	font-size: 12px;
+	line-height: 20px;
+	padding: 1px 0 1px 0 !important;
 }
 
 .fb-like {
@@ -133,16 +135,18 @@
 									class="prod_img">
 									<img
 										src="<%=request.getContextPath()%>/images/products/${ productVO.p_pic }"
-										style="vertical-align: top; width: 100px;">
-								</div>
-								<a href="javascript: void(window.open('http://www.plurk.com/?qualifier=shares&amp;status=' .concat(encodeURIComponent(location.href)) .concat(' ') .concat('(') .concat(encodeURIComponent(document.title)) .concat(')')));"><img
-				src="<%=request.getContextPath()%>/images/plurk.png"	title="分享至plurk"	style="width:20px" /></a>
-				<a href="javascript: void(window.open('http://twitter.com/home/?status='.concat(encodeURIComponent(document.title)) .concat(' ') .concat(encodeURIComponent(location.href))));"><img
-				src="<%=request.getContextPath()%>/images/Twitter.jpg"	title="分享至Twitter"	style="width:20px" /></a>
-								<div class="fb-like" data-href="http://wine.davidou.org:8080/WineProject"
+										style="vertical-align: top; width: 100px;" />
+								</div> <a
+								href="javascript: void(window.open('http://www.plurk.com/?qualifier=shares&amp;status=' .concat(encodeURIComponent(location.href)) .concat(' ') .concat('(') .concat(encodeURIComponent(document.title)) .concat(')')));"><img
+									src="<%=request.getContextPath()%>/images/plurk.png"
+									title="分享至plurk" style="width: 20px" /></a> <a
+								href="javascript: void(window.open('http://twitter.com/home/?status='.concat(encodeURIComponent(document.title)) .concat(' ') .concat(encodeURIComponent(location.href))));"><img
+									src="<%=request.getContextPath()%>/images/Twitter.jpg"
+									title="分享至Twitter" style="width: 20px" /></a>
+								<div class="fb-like"
+									data-href="http://wine.davidou.org:8080/WineProject"
 									data-send="true" data-layout="button_count" data-width="100"
-									data-show-faces="true"></div> 
-									<!-- google+ --> <g:plusone
+									data-show-faces="true"></div> <!-- google+ --> <g:plusone
 									size="medium"></g:plusone> <script type="text/javascript">
 										window.___gcfg = {
 											lang : 'zh-TW'
@@ -158,29 +162,20 @@
 													.getElementsByTagName('script')[0];
 											s.parentNode.insertBefore(po, s);
 										})();
-									</script>
-									
-									</td>
-							<td style="text-align: left;width: 368px;>
+									</script></td>
+							<td style="text-align: left; width: 368px;">
 								<div id="product_one" class="pro_list">
 									<span style="font-size: 26px;"> <strong
 										style="color: rgb(37, 94, 40)">${ productVO.p_name}</strong>
 									</span>
 									<ul style="margin-top: 20px">
-										<li class="info_li"><span class="pro_info">酒莊：</span> ${
-											productVO.p_winery }</li>
-										<li class="info_li"><span class="pro_info">國家/地區：</span>${
-											productVO.p_area }</li>
-										<li class="info_li"><span class="pro_info">容量：</span>${
-											productVO.p_vol } ml</li>
-										<li class="info_li"><span class="pro_info">酒精濃度：</span>${
-											productVO.p_alcho}%</li>
-										<li class="info_li"><span class="pro_info">年份：</span>${
-											productVO.p_year }</li>
-										<li class="info_li"><span class="pro_info">評分：</span> <c:forEach
-												var="i" begin="1" end="${ productVO.p_rate }" step="1">
-												<img src="<%=request.getContextPath()%>/images/star1.gif"
-													style="width: 20px">
+										<li class="info_li"><span class="pro_info">酒莊：</span> ${productVO.p_winery }</li>
+										<li class="info_li"><span class="pro_info">國家/地區：</span>${	productVO.p_area }</li>
+										<li class="info_li"><span class="pro_info">容量：</span>${productVO.p_vol } ml</li>
+										<li class="info_li"><span class="pro_info">酒精濃度：</span>${	productVO.p_alcho}%</li>
+										<li class="info_li"><span class="pro_info">年份：</span>${productVO.p_year }</li>
+										<li class="info_li"><span class="pro_info">評分：</span> <c:forEach	var="i" begin="1" end="${ productVO.p_rate }" step="1">
+										<img src="<%=request.getContextPath()%>/images/star1.gif"	style="width: 20px"/>
 											</c:forEach> <c:forEach var="i" begin="${ productVO.p_rate }" end="4"
 												step="1">
 												<img src="<%=request.getContextPath()%>/images/star.gif"
@@ -194,14 +189,13 @@
 									<div style="text-align: right;">商品編號:365${productVO.p_no}</div>
 									<hr style="margin: 0">
 										<div class="price">
-											<strong>
-											<c:if test="${productVO.p_sales!='TIME'}">網路價</c:if>
-											<c:if test="${productVO.p_sales=='TIME'}">限時搶購價</c:if>
-											:</strong>
-											<span style="color: red">$
-												<c:if test="${productVO.p_sales!='TIME'}">${productVO.p_price}</c:if>
+											<strong> <c:if test="${productVO.p_sales!='TIME'}">網路價</c:if>
+												<c:if test="${productVO.p_sales=='TIME'}">限時搶購價</c:if> :
+											</strong> <span style="color: red">$ <c:if
+													test="${productVO.p_sales!='TIME'}">${productVO.p_price}</c:if>
 												<c:if test="${productVO.p_sales=='TIME'}">
-													<jsp:useBean id="ts" class="timing_sales.model.Timing_SalesDAO">${ts.dailySales.ts_price}</jsp:useBean>
+													<jsp:useBean id="ts"
+														class="timing_sales.model.Timing_SalesDAO">${ts.dailySales.ts_price}</jsp:useBean>
 												</c:if>
 											</span>
 										</div>
@@ -232,19 +226,22 @@
 
 					<div class="recom-title">或許你也會喜歡</div>
 					<ul id="recom-ul" style="list-style: none;">
-						
-							<c:forEach var="maylike" items="${maylike}" >
+
+						<c:forEach var="maylike" items="${maylike}">
 							<li style="border-top: 0"><div class="img">
-								<a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${maylike.p_no}"><img
-									src="<%=request.getContextPath()%>/images/products/${maylike.p_pic}" style="width:40px"></a>
-							</div>
-							<div class="desc">
-								<a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${maylike.p_no}">${maylike.p_name}</a>
-							</div>
-							<div>
-								<span class="shpdollar">$${maylike.p_price}元</span>
-							</div></li>
-	</c:forEach>
+									<a
+										href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${maylike.p_no}"><img
+										src="<%=request.getContextPath()%>/images/products/${maylike.p_pic}"
+										style="width: 40px"></a>
+								</div>
+								<div class="desc">
+									<a
+										href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${maylike.p_no}">${maylike.p_name}</a>
+								</div>
+								<div>
+									<span class="shpdollar">$${maylike.p_price}元</span>
+								</div></li>
+						</c:forEach>
 					</ul>
 
 
@@ -260,7 +257,9 @@
 							fjs.parentNode.insertBefore(js, fjs);
 						}(document, 'script', 'facebook-jssdk'));
 					</script>
-<div class="fb-comments" data-href="http://wine.davidou.org:8080/WineProject/product/DisplayProducts.do?action=getOne_For_Display&amp;pId=${productVO.p_no}" data-width="600" data-num-posts="10" ></div>
+					<div class="fb-comments"
+						data-href="http://wine.davidou.org:8080/WineProject/product/DisplayProducts.do?action=getOne_For_Display&amp;pId=${productVO.p_no}"
+						data-width="600" data-num-posts="10"></div>
 					<%@ include file="../view_model/index_fast_login.htm"%>
 
 

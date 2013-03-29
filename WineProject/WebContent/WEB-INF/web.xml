@@ -389,7 +389,14 @@
     <servlet-name>Coupon_setServlet</servlet-name>
     <url-pattern>/couponset/couponsetadmin.do</url-pattern>
   </servlet-mapping>
-  
+      <servlet>
+    <servlet-name>MaintainSales</servlet-name>
+    <servlet-class>product.controller.MaintainSales</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MaintainSales</servlet-name>
+    <url-pattern>/wine_admin/MaintainSales</url-pattern>
+  </servlet-mapping>
   <error-page>
     <error-code>404</error-code>
     <location>/NotFound.jsp</location>

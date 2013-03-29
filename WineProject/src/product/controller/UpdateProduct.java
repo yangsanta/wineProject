@@ -249,10 +249,7 @@ public class UpdateProduct extends HttpServlet {
 						} else {
 						productVO.setP_intro(p_intro);
 						}
-					} else if (fldName.equals("source")) { // 將p_intro包進物件
-						source = new String(item.getString().getBytes(
-								"ISO-8859-1"), "UTF-8");
-					}
+					} 
 
 				} else {
 					// 將圖片存到資歷夾，並將p_pic包進物件進物件
@@ -284,10 +281,10 @@ public class UpdateProduct extends HttpServlet {
 			}
 			new ProductDAO().update(productVO);
 			errorMsgs.put("success" , "資料新增成功");
-			if(source.equals("emergency")){
-				response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/wine_admin/Maintain?action=getEmergency&pageNo="+page));
-			}
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/product/Maintain?action=getAll&pageNo="+page));
+			
+			
+			
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/wine_admin/Maintain?action=getAll&pageNo="+page));
 		} catch (FileUploadException e) {
 
 			e.printStackTrace();

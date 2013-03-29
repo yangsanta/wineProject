@@ -14,7 +14,7 @@
 					class="text_con">商品管理</font><em></em></a> <span class="menu_tooltip"><span>商品管理</span></span>
 			</li>
 			 <span class="num">各項優惠</span>
-			<li><a href="set_timing_sales?action=getAll" class="ico4"><span>優惠設定</span><font
+			<li><a href="MaintainSales?action=getAll&pageNo=1" class="ico4"><span>優惠設定</span><font
 					class="text_con">優惠設定</font><em></em></a> <span class="menu_tooltip"><span>優惠設定</span></span>
 			</li>
 			<li class="discount"><a href="ademin_discount.jsp" class="ico5"><span>>首頁廣告</span><font

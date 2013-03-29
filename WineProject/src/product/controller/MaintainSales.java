@@ -18,10 +18,10 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import product.model.ProductDAO;
 import product.model.ProductVO;
 
-public class ProductMaintain extends HttpServlet {
+public class MaintainSales extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ProductMaintain() {
+	public MaintainSales() {
 		super();
 	}
 
@@ -53,7 +53,7 @@ public class ProductMaintain extends HttpServlet {
 			}
 			splitPages(list, request);
 
-			String listAllUrl = "/wine_admin/ProductListMaintain.jsp";
+			String listAllUrl = "/wine_admin/ProductListSales.jsp";
 			
 			RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
 			rd.forward(request, response);
@@ -107,7 +107,6 @@ public class ProductMaintain extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
-		
 		
 	}
 

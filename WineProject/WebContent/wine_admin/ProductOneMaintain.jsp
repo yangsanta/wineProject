@@ -101,14 +101,11 @@
 			</c:forEach><br/> 
 			<span>品牌酒莊:</span><input type="text" size="30"	name="p_winery" value="${productVO.p_winery}" /><span class="error">${ErrMsg.errWinery}</span><br/>
 			<span>口感風味:</span><input type="text" size="30" name="p_style"	value="${productVO.p_style}" /><span class="error">${ErrMsg.errStyle}</span><br/> 
-			<span>優惠狀態:</span><c:forEach var="sales" items="R,G,A,B,half,NONE">
-			<c:if test="${sales==productVO.p_sales}">
-			<input	type="radio" size="30" name="p_sales" value="${sales}" checked/><span>${sales}  </span>
-			</c:if>
-			<c:if test="${sales!=productVO.p_sales}">
-			<input	type="radio" size="30" name="p_sales" value="${sales}" /><span>${sales}  </span>
-			</c:if>
-			</c:forEach>
+			<span>優惠狀態:</span><span>${productVO.p_sales}  </span>
+
+			<input	type="hidden" size="30" name="p_sales" value="${sales}" />
+			
+	
 			<br/>
 			<span>商品容量:</span><input type="text" size="30" name="p_vol"	value="${ productVO.p_vol}" /><span class="error">${ErrMsg.errVol}</span><br/> 
 			<span>酒精濃度:</span><input	type="text" size="30" name="p_alcho" value="${productVO.p_alcho}" /><span class="error">${ErrMsg.errAlcho}</span><br/>
