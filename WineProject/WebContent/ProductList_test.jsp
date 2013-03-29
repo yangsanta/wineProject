@@ -38,5 +38,8 @@
 
 <hr />
 <a href="<%=request.getContextPath()%>/MemberService">Forgot Password</a>
+
+<hr />
+<a href="<%=request.getContextPath()%>/couponset/couponsetadmin.do?action=getAll">CouponSet CRUD</a>
 </body>
 </html>

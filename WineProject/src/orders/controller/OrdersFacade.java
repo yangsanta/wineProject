@@ -70,7 +70,7 @@ public class OrdersFacade {
 		}
 
 		Integer min_price = new Shipping_setDAO().getAll().get(0)
-				.getmin_pirce();
+				.getMin_pirce();
 		System.out.println("--------------------" + cart.getTotal());
 		if (cart.getTotal() >= min_price) {
 			request.getSession().setAttribute("ShippingCost", 0);

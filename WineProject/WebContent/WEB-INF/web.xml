@@ -357,7 +357,7 @@
     <servlet-name>MemberPwServlet</servlet-name>
     <url-pattern>/member/memberpw.do</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>MemberUpdate</servlet-name>
     <servlet-class>member.controller.MemberUpdate</servlet-class>
   </servlet>
@@ -365,7 +365,7 @@
     <servlet-name>MemberUpdate</servlet-name>
     <url-pattern>/memberCRUD/MemberUpdate</url-pattern>
   </servlet-mapping>
-      <servlet>
+  <servlet>
     <servlet-name>MenberPicByUser</servlet-name>
     <servlet-class>member.controller.MenberPicByUser</servlet-class>
   </servlet>
@@ -373,11 +373,6 @@
     <servlet-name>MenberPicByUser</servlet-name>
     <url-pattern>/memberCRUD/MenberPicByUser</url-pattern>
   </servlet-mapping>
-  <error-page>
-    <error-code>404</error-code>
-    <location>/NotFound.jsp</location>
-  </error-page>
-  
   <servlet>
     <servlet-name>shipping_set</servlet-name>
     <servlet-class>shipping_set.controller.Shipping_setServlet</servlet-class>
@@ -386,7 +381,18 @@
     <servlet-name>shipping_set</servlet-name>
     <url-pattern>/shipping_set/.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>Coupon_setServlet</servlet-name>
+    <servlet-class>coupon_set.controller.Coupon_setServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Coupon_setServlet</servlet-name>
+    <url-pattern>/couponset/couponsetadmin.do</url-pattern>
+  </servlet-mapping>
   
-  
+  <error-page>
+    <error-code>404</error-code>
+    <location>/NotFound.jsp</location>
+  </error-page>
   
 </web-app>
