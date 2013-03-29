@@ -363,7 +363,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>MemberUpdate</servlet-name>
-    <url-pattern>/memberCRUD/MemberUpdate</url-pattern>
+    <url-pattern>/MemberUpdate</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>MenberPicByUser</servlet-name>
@@ -371,7 +371,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>MenberPicByUser</servlet-name>
-    <url-pattern>/memberCRUD/MenberPicByUser</url-pattern>
+    <url-pattern>/MenberPicByUser</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>shipping_set</servlet-name>

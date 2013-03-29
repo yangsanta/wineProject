@@ -60,26 +60,60 @@ $(document).ready(function()
 					<%@ include file="../view_model/page_alert.htm"%>
 
 	<div>
-		<form id="MyForm" width="300px" align=center title="酒迷網" subtitle="會員資料修改" method="post" action="mem.do">
-		
-			<p align=right>帳號：<input type="text" name="m_id" value="${memberVO.m_id}" readonly="readonly"/></p>
-			<p align=right>姓名：<input type="text" name="m_name" require="true" label="姓名" value="${memberVO.m_name}"/></p>
-			<p align=right>密碼：<input type="password" name="m_pwd" require="true" label="密碼" value="${memberVO.m_pwd}"/></p>			
-			<p align=right>e-Mail：<input type="text" validate="email" name="m_email" value="${memberVO.m_email}"/></p>			
-			<p align=right>生日：<input type="text" validate="bday" name="m_bday" value="${memberVO.m_bday}"/></p>
-			<p align=right>行動電話：<input type="text" validate="mobile" name="m_mobile" value="${memberVO.m_mobile}"/></p>
-			<p align=right>通訊地址：<input type="text" name="m_addr" 	value="${memberVO.m_addr}"/></p>
-			<p align=right>圖片：<input type="text" name="m_pic" value="${memberVO.m_pic}"/></p>
-			<p align=right>安全提問：<input type="text" name="m_safety_q" value="${memberVO.m_safety_q}"/></p>
-			<p align=right>答案：<input type="text" name="m_safety_a" value="${memberVO.m_safety_a}"/></p>
-			<p align=right><input type="hidden" name="m_status" value="${memberVO.m_status}"/></p>
+		<div align=center>
+			<img
+				src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}"
+				width="160px" height="200px" /> <br />
+			<form method="post" action="<%request.getContextPath();%>/WineProject/MenberPicByUser" enctype="multipart/form-data">
+				<input type="hidden" name="m_no" value="${memberVO.m_no}">
 			
-			<input type="hidden" name="action" value="member_update"> 
-			<input type="hidden" name="m_no" value="${m_no}">
-			<input type="submit" value="送出修改" /> <input type="reset" value="清除" />
-			
-		</form>
-	</div>
+				<input type="submit" value="上傳圖片" /><input
+					style="background: #FFFFFF" type="file" name="p_pic" size="40" />
+			</form>
+		</div>
+		<form id="MyForm" width="300px" align=center title="酒迷網"
+			subtitle="會員資料修改" method="post"
+			action="<%request.getContextPath();%>/WineProject/MemberUpdate">
+			<p align=center>
+				帳號：<span>${memberVO.m_id}</span><input type="hidden" name="m_id"
+					value="${memberVO.m_id}" />
+			</p>
+			<p align=center>
+				姓名：<input type="text" name="m_name" require="true" label="姓名"
+					value="${memberVO.m_name}" />
+			</p>
+			<p align=center>
+				e-Mail：<input type="text" validate="email" name="m_email"
+					value="${memberVO.m_email}" />
+			</p>
+			<p align=center>
+				生日：<input type="text" validate="bday" name="m_bday"
+					value="${memberVO.m_bday}" />
+			</p>
+			<p align=center>
+				行動電話：<input type="text" validate="mobile" name="m_mobile"
+					value="${memberVO.m_mobile}" />
+			</p>
+			<p align=center>
+				通訊地址：<input type="text" name="m_addr" value="${memberVO.m_addr}" />
+			</p>
+			<p align=center>
+				安全提問：<input type="text" name="m_safety_q"
+					value="${memberVO.m_safety_q}" />
+			</p>
+			<p align=center>
+				答案：<input type="text" name="m_safety_a"
+					value="${memberVO.m_safety_a}" />
+			</p>
+			<p align=center>
+				<input type="hidden" name="m_status" value="${memberVO.m_status}" />
+			</p>
+<input type="hidden" name="m_pic" value="${memberVO.m_pic}" />
+			<input type="hidden" name="action" value="member_update"> <input
+				type="hidden" name="m_no" value="${memberVO.m_no}"> <input
+				type="submit" value="送出修改" /> <input type="reset" value="清除" />
+				</form>
+</div>
 
 <%@ include file="../view_model/index_fast_login.htm"%>
 						

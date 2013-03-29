@@ -75,7 +75,7 @@ label.success {
 							<strong><span class="label label-success">歡迎!</span></strong> <br><span
 								style="margin-left: 50px">你可以在這邊與各方的酒友一起討論酒香的芬芳以及在味蕾上跳動的喜悅。現在就發表一篇文章來與大家認識認識吧。</span>
 						</div>
-	<form action="insertDiscussion.do"  method="post" id="commentForm" class="cmxform" >
+	<form action="DiscussionList.do"  method="post" id="commentForm" class="cmxform" >
 		文章標題:<input type="text" name="d_title" value="${discussionVO.d_title}" class="required" minlength="5"/><br /> 
 		文章內容:<textarea cols="170" rows="10" id="textContext" name="d_context" class="required" minlength="10">${discussionVO.d_context}</textarea><br />
 		<input type="submit" value="Send"/>

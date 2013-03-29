@@ -28,7 +28,7 @@
 		<!-- <property name="dialect">org.hibernate.dialect.MySQLDialect</property> -->
 
 		<!-- 顯示實際操作資料庫時的SQL false -->
-		<property name="hibernate.show_sql">True</property>
+		<property name="hibernate.show_sql">false</property>
 		<!-- 將顯示的SQL排版，方便觀看 -->
 		<property name="format_sql">true</property>
 

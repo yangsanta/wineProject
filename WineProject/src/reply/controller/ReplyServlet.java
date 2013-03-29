@@ -57,7 +57,7 @@ public class ReplyServlet extends HttpServlet {
 				MemberVO memberVO = new MemberVO();
 				memberVO.setM_no(m_no);
 
-				if(r_context.trim().length() < 10){				//推文的檢查
+				if(r_context.trim().length() < 17){				//推文的檢查
 					errorMsgs.add("推文內容請輸入超過10字");
 				}
 				if (!errorMsgs.isEmpty()) {
