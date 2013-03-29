@@ -32,6 +32,44 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/jquery.datepick.js"></script>
 <script type="text/javascript"	src="<%=request.getContextPath()%>/js/ajax-road.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+	
+	$(function(){
+		
+		
+		$('#duplicateM_idBox').css({'color': 'white','font-size':'10pt'});
+		
+		$(document).on('keyup', 'input[name="m_id"]', function(){
+			$('#duplicateM_id').remove();
+			
+			$.ajax({
+				url : '/WineProject/product/memberRegister.do',
+				type : 'POST',
+				data : {
+					m_id : $(this).val(),
+					action : "chkHasM_idOrNot"
+				},
+				dataType : 'text',
+				success : function(data) {
+					
+					var result = data.split('_')[0];
+					
+					if (result == "duplicateMid"){
+						$('#btnMSubmit').attr('disabled','disabled');
+						$('<span id="duplicateM_id" style="color:#be0000; font-size:10pt"></span>').text(data.split('_')[1]).prependTo('#duplicateM_idBox');
+					} else {
+						$('#btnMSubmit').removeAttr('disabled');
+					}
+					
+				}
+			});//ajax
+			
+		});//keyup
+		
+		
+		});
+</script>
 	
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {
@@ -53,30 +91,6 @@
 		alert('The date chosen is ' + date);
 	}
 
-
-	$(function(){
-		$('#duplicateM_idBox').css({'color': 'white','font-size':'10pt'});
-		
-		$('input[name="m_id"]').keyup(function(){
-			//alert('aaa');
-			$('#duplicateM_id').remove();
-			$.ajax({
-				url : '/WineProject/product/memberRegister.do',
-				type : 'POST',
-				data : {
-					m_id : $(this).val(),
-					action : "chkHasM_idOrNot"
-				},
-				dataType : 'text',
-				success : function(data) {
-					
-//					$('label[for="m_id"]').removeClass("success").text();
-					$('<span id="duplicateM_id" style="color:#be0000; font-size:10pt"></span>').text(data).prependTo('#duplicateM_idBox');
-					
-				}
-			});//ajax
-		});
-	})
 </script>
 
 <style type="text/css">
@@ -172,38 +186,38 @@ label.success {
 								<TR><td> </td><td id="duplicateM_idBox">XXX</td></TR>
 								<TR>
 									<td align="right">帳號：<br></td>
-									<td align="left"><input type="text" name="m_id" value=""
-										size="20" class="required" minlength="3"></td>
+									<td align="left"><input autocomplete="off" type="text" name="m_id" value=""
+										size="20" ></td>
 								</TR>
 								<TR>
 									<td align="right">密碼：<br></td>
-									<td align="left"><input type="password" name="m_pwd"
+									<td align="left"><input autocomplete="off" type="password" name="m_pwd"
 										value="" size="20" class="required" minlength="8"></td>
 								</TR>
 								<TR>
 									<td align="right">姓名：<br></td>
-									<td align="left"><input type="text" name="m_name"
+									<td align="left"><input autocomplete="off" type="text" name="m_name"
 										value="" size="30"></td>
 								</TR>
 								<TR>
 									<td align="right">Email：</td>
-									<td align="left"><input type="text" name="m_email"
+									<td align="left"><input autocomplete="off" type="text" name="m_email"
 										value="" size="40" class="required email"></td>
 								</TR>
 								<TR>
 									<td align="right">手機：</td>
-									<td align="left"><input type="text" name="m_mobile"
+									<td align="left"><input autocomplete="off" type="text" name="m_mobile"
 										value="" class="required number" minlength="10" maxlength="10"></td>
 								</TR>
 								<TR>
 									<td align="right">生日：</td>
-									<td align="left"><input type="text" id="m_bday"
+									<td align="left"><input autocomplete="off" type="text" id="m_bday"
 										name="m_bday" value="2000-11-11" readonly
 										style="cursor: pointer"></td>
 								</TR>
 								<TR>
 									<td align="right">地址：</td>
-									<td align="left"><input type="text" id="m_addr"
+									<td align="left"><input autocomplete="off" type="text" id="m_addr"
 										name="m_addr" value="" onkeyup="showUser(this.value)"
 										onclick="showUser(this.value)" style="width: 400px"> <br>
 										<div id="divContent">
@@ -212,7 +226,7 @@ label.success {
 								</TR>
 								<TR>
 									<td colspan="2" align="center"><input type="submit"
-										value="送出註冊" class="btn btn-primary"></td>
+										value="送出註冊" class="btn btn-primary" id="btnMSubmit"></td>
 								</TR>
 							</Table>
 						</div>
@@ -234,4 +248,3 @@ label.success {
 
 
 
-</html>

@@ -52,7 +52,10 @@ public class register extends HttpServlet {
 					if (DAO.findHaveName(m_id) != 0) {
 						System.out.println("------------------------------------------DUPLICATE M_ID!");
 						response.setCharacterEncoding("UTF-8");
-						response.getWriter().write("這個帳號已存在，請更改。");
+						response.getWriter().write("duplicateMid_這個帳號已存在，請更改。");
+					} else {
+						response.setCharacterEncoding("UTF-8");
+						response.getWriter().write("okMid_這個帳號OK");
 					}
 				}
 				
