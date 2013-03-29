@@ -282,10 +282,10 @@ public class Shipping_setDAO implements Shipping_setDAO_interface {
 //		dao.insert(shipping_setVO1);
 
 		// 修改
-		Shipping_setVO shipping_setVO2 = new Shipping_setVO();
-		shipping_setVO2.setMin_pirce(400);
-
-		dao.update(shipping_setVO2);
+//		Shipping_setVO shipping_setVO2 = new Shipping_setVO();
+//		shipping_setVO2.setMin_pirce(400);
+//
+//		dao.update(shipping_setVO2);
 
 		// 刪除
 //		dao.delete(300);
