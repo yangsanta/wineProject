@@ -95,7 +95,7 @@ public class CouponDAO implements CouponDAO_interface {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_SOME_byM_no_STMT);
 			query.setParameter(0, m_no);
-			query.setParameter(1, false);
+			query.setParameter(1, true);
 			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
