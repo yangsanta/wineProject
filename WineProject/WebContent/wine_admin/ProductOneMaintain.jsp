@@ -10,7 +10,7 @@
 	<link media="all" rel="stylesheet" type="text/css"
 		href="<%=request.getContextPath()%>/wine_admin/css/all.css" />
 		 <c:if test="${sessionScope.admin_access!='y'}"><meta http-equiv="refresh" content="0; url=index.jsp"></c:if>
-<!-- 	<script src="http://code.jquery.com/jquery.js"></script> -->
+	<script src="http://code.jquery.com/jquery.js"></script>
 	<script type="text/javascript">
 		window.jQuery|| document.write('<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.9.0.min.js"><\/script>');
 	</script>
@@ -50,12 +50,21 @@
 			
 			$(function(){
 				$("#confirm").click(function(){
-					alert('當前價錢 = ' + ${productVO.p_price});
-					alert('修改後價錢 = ' + $(this).parent().find('#p_price').val());
 					var currentPrice = $(this).parent().find('#p_price').val();
+					var oldPrice =${productVO.p_price};
+					alert('當前價錢 = ' +oldPrice );
+					alert('修改後價錢 = ' + currentPrice);
 					if(currentPrice/oldPrice<=0.2){
-						alert('您輸入的商品價格低於原先價錢之20%，確定要更新嗎?!');
+						$("#oldprice").text(oldPrice)
+						$("#newprice").text(currentPrice)
+						$("#dispercent").text(Math.round(currentPrice*100/oldPrice)/10);
+						$("#warningdig").fadeIn("slow");
+						//div show出來 顯示之前價格 現在價格 降價幅度
+					}else{
+						//submit
+						
 					}
+					
 				});
 			});
 			
@@ -103,7 +112,7 @@
 		         <span>  生產地區:</span><input type="text" size="30" name="p_country" value="${productVO.p_country}" /><br/>
 			<span>庫存貨量:</span><input type="text" size="30" name="p_num"value="${productVO.p_num}" /><span class="error">${ErrMsg.errNum}</span><br/>
 			<span> 商品價錢:</span><input type="text"	size="30" name="p_price" value="${productVO.p_price}" id="p_price"/><span class="error">${ErrMsg.errPrice}</span><br/>
-			<span>商品狀態:</span><c:forEach var="status" items="已上架,已下架">
+			<span style="line:height:30px">商品狀態:</span><c:forEach var="status" items="已上架,已下架">
 			<c:if test="${status==productVO.p_status}">
 			<input	type="radio" size="30" name="p_status" value="${status}" checked/><span>${status}  </span>
 			</c:if>
@@ -133,10 +142,16 @@
 			</c:forEach><span class="error">${ErrMsg.errType}</span><br/> 
 			<span>葡萄種類:</span><input type="text" size="30" name="p_grape" value="${productVO.p_grape}" /><span class="error">${ErrMsg.errGrape}</span><br/>
 			<span>商品介紹</span><textarea style="height: 100px; width: 350px"	name="p_intro">${productVO.p_intro}</textarea><span class="error">${ErrMsg.errIntro}</span><br/> 
-			<input type="submit"
-			value="修改" id="confirm"/>
-	</form>
+			<button type="button" id="confirm">修改</button>
 
+<div id="warningdig" style="background:#ccc;width:400px;height:400px;">
+//禁嘆號 箭頭
+<span id="oldprice"></span>
+<span id="newprice"></span>
+<span id="dispercent"></span>
+<button  type="button"></button>
+<button  type="button" onclick='$("#warningdig").fadeOut("slow");'>回到fdsf頁面</button>	</form>
+</div>
 						
 					<%@ include file="view_model/footer.jsp"%>
 						</div>

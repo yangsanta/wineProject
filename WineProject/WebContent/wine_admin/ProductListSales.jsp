@@ -196,6 +196,7 @@
                                              <form action="MaintainSales" action="post">
                                               <input type="hidden" name="page" value="${whichPage}"></input>
                                              <input type="hidden" name="action" value="getOneMaintainSales"></input>
+                                             <input type="hidden" name="oldSales" value="${product.p_sales}"></input>
                                              <input type="hidden" name="pNo" value="${product.p_no}"></input><td><c:forEach var="sales" items="A,B,R,G,half,NONE">
 													<c:choose>
 

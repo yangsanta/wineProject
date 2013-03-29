@@ -12,7 +12,7 @@
 		 <c:if test="${sessionScope.admin_access!='y'}"><meta http-equiv="refresh" content="0; url=index.jsp"></c:if>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script type="text/javascript">
-		window.jQuery|| document.write('<script type="text/javascript" src="js/jquery-1.7.2.min.js"><\/script>');
+	window.jQuery|| document.write('<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.9.0.min.js"><\/script>');
 	</script>
 	<link href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css"
 		rel="stylesheet" media="screen">
@@ -115,8 +115,8 @@
 
 
 							<div style="float: right; margin-top: 45px; margin-right: 45px">
-								<a href="/WineProject/wine_admin/ProductInsert.jsp"> <input
-									type="button" class="btn btn-success" value="新增商品" />
+								<a href="/WineProject/wine_admin/ProductInsert.jsp">
+								 <button type="button" class="btn btn-success" ><i class="icon-plus icon-white"></i> 新增商品</button>
 								</a>
 							</div>
 							<!-------------------------顯示商品清單----------------------------------------------------------- -->
@@ -145,13 +145,20 @@
 												</div> </a></td>
 											<td>${product.p_name}</td>
 											<td><span style='font-size: 15px'>${product.p_price}</span></td>
-											<td><span style='font-size: 15px'>${product.p_num}</span></td>
-											<td><span style='font-size: 15px'>${product.p_status}<br />
-											</span></td>
-											<td><span style='font-size: 15px'>${product.p_sales}</span></td>
+											<td><span style='font-size: 15px; <c:if test="${product.p_num < 24}">color:red;font-weight:bold;</c:if>'>${product.p_num}</span>
+											<c:if test="${product.p_num < 24}"><br><a href="<%=request.getContextPath()%>/wine_admin/Maintain?action=getEmergency&pageNo=1"><button class="btn btn-mini btn-danger" type="button"><i class="icon-briefcase icon-white"></i>庫存管理</button></a></c:if></td>
+											<td><span style='font-size: 15px'>${product.p_status}</span></td>
+											<td><c:if test="${product.p_sales=='NONE'}"><span class="label">無優惠</span></c:if>
+											<c:if test="${product.p_sales=='R'}"><span class="label label-important">紅標商品</span></c:if>
+											<c:if test="${product.p_sales=='G'}"><span class="label label-success">綠標商品</span></c:if>
+											<c:if test="${product.p_sales=='A'}"><span class="label label-warning">買A商品</span></c:if>
+											<c:if test="${product.p_sales=='B'}"><span class="label label-info">送B商品</span></c:if>
+											<c:if test="${product.p_sales=='half'}"><span class="label label-inverse">第二件半價</span></c:if>
+											<c:if test="${product.p_sales=='TIME'}"><span class="badge badge-important">今日限時產品</span></c:if>
+											</td>
 											<td><a
-												href="<%=request.getContextPath()%>/wine_admin/Maintain?action=getOne_For_Display&pId=${product.p_no}&page=${whichPage}"><input
-													type="button" class="btn btn-primary" value="修改" /></a></td>
+												href="<%=request.getContextPath()%>/wine_admin/Maintain?action=getOne_For_Display&pId=${product.p_no}&page=${whichPage}"><button
+													type="button" class="btn btn-primary" ><i class=" icon-pencil icon-white"></i> 修改</button></a></td>
 										</tr>
 
 

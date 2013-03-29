@@ -16,7 +16,6 @@
 	<script type="text/javascript">
 	window.jQuery|| document.write('<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.9.0.min.js"><\/script>');
 	</script>
-<!-- 	<script type="text/javascript" src="js/jquery.main.js"></script> -->
 	<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
 	<style type="text/css">
 	.buttons li.adminboard a {
