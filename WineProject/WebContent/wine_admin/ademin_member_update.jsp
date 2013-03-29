@@ -22,11 +22,49 @@
 <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
 <script type="text/javascript" src="../wine_admin/js/ademin_member.js"></script>
 <link rel="stylesheet" href="../wine_admin/css/ademin_member.css" type="text/css" />
+
+<script src="<%=request.getContextPath()%>/js/jquery.validate.min.js"
+	type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/js/messages_tw.js"
+	type="text/javascript"></script>
+
 <script type="text/javascript">
 $(document).ready(function()
-  { $('#MyForm').formly({'onBlur':false});
+  { //$('#MyForm').formly({'onBlur':false});
    });
 </script>
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$('#MForm').validate({
+			success : function(label) {
+				label.addClass("success").text("Ok!");
+			}
+		});
+
+		
+	});
+
+	function showDate(date) {
+		alert('The date chosen is ' + date);
+	}
+
+</script>
+<style type="text/css">
+label{display: inline-block;margin-left: 10px;}
+label.error {
+	background: url("<%=request.getContextPath()%>/images/unchecked.gif")
+		no-repeat 0px 0px;
+	padding-left: 16px;
+}
+
+label.success {
+	background: url("<%=request.getContextPath()%>/images/checked.gif")
+		no-repeat 0px 0px;
+	padding-left: 16px;
+}
+</style>
+
 	<style type="text/css">
 	.buttons li.member a {
 	background:url(<%=request.getContextPath()%>/wine_admin/images/sprite.png) no-repeat -113px -2px;
@@ -75,17 +113,18 @@ $(document).ready(function()
 					</form>
 					</td><td>
 					<p ><span style="font-size:20px;">您目前正在修改的是 會員編號：${memberVO.m_no}</span>
-					<form  title="酒迷網" subtitle="會員資料修改" method="post" action="mem" >
+					<form id="MForm" title="酒迷網" subtitle="會員資料修改" method="post" action="mem" >
 						
 							<input type="hidden" name="m_pic" value="${memberVO.m_pic}"/>
 							<input type="hidden" name="m_no" value="${memberVO.m_no}"/></p>
 							<span style="width:90px;display:inline-block" >帳號：</span><span>${memberVO.m_id}<input type="hidden" name="m_id" value="${memberVO.m_id}""/></p>
-							<span style="width:90px;display:inline-block" >姓名：</span><span><input type="text" name="m_name" require="true" label="姓名" value="${memberVO.m_name}"/></p>
+							<span style="width:90px;display:inline-block" >姓名：</span><span><input type="text" name="m_name" require="true" label="姓名" value="${memberVO.m_name}" class="required" minlength="2"/></p>
 							<input type="hidden" name="m_pwd" require="true" label="密碼" value="${memberVO.m_pwd}"/></p>
-							<span style="width:90px;display:inline-block" >E-mail：</span><span><input type="text" validate="email" name="m_email" value="${memberVO.m_email}" /></p>																				
-							<span style="width:90px;display:inline-block" >生日：</span><span><input type="text" validate="bday" name="m_bday" value="${memberVO.m_bday}"/><br>
-							<span style="width:90px;display:inline-block" >行動電話：</span><span><input type="text" validate="mobile" name="m_mobile" value="${memberVO.m_mobile}"/></p>
-							<span style="width:90px;display:inline-block" >通訊地址：</span><span><input type="text" name="m_addr" value="${memberVO.m_addr}"/></p>
+							<span style="width:90px;display:inline-block" >E-mail：</span><span><input type="text" validate="email" name="m_email" value="${memberVO.m_email}" class="required email"></p>																				
+							<span style="width:90px;display:inline-block" >生日：</span><span><input id="m_bday" type="text" validate="bday" name="m_bday" value="${memberVO.m_bday}" readonly
+										style="cursor: pointer"/><br>
+							<span style="width:90px;display:inline-block" >行動電話：</span><span><input type="text" validate="mobile" name="m_mobile" value="${memberVO.m_mobile}" class="required number" minlength="10" maxlength="10"/></p>
+							<span style="width:90px;display:inline-block" >通訊地址：</span><span><input type="text" name="m_addr" value="${memberVO.m_addr}" class="required" minlength="10"/></p>
 							
 							<span style="width:90px;display:inline-block" >安全提問：</span><span><input type="text" name="m_safety_q" value="${memberVO.m_safety_q}"/></p>
 							<span style="width:90px;display:inline-block" >答案：</span><span><input type="text" name="m_safety_a" value="${memberVO.m_safety_a}"/></p>

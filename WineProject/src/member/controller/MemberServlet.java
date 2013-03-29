@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import tools.InputFilter;
+
 import member.model.MemberDAO_interface;
 import member.model.MemberHibernateDAO;
 import member.model.MemberService;
@@ -18,6 +20,8 @@ import member.model.MemberVO;
 
 public class MemberServlet extends HttpServlet {
 
+	InputFilter inputfilter = new InputFilter();
+	
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		doPost(req, res);
@@ -121,6 +125,25 @@ public class MemberServlet extends HttpServlet {
 				String m_safety_a = req.getParameter("m_safety_a").trim();
 				Integer m_status = new Integer(req.getParameter("m_status").trim());
 				
+				if (m_id == null || m_id.trim().length() == 0) {
+					errorMsgs.add("請輸入「帳號」");
+				}
+				if (m_pwd == null || m_pwd.trim().length() == 0) {
+					errorMsgs.add("請輸入「密碼」");
+				}
+				if (m_name == null || m_name.trim().length() == 0) {
+					errorMsgs.add("請輸入「姓名」");
+				}
+				if (m_email == null || m_email.trim().length() == 0) {
+					errorMsgs.add("請輸入「Email」");
+				}
+				if (m_mobile == null || m_mobile.trim().length() == 0) {
+					errorMsgs.add("請輸入「行動電話號碼」");
+				}
+				if (m_addr == null || m_addr.trim().length() == 0) {
+					errorMsgs.add("請輸入「通訊地址」");
+				}
+				
 				java.sql.Date m_bday = null;
 				try {
 					m_bday = java.sql.Date.valueOf(req.getParameter("m_bday").trim());
@@ -128,6 +151,7 @@ public class MemberServlet extends HttpServlet {
 					m_bday = new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
+				
 
 				MemberVO memberVO = new MemberVO();
 				
