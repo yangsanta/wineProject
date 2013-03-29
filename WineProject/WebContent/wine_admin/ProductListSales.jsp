@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="java.lang.*" %>
+<%@ page import="java.lang.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -98,6 +98,13 @@
 	background-position: -4px -415px;
 }
 </style>
+<script>$(document).ready(
+		$(":radio").change(function(){
+			
+		})
+		)
+		
+	</script>
 </head>
 <body>
 	<div id="wrapper">
@@ -192,55 +199,56 @@
 												src="../images/products/${product.p_pic}"
 												style="width: 45px; height: 65px" /></td>
 											<td>${product.p_name}</td>
-											
+
 											<td><c:forEach var="sales" items="A,B,R,G,half,NONE">
 													<c:choose>
 
 														<c:when test="${sales==product.p_sales}">
-															<input id="${sales}${product.p_no}"  type="radio" size="30" name="${product.p_no}"
-																value="${sales}" checked />
+															<input id="${product.p_no}${sales}" type="radio"
+																size="30" name="${product.p_no}" value="${sales}"
+																checked />
 															<c:choose>
 																<c:when test="${sales=='A'}">
-																	<lable for="${product.p_no}${sales}"><span class="badge badge-success">A區商品</span></lable>
+																	<label for="${product.p_no}${sales}" style="display: inline-block"> <span	class="badge badge-success">A區商品</span></label>
 																</c:when>
 																<c:when test="${sales=='B'}">
-																	<span class="badge badge-success"><lable for="${product.p_no}${sales}">B區商品</lable></span>
+																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span	class="badge badge-success">B區商品 </span></label>
 																</c:when>
 																<c:when test="${sales=='R'}">
-																	<span class="badge badge-success"><lable for="${product.p_no}${sales}">紅標商品</lable></span>
+																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span	class="badge badge-success">紅標商品 </span></label>
 																</c:when>
 																<c:when test="${sales=='G'}">
-																	<span class="badge badge-success"><lable for="${product.p_no}${sales}">綠標商品</lable></span>
+																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span	class="badge badge-success">綠標商品 </span></label>
 																</c:when>
-																<c:when test="${sales=='helf'}">
-																	<span class="badge badge-success"><lable for="${product.p_no}${sales}">第2建半價商品</lable></span>
+																<c:when test="${sales=='half'}">
+																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span	class="badge badge-success">第2建半價商品</span></label>
 																</c:when>
 																<c:when test="${sales=='NONE'}">
-																	<span class="badge badge-success"><lable for="${product.p_no}${sales}">沒有優惠</lable></span>
+																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span class="badge badge-success">沒有優惠</span></label>
 																</c:when>
 															</c:choose>
 														</c:when>
 														<c:when test="${sales!=product.p_sales}">
-															<input type="radio" size="30" name="${product.p_no}"
-																value="${sales}" />
+															<input id="${product.p_no}${sales}" type="radio"
+																size="30" name="${product.p_no}" value="${sales}" />
 															<c:choose>
 																<c:when test="${sales=='A'}">
-																	<span class="badge"><lable for="${product.p_no}${sales}">A區商品</lable></span>
+																	<label for="${product.p_no}${sales}"style="display: inline-block"><span class="badge">A區商品</span></label>
 																</c:when>
 																<c:when test="${sales=='B'}">
-																	<span class="badge"><lable for="${product.p_no}${sales}">B區商品</lable></span>
+																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span class="badge">B區商品</span></label>
 																</c:when>
 																<c:when test="${sales=='R'}">
-																	<span class="badge"><lable for="${product.p_no}${sales}">紅標商品</lable></span>
+																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span class="badge">紅標商品</span></label>
 																</c:when>
 																<c:when test="${sales=='G'}">
-																	<span class="badge"><lable for="${product.p_no}${sales}">綠標商品</lable></span>
+																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span	 class="badge">綠標商品</span></label>
 																</c:when>
-																<c:when test="${sales=='helf'}">
-																	<span class="badge"><lable for="${product.p_no}${sales}">第2建半價商品</lable></span>
+																<c:when test="${sales=='half'}">
+																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span	class="badge">第2建半價商品</span></label>
 																</c:when>
 																<c:when test="${sales=='NONE'}">
-																	<span class="badge"><lable for="${product.p_no}${sales}">沒有優惠</lable></span>
+																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span	class="badge">沒有優惠</span></label>
 																</c:when>
 															</c:choose>
 														</c:when>
