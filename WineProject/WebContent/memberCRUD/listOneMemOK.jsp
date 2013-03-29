@@ -23,24 +23,27 @@ $(document).ready(function()
 <title>會員資料修改完成！</title>
 </head>
 <body >	
-	<div>
-		<form id="MyForm" width="300px" align=center title="會員資料修改完成！" method="post" action="<%request.getContextPath();%>/wine_admin/mem">
 
-			<p align=right>帳號：<input type="text" name="m_id" value="${memberVO.m_id}" readonly="readonly"/></p>
-			<p align=right>姓名：<input type="text" name="m_name" require="true" label="賬號" value="${memberVO.getM_name()}" readonly="readonly"/></p>
-			<p align=right>密碼：<input type="hidden" name="m_pwd" require="true" label="密碼" value="${memberVO.getM_pwd()}" readonly="readonly"/></p>
-			<p align=right>e-Mail：<input type="text" name="m_email" value="${memberVO.getM_email()}" readonly="readonly" /></p>			
-			<p align=right>生日：<input type="text" name="m_bday" value="${memberVO.getM_bday()}" readonly="readonly"/></p>
-			<p align=right>行動電話：<input type="text" name="m_mobile" value="${memberVO.getM_mobile()}" readonly="readonly"/></p>
-			<p align=right>通訊地址：<input type="text" name="m_addr" 	value="${memberVO.getM_addr()}" readonly="readonly"/></p>
-			<p align=right>圖片：<input type="text" name="m_pic" value="${memberVO.getM_pic()}" readonly="readonly"/></p>
-			<p align=right>安全提問：<input type="text" name="m_safety_q" value="${memberVO.getM_safety_q()}" readonly="readonly"/></p>
-			<p align=right>答案：<input type="text" name="m_safety_a" value="${memberVO.getM_safety_a()}" readonly="readonly"/></p>
-			<p align=right><input type="hidden" name="m_status" value="${memberVO.getM_status()}" readonly="readonly"/></p>
+	<div>
+	<img
+				src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}"
+				width="160px" height="200px" />
+		<sapn>會員資料修改完成！</sapn>
+
+			<p align=right>帳號：<sapn>${memberVO.m_id}"<sapn>
+			<p align=right>姓名：<sapn>${memberVO.getM_name()}<sapn>
+			
+			<p align=right>e-Mail：<sapn>${memberVO.getM_email()}<sapn>		
+			<p align=right>生日：<sapn>${memberVO.getM_bday()}<sapn>
+			<p align=right>行動電話：<sapn>${memberVO.getM_mobile()}<sapn>
+			<p align=right>通訊地址：<sapn>${memberVO.getM_addr()}<sapn>
+			<p align=right>圖片：<sapn>${memberVO.getM_pic()}<sapn>
+			<p align=right>安全提問：<sapn>${memberVO.getM_safety_q()}<sapn>
+			<p align=right>答案：<sapn>${memberVO.getM_safety_a()}<sapn>
 			
 			<input type="button" value="返回會員專區" onclick="window.location='../member/Member_Info.jsp'">
 			
-		</form>
+		
 	</div>
 </body>
 </html>

@@ -88,20 +88,24 @@ background-color: #fff;}
 					<%@ include file="/view_model/page_alert.htm"%>
 <c:if test="${sessionScope.access=='y'}">
 					${m_id} 您好
+					<jsp:useBean id="memberDAO" class="member.model.MemberDAO" scope="page">
+					<c:set var="memberVO" value="${memberDAO.findByPrimaryKey(m_no)}"></c:set>
 					<hr>
 					<table>
 					<tr>
-					<td>${memberVO.m_pic}<br></td>
-					<td style="padding-left:10px">E-mail：${memberVO.m_email}<br>
-			姓名：${memberVO.m_name}<br>
+					<td><img  src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}"
+				width="160px" height="200px"/></td>
+			
+					<td style="padding-left:10px">
+					姓名：${memberVO.m_name}<br>
+					E-mail：${memberVO.m_email}<br>
 			生日：${memberVO.m_bday}<br>
 			行動電話：${memberVO.m_mobile}<br>
 			通訊地址：${memberVO.m_addr}<br>
 			
-			狀態：${memberVO.m_status}<br></td>
 					</tr>
 					</table>
-			
+				</jsp:useBean>
 			
 						<div class="mem_in_outer">
 							<span class="mem_in_title"><b>優惠券(${fn:length(theCoupons)}張)</b></span>
@@ -120,12 +124,12 @@ background-color: #fff;}
 							<span class="mem_in_title">會員資料</span>
 							<div class="mem_div">
 								<div class="mem_in_inner" style="text-align :center">
-								<a href="<%=request.getContextPath()%>/memberCRUD/listOneMem.jsp"><img src="<%=request.getContextPath()%>/images/nav_safety.png" width=150px /><br>
+								<a href="<%request.getContextPath();%>/WineProject/memberCRUD/MemberUpdate?action=getOne_For_Display&m_no=${m_no}"><img src="<%=request.getContextPath()%>/images/nav_safety.png" width=150px /><br>
 									修改會員資料</a>
 								</div>
 								<div class="mem_in_inner" style="text-align :center">
-								<a href="<%=request.getContextPath()%>/memberCRUD/pwdChange.jsp"><img src="<%=request.getContextPath()%>/images/mem_safety.png" width=150px /><br>
-									修改密碼</a>
+								<a href="<%=request.getContextPath()%>/memberCRUD/pwdChange.jsp"><img src="<%=request.getContextPath()%>/images/mem_safety.png" width=150px />
+								<br>修改密碼</a>
 								</div>
 							</div>
 							<div class="mem_in_title">

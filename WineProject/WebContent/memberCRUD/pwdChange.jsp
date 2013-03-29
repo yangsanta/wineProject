@@ -23,7 +23,7 @@ $(document).ready(function()
 </head>
 <body >
 	<div>
-		<form id="MyForm" width="300px" align=center title="酒迷網" subtitle="密碼修改" method="post" action="<%request.getContextPath();%>/wine_admin/mem">
+		<form id="MyForm" width="300px" align=center title="酒迷網" subtitle="密碼修改" method="post" action="<%request.getContextPath();%>/WineProject/memberCRUD/MemberUpdate">
 			
 			<input type="hidden" name="action" value="password_update"> 
 			<input type="hidden" name="m_no" value="${m_no}">
