@@ -32,7 +32,7 @@ public class Shipping_setDAO implements Shipping_setDAO_interface {
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(INSERT_STMT);
 
-			pstmt.setInt(1, shipping_setVO.getmin_pirce());
+			pstmt.setInt(1, shipping_setVO.getMin_pirce());
 			
 
 			pstmt.executeUpdate();
@@ -77,7 +77,7 @@ public class Shipping_setDAO implements Shipping_setDAO_interface {
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(UPDATE);
 
-			pstmt.setInt(1, shipping_setVO.getmin_pirce());
+			pstmt.setInt(1, shipping_setVO.getMin_pirce());
 
 			pstmt.executeUpdate();
 
@@ -174,7 +174,7 @@ public class Shipping_setDAO implements Shipping_setDAO_interface {
 			while (rs.next()) {
 				// empVo 也稱為 Domain objects
 				shipping_setVO = new Shipping_setVO();
-				shipping_setVO.setmin_pirce(rs.getInt("min_pirce"));
+				shipping_setVO.setMin_pirce(rs.getInt("min_pirce"));
 				
 			}
 
@@ -232,7 +232,7 @@ public class Shipping_setDAO implements Shipping_setDAO_interface {
 			while (rs.next()) {
 				// empVO 也稱為 Domain objects
 				shipping_setVO = new Shipping_setVO();
-				shipping_setVO.setmin_pirce(rs.getInt("min_pirce"));
+				shipping_setVO.setMin_pirce(rs.getInt("min_pirce"));
 				
 				list.add(shipping_setVO); // Store the row in the list
 			}
@@ -278,12 +278,12 @@ public class Shipping_setDAO implements Shipping_setDAO_interface {
 
 		// 新增
 		Shipping_setVO shipping_setVO1 = new Shipping_setVO();
-		shipping_setVO1.setmin_pirce(300);
+		shipping_setVO1.setMin_pirce(300);
 		dao.insert(shipping_setVO1);
 
 		// 修改
 		Shipping_setVO shipping_setVO2 = new Shipping_setVO();
-		shipping_setVO2.setmin_pirce(800);
+		shipping_setVO2.setMin_pirce(800);
 
 		dao.update(shipping_setVO2);
 
@@ -292,13 +292,13 @@ public class Shipping_setDAO implements Shipping_setDAO_interface {
 
 		// 查詢
 		Shipping_setVO shipping_setVO3 = dao.findByPrimaryKey(800);
-		System.out.print(shipping_setVO3.getmin_pirce() + ",");
+		System.out.print(shipping_setVO3.getMin_pirce() + ",");
 		System.out.println("---------------------");
 
 		// 查詢
 		List<Shipping_setVO> list = dao.getAll();
 		for (Shipping_setVO ashipping_set : list) {
-			System.out.print(ashipping_set.getmin_pirce() + ",");
+			System.out.print(ashipping_set.getMin_pirce() + ",");
 
 			
 			System.out.println("-1---------------1-");

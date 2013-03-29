@@ -361,4 +361,16 @@
     <error-code>404</error-code>
     <location>/NotFound.jsp</location>
   </error-page>
+  
+  <servlet>
+    <servlet-name>shipping_set</servlet-name>
+    <servlet-class>shipping_set.controller.Shipping_setServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>shipping_set</servlet-name>
+    <url-pattern>/shipping_set/.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  
 </web-app>
