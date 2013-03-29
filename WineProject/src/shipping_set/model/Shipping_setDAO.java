@@ -277,23 +277,23 @@ public class Shipping_setDAO implements Shipping_setDAO_interface {
 		Shipping_setDAO dao = new Shipping_setDAO();
 
 		// 新增
-		Shipping_setVO shipping_setVO1 = new Shipping_setVO();
-		shipping_setVO1.setMin_pirce(300);
-		dao.insert(shipping_setVO1);
+//		Shipping_setVO shipping_setVO1 = new Shipping_setVO();
+//		shipping_setVO1.setMin_pirce(300);
+//		dao.insert(shipping_setVO1);
 
 		// 修改
 		Shipping_setVO shipping_setVO2 = new Shipping_setVO();
-		shipping_setVO2.setMin_pirce(800);
+		shipping_setVO2.setMin_pirce(400);
 
 		dao.update(shipping_setVO2);
 
 		// 刪除
-		dao.delete(300);
+//		dao.delete(300);
 
 		// 查詢
-		Shipping_setVO shipping_setVO3 = dao.findByPrimaryKey(800);
-		System.out.print(shipping_setVO3.getMin_pirce() + ",");
-		System.out.println("---------------------");
+//		Shipping_setVO shipping_setVO3 = dao.findByPrimaryKey(800);
+//		System.out.print(shipping_setVO3.getMin_pirce() + ",");
+//		System.out.println("---------------------");
 
 		// 查詢
 		List<Shipping_setVO> list = dao.getAll();
