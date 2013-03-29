@@ -57,7 +57,7 @@
 					<%@ include file="view_model/page_alert.htm"%>
 
 					<!-- 內容google地圖 -->
-					<iframe width="425" height="350" frameborder="0" scrolling="no"
+					<iframe width="625" height="650" frameborder="0" scrolling="no"
 						marginheight="0" marginwidth="0"
 						src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=zh-TW&amp;geocode=&amp;q=%E5%8F%B0%E7%81%A3%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%AE%89%E5%8D%80%E8%B3%87%E7%AD%96%E6%9C%83&amp;aq=0&amp;oq=%E8%B3%87%E7%AD%96&amp;sll=25.032533,121.543835&amp;sspn=0.004195,0.006968&amp;ie=UTF8&amp;hq=%E8%B3%87%E7%AD%96%E6%9C%83&amp;hnear=%E5%8F%B0%E7%81%A3%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%AE%89%E5%8D%80&amp;t=m&amp;ll=25.033769,121.543398&amp;spn=0.01324,0.006295&amp;output=embed"></iframe>
 					<br />
