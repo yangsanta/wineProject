@@ -4,131 +4,82 @@ $(function() {
 	$(document)
 			.on(
 					"click",
-					".deleteOrders",
+					".deleteCouponSet",
 					function(event) {
 						event.preventDefault();
-						$(this).closest('tr').hide();
 
 						$.ajax({
-									url : '/WineProject/wine_admin/ordersadmin.do',
+									url : '/WineProject/couponset/couponsetadmin.do',
 									type : 'POST',
 									data : {
-										o_no : $(this).attr("href"),
-										action : "delete"
+										cs_limit_price : $(this).closest('tr').children('.cs_limit_price').text(),
+										action : "deleteCouponSet"
 									},
 									dataType : 'json',
-									success : function() {
+									success : function(data) {
+										$('#csTbody').hide();
+										$(".csTr").remove();
+										
+										$.each(data, function(){
+											var cs_limit_price = $('<td></td>').text(this.cs_limit_price);
+											var cs_price = $('<td></td>').text(this.cs_price);
+											var deleteLink = $('<td></td>').html('<a class="btn btn-primary deleteCouponSet" href="#">刪除</a>');
+											var tr = $('<tr  class ="csTr" align="center" valign="middle"></tr>');
+											tr.append(cs_limit_price).append(cs_price).append(deleteLink);
+											$('#csTbody').append(tr);
+										});
+										
+										$('#csTbody').fadeIn("slow");
+										$("#warning_info").fadeIn("slow").delay(1800).fadeOut("slow");
+										
 									}
-								}).always(function() {
-									$("#warning_info").fadeIn("slow").delay(1800).fadeOut("slow");
-								})
+								});//ajax
+						
 					});
 	
-	// EditStatus
+	// AddEdit
 	$(document)
 			.on(
 					"click",
-					".editOrders",
+					".addCouponSet",
 					function(event) {
 						event.preventDefault();
-						if ($(this).text()=="改為已出貨"){
-							$(this).text("改為未出貨");
-							$(this).prev().prev().text("已出貨");
-						} else {
-							$(this).text("改為已出貨");
-							$(this).prev().prev().text("未出貨");
-						}
-						$(this).closest('tr').css('background-color', '#DFEDBE').css('color', '#3f5a04');
+						
+						var new_cs_limit_price = $('.new_cs_limit_price').val(); //$(this).closest('tr').children().children('.new_cs_limit_price').val();
 
 						$.ajax({
-								url : '/WineProject/wine_admin/ordersadmin.do',
+								url : '/WineProject/couponset/couponsetadmin.do',
 								type : 'POST',
 								data : {
-										o_no : $(this).attr("href"),
-										action : "edit"
+										new_cs_limit_price : $('.new_cs_limit_price').val(),
+										new_cs_price: $('.new_cs_price').val(),
+										action : "addCouponSet"
 									},
 									dataType : 'json',
-									success : function() {
-									}
-								})
-								.always(function() { 
-									$.ajax({
-										url : '/WineProject/wine_admin/ordersadmin.do',
-										type : 'POST',
-										data : {
-												o_no : $(this).attr("href"),
-												action : "ordernumber"
-											},
-											dataType : 'text',
-											success : function(data) {
-												$("#ordernumber").slideUp(300).delay(500).html(data).fadeIn(400);
-												$("#succes_info").fadeIn("slow").delay(1800).fadeOut("slow");
-											}
+									success : function(data) {
+										$('#csTbody').hide();
+										$(".csTr").remove();
+										
+										$.each(data, function(){
+											var cs_limit_price = $('<td></td>').text(this.cs_limit_price);
+											var cs_price = $('<td></td>').text(this.cs_price);
+											var deleteLink = $('<td></td>').html('<a class="btn btn-primary deleteCouponSet" href="#">刪除</a>');
+
+											var tr = $('<tr  class ="csTr" align="center" valign="middle"></tr>');
+											tr.append(cs_limit_price).append(cs_price).append(deleteLink);
+											if (this.cs_limit_price == new_cs_limit_price)
+												tr.css('background-color', '#DFEDBE').css('color', '#3f5a04');
+											$('#csTbody').append(tr);
 										});
+										
+										$('#csTbody').fadeIn("slow");
+										$("#succes_info").fadeIn("slow").delay(1800).fadeOut("slow");
+										
+									}//success
+								}); //ajax
 								
-								
-								});
 			
 					});
-	
-	
-	//table search
-	//search all data
-	//add index column with all content.
-	$(".filterable1 tr:has(td)").each(function(){
-		   var t = $(this).children('.filterData').text().toLowerCase() + $(this).children().children('i').text().toLowerCase(); //all row text
-		   var row = $(this).closest('tr');
-		   $("<td class='indexColumn'></td>")
-		    .hide().text(t).appendTo(row);
-		 });//each tr
-	 $("#FilterTextBox").keyup(function(){
-	   var s = $(this).val().toLowerCase().trim().split(" ");
-	 
-	   if (s != ""){
-		 //show all rows.
-		   $(".filterable1 tr:hidden").show();
-	   $.each(s, function(){
-	       $(".filterable1 tr:visible .indexColumn:not(:contains('"
-	          + this + "'))").parent().hide();
-	   });//each
-	   } else {
-		   $(".filterable1 tr").show();
-	   }
-	   
-	 });//key up.
-	 
-	//table search
-	//search o_no
-		 $("#FilterTextBoxO_no").keyup(function(){
-		   var s = $(this).val().toLowerCase().trim().split(" ");
-		 
-		   if (s != ""){
-			   $(".filterable1 tr:visible").hide();
-		   $.each(s, function(){
-		       $(".filterable1 tr:hidden .o_no:contains('"
-		          + this + "')").parent().show();
-		   });
-		   } else {
-			   $(".filterable1 tr").show();
-		   }
-		   
-		 });//key up. 
-	 
-	//table search
-	//search m_no
-		 $("#FilterTextBoxM_no").keyup(function(){
-		   var s = $(this).val().toLowerCase().trim().split(" ");
-		 
-		   if (s != ""){
-			   $(".filterable1 tr:visible").hide();
-			   $.each(s, function(){
-			       $(".filterable1 tr:hidden .m_no:contains('"
-			          + this + "')").parent().show();
-		   });//each
-		   } else {
-			   $(".filterable1 tr").show();
-		   }
-		   
-		 });//key up.
+
 
 });

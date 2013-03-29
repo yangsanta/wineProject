@@ -37,12 +37,28 @@ public class Coupon_setServlet extends HttpServlet {
 		}
 		
 		if (action.equals("addCouponSet")){
-			facade.addCouponSet();
-			facade.getAll();
+			try {
+				Integer new_cs_limit_price = Integer.valueOf(request.getParameter("new_cs_limit_price"));
+				Integer new_cs_price = Integer.valueOf(request.getParameter("new_cs_price"));
+			
+				facade.addCouponSet(new_cs_limit_price, new_cs_price);
+			
+				String jsonStr = facade.createJson(facade.getAll());
+				response.getWriter().write(jsonStr);
+			
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
 		if (action.equals("deleteCouponSet")){
-			facade.deleteCouponSet();
+			Integer cs_limit_price = Integer.valueOf(request.getParameter("cs_limit_price"));
+			
+			facade.deleteCouponSet(cs_limit_price);
+			
+			String jsonStr = facade.createJson(facade.getAll());
+			response.getWriter().write(jsonStr);
 		}
 		
 	} //doPost

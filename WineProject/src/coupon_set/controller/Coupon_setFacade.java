@@ -5,6 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import coupon_set.model.Coupon_setDAO;
 import coupon_set.model.Coupon_setVO;
 
@@ -27,14 +31,42 @@ public class Coupon_setFacade {
 		
 		return clist;
 	}
-
-	public void addCouponSet() {
-		// TODO Auto-generated method stub
+	
+	public String createJson(List<Coupon_setVO> clist) {
+		JSONObject jsonO = null;
+		JSONArray jsonA = new JSONArray();
 		
+		for (Coupon_setVO cs: clist){
+			try {
+				jsonO = new JSONObject();
+				jsonO.put("cs_limit_price", cs.getcs_limit_price());
+				jsonO.put("cs_price", cs.getcs_price());
+				jsonA.put(jsonO);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}//try-catch
+		}//forEach
+		
+		return jsonA.toString();
 	}
 
-	public void deleteCouponSet() {
-		// TODO Auto-generated method stub
+	public void addCouponSet(Integer new_cs_limit_price, Integer new_cs_price) {
+		Coupon_setDAO cdao = new Coupon_setDAO();
+		Coupon_setVO coupon_setVO = cdao.findByPrimaryKey(new_cs_limit_price);		
+		
+		if (coupon_setVO != null){
+			coupon_setVO.setcs_price(new_cs_price);
+			cdao.update(coupon_setVO);
+		} else {
+			coupon_setVO = new Coupon_setVO();
+			coupon_setVO.setcs_limit_price(new_cs_limit_price);
+			coupon_setVO.setcs_price(new_cs_price);
+			cdao.insert(coupon_setVO);
+		}
+	}
+
+	public void deleteCouponSet(Integer cs_limit_price) {
+		new Coupon_setDAO().delete(cs_limit_price);
 		
 	}
 
