@@ -33,7 +33,7 @@ $(function() {
 						event.preventDefault();
 						if ($(this).text()=="改為已出貨"){
 							$(this).text("改為未出貨");
-							$(this).prev().prev().text("已出貨");
+							$(this).prev().prev().prev().text("已出貨");
 						} else {
 							$(this).text("改為已出貨");
 							$(this).prev().prev().text("未出貨");
