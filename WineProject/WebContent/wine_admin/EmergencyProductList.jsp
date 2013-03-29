@@ -133,12 +133,12 @@
 												</div> </a></td>
 											<td>${product.p_name}</td>
 											<td><span style='font-size: 15px'>${product.p_sales}</span></td>
-											<td><span style='font-size: 15px'>${product.p_price}</span></td>											
+											<td><span style='font-size: 15px'>$ ${product.p_price}</span></td>											
 										<form action="" method="post">
 											<input type="hidden" size="30" name="page" value="${whichPage}" class="page"/>
 											<input type="hidden" size="30" name="p_no" value="${product.p_no}" class="p_no" />												
-											<td><span style='font-size: 15px'><input type="text" name="p_num" value="${product.p_num}" class="p_num"/></span></td>
-											<td><span style='font-size: 15px'><select name="p_status" class="p_status">
+											<td class="tdp_num"><span style='font-size: 15px' class="spanp_num"><input type="text" name="p_num" value="${product.p_num}" class="p_num"/></span></td>
+											<td class="tdp_status"><span style='font-size: 15px' class="spanp_status"><select name="p_status" class="p_status">
 													<option <c:if test="${product.p_status == '已上架'}">selected</c:if>>已上架</option>
 													<option <c:if test="${product.p_status == '已下架'}">selected</c:if>>已下架</option>
 											    </select><br /></span>

@@ -6,15 +6,19 @@ $(function() {
 					"click",
 					".editEmergency",
 					function(event) {
-						alert('aaa');
+//						alert($(this).parent().parent().children('.page').val());
+//						alert($(this).parent().parent().children('.p_no').val());
+//						alert($(this).parent().parent().children('.tdp_num').children('.spanp_num').children('.p_num').val());
+//						alert($(this).parent().parent().children('.tdp_status').children('.spanp_status').children('.p_status').val());
+						
 						$.ajax({
 								url : '/WineProject/wine_admin/EmergencyProductUpdate',
 								type : 'POST',
 								data : {
-										page : $('.page').val(),
-										p_no : $('.p_no').val(),
-										p_num : $('.p_num').val(),
-										p_status : $('.p_status').val(),
+										page : $(this).parent().parent().children('.page').val(),
+										p_no : $(this).parent().parent().children('.p_no').val(),
+										p_num : $(this).parent().parent().children('.tdp_num').children('.spanp_num').children('.p_num').val(),
+										p_status : $(this).parent().parent().children('.tdp_status').children('.spanp_status').children('.p_status').val(),
 //										o_no : $(this).attr("href"),
 //										action : "edit"
 									},
