@@ -22,7 +22,9 @@
 
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
 <style type="text/css">
-
+.errorConfChkout{
+	color: #be0000;
+}
 </style>
 <script type="text/javascript">
 	img {
@@ -88,7 +90,7 @@
 						 <c:if test="${shoppingProduct.value.saleType eq 'B'}">【B】</c:if>
 					</td>
 					<td align="center">$ ${shoppingProduct.value.productVO.p_price}</td>
-					<td align="center"><c:if test="${shoppingProduct.value.productVO.p_num < shoppingProduct.value.productNumber}"><i>庫存數量 (${shoppingProduct.value.productVO.p_num}) 不足！</i><br></c:if>${shoppingProduct.value.productNumber}</td>
+					<td align="center"><c:if test="${shoppingProduct.value.productVO.p_num < shoppingProduct.value.productNumber}"><span class="errorConfChkout"><i> 庫存數量 (${shoppingProduct.value.productVO.p_num}) 不足！</i></span><br></c:if>${shoppingProduct.value.productNumber}</td>
 					<td>
 <%-- 					<td><i>原價 : $ ${shoppingProduct.value.productVO.p_price*shoppingProduct.value.productNumber}</i><br>${shoppingProduct.value.saleType}折扣後: $ ${shoppingProduct.value.subTotal}</td> --%>
 						<c:choose>
@@ -117,10 +119,10 @@
 	<div style="margin-top:30px;">
 		<form method="post" action="<%=request.getContextPath()%>/orders/checkout.do">
 
-			收件人姓名：<input type="text" name="o_recipient" placeholder="收件人姓名" value="${o_recipient}">${errMap.errRName}<br>
-			聯絡電話：<input type="text" name="o_recipient_tel" placeholder="聯絡電話" value="${o_recipient_tel}">${errMap.errRPhone}<br> 
+			收件人姓名：<input type="text" name="o_recipient" placeholder="收件人姓名" value="${o_recipient}"><span class="errorConfChkout"> ${errMap.errRName}</span><br>
+			聯絡電話：<input type="text" name="o_recipient_tel" placeholder="聯絡電話" value="${o_recipient_tel}"><span class="errorConfChkout"> ${errMap.errRPhone}</span><br> 
 			收件地址：<input type="text" name="o_recipient_addr" placeholder="收件地址"
-						value="${o_recipient_addr}">${errMap.errRAddr}<br>
+						value="${o_recipient_addr}"><span class="errorConfChkout"> ${errMap.errRAddr}</span><br>
 			
 			<c:if test="${not empty theCoupons}">
 				<div style="overflow: auto;">您擁有的折價券:<br>
