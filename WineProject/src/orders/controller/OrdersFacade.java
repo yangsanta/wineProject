@@ -146,7 +146,7 @@ public class OrdersFacade {
 		}
 
 		// 收參數（收件人資訊）
-		String o_recipient = request.getParameter("o_recipient");
+		String o_recipient = new String(request.getParameter("o_recipient").getBytes("ISO8859-1"), "UTF-8");
 		String o_recipient_addr = new String(request.getParameter("o_recipient_addr").getBytes("ISO8859-1"), "UTF-8");
 		String o_recipient_tel = request.getParameter("o_recipient_tel");
 
