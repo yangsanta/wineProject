@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<aside id="sidebar"> <strong class="logo"><a href="#">lg</a></strong>
-		<ul class="tabset buttons">
+		<ul class="tabset buttons" style="width: 75px;">
 			<li class="adminboard"><a href="admin_board.do?login=y" class="ico1"><span>儀表板</span><font
 					class="text_con">儀表板</font><em></em></a> <span class="menu_tooltip"><span>儀表板</span></span>
 			</li>

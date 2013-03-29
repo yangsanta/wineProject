@@ -86,7 +86,12 @@
     	}).on("mouseleave", "#ulResultIndex tr", function() {
     		$(this).removeClass("hoverSearchIndex");
     	}).on("click", "#ulResultIndex tr", function() {
+    		$('#ajaxLoadingImg').css("display","block");
     		$("#searchInput").val($(this).text());
     		$('#ulResultIndex').empty();
+    		
     	});
     });
+    
+    function inputsearcharea(){
+    	if($("#searchInput").val()==''){$("#searchInput").css( "width", "100px" ).css( "height", "10px" );}}
