@@ -1,6 +1,8 @@
 package login.controller;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,7 @@ public class login extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		// 登出功能
+				try {
 		String action = request.getParameter("action");
 		if ("logout".equals(action)) {
 			// if (session.getAttribute("access") == "y") {
@@ -48,11 +51,23 @@ public class login extends HttpServlet {
 		String m_id = request.getParameter("m_id").trim();
 		String m_pwd = request.getParameter("m_pwd").trim();
 		session.setAttribute("access", "n");
-		System.out.println("m_pwd==========>["+m_pwd+"]");
+		
 
 		if (m_id != null && m_id.length() != 0 && m_pwd != null
 				&& m_pwd.length() != 0) {
-			MemberVO member = dao.Login(m_id, m_pwd);
+			MessageDigest md;
+		
+					md = MessageDigest.getInstance("MD5");
+				
+		
+			byte[] b = m_pwd.trim().getBytes();
+		
+		byte[] hash = md.digest(b);
+		StringBuilder pwd = new StringBuilder();
+		for (byte bb : hash) {
+			pwd.append(String.format("%02X", bb));
+		}
+			MemberVO member = dao.Login(m_id, pwd.toString());
 			if (member != null) {
 				// 登入成功狀況
 				session.setAttribute("access", "y");
@@ -82,6 +97,7 @@ public class login extends HttpServlet {
 					if (session.getAttribute("action") != null) {
 						uri = uri + "?" + session.getAttribute("action");
 					}
+					
 					session.removeAttribute("action");
 					session.removeAttribute("uri");
 					response.sendRedirect(uri);
@@ -95,12 +111,16 @@ public class login extends HttpServlet {
 						.getRequestDispatcher("../errorLogin.jsp");
 				dis.forward(request, response);
 			}
+	
 		} else {
 			errorMsgs.add("帳號或密碼不能為空白");
 			request.setAttribute("ErrorMsgKey", errorMsgs);
 			RequestDispatcher dis = request
 					.getRequestDispatcher("../errorLogin.jsp");
 			dis.forward(request, response);
+		}} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		// if(request.getParameter("m_id") != null &&

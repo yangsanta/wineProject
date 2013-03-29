@@ -62,6 +62,7 @@
 				</div>
 
 				<div id="content">
+				
 					<form method="post" action="<%=request.getContextPath()%>/member/memberpw.do">
 						<b><font size="5">忘記密碼</font></b>
 						<hr>
@@ -83,7 +84,7 @@ border: 1px solid #e5e5e5;padding: 30px;border-radius: 10px;height: 200px;">
 						<input type="submit"  value="寄送新密碼" class="btn btn-success" style="Width:150px;Height:40px;"/>
 					</div>
 
-							
+							<span style="text-align:center;color:red">${errorMId}</span>
 							</div>
 					</form>
 

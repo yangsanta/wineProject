@@ -299,7 +299,7 @@ create table member (
  m_no               int IDENTITY not null,
  m_id					varchar(20),
  m_name					varchar(10),
- m_pwd					varchar(16),
+ m_pwd					varchar(40),
  m_mobile            	char(10),
  m_email                varchar(40),
  m_bday					date,
@@ -704,7 +704,7 @@ insert into sauce values (	'	冰淇淋	'	);
 -------------------------------------------------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------------------------------------------------
-drop table product;		--刪除商品
+
 
 create table product (
  p_no               int IDENTITY  not null,

@@ -63,7 +63,7 @@ border-right: #ccc 1px solid;}
 </c:forEach>
 <br>
 <p/>
-<small>&lt;&lt;<a href="memberRegister.jsp">回輸入畫面</a>&gt;&gt;</small>
+<small>&lt;&lt;<a href="<%request.getContextPath();%>/WineProject/memberRegister.jsp">回輸入畫面</a>&gt;&gt;</small>
 
 <%@ include file="/view_model/index_fast_login.htm"%>
 						

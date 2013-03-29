@@ -1,6 +1,8 @@
 package member.controller;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.security.Security;
 
 import javax.mail.MessagingException;
@@ -31,16 +33,24 @@ public class MemberPwServlet extends HttpServlet {
 		
 		try {
 			MemberVO memberVO = memberDAO.findInformationByM_id(m_id);
-			
+			if(memberVO!=null){
 			String newPwd = CouponFacade.createPwd();
-			memberVO.setM_pwd(newPwd);
+			System.out.println(newPwd);
+			MessageDigest md= MessageDigest.getInstance("MD5");
+			byte[] b = newPwd.trim().getBytes();
+		
+		byte[] hash = md.digest(b);
+		StringBuilder pwd = new StringBuilder();
+		for (byte bb : hash) {
+			pwd.append(String.format("%02X", bb));
+		}
+			memberVO.setM_pwd(pwd.toString());
 			memberDAO.update(memberVO);
 			
 	        Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());  
 	        String[] sendTomail = { memberVO.getM_email() }; 
 	        
-	        System.out.println("+++++++++++++++++++++++++++++" + sendTomail[0]);
-	        System.out.println("+++++++++++++++++++++++++++++" + memberVO.getM_pwd());
+			
         
 	        try {
 				new GmailSender().sendSSLMessage(sendTomail, "酒迷網站 - 密碼更新", "您的帳號 "+memberVO.getM_id()+" 密碼已更新：" + memberVO.getM_pwd(), "oneeeit66@gmail.com");
@@ -48,9 +58,20 @@ public class MemberPwServlet extends HttpServlet {
 				System.out.println(sendTomail);
 				e.printStackTrace();
 			}
+			}else{
+				String UrlStr = "/WineProject/member/forgotpwd.jsp";
+				request.setAttribute("errorMId", "對不起!!查無此帳號");
+				RequestDispatcher rd=request.getRequestDispatcher("../member/forgotpwd.jsp");
+				rd.forward(request, response);
+//				response.sendRedirect(UrlStr);
+				return;
+			}
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("忘記密碼功能：無該帳號！");
 			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		String UrlStr = "/WineProject/member/sentpwd.jsp";

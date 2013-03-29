@@ -1,6 +1,7 @@
 package member.controller;
 
 import java.io.IOException;
+import java.security.MessageDigest;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -183,7 +184,19 @@ public class MemberUpdate extends HttpServlet {
 				MemberDAO_interface dao = new MemberHibernateDAO();
 				MemberVO memberVO = dao.findByPrimaryKey(m_no);
 				
-				if (!memberVO.getM_pwd().equals(m_pwd)) {
+				
+				MessageDigest md= MessageDigest.getInstance("MD5");
+				byte[] b = m_pwd.trim().getBytes();
+			
+			byte[] hash = md.digest(b);
+			StringBuilder pwd = new StringBuilder();
+			for (byte bb : hash) {
+				pwd.append(String.format("%02X", bb));
+			}
+				
+				
+				
+				if (!memberVO.getM_pwd().equals(pwd.toString())) {
 					req.setAttribute("error", "你輸入的密碼不正確!!!");
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/listOneMemPass.jsp");
@@ -208,8 +221,14 @@ public class MemberUpdate extends HttpServlet {
 						failureView.forward(req, res);
 						return; // 程式中斷
 					}
-
-					memberVO.setM_pwd(Password);
+					byte[] b2 = Password.trim().getBytes();
+					
+					byte[] hash2 = md.digest(b2);
+					StringBuilder newpwd = new StringBuilder();
+					for (byte bb : hash2) {
+						newpwd.append(String.format("%02X", bb));
+					}
+					memberVO.setM_pwd(newpwd.toString());
 					dao.update(memberVO);
 
 					req.setAttribute("memberVO", memberVO); // 資料庫update成功後,正確的的memberVO物件,存入req

@@ -52,6 +52,10 @@
 </head>
 
 <body>
+
+<c:if test="${sessionScope.access=='y'}">
+<%response.sendRedirect("index.jsp");%>
+</c:if>
 	<div id="shadow_bg">
 		<div id="body">
 			<%@ include file="../view_model/index_header.jsp"%>

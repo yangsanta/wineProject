@@ -1,11 +1,8 @@
 package member.controller;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +15,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import member.model.MemberHibernateDAO;
+import member.model.MemberVO;
+import tools.InputFilter;
 import coupon.controller.CouponFacade;
 import coupon.model.CouponDAO;
 import coupon.model.CouponVO;
 import coupon_set.model.Coupon_setDAO;
-
-import member.model.MemberHibernateDAO;
-import member.model.MemberVO;
-import tools.InputFilter;
 
 
 @WebServlet("/register")
@@ -40,8 +36,8 @@ public class register extends HttpServlet {
 	}
 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+		try {
 	
 	request.setCharacterEncoding("UTF-8");
 	
@@ -90,11 +86,26 @@ public class register extends HttpServlet {
 		MemberHibernateDAO DAO = new MemberHibernateDAO();
 			if (DAO.findHaveName(m_id)!=0) {
 				errorMsg.add("帳號 (" +  m_id  + ") 已存在，請選擇其它的帳號");
+				RequestDispatcher rd = request.getRequestDispatcher("/error.jsp");
+				rd.forward(request, response);
+				return;
 			} else {
 					//過程完全無誤，新增會員帳號
+				
+//				MessageDigest md=null;
+								
+				MessageDigest md= MessageDigest.getInstance("MD5");
+					byte[] b = m_pwd.trim().getBytes();
+				
+				byte[] hash = md.digest(b);
+				StringBuilder pwd = new StringBuilder();
+				for (byte bb : hash) {
+					pwd.append(String.format("%02X", bb));
+				}
 				MemberVO memberVo = new MemberVO();
 				memberVo.setM_id(m_id); 
-				memberVo.setM_pwd(m_pwd);
+				memberVo.setM_pwd(pwd.toString());
+//				memberVo.setM_pwd(m_pwd);
 				memberVo.setM_name(m_name);
 				memberVo.setM_email(m_email);
 				memberVo.setM_mobile(m_mobile);
@@ -102,11 +113,7 @@ public class register extends HttpServlet {
 				memberVo.setM_addr(m_addr);
 				memberVo.setM_status(1);
 				DAO.insert(memberVo);
-				
-				
-				
-				
-				int rand=(int)(Math.random()*100000+99999);
+                int rand=(int)(Math.random()*100000+99999);
 				
 //				// 變數宣告
 //				String msg;
@@ -137,10 +144,10 @@ public class register extends HttpServlet {
 //				}
 				//// 簡訊結束
 				MemberHibernateDAO dao = new MemberHibernateDAO();
-				MemberVO member = dao.Login(m_id, m_pwd);
+				MemberVO member = dao.Login(m_id, pwd.toString());
 				
 				HttpSession session = request.getSession();
-	
+
 				if (member != null) {
 					// 登入成功狀況
 					session.setAttribute("access", "y");
@@ -150,38 +157,46 @@ public class register extends HttpServlet {
 					session.setAttribute("smscheck_num",rand); // 會員姓名
 					session.setMaxInactiveInterval(3600);
 				} 
+				request.setAttribute("m_idKey", m_id);
+				
+				if (errorMsg.isEmpty())	{	
+					//註冊成功贈送coupon
+					String c_key = CouponFacade.createCoupon();
+					Integer c_price = new Coupon_setDAO().getAll().get(0).getcs_price();
+					CouponVO couponVO = new CouponVO();
+					couponVO.setC_key(c_key);
+					couponVO.setC_price(c_price);
+					couponVO.setM_no(member.getM_no());
+					couponVO.setC_status(true);
+					couponVO.setC_deadline(new Timestamp(new java.util.Date().getTime()+30*60*60*24));
+					new CouponDAO().insert(couponVO);
+					
+					System.out.println(c_key);
+					request.setAttribute("newCoupon", couponVO);
+					
+					RequestDispatcher rd = request.getRequestDispatcher("/smscheck.jsp");
+					rd.forward(request, response);
+					return ; 
+				}  else {
+					RequestDispatcher rd = request.getRequestDispatcher("/error.jsp");
+					rd.forward(request, response);
+					return;
+				}
+								
 				
 				
-				
+						
+									
 				
 			}
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面
-			request.setAttribute("m_idKey", m_id);
+	
+		} catch (NoSuchAlgorithmException e) {
 			
-			if (errorMsg.isEmpty())	{	
-				//註冊成功贈送coupon
-				String c_key = CouponFacade.createCoupon();
-				Integer c_price = new Coupon_setDAO().getAll().get(0).getcs_price();
-				CouponVO couponVO = new CouponVO();
-				couponVO.setC_key(c_key);
-				couponVO.setC_price(c_price);
-				couponVO.setM_no((Integer) request.getSession().getAttribute("m_no"));
-				couponVO.setC_status(true);
-				couponVO.setC_deadline(new Timestamp(new java.util.Date().getTime()+30*60*60*24));
-				new CouponDAO().insert(couponVO);
-				
-				System.out.println(c_key);
-				request.setAttribute("newCoupon", couponVO);
-				
-				RequestDispatcher rd = request.getRequestDispatcher("/smscheck.jsp");
-				rd.forward(request, response);
-				return ; 
-			}  else {
-				RequestDispatcher rd = request.getRequestDispatcher("/error.jsp");
-				rd.forward(request, response);
-				return;
-			}
-	}
+			e.printStackTrace();
+			
+		}
+	}	
 
 
 public static void main(String[] args) {
