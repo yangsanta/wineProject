@@ -9,8 +9,8 @@ $(function() {
 
 	
 	// getAll會用到
-	var templateRemovePre = '<td><a class="btn btn-default adsDelete" href="';
-	var templateRemovePost = '"><i class="icon-trash"></i> 刪除</a></td>';
+	var templateRemovePre = '<td><a class="btn btn-primary adsDelete" href="';
+	var templateRemovePost = '" style="color:white"><i class="icon-trash icon-white" ></i> 刪除</a></td>';
 
 	// getAll
 	$("#tabs-2-li").click(function() {
