@@ -18,7 +18,7 @@
 	<script type="text/javascript">
 		window.jQuery|| document.write('<script type="text/javascript" src="js/jquery-1.7.2.min.js"><\/script>');
 	</script>
-
+<link href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
 <script type="text/javascript" src="../wine_admin/js/ademin_member.js"></script>
 <link rel="stylesheet" href="../wine_admin/css/ademin_member.css" type="text/css" />
@@ -58,38 +58,49 @@ $(document).ready(function()
 				<%@ include file="view_model/total_tab.jsp"%>
 				<div class="tabs">
 					<div id="tab-1" class="tab">
-						<article>				
-						<div >						
+						<article>		
+						<div class="text-section">
+							<h1>會員中心</h1>
+							<p>管理網站的所有會員資訊。</p>
+						</div>		
+						<div style="margin:0 auto ;width:1100px" >	
+						<table style="margin-left: 100px;margin-top: 30px;"><tr><td>
+						<form method="post" action="mempic"enctype="multipart/form-data">					
 					<p >圖片：</p>
-					<form method="post" action="mempic"enctype="multipart/form-data">
+					
 					<input type="hidden" name="m_no" value="${memberVO.m_no}"/>
 					<img src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}" style="vertical-align: top; width: 100px;"/><br/>
 					 <input	style="background: #FFFFFF" type="file" name="p_pic" size="40" /><br/> 
 					 <input type="submit" value="上傳圖片" />
 					</form>
-					<p >會員編號：${memberVO.m_no}
+					</td><td>
+					<p ><span style="font-size:20px;">您目前正在修改的是 會員編號：${memberVO.m_no}</span>
 					<form  title="酒迷網" subtitle="會員資料修改" method="post" action="mem" >
 						
 							<input type="hidden" name="m_pic" value="${memberVO.m_pic}"/>
 							<input type="hidden" name="m_no" value="${memberVO.m_no}"/></p>
-							<p >帳號：${memberVO.m_id}<input type="hidden" name="m_id" value="${memberVO.m_id}""/></p>
-							<p >姓名：<input type="text" name="m_name" require="true" label="姓名" value="${memberVO.m_name}"/></p>
+							<span style="width:90px;display:inline-block" >帳號：</span><span>${memberVO.m_id}<input type="hidden" name="m_id" value="${memberVO.m_id}""/></p>
+							<span style="width:90px;display:inline-block" >姓名：</span><span><input type="text" name="m_name" require="true" label="姓名" value="${memberVO.m_name}"/></p>
 							<input type="hidden" name="m_pwd" require="true" label="密碼" value="${memberVO.m_pwd}"/></p>
-							<p >e-Mail：<input type="text" validate="email" name="m_email" value="${memberVO.m_email}" /></p>																				
-							<p >生日：<input type="text" validate="bday" name="m_bday" value="${memberVO.m_bday}"/><br>
-							<p >行動電話：<input type="text" validate="mobile" name="m_mobile" value="${memberVO.m_mobile}"/></p>
-							<p >通訊地址：<input type="text" name="m_addr" value="${memberVO.m_addr}"/></p>
+							<span style="width:90px;display:inline-block" >E-mail：</span><span><input type="text" validate="email" name="m_email" value="${memberVO.m_email}" /></p>																				
+							<span style="width:90px;display:inline-block" >生日：</span><span><input type="text" validate="bday" name="m_bday" value="${memberVO.m_bday}"/><br>
+							<span style="width:90px;display:inline-block" >行動電話：</span><span><input type="text" validate="mobile" name="m_mobile" value="${memberVO.m_mobile}"/></p>
+							<span style="width:90px;display:inline-block" >通訊地址：</span><span><input type="text" name="m_addr" value="${memberVO.m_addr}"/></p>
 							
-							<p >安全提問：<input type="text" name="m_safety_q" value="${memberVO.m_safety_q}"/></p>
-							<p >答案：<input type="text" name="m_safety_a" value="${memberVO.m_safety_a}"/></p>
-							<p >狀態：<input type="text" name="m_status" value="${memberVO.m_status}"/></p>
+							<span style="width:90px;display:inline-block" >安全提問：</span><span><input type="text" name="m_safety_q" value="${memberVO.m_safety_q}"/></p>
+							<span style="width:90px;display:inline-block" >答案：</span><span><input type="text" name="m_safety_a" value="${memberVO.m_safety_a}"/></p>
+							<span style="width:90px;display:inline-block" >狀態：</span><select name="m_status">
+  <option value="0" <c:if test="${memberVO.m_status  eq 0}">selected</c:if>>封鎖停用</option>
+  <option value="1" <c:if test="${memberVO.m_status  eq 1}">selected</c:if>>正常使用</option>
+</select><br>
+
 							
 							<input type="hidden" name="action" value="update">
 							<input type="hidden" name="m_no" value="<%=memberVO.getM_no()%>">
-							<input type="submit" value="送出修改" />
-							<input type="reset" value="清除" />
+							<input type="submit" value="送出修改"  class="btn btn-primary"/>
+							<input type="reset" value="清除"  class="btn btn-primary"/>
 							
-						</form>
+						</form></td></tr></table>
 						<%@ include file="view_model/footer.jsp"%>
 						</div>						
 						</article>

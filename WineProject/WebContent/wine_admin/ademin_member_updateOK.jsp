@@ -19,7 +19,7 @@
 	</script>
 <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
 <script type="text/javascript" src="../wine_admin/js/ademin_member.js"></script>
-<link rel="stylesheet" href="../wine_admin/css/ademin_member.css" type="text/css" />
+<link href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <script type="text/javascript">
 $(document).ready(function()
   { $('#MyForm').formly({'onBlur':false});
@@ -31,22 +31,13 @@ $(document).ready(function()
 	margin:0 -21px 0 0;
 	padding:0 21px 0 0;
 }
-.buttons li.member a :hover{color:yellow;}
-.buttons li.member a em {top:40px;}
-.buttons .member .ico1 span {background-position:0 -23px;}
-.buttons .member .ico2 span {background-position:-2px -73px;}
-.buttons .ico3 span {background-position:-2px -97px;}
-.buttons .member .ico3 span {background-position:-2px -126px;}
-.buttons .ico4 span {background-position:-2px -153px;}
-.buttons .member .ico4 span {background-position:-2px -178px;}
-.buttons .ico5 span {background-position:-1px -206px;}
-.buttons .member .ico5 span {background-position:-2px -232px;}
-.buttons .ico6 span {background-position:-2px -262px;}
-.buttons .member .ico6 span {background-position:-3px -291px;}
-.buttons .ico7 span {background-position:-4px -321px;}
-.buttons .member .ico7 span {background-position:-4px -352px;}
-.buttons .ico8 span {background-position:-4px -380px;}
-.buttons .member .ico8 span {background-position:-4px -415px;}
+.listtag{width: 190px;
+display: inline-block;
+line-height: 30px;
+font-size: 18px;
+font-weight: bold;
+text-align: right;}
+table{font-size:16px}
 </style>
 </head>
 <body>
@@ -59,23 +50,24 @@ $(document).ready(function()
 						<article>			
 						<div style="margin:0 auto;width:1000px;">
 						<h2>會員資料修改完成！</h2>
-						<div style="margin:0 auto; width:400px;">						
-					會員資料修改完成！				
+											
+				<table><tr><td>			
 							<img src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}" style="vertical-align: top; width: 100px;"/>
-							<p >會員編號：${memberVO.m_no}</p>
-							<p >帳號：${memberVO.m_id}</p>
-							<p >密碼：${memberVO.m_pwd}</p>
-							<p >e-Mail：${memberVO.m_email}</p>
-							<p >姓名：${memberVO.m_name}</p>														
-							<p >生日：${memberVO.m_bday}</p>
-							<p >行動電話：${memberVO.m_mobile}</p>
-							<p >通訊地址：${memberVO.m_addr}</p>
-							<p >圖片：${memberVO.m_pic}</p>
-							<p >安全提問：${memberVO.m_safety_q}</p>
-							<p >答案：${memberVO.m_safety_a}</p>
-							<p >狀態：${memberVO.m_status}</p>
-														
-							<input type="button" value="返回會員列表" onclick="window.location='../wine_admin/ademin_member.jsp'">
+							</td><td>
+							<span class="listtag">會員編號：</span><span>${memberVO.m_no}</span><br>
+							<span class="listtag">帳號：</span><span>${memberVO.m_id}</span><br>
+							<span class="listtag">密碼：</span><span>${memberVO.m_pwd}</span><br>
+							<span class="listtag">e-Mail：</span><span>${memberVO.m_email}</span><br>
+							<span class="listtag">姓名：</span><span>${memberVO.m_name}</span><br>														
+							<span class="listtag">生日：</span><span>${memberVO.m_bday}</span><br>
+							<span class="listtag">行動電話：</span><span>${memberVO.m_mobile}</span><br>
+							<span class="listtag">通訊地址：</span><span>${memberVO.m_addr}</span><br>
+							<span class="listtag">圖片：</span><span>${memberVO.m_pic}</span><br>
+							<span class="listtag">安全提問：</span><span>${memberVO.m_safety_q}</span><br>
+							<span class="listtag">答案：</span><span>${memberVO.m_safety_a}</span><br>
+							<span class="listtag">狀態：</span><span>${memberVO.m_status}</span><br>
+						</td></tr></table>	
+							<input type="button" value="返回會員列表" class="btn btn-primary" onclick="window.location='../wine_admin/ademin_member.jsp'">
 													
 					
 						<%@ include file="view_model/footer.jsp"%>

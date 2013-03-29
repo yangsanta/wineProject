@@ -387,7 +387,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Coupon_setServlet</servlet-name>
-    <url-pattern>/couponset/couponsetadmin.do</url-pattern>
+    <url-pattern>/wine_admin/couponsetadmin.do</url-pattern>
   </servlet-mapping>
       <servlet>
     <servlet-name>MaintainSales</servlet-name>

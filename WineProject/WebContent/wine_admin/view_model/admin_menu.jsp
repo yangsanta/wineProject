@@ -33,13 +33,12 @@
 					class="text_con">餐酒搭配</font><em></em></a> <span class="menu_tooltip"><span>餐酒搭配</span></span>
 			</li>
 			
-			<li class="order"><a href="ordersadmin.do?action=getall" class="ico7"><span>>訂單管理</span><font
+			<li class="order"><a href="ordersadmin.do?action=getall" class="ico7"><span>訂單管理</span><font
 					class="text_con">訂單管理</font><em></em></a> <span class="menu_tooltip"><span>訂單管理</span></span>
 			</li>	
-			
-
-			<li><a href="#tab-8" class="ico8"><span>Settings</span><em></em></a>
-				<span class="menu_tooltip"><span>Settings</span></span></li>
+			<li class="order"><a href="couponsetadmin.do?action=getAll" class="ico8"><span>優惠設定</span><font
+					class="text_con">優惠設定</font><em></em></a> <span class="menu_tooltip"><span>免運費、優惠券設定</span></span>
+			</li>	
 				<span class="num">前台</span>
 			<li><a href="../index.jsp" class="ico7"><span>>回到前台</span><font
 					class="text_con">回到前台</font><em></em></a> <span class="menu_tooltip"><span>回到網站前台頁面</span></span>

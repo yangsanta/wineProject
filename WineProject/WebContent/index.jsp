@@ -30,7 +30,8 @@
 				var DifferenceMinute = -1
 				var DifferenceSecond = -1
 				today = new Date();
-				var str=today.getMonth()+1+" "+today.getDate()+","+today.getFullYear()+" 23:59:59"
+				var str = today.getMonth() + 1 + " " + today.getDate() + ","
+						+ today.getFullYear() + " 23:59:59"
 				var Tday = new Date(str)
 				var hoursms = 60 * 60 * 1000
 				var Secondms = 60 * 1000
@@ -137,21 +138,101 @@
 .displaynone {
 	display: none
 }
-.timelimit_title{background-image: url(images/ppopTittleBG_02.png);
-background-repeat: repeat-x;
-float: left;
-height: 33px;
-font-size: 20px;
-color: #fff;
-font-weight: bold;
-line-height: 30px;
-padding-left: 5px;
-padding-right: 5px;}
-.timelimit_titleRight{background-image: url(images/ppopTittleBG_03.png);
-background-repeat: no-repeat;
-float: left;
-height: 33px;
-width: 16px;}
+
+.timelimit_title {
+	background-image: url(images/ppopTittleBG_02.png);
+	background-repeat: repeat-x;
+	float: left;
+	height: 33px;
+	font-size: 20px;
+	color: #fff;
+	font-weight: bold;
+	line-height: 30px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.timelimit_titleRight {
+	background-image: url(images/ppopTittleBG_03.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 33px;
+	width: 16px;
+}
+
+.TScontent {
+	background: #ffe;
+	padding: 15px 20px 28px 20px;
+	margin-left: -20px;
+	width: 650px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(5%, #ddedeb),
+		color-stop(5%, rgba(221, 237, 235, 0)));
+	background-image: -webkit-linear-gradient(bottom, #ddedeb 5%, rgba(221, 237, 235, 0)
+		5%);
+	background-image: -moz-linear-gradient(bottom, #ddedeb 5%, rgba(221, 237, 235, 0)
+		5%);
+	background-image: -o-linear-gradient(bottom, #ddedeb 5%, rgba(221, 237, 235, 0)
+		5%);
+	background-image: -ms-linear-gradient(bottom, #ddedeb 5%, rgba(221, 237, 235, 0)
+		5%);
+	background-image: linear-gradient(bottom, #ddedeb 5%, rgba(221, 237, 235, 0)
+		5%);
+	-webkit-background-size: 100% 24px;
+	-moz-background-size: 100% 24px;
+	-o-background-size: 100% 24px;
+	background-size: 100% 24px;
+	background-position: left top;
+}
+
+.TS_pricezone {
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: blue;
+	height: 170px;
+	width: 450px;
+	margin-left: -19px;
+	padding-top: 10px;
+	background: #959595; /* Old browsers */
+	background: -moz-linear-gradient(top, #959595 0%, #0d0d0d 27%, #010101 32%, #0a0a0a
+		53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #959595),
+		color-stop(27%, #0d0d0d), color-stop(32%, #010101),
+		color-stop(53%, #0a0a0a), color-stop(76%, #4e4e4e),
+		color-stop(87%, #383838), color-stop(100%, #1b1b1b));
+	/* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #959595 0%, #0d0d0d 27%, #010101 32%,
+		#0a0a0a 53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%);
+	/* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #959595 0%, #0d0d0d 27%, #010101 32%, #0a0a0a
+		53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #959595 0%, #0d0d0d 27%, #010101 32%, #0a0a0a
+		53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #959595 0%, #0d0d0d 27%, #010101 32%, #0a0a0a
+		53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient(  startColorstr='#959595',
+		endColorstr='#1b1b1b', GradientType=0); /* IE6-9 */
+}
+
+.TSlightbg {
+	style ="-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	background-color: #d7f1f7;
+	background-image: url(images/lightbg.jpg);
+	position: relative;
+	margin: 0 -40px -69px -40px;
+	"
+}
 </style>
 			<script type="text/javascript">
 				//右邊輪播式廣告
@@ -242,92 +323,121 @@ width: 16px;}
 						<ul class="list">
 							<jsp:useBean id="adsAll" class="ads.model.AdsDAO">
 								<c:forEach items="${adsAll.all}" var="ads">
-									<li><a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${ads.productVO.p_no}"><img src="images/ad/${ads.ads_filename}"></a></li> -->
+									<li><a
+										href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${ads.productVO.p_no}"><img
+											src="images/ad/${ads.ads_filename}"></a></li> -->
 								</c:forEach>
 							</jsp:useBean>
 						</ul>
 					</div>
-<!-- 					限時特惠廣告起始位置 -->
+					<!-- 					限時特惠廣告起始位置 -->
 					<div id="box1">
-					<jsp:useBean class="timing_sales.model.Timing_SalesDAO" id="ts">
-						<div class="timelimit_title"> 限時特賣! </div>
-						<div class="timelimit_titleRight" style="display: inline">  </div><br>
-						<h3>${ts.dailySales.ts_slogan}</h3>
-						<img
-							src="<%=request.getContextPath()%>/images/timingSales/${ts.dailySales.ts_pic}">
-							<div
-								style="background-color: #d7f1f7; background-image: url(images/lightbg.jpg); position: relative; margin: 0 -40px 0 -40px">
-								<div style="margin-left: 30px; padding-top: 10px;">
-									<div style="width: 150px; float: left;">
-										<span style="font-size: 16px; font-weight: bold;">原價 </span></br> <span
-											style="font-size: 36px; color: red; text-decoration: line-through;">${ts.dailySales.productVO.p_price}</span><br>
-									</div>
+						<jsp:useBean class="timing_sales.model.Timing_SalesDAO" id="ts">
+							<div class="timelimit_title">限時特賣!</div>
+							<div class="timelimit_titleRight" style="display: inline">
+							</div>
+							<br>
+								<h3>${ts.dailySales.ts_slogan}</h3> <img
+								src="<%=request.getContextPath()%>/images/timingSales/${ts.dailySales.ts_pic}"
+								style="width: 692px; height: 450px; border-width: 9px; border-style: solid; margin-left: -40px;">
+									<div class="TSlightbg">
+										<div style="margin-left: 30px; padding-top: 10px;">
+											<div class="TS_pricezone">
+												<div
+													style="border-width: 2px; border-style: solid; background-color: white; margin-top: 10px; padding: 10px 0px 10px 20px; height: 150px;">
+													<img src="<%=request.getContextPath()%>/images/tag.png"  style="left: -30px;top: 10px;float: left;width: 60px;position: absolute;}">
+													<div style="width: 110px; float: left;margin-left: 20px;">
+														<span style="font-size: 16px; font-weight: bold;">原價
+														</span></br>
+							<span
+								style="font-size: 36px; color: red; text-decoration: line-through;">${ts.dailySales.productVO.p_price}</span>
+							<br></div>
 
-									<div style="width: 150px; float: left;">
-										<span style="font-size: 16px; font-weight: bold;"> 折扣</span><br><span
-											style="font-size: 36px; font-weight: bold;"> <fmt:formatNumber value="${ts.dailySales.ts_price / ts.dailySales.productVO.p_price * 10}" pattern="0.0"/>折</span> <br/>
-									</div>
-									<div style="width: 150px; float: left;">
-										<span style="font-size: 16px; font-weight: bold;"> 現省</span><br><span
-											style="font-size: 36px; font-weight: bold;">${ts.dailySales.productVO.p_price - ts.dailySales.ts_price }</span><br>
-									</div>
-<!-- 									<br class="clear" /> -->
-
-									<hr style="width: 450px">
-										<div style="width: 250px; float: left;">${ts.dailySales.ts_totalsale}人已購買 <Br>好康已成立</div>
-										<div style="width: 150px; float: left;">
-										<a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${ts.dailySales.productVO.p_no}"><button class="btn btn-large  btn-success"
-												type="button">我要買</button><a>
-									</div>
-									<div
-										style="float: right; color: white; background-image: url(images/clock.png); width: 210px; height: 42px; margin-right: 10px;">
-										<span
-											style="color: white; width: 50px; display: inline-block; margin: 5px 0 0 30px;"
-											id="hr"></span> <span
-											style="color: white; width: 50px; display: inline-block;"
-											id="min"></span> <span
-											style="color: white; width: 30px; display: inline-block;"
-											id="sec"></span>
-									</div>
-									
-<!-- 									<br class="clear" /> -->
-													<span>${ts.dailySales.ts_content}</span>
-								</div>
-
-								<div align="right"
-									style="width: 281px; height: 90px; position: absolute; top: 0px; right: -59px; background-image: url(images/gtag281.png); background-repeat: no-repeat;">
-									<div align="center" class="white60"
-										style="width: 262px; height: 80px; line-height: 80px;">
-										<span style="font-size: 35px; color: #FFF; margin-right: 80px">搶購價$ ${ts.dailySales.ts_price}
-										</span>
-									</div>
-								</div>
-	
-								<div
-									style="background-color: #ccc; background-image: url(images/timebg.jpg); margin: 10px">
-									<img src="<%=request.getContextPath()%>/images/time_note.png" width=30px; style="margin:5px 5px 0 10px"><span style="font-weight: bold;">購買注意事項!</span><br>
-										<ul
-											style="background-color: rgba(255, 255, 255, 0.75);font-size: 10px; margin: 20px; padding: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
-											<li>■ 優惠期間：2013/03/24至2013/04/24
-												(國定假日或特殊節慶能否兌換需依店家當時規定，請先致電店家確認)。</li>
-											<li>■ 優惠時間：因各分店兌換時間不同，請參考下方店家資訊。</li>
-											<li>■ 本優惠限店取，不另提供宅配或外送服務。</li>
-											<li>■ 購買時請選擇兌換分店，兌換券不可跨店使用，訂購成功後恕無法更換分店，請您仔細選擇。</li>
-											<li>■
-												若有本好康相關問題，請於週一至週日09:00-24:00來電(02)27131485洽「Wineme客服」。</li>
-											<li>■ 酒迷創意行銷股份有限公司保有變更活動的權利。</li>
-										</ul> <br>
-								</div>
-						</jsp:useBean>
-							</div><%@ include file="view_model/index_fast_login.htm"%>
+					<div style="width: 140px; float: left;">
+						<span style="font-size: 16px; font-weight: bold;"> 折扣</span><br><span
+							style="font-size: 36px; font-weight: bold;"> <fmt:formatNumber
+									value="${ts.dailySales.ts_price / ts.dailySales.productVO.p_price * 10}"
+									pattern="0.0" />折
+						</span> <br />
 					</div>
-
+					<div style="width: 130px; float: left;">
+						<span style="font-size: 16px; font-weight: bold;"> 現省</span><br><span
+							style="font-size: 36px; font-weight: bold;">${ts.dailySales.productVO.p_price
+								- ts.dailySales.ts_price }元</span><br>
+					</div>
 					<br class="clear" />
+
+					<hr style="width: 400px; border-top: 1px solid rgb(53, 53, 53);">
+						<div style="width: 150px; float: left; margin-top: -10px;">
+							<i class="icon-user"></i> <span style="color: red">
+								${ts.dailySales.ts_totalsale}</span>人已購買 <Br><i class=" icon-ok"></i>
+								好康已成立
+						</div>
+						<div style="width: 150px; float: left;">
+							<a
+								href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${ts.dailySales.productVO.p_no}"><button
+									class="btn btn-large  btn-success" type="button"
+									style="width: 220px;">
+									<i class=" icon-shopping-cart icon-white"></i> 我要買
+								</button></a>
+						</div>
 				</div>
-				<br class="clear" />
+			</div>
+			<div style="float: right; margin-right: 10px; margin-top: -90px;">
+				<span
+					style="margin-left: 26px; font-size: 24px; font-weight: bold; color: #333;">剩餘倒數時間</span>
+				<div
+					style="color: white; background-image: url(images/clock.png); width: 210px; height: 42px;">
+					<span
+						style="color: white; width: 50px; display: inline-block; margin: 5px 0 0 30px;"
+						id="hr"></span> <span
+						style="color: white; width: 50px; display: inline-block;" id="min"></span>
+					<span style="color: white; width: 30px; display: inline-block;"
+						id="sec"></span>
+				</div>
+			</div>
+
+			<br class="clear">
+				<div class="TScontent">
+					<span><b>介紹:</b></span><br> <span>${ts.dailySales.ts_content}</span>
+				</div>
+		</div>
+
+		<div align="right"
+			style="width: 281px; height: 90px; position: absolute; top: 0px; right: -59px; background-image: url(images/gtag281.png); background-repeat: no-repeat;">
+			<div align="center" class="white60"
+				style="width: 262px; height: 80px; line-height: 80px;">
+				<span style="font-size: 35px; color: #FFF; margin-right: 80px">搶購價$
+					${ts.dailySales.ts_price} </span>
 			</div>
 		</div>
-		<%@ include file="view_model/index_footer.htm"%>
+
+		<div
+			style="background-color: #ccc; background-image: url(images/timebg.jpg); margin: 10px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
+			<img src="<%=request.getContextPath()%>/images/time_note.png"
+				width=30px; style="margin: 5px 5px 0 10px"><span
+				style="font-weight: bold;">購買注意事項!</span><br>
+					<ul
+						style="background-color: rgba(255, 255, 255, 0.75); font-size: 10px; margin: 20px; padding: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
+						<li>■ 優惠期間：2013/03/24至2013/04/24
+							(國定假日或特殊節慶能否兌換需依店家當時規定，請先致電店家確認)。</li>
+						<li>■ 優惠時間：因各分店兌換時間不同，請參考下方店家資訊。</li>
+						<li>■ 本優惠限店取，不另提供宅配或外送服務。</li>
+						<li>■ 購買時請選擇兌換分店，兌換券不可跨店使用，訂購成功後恕無法更換分店，請您仔細選擇。</li>
+						<li>■ 若有本好康相關問題，請於週一至週日09:00-24:00來電(02)27131485洽「Wineme客服」。</li>
+						<li>■ 酒迷創意行銷股份有限公司保有變更活動的權利。</li>
+					</ul> <br>
+		</div>
+		<br><br> </jsp:useBean>
+	</div><%@ include file="view_model/index_fast_login.htm"%>
+	</div>
+
+	<br class="clear" />
+	</div>
+	<br class="clear" />
+	</div>
+	</div>
+	<%@ include file="view_model/index_footer.htm"%>
 
 	</div>
 
