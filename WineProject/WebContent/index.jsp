@@ -240,11 +240,11 @@ width: 16px;}
 					<%@ include file="view_model/page_alert.htm"%>
 					<div id="abgneBlock">
 						<ul class="list">
-							<li><a href="#"><img src="images/ad/01.jpg"></a></li>
-							<li><a href="#"><img src="images/ad/02.jpg"></a></li>
-							<li><a href="#"><img src="images/ad/03.jpg"></a></li>
-							<li><a href="#"><img src="images/ad/04.jpg"></a></li>
-							<li><a href="#"><img src="images/ad/05.jpg"></a></li>
+							<jsp:useBean id="adsAll" class="ads.model.AdsDAO">
+								<c:forEach items="${adsAll.all}" var="ads">
+									<li><a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${ads.productVO.p_no}"><img src="images/ad/${ads.ads_filename}"></a></li> -->
+								</c:forEach>
+							</jsp:useBean>
 						</ul>
 					</div>
 <!-- 					限時特惠廣告起始位置 -->
