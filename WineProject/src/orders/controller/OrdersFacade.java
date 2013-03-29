@@ -1,8 +1,6 @@
 package orders.controller;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,23 +13,23 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import coupon.controller.CouponFacade;
-import coupon.model.CouponDAO;
-import coupon.model.CouponVO;
-import coupon_set.model.Coupon_setDAO;
-import coupon_set.model.Coupon_setVO;
-
+import member.model.MemberVO;
 import order_detail.model.Order_DetailDAO;
 import order_detail.model.Order_DetailVO;
 import orders.model.OrdersDAO;
 import orders.model.OrdersVO;
 import product.model.ProductDAO;
 import product.model.ProductVO;
-
-import member.model.MemberVO;
 import shipping_set.model.Shipping_setDAO;
 import shoppingCart.controller.ShipingCart;
 import shoppingCart.model.ShoppingProduct;
+import timing_sales.model.Timing_Sales;
+import timing_sales.model.Timing_SalesDAO;
+import coupon.controller.CouponFacade;
+import coupon.model.CouponDAO;
+import coupon.model.CouponVO;
+import coupon_set.model.Coupon_setDAO;
+import coupon_set.model.Coupon_setVO;
 
 public class OrdersFacade {
 	HttpServletRequest request = null;
@@ -233,7 +231,18 @@ public class OrdersFacade {
 				productVO.setP_num(productVO.getP_num()
 						- theOrder_Detail.getP_num());
 				productDAO.update(productVO);
-
+				
+				//如果為限時特賣商品，則結帳後修改已購數量
+				if(productVO.getP_sales().equals("TIME")){
+					Timing_Sales ts = new Timing_Sales();
+					Timing_SalesDAO tsDAO = new Timing_SalesDAO();
+					ts = tsDAO.getDailySales();
+					Integer ts_totalsale = ts.getTs_totalsale() + theOrder_Detail.getP_num();
+					ts.setTs_totalsale(ts_totalsale);
+					tsDAO.update(ts);
+					
+				}
+				
 			}
 			request.setAttribute("ordersVO", ordersVO);
 			
