@@ -357,6 +357,22 @@
     <servlet-name>MemberPwServlet</servlet-name>
     <url-pattern>/member/memberpw.do</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>MemberUpdate</servlet-name>
+    <servlet-class>member.controller.MemberUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberUpdate</servlet-name>
+    <url-pattern>/memberCRUD/MemberUpdate</url-pattern>
+  </servlet-mapping>
+      <servlet>
+    <servlet-name>MenberPicByUser</servlet-name>
+    <servlet-class>member.controller.MenberPicByUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MenberPicByUser</servlet-name>
+    <url-pattern>/memberCRUD/MenberPicByUser</url-pattern>
+  </servlet-mapping>
   <error-page>
     <error-code>404</error-code>
     <location>/NotFound.jsp</location>
