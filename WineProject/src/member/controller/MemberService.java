@@ -36,29 +36,23 @@ public class MemberService extends HttpServlet {
 //		request.getSession().setAttribute("m_no", memberVO.getM_no());
 //		request.getSession().setAttribute("m_id", memberVO.getM_id());
 		
-		if (request.getParameter("action") == null){
-			Integer m_no = (Integer)request.getSession().getAttribute("m_no");
-			
-			OrdersDAO ordersDAO = new OrdersDAO();
-			List<OrdersVO> theOrders = ordersDAO.getOrdersByM_no(m_no);	//Added a method in OrdersDAO.java for this line.
-			request.setAttribute("theOrders", theOrders);
-			
-			CouponDAO couponDAO = new CouponDAO();
-			List<CouponVO> theCoupons = couponDAO.findByM_no(m_no);
-			request.setAttribute("theCoupons", theCoupons);
-			
-			MemberHibernateDAO dao=new MemberHibernateDAO();
-			MemberVO memberVO=dao.findByPrimaryKey(m_no);
-			request.setAttribute("memberVO", memberVO);
-			
-			String UrlStr = "/member/Member_Info.jsp";
-			RequestDispatcher rd = request.getRequestDispatcher(UrlStr);
-			rd.forward(request, response);
-		}
+		Integer m_no = (Integer)request.getSession().getAttribute("m_no");
 		
-		if (request.getParameter("action").equals("forgotPw")){
-			
-		}
+		OrdersDAO ordersDAO = new OrdersDAO();
+		List<OrdersVO> theOrders = ordersDAO.getOrdersByM_no(m_no);	//Added a method in OrdersDAO.java for this line.
+		request.setAttribute("theOrders", theOrders);
+		
+		CouponDAO couponDAO = new CouponDAO();
+		List<CouponVO> theCoupons = couponDAO.findByM_no(m_no);
+		request.setAttribute("theCoupons", theCoupons);
+		
+		MemberHibernateDAO dao=new MemberHibernateDAO();
+		MemberVO memberVO=dao.findByPrimaryKey(m_no);
+		request.setAttribute("memberVO", memberVO);
+		
+		String UrlStr = "/member/Member_Info.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(UrlStr);
+		rd.forward(request, response);
 		
 	}
 

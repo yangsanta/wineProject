@@ -66,25 +66,25 @@
 						<b><font size="5">忘記密碼</font></b>
 						<hr>
 							<div class="well font-small">
-								<strong><span class="label label-success">您好!</span></strong> <br><span
-									style="margin-left: 50px">請輸入您的帳號，我們會寄送新的密碼到您註冊的信箱。
+								<strong><span class="label label-success">謝謝!</span></strong> <br><span
+									style="margin-left: 50px">已寄送新的密碼到您的信箱。
 								</span>
 							</div>
-							<div style="width:300px;margin:130px auto;background-color: rgba(255, 255, 255, 0.47);
-border: 1px solid #e5e5e5;padding: 30px;border-radius: 10px;height: 200px;">
+<!-- 							<div style="width:300px;margin:130px auto;background-color: rgba(255, 255, 255, 0.47); -->
+<!-- border: 1px solid #e5e5e5;padding: 30px;border-radius: 10px;height: 200px;"> -->
 							
-							<label style="width:80px">帳號 :</label>
-							<div class="input-prepend">
-								<span class="add-on"><i class="icon-user"></i></span>
-								<input class="span3" name="m_id"  type="text" maxlength="128" />
-							</div>
+<!-- 							<label style="width:80px">帳號 :</label> -->
+<!-- 							<div class="input-prepend"> -->
+<!-- 								<span class="add-on"><i class="icon-user"></i></span> -->
+<!-- 								<input class="span3" name="m_id"  type="text" maxlength="128" /> -->
+<!-- 							</div> -->
 
-							<div  id="login_submit">
-						<input type="submit"  value="寄送新密碼" class="btn btn-success" style="Width:150px;Height:40px;"/>
-					</div>
+<!-- 							<div  id="login_submit"> -->
+<!-- 						<input type="submit"  value="寄送新密碼" class="btn btn-success" style="Width:150px;Height:40px;"/> -->
+<!-- 					</div> -->
 
 							
-							</div>
+<!-- 							</div> -->
 					</form>
 
 
@@ -95,7 +95,7 @@ border: 1px solid #e5e5e5;padding: 30px;border-radius: 10px;height: 200px;">
 			</div>
 		</div>
 		<%@ include file="/view_model/index_fast_login.htm"%>
-		<%@ include file="../view_model/index_footer.htm"%>
+		<%@ include file="/view_model/index_footer.htm"%>
 
 	</div>
 
