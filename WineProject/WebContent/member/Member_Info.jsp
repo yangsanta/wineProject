@@ -128,8 +128,13 @@ background-color: #fff;}
 									修改會員資料</a>
 								</div>
 								<div class="mem_in_inner" style="text-align :center">
+							<c:if test="${fn:length(memberVO.m_fbuid) == 0}">
 								<a href="<%=request.getContextPath()%>/listOneMemPass.jsp"><img src="<%=request.getContextPath()%>/images/mem_safety.png" width=150px />
 								<br>修改密碼</a>
+							</c:if>
+							<c:if test="${fn:length(memberVO.m_fbuid) != 0}">
+								您是FB會員，無法修改密碼!!!
+							</c:if>
 								</div>
 							</div>
 							<div class="mem_in_title">

@@ -60,6 +60,16 @@
 										value="search" />
 								</form>
 							</div>
+					
+						<ul class="states" style="height: 60px;">
+							.
+							<!-- 								<li class="error">錯誤 : 系統錯誤，海尼根綠茶庫存沒了，請盡速補貨</li> -->
+							<li id="warning_info" class="warning" style="display: none">注意:
+								您剛剛成功的 刪除了 1 筆商品.</li>
+							<li id="succes_info" class="succes" style="display: none">成功
+								: 你剛更新了 1 筆商品.</li>
+						</ul>
+					
 							<br class="clear" />
 							<div class="pagination" style="float: left">
 								共 ${totalRows} 項商品，頁數 ${whichPage} / ${totalPages}<br />
@@ -97,11 +107,9 @@
 
 									</c:choose>
 								</ul>
-							</div>
-
-
-
-
+							</div><br><br><br>
+						
+		
 							<div style="float: right; margin-top: 45px; margin-right: 45px">
 								<a href="/WineProject/wine_admin/ProductInsert.jsp"> <input
 									type="button" class="btn btn-success" value="新增商品" />
