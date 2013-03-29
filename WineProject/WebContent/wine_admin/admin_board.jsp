@@ -121,7 +121,7 @@
 					<div id="tab-1" class="tab">
 						<article>
 						<div class="text-section">
-							<h1>儀表板</h1>
+							<h1>儀表板1</h1>
 							<p>觀看所有的網站系統目前狀態</p>
 						</div>
 						<!-- 						<ul class="states"> --> <!-- 							<li class="error">錯誤 : 系統錯誤，海尼根綠茶庫存沒了，請盡速補貨</li> -->
