@@ -36,7 +36,7 @@ $(function() {
 							$(this).prev().prev().prev().text("已出貨");
 						} else {
 							$(this).text("改為已出貨");
-							$(this).prev().prev().text("未出貨");
+							$(this).prev().prev().prev().text("未出貨");
 						}
 						$(this).closest('tr').css('background-color', '#DFEDBE').css('color', '#3f5a04');
 

@@ -56,6 +56,32 @@
 
 </script>
 
+<script type="text/javascript" charset="utf-8">
+	$(function(){
+		$('#duplicateM_idBox').css({'color': 'white','font-size':'10pt'});
+		
+		$('input[name="m_id"]').keyup(function(){
+			//alert('aaa');
+			$('#duplicateM_id').remove();
+			$.ajax({
+				url : '/WineProject/product/memberRegister.do',
+				type : 'POST',
+				data : {
+					m_id : $(this).val(),
+					action : "chkHasM_idOrNot"
+				},
+				dataType : 'text',
+				success : function(data) {
+					
+//					$('label[for="m_id"]').removeClass("success").text();
+					$('<span id="duplicateM_id" style="color:#be0000; font-size:10pt"></span>').text(data).prependTo('#duplicateM_idBox');
+					
+				}
+			});//ajax
+		});
+	})
+</script>
+
 <style type="text/css">
 label.error {
 	background: url("<%=request.getContextPath()%>/images/unchecked.gif")
@@ -145,6 +171,7 @@ label.success {
 						</div>
 						<div style="float: left">
 							<Table>
+								<TR><td> </td><td id="duplicateM_idBox">XXX</td></TR>
 								<TR>
 									<td align="right">帳號：<br></td>
 									<td align="left"><input type="text" name="m_id" value=""
