@@ -37,9 +37,6 @@
 	
 	$(function(){
 		
-		
-		$('#duplicateM_idBox').css({'color': 'white','font-size':'10pt'});
-		
 		$(document).on('keyup', 'input[name="m_id"]', function(){
 			$('#duplicateM_id').remove();
 			
@@ -55,12 +52,8 @@
 					
 					var result = data.split('_')[0];
 					
-					if (result == "duplicateMid"){
-						$('#btnMSubmit').attr('disabled','disabled');
-						$('<span id="duplicateM_id" style="color:#be0000; font-size:10pt"></span>').text(data.split('_')[1]).prependTo('#duplicateM_idBox');
-					} else {
-						$('#btnMSubmit').removeAttr('disabled');
-					}
+					if (result == "duplicateMid")
+						$('<span id="duplicateM_id" style="color:#be0000; font-size:10pt"></span>').text("  " + data.split('_')[1]).insertAfter('input[name="m_id"]');
 					
 				}
 			});//ajax
@@ -85,6 +78,33 @@
 		$('#inlineDatepicker').datepick({
 			onSelect : showDate
 		});
+		
+		$('#chkpwd').focus(function(){
+			$('#btnMSubmit').attr('disabled','disabled');
+		});
+		$('input[name="m_pwd"]').focus(function(){
+			$('#btnMSubmit').attr('disabled','disabled');
+		});
+		
+		$('#chkpwd').blur(function(){
+			$('#notSamePwd').remove();
+			if ($('input[name="m_pwd"]').val() != $('#chkpwd').val()){
+				$('#btnMSubmit').attr('disabled','disabled');
+				$('<span id="notSamePwd" style="color:#be0000; font-size:10pt"></span>').text("  請輸入相同密碼。").insertAfter('#chkpwd');
+			} else {
+				$('#btnMSubmit').removeAttr('disabled');
+			}
+		});
+		
+		$('input[name="m_pwd"]').blur(function(){
+			$('#notSamePwd').remove();
+			if ($('#chkpwd').val()!="" && $('input[name="m_pwd"]').val() != $('#chkpwd').val()){
+				$('#btnMSubmit').attr('disabled','disabled');
+				$('<span id="notSamePwd" style="color:#be0000; font-size:10pt"></span>').text("  請輸入相同密碼。").insertAfter('#chkpwd');
+			} else {
+				$('#btnMSubmit').removeAttr('disabled');
+			}
+		})
 	});
 
 	function showDate(date) {
@@ -183,7 +203,6 @@ label.success {
 						</div>
 						<div style="float: left">
 							<Table>
-								<TR><td> </td><td id="duplicateM_idBox">XXX</td></TR>
 								<TR>
 									<td align="right">帳號：<br></td>
 									<td align="left"><input autocomplete="off" type="text" name="m_id" value=""
@@ -195,9 +214,14 @@ label.success {
 										value="" size="20" class="required" minlength="8"></td>
 								</TR>
 								<TR>
+									<td align="right">密碼確認：<br></td>
+									<td align="left"><input autocomplete="off" type="password"
+										value="" size="20" id="chkpwd"></td>
+								</TR>
+								<TR>
 									<td align="right">姓名：<br></td>
 									<td align="left"><input autocomplete="off" type="text" name="m_name"
-										value="" size="30"></td>
+										value="" size="30" class="required"></td>
 								</TR>
 								<TR>
 									<td align="right">Email：</td>
