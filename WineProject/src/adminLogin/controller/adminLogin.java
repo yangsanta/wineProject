@@ -21,18 +21,28 @@ public class adminLogin extends HttpServlet {
 	public adminLogin() {
 		super();
 	}
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		doPost(request,response);
+	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		AdminLoginHibernateDAO dao = new AdminLoginHibernateDAO();
 		HttpSession session = request.getSession();
+		//登出功能
+		if (session.getAttribute("a_id")!=null) {
+				session.invalidate();
+				response.sendRedirect("index.jsp");
+				return; // 停止
+			}
+		
 		List<String> errorMsgs = new  ArrayList<String>();
 		request.setAttribute("ErrorMsgKey", errorMsgs);
 		String a_id = request.getParameter("a_id").trim();
 		String a_pwd = request.getParameter("a_pwd").trim();
 
 		session.setAttribute("admin_access", "n");
-
 		if (a_id != null && a_id.length() != 0 && a_pwd != null
 				&& a_pwd.length() != 0) {
 			AdminLoginVO member = dao.Login(a_id, a_pwd);
@@ -64,7 +74,6 @@ public class adminLogin extends HttpServlet {
 					.getRequestDispatcher("index.jsp");
 			dis.forward(request, response);
 		}
-
 		// if(request.getParameter("m_id") != null &&
 		// request.getParameter("m_id").trim().length() != 0 &&
 		// request.getParameter("m_pwd") != null &&

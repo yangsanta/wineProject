@@ -16,6 +16,6 @@
 					class="name">${sessionScope.a_name}</strong>
 			</span>
 		</a> <a href="#" class="opener">opener</a>
-		</span> <a href="#" class="btn-on">On</a>
+		</span> <a href="<%=request.getContextPath()%>/admin/adminlogin" class="btn-on">On</a>
 	</div>
 </div>
