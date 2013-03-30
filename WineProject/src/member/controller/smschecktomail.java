@@ -65,15 +65,18 @@ public class smschecktomail extends HttpServlet {
 			memberVo.setM_smscheck(1);
 			DAO.update(memberVo);
 			
+			CouponDAO couponDAO = new CouponDAO();
+			CouponVO theCoupons = couponDAO.findByM_no(m_no).get(0);
+			
 			//email
 		     String[] sendTomail = { db_member.getM_email() }; //收件者mail
 //		     String emailMsgTxt= db_member.getM_name()+" 您好：<br><br>您已將"+ db_member.getM_email()+" 輸入為 酒迷的聯絡電子郵件位址。並通過我們的手機安全性驗證。<br><br><br><hr>想知道您為何會收到此郵件嗎?<br>當有人註冊了成為本站的會員並通過手機安全性驗證，此郵件就會自動傳送。如果您沒有在我們網站註冊成為會員請用您的信箱("+db_member.getM_email()+")與我們連絡<br><br>如需更多資訊，請參閱常見問答集<br><br>感謝您，<br>JomeWine酒迷創意行銷 客戶支援<br><br><br>請注意：<br>	 此電子郵件係由系統自動產生，且由無人監管的信箱所寄送。 請勿回覆此電子郵件，因為您將不會收到回信。<br>copyright © 2013 JomeWine Inc.<br>保留一切權利 / 掌握最新資訊 / 隱私權政策  <br>";
 		     StringBuffer html = new StringBuffer();
-		     html.append( db_member.getM_name()+" 您好：<br><br>您已將"+ db_member.getM_email()+" 輸入為 酒迷的聯絡電子郵件位址。並通過我們的手機安全性驗證。<br>為了感謝您的註冊 在此送上一張50元的折價優待卷，請至會員專區查看<br><br><br><span style='font-size:10px;color: #ccc;'>請注意：</span><br><span style='font-size:10px;color: #ccc;'> 此電子郵件係由系統自動產生，且由無人監管的信箱所寄送。 請勿回覆此電子郵件，因為您將不會收到回信。</span><hr><b>想知道您為何會收到此郵件嗎?</b><br>當有人註冊了成為本站的會員並通過手機安全性驗證，此郵件就會自動傳送。如果您沒有在我們網站註冊成為會員請用您的信箱("+db_member.getM_email()+")與我們連絡，如需更多資訊，請參閱<a href='http://wine.davidou.org:8080/WineProject/commonQA.jsp'>常見問答集</a><br><br>感謝您，<br>JomeWine酒迷創意行銷 客戶支援<br><br><br>copyright © 2013 JomeWine Inc.<a href=''> 保留一切權利</a> / <a href='http://wine.davidou.org:8080/WineProject/product/DisplayProducts.do?action=getSome_For_Display&condition=p_date&conditionValue=0'>掌握最新資訊</a> / <a href='http://wine.davidou.org:8080/WineProject/privacy.jsp'>隱私權政策</a>  <br>");
+		     html.append( db_member.getM_name()+" 您好：<br><br>您已將"+ db_member.getM_email()+" 輸入為 酒迷的聯絡電子郵件位址。並通過我們的手機安全性驗證。<br>為了感謝您的註冊 在此送上一張50元的折價優待卷(" + theCoupons.getC_key() + ")，請至會員專區查看<br><br><br><span style='font-size:10px;color: #ccc;'>請注意：</span><br><span style='font-size:10px;color: #ccc;'> 此電子郵件係由系統自動產生，且由無人監管的信箱所寄送。 請勿回覆此電子郵件，因為您將不會收到回信。</span><hr><b>想知道您為何會收到此郵件嗎?</b><br>當有人註冊了成為本站的會員並通過手機安全性驗證，此郵件就會自動傳送。如果您沒有在我們網站註冊成為會員請用您的信箱("+db_member.getM_email()+")與我們連絡，如需更多資訊，請參閱<a href='http://wine.davidou.org:8080/WineProject/commonQA.jsp'>常見問答集</a><br><br>感謝您，<br>JomeWine酒迷創意行銷 客戶支援<br><br><br>copyright © 2013 JomeWine Inc.<a href=''> 保留一切權利</a> / <a href='http://wine.davidou.org:8080/WineProject/product/DisplayProducts.do?action=getSome_For_Display&condition=p_date&conditionValue=0'>掌握最新資訊</a> / <a href='http://wine.davidou.org:8080/WineProject/privacy.jsp'>隱私權政策</a>  <br>");
 		     String emailMsgTxt=html.toString();
 		     try {
 		        //	sendSSLMessage(sendTo, emailSubjectTxt, emailMsgTxt, emailFromAddress);  
-					new GmailSender().sendSSLMessage(sendTomail, "歡迎!註冊成為酒迷的一份子",emailMsgTxt, "davidou123@hotmail.com");
+					new GmailSender().sendSSLMessage(sendTomail, "歡迎!註冊成為酒迷的一份子",emailMsgTxt, "oneeeit66@gmail.com");
 				} catch (MessagingException e) {
 					e.printStackTrace();
 				}  

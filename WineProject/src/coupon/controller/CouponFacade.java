@@ -9,7 +9,7 @@ public class CouponFacade {
 	}
 
 	public static String createCoupon(){
-		String c_key = UUID.randomUUID().toString();
+		String c_key = UUID.randomUUID().toString().toUpperCase();
 		String[] c_keys = c_key.split("-"); 
 		return c_keys[c_keys.length-1];
 	}
