@@ -73,6 +73,7 @@ public class OrdersFacade {
 				.getMin_pirce();
 		System.out.println("--------------------" + cart.getTotal());
 		if (cart.getTotal() >= min_price) {
+			request.getSession().setAttribute("OriginShippingCost", 50);
 			request.getSession().setAttribute("ShippingCost", 0);
 		} else {
 			request.getSession().setAttribute("ShippingCost", 50);
