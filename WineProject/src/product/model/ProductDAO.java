@@ -202,6 +202,30 @@ public class ProductDAO implements ProductDAO_interface {
 		}
 		return list;
 	}
+	public List<ProductVO> getTopProduct() {
+
+		String GET_TOP_STMT = "from ProductVO order by p_buy_count desc";
+		List<ProductVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_TOP_STMT);
+//			query.setCacheable(true); //啟動Query快取
+			query.setFirstResult(0);
+			query.setMaxResults(10);
+
+			list = query.list();
+			session.getTransaction().commit();
+	
+		}
+
+		catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+	
 	public List<ProductVO> findRandTopProduct(String conditionValue) {
 			//隨機搜尋幾筆商品出來
 		int rndNumber=(int)(Math.random()*10+1);
