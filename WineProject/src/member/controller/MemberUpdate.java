@@ -30,7 +30,10 @@ public class MemberUpdate extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-
+		if (action==null||action.trim().length()==0){
+			res.sendRedirect(req.getContextPath()+"/index.jsp");
+			return;		
+			}
 		if ("getOne_For_Display".equals(action)) { // 來自select_page.jsp的請求
 
 			List<String> errorMsgs = new LinkedList<String>();
@@ -38,7 +41,11 @@ public class MemberUpdate extends HttpServlet {
 
 			try {
 				/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
-				String m_no = req.getParameter("m_no");
+				String m_no = (String) req.getSession().getAttribute("m_no");
+				if(m_no==null){
+					res.sendRedirect(req.getContextPath()+"/index.jsp");
+					return;
+				}
 				MemberDAO memSvc = new MemberDAO();
 				MemberVO memberVO = memSvc.findByPrimaryKey(Integer
 						.parseInt(m_no));
@@ -78,7 +85,13 @@ public class MemberUpdate extends HttpServlet {
 
 			try {
 				/*************************** 1.接收請求參數 ****************************************/
-				Integer m_no = new Integer(req.getParameter("m_no"));
+				String sm_no = (String) req.getSession().getAttribute("m_no");
+				if(sm_no==null){
+					res.sendRedirect(req.getContextPath()+"/index.jsp");
+					return;
+				}
+				Integer m_no = new Integer(req.getParameter(sm_no));
+
 
 				/*************************** 2.開始查詢資料 ****************************************/
 				MemberService memSvc = new MemberService();
@@ -104,10 +117,14 @@ public class MemberUpdate extends HttpServlet {
 
 			List<String> errorMsgs = new LinkedList<String>();
 			req.setAttribute("errorMsgs", errorMsgs);
-
+			String sm_no = (String) req.getSession().getAttribute("m_no");
+			if(sm_no==null){
+				res.sendRedirect(req.getContextPath()+"/index.jsp");
+				return;
+			}
 			// try {
 			/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
-			Integer m_no = new Integer(req.getParameter("m_no").trim());
+			Integer m_no = new Integer(sm_no.trim());
 			String m_id = req.getParameter("m_id").trim();
 			String m_name = req.getParameter("m_name").trim();
 			String m_mobile = req.getParameter("m_mobile").trim();
@@ -177,7 +194,12 @@ public class MemberUpdate extends HttpServlet {
 
 			try {
 				/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
-				Integer m_no = new Integer(req.getParameter("m_no").trim());
+				String sm_no = (String) req.getSession().getAttribute("m_no");
+				if(sm_no==null){
+					res.sendRedirect(req.getContextPath()+"/index.jsp");
+					return;
+				}
+				Integer m_no = new Integer(sm_no.trim());
 
 				String m_pwd = req.getParameter("m_pwd").trim();
 				String Password = req.getParameter("Password").trim();
@@ -248,5 +270,6 @@ public class MemberUpdate extends HttpServlet {
 				failureView.forward(req, res);
 			}
 		}
+	
 	}
 }

@@ -53,7 +53,7 @@ public class MemberPwServlet extends HttpServlet {
 			
         
 	        try {
-				new GmailSender().sendSSLMessage(sendTomail, "酒迷網站 - 密碼更新", "您的帳號 "+memberVO.getM_id()+" 密碼已更新：" + memberVO.getM_pwd(), "oneeeit66@gmail.com");
+				new GmailSender().sendSSLMessage(sendTomail, "酒迷網站 - 密碼更新", "您的帳號 "+memberVO.getM_id()+" 密碼已更新：" + newPwd, "oneeeit66@gmail.com");
 			} catch (MessagingException e) {
 				System.out.println(sendTomail);
 				e.printStackTrace();
