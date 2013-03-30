@@ -48,11 +48,14 @@ public class MenberPicByUser extends HttpServlet {
 		List<FileItem> items;
 		try {
 			items = uploadHandler.parseRequest(request);
-			String m_no = new String(items.get(0).getString()
-					.getBytes("ISO-8859-1"), "UTF-8");
+			Integer m_no = (Integer) request.getSession().getAttribute("m_no");
+			if(m_no==null){
+				response.sendRedirect(request.getContextPath()+"/index.jsp");
+				return;
+			}
+			
 			MemberDAO memberDAO = new MemberDAO();
-			MemberVO memberVO = memberDAO.findByPrimaryKey(Integer
-					.parseInt(m_no));
+			MemberVO memberVO = memberDAO.findByPrimaryKey(m_no);
 			for (FileItem item : items) {
 				if (item.getName() != null
 						&& item.getName().trim().length() > 0) {

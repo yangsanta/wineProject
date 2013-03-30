@@ -10,9 +10,9 @@
 	<link media="all" rel="stylesheet" type="text/css"
 		href="<%=request.getContextPath()%>/wine_admin/css/all.css" />
 		 <c:if test="${sessionScope.admin_access!='y'}"><meta http-equiv="refresh" content="0; url=index.jsp"></c:if>
-<!-- 	<script src="http://code.jquery.com/jquery.js"></script> -->
+	<script src="http://code.jquery.com/jquery.js"></script>
 	<script type="text/javascript">
-		window.jQuery|| document.write('<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.9.0.min.js"><\/script>');
+		window.jQuery|| document.write('<script type="text/javascript" src="js/jquery-1.7.2.min.js"><\/script>');
 	</script>
 	<link href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<script src="http://code.jquery.com/jquery.js"></script>
@@ -46,19 +46,7 @@
 		<script>
 			Array(1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 					2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
-					2010, 2011, 2012);			
-			
-			$(function(){
-				$("#confirm").click(function(){
-					alert('當前價錢 = ' + ${productVO.p_price});
-					alert('修改後價錢 = ' + $(this).parent().find('#p_price').val());
-					var currentPrice = $(this).parent().find('#p_price').val();
-					if(currentPrice/oldPrice<=0.2){
-						alert('您輸入的商品價格低於原先價錢之20%，確定要更新嗎?!');
-					}
-				});
-			});
-			
+					2010, 2011, 2012);
 		</script>
 		<script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/tinymcec/jscripts/tiny_mce.js"></script>
@@ -102,7 +90,7 @@
 		     <span>生產國家:</span><input type="text" size="30" name="p_area"value="${productVO.p_area}" /> <span class="error">${ErrMsg.errArea}</span><br/> 
 		         <span>  生產地區:</span><input type="text" size="30" name="p_country" value="${productVO.p_country}" /><br/>
 			<span>庫存貨量:</span><input type="text" size="30" name="p_num"value="${productVO.p_num}" /><span class="error">${ErrMsg.errNum}</span><br/>
-			<span> 商品價錢:</span><input type="text"	size="30" name="p_price" value="${productVO.p_price}" id="p_price"/><span class="error">${ErrMsg.errPrice}</span><br/>
+			<span> 商品價錢:</span><input type="text"	size="30" name="p_price" value="${productVO.p_price}" /><span class="error">${ErrMsg.errPrice}</span><br/>
 			<span>商品狀態:</span><c:forEach var="status" items="已上架,已下架">
 			<c:if test="${status==productVO.p_status}">
 			<input	type="radio" size="30" name="p_status" value="${status}" checked/><span>${status}  </span>
@@ -134,7 +122,7 @@
 			<span>葡萄種類:</span><input type="text" size="30" name="p_grape" value="${productVO.p_grape}" /><span class="error">${ErrMsg.errGrape}</span><br/>
 			<span>商品介紹</span><textarea style="height: 100px; width: 350px"	name="p_intro">${productVO.p_intro}</textarea><span class="error">${ErrMsg.errIntro}</span><br/> 
 			<input type="submit"
-			value="修改" id="confirm"/>
+			value="修改" />
 	</form>
 
 						

@@ -34,7 +34,7 @@ public class MaintainSales extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
-		System.out.println(action);
+
 		if ("getAll".equals(action)) {
 			List<ProductVO> list = null;
 
@@ -60,17 +60,30 @@ public class MaintainSales extends HttpServlet {
 			return;
 		}
 
-		if ("getOne_For_Display".equals(action)) {
-			request.setAttribute("action", new String("getOne_For_Display"));
-
-			Integer p_no = Integer.parseInt(request.getParameter("pId"));
+		if ("getOneMaintainSales".equals(action)) {
+			request.setAttribute("action", new String("getOneMaintainSales"));
+			String sales= request.getParameter(request.getParameter("pNo"));
+			Integer p_no = Integer.parseInt(request.getParameter("pNo"));
+			String page=request.getParameter("page");
 			ProductDAO productDAO = new ProductDAO();
 			ProductVO productVO = productDAO.findByPrimaryKey(p_no);
+			System.out.println(p_no);
+			System.out.println(sales);
+			productVO.setP_sales(sales);
+			if(sales.equals("A")||sales.equals("B"))
+			{
+				request.setAttribute("productVO",productVO);
+				request.setAttribute("page",page);
+				RequestDispatcher rd=request.getRequestDispatcher("/wine_admin/ProductSalesAorB.jsp");
+//				RequestDispatcher rd=request.getRequestDispatcher("/wine_admin/ProductOneMaintain.jsp");
+				rd.forward(request, response);
+				return;
+			}
+			productDAO.update(productVO);
 			request.setAttribute("ErrMsg", request.getAttribute("ErrMsg"));
 			request.setAttribute("productVO", productVO);
-			String listAllUrl = "/wine_admin/ProductOneMaintain.jsp";
-			RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
-			rd.forward(request, response);
+			String listAllUrl = request.getContextPath()+"/wine_admin/MaintainSales?action=getAll&pageNo="+page;
+			response.sendRedirect(listAllUrl);
 			return;
 		}
 

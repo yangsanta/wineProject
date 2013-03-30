@@ -98,13 +98,7 @@
 	background-position: -4px -415px;
 }
 </style>
-<script>$(document).ready(
-		$(":radio").change(function(){
-			
-		})
-		)
-		
-	</script>
+
 </head>
 <body>
 	<div id="wrapper">
@@ -199,8 +193,10 @@
 												src="../images/products/${product.p_pic}"
 												style="width: 45px; height: 65px" /></td>
 											<td>${product.p_name}</td>
-
-											<td><c:forEach var="sales" items="A,B,R,G,half,NONE">
+                                             <form action="MaintainSales" action="post">
+                                              <input type="hidden" name="page" value="${whichPage}"></input>
+                                             <input type="hidden" name="action" value="getOneMaintainSales"></input>
+                                             <input type="hidden" name="pNo" value="${product.p_no}"></input><td><c:forEach var="sales" items="A,B,R,G,half,NONE">
 													<c:choose>
 
 														<c:when test="${sales==product.p_sales}">
@@ -254,10 +250,9 @@
 														</c:when>
 													</c:choose>
 												</c:forEach></td>
-											<td><a
-												href="<%=request.getContextPath()%>/wine_admin/MaintainSales?action=getOne_For_Display&pId=${product.p_no}&page=${whichPage}"><input
-													type="button" class="btn btn-primary" value="修改" /></a></td>
-										</tr>
+											<td><input
+													type="submit" class="btn btn-primary" value="修改" /></td>
+										</form></tr>
 
 
 									</c:forEach>
