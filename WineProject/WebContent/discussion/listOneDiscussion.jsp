@@ -214,7 +214,7 @@ label.success {
 						</c:if>
 						<hr style="margin: 0">
 							<br /> <!-- 	--留言功能 -->
-						<c:if test="${m_no==null}">欲回文請登入會員</c:if>
+						<c:if test="${m_no==null}"><span style="color:red;font-size:20px;font-weight:bold;">&lt;欲回文請登入會員&gt;</span></c:if>
 						<c:if test="${m_no!=null}">
 							<form action="<c:url value='/reply.do'/>" method="post"
 								id="commentForm" class="cmxform">

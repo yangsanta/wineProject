@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import tools.InputFilter;
+
 import member.model.MemberHibernateDAO;
 import member.model.MemberVO;
 
@@ -31,6 +33,7 @@ public class login extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		InputFilter inputfilter = new InputFilter();
 		// 登出功能
 				try {
 		String action = request.getParameter("action");
@@ -48,8 +51,10 @@ public class login extends HttpServlet {
 		MemberHibernateDAO dao = new MemberHibernateDAO();
 		List<String> errorMsgs = new ArrayList<String>();
 		request.setAttribute("ErrorMsgKey", errorMsgs);
-		String m_id = request.getParameter("m_id").trim();
-		String m_pwd = request.getParameter("m_pwd").trim();
+		String m_id = inputfilter.sizeFomat(request.getParameter("m_id").trim(),20);
+		System.out.println(m_id);
+		String m_pwd = inputfilter.sizeFomat(request.getParameter("m_pwd").trim(),16);
+		System.out.println(m_pwd);
 		session.setAttribute("access", "n");
 		
 
