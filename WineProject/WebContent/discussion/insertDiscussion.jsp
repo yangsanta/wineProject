@@ -41,7 +41,11 @@
             $('#commentForm').validate({
                 success: function(label) {
                     label.addClass("success").text("Ok!");
-                }
+                },
+            });
+            
+            $('#btnDsSubmit').click(function(){
+            	if(tinyMCE) {tinyMCE.triggerSave();}
             });
 });
 </script>  
@@ -144,9 +148,8 @@ box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 		<img src="<%=request.getContextPath()%>/images/array.png" style="width:30px" /><span style="font-size: 22px;font-weight: bold;">文章標題:</span><br><input type="text" name="d_title" class="required" minlength="5" style="width:796px;margin-top:10px;height: 30px;" value="${dicussionVO.d_title}"/><br /> 
 		<div class="drop-shadow ">
 		<br><img src="<%=request.getContextPath()%>/images/array.png" style="width:30px" /><span style="font-size: 22px;font-weight: bold;">文章內容:</span>
-		<div style="float:right;margin-right: 150px;margin-bottom: 10px;"><button class="btn  btn-primary" type="submit"><i class=" icon-ok icon-white"></i> 送出文章</button> </div>
-		<br><div style="padding-left: 50px;width: 800px;height: 600px;"><textarea cols="90" rows="30"  id="textContext" name="d_context">${dicussionVO.d_content}</textarea></div><br />
-		
+		<div style="float:right;margin-right: 150px;margin-bottom: 10px;"><button class="btn  btn-primary" type="submit" id="btnDsSubmit"><i class=" icon-ok icon-white"></i> 送出文章</button> </div>
+		<br><div style="padding-left: 50px;width: 800px;height: 600px;"><textarea cols="90" rows="30"  id="textContext" name="d_context" class="required" minlength="10">${dicussionVO.d_content}</textarea></div><br />
 		<input type="hidden" name="action" value="insert" style="margin:0px auto"/>
 		
            
