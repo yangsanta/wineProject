@@ -63,7 +63,6 @@ public class foodserver extends HttpServlet {
 			if (f_name == null || f_name.trim().length() == 0) {
 				errorMsg.add("請輸入「食物種類」");
 			}else{
-
 			FoodVO foodVO2 = new FoodVO();
 			foodVO2.setF_id(new Integer(f_id));
 			foodVO2.setF_name(f_name);
@@ -71,12 +70,12 @@ public class foodserver extends HttpServlet {
 		}
 					if (errorMsg.isEmpty()) {
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
+						.getRequestDispatcher("/wine_admin/food.do?action=Foodsetinsert"); // error傳過去//最後轉向ademin_Fs_index.jsp
 				rd.forward(request, response);
 				return;
 			} else {
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/food.do?action=Foodsetinsert");
+						.getRequestDispatcher("/wine_admin/food.do?action=Foodsetinsert"); //最後轉向ademin_Fs_index.jsp
 				rd.forward(request, response);
 				return;
 			}

@@ -35,7 +35,7 @@ public class register extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		Food_setVO food_setVO = new Food_setVO();
+		Food_setVO food_setVO = new Food_setVO();			//這隻java檔的url是setin.do
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 
@@ -75,57 +75,34 @@ public class register extends HttpServlet {
 				errorMsg.add("請輸入「風味」");
 			}
 			if (!errorMsg.isEmpty()) {
-				RequestDispatcher rd = request
+				RequestDispatcher rd = request //除非被惡意手動輸入傳值 不然大概永遠不會跑到這邊來
 						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				return;
-			}
-			// 4. 使用DAO.insert()去新增資料
-			// Food_setVO food_setVo = new Food_setVO();
-			// food_setVo.setFoodVO(foodVO);
-
-			DAO.insert(food_setVO);
-
-			if (errorMsg.isEmpty()) {
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
 				rd.forward(request, response);
 				return;
 			} else {
+
+
+			DAO.insert(food_setVO);
+			request.setAttribute("update", "success");
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
+						.getRequestDispatcher("/wine_admin/food.do?action=Foodsetall");
 				rd.forward(request, response);
-				return;
-			}
+				return;}
 		}
 		// 刪除
 		if (action.equals("foodsetdel")) {
 			int fs_id = Integer.parseInt(request.getParameter("fs_id"));
 			DAO.delete(fs_id);
-
-			if (errorMsg.isEmpty()) {
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
+			request.setAttribute("del", "success");
+				RequestDispatcher rd = request.getRequestDispatcher("/wine_admin/food.do?action=Foodsetall");
 				rd.forward(request, response);
 				return;
-			} else {
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				return;
-			}
 		}
 		// 修改
-		if (action.equals("foodsetupdate")) {
+		if (action.equals("foodsetupdate")) { //餐酒搭配的更新
 
 			// 1. 讀取使用者輸入資料
-			//int fs_id = Integer.parseInt(request.getParameter("fs_id"));
-			
 			String fs_id = request.getParameter("fs_id");
-			String p_no = request.getParameter("p_no");
-			String f_id = request.getParameter("f_id");
-			String i_id = request.getParameter("i_id");
-			String s_id = request.getParameter("s_id");
 
 			food_setVO.setFs_id(new Integer(fs_id));
 			
@@ -139,27 +116,13 @@ public class register extends HttpServlet {
 			food_setVO.setSauceVO(new SauceDAO().findByPrimaryKey(Integer
 					.parseInt(request.getParameter("s_id"))));
 
-			if (!errorMsg.isEmpty()) {
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				return;
-
-			}
 
 			DAO.update(food_setVO);
-
-			if (errorMsg.isEmpty()) {
+			request.setAttribute("update", "success");
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
+						.getRequestDispatcher("/wine_admin/food.do?action=Foodsetall");
 				rd.forward(request, response);
 				return;
-			} else {
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				return;
-			}
 
 		}
 	}
