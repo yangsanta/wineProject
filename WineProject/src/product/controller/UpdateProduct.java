@@ -280,11 +280,9 @@ public class UpdateProduct extends HttpServlet {
 				return;
 			}
 			new ProductDAO().update(productVO);
-			errorMsgs.put("success" , "資料新增成功");
-			
-			
-			
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/wine_admin/Maintain?action=getAll&pageNo="+page));
+//			errorMsgs.put("success" , "資料新增成功");
+		
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/wine_admin/Maintain?action=getAll&update=success&pageNo="+page));
 		} catch (FileUploadException e) {
 
 			e.printStackTrace();

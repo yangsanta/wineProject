@@ -41,6 +41,12 @@
 .buttons .ico8 span {background-position:-4px -380px;}
 .buttons .product .ico8 span {background-position:-4px -415px;}
 	.error{color:red}
+	#warningdig{background-color:#ccc;width:600px;text-align: center;height:300px;left:30%;top:30%;z-index: 999;position: absolute;display:none;-webkit-border-radius: 10px;
+-moz-border-radius: 10px;border-radius: 10px;padding: 10px;-webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;border-color: #20C1FF;
+border-width: 9px;
+border-style: solid}
 	</style>
 
 		<script>
@@ -52,16 +58,14 @@
 				$("#confirm").click(function(){
 					var currentPrice = $(this).parent().find('#p_price').val();
 					var oldPrice =${productVO.p_price};
-					alert('當前價錢 = ' +oldPrice );
-					alert('修改後價錢 = ' + currentPrice);
 					if(currentPrice/oldPrice<=0.2){
-						$("#oldprice").text(oldPrice)
-						$("#newprice").text(currentPrice)
-						$("#dispercent").text(Math.round(currentPrice*100/oldPrice)/10);
+						$("#oldprice").text(oldPrice+"元")
+						$("#newprice").text(currentPrice+"元")
+						$("#dispercent").text(100-Math.round(currentPrice*1000/oldPrice)/10 +"%");
 						$("#warningdig").fadeIn("slow");
 						//div show出來 顯示之前價格 現在價格 降價幅度
 					}else{
-						//submit
+						$("#theform").submit();
 						
 					}
 					
@@ -88,14 +92,17 @@
 							<p>可在這邊修改商品喔!!!</p>
 						</div>
 
-						<div style="width: 80%; margin: 0 auto">
-	<form action="UpdateProduct" method="post" enctype="multipart/form-data">
-
-	    <input type="hidden" size="30" name="page" value="${param.page}" />
+						<div style="width: 700px; margin: 0 auto">
+	<form action="UpdateProduct" method="post" enctype="multipart/form-data" id="theform">
+	<div style="overflow:auto;">
+		<div  style="width:230px;float:left;">
+			    <input type="hidden" size="30" name="page" value="${param.page}" />
 		<input type="hidden" size="30" name="p_no" value="${ productVO.p_no}" />
+			<span style="font-size:24px;line-height:30px">商品編號:${productVO.p_no}</span><br />
 		<img src="<%=request.getContextPath()%>/images/products/${ productVO.p_pic }" style="vertical-align: top; width: 100px;"/><br/> <input
 			style="background: #FFFFFF" type="file" name="p_pic" size="40" /><br/> 
-			<span>商品編號:${productVO.p_no}</span><br /> 
+		</div>
+		<div  style="width:400px;float:left;">
 			<span>商品名稱:</span><input type="text" size="30"name="p_name" value="${productVO.p_name}" /> <span class="error">${ErrMsg.errName}</span><br/> 
 			<span>生產年分:</span><select name="p_year">
 				<c:forEach var="years"
@@ -112,12 +119,12 @@
 		         <span>  生產地區:</span><input type="text" size="30" name="p_country" value="${productVO.p_country}" /><br/>
 			<span>庫存貨量:</span><input type="text" size="30" name="p_num"value="${productVO.p_num}" /><span class="error">${ErrMsg.errNum}</span><br/>
 			<span> 商品價錢:</span><input type="text"	size="30" name="p_price" value="${productVO.p_price}" id="p_price"/><span class="error">${ErrMsg.errPrice}</span><br/>
-			<span style="line:height:30px">商品狀態:</span><c:forEach var="status" items="已上架,已下架">
+			<span style="line-height: 30px;">商品狀態:</span><c:forEach var="status" items="已上架,已下架">
 			<c:if test="${status==productVO.p_status}">
-			<input	type="radio" size="30" name="p_status" value="${status}" checked/><span>${status}  </span>
+			<input	type="radio" size="30" name="p_status" id="p_status1" value="${status}" checked/><label style="display: inline-block;" for="p_status1">${status}</label>
 			</c:if>
 			<c:if test="${status!=productVO.p_status}">
-			<input	type="radio" size="30" name="p_status" value="${status}" /><span>${status}  </span>
+			<input	type="radio" size="30" name="p_status" id="p_status2"  value="${status}" /><label style="display: inline-block;" for="p_status2">${status}</label>
 			</c:if>
 			</c:forEach><br/> 
 			<span>品牌酒莊:</span><input type="text" size="30"	name="p_winery" value="${productVO.p_winery}" /><span class="error">${ErrMsg.errWinery}</span><br/>
@@ -131,26 +138,36 @@
 			<span>商品容量:</span><input type="text" size="30" name="p_vol"	value="${ productVO.p_vol}" /><span class="error">${ErrMsg.errVol}</span><br/> 
 			<span>酒精濃度:</span><input	type="text" size="30" name="p_alcho" value="${productVO.p_alcho}" /><span class="error">${ErrMsg.errAlcho}</span><br/>
 			<span>上架日期:</span><input type="text" size="30" name="p_date"  value="${productVO.p_date}" /><br/> 
-			<span>商品種類:</span>
+			<span style="line-height: 30px;">商品種類:</span>
 			<c:forEach var="type" items="紅葡萄酒,白葡萄酒,氣泡酒">
 			<c:if test="${type==productVO.p_type}">
-			<input	type="radio" size="30" name="p_type" value="${type}" checked/><span>${type}  </span>
+			<input	type="radio" size="30" name="p_type" value="${type}" id="${type}"checked/><label style="display: inline-block;" for="${type}">${type} </label>
 			</c:if>
 			<c:if test="${type!=productVO.p_type}">
-			<input	type="radio" size="30" name="p_type" value="${type}" /><span>${type}  </span>
+			<input	type="radio" size="30" name="p_type" value="${type}" id="${type}"/><label style="display: inline-block;" for="${type}">${type}</label>
 			</c:if>
 			</c:forEach><span class="error">${ErrMsg.errType}</span><br/> 
 			<span>葡萄種類:</span><input type="text" size="30" name="p_grape" value="${productVO.p_grape}" /><span class="error">${ErrMsg.errGrape}</span><br/>
+			</div>
+</div>
 			<span>商品介紹</span><textarea style="height: 100px; width: 350px"	name="p_intro">${productVO.p_intro}</textarea><span class="error">${ErrMsg.errIntro}</span><br/> 
-			<button type="button" id="confirm">修改</button>
+			<button type="button" id="confirm" class="btn btn-primary" >修改</button>
 
-<div id="warningdig" style="background:#ccc;width:400px;height:400px;">
-//禁嘆號 箭頭
-<span id="oldprice"></span>
-<span id="newprice"></span>
-<span id="dispercent"></span>
-<button  type="button"></button>
-<button  type="button" onclick='$("#warningdig").fadeOut("slow");'>回到fdsf頁面</button>	</form>
+
+<div id="warningdig">
+<div style="overflow:auto;height:100px;"><span style="color:red;font-size:34px;font-weight: bold;">低價</span>
+<img src="<%=request.getContextPath()%>/wine_admin/images/exclamationmark.png" style="margin:0 auto;width:50px;top: 15px;position: relative;"><span style="color:red;font-size:34px;font-weight: bold;">警告</span><hr></div>
+<div style="background-image:url(<%=request.getContextPath()%>/wine_admin/images/down256.png);background-repeat: no-repeat;height:200px; width:200px;float:left;padding: 0px 0 0 30px;"><span id="dispercent" style="font-size: 60px;color: #F00;">59%</span></div>
+<div  style="float:left;font-size:20px;text-align:left;width:330px;">
+<span style="font-size:12px;color: #333;font-weight: bold;">你現在修改的價錢低於兩折，你確定真的要如此嗎?</span><br><br>
+<span style="width:120px;display: inline-block;color:#18375E">原本價前為:</span><span id="oldprice" style="color:red">300元</span><br><br>
+<span style="width:120px;display: inline-block;color:#18375E">修改價錢為:</span><span id="newprice" style="color:red">30元</span><br><br><br>
+<button  type="submit" class="btn btn-primary" style="height: 50px;" >不管他還是送出</button>
+<button  type="button" class="btn btn-primary" style="height: 50px;"  onclick='$("#warningdig").fadeOut("slow");'>返回我要修改</button>
+</div>
+
+
+	</form>
 </div>
 						
 					<%@ include file="view_model/footer.jsp"%>

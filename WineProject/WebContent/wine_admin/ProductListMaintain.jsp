@@ -55,7 +55,11 @@
 							<h1>商品專區</h1>
 							<p>可在這邊修改商品喔!!!</p>
 						</div>
-
+		<ul class="states">
+							<c:if test="${not empty param.update}">
+							<li class="succes">成功 : <Font color='red'>資料修改成功!</font>
+							</li></c:if>
+						</ul>
 	
 						<div style="width: 80%; margin: 0 auto">
 							<!--------------------------分頁----------------------------------------------------------- -->
