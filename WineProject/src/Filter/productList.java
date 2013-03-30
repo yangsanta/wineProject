@@ -39,9 +39,6 @@ public class productList implements Filter {
 		//計時器
 		ProductDAO dao = new ProductDAO();
 		List<String> France = dao.findCountry("法國");
-//		for(String aaa:France){
-//			System.out.println(aaa);
-//		}
 		request.setAttribute("France", France);
 		List<String> Australia = dao.findCountry("澳洲");
 		request.setAttribute("Australia", Australia);
@@ -76,10 +73,7 @@ public class productList implements Filter {
 		ProductDAO productDAO = new ProductDAO();
 		List<ProductVO> hot_product2  = productDAO.findTopProduct("10");
 		request.setAttribute("hot_product2", hot_product2);
-		
-		
-		
-		
+			
 		chain.doFilter(request, response);
 		
 		//計時  ， 網站上線時砍掉
@@ -106,9 +100,8 @@ public class productList implements Filter {
 		//判斷是否來自外站連結
 		String referer=null;
 		if(request2.getHeader("Referer")!=null){
-		 referer=(request2.getHeader("Referer").startsWith("http://"+request2.getHeader("Host")))?request2.getHeader("Referer") : null;
+		 referer=(request2.getHeader("Referer").startsWith("http://"+request2.getHeader("Host")))?null: request2.getHeader("Referer") ;
 		}
-
 		Admin_boardHibernateDAO admindao = new Admin_boardHibernateDAO();
 		 Admin_boardVO admin_boardVOO1 = new Admin_boardVO();
 		 admin_boardVOO1.setQueryString(request2.getQueryString());

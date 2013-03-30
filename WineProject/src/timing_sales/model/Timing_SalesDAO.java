@@ -96,7 +96,6 @@ public class Timing_SalesDAO implements Timing_Sales_interface{
 		SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
 		String str = bartDateFormat.format(date); 
 		str = "'" + str + "'";
-		System.out.println("Today is : "+str);
 		String queryString = "from Timing_Sales where ts_date = " + str + "order by ts_date desc";
 		try {
 		session.beginTransaction();

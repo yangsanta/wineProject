@@ -54,9 +54,6 @@
 	}
 
 
-</script>
-
-<script type="text/javascript" charset="utf-8">
 	$(function(){
 		$('#duplicateM_idBox').css({'color': 'white','font-size':'10pt'});
 		
@@ -83,6 +80,7 @@
 </script>
 
 <style type="text/css">
+label{display: inline-block;margin-left: 10px;}
 label.error {
 	background: url("<%=request.getContextPath()%>/images/unchecked.gif")
 		no-repeat 0px 0px;
