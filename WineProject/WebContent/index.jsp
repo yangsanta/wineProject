@@ -233,6 +233,7 @@
 	margin: 0 -40px -69px -40px;
 	"
 }
+#buyinfo li{font-size:12px}
 </style>
 			<script type="text/javascript">
 				//右邊輪播式廣告
@@ -405,19 +406,18 @@
 
 		<div align="right"
 			style="width: 281px; height: 90px; position: absolute; top: 0px; right: -59px; background-image: url(images/gtag281.png); background-repeat: no-repeat;">
-			<div align="center" class="white60"
-				style="width: 262px; height: 80px; line-height: 80px;">
-				<span style="font-size: 35px; color: #FFF; margin-right: 80px">搶購價$
+			<div  class="white60"
+				style="width: 262px; height: 80px; line-height: 80px;text-align: left;">
+				<span style="width: 210px;font-size: 35px; color: #FFF;">搶3購價$
 					${ts.dailySales.ts_price} </span>
 			</div>
 		</div>
 
 		<div
 			style="background-color: #ccc; background-image: url(images/timebg.jpg); margin: 10px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
-			<img src="<%=request.getContextPath()%>/images/time_note.png"
-				width=30px; style="margin: 5px 5px 0 10px"><span
+			<img src="<%=request.getContextPath()%>/images/time_note.png" style="margin: 5px 5px 0 10px;width:30px"><span
 				style="font-weight: bold;">購買注意事項!</span><br>
-					<ul
+					<ul id ="buyinfo"
 						style="background-color: rgba(255, 255, 255, 0.75); font-size: 10px; margin: 20px; padding: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
 						<li>■ 優惠期間：2013/03/24至2013/04/24
 							(國定假日或特殊節慶能否兌換需依店家當時規定，請先致電店家確認)。</li>

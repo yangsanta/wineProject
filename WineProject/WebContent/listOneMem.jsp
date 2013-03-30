@@ -34,7 +34,10 @@ $(document).ready(function()
    });
 </script>
 <style type="text/css">
-
+#content{background: url('<%=request.getContextPath()%>/images/mem_infobg.png');background-repeat: no-repeat;
+background-position: bottom right;
+background-color: #fff;}
+.listtag{line-height: 40px;width:90px;display:inline-block;font-weight: bold;}
 </style>
 <script type="text/javascript">
 
@@ -60,17 +63,21 @@ $(document).ready(function()
 					<%@ include file="../view_model/page_alert.htm"%>
 
 	<div>
-		<div align=center>
-			<img
+			<div align=center>
+		<h2>修改會員資料</h2><hr>
+		</div>
+		<div style="overflow:auto; ">
+		<div style="width:200px;float:left;padding-top: 40px;">
+					<img
 				src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}"
 				width="160px" height="200px" /> <br />
 			<form method="post" action="<%request.getContextPath();%>/WineProject/MenberPicByUser" enctype="multipart/form-data">
-				<input type="hidden" name="m_no" value="${memberVO.m_no}">
-			
-				<input type="submit" value="上傳圖片" /><input
-					style="background: #FFFFFF" type="file" name="p_pic" size="40" />
+				<input type="hidden" name="m_no" value="${memberVO.m_no}" class="btn btn-info btn-small">
+				<input style="background: #FFFFFF" type="file" name="p_pic" size="40" />
+				<button type="submit" style="width: 180px;height: 35px;"  class="btn btn-info "><i class="icon-plus icon-white"></i>上傳圖片</button>
 			</form>
 		</div>
+		<div style="width:400px;float:left">
 		<form id="MyForm" width="300px" align=center title="酒迷網"
 			subtitle="會員資料修改" method="post"
 			action="<%request.getContextPath();%>/WineProject/MemberUpdate">
@@ -79,30 +86,30 @@ $(document).ready(function()
 					value="${memberVO.m_id}" />
 			</p>
 			<p align=center>
-				姓名：<input type="text" name="m_name" require="true" label="姓名"
+				<span class="listtag"><b>姓名：</b></span><input type="text" name="m_name" require="true" label="姓名"
 					value="${memberVO.m_name}" />
 			</p>
 			<p align=center>
-				e-Mail：<input type="text" validate="email" name="m_email"
+				<span class="listtag"><b>E-mail：</b></span><input type="text" validate="email" name="m_email"
 					value="${memberVO.m_email}" />
 			</p>
 			<p align=center>
-				生日：<input type="text" validate="bday" name="m_bday"
+				<span class="listtag"><b>生日：</b></span><input type="text" validate="bday" name="m_bday"
 					value="${memberVO.m_bday}" />
 			</p>
 			<p align=center>
-				行動電話：<input type="text" validate="mobile" name="m_mobile"
+				<span class="listtag"><b>行動電話：</b></span><input type="text" validate="mobile" name="m_mobile"
 					value="${memberVO.m_mobile}" />
 			</p>
 			<p align=center>
-				通訊地址：<input type="text" name="m_addr" value="${memberVO.m_addr}" />
+				<span class="listtag"><b>通訊地址：</b></span><input type="text" name="m_addr" value="${memberVO.m_addr}" />
 			</p>
 			<p align=center>
-				安全提問：<input type="text" name="m_safety_q"
+				<span class="listtag"><b>安全提問：</b></span><input type="text" name="m_safety_q"
 					value="${memberVO.m_safety_q}" />
 			</p>
 			<p align=center>
-				答案：<input type="text" name="m_safety_a"
+				<span class="listtag"><b>答案：</b></span><input type="text" name="m_safety_a"
 					value="${memberVO.m_safety_a}" />
 			</p>
 			<p align=center>
@@ -110,9 +117,14 @@ $(document).ready(function()
 			</p>
 <input type="hidden" name="m_pic" value="${memberVO.m_pic}" />
 			<input type="hidden" name="action" value="member_update"> <input
-				type="hidden" name="m_no" value="${memberVO.m_no}"> <input
-				type="submit" value="送出修改" /> <input type="reset" value="清除" />
+				type="hidden" name="m_no" value="${memberVO.m_no}"> <button
+				type="submit" class="btn btn-primary" style="width: 280px;height: 40px" ><i class="icon-ok icon-white"></i> 存 檔 送 出	 </button>
 				</form>
+		</div>
+		</div>
+	
+
+		
 </div>
 
 <%@ include file="../view_model/index_fast_login.htm"%>

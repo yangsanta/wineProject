@@ -86,25 +86,29 @@ background-color: #fff;}
 
 				<div id="content">
 					<%@ include file="/view_model/page_alert.htm"%>
+					<c:if test="${update=='success'}">
+<div class="alert" id="just_login" >
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <span class="label label-success">Success!</span> <br> <span > 會員資料已成功修改!</span>
+</div></c:if>
 <c:if test="${sessionScope.access=='y'}">
 					${m_id} 您好
 					<jsp:useBean id="memberDAO" class="member.model.MemberDAO" scope="page">
 					<c:set var="memberVO" value="${memberDAO.findByPrimaryKey(m_no)}"></c:set>
 					<hr>
-					<table>
-					<tr>
-					<td><img  src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}"
-				width="160px" height="200px"/></td>
-			
-					<td style="padding-left:10px">
-					姓名：${memberVO.m_name}<br>
-					E-mail：${memberVO.m_email}<br>
-			生日：${memberVO.m_bday}<br>
-			行動電話：${memberVO.m_mobile}<br>
-			通訊地址：${memberVO.m_addr}<br>
-			
-					</tr>
-					</table>
+					<div style="overflow:auto; ">
+					<div style="width:200px;float:left">
+					<img  src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}"
+				width="160px" height="200px"/></td><td  valign="top" style="padding-left:10px"></div>
+					<div style="width:300px;float:left">
+					<span style="line-height: 40px;width:80px;display:inline-block"><b>姓名：</b></span>${memberVO.m_name}<br>
+					<span style="line-height: 40px;width:80px;display:inline-block"><b>E-mail：</b></span>${memberVO.m_email}<br>
+					<span style="line-height: 40px;width:80px;display:inline-block"><b>生日：</b></span>${memberVO.m_bday}<br>
+					<span style="line-height: 40px;width:80px;display:inline-block"><b>行動電話：</b></span>${memberVO.m_mobile}<br>
+					<span style="line-height: 40px;width:80px;display:inline-block"><b>通訊地址：</b></span>${memberVO.m_addr}<br></div>
+					</div>
+
+					
 				</jsp:useBean>
 			
 						<div class="mem_in_outer">
@@ -124,12 +128,12 @@ background-color: #fff;}
 							<span class="mem_in_title">會員資料</span>
 							<div class="mem_div">
 								<div class="mem_in_inner" style="text-align :center">
-								<a href="<%request.getContextPath();%>/WineProject/MemberUpdate?action=getOne_For_Display&m_no=${m_no}"><img src="<%=request.getContextPath()%>/images/nav_safety.png" width=150px /><br>
+								<a style="text-decoration:none" href="<%request.getContextPath();%>/WineProject/MemberUpdate?action=getOne_For_Display&m_no=${m_no}"><img src="<%=request.getContextPath()%>/images/nav_safety.png" width=150px /><br>
 									修改會員資料</a>
 								</div>
 								<div class="mem_in_inner" style="text-align :center">
 							<c:if test="${fn:length(memberVO.m_fbuid) == 0}">
-								<a href="<%=request.getContextPath()%>/listOneMemPass.jsp"><img src="<%=request.getContextPath()%>/images/mem_safety.png" width=150px />
+								<a style="text-decoration:none" href="<%=request.getContextPath()%>/listOneMemPass.jsp"><img src="<%=request.getContextPath()%>/images/mem_safety.png" width=150px />
 								<br>修改密碼</a>
 							</c:if>
 							<c:if test="${fn:length(memberVO.m_fbuid) != 0}">

@@ -155,7 +155,8 @@ public class MemberUpdate extends HttpServlet {
 
 			/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
 			req.setAttribute("memberVO", memberVO); // 資料庫update成功後,正確的的memberVO物件,存入req
-			String url = "listOneMemOK.jsp";
+			req.setAttribute("update", "success"); // 資料庫update成功後,正確的的memberVO物件,存入req
+			String url = "/member/Member_Info.jsp"; //listOneMemOK.jsp
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneMem.jsp
 			successView.forward(req, res);
 

@@ -41,6 +41,11 @@
 
 
 <style type="text/css">
+.listtag{line-height: 40px;width:150px;display:inline-block;font-weight: bold;}
+#content{background: url('<%=request.getContextPath()%>/images/mem_infobg.png');
+background-repeat: no-repeat;
+background-position: bottom right;
+background-color: #fff;}
 </style>
 <script type="text/javascript">
 	
@@ -64,7 +69,14 @@
 				<div id="content">
 					<%@ include file="../view_model/page_alert.htm"%>
 					<div>
+			<div align=center>
+		<h2>修改會員密碼</h2><hr>
+			<div class="well font-small"align=left >
 
+						<strong><span class="label label-info">注意!</span></strong> <br><span
+							style="margin-left: 50px">請輸入一個包含英文大小寫、數字的密碼，且長度超過8個字元來達到最佳的帳號安全性。</span>
+					</div>
+		</div>
 						<form id="MyForm" width="300px" align=center title="酒迷網"
 							subtitle="密碼修改" method="post"
 							action="<%request.getContextPath();%>/WineProject/MemberUpdate">
@@ -75,20 +87,19 @@
 									value="${sessionScope.m_pwd}"> <sapn style="color:red">${error}<c:forEach
 											var="errorMsg" items="${errorMsgs}">${errorMsg}</c:forEach></sapn>
 							<p align=center>
-								請輸入舊密碼：<input type="text" name="m_pwd" require="true"
+								<span class="listtag"><b>請輸入舊密碼：</b></span><input type="password" name="m_pwd" require="true"
 									label="舊密碼" "/>
 							</p>
 							<p align=center>
-								請輸入新的密碼<input type="password" name="Password" require="true"
+								<span class="listtag"><b>請輸入新的密碼：</b></span><input type="password" name="Password" require="true"
 									label="新的密碼" "/>
 							</p>
 							<p align=center>
-								確認新密碼<input type="password" name="PasswordChecked" match="Password"
+								<span class="listtag"><b>確認新密碼：</b></span><input type="password" name="PasswordChecked" match="Password"
 									label="確認新密碼" />
 							</p>
-
-							<input type="submit" value="送出修改" /> <input type="reset"
-								value="清除" />
+<br><br>
+							<button type="submit"  style="width: 370px;height: 40px;" class="btn btn-primary"> <i class="icon-ok icon-white"></i>  送出修改</button>
 
 						</form>
 					</div>
