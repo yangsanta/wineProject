@@ -408,7 +408,7 @@
 			style="width: 281px; height: 90px; position: absolute; top: 0px; right: -59px; background-image: url(images/gtag281.png); background-repeat: no-repeat;">
 			<div  class="white60"
 				style="width: 262px; height: 80px; line-height: 80px;text-align: left;">
-				<span style="width: 210px;font-size: 35px; color: #FFF;">搶3購價$
+				<span style="width: 210px;font-size: 35px; color: #FFF;">搶購價$
 					${ts.dailySales.ts_price} </span>
 			</div>
 		</div>
