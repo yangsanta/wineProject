@@ -43,7 +43,7 @@
 	.error{color:red}
 	</style>
 
-		<script>
+		<script type="text/javascript" charset="utf-8">
 			Array(1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 					2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
 					2010, 2011, 2012);
@@ -128,7 +128,7 @@
 			<br/>
 			<span>商品容量:</span><input type="text" size="30" name="p_vol"	value="${insertMsgs.p_vol}" /><span class="error">${ErrMsg.errVol}</span><br/> 
 			<span>酒精濃度:</span><input	type="text" size="30" name="p_alcho" value="${insertMsgs.p_alcho}" /><span class="error">${ErrMsg.errAlcho}</span><br/>
-			<span>上架日期:</span><input type="text" size="30" name="p_date"  value="${insertMsgs.p_date}" /><span class="error">${ErrMsg.errDate}</span><br/>
+			<span>上架日期:</span><input type="text" id="p_date" size="30" name="p_date"  value="${insertMsgs.p_date}" /><span class="error">${ErrMsg.errDate}</span><br/>
 			<span>商品種類:</span>
 			<c:forEach var="type" items="紅葡萄酒,白葡萄酒,氣泡酒">
 			<c:if test="${insertMsgs.p_type!=null}">

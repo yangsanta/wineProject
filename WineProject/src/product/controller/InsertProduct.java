@@ -293,7 +293,7 @@ public class InsertProduct extends HttpServlet {
 			}
 			new ProductDAO().insert(productVO);
 			
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/product/Maintain?action=getAll&pageNo=1"));
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/wine_admin/Maintain?action=getAll&pageNo=1"));
 		} catch (FileUploadException e) {
 
 			e.printStackTrace();
