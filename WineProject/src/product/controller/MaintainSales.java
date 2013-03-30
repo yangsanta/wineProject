@@ -1,6 +1,6 @@
 package product.controller;
+
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,14 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 import product.model.ProductDAO;
 import product.model.ProductVO;
+import ab.model.AbDAO;
+import ab.model.AbVO;
 
 public class MaintainSales extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -54,73 +50,94 @@ public class MaintainSales extends HttpServlet {
 			splitPages(list, request);
 
 			String listAllUrl = "/wine_admin/ProductListSales.jsp";
-			
+
 			RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
 			rd.forward(request, response);
 			return;
 		}
 
 		if ("getOneMaintainSales".equals(action)) {
-			request.setAttribute("action", new String("getOneMaintainSales"));
-			String sales= request.getParameter(request.getParameter("pNo"));
+			String oldSales = request.getParameter("oldSales");
+			String sales = request.getParameter(request.getParameter("pNo"));
 			Integer p_no = Integer.parseInt(request.getParameter("pNo"));
-			String page=request.getParameter("page");
+			String page = request.getParameter("page");
 			ProductDAO productDAO = new ProductDAO();
 			ProductVO productVO = productDAO.findByPrimaryKey(p_no);
-			System.out.println(p_no);
-			System.out.println(sales);
+
 			productVO.setP_sales(sales);
-			if(sales.equals("A")||sales.equals("B"))
-			{
-				request.setAttribute("productVO",productVO);
-				request.setAttribute("page",page);
-				RequestDispatcher rd=request.getRequestDispatcher("/wine_admin/ProductSalesAorB.jsp");
-//				RequestDispatcher rd=request.getRequestDispatcher("/wine_admin/ProductOneMaintain.jsp");
-				rd.forward(request, response);
+			if (oldSales.equals(sales)) {// 判斷新舊優惠狀態是否有改變
+				String listAllUrl = request.getContextPath()
+						+ "/wine_admin/MaintainSales?action=getAll&pageNo="
+						+ page;
+				response.sendRedirect(listAllUrl);
+
+			} else {
+
+				if (sales.equals("A") || sales.equals("B")) {// 判斷是否改變成 A or B
+					List<ProductVO> list = productDAO
+							.findSpeciallySalesProduct();
+					request.setAttribute("productList", list);
+					request.setAttribute("productVO", productVO);
+					request.setAttribute("page", page);
+					RequestDispatcher rd = request
+							.getRequestDispatcher("/wine_admin/ProductSalesAorB.jsp");
+					rd.forward(request, response);
+					return;
+				}
+				AbDAO abDAO = new AbDAO();
+				if (oldSales.equals("A")) {// 判斷原有的優惠狀態是否是 A
+					abDAO.deleteByA(p_no);
+				} else if (oldSales.equals("B")) {// 判斷原有的優惠狀態是否是 B
+					abDAO.deleteByB(p_no);
+				}
+				productDAO.update(productVO);
+				String listAllUrl = request.getContextPath()
+						+ "/wine_admin/MaintainSales?action=getAll&pageNo="
+						+ page;
+				response.sendRedirect(listAllUrl);
 				return;
 			}
-			productDAO.update(productVO);
-			request.setAttribute("ErrMsg", request.getAttribute("ErrMsg"));
-			request.setAttribute("productVO", productVO);
-			String listAllUrl = request.getContextPath()+"/wine_admin/MaintainSales?action=getAll&pageNo="+page;
+		}
+
+		if ("SET_A_OR_B".equals(action)) {
+			String p_sales = request.getParameter("p_sales");
+			String 	p_no = request.getParameter("p_no");
+			String page = request.getParameter("page");
+			String 	correspondence = request.getParameter("correspondence");
+
+			ProductDAO productDAO = new ProductDAO();
+			AbDAO abDAO = new AbDAO();
+			AbVO abVO= new AbVO();
+			if (p_sales.equals("A")) {
+				ProductVO productA = productDAO.findByPrimaryKey(Integer.parseInt(p_no));
+				ProductVO productB = productDAO.findByPrimaryKey(Integer.parseInt(correspondence));
+				productA.setP_sales("A");
+				productB.setP_sales("B");
+				productDAO.update(productA);
+				productDAO.update(productB);
+				abVO.setAb_a_p_id(Integer.parseInt(p_no));
+				abVO.setAb_b_p_id(Integer.parseInt(correspondence));
+				abDAO.insert(abVO);
+			} else {
+				ProductVO productA = productDAO.findByPrimaryKey(Integer.parseInt(correspondence));
+				ProductVO productB = productDAO.findByPrimaryKey(Integer.parseInt(p_no));
+				productA.setP_sales("B");
+				productB.setP_sales("A");
+				productDAO.update(productA);
+				productDAO.update(productB);
+				abVO.setAb_a_p_id(Integer.parseInt(correspondence));
+				abVO.setAb_b_p_id(Integer.parseInt(p_no));
+			    abDAO.insert(abVO);
+
+			}
+			String listAllUrl = request.getContextPath()
+					+ "/wine_admin/MaintainSales?action=getAll&pageNo="
+					+ page;
 			response.sendRedirect(listAllUrl);
 			return;
-		}
-
-		// for "where xxx=?" search.
-		if ("getSome_For_Display".equals(action)) {
-			List<ProductVO> list = null;
-
-			// 設定jsp<c:forEach>產出的分頁連結的condition&conditionValue參數
-
-			String conditionValue = new String(request.getParameter("conditionValue").getBytes("ISO-8859-1"), "UTF-8");
-			String conditionParam = "&conditionValue=" + conditionValue;
-			request.setAttribute("conditionParam", conditionParam);
-		
-			// 如果用戶只是切換分頁，就直接從session裡抓list出來;如果用戶是新執行getSome_For_Display
-			// (點擊瀏覽全商品的連結，或直接在新的session打開該連結)，則重新query資料庫
-			if (request.getAttribute("action") != null
-					&& (request.getAttribute("action")
-							.equals("getSome_For_Display"))) {
-				list = (List<ProductVO>) request.getSession().getAttribute(
-						"list");
-				splitPages(list, request);
-				
-			} else {
-				ProductDAO productDAO = new ProductDAO();
-				list=productDAO.findFuzzyProductName(conditionValue);
-				request.setAttribute("action",
-						new String("getSome_For_Display"));
-				request.setAttribute("list", list);
-			}
-			splitPages(list, request);
-			String listAllUrl="/wine_admin/ProductListMaintain.jsp";
 			
-			RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
-			rd.forward(request, response);
-			return;
 		}
-		
+
 	}
 
 	// 分頁

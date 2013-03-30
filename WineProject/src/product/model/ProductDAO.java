@@ -310,7 +310,27 @@ public class ProductDAO implements ProductDAO_interface {
 		}
 		return list;
 	}
+	//------------------------------------------------------------------------
+	public List<ProductVO> findSpeciallySalesProduct() {
+		List<ProductVO> list = new ArrayList();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
+		try {
+			session.beginTransaction();
+			//  select * from product where p_sales not in('A','B','TIME') order by p_no
+			Query query = session.createQuery(" FROM ProductVO where p_sales NOT IN(?,?,?) order by p_no");
+			query.setParameter(0,"A");
+			query.setParameter(1,"B");
+			query.setParameter(2,"C");
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+	//--------------------------------------------------------------------------
 	public List<ProductVO> getProductSales(String p_sales) {
 		List<ProductVO> list = new ArrayList();
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -364,7 +384,8 @@ public class ProductDAO implements ProductDAO_interface {
 		ProductDAO dao = new ProductDAO();
 //		List<ProductVO> list = dao.findProductBetween("p_date", "0");
 //		 List<ProductVO> list = dao.findRandTopProduct("4");
-//				 for (ProductVO aEmp : list) {
+		List<ProductVO> list = dao.findSpeciallySalesProduct();
+				 for (ProductVO aEmp : list) {
 //				 System.out.println(aEmp.getP_no() + ",");
 //				 System.out.println(aEmp.getP_name() + ",");
 //				 System.out.println(aEmp.getP_pic() + ",");
@@ -379,15 +400,15 @@ public class ProductDAO implements ProductDAO_interface {
 //				 System.out.println(aEmp.getP_click_count() + ",");
 //				 System.out.println(aEmp.getP_buy_count() + ",");
 //				 System.out.println(aEmp.getP_style() + ",");
-//				 System.out.println(aEmp.getP_sales() + ",");
+				 System.out.println(aEmp.getP_sales() + ",");
 //				 System.out.println(aEmp.getP_vol() + ",");
 //				 System.out.println(aEmp.getP_alcho() + ",");
 //				 System.out.println(aEmp.getP_date() + ",");
 //				 System.out.println(aEmp.getP_type() + ",");
 //				 System.out.println(aEmp.getP_grape());
-//				 System.out.println();
-//				 }
-//		
+				 System.out.println();
+				 }
+		
 		
 		// List<ProductVO> list = dao.findSomeProduct("p_vol","750");
 		// for (ProductVO aEmp : list) {

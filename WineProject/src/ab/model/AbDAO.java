@@ -14,6 +14,8 @@ public class AbDAO implements AbDAO_interface {
 	private static final String GET_A_STMT = "SELECT Uniid,ab_a_p_id,ab_b_p_id FROM ab where ab_a_p_id=?";
 	private static final String GET_B_STMT = "SELECT Uniid,ab_a_p_id,ab_b_p_id FROM ab where ab_b_p_id=?";
 	private static final String DELETE = "DELETE FROM ab where Uniid = ?";
+	private static final String DELETE_BY_A = "DELETE FROM ab where ab_a_p_id = ?";
+	private static final String DELETE_BY_B = "DELETE FROM ab where ab_b_p_id = ?";
 	private static final String UPDATE = "UPDATE ab set ab_a_p_id=?,ab_b_p_id=? where Uniid=?";
 
 	public void insert(AbVO abVO) {
@@ -390,6 +392,92 @@ public class AbDAO implements AbDAO_interface {
 		return list;
 	}
 
+	//-----------------------------------------------
+	public void deleteByA(Integer Uniid) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(DELETE_BY_A);
+
+			pstmt.setInt(1, Uniid);
+
+			pstmt.executeUpdate();
+
+			// Handle any driver errors
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+
+	}
+	//---------------------------------------------
+	public void deleteByB(Integer Uniid) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(DELETE_BY_B);
+
+			pstmt.setInt(1, Uniid);
+
+			pstmt.executeUpdate();
+
+			// Handle any driver errors
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+
+	}
 	public static void main(String[] args) {
 
 		AbDAO dao = new AbDAO();
