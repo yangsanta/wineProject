@@ -95,10 +95,11 @@
 						<input type="hidden" name="p_no" value="${productVO.p_no}"></input>
 						<input type="hidden" name="p_sales" value="${productVO.p_sales}"></input>
 						<input type="hidden" name="page" value="${page}"></input>
+						<input type="hidden" name="oldSales" value="${oldSales}"></input>
 						<select name="correspondence" id="correspondence">
 						<option >請選擇</option>
 						<c:forEach var="products" items="${productList}">
-						<c:if test="${productVO.p_no!=products.p_no}"><option value="${products.p_no}">${products.p_name}</option></c:if>
+						<c:if test="${productVO.p_no!=products.p_no}"><option value="${products.p_no}">NO.${products.p_no} ${products.p_name}</option></c:if>
 						</c:forEach>
 						</select>
 						<input type="submit" class="btn btn-success" value="確認送出"></input>

@@ -73,12 +73,13 @@ public class MaintainSales extends HttpServlet {
 
 			} else {
 
-				if (sales.equals("A") || sales.equals("B")) {// 判斷是否改變成 A or B
+				if (sales.equals("A") || sales.equals("B")) {// 判斷是否改變成 A or B 是的話轉交去設對應表
 					List<ProductVO> list = productDAO
 							.findSpeciallySalesProduct();
 					request.setAttribute("productList", list);
 					request.setAttribute("productVO", productVO);
 					request.setAttribute("page", page);
+					request.setAttribute("oldSales", oldSales);
 					RequestDispatcher rd = request
 							.getRequestDispatcher("/wine_admin/ProductSalesAorB.jsp");
 					rd.forward(request, response);
@@ -86,11 +87,17 @@ public class MaintainSales extends HttpServlet {
 				}
 				AbDAO abDAO = new AbDAO();
 				if (oldSales.equals("A")) {// 判斷原有的優惠狀態是否是 A
-					abDAO.deleteByA(p_no);
+					ProductVO productB=productDAO.findByPrimaryKey(abDAO.findByAKey(p_no).getAb_b_p_id());//找出對應的B商品
+					productB.setP_sales("NONE");                                                          //將對應的B商品優惠狀態設為NONE
+					productDAO.update(productB);
+					abDAO.deleteByA(p_no);                                                                //刪除對應表
 				} else if (oldSales.equals("B")) {// 判斷原有的優惠狀態是否是 B
-					abDAO.deleteByB(p_no);
+					ProductVO productA=productDAO.findByPrimaryKey(abDAO.findByBKey(p_no).getAb_a_p_id());//找出對應的A商品
+					productA.setP_sales("NONE");                                                          //將對應的A商品優惠狀態設為NONE
+					productDAO.update(productA);
+					abDAO.deleteByB(p_no);       														  //刪除對應表
 				}
-				productDAO.update(productVO);
+				productDAO.update(productVO);                             //改變優惠狀態
 				String listAllUrl = request.getContextPath()
 						+ "/wine_admin/MaintainSales?action=getAll&pageNo="
 						+ page;
@@ -99,35 +106,46 @@ public class MaintainSales extends HttpServlet {
 			}
 		}
 
-		if ("SET_A_OR_B".equals(action)) {
+		if ("SET_A_OR_B".equals(action)) {                                   //設對應表
 			String p_sales = request.getParameter("p_sales");
-			String 	p_no = request.getParameter("p_no");
+			Integer p_no = Integer.parseInt(request.getParameter("p_no"));
 			String page = request.getParameter("page");
-			String 	correspondence = request.getParameter("correspondence");
-
+			Integer correspondence = Integer.parseInt(request.getParameter("correspondence"));
+			String oldSales = request.getParameter("oldSales");
 			ProductDAO productDAO = new ProductDAO();
 			AbDAO abDAO = new AbDAO();
 			AbVO abVO= new AbVO();
-			if (p_sales.equals("A")) {
-				ProductVO productA = productDAO.findByPrimaryKey(Integer.parseInt(p_no));
-				ProductVO productB = productDAO.findByPrimaryKey(Integer.parseInt(correspondence));
-				productA.setP_sales("A");
-				productB.setP_sales("B");
+			if (oldSales.equals("A")) {// 判斷原有的優惠狀態是否是 A
+				ProductVO productB=productDAO.findByPrimaryKey(abDAO.findByAKey(p_no).getAb_b_p_id());//找出對應的B商品
+				productB.setP_sales("NONE");                                                          //將對應的B商品優惠狀態設為NONE
+				productDAO.update(productB);
+				abDAO.deleteByA(p_no);                                                                //刪除對應表
+			} else if (oldSales.equals("B")) {// 判斷原有的優惠狀態是否是 B
+				ProductVO productA=productDAO.findByPrimaryKey(abDAO.findByBKey(p_no).getAb_a_p_id());//找出對應的A商品
+				productA.setP_sales("NONE");                                                          //將對應的A商品優惠狀態設為NONE
+				productDAO.update(productA);
+				abDAO.deleteByB(p_no);       														  //刪除對應表
+			}
+			if (p_sales.equals("A")) {                                    //所選的商品欲更改為A
+				ProductVO productA = productDAO.findByPrimaryKey(p_no);                 //找出A商品
+				ProductVO productB = productDAO.findByPrimaryKey(correspondence);       //找出B商品 
+				productA.setP_sales("A");                                                                 //設定A商品優惠狀態
+				productB.setP_sales("B");                                                                 //設定B商品優惠狀態
 				productDAO.update(productA);
 				productDAO.update(productB);
-				abVO.setAb_a_p_id(Integer.parseInt(p_no));
-				abVO.setAb_b_p_id(Integer.parseInt(correspondence));
-				abDAO.insert(abVO);
-			} else {
-				ProductVO productA = productDAO.findByPrimaryKey(Integer.parseInt(correspondence));
-				ProductVO productB = productDAO.findByPrimaryKey(Integer.parseInt(p_no));
-				productA.setP_sales("B");
-				productB.setP_sales("A");
+				abVO.setAb_a_p_id(p_no);
+				abVO.setAb_b_p_id(correspondence);
+				abDAO.insert(abVO);                                                                       //設定對應表
+			} else {                                                     //所選的商品欲更改為B
+				ProductVO productA = productDAO.findByPrimaryKey(correspondence);        //找出A商品
+				ProductVO productB = productDAO.findByPrimaryKey(p_no);                  //找出B商品 
+				productA.setP_sales("A");                                                                  //設定A商品優惠狀態
+				productB.setP_sales("B");                                                                   //設定B商品優惠狀態
 				productDAO.update(productA);
 				productDAO.update(productB);
-				abVO.setAb_a_p_id(Integer.parseInt(correspondence));
-				abVO.setAb_b_p_id(Integer.parseInt(p_no));
-			    abDAO.insert(abVO);
+				abVO.setAb_a_p_id(correspondence);
+				abVO.setAb_b_p_id(p_no);
+			    abDAO.insert(abVO);                                                                         //設定對應表
 
 			}
 			String listAllUrl = request.getContextPath()
@@ -137,6 +155,40 @@ public class MaintainSales extends HttpServlet {
 			return;
 			
 		}
+		if ("getSome_For_Display".equals(action)) {
+			List<ProductVO> list = null;
+
+			// 設定jsp<c:forEach>產出的分頁連結的condition&conditionValue參數
+
+			String conditionValue = new String(request.getParameter("conditionValue").getBytes("ISO-8859-1"), "UTF-8");
+			String conditionParam = "&conditionValue=" + conditionValue;
+			request.setAttribute("conditionParam", conditionParam);
+		
+			// 如果用戶只是切換分頁，就直接從session裡抓list出來;如果用戶是新執行getSome_For_Display
+			// (點擊瀏覽全商品的連結，或直接在新的session打開該連結)，則重新query資料庫
+			if (request.getAttribute("action") != null
+					&& (request.getAttribute("action")
+							.equals("getSome_For_Display"))) {
+				list = (List<ProductVO>) request.getSession().getAttribute(
+						"list");
+				splitPages(list, request);
+				
+			} else {
+				ProductDAO productDAO = new ProductDAO();
+				list=productDAO.findFuzzyProductName(conditionValue);
+				request.setAttribute("action",
+						new String("getSome_For_Display"));
+				request.setAttribute("list", list);
+			}
+			splitPages(list, request);
+			String listAllUrl="/wine_admin/ProductListSales.jsp";
+			
+			RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
+			rd.forward(request, response);
+			return;
+		}
+		
+	
 
 	}
 
