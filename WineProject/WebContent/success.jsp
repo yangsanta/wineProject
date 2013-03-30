@@ -5,7 +5,8 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon" />
 <html>
-<head>
+<head><meta http-equiv="refresh" content="3; url=<%=request.getContextPath()%>/index.jsp">
+
 	<meta http-equiv="Content-Language" content="zh-tw">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>酒迷| 歷久彌新的香濃口感</title>
@@ -59,7 +60,7 @@ border-right: #ccc 1px solid;}
 
 <div class="well font-small">
   <strong><span class="label label-success">歡迎!</span></strong> <br><span style="margin-left:50px">Hello 親愛的${sessionScope.m_id}您好:<br><br>您的資料已經處理完畢溜</font>
-感謝您加入成為我們的一份子，歡迎你的加入！</span>
+感謝您加入成為我們的一份子，歡迎你的加入！</span><br><a href="<%=request.getContextPath()%>/index.jsp"><span style="text-align:center">本網頁將於3秒鐘後幫您首頁 !!  若無反應請點此</span></a>
 </div>
 
 <%@ include file="/view_model/index_fast_login.htm"%>

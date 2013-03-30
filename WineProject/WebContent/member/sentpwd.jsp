@@ -7,8 +7,9 @@
 	type="image/x-icon" />
 <html>
 <head>
-<meta http-equiv="Content-Language" content="zh-tw">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="zh-tw"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="refresh" content="1; url=<%=request.getContextPath()%>/index.jsp">
 <title>酒迷 | 歷久彌新的香濃口感</title>
 <meta content="酒迷 | 歷久彌新的香濃口感。" name="description" />
 <meta content="酒迷 | 歷久彌新的香濃口感" name="keywords" />
