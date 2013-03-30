@@ -38,7 +38,7 @@ public class Shipping_setServlet extends HttpServlet {
 
 		dao.update(shipping_setVO2);
 		
-		response.sendRedirect("/WineProject/couponset/couponsetadmin.do?action=getAll");
+		response.sendRedirect("/WineProject/wine_admin/couponsetadmin.do?action=getAll");
 		
 	}
 

@@ -19,7 +19,7 @@ $(function() {
 						event.preventDefault();
 
 						$.ajax({
-									url : '/WineProject/couponset/couponsetadmin.do',
+									url : '/WineProject/wine_admin/couponsetadmin.do',
 									type : 'POST',
 									data : {
 										cs_limit_price : $(this).attr("href"),
@@ -63,7 +63,7 @@ $(function() {
 						} else {
 
 							$.ajax({
-									url : '/WineProject/couponset/couponsetadmin.do',
+									url : '/WineProject/wine_admin/couponsetadmin.do',
 									type : 'POST',
 									data : {
 											new_cs_limit_price : $('.new_cs_limit_price').val(),
