@@ -206,7 +206,7 @@ public class OrdersFacade {
 
 				CouponVO couponVO = couponDAO.findByPrimaryKey(request
 						.getParameter("useCoupon"));
-				couponVO.setC_status(true); // used
+				couponVO.setC_status(false); // invalid
 				couponDAO.update(couponVO);
 
 			} else {
