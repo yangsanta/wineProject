@@ -14,8 +14,8 @@
 					class="text_con">商品管理</font><em></em></a> <span class="menu_tooltip"><span>商品管理</span></span>
 			</li>
 			 <span class="num">各項優惠</span>
-			<li><a href="MaintainSales?action=getAll&pageNo=1" class="ico4"><span>優惠設定</span><font
-					class="text_con">優惠設定</font><em></em></a> <span class="menu_tooltip"><span>優惠設定</span></span>
+			<li><a href="MaintainSales?action=getAll&pageNo=1" class="ico4"><span>商品優惠</span><font
+					class="text_con">商品優惠</font><em></em></a> <span class="menu_tooltip"><span>商品優惠</span></span>
 			</li>
 			<li class="discount"><a href="ademin_discount.jsp" class="ico5"><span>>首頁廣告</span><font
 					class="text_con">首頁廣告</font><em></em></a> <span class="menu_tooltip"><span>首頁右邊的廣告</span></span>
@@ -36,7 +36,7 @@
 			<li class="order"><a href="ordersadmin.do?action=getall" class="ico7"><span>訂單管理</span><font
 					class="text_con">訂單管理</font><em></em></a> <span class="menu_tooltip"><span>訂單管理</span></span>
 			</li>	
-			<li class="order"><a href="couponsetadmin.do?action=getAll" class="ico8"><span>優惠設定</span><font
+			<li class="free"><a href="couponsetadmin.do?action=getAll" class="ico8"><span>優惠設定</span><font
 					class="text_con">優惠設定</font><em></em></a> <span class="menu_tooltip"><span>免運費、優惠券設定</span></span>
 			</li>	
 				<span class="num">前台</span>

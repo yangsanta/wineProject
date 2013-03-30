@@ -86,7 +86,7 @@
     	}).on("mouseleave", "#ulResultIndex tr", function() {
     		$(this).removeClass("hoverSearchIndex");
     	}).on("click", "#ulResultIndex tr", function() {
-    		$('#ajaxLoadingImg').css("display","block");
+    		$('#ajaxLoadingImg').css("display","block").delay("3000").fadeOut("slow");
     		$("#searchInput").val($(this).text());
     		$('#ulResultIndex').empty();
     		
