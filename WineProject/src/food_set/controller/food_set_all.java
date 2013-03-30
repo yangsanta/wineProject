@@ -57,9 +57,8 @@ public class food_set_all extends HttpServlet {
 			SauceHibernateDAO SauceDAO = new SauceHibernateDAO();
 			List<SauceVO> Sauce = SauceDAO.getAll();
 			request.setAttribute("Sauce", Sauce);
-
 			RequestDispatcher rd = request
-					.getRequestDispatcher("/wine_admin/ademin_Fs_index.jsp");
+					.getRequestDispatcher("/wine_admin/ademin_Fs_index.jsp");//ademin_Fs_index.jsp
 			rd.forward(request, response);
 
 		}

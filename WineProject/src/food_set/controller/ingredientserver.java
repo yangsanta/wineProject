@@ -40,63 +40,17 @@ public class ingredientserver extends HttpServlet {
 			// 2. 檢查使用者輸入資料
 			if (i_name == null || i_name.trim().length() == 0) {
 				errorMsg.add("請輸入「主要食材」");
-				
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-				
-				return;
-			}
+			}else{
 			// 3. 使用DAO.insert()去新增資料
 			IngredientVO ingredientVo = new IngredientVO();
 			ingredientVo.setI_name(i_name);
-			DAO.insert(ingredientVo);
-
-			if (errorMsg.isEmpty()) {
-				
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Success.jsp");
-				
-				return;
-			} else {
-				
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-				
-				return;
-			}
+			DAO.insert(ingredientVo);}
 		}
 		// 4 刪除
 		if (action.equals("Ingreddel")) {
 			int i_id = Integer.parseInt(request.getParameter("i_id"));
 			DAO.delete(i_id);
-			if (errorMsg.isEmpty()) {
-				
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Success.jsp");
-				
-				return;
-			} else {
-				
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-				
-				return;
-			}
+
 		}
 		// 5修改
 		if (action.equals("ingupdate")) {
@@ -109,37 +63,19 @@ public class ingredientserver extends HttpServlet {
 			ingredientVO3.setI_name(i_name);
 			if (i_name == null || i_name.trim().length() == 0) {
 				errorMsg.add("請輸入「主要食材」");
-				
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-				
-				return;
 			}
-
 			DAO.update(ingredientVO3);
-
-			if (errorMsg.isEmpty()) {
-				
+		}
+					if (errorMsg.isEmpty()) {
 				RequestDispatcher rd = request
 						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
 				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Success.jsp");
-				
 				return;
 			} else {
-				
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
+						.getRequestDispatcher("/wine_admin/food.do?action=Foodsetinsert");
 				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-				
 				return;
 			}
-		}
 	}
 }

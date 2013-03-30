@@ -10,8 +10,8 @@
 		</ul>
 	</nav>
 	<div class="profile-box">
-		<span class="profile"> <a href="#" class="section"> <img
-				class="image" src="images/NTUE_Andy.jpg" alt="image description"
+		<span class="profile"> <a href="#" class="section"> 
+		<img class="image" src="images/NTUE_Andy.jpg" alt="image description" style="width:26px;height:26px"
 				width="26" height="26" /> <span class="text-box"> Welcome <strong
 					class="name">${sessionScope.a_name}</strong>
 			</span>

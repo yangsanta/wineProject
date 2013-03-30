@@ -43,61 +43,16 @@ public class foodserver extends HttpServlet {
 			// 2. 檢查使用者輸入資料
 			if (f_name == null || f_name.trim().length() == 0) {
 				errorMsg.add("請輸入「食物種類」");
-
-				// response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				return;
-			}
+			}else{
 			// 3. 使用DAO.insert()去新增資料
 			FoodVO foodVo = new FoodVO();
 			foodVo.setF_name(f_name);
-			DAO.insert(foodVo);
-
-			if (errorMsg.isEmpty()) {
-
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
-				rd.forward(request, response);
-
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Success.jsp");
-
-				return;
-			} else {
-
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-
-				return;
-			}
+			DAO.insert(foodVo);}
 		}
 		// 4 刪除
 		if (action.equals("fooddel")) {
 			int f_id = Integer.parseInt(request.getParameter("f_id"));
 			DAO.delete(f_id);
-			if (errorMsg.isEmpty()) {
-
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Success.jsp");
-
-				return;
-			} else {
-
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-
-				return;
-			}
 		}
 		// 5修改
 		if (action.equals("foodup")) {
@@ -107,40 +62,23 @@ public class foodserver extends HttpServlet {
 
 			if (f_name == null || f_name.trim().length() == 0) {
 				errorMsg.add("請輸入「食物種類」");
-
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-								
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-
-				return;
-			}
+			}else{
 
 			FoodVO foodVO2 = new FoodVO();
 			foodVO2.setF_id(new Integer(f_id));
 			foodVO2.setF_name(f_name);
-			DAO.update(foodVO2);
-
-			if (errorMsg.isEmpty()) {
-
+			DAO.update(foodVO2);}
+		}
+					if (errorMsg.isEmpty()) {
 				RequestDispatcher rd = request
 						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
 				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Success.jsp");
-
 				return;
 			} else {
-
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
+						.getRequestDispatcher("/wine_admin/food.do?action=Foodsetinsert");
 				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-
 				return;
 			}
-		}
 	}
 }

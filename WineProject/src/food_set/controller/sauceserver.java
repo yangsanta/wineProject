@@ -44,75 +44,17 @@ public class sauceserver extends HttpServlet {
 			// 2. 檢查使用者輸入資料
 			if (s_name == null || s_name.trim().length() == 0) {
 				errorMsg.add("請輸入「風味特色」");
-				
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-				
-				return;
-			}
-			if (!errorMsg.isEmpty()) {
-				
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-				
-				return;
-			}
+			}else{
 			// 3. 使用DAO.insert()去新增資料
 			SauceVO sauceVo = new SauceVO();
 			sauceVo.setS_name(s_name);
-			DAO.insert(sauceVo);
-
-			if (errorMsg.isEmpty()) {
-
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Success.jsp");
-				
-				return;
-			} else {
-				
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-				
-				return;
-
-			}
-
+			DAO.insert(sauceVo);}
 		}
 		// 4 刪除
 		if (action.equals("saucedel")) {
 			int s_id = Integer.parseInt(request.getParameter("s_id"));
 			DAO.delete(s_id);
-			if (errorMsg.isEmpty()) {
 
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Success.jsp");
-				
-				return;
-			} else {
-				
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-				
-				return;
-			}
 		}
 		// 5修改
 		if (action.equals("sauceupdate")) {
@@ -125,37 +67,20 @@ public class sauceserver extends HttpServlet {
 			sauceVO2.setS_name(s_name);
 			if (s_name == null || s_name.trim().length() == 0) {
 				errorMsg.add("請輸入「風味特色」");
-				
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
-				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-				
-				return;
-			}
 
-			DAO.update(sauceVO2);
-
+			}else{
+			DAO.update(sauceVO2);}
+		}
 			if (errorMsg.isEmpty()) {
-
 				RequestDispatcher rd = request
 						.getRequestDispatcher("/wine_admin/ademin_Fs_Success.jsp");
 				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Success.jsp");
-				
 				return;
 			} else {
-				
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
+						.getRequestDispatcher("/wine_admin/food.do?action=Foodsetinsert");
 				rd.forward(request, response);
-				
-				//response.sendRedirect("/WineProject/wine_admin/ademin_Fs_Error.jsp");
-				
 				return;
 			}
-		}
 	}
 }
