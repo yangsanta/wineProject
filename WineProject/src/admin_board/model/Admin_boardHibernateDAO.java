@@ -135,14 +135,9 @@ public class Admin_boardHibernateDAO {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			SQLQuery query;
-			try {  //for sql server
-			 query = session
-					.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr,CONVERT(CHAR(8), viewedate, 112))");  //mssql
-			} catch (RuntimeException ex) {
-			 query = session   //for mysql
-			.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr, DATE_FORMAT( viewedate,  '%y%m' ))"); //mysql
-			}
+			SQLQuery query = session
+//					.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr,CONVERT(CHAR(8), viewedate, 112))");  //mssql
+					.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr, DATE_FORMAT( viewedate,  '%y%m' ))"); //mysql
 			query.addEntity(Admin_boardVO.class);
 			num = query.list().size();
 			list = query.list();
