@@ -140,7 +140,13 @@
 												style="width: 45px; height: 65px" />
 												</div> </a></td>
 											<td>${product.p_name}</td>
-											<td><span style='font-size: 15px'>${product.p_sales}</span></td>
+											<td><c:if test="${product.p_sales=='NONE'}"><span class="label">無優惠</span></c:if>
+											<c:if test="${product.p_sales=='R'}"><span class="label label-important">紅標商品</span></c:if>
+											<c:if test="${product.p_sales=='G'}"><span class="label label-success">綠標商品</span></c:if>
+											<c:if test="${product.p_sales=='A'}"><span class="label label-warning">買A商品</span></c:if>
+											<c:if test="${product.p_sales=='B'}"><span class="label label-info">送B商品</span></c:if>
+											<c:if test="${product.p_sales=='half'}"><span class="label label-inverse">第二件半價</span></c:if>
+											<c:if test="${product.p_sales=='TIME'}"><span class="badge badge-important">今日限時產品</span></c:if></td>
 											<td><span style='font-size: 15px'>$ ${product.p_price}</span></td>											
 										<form action="" method="post">
 											<input type="hidden" size="30" name="page" value="${whichPage}" class="page"/>
