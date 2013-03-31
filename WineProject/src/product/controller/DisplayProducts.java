@@ -53,9 +53,13 @@ public class DisplayProducts extends HttpServlet {
 			return;
 		}
 
-		if ("getOne_For_Display".equals(action)) {
+		else if ("getOne_For_Display".equals(action)) {
 			request.setAttribute("action", new String("getOne_For_Display"));
-
+			if (request.getParameter("pId").trim().length() == 0
+					|| request.getParameter("pId") == null) {
+				response.sendRedirect(request.getContextPath() + "/index.jsp");
+				return;
+			}
 			Integer p_no = Integer.parseInt(request.getParameter("pId"));
 			ProductDAO productDAO = new ProductDAO();
 			ProductVO productVO = productDAO.findByPrimaryKeyOnSell(p_no);
@@ -77,15 +81,23 @@ public class DisplayProducts extends HttpServlet {
 		}
 
 		// for "where xxx=?" search.
-		if ("getSome_For_Display".equals(action)) {
+		else if ("getSome_For_Display".equals(action)) {
 			List<ProductVO> list = null;
-
+			if (request.getParameter("conditionValue") == null
+					|| request.getParameter("condition") == null
+					|| request.getParameter("condition").trim().length() == 0
+					|| request.getParameter("conditionValue").trim().length() == 0) {
+				response.sendRedirect(request.getContextPath() + "/index.jsp");
+				return;
+			}
 			// 設定jsp<c:forEach>產出的分頁連結的condition&conditionValue參數
 			String condition = request.getParameter("condition");
 			String conditionValue = new String(request.getParameter(
 					"conditionValue").getBytes("ISO-8859-1"), "UTF-8");
+
 			String conditionParam = "&condition=" + condition
 					+ "&conditionValue=" + conditionValue;
+
 			request.setAttribute("conditionParam", conditionParam);
 
 			// 如果用戶只是切換分頁，就直接從session裡抓list出來;如果用戶是新執行getSome_For_Display
@@ -111,9 +123,23 @@ public class DisplayProducts extends HttpServlet {
 						|| condition.equals("p_date")) {
 					list = productDAO.findProductBetween(condition,
 							conditionValue);
-				} else {
+				} else if (condition.equals("p_type")
+						|| condition.equals("p_winery")
+						|| condition.equals("p_area")
+						|| condition.equals("p_buy_count")
+						|| condition.equals("p_style")
+						|| condition.equals("p_sales")
+						|| condition.equals("p_vol")
+						|| condition.equals("p_alcho")
+						|| condition.equals("p_type")
+						|| condition.equals("p_grape")
+						|| condition.equals("p_country")) {
 					list = productDAO
 							.findSomeProduct(condition, conditionValue);
+				} else {
+					response.sendRedirect(request.getContextPath()
+							+ "/index.jsp");
+					return;
 				}
 				splitPages(list, request);
 			}
@@ -133,6 +159,9 @@ public class DisplayProducts extends HttpServlet {
 			}
 			RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
 			rd.forward(request, response);
+			return;
+		} else {
+			response.sendRedirect(request.getContextPath() + "/index.jsp");
 			return;
 		}
 	}

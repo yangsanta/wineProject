@@ -113,7 +113,7 @@ color: white;">頁面跳轉中，請稍候</span>
 				rel="tooltip" data-placement="bottom" title="年度暢銷熱賣商品都在這邊，快來搶購!">暢銷商品</a>
 			</li>
 			<li><a
-				href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue="
+				href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getSome_For_Display&condition=p_sales&conditionValue=0"
 				rel="tooltip" data-placement="bottom"
 				title="最新的組合套餐優惠，您可以用最優惠的方式購買到此產品">優惠商品</a></li>
 			<li><a href="<%=request.getContextPath()%>/foodajax.jsp" rel="tooltip" data-placement="bottom"

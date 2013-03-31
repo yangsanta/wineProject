@@ -70,7 +70,7 @@ public class OrdersServlet extends HttpServlet {
 			}
 
 			// 從確認訂購話畫面點 "確認結帳"
-			if (action.equals("confirmed")) {
+			else if (action.equals("confirmed")) {
 				System.out
 						.println("*********************Order confirmed******************");
 
@@ -84,7 +84,8 @@ public class OrdersServlet extends HttpServlet {
 					request.getRequestDispatcher("/orders/confirmcheckout.jsp")
 							.forward(request, response);
 				}
-			}
+			}else{response.sendRedirect(request.getContextPath() + "/index.jsp");
+			return;}
 
 		} // end of if-else of "no shopping cart?"
 

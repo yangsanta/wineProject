@@ -78,6 +78,10 @@ public class ReplyServlet extends HttpServlet {
 				dao.insert(replyVO);
 				res.sendRedirect("DiscussionList.do?action=getOne&d_no=" + d_no);
 			}
+			else{
+				res.sendRedirect(req.getContextPath()+"/index.jsp");
+				return;
+				}
 		} catch (Exception e) {
 
 		}

@@ -47,11 +47,11 @@ public class DiscussionServlet extends HttpServlet {
 				RequestDispatcher dis = req
 						.getRequestDispatcher("/discussion/listAllDiscussion.jsp");
 				dis.forward(req, res);
-
+                return;
 			}
 
 			// 觀看主題內文功能
-			if ("getOne".equals(action)) {
+			else	if ("getOne".equals(action)) {
 				String url = req.getRequestURI();
 				req.setAttribute("url", url);
 				System.out.println(url);
@@ -78,7 +78,7 @@ public class DiscussionServlet extends HttpServlet {
 			}
 
 			// 新增主題功能
-			if ("insert".equals(action)) {
+			else	if ("insert".equals(action)) {
 				InputFilter tool = new InputFilter();
 				
 				// 之後修改成從session獲取會員編號
@@ -130,12 +130,17 @@ public class DiscussionServlet extends HttpServlet {
 				res.sendRedirect("DiscussionList.do?action=getAll");
 			}
 
-			if ("edit".equals(action)) {
+			else	if ("edit".equals(action)) {
 				// 判斷其欲編輯者是否為發文者  (此處if仍有問題待解)
 				Integer mLogin = (Integer) req.getSession().getAttribute("m_no");
 				System.out.println(mLogin);
 				DiscussionVO discussionVO = new DiscussionVO();
+				if(req.getParameter("d_no")==null||req.getParameter("d_no").trim().length()==0)
+				{
+					res.sendRedirect(req.getContextPath()+"/index.jsp");
+				}
 				Integer d_no = Integer.valueOf(req.getParameter("d_no"));
+				
 				discussionVO = dao.findByPrimaryKey(d_no);				
 				Integer m_no = dao.findByPrimaryKey(d_no).getMemberVO().getM_no(); //從資料庫找該文章之發文者m_no
 				if (m_no.equals(mLogin)) {
@@ -153,7 +158,7 @@ public class DiscussionServlet extends HttpServlet {
 				}
 			}
 
-			if ("update".equals(action)) {
+			else	if ("update".equals(action)) {
 				// 判斷其欲編輯者是否為發文者
 				DiscussionVO discussionVO = new DiscussionVO();
 				InputFilter tool = new InputFilter();
@@ -194,10 +199,11 @@ public class DiscussionServlet extends HttpServlet {
 				dao.update(discussionVO);
 
 				res.sendRedirect("DiscussionList.do?action=getOne&d_no=" + d_no);
+				return; // 程式中斷
 			}
 
 			// 搜尋功能
-			if ("search".equals(action)) {
+			else	if ("search".equals(action)) {
 				try{
 				String srchThing = req.getParameter("srchThing");
 				String txtsrch = req.getParameter("txtsrch");
@@ -235,6 +241,9 @@ public class DiscussionServlet extends HttpServlet {
 							.getRequestDispatcher("DiscussionList.do?action=getAll");
 					dis.forward(req, res);
 				}
+			}else{
+			res.sendRedirect(req.getContextPath()+"/index.jsp");
+			return;
 			}
 
 		} catch (Exception e) {

@@ -88,7 +88,7 @@ public class DiscussionManagment extends HttpServlet {
 				res.sendRedirect("DiscussionManagment?action=getAll");
 			}
 			// 觀看所有文章列表
-			if ("getAll".equals(action)) {
+			else if ("getAll".equals(action)) {
 				dao = new DiscussionHibernateDAO();
 				List<DiscussionVO> list = dao.getAllMananger();
 				splitPages(list, req);
@@ -100,7 +100,7 @@ public class DiscussionManagment extends HttpServlet {
 			}
 
 			// 觀看主題內文功能
-			if ("getOne".equals(action)) {
+			else	if ("getOne".equals(action)) {
 				String url = req.getRequestURI();
 				req.setAttribute("url", url);
 				System.out.println(url);
@@ -127,7 +127,7 @@ public class DiscussionManagment extends HttpServlet {
 			}
 			
 			//編輯功能
-			if ("edit".equals(action)) {
+			else	if ("edit".equals(action)) {
 				// 檢驗是否為管理者
 				Integer a_no = (Integer) req.getSession().getAttribute("a_no");
 				System.out.println(a_no);
@@ -150,7 +150,7 @@ public class DiscussionManagment extends HttpServlet {
 			}
 			
 			//修改
-			if ("update".equals(action)) {
+			else	if ("update".equals(action)) {
 				String url = req.getRequestURI();
 				DiscussionVO discussionVO = new DiscussionVO();
 				Integer d_no = Integer.valueOf(req.getParameter("d_no"));
@@ -204,7 +204,7 @@ public class DiscussionManagment extends HttpServlet {
 			}
 
 			//隱藏功能
-			if ("invisible".equals(action)) {
+			else	if ("invisible".equals(action)) {
 				Integer a_no = (Integer) req.getSession().getAttribute("a_no");
 //				if (a_no != null) {
 //					System.out.println(a_no);
@@ -228,7 +228,7 @@ public class DiscussionManagment extends HttpServlet {
 //				}
 			}
 			// 搜尋功能
-			if ("search".equals(action)) {
+			else	if ("search".equals(action)) {
 				try{
 				String srchThing = req.getParameter("srchThing");
 				String txtsrch = req.getParameter("txtsrch");
@@ -266,7 +266,10 @@ public class DiscussionManagment extends HttpServlet {
 							.getRequestDispatcher("DiscussionManagment?action=getAll");
 					dis.forward(req, res);
 				}
-			}
+			}else{
+				res.sendRedirect(req.getContextPath()+"/wine_admin/admin_board.do");
+				return;
+				}
 
 		} catch (Exception e) {
 			errorMsgs.add("無法取得資料:" + e.getMessage());

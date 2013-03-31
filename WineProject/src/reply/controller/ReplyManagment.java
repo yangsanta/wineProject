@@ -88,7 +88,10 @@ public class ReplyManagment extends HttpServlet {
 				
 				dao.update(replyVO);
 				res.sendRedirect("DiscussionManagment?action=getOne&d_no=" + d_no);
-			}
+			}else{
+				res.sendRedirect(req.getContextPath()+"/wine_admin/admin_board.do");
+				return;
+				}
 		} catch (Exception e) {
 			errorMsgs.add("無法取得資料:" + e.getMessage());
 			RequestDispatcher failureView = req
