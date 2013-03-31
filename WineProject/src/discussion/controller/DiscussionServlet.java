@@ -51,7 +51,7 @@ public class DiscussionServlet extends HttpServlet {
 			}
 
 			// 觀看主題內文功能
-			else	if ("getOne".equals(action)) {
+			else if ("getOne".equals(action)) {
 				String url = req.getRequestURI();
 				req.setAttribute("url", url);
 				System.out.println(url);
@@ -70,7 +70,7 @@ public class DiscussionServlet extends HttpServlet {
 					failureView.forward(req, res);
 					return;// 程式中斷
 				}
-
+			
 				req.setAttribute("discussionVO", discussionVO); // 資料庫取出的VO物件,存入req
 				RequestDispatcher successView = req
 						.getRequestDispatcher("/discussion/listOneDiscussion.jsp"); // 成功轉交
@@ -93,7 +93,6 @@ public class DiscussionServlet extends HttpServlet {
 				Integer m_no = (Integer) req.getSession().getAttribute("m_no");
 				String d_title = req.getParameter("d_title");
 				String d_context = req.getParameter("d_context");
-				System.out.println(d_context);
 				
 				if (d_title.trim().length() < 5) { // 主題字串的檢查
 					errorMsgs.add("請輸入文章主題，並超過5字");
@@ -102,6 +101,13 @@ public class DiscussionServlet extends HttpServlet {
 					errorMsgs.add("文章內容請輸入超過10字");
 				}
 				if (!errorMsgs.isEmpty()) {
+					DiscussionVO discussionVO = new DiscussionVO();
+					discussionVO.setD_title(d_title);
+					discussionVO.setD_context(d_context);
+					System.out.println(d_title);
+					System.out.println(d_context);
+					System.out.println("進入!errorMsgs.isEmpty()");
+					req.setAttribute("discussionVO", discussionVO);
 					req.setAttribute("ErrorMsgKey", errorMsgs);
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/discussion/insertDiscussion.jsp");// 導入錯誤處理頁面
