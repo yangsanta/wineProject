@@ -2,16 +2,20 @@ package admin_board.model;
 
 import hibernate.util.HibernateUtil;
 
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.ArrayList;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 
-public class Admin_boardDAO  {
+public class Admin_boardDAO {
 	private static final String GET_ALL_STMT = "from Admin_boardVO order by i_no";
-
 
 	public void insert(Admin_boardVO admin_boardVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -25,42 +29,39 @@ public class Admin_boardDAO  {
 		}
 	}
 
+	// public void update(Admin_boardVO admin_boardVO) {
+	// Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	// try {
+	// session.beginTransaction();
+	// session.saveOrUpdate(admin_boardVO);
+	// session.getTransaction().commit();
+	// } catch (RuntimeException ex) {
+	// session.getTransaction().rollback();
+	// throw ex;
+	// }
+	// }
 
-	public void update(Admin_boardVO admin_boardVO) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		try {
-			session.beginTransaction();
-			session.saveOrUpdate(admin_boardVO);
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-	}
-
-
-	public void delete(Integer i_no) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		try {
-			session.beginTransaction();
-			Admin_boardVO admin_boardV = new Admin_boardVO();
-			admin_boardV.setI_no(i_no);
-			session.delete(admin_boardV);
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-
-	}
-
+	// public void delete(Integer i_no) {
+	// Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	// try {
+	// session.beginTransaction();
+	// Admin_boardVO admin_boardV = new Admin_boardVO();
+	// admin_boardV.seti_no(i_no);
+	// session.delete(admin_boardV);
+	// session.getTransaction().commit();
+	// } catch (RuntimeException ex) {
+	// session.getTransaction().rollback();
+	// throw ex;
+	// }
+	// }
 
 	public Admin_boardVO findByPrimaryKey(Integer p_no) {
 		Admin_boardVO Admin_boardVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			Admin_boardVO = (Admin_boardVO) session.get(Admin_boardVO.class, p_no);
+			Admin_boardVO = (Admin_boardVO) session.get(Admin_boardVO.class,
+					p_no);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -68,7 +69,6 @@ public class Admin_boardDAO  {
 		}
 		return Admin_boardVO;
 	}
-
 
 	public List<Admin_boardVO> getAll() {
 		List<Admin_boardVO> list = null;
@@ -85,251 +85,172 @@ public class Admin_boardDAO  {
 		return list;
 	}
 
-
-	public List<String> findAdmin_boardType(String admin_boardlist) {
-		List list = new ArrayList();
-		List list1 = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-
-		try {
-			session.beginTransaction();
-			Query query = session.createQuery("SELECT DISTINCT " + admin_boardlist
-					+ "  FROM Admin_boardVO");
-			query.setCacheable(true); //啟動Query快取
-			list1 = query.list();
-			int list1_size=list1.size();
-			for (int i = 0; i < list1_size; i++) {
-				String aaa = list1.get(i).toString();
-
-				list.add(aaa);
-			}
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return list;
-	}
-
-	public List<String> findGrapeType(String admin_boardType) {
-		List list = null;
-
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-
-		try {
-			session.beginTransaction();
-
-			Query query = session
-					.createQuery("SELECT DISTINCT p_grape FROM Admin_boardVO where p_type=?");
-			query.setCacheable(true); //啟動Query快取
-			query.setParameter(0, admin_boardType);
-			list = query.list();
-
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return list;
-	}
-
-
-	public List<Admin_boardVO> findSomeAdmin_board(String condition,
-			String conditionValue) {
-		Integer values;
-
-		String GET_SOME_STMT = "from Admin_boardVO Where " + condition + " =? ";
-		List<Admin_boardVO> list = null;
-		List list1 = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		try {
-			session.beginTransaction();
-			Query query = session.createQuery(GET_SOME_STMT);
-			if ((condition.equals("p_vol")) || (condition.equals("p_price)"))) {
-				values = (Integer) Integer.parseInt(conditionValue);
-				query.setParameter(0, values);
-				list = query.list();
-			} else {
-				query.setParameter(0, conditionValue);
-				list = query.list();
-			}
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return list;
-	}
-	public List<Admin_boardVO> findSalesAdmin_board() {
-
-		String GET_SALES_STMT = "from Admin_boardVO where p_sales <>'NONE'";
+	public List<Admin_boardVO> getagents() {
 		List<Admin_boardVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery(GET_SALES_STMT);
-			list = query.list();
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return list;
-	}
-
-	public List<Admin_boardVO> findTopAdmin_board(String conditionValue) {
-
-		String GET_TOP_STMT = "from Admin_boardVO order by p_buy_count desc";
-		List<Admin_boardVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		try {
-			session.beginTransaction();
-			Query query = session.createQuery(GET_TOP_STMT);
+			SQLQuery query = session
+					.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by UserAgent)");
+			query.addEntity(Admin_boardVO.class);
 			query.setFirstResult(0);
-			query.setMaxResults(Integer.parseInt(conditionValue));
-
+			query.setMaxResults(10);
 			list = query.list();
-			session.getTransaction().commit();
-	
-		}
-
-		catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return list;
-	}
-
-	public List<String> findCountry(String area) {
-		List list = null;
-
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-
-		try {
-			session.beginTransaction();
-
-			Query query = session
-					.createQuery("SELECT DISTINCT p_country FROM Admin_boardVO where p_area=?");
-			query.setCacheable(true); //啟動Query快取
-			query.setParameter(0, area);
-			list = query.list();
-
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}
 		return list;
+	}
+
+	public List<Admin_boardVO> getlastReferer() {
+		List<Admin_boardVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			SQLQuery query = session
+					.createSQLQuery("  select * from admin_board where lastReferer  IS NOT NULL order by i_no DESC");
+			query.setFirstResult(0);
+			query.setMaxResults(10);
+			query.addEntity(Admin_boardVO.class);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+
+	public Map<String, String> getvisiter() {
+		List<Admin_boardVO> list = null;
+		Map<String, String> map = new TreeMap<String, String>();
+		int num = 0;
+		int numday = 0;
+		int nummonth = 0;
+		int numlastmonth = 0;
+		int numyesterday = 0;
+		
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			SQLQuery query = session
+					.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr,CONVERT(CHAR(8), viewedate, 112))");  //mssql
+//					.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr, DATE_FORMAT( viewedate,  '%y%m' ))"); //mysql
+			query.addEntity(Admin_boardVO.class);
+			num = query.list().size();
+			list = query.list();
+			for (Admin_boardVO aEmp : list) {
+				Timestamp date = aEmp.getViewedate();
+				DateFormat DF = new SimpleDateFormat("yyyy-MM-dd");
+				DateFormat mF = new SimpleDateFormat("yyyy-MM");
+				Date today = new java.sql.Date(System.currentTimeMillis());
+				Date yesterday = new java.sql.Date(System.currentTimeMillis()
+						- 1 * 24 * 3600 * 1000);
+				Date lastmonth = new java.sql.Date(System.currentTimeMillis()
+						- 31 * 24 * 3600 * 1000);
+				if ((DF.format(today)).equals(DF.format(date))) {//本日人數
+					numday++;
+				}
+				if ((DF.format(yesterday)).equals(DF.format(date))) {//昨天人數
+					numyesterday++;
+				}
+				if ((mF.format(today)).equals(mF.format(date))) {//本月人數
+					nummonth++;
+				}
+				if ((mF.format(lastmonth)).equals(mF.format(date))) {//上月人數
+					numlastmonth++;
+				}
+			}
+			map.put("num", Integer.toString(num));
+			map.put("numday", Integer.toString(numday));
+			map.put("nummonth", Integer.toString(nummonth));
+			map.put("numyesterday", Integer.toString(numyesterday));
+			map.put("numlastmonth", Integer.toString(numyesterday));			
+
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return map;
+	}
+
+	public Map<String, String> getpv() {
+		List<Admin_boardVO> list = null;
+		Map<String, String> map = new TreeMap<String, String>();
+		int num = 0;
+		int numday = 0;
+		int nummonth = 0;
+		int numyesterday = 0;
+		int numlastmonth = 0;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			SQLQuery query = session
+					.createSQLQuery("select * from admin_board ");
+			query.addEntity(Admin_boardVO.class);
+			list = query.list();
+			num = query.list().size();
+			for (Admin_boardVO aEmp : list) {
+				Timestamp date = aEmp.getViewedate();
+				DateFormat DF = new SimpleDateFormat("yyyy-MM-dd");
+				DateFormat mF = new SimpleDateFormat("yyyy-MM");
+				Date today = new java.sql.Date(System.currentTimeMillis());
+				Date yesterday = new java.sql.Date(System.currentTimeMillis()
+						- 1 * 24 * 3600 * 1000);
+				Date lastmonth = new java.sql.Date(System.currentTimeMillis()
+						- 31 * 24 * 3600 * 1000);
+				if ((DF.format(today)).equals(DF.format(date))) {  //本日pv
+					numday++;
+				}
+				if ((DF.format(yesterday)).equals(DF.format(date))) { //昨日pv
+					numyesterday++;
+				}
+				if ((mF.format(today)).equals(mF.format(date))) { //本月pv
+					nummonth++;
+				}
+				if ((mF.format(lastmonth)).equals(mF.format(date))) {//上月pv
+					numlastmonth++;
+				}
+			}
+
+			map.put("num", Integer.toString(num));
+			map.put("numday", Integer.toString(numday));
+			map.put("nummonth", Integer.toString(nummonth));
+			map.put("numyesterday", Integer.toString(numyesterday));
+			map.put("numlastmonth", Integer.toString(numyesterday));
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+
+		return map;
 	}
 
 	// -------------------------------------------------------
 	public static void main(String arg[]) {
-		Admin_boardDAO dao = new Admin_boardDAO();
-
-//		 List<Admin_boardVO> list = dao.findTopAdmin_board("2");
-//				 for (Admin_boardVO aEmp : list) {
-//				 System.out.println(aEmp.getP_no() + ",");
-//				 System.out.println(aEmp.getP_name() + ",");
-//				 System.out.println(aEmp.getP_pic() + ",");
-//				 System.out.println(aEmp.getP_year() + ",");
-//				 System.out.println(aEmp.getP_rate() + ",");
-//				 System.out.println(aEmp.getP_area() + ",");
-//				 System.out.println(aEmp.getUserAgent() + ",");
-//				 System.out.println(aEmp.getP_num() + ",");
-//				 System.out.println(aEmp.getP_price() + ",");
-//				 System.out.println(aEmp.getP_status() + ",");
-//				 System.out.println(aEmp.getP_winery() + ",");
-//				 System.out.println(aEmp.getP_click_count() + ",");
-//				 System.out.println(aEmp.getP_buy_count() + ",");
-//				 System.out.println(aEmp.getP_style() + ",");
-//				 System.out.println(aEmp.getP_sales() + ",");
-//				 System.out.println(aEmp.getP_vol() + ",");
-//				 System.out.println(aEmp.getP_alcho() + ",");
-//				 System.out.println(aEmp.getP_date() + ",");
-//				 System.out.println(aEmp.getP_type() + ",");
-//				 System.out.println(aEmp.getP_grape());
-//				 System.out.println();
-//				 }
-//		
-		
-		// List<Admin_boardVO> list = dao.findSomeAdmin_board("p_vol","750");
-		// for (Admin_boardVO aEmp : list) {
-		// System.out.println(aEmp.getP_no() + ",");
-		// System.out.println(aEmp.getP_name() + ",");
-		// System.out.println(aEmp.getP_pic() + ",");
-		// System.out.println(aEmp.getP_year() + ",");
-		// System.out.println(aEmp.getP_rate() + ",");
-		// System.out.println(aEmp.getP_area() + ",");
-		// System.out.println(aEmp.getUserAgent() + ",");
-		// System.out.println(aEmp.getP_num() + ",");
-		// System.out.println(aEmp.getP_price() + ",");
-		// System.out.println(aEmp.getP_status() + ",");
-		// System.out.println(aEmp.getP_winery() + ",");
-		// System.out.println(aEmp.getP_click_count() + ",");
-		// System.out.println(aEmp.getP_buy_count() + ",");
-		// System.out.println(aEmp.getP_style() + ",");
-		// System.out.println(aEmp.getP_sales() + ",");
-		// System.out.println(aEmp.getP_vol() + ",");
-		// System.out.println(aEmp.getP_alcho() + ",");
-		// System.out.println(aEmp.getP_date() + ",");
-		// System.out.println(aEmp.getP_type() + ",");
-		// System.out.println(aEmp.getP_grape());
-		// System.out.println();
-		// }
+		Admin_boardHibernateDAO dao = new Admin_boardHibernateDAO();
 		// List<String> listStyle = dao.findGrapeType("紅葡萄酒");
 		// for (String aEmp : listStyle) {
 		//
 		// System.out.println(aEmp);
 		// }
+
 		// 新增
 		// Admin_boardVO admin_boardVOO1 = new Admin_boardVO();
-		// admin_boardVOO1.setP_name("路易拉圖夏布利一級葡萄園白葡萄酒");
-		// admin_boardVOO1.setP_year(2008);
-		// admin_boardVOO1.setP_rate(90);
-		// admin_boardVOO1.setP_area("法國布根地夏布利");
-		// admin_boardVOO1
-		// .setUserAgent("路易拉圖夏布利一級葡萄園白葡萄酒是由夏布利一級葡萄園內精選出最好的夏多內葡萄，所釀造出口味特別細緻清雅的白酒。路易拉圖酒廠經由降低葡萄的生產量和不斷進步的種植與釀造技術來確保每年葡萄品質的穩定。路易拉圖夏布利一級葡萄園白葡萄酒在不鏽鋼槽中發酵，以保留新鮮果味。此外，百分之百的乳酸發酵過程，讓酒質更加穩定，口感更加圓潤。家族代代傳承經營的路易拉圖酒廠 (Maison Louis Latour)，是法國布根地伯恩產區五大著名酒商之一，自1797年創立以來，一直堅守傳統和品質，但也勇於革新和創造，以其優良的布根地紅、白酒品質聞名世界，同時也是生產布根地產區以外如Ardche(阿德榭)的優質葡萄酒的先驅。拉圖家族自17世紀以來便開始擁有與增加自有葡萄園，如今在布根地已有50公頃的葡萄園，範圍。從北部的香貝丹(Chambertin)延伸到南邊的歇瓦里耶- 蒙哈榭(Chevalier-Montrachet)，其中有30公頃的特級葡萄園，包括0.8公頃的香貝丹、1公頃的侯馬內-聖維馮(Romanee Saint Vivant)、17公頃的高登(Corton) 以及近9公頃的高登查理曼(Corton-Charlemagne)，並是在金丘(Cote d'Or) 擁有最大比例的特級葡萄園的酒商。路易拉圖所有的自有葡萄園裡所生產的葡萄，皆在阿羅斯-高登 (Aloxe-Corton)的高登格蘭榭堡(Chteau Corton Grancey)裡的酒窖釀製與陳年。這是法國第一個依功能性建造的酒窖，仍維持傳統的運作方式，為固守傳統，至今路易拉圖所有自有葡萄園的酒全部使用人工踩皮，另一特色是紅酒較少使用新橡木桶陳年，而新橡木桶則用於白酒，ㄧ兩年後再使用於紅酒，與某些布根地酒廠方式相反。種種堅持，使路易拉圖白酒富有濃郁的果味與香草、榛果等香氣，紅酒則口感圓潤豐富。路易拉圖酒廠有許多其他與眾不同之處，例如擁有自己的橡木桶酒廠、印刷廠、船運公司，連瓶型也有專用形狀，堅持自己的風格。路易拉圖自第三代掌門人起，便是許多王公貴族的最愛，，在世界各大高級飯店與餐廳，如巴黎蒙地卡羅(Monte Carlo's)飯店、日內瓦Le Beau-Rivage、巴黎麗池飯店(The Paris Ritz)的酒單上都看得到路易拉圖，更榮選為2008年G8高峰會指定用久，是您不容錯過的布根地名廠。");
-		// admin_boardVOO1.setP_num(85);
-		// admin_boardVOO1.setP_price(1650.0);
-		// admin_boardVOO1.setP_status("上架中");
-		// admin_boardVOO1.setP_winery("Chardonnay");
-		// admin_boardVOO1.setP_click_count(80);
-		// admin_boardVOO1.setP_buy_count(90);
-		// admin_boardVOO1.setP_style("土味");
-		// admin_boardVOO1.setP_sales("RG");
-		// admin_boardVOO1.setP_vol(750);
-		// admin_boardVOO1.setP_alcho(13.0);
-		// admin_boardVOO1.setP_date(new Timestamp(new java.util.Date().getTime()));
-		// admin_boardVOO1.setP_type("白葡萄酒");
-		// admin_boardVOO1.setP_grape("Pinot Noir");
+		// admin_boardVOO1.setQueryString("QueryString路易拉葡萄酒");
+		// admin_boardVOO1.setRemoteAddr("布利一級setRemoteAddr葡萄園白2008");
+		// admin_boardVOO1.setServletPath("布利一級葡萄setServletPath");
+		// admin_boardVOO1.setUserAgent("7圖夏園白setUserAgent");
+		// admin_boardVOO1.setLastReferer("123");
+		// admin_boardVOO1.setViewedate(new Timestamp(new
+		// java.util.Date().getTime()));
+		// admin_boardVOO1.setUser_os("123");
 		// dao.insert(admin_boardVOO1);
-		// -------------------------------------------------
-		// 修改
-		// Admin_boardVO admin_boardVOO2 = new Admin_boardVO();
-		// admin_boardVOO2.setP_no(1);
-		// admin_boardVOO2.setP_name("傑卡斯臻藏巴洛沙席哈紅酒");
-		// admin_boardVOO2.setP_year(2008);
-		// admin_boardVOO2.setP_rate(80);
-		// admin_boardVOO2.setP_area("澳洲");
-		// admin_boardVOO2
-		// .setUserAgent("得2005 Taster Guide International Wine Judging等主要國際競賽肯定,在1847年，一位年輕的巴伐利亞移民約翰.葛蘭（Johann Gramp）來到了南澳的巴洛沙河谷，在一條名為傑卡斯溪畔種下了他的第一棵葡萄樹。經過129年的穩定發展，1976年正式以『傑卡斯』為品牌名稱在全球上市，時至今日，每年超過8百萬箱的出口量，讓傑卡斯成為澳洲最受歡迎的葡萄酒廠。每天，近2百萬杯的傑卡斯葡萄酒在世界各地的人們手中被享用，質優易飲的傑卡斯風格深植人心。用於臻藏系列的葡萄，採自精選葡萄園的果實，釀酒師精選來自Padthaway, Langhorne Creek, Coonawarra以及克來兒谷地等地區，果實充分熟成富有濃郁品種風味與細緻單寧的葡萄，作為釀造臻藏系列的來源。香氣集中、濃縮風味，在橡木桶內熟成18-22個月（席哈紅酒）。");
-		// admin_boardVOO2.setP_num(50);
-		// admin_boardVOO2.setP_price(800.0);
-		// admin_boardVOO2.setP_status("下架中");
-		// admin_boardVOO2.setP_winery("Jacob’s Creek");
-		// admin_boardVOO2.setP_click_count(100);
-		// admin_boardVOO2.setP_buy_count(150);
-		// admin_boardVOO2.setP_style("辛辣味");
-		// admin_boardVOO2.setP_sales("B");
-		// admin_boardVOO2.setP_vol(750);
-		// admin_boardVOO2.setP_alcho(14.5);
-		// admin_boardVOO2.setP_date(new Timestamp(new java.util.Date().getTime()));
-		// admin_boardVOO2.setP_type("red wine");
-		// admin_boardVOO2.setP_grape("Syrah \\ Shiraz");
-		// dao.update(admin_boardVOO2);
-		// ---------------------------------------------
-		// 刪除
-		// dao.delete(5);
+
 		// ------------------------------------------------
 		// 查詢
 
@@ -338,32 +259,27 @@ public class Admin_boardDAO  {
 		// System.out.println(admin_boardVOO3.getP_name() + ",");
 		// System.out.println(admin_boardVOO3.getP_year() + ",");
 		// System.out.println(admin_boardVOO3.getP_rate() + ",");
-		// System.out.println(admin_boardVOO3.getP_area() + ",");
-		// System.out.println(admin_boardVOO3.getUserAgent() + ",");
-		// System.out.println(admin_boardVOO3.getP_num() + ",");
-		// System.out.println(admin_boardVOO3.getP_price() + ",");
-		// System.out.println(admin_boardVOO3.getP_status() + ",");
-		// System.out.println(admin_boardVOO3.getP_winery() + ",");
-		// System.out.println(admin_boardVOO3.getP_click_count() + ",");
-		// System.out.println(admin_boardVOO3.getP_buy_count() + ",");
-		// System.out.println(admin_boardVOO3.getP_style() + ",");
-		// System.out.println(admin_boardVOO3.getP_sales() + ",");
-		// System.out.println(admin_boardVOO3.getP_vol() + ",");
-		// System.out.println(admin_boardVOO3.getP_alcho() + ",");
-		// System.out.println(admin_boardVOO3.getP_date() + ",");
-		// System.out.println(admin_boardVOO3.getP_type() + ",");
 		// System.out.println(admin_boardVOO3.getP_grape() );
 		// System.out.println();
 		// 查詢
-		 List<Admin_boardVO> list = dao.getAll();
-		 for (Admin_boardVO aEmp : list) {
-		 System.out.println(aEmp.getI_no() + ",");
-		 System.out.println(aEmp.getQueryString() + ",");
-		 System.out.println(aEmp.getRemoteAddr() + ",");
-		 System.out.println(aEmp.getServletPath() + ",");
-		 System.out.println(aEmp.getUserAgent() + ",");
-		 System.out.println();
-		 }
+		Map<String, String> list = dao.getpv();
+		System.out.println(new java.sql.Date(System.currentTimeMillis()));
+		System.out.println("卓天"
+				+ new java.sql.Date(System.currentTimeMillis() - 1 * 24 * 3600
+						* 1000));
+		System.out.println("*-*-*-" + list);
+		// for (Admin_boardVO aEmp : list) {
+		// System.out.print(aEmp.a );
+		// System.out.print(aEmp.getQueryString() + ",");
+		// System.out.print(aEmp.getRemoteAddr() + ",");
+		// System.out.print(aEmp.getServletPath() + ",");
+		// System.out.print(aEmp.getLastReferer() + ",");
+		// System.out.println(aEmp.getUserAgent() + ",");
+		// System.out.print(aEmp.getViewedate() + ",");
+		// System.out.print(aEmp.getUser_os() + ",");
+		// System.out.println(aEmp.getUser_browser() + ",");
+		// System.out.println();
+		// }
 	}
 
 }
