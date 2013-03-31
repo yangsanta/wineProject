@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
@@ -16,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import member.model.MemberVO;
+import tools.InputFilter;
 import discussion.model.DiscussionHibernateDAO;
 import discussion.model.DiscussionVO;
 
@@ -66,7 +66,9 @@ public class DiscussionManagment extends HttpServlet {
 					return; // 程式中斷
 				}
 				// 防止使用者在內文中，輸入<sricpt>之攻擊
+				InputFilter tool = new InputFilter();
 				d_context = Script2Text(d_context);
+				d_title = tool.sizeFomat(Script2Text(d_title), 100);
 				System.out.println(d_context);
 				// 設定新增之主題物件參數
 				Timestamp time = new java.sql.Timestamp(
@@ -184,7 +186,9 @@ public class DiscussionManagment extends HttpServlet {
 					failureView.forward(req, res);
 					return; // 程式中斷
 				}
-
+				InputFilter tool = new InputFilter();
+				d_context = Script2Text(d_context);
+				d_title = tool.sizeFomat(Script2Text(d_title), 100);
 				discussionVO.setD_no(d_no);
 				discussionVO.setMemberVO(memberVO);
 				discussionVO.setD_title(d_title);
@@ -333,7 +337,7 @@ public class DiscussionManagment extends HttpServlet {
 																										// }
 			p_script = Pattern.compile(regEx_script, Pattern.CASE_INSENSITIVE);
 			m_script = p_script.matcher(ScriptStr);
-			ScriptStr = m_script.replaceAll("<h1>YOU CAN ATTACK ME!!!!!!</h1>"); // 过滤script标签
+			ScriptStr = m_script.replaceAll("YOU CAN ATTACK ME!!!!!!"); // 过滤script标签
 
 			textStr = ScriptStr;
 

@@ -41,7 +41,7 @@ public class MaintainSales extends HttpServlet {
 //				list = (List<ProductVO>) request.getSession().getAttribute(
 //						"list");
 //			} else {
-//				request.setAttribute("action", new String("getAll"));
+				request.setAttribute("action", "getAll");
 
 				ProductDAO productDAO = new ProductDAO();
 				list = productDAO.getAll();

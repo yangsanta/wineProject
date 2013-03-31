@@ -28,7 +28,7 @@ create table discussion (
  m_no               int  not null,
  d_context          text,
  d_datetime         datetime,
- d_status           varchar(100),
+ d_status           varchar(10),
  d_final_edit       datetime,
  d_title            varchar(100),
   constraint discussion_primary_key primary key (d_no)
@@ -587,7 +587,7 @@ insert into coupon_set values (300,50);
 insert into coupon_set values (500,100);
 insert into coupon_set values (1000,200);
 insert into coupon_set values (1500,300);
-insert into coupon_set values (3000,400);
+insert into coupon_set values (3000,500);
 -------------------------------------------------------------
 
 create table shipping_set ( --[table]滿額免運 

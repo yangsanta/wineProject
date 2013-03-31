@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="<%=request.getContextPath()%>/favicon.ico"
@@ -130,13 +131,23 @@ box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 				<div id="main">
 
 					<div id="content">
+					<c:if test="${fn:length (ErrorMsgKey) gt 0}">
+						.
+							<ul class="states">
+								<li class="error" style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;錯誤 : 請輸入
+									<c:forEach var="e" items="${ErrorMsgKey}">
+    									${e}
+									</c:forEach>
+								</li>
+							</ul>
+					</c:if>
 					<img src="<%=request.getContextPath()%>/images/news.png" style="margin-top: -85px;margin-left: -20px; width:70px" />
 	<form action="<c:url value='/DiscussionList.do'/>" method="post" id="commentForm" class="cmxform" >
-		<img src="<%=request.getContextPath()%>/images/array.png" style="width:30px" /><span style="font-size: 22px;font-weight: bold;">文章標題:</span><br><input type="text" name="d_title" class="required" minlength="5" style="width:796px;margin-top:10px;height: 30px;"/><br /> 
+		<img src="<%=request.getContextPath()%>/images/array.png" style="width:30px" /><span style="font-size: 22px;font-weight: bold;">文章標題:</span><br><input type="text" name="d_title" class="required" minlength="5" style="width:796px;margin-top:10px;height: 30px;" value="${dicussionVO.d_title}"/><br /> 
 		<div class="drop-shadow ">
 		<br><img src="<%=request.getContextPath()%>/images/array.png" style="width:30px" /><span style="font-size: 22px;font-weight: bold;">文章內容:</span>
 		<div style="float:right;margin-right: 150px;margin-bottom: 10px;"><button class="btn  btn-primary" type="submit"><i class=" icon-ok icon-white"></i> 送出文章</button> </div>
-		<br><div style="padding-left: 50px;width: 800px;height: 600px;"><textarea cols="90" rows="30"  id="textContext" name="d_context" class="required" minlength="10"></textarea></div><br />
+		<br><div style="padding-left: 50px;width: 800px;height: 600px;"><textarea cols="90" rows="30"  id="textContext" name="d_context" class="required" minlength="10">${dicussionVO.d_content}</textarea></div><br />
 		
 		<input type="hidden" name="action" value="insert" style="margin:0px auto"/>
 		

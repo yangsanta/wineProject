@@ -101,7 +101,7 @@ background-color: #fff;}
 		<div style="width:400px;float:left">
 		<form id="MyForm" width="300px" align=center title="酒迷網"
 			subtitle="會員資料修改" method="post"
-			action="<%request.getContextPath();%>/WineProject/MemberUpdate">
+			action="<%request.getContextPath();%>/WineProject/MemberUpdate.do">
 			<p align=center>
 				帳號：<span>${memberVO.m_id}</span><input type="hidden" name="m_id"
 					value="${memberVO.m_id}" />

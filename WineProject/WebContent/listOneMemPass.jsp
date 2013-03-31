@@ -79,7 +79,7 @@ background-color: #fff;}
 		</div>
 						<form id="MyForm" width="300px" align=center title="酒迷網"
 							subtitle="密碼修改" method="post"
-							action="<%request.getContextPath();%>/WineProject/MemberUpdate">
+							action="<%request.getContextPath();%>/WineProject/MemberUpdate.do">
 
 							<input type="hidden" name="action" value="password_update">
 								<input type="hidden" name="m_no" value="${m_no}"> <input

@@ -154,7 +154,7 @@ background-color: #fff;}
 							<span class="mem_in_title">會員資料</span>
 							<div class="mem_div">
 								<div class="mem_in_inner" style="text-align :center">
-								<a style="text-decoration:none" href="<%request.getContextPath();%>/WineProject/MemberUpdate?action=getOne_For_Display&m_no=${m_no}"><img src="<%=request.getContextPath()%>/images/nav_safety.png" width=150px /><br>
+								<a style="text-decoration:none" href="<%request.getContextPath();%>/WineProject/MemberUpdate.do?action=getOne_For_Display&m_no=${m_no}"><img src="<%=request.getContextPath()%>/images/nav_safety.png" width=150px /><br>
 									修改會員資料</a>
 								</div>
 								<div class="mem_in_inner" style="text-align :center">

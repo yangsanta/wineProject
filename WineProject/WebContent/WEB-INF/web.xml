@@ -16,7 +16,7 @@
   </filter>
   <filter-mapping>
     <filter-name>MemberFilter</filter-name>
-    <url-pattern>/MemberService</url-pattern>
+    <url-pattern>/MemberService.do</url-pattern>
     <url-pattern>/orders/checkout.do</url-pattern>
     <url-pattern>/insertDiscussion.jsp</url-pattern>
     <url-pattern>/discussion/insertDiscussion</url-pattern>
@@ -123,7 +123,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>MemberService</servlet-name>
-    <url-pattern>/MemberService</url-pattern>
+    <url-pattern>/MemberService.do</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>setselectallfood</servlet-name>
@@ -363,7 +363,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>MemberUpdate</servlet-name>
-    <url-pattern>/MemberUpdate</url-pattern>
+    <url-pattern>/MemberUpdate.do</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>MenberPicByUser</servlet-name>
