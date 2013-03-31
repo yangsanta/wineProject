@@ -4,8 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<link rel="shortcut icon" href="favicon.ico" />
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico" />
+<link rel="icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon" />
 <head>
 <meta charset="utf-8">
 	<title>酒迷|後台管理系統</title>
@@ -120,7 +120,7 @@
 					<div id="tab-1" class="tab">
 						<article>
 						<div class="text-section">
-							<h1>儀表板1</h1>
+							<h1>儀表板</h1>
 							<p>觀看所有的網站系統目前狀態</p>
 						</div>
 						<!-- 						<ul class="states"> --> <!-- 							<li class="error">錯誤 : 系統錯誤，海尼根綠茶庫存沒了，請盡速補貨</li> -->

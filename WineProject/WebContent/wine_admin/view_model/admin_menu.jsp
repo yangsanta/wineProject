@@ -14,7 +14,7 @@
 					class="text_con">商品管理</font><em></em></a> <span class="menu_tooltip"><span>商品管理</span></span>
 			</li>
 			 <span class="num">各項優惠</span>
-			<li><a href="<%=request.getContextPath()%>/wine_admin/MaintainSales?action=getAll&pageNo=1" class="ico4"><span>商品優惠</span><font
+			<li class="prodis"><a href="<%=request.getContextPath()%>/wine_admin/MaintainSales?action=getAll&pageNo=1" class="ico4"><span>商品優惠</span><font
 					class="text_con">商品優惠</font><em></em></a> <span class="menu_tooltip"><span>商品優惠</span></span>
 			</li>
 			<li class="discount"><a href="<%=request.getContextPath()%>/wine_admin/ademin_discount.jsp" class="ico5"><span>>首頁廣告</span><font

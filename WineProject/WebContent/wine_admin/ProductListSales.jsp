@@ -15,9 +15,7 @@
 	</c:if>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script type="text/javascript">
-		window.jQuery
-				|| document
-						.write('<script type="text/javascript" src="js/jquery-1.7.2.min.js"><\/script>');
+	window.jQuery|| document.write('<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.9.0.min.js"><\/script>');
 	</script>
 	<link
 		href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css"
@@ -27,26 +25,26 @@
 			src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
 		<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
 		<style type="text/css">
-.buttons li.product a {
+.buttons li.prodis a {
 	background: url(<%=request.getContextPath()%>/wine_admin/images/sprite.png
 		) no-repeat -113px -2px;
 	margin: 0 -21px 0 0;
 	padding: 0 21px 0 0;
 }
 
-.buttons li.product a :hover {
+.buttons li.prodis a :hover {
 	color: yellow;
 }
 
-.buttons li.product a em {
+.buttons li.prodis a em {
 	top: 40px;
 }
 
-.buttons .product .ico1 span {
+.buttons .prodis .ico1 span {
 	background-position: 0 -23px;
 }
 
-.buttons .product .ico2 span {
+.buttons .prodis .ico2 span {
 	background-position: -2px -73px;
 }
 
@@ -54,7 +52,7 @@
 	background-position: -2px -97px;
 }
 
-.buttons .product .ico3 span {
+.buttons .prodis .ico3 span {
 	background-position: -2px -126px;
 }
 
@@ -62,7 +60,7 @@
 	background-position: -2px -153px;
 }
 
-.buttons .product .ico4 span {
+.buttons .prodis .ico4 span {
 	background-position: -2px -178px;
 }
 
@@ -70,7 +68,7 @@
 	background-position: -1px -206px;
 }
 
-.buttons .product .ico5 span {
+.buttons .prodis .ico5 span {
 	background-position: -2px -232px;
 }
 
@@ -78,7 +76,7 @@
 	background-position: -2px -262px;
 }
 
-.buttons .product .ico6 span {
+.buttons .prodis .ico6 span {
 	background-position: -3px -291px;
 }
 
@@ -86,7 +84,7 @@
 	background-position: -4px -321px;
 }
 
-.buttons .product .ico7 span {
+.buttons .prodis .ico7 span {
 	background-position: -4px -352px;
 }
 
@@ -94,7 +92,7 @@
 	background-position: -4px -380px;
 }
 
-.buttons .product .ico8 span {
+.buttons .prodis .ico8 span {
 	background-position: -4px -415px;
 }
 </style>
@@ -218,7 +216,7 @@
 																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span	class="badge badge-success">綠標商品 </span></label>
 																</c:when>
 																<c:when test="${sales=='half'}">
-																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span	class="badge badge-success">第2建半價商品</span></label>
+																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span	class="badge badge-success">第2件半價商品</span></label>
 																</c:when>
 																<c:when test="${sales=='NONE'}">
 																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span class="badge badge-success">沒有優惠</span></label>
@@ -242,7 +240,7 @@
 																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span	 class="badge">綠標商品</span></label>
 																</c:when>
 																<c:when test="${sales=='half'}">
-																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span	class="badge">第2建半價商品</span></label>
+																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span	class="badge">第2件半價商品</span></label>
 																</c:when>
 																<c:when test="${sales=='NONE'}">
 																	<label for="${product.p_no}${sales}"style="display: inline-block"> <span	class="badge">沒有優惠</span></label>
