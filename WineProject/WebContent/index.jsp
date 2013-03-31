@@ -15,16 +15,10 @@
 		<link href="style/reset.css" rel="stylesheet" type="text/css" />
 		<link href="style/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 			media="screen">
-			<script src="http://code.jquery.com/jquery.js"></script>
-			<script src="style/bootstrap/js/bootstrap.js"></script>
-
-			<script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.4"></script>
-			<link rel="stylesheet" type="text/css"
-				href="style/jquery.fancybox.css?v=2.1.4" media="screen" />
-			<link rel="stylesheet" type="text/css" href="style/index.css?v=1.0"
-				media="screen" />
-
-			<script type="text/javascript" src="js/index.js?v=1.0"></script>
+			
+			<link rel="stylesheet" type="text/css"	href="style/jquery.fancybox.css?v=2.1.4" media="screen" />
+			<link rel="stylesheet" type="text/css" href="style/index.css?v=1.0"	media="screen" />
+			
 			<!-------JavaScript特定日期倒數計時 START-------->
 			<script language="JavaScript">
 				var DifferenceMinute = -1;
@@ -442,7 +436,10 @@
 	</div>
 
 	</div>
-
+<script src="http://code.jquery.com/jquery.js"></script>
+			<script src="style/bootstrap/js/bootstrap.js"></script>
+			<script type="text/javascript" src="js/index.js?v=1.0"></script>
+			<script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.4"></script>
 </body>
 
 </html>
