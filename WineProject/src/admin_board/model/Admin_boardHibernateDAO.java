@@ -136,8 +136,8 @@ public class Admin_boardHibernateDAO {
 		try {
 			session.beginTransaction();
 			SQLQuery query = session
-//					.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr,CONVERT(CHAR(8), viewedate, 112))");  //mssql
-					.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr, DATE_FORMAT( viewedate,  '%y%m' ))"); //mysql
+					.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr,CONVERT(CHAR(8), viewedate, 112))");  //mssql
+//					.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr, DATE_FORMAT( viewedate,  '%y%m' ))"); //mysql
 			query.addEntity(Admin_boardVO.class);
 			num = query.list().size();
 			list = query.list();

@@ -1,4 +1,4 @@
-﻿package coupon_set.model;
+package coupon_set.model;
 
 import hibernate.util.HibernateUtil;
 
@@ -7,11 +7,9 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class Coupon_setDAO implements Coupon_setDAO_interface {
-
+public class Coupon_setHibernateDAO implements Coupon_setDAO_interface {
 	
-	private static final String GET_ALL_STMT = "FROM Coupon_setVO order by cs_limit_price";
-
+	private static final String GET_ALL_STMT = "FROM Coupon_setDAO order by cs_limit_price";
 
 	@Override
 	public void insert(Coupon_setVO coupon_setVO) {

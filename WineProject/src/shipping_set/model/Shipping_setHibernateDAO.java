@@ -1,24 +1,21 @@
-﻿package coupon_set.model;
+package shipping_set.model;
 
 import hibernate.util.HibernateUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class Coupon_setDAO implements Coupon_setDAO_interface {
-
+public class Shipping_setHibernateDAO implements Shipping_setDAO_interface {
 	
-	private static final String GET_ALL_STMT = "FROM Coupon_setVO order by cs_limit_price";
-
+	private static final String GET_ALL_STMT = "FROM Shipping_setVO order by min_pirce";
 
 	@Override
-	public void insert(Coupon_setVO coupon_setVO) {
+	public void insert(Shipping_setVO shipping_setVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(coupon_setVO);
+			session.saveOrUpdate(shipping_setVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -28,11 +25,11 @@ public class Coupon_setDAO implements Coupon_setDAO_interface {
 	}
 
 	@Override
-	public void update(Coupon_setVO coupon_setVO) {
+	public void update(Shipping_setVO shipping_setVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(coupon_setVO);
+			session.saveOrUpdate(shipping_setVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -42,13 +39,13 @@ public class Coupon_setDAO implements Coupon_setDAO_interface {
 	}
 
 	@Override
-	public void delete(Integer cs_limit_price) {
+	public void delete(Integer min_pirce) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			Coupon_setVO coupon_setVO = new Coupon_setVO();
-			coupon_setVO.setCs_limit_price(cs_limit_price);
-			session.delete(coupon_setVO);
+			Shipping_setVO shipping_setVO = new Shipping_setVO();
+			shipping_setVO.setMin_pirce(min_pirce);
+			session.delete(shipping_setVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -58,23 +55,23 @@ public class Coupon_setDAO implements Coupon_setDAO_interface {
 	}
 
 	@Override
-	public Coupon_setVO findByPrimaryKey(Integer cs_limit_price) {
-		Coupon_setVO coupon_setVO = null;
+	public Shipping_setVO findByPrimaryKey(Integer min_pirce) {
+		Shipping_setVO shipping_setVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			coupon_setVO = (Coupon_setVO) session.get(Coupon_setVO.class, cs_limit_price);
+			shipping_setVO = (Shipping_setVO) session.get(Shipping_setVO.class, min_pirce);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}
-		return coupon_setVO;
+		return shipping_setVO;
 	}
 
 	@Override
-	public List<Coupon_setVO> getAll() {
-		List<Coupon_setVO> list = new ArrayList<Coupon_setVO>();
+	public List<Shipping_setVO> getAll() {
+		List<Shipping_setVO> list = new ArrayList<Shipping_setVO>();
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();

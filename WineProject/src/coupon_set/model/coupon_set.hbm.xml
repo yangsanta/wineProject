@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="coupon_set.model.Coupon_setVO" table="coupon_set">
+
+		<id name="cs_limit_price" column="cs_limit_price" />
+
+		<property name="cs_price" column="cs_price" />
+
+	</class>
+</hibernate-mapping>
+

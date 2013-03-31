@@ -250,8 +250,8 @@ public class OrdersFacade {
 			List<Coupon_setVO> cs = new Coupon_setDAO().getAll();
 			Integer c_price = new Integer(0);
 			for (Coupon_setVO coupon_setVO: cs){
-				if (ordersVO.getO_after_sales() >= coupon_setVO.getcs_limit_price()){
-					c_price = coupon_setVO.getcs_price();
+				if (ordersVO.getO_after_sales() >= coupon_setVO.getCs_limit_price()){
+					c_price = coupon_setVO.getCs_price();
 				}
 			}
 			if (c_price!=0){

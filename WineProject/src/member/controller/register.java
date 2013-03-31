@@ -195,7 +195,7 @@ public class register extends HttpServlet {
 						// 註冊成功贈送coupon
 						String c_key = CouponFacade.createCoupon();
 						Integer c_price = new Coupon_setDAO().getAll().get(0)
-								.getcs_price();
+								.getCs_price();
 						CouponVO couponVO = new CouponVO();
 						couponVO.setC_key(c_key);
 						couponVO.setC_price(c_price);

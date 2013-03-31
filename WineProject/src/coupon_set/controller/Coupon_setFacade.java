@@ -39,8 +39,8 @@ public class Coupon_setFacade {
 		for (Coupon_setVO cs: clist){
 			try {
 				jsonO = new JSONObject();
-				jsonO.put("cs_limit_price", cs.getcs_limit_price());
-				jsonO.put("cs_price", cs.getcs_price());
+				jsonO.put("cs_limit_price", cs.getCs_limit_price());
+				jsonO.put("cs_price", cs.getCs_price());
 				jsonA.put(jsonO);
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -55,12 +55,12 @@ public class Coupon_setFacade {
 		Coupon_setVO coupon_setVO = cdao.findByPrimaryKey(new_cs_limit_price);		
 		
 		if (coupon_setVO != null){
-			coupon_setVO.setcs_price(new_cs_price);
+			coupon_setVO.setCs_price(new_cs_price);
 			cdao.update(coupon_setVO);
 		} else {
 			coupon_setVO = new Coupon_setVO();
-			coupon_setVO.setcs_limit_price(new_cs_limit_price);
-			coupon_setVO.setcs_price(new_cs_price);
+			coupon_setVO.setCs_limit_price(new_cs_limit_price);
+			coupon_setVO.setCs_price(new_cs_price);
 			cdao.insert(coupon_setVO);
 		}
 	}
