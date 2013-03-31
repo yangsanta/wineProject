@@ -58,7 +58,7 @@ public class ReplyServlet extends HttpServlet {
 				memberVO.setM_no(m_no);
 
 				if(r_context.trim().length() < 17){				//推文的檢查
-					errorMsgs.add("推文內容請輸入超過10字");
+					errorMsgs.add("推文內容超過10字");
 				}
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("ErrorMsgKey", errorMsgs);
