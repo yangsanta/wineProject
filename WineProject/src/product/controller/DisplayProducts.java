@@ -34,17 +34,17 @@ public class DisplayProducts extends HttpServlet {
 
 			// 如果用戶只是切換分頁，就直接從session裡抓list出來，如果用戶是新執行getAll
 			// (點擊瀏覽全商品的連結，或直接在新的session打開該連結)，則重新query資料庫
-//			if (request.getAttribute("action") != null
-//					&& (request.getAttribute("action").equals("getAll"))) {
-//				list = (List<ProductVO>) request.getSession().getAttribute(
-//						"list");
-//			} else {
-				request.setAttribute("action", new String("getAll"));
+			// if (request.getAttribute("action") != null
+			// && (request.getAttribute("action").equals("getAll"))) {
+			// list = (List<ProductVO>) request.getSession().getAttribute(
+			// "list");
+			// } else {
+			request.setAttribute("action", new String("getAll"));
 
-				ProductDAO productDAO = new ProductDAO();
-				list = productDAO.getAll();
-				request.setAttribute("list", list);
-//			}
+			ProductDAO productDAO = new ProductDAO();
+			list = productDAO.getALLOnSell();
+			request.setAttribute("list", list);
+			// }
 			splitPages(list, request);
 
 			String listAllUrl = "/product/ProductList.jsp";
@@ -58,12 +58,18 @@ public class DisplayProducts extends HttpServlet {
 
 			Integer p_no = Integer.parseInt(request.getParameter("pId"));
 			ProductDAO productDAO = new ProductDAO();
-			ProductVO productVO = productDAO.findByPrimaryKey(p_no);
+			ProductVO productVO = productDAO.findByPrimaryKeyOnSell(p_no);
 			request.setAttribute("productVO", productVO);
+
 			// 或許你也會喜歡
 			List<ProductVO> maylike = productDAO.findRandTopProduct("4");
 			request.setAttribute("maylike", maylike);
-
+			if (productVO == null) {
+				String listAllUrl = "/product/ProductOffSell.jsp";
+				RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
+				rd.forward(request, response);
+				return;
+			}
 			String listAllUrl = "/product/ProductOne.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
 			rd.forward(request, response);
@@ -84,38 +90,36 @@ public class DisplayProducts extends HttpServlet {
 
 			// 如果用戶只是切換分頁，就直接從session裡抓list出來;如果用戶是新執行getSome_For_Display
 			// (點擊瀏覽全商品的連結，或直接在新的session打開該連結)，則重新query資料庫
-//			if (request.getAttribute("action") != null
-//					&& (request.getAttribute("action")
-//							.equals("getSome_For_Display"))) {
-//				list = (List<ProductVO>) request.getSession().getAttribute(
-//						"list");
-//				splitPages(list, request);
-//				
-//			} else {
-				request.setAttribute("action",
-						new String("getSome_For_Display"));
-				ProductDAO productDAO = new ProductDAO();
+			// if (request.getAttribute("action") != null
+			// && (request.getAttribute("action")
+			// .equals("getSome_For_Display"))) {
+			// list = (List<ProductVO>) request.getSession().getAttribute(
+			// "list");
+			// splitPages(list, request);
+			//
+			// } else {
+			request.setAttribute("action", new String("getSome_For_Display"));
+			ProductDAO productDAO = new ProductDAO();
 
-				if (condition.equals("p_sales")) {
-					list = productDAO.findSalesProduct();
+			if (condition.equals("p_sales")) {
+				list = productDAO.findSalesProduct();
 
+			} else {
+				if (condition.equals("p_buy_count")) {
+					list = productDAO.findTopProduct(conditionValue);
+				} else if (condition.equals("p_price")
+						|| condition.equals("p_date")) {
+					list = productDAO.findProductBetween(condition,
+							conditionValue);
 				} else {
-					if (condition.equals("p_buy_count")) {
-						list = productDAO.findTopProduct(conditionValue);
-					} else if (condition.equals("p_price")
-							|| condition.equals("p_date")) {
-						list = productDAO.findProductBetween(condition,
-								conditionValue);
-					} else {
-						list = productDAO.findSomeProduct(condition,
-								conditionValue);
-					}
-					splitPages(list, request);
+					list = productDAO
+							.findSomeProduct(condition, conditionValue);
 				}
-				request.setAttribute("list", list);
-				
-//			}
-			
+				splitPages(list, request);
+			}
+			request.setAttribute("list", list);
+
+			// }
 
 			String listAllUrl;
 			if (condition.equals("p_date")) {
