@@ -42,7 +42,7 @@ public class DisplayProducts extends HttpServlet {
 				request.setAttribute("action", new String("getAll"));
 
 				ProductDAO productDAO = new ProductDAO();
-				list = productDAO.getAll();
+				list = productDAO.getALLOnSell();
 				request.setAttribute("list", list);
 //			}
 			splitPages(list, request);
@@ -58,8 +58,14 @@ public class DisplayProducts extends HttpServlet {
 
 			Integer p_no = Integer.parseInt(request.getParameter("pId"));
 			ProductDAO productDAO = new ProductDAO();
-			ProductVO productVO = productDAO.findByPrimaryKey(p_no);
+			ProductVO productVO = productDAO.findByPrimaryKeyOnSell(p_no);
 			request.setAttribute("productVO", productVO);
+			if(productVO==null){
+				String listAllUrl = "/product/ProductOffSell.jsp";
+				RequestDispatcher rd = request.getRequestDispatcher(listAllUrl);
+				rd.forward(request, response);
+				return;
+			}
 			// 或許你也會喜歡
 			List<ProductVO> maylike = productDAO.findRandTopProduct("4");
 			request.setAttribute("maylike", maylike);

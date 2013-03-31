@@ -71,7 +71,29 @@ public class ProductDAO implements ProductDAO_interface {
 		}
 		return ProductVO;
 	}
+	//-------------------------------------------
+	public ProductVO findByPrimaryKeyOnSell(Integer p_no) {
+		ProductVO productVO=null;
 
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		try {
+			session.beginTransaction();
+
+			Query query = session
+					.createQuery("FROM ProductVO where p_no=? AND p_status=?");
+			query.setCacheable(true); //啟動Query快取
+			query.setParameter(0, p_no);
+			query.setParameter(1,"已上架");
+			productVO = (ProductVO) query.uniqueResult();
+
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return productVO;
+	}
 	@Override
 	public List<ProductVO> getAll() {
 		List<ProductVO> list = null;
@@ -97,8 +119,9 @@ public class ProductDAO implements ProductDAO_interface {
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery("SELECT DISTINCT " + productlist
-					+ "  FROM ProductVO");
+					+ "  FROM ProductVO WHERE p_status=?");
 			query.setCacheable(true); //啟動Query快取
+			query.setParameter(0,"已上架");
 			list1 = query.list();
 			int list1_size=list1.size();
 			for (int i = 0; i < list1_size; i++) {
@@ -123,9 +146,10 @@ public class ProductDAO implements ProductDAO_interface {
 			session.beginTransaction();
 
 			Query query = session
-					.createQuery("SELECT DISTINCT p_grape FROM ProductVO where p_type=?");
+					.createQuery("SELECT DISTINCT p_grape FROM ProductVO where p_type=? AND p_status=?");
 			query.setCacheable(true); //啟動Query快取
 			query.setParameter(0, productType);
+			query.setParameter(1,"已上架");
 			list = query.list();
 
 			session.getTransaction().commit();
@@ -141,7 +165,7 @@ public class ProductDAO implements ProductDAO_interface {
 			String conditionValue) {
 		Integer values;
 
-		String GET_SOME_STMT = "from ProductVO Where " + condition + " =? ";
+		String GET_SOME_STMT = "from ProductVO Where " + condition + " =? and p_status=?";
 		List<ProductVO> list = null;
 		List list1 = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -151,9 +175,11 @@ public class ProductDAO implements ProductDAO_interface {
 			if ((condition.equals("p_vol")) || (condition.equals("p_price)"))) {
 				values = (Integer) Integer.parseInt(conditionValue);
 				query.setParameter(0, values);
+				query.setParameter(1,"已上架");
 				list = query.list();
 			} else {
 				query.setParameter(0, conditionValue);
+				query.setParameter(1,"已上架");
 				list = query.list();
 			}
 			session.getTransaction().commit();
@@ -164,13 +190,17 @@ public class ProductDAO implements ProductDAO_interface {
 		return list;
 	}
 	public List<ProductVO> findSalesProduct() {
-
-		String GET_SALES_STMT = "from ProductVO where p_sales <>'NONE'";
+        //   select * from product where p_sales not  in('TIME','NONE') AND p_status='已上架'  order by p_no
+		String GET_SALES_STMT = "from ProductVO where p_sales not  in(?,?) AND p_status=?  order by p_no";
+		
 		List<ProductVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_SALES_STMT);
+			query.setParameter(0,"NONE");
+			query.setParameter(1,"TIME");
+			query.setParameter(2,"已上架");
 			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
@@ -182,12 +212,13 @@ public class ProductDAO implements ProductDAO_interface {
 
 	public List<ProductVO> findTopProduct(String conditionValue) {
 
-		String GET_TOP_STMT = "from ProductVO order by p_buy_count desc";
+		String GET_TOP_STMT = "from ProductVO where p_status=? order by p_buy_count desc";
 		List<ProductVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_TOP_STMT);
+			query.setParameter(0,"已上架");
 			query.setCacheable(true); //啟動Query快取
 			query.setFirstResult(0);
 			query.setMaxResults(Integer.parseInt(conditionValue));
@@ -230,7 +261,7 @@ public class ProductDAO implements ProductDAO_interface {
 	public List<ProductVO> findRandTopProduct(String conditionValue) {
 			//隨機搜尋幾筆商品出來
 		int rndNumber=(int)(Math.random()*10+1);
-		String GET_TOP_STMT = "from ProductVO order by " +rndNumber;
+		String GET_TOP_STMT = "from ProductVO where p_status=? order by " +rndNumber;
 		List<ProductVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
@@ -238,7 +269,7 @@ public class ProductDAO implements ProductDAO_interface {
 			Query query = session.createQuery(GET_TOP_STMT);
 			query.setFirstResult(0);
 			query.setMaxResults(Integer.parseInt(conditionValue));
-
+			query.setParameter(0,"已上架");
 			list = query.list();
 			session.getTransaction().commit();
 	
@@ -260,9 +291,10 @@ public class ProductDAO implements ProductDAO_interface {
 			session.beginTransaction();
 
 			Query query = session
-					.createQuery("SELECT DISTINCT p_country FROM ProductVO where p_area=?");
+					.createQuery("SELECT DISTINCT p_country FROM ProductVO where p_area=? AND p_status=?");
 			query.setCacheable(true); //啟動Query快取
 			query.setParameter(0, area);
+			query.setParameter(1,"已上架");
 			list = query.list();
 
 			session.getTransaction().commit();
@@ -276,7 +308,7 @@ public class ProductDAO implements ProductDAO_interface {
 			String conditionValue) {
 		Integer values;
 
-		String GET_SOME_STMT = "from ProductVO Where " + condition + " between ? and ? ";
+		String GET_SOME_STMT = "from ProductVO Where  " + condition + " between ? and ? AND p_status=?" ;
 		List<ProductVO> list = null;
 		List list1 = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -290,16 +322,19 @@ public class ProductDAO implements ProductDAO_interface {
 				if(value==0){
 					query.setParameter(0,value);
 					query.setParameter(1,1000);
+					query.setParameter(2,"已上架");
 					list = query.list();
 				}
 				else if(value==1000){
 					query.setParameter(0,value);
 					query.setParameter(1,2000);
+					query.setParameter(2,"已上架");
 					list = query.list();
 				}
 				else{
 					query.setParameter(0,2000);
-					query.setParameter(1,65535);}
+					query.setParameter(1,65535);
+					query.setParameter(2,"已上架");}
 				list = query.list();
 				
 			} else {
@@ -310,6 +345,7 @@ public class ProductDAO implements ProductDAO_interface {
 				System.out.println(oneMonth);
 				query.setParameter(0,oneMonth);
 				query.setParameter(1,now);
+				query.setParameter(2,"已上架");
 				list = query.list();
 			}
 			session.getTransaction().commit();
@@ -403,6 +439,8 @@ public class ProductDAO implements ProductDAO_interface {
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery("FROM ProductVO where p_num < 24  order by p_num");
+			
+			
 			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
@@ -412,12 +450,28 @@ public class ProductDAO implements ProductDAO_interface {
 		return list;
 	}
 	
+	public List<ProductVO> getALLOnSell() {
+		List<ProductVO> list = new ArrayList();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("FROM ProductVO where p_status =?  order by p_num");
+			query.setParameter(0,"已上架");
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
 	// -------------------------------------------------------
 	public static void main(String arg[]) {
 		ProductDAO dao = new ProductDAO();
 //		List<ProductVO> list = dao.findProductBetween("p_date", "0");
 //		 List<ProductVO> list = dao.findRandTopProduct("4");
-		List<ProductVO> list = dao.findSpeciallySalesProduct();
+		List<ProductVO> list = dao.findTopProduct("100");
 				 for (ProductVO aEmp : list) {
 //				 System.out.println(aEmp.getP_no() + ",");
 //				 System.out.println(aEmp.getP_name() + ",");
@@ -428,12 +482,12 @@ public class ProductDAO implements ProductDAO_interface {
 //				 System.out.println(aEmp.getP_intro() + ",");
 //				 System.out.println(aEmp.getP_num() + ",");
 //				 System.out.println(aEmp.getP_price() + ",");
-//				 System.out.println(aEmp.getP_status() + ",");
+				 System.out.println(aEmp.getP_status() + ",");
 //				 System.out.println(aEmp.getP_winery() + ",");
 //				 System.out.println(aEmp.getP_click_count() + ",");
 //				 System.out.println(aEmp.getP_buy_count() + ",");
 //				 System.out.println(aEmp.getP_style() + ",");
-				 System.out.println(aEmp.getP_sales() + ",");
+//				 System.out.println(aEmp.getP_sales() + ",");
 //				 System.out.println(aEmp.getP_vol() + ",");
 //				 System.out.println(aEmp.getP_alcho() + ",");
 //				 System.out.println(aEmp.getP_date() + ",");
@@ -441,7 +495,7 @@ public class ProductDAO implements ProductDAO_interface {
 //				 System.out.println(aEmp.getP_grape());
 				 System.out.println();
 				 }
-		
+				 System.out.println(list.size());
 		
 		// List<ProductVO> list = dao.findSomeProduct("p_vol","750");
 		// for (ProductVO aEmp : list) {
