@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
@@ -16,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import member.model.MemberVO;
+import tools.InputFilter;
 import discussion.model.DiscussionHibernateDAO;
 import discussion.model.DiscussionVO;
 
@@ -79,6 +79,8 @@ public class DiscussionServlet extends HttpServlet {
 
 			// 新增主題功能
 			if ("insert".equals(action)) {
+				InputFilter tool = new InputFilter();
+				
 				// 之後修改成從session獲取會員編號
 				// int m_no = 1001;
 //				System.out.println(req.getSession().getAttribute("m_no"));
@@ -91,23 +93,25 @@ public class DiscussionServlet extends HttpServlet {
 				Integer m_no = (Integer) req.getSession().getAttribute("m_no");
 				String d_title = req.getParameter("d_title");
 				String d_context = req.getParameter("d_context");
-
+				System.out.println(d_context);
+				
 				if (d_title.trim().length() < 5) { // 主題字串的檢查
 					errorMsgs.add("請輸入文章主題，並超過5字");
 				}
-				if (d_context.trim().length() < 10) { // 內文的檢查
+				if (d_context.trim().length() < 17) { // 內文的檢查
 					errorMsgs.add("文章內容請輸入超過10字");
 				}
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("ErrorMsgKey", errorMsgs);
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/errorReason.jsp");// 導入錯誤處理頁面
+							.getRequestDispatcher("/discussion/insertDiscussion.jsp");// 導入錯誤處理頁面
 					failureView.forward(req, res);
 					return; // 程式中斷
 				}
 				// 防止使用者在內文中，輸入<sricpt>之攻擊
 				d_context = Script2Text(d_context);
-				System.out.println(d_context);
+				d_title = tool.sizeFomat(Script2Text(d_title), 100);
+//				System.out.println(d_context);
 				// 設定新增之主題物件參數
 				Timestamp time = new java.sql.Timestamp(
 						new java.util.Date().getTime());
@@ -152,6 +156,7 @@ public class DiscussionServlet extends HttpServlet {
 			if ("update".equals(action)) {
 				// 判斷其欲編輯者是否為發文者
 				DiscussionVO discussionVO = new DiscussionVO();
+				InputFilter tool = new InputFilter();
 				Integer d_no = Integer.valueOf(req.getParameter("d_no"));
 				String d_title = req.getParameter("d_title");
 				String d_context = req.getParameter("d_context");
@@ -165,8 +170,9 @@ public class DiscussionServlet extends HttpServlet {
 				if (d_title.trim().length() < 5) { // 主題字串的檢查
 					errorMsgs.add("請輸入文章主題，並超過5字");
 				}
-				if (d_context.trim().length() < 10) { // 內文的檢查
+				if (d_context.trim().length() < 17) { // 內文的檢查
 					errorMsgs.add("文章內容請輸入超過10字");
+					System.out.println("文章內容請輸入超過10字");
 				}
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("ErrorMsgKey", errorMsgs);
@@ -175,7 +181,8 @@ public class DiscussionServlet extends HttpServlet {
 					failureView.forward(req, res);
 					return; // 程式中斷
 				}
-
+				d_context = Script2Text(d_context);
+				d_title = tool.sizeFomat(Script2Text(d_title), 100);
 				discussionVO.setD_no(d_no);
 				discussionVO.setMemberVO(memberVO);
 				discussionVO.setD_title(d_title);
@@ -296,11 +303,11 @@ public class DiscussionServlet extends HttpServlet {
 		java.util.regex.Matcher m_script;
 
 		try {
-			String regEx_script = "<[\\s]*?script[^>]*?>[\\s\\S]*?<[\\s]*?\\/[\\s]*?script[\\s]*?>"; // 定义script的正则表达式{或<script[^>]*?>[\\s\\S]*?<\\/script>
+			String regEx_script = "<[\\s]*?script[^>]*?>"; // 定义script的正则表达式{或<script[^>]*?>[\\s\\S]*?<\\/script>
 																										// }
 			p_script = Pattern.compile(regEx_script, Pattern.CASE_INSENSITIVE);
 			m_script = p_script.matcher(ScriptStr);
-			ScriptStr = m_script.replaceAll("<h1>YOU CAN ATTACK ME!!!!!!</h1>"); // 过滤script标签
+			ScriptStr = m_script.replaceAll("YOU CANT ATTACK ME!!!!!!"); // 过滤script标签
 
 			textStr = ScriptStr;
 
