@@ -5,7 +5,9 @@ import java.sql.*;
 
 public class Coupon_setDAO implements Coupon_setDAO_interface {
 	String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+//	String driver = "com.mysql.jdbc.Driver ";
 	String url = "jdbc:sqlserver://localhost:1433;DatabaseName=WineProject";
+//	String url = "jdbc:mysql://localhost:3306/WineProject?characterEncoding=UTF-8";
 	String userid = "sa";
 	String passwd = "sa123456";
 

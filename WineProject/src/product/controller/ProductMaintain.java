@@ -1,5 +1,6 @@
 package product.controller;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.Iterator;
 import java.util.List;
 
@@ -135,8 +136,6 @@ public class ProductMaintain extends HttpServlet {
 		if (action.equals("emergencyNum")) {
 			ProductDAO dao = new ProductDAO();
 			Integer emergencyNum = dao.getEmergnecyStorage();
-			System.out.println("吐回來" + emergencyNum);
-
 			request.setCharacterEncoding("UTF-8");
 			request.setAttribute("emergencyNum", emergencyNum);
 			RequestDispatcher dis = request.getRequestDispatcher("/wine_admin/ajaxordernumber.jsp");

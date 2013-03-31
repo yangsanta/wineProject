@@ -2,6 +2,7 @@ package product.model;
 
 import hibernate.util.HibernateUtil;
 
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -376,9 +377,17 @@ public class ProductDAO implements ProductDAO_interface {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
+			try { //用integer去接  for sql server
 			SQLQuery query = session
 					.createSQLQuery("select COUNT(p_no) from product where p_num < 24");
 			storageNum = (Integer)query.uniqueResult();
+			} catch (RuntimeException ex) {//用BigInteger去接  for mysql
+				SQLQuery query = session
+						.createSQLQuery("select COUNT(p_no) from product where p_num < 24");
+				BigInteger storageNum2 = (BigInteger)query.uniqueResult();	
+				storageNum=storageNum2.intValue();
+			}
+			
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();

@@ -3,6 +3,7 @@ package food_set.model;
 import hibernate.util.HibernateUtil;
 import ingredient.model.IngredientVO;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -134,9 +135,17 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
+			try {  //for sql server  要Integer
 			SQLQuery query = session
 					.createSQLQuery(" select COUNT(a.i_id) from (select distinct i_id from food_set)as a");
 			getSecendcountI_id = (Integer) query.uniqueResult();
+			} catch (RuntimeException ex) {
+				SQLQuery query = session  //for mysql 要 BigInteger
+						.createSQLQuery(" select COUNT(a.i_id) from (select distinct i_id from food_set)as a");
+				BigInteger getSecendcountI_id2 = (BigInteger) query.uniqueResult();	
+				getSecendcountI_id=getSecendcountI_id2.intValue();
+			}
+			
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -151,9 +160,16 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
+			try {
 			SQLQuery query = session
 					.createSQLQuery("select COUNT( DISTINCT f_id) from food_set ");
 			list = (Integer) query.uniqueResult();
+			} catch (RuntimeException ex) {
+				SQLQuery query = session
+						.createSQLQuery("select COUNT( DISTINCT f_id) from food_set ");
+				BigInteger list2 = (BigInteger) query.uniqueResult();	
+				list=list2.intValue();
+			}
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();

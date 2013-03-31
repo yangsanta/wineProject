@@ -2,6 +2,7 @@ package orders.model;
 
 import hibernate.util.HibernateUtil;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,13 +118,21 @@ public class OrdersDAO implements OrdersDAO_interface {
 		
 	}
 	public Integer getNewodercount() {
-		Integer newodercount ;
+		Integer newodercount;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
+			try{ //for sql server 要Integer
 			SQLQuery query = session
 					.createSQLQuery("select COUNT(o_no) from orders where o_status = 'F'");
 			newodercount = (Integer)query.uniqueResult();
+			}catch (RuntimeException ex) {
+			SQLQuery query = session //for mysql 要BigInteger
+						.createSQLQuery("select COUNT(o_no) from orders where o_status = 'F'");
+			BigInteger newodercount2 = (BigInteger)query.uniqueResult();
+			 newodercount=newodercount2.intValue();
+			}
+			
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
