@@ -33,12 +33,12 @@ $(function() {
 						event.preventDefault();
 						if ($(this).text()=="改為已出貨"){
 							$(this).text("改為未出貨");
-							$(this).prev().prev().prev().text("已出貨");
+							$(this).closest('tr').children().children().children('span').text("已出貨").css('color', '#3f5a04');
 						} else {
 							$(this).text("改為已出貨");
-							$(this).prev().prev().prev().text("未出貨");
+							$(this).closest('tr').children().children().children('span').text("未出貨").css({'color': 'red', 'font-weight' :'bold'});
 						}
-						$(this).closest('tr').css('background-color', '#DFEDBE').css('color', '#3f5a04');
+						$(this).closest('tr').css('background-color', '#DFEDBE');
 
 						$.ajax({
 								url : '/WineProject/wine_admin/ordersadmin.do',
