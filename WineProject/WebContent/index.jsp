@@ -370,8 +370,8 @@
 
 					<hr style="width: 400px; border-top: 1px solid rgb(53, 53, 53);">
 						<div style="width: 150px; float: left; margin-top: -10px;">
-							<i class="icon-user"></i> <span style="color: red">
-								${ts.dailySales.ts_totalsale}</span>人已購買 <Br><i class=" icon-ok"></i>
+							<i class="icon-user"></i> 已賣出<span style="color: red">
+								${ts.dailySales.ts_totalsale}</span>支 <Br><i class=" icon-ok"></i>
 								好康已成立
 						</div>
 						<div style="width: 150px; float: left;">
