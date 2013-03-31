@@ -39,8 +39,6 @@ public class ReplyServlet extends HttpServlet {
 		try {
 			if ("insert".equals(action)) {
 				ReplyVO replyVO = new ReplyVO();
-				String url = req.getRequestURI();
-				req.setAttribute("url", url);
 				Integer d_no = Integer.valueOf(req.getParameter("d_no"));
 				String r_context = req.getParameter("r_context");
 				Timestamp time = new java.sql.Timestamp(
@@ -62,6 +60,9 @@ public class ReplyServlet extends HttpServlet {
 				}
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("ErrorMsgKey", errorMsgs);
+					System.out.println(r_context);
+//					replyVO.setR_context(r_context);
+//					req.setAttribute("replyVO", replyVO);
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("DiscussionList.do?action=getOne&d_no=" + d_no);//導入錯誤處理頁面
 					failureView.forward(req, res);
