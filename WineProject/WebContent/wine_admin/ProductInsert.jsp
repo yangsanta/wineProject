@@ -9,7 +9,7 @@
 	<title>酒迷|後台管理系統</title>
 	<link media="all" rel="stylesheet" type="text/css"
 		href="<%=request.getContextPath()%>/wine_admin/css/all.css" />
-	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<link type="text/css"
 		href="<%=request.getContextPath()%>/style/jquery.datepick.css"
 		rel="stylesheet">

@@ -18,7 +18,7 @@
 		<link
 			href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css"
 			rel="stylesheet" media="screen">
-			<script src="http://code.jquery.com/jquery.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 			<script
 				src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
 			<script type="text/javascript"

@@ -436,7 +436,7 @@
 	</div>
 
 	</div>
-<script src="http://code.jquery.com/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 			<script src="style/bootstrap/js/bootstrap.js"></script>
 			<script type="text/javascript" src="js/index.js?v=1.0"></script>
 			<script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.4"></script>

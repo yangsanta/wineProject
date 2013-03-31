@@ -14,7 +14,7 @@
  	<meta content="酒迷 | 歷久彌新的香濃口感" name="keywords" />
         <link href="<%=request.getContextPath()%>/style/reset.css" rel="stylesheet" type="text/css" />
 		<link href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
 
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.fancybox.js?v=2.1.4"></script>

@@ -12,7 +12,7 @@
 	
 	<link media="all" rel="stylesheet" type="text/css" href="css/all.css" />
 	 <c:if test="${sessionScope.admin_access!='y'}"><meta http-equiv="refresh" content="0; url=index.jsp"></c:if>
-	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	window.jQuery|| document.write('<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.9.0.min.js"><\/script>');
 	</script>

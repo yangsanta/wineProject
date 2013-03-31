@@ -15,7 +15,7 @@
 <link href="style/reset.css" rel="stylesheet" type="text/css" />
 <link href="style/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	media="screen">
-<script src="http://code.jquery.com/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="style/bootstrap/js/bootstrap.js"></script>
 
 <script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.4"></script>
