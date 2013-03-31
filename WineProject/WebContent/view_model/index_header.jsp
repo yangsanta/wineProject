@@ -2,15 +2,24 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="search">
-	<span> <c:if test="${sessionScope.access=='y'}">${sessionScope.m_id}，你好&nbsp;&nbsp; &nbsp;</c:if>
-	</span><input id="searchInput" type="text" class="search-query iconsearch"
+<table>
+<tr>
+<td>
+	<span id="loginHello"><c:if test="${sessionScope.access=='y'}">${sessionScope.m_id}，你好&nbsp;&nbsp; &nbsp;</c:if>
+	</span>
+</td>
+<td>
+	<input id="searchInput" type="text" class="search-query iconsearch"
 		placeholder="全站搜尋"
-		onfocus="this.style.width='200px';this.style.height='20px';this.placeholder='你想找甚麼?'" onblur="inputsearcharea();this.placeholder='全站搜尋'">
+		onfocus="this.style.width='250px';this.style.height='20px';this.placeholder='你想找甚麼?'" onblur="inputsearcharea();this.placeholder='全站搜尋'">
 		<div class="indexallsearch" >
 		<table>
 			<tbody id="ulResultIndex">
 			</tbody>
 		</table></div>
+</td>
+</tr>
+</table>
 </div>
 <div id="ajaxLoadingImg" style="background-color:rgba(0, 0, 0, 0.78);width:300px;text-align: center;height:300px;left: 40%;top: 40%;z-index: 999;position: absolute;display:none;-webkit-border-radius: 10px;
 -moz-border-radius: 10px;border-radius: 10px;padding: 10px;"><span style="font-size: 30px;
