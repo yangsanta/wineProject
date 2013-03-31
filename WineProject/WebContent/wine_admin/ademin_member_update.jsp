@@ -18,6 +18,9 @@
 	<script type="text/javascript">
 	window.jQuery|| document.write('<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.9.0.min.js"><\/script>');
 	</script>
+<link type="text/css"
+		href="<%=request.getContextPath()%>/style/jquery.datepick.css"
+		rel="stylesheet">
 <link href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
 <script type="text/javascript" src="../wine_admin/js/ademin_member.js"></script>
@@ -44,6 +47,14 @@ $(document).ready(function()
 
 		
 	});
+	$(document).ready(function() {
+		$('#m_bday').datepick({
+			dateFormat : 'yyyy-mm-dd'
+		});
+		$('#inlineDatepicker').datepick({
+			onSelect : showDate
+		});
+	})
 
 	function showDate(date) {
 		alert('The date chosen is ' + date);
@@ -87,7 +98,12 @@ label.success {
 .buttons .member .ico7 span {background-position:-4px -352px;}
 .buttons .ico8 span {background-position:-4px -380px;}
 .buttons .member .ico8 span {background-position:-4px -415px;}
+.datepick-month-year {
+	width: 100px
+}
 </style>
+<script type="text/javascript"
+			src="<%=request.getContextPath()%>/js/jquery.datepick.js"></script>
 </head>
 <body>
 	<div id="wrapper">

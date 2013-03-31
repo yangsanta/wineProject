@@ -14,6 +14,9 @@
 	<script type="text/javascript">
 		window.jQuery|| document.write('<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.9.0.min.js"><\/script>');
 	</script>
+	<link type="text/css"
+		href="<%=request.getContextPath()%>/style/jquery.datepick.css"
+		rel="stylesheet">
 	<link href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
@@ -47,8 +50,12 @@
 box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;border-color: #20C1FF;
 border-width: 9px;
 border-style: solid}
+.datepick-month-year {
+	width: 100px
+}
 	</style>
-
+		<script type="text/javascript"
+			src="<%=request.getContextPath()%>/js/jquery.datepick.js"></script>
 		<script>
 			Array(1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 					2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
@@ -70,6 +77,15 @@ border-style: solid}
 					}
 					
 				});
+				$(document).ready(function() {
+					$('#p_date').datepick({
+						dateFormat : 'yyyy-mm-dd'
+					});
+					$('#inlineDatepicker').datepick({
+						onSelect : showDate
+					});
+				})
+				
 			});
 			
 		</script>
@@ -137,7 +153,8 @@ border-style: solid}
 			<br/>
 			<span>商品容量:</span><input type="text" size="30" name="p_vol"	value="${ productVO.p_vol}" /><span class="error">${ErrMsg.errVol}</span><br/> 
 			<span>酒精濃度:</span><input	type="text" size="30" name="p_alcho" value="${productVO.p_alcho}" /><span class="error">${ErrMsg.errAlcho}</span><br/>
-			<span>上架日期:</span><input type="text" size="30" name="p_date"  value="${productVO.p_date}" /><br/> 
+			<span>上架日期:</span><input type="text" size="30" id="p_date" name="p_date"  value="${productVO.p_date}" readonly
+										style="cursor: pointer" /><br/> 
 			<span style="line-height: 30px;">商品種類:</span>
 			<c:forEach var="type" items="紅葡萄酒,白葡萄酒,氣泡酒">
 			<c:if test="${type==productVO.p_type}">
