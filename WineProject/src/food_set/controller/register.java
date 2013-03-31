@@ -74,8 +74,15 @@ public class register extends HttpServlet {
 			if (s_id == null || s_id.trim().length() == 0) {
 				errorMsg.add("請輸入「風味」");
 			}
+			
+			//確認是否已存在同筆資料
+			List<Food_setVO> list = DAO.getSomeFISP(Integer.parseInt(f_id), Integer.parseInt(i_id), Integer.parseInt(s_id), Integer.parseInt(p_no));
+			if (list!=null || list.size() > 0){
+				errorMsg.add("已有相同餐酒搭配資料");
+			}
+			
 			if (!errorMsg.isEmpty()) {
-				RequestDispatcher rd = request //除非被惡意手動輸入傳值 不然大概永遠不會跑到這邊來
+				RequestDispatcher rd = request //除非已有相同搭配，或被惡意手動輸入傳值 不然大概永遠不會跑到這邊來
 						.getRequestDispatcher("/wine_admin/ademin_Fs_Error.jsp");
 				rd.forward(request, response);
 				return;

@@ -19,6 +19,7 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 	private static final String GET_ALL_STMT = "FROM Food_setVO order by fs_id";
 	private static final String GET_SOME_STMT_f_id = "FROM Food_setVO where f_id=? ";
 	private static final String GET_SOME_STMT_i_id = " FROM Food_setVO where i_id=? ";
+	private static final String GET_SOME_STMT_f_i_s_id_p_no = "FROM Food_setVO where f_id=? i_id=? s_id=? p_no=? ";
 
 	@Override
 	public void insert(Food_setVO food_setVO) {
@@ -253,6 +254,27 @@ public class Food_setHibernateDAO implements Food_setDAO_interface {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_SOME_STMT_f_id);
 			query.setParameter(0, f_id);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+
+	}
+	
+	public List<Food_setVO> getSomeFISP(Integer f_id, Integer i_id, Integer s_id, Integer p_no) {
+
+		List<Food_setVO> list = new ArrayList<Food_setVO>();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_SOME_STMT_f_i_s_id_p_no);
+			query.setParameter(0, f_id);
+			query.setParameter(1, i_id);
+			query.setParameter(2, s_id);
+			query.setParameter(3, p_no);
 			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
