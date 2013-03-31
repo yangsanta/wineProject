@@ -33,18 +33,10 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
 
-
-
-
 <style>
 img {
 	display: block;
-	height: 150px;
-}
-
-td {
-	border: 1px silver solid;
-	width: 240px;
+	height: 50px;
 }
 </style>
 
@@ -61,7 +53,7 @@ td {
 
 				<div id="content">
 					<%@ include file="../view_model/page_alert.htm"%>
-					您的訂單（no. ${ordersVO.o_no}）已成立：
+					<h2>您的訂單（no. ${ordersVO.o_no}）已成立</h2><br>
 					<c:if test="${not empty newCoupon}">
 						<div style="height:95px;">
 							感謝您的購買！您獲得了新的折價券:
@@ -73,16 +65,17 @@ td {
 					</c:if>
 
 					<div>
-						<ul>
-							<li>收件人姓名：${ordersVO.o_recipient}</li>
-							<li>聯絡電話：${ordersVO.o_recipient_tel}</li>
-							<li>收件地址：${ordersVO.o_recipient_addr}</li>
-							<li>訂單日期：${ordersVO.o_date}</li>
-							<li>訂單狀態：出貨流程處理中。</li>
+					<br>
+						<ul style="-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;border: #AFAFAF 3px solid;padding: 20px;margin-left: -10px;">
+							<li style="padding: 5px 0;">收件人姓名：${ordersVO.o_recipient}</li>
+							<li style="padding: 5px 0;">聯絡電話：${ordersVO.o_recipient_tel}</li>
+							<li style="padding: 5px 0;">收件地址：${ordersVO.o_recipient_addr}</li>
+							<li style="padding: 5px 0;">訂單日期：${ordersVO.o_date}</li>
+							<li style="padding: 5px 0;">訂單狀態：出貨流程處理中。</li>
 						</ul>
 					</div>
 
-					<table>
+					<table class="table table-striped">
 						<thead>
 							<tr>
 								<th>商品</th>
@@ -137,7 +130,7 @@ td {
 						</tbody>
 					</table>
 					<a href="<%=request.getContextPath()%>/index.jsp"><input
-						type="button" value="繼續選購"></a>
+						type="button" value="繼續選購" class="btn btn-success"></a>
 
 
 				</div>
