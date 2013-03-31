@@ -1,4 +1,4 @@
-﻿package recipe.model;
+package recipe.model;
 
 import hibernate.util.HibernateUtil;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class RecipeDAO implements RecipeDAO_interface {
+public class RecipeHibernateDAO implements RecipeDAO_interface {
 	
 	private static final String GET_ALL_STMT = "FROM RecipeVO order by rp_id";
 

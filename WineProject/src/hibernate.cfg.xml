@@ -65,7 +65,8 @@
 		<mapping resource="shipping_set/model/shipping_set.hbm.xml" />	
 		<mapping resource="coupon_set/model/coupon_set.hbm.xml" />
 		<mapping resource="admins/model/admins.hbm.xml" />		
-		<mapping resource="ab/model/ab.hbm.xml" />				
+		<mapping resource="ab/model/ab.hbm.xml" />
+		<mapping resource="recipe/model/recipe.hbm.xml" />					
 	</session-factory>
 
 </hibernate-configuration>
