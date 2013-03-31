@@ -143,17 +143,17 @@
 										<td class="td">訪客<br> Visitor</td>
 										<td class="td">${visiter.num}人</td>
 										<td class="td">${visiter.numlastmonth}人</td>
-										<td class="td">${visiter.nummonth}人<span style="background: #ddd;padding: 3px;" > ${(visiter.nummonth-visiter.numlastmonth)*100/visiter.numlastmonth}% </span></td>
+										<td class="td">${visiter.nummonth}人<span style="background: #ddd;padding: 3px;" > <fmt:formatNumber value="${(visiter.nummonth-visiter.numlastmonth)*100/visiter.numlastmonth}" pattern="0.0"/>% </span></td>
 										<td class="td">${visiter.numyesterday}人</td>
-										<td class="td">${visiter.numday}人<span style="background: #ddd;padding: 3px;" > ${(visiter.numday-visiter.numyesterday)*100/visiter.numyesterday}% </span></td>
+										<td class="td">${visiter.numday}人<span style="background: #ddd;padding: 3px;" > <fmt:formatNumber value="${(visiter.numday-visiter.numyesterday)*100/visiter.numyesterday}" pattern="0.0"/>% </span></td>
 									</tr>
 									<tr class="tr">
 										<td class="td">瀏覽量<br>Page View</td>
 										<td class="td">${pv.num}</td>
 										<td class="td">${pv.numlastmonth}</td>
-										<td class="td">${pv.nummonth}<span style="background: #ddd;padding: 3px;" > ${(pv.nummonth-pv.numlastmonth)*100/pv.numlastmonth}% </span></td>
+										<td class="td">${pv.nummonth}<span style="background: #ddd;padding: 3px;" > <fmt:formatNumber value="${(pv.nummonth-pv.numlastmonth)*100/pv.numlastmonth}" pattern="0.0"/>% </span></td>
 										<td class="td">${pv.numyesterday}</td>
-										<td class="td">${pv.numday}<span style="background: #ddd;padding: 3px;" > ${(pv.numday-pv.numyesterday)*100/pv.numyesterday}% </span></td>
+										<td class="td">${pv.numday}<span style="background: #ddd;padding: 3px;" > <fmt:formatNumber value="${(pv.numday-pv.numyesterday)*100/pv.numyesterday}" pattern="0.0"/>% </span></td>
 									</tr>
 								</table>
 								 <div id="chart_div" style="width: 100%; height: 300px;"></div>
