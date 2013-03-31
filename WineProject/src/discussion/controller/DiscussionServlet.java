@@ -255,7 +255,7 @@ public class DiscussionServlet extends HttpServlet {
 		} catch (Exception e) {
 			errorMsgs.add("無法取得資料:" + e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/errorReason.jsp");
+					.getRequestDispatcher(req.getContextPath()+"/index.jsp");
 			failureView.forward(req, res);
 		}
 	}
