@@ -107,7 +107,6 @@ label.success {
 
 					<div id="content">
 						<c:if test="${fn:length (ErrorMsgKey) gt 0}">
-						.
 							<ul class="states">
 								<li class="error" style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;錯誤 : 請輸入
 									<c:forEach var="e" items="${ErrorMsgKey}">
@@ -227,8 +226,7 @@ label.success {
 								id="commentForm" class="cmxform">
 								<img src="<%=request.getContextPath()%>/images/fast_discus.png" width=30px style="margin-bottom: 20px;">
 								<span style="margin-bottom:10px;font-weight: bold;font-size:16px">快速留言：</span>
-								<textarea cols="200" rows="6" name="r_context" class="required"
-									minlength="10"
+								<textarea cols="200" rows="6" name="r_context" 
 									style="margin: 0px 0px 10px; width: 866px; height: 200px"></textarea>
 								<br /> <input type="submit" value="送出"
 									class="btn btn-primary" /> <input type="hidden" name="action"
