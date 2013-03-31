@@ -133,7 +133,8 @@ background-color: #fff;}
 
 					
 				</jsp:useBean>
-			
+			<jsp:useBean id="couponDAO" class="coupon.model.CouponDAO" scope="page">
+			<c:set var="theCoupons" value="${couponDAO.findByM_no(m_no)}"></c:set>
 						<div class="mem_in_outer">
 							<span class="mem_in_title"><b>優惠券(${fn:length(theCoupons)}張)</b></span>
 							<div class="mem_in_coupons">
@@ -142,11 +143,8 @@ background-color: #fff;}
 							<img src="<%=request.getContextPath()%>/images/ticket${coupon.c_price}.png" width=50px /></a> 
 								</c:forEach>
 							</div>
+					</jsp:useBean>		
 							
-							<span class="mem_in_title"><b>各項設定/維護</b></span><br>
-							<div class="mem_in_coupons">
-								<a href="#"><b>可訂購時通知我</b></a>
-							</div>
 							
 							<span class="mem_in_title">會員資料</span>
 							<div class="mem_div">
@@ -180,6 +178,8 @@ background-color: #fff;}
 										</tr>
 									</thead>
 									<tbody>
+									<jsp:useBean id="ordersDAO" class="orders.model.OrdersDAO" scope="page">
+			<c:set var="theOrders" value="${ordersDAO.getOrdersByM_no(m_no)}"></c:set>
 										<c:forEach var="order" items="${theOrders}">
 											<tr>
 												<td>${order.o_no}</td>
@@ -194,6 +194,7 @@ background-color: #fff;}
 												<td>${order.o_status}</td>
 											</tr>
 										</c:forEach>
+										</jsp:useBean>		
 									</tbody>
 								</table>
 
@@ -202,7 +203,10 @@ background-color: #fff;}
 						</div>
 						</c:if>
 						<c:if test="${sessionScope.access!='y'}">
-						請先登入來使用完整的會員功能
+						請先<a href='login.jsp'>登入</a>來使用完整的會員功能
+						<script Language="JavaScript">
+    setTimeout("location.href='login.jsp'",3000);
+    </script>
 							</c:if>
 						<%@ include file="/view_model/index_fast_login.htm"%>
 
