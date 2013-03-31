@@ -50,7 +50,10 @@ FB.getLoginStatus(function (response) {
             					      //檢查資料庫並新增完之後跳轉回首頁
             					window.top.location.href ="http://wine.davidou.org:8080/WineProject/";
             					 }
-     			  })
+     			  }).always(function() { 
+     				 window.top.location.href ="http://wine.davidou.org:8080/WineProject/";
+     			  }
+     			  }
 			}
 CheckPlaye2(response.id, response.name, response.email, response.username);
 

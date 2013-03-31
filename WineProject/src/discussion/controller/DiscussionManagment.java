@@ -41,7 +41,7 @@ public class DiscussionManagment extends HttpServlet {
 //			 新增主題功能
 			if ("insert".equals(action)) {
 				// 之後修改成從session獲取管理員編號
-
+				String url = req.getRequestURI();
 				Integer a_no = (Integer) req.getSession().getAttribute("a_no");
 				if(a_no==null){
 					RequestDispatcher failureView = req
@@ -53,7 +53,7 @@ public class DiscussionManagment extends HttpServlet {
 				String d_context = req.getParameter("d_context");
 
 				if (d_title.trim().length() < 5) { // 主題字串的檢查
-					errorMsgs.add("請輸入文章主題，並超過5字");
+					errorMsgs.add("文章主題，並超過5字");
 				}
 				if (d_context.trim().length() < 10) { // 內文的檢查
 					errorMsgs.add("文章內容請輸入超過10字");
@@ -61,7 +61,7 @@ public class DiscussionManagment extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("ErrorMsgKey", errorMsgs);
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/errorReason.jsp");// 導入錯誤處理頁面
+							.getRequestDispatcher(url);// 導入錯誤處理頁面
 					failureView.forward(req, res);
 					return; // 程式中斷
 				}
@@ -149,6 +149,7 @@ public class DiscussionManagment extends HttpServlet {
 			
 			//修改
 			if ("update".equals(action)) {
+				String url = req.getRequestURI();
 				DiscussionVO discussionVO = new DiscussionVO();
 				Integer d_no = Integer.valueOf(req.getParameter("d_no"));
 				String d_title = req.getParameter("d_title");
@@ -161,15 +162,25 @@ public class DiscussionManagment extends HttpServlet {
 				Timestamp d_datetime = Timestamp.valueOf(req
 						.getParameter("d_datetime"));
 				if (d_title.trim().length() < 5) { // 主題字串的檢查
-					errorMsgs.add("請輸入文章主題，並超過5字");
+					errorMsgs.add("文章主題超過5字");
 				}
 				if (d_context.trim().length() < 10) { // 內文的檢查
-					errorMsgs.add("文章內容請輸入超過10字");
+					errorMsgs.add("文章內容超過10字");
 				}
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("ErrorMsgKey", errorMsgs);
+					discussionVO.setD_no(d_no);
+					discussionVO.setMemberVO(memberVO);
+					discussionVO.setD_title(d_title);
+					discussionVO.setD_context(d_context);
+					discussionVO.setD_datetime(d_datetime);
+					discussionVO.setD_final_edit(new java.sql.Timestamp(
+							new java.util.Date().getTime()));
+					discussionVO.setD_status(d_status);
+					req.setAttribute("discussionVO", discussionVO);
+					System.out.println(url);
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/errorReason.jsp");// 導入錯誤處理頁面
+							.getRequestDispatcher("/wine_admin/admin_editDisc.jsp");// 導入錯誤處理頁面
 					failureView.forward(req, res);
 					return; // 程式中斷
 				}

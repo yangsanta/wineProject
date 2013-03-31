@@ -18,24 +18,19 @@
 	<script type="text/javascript">
 	window.jQuery|| document.write('<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.9.0.min.js"><\/script>');
 	</script>
-<link type="text/css"
-		href="<%=request.getContextPath()%>/style/jquery.datepick.css"
-		rel="stylesheet">
 <link href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
 <script type="text/javascript" src="../wine_admin/js/ademin_member.js"></script>
 <link rel="stylesheet" href="../wine_admin/css/ademin_member.css" type="text/css" />
+<link type="text/css" href="<%=request.getContextPath()%>/style/jquery.datepick.css" rel="stylesheet">
 
 <script src="<%=request.getContextPath()%>/js/jquery.validate.min.js"
 	type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/messages_tw.js"
 	type="text/javascript"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery.datepick.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function()
-  { //$('#MyForm').formly({'onBlur':false});
-   });
-</script>
 
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {
@@ -44,17 +39,16 @@ $(document).ready(function()
 				label.addClass("success").text("Ok!");
 			}
 		});
-
-		
-	});
-	$(document).ready(function() {
 		$('#m_bday').datepick({
 			dateFormat : 'yyyy-mm-dd'
 		});
 		$('#inlineDatepicker').datepick({
 			onSelect : showDate
 		});
-	})
+		
+
+		
+	});
 
 	function showDate(date) {
 		alert('The date chosen is ' + date);
@@ -62,6 +56,10 @@ $(document).ready(function()
 
 </script>
 <style type="text/css">
+.datepick-month-year {
+width: 80px;height: 30px !important;
+}
+.datepick-month-header{height: 30px;}
 label{display: inline-block;margin-left: 10px;}
 label.error {
 	background: url("<%=request.getContextPath()%>/images/unchecked.gif")
@@ -98,12 +96,7 @@ label.success {
 .buttons .member .ico7 span {background-position:-4px -352px;}
 .buttons .ico8 span {background-position:-4px -380px;}
 .buttons .member .ico8 span {background-position:-4px -415px;}
-.datepick-month-year {
-	width: 100px
-}
 </style>
-<script type="text/javascript"
-			src="<%=request.getContextPath()%>/js/jquery.datepick.js"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -125,7 +118,7 @@ label.success {
 					<input type="hidden" name="m_no" value="${memberVO.m_no}"/>
 					<img src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}" style="vertical-align: top; width: 100px;"/><br/>
 					 <input	style="background: #FFFFFF" type="file" name="p_pic" size="40" /><br/> 
-					 <input type="submit" value="上傳圖片" />
+					 <button type="submit" class="btn btn-info" style="width: 150px;"><i class=" icon-plus icon-white"></i> 上傳圖片</button>		
 					</form>
 					</td><td>
 					<p ><span style="font-size:20px;">您目前正在修改的是 會員編號：${memberVO.m_no}</span>
@@ -153,7 +146,6 @@ label.success {
 							<input type="hidden" name="action" value="update">
 							<input type="hidden" name="m_no" value="<%=memberVO.getM_no()%>">
 							<input type="submit" value="送出修改"  class="btn btn-primary"/>
-							<input type="reset" value="清除"  class="btn btn-primary"/>
 							
 						</form></td></tr></table>
 						<%@ include file="view_model/footer.jsp"%>

@@ -192,7 +192,7 @@ label.success {
 											</div> 限惠價格：<input type="text" name="ts_price"
 											value="${ts.ts_price}" /><span>${ErrMsg.errTs_price}</span><br />
 											限惠日期：<input type="text" name="ts_date" value="${ts.ts_date}"
-											id="ts_date" /><span>${ErrMsg.errTs_date}</span><br /> 限惠標語：<input
+											id="ts_date" readonly /><span>${ErrMsg.errTs_date}</span><br /> 限惠標語：<input
 											type="text" name="ts_slogan" value="${ts.ts_slogan}" /><span>${ErrMsg.errTs_slogan}</span><br />
 										</td>
 									</tr>
