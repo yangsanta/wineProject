@@ -126,7 +126,7 @@
 										<h3 class="qa_group_1">基本問題</h3>
 										<ul class="accordionPart">
 											<li><div class='qa_title'>我買的酒何時會到？</div>
-												<div class='qa_content'>我們這是一個demo網站，所以你的酒我想應該是用遠不會到了。</div>
+												<div class='qa_content'>我們這是一個demo網站，所以你的酒我想應該是永遠不會到了。</div>
 											</li>
 											<li><div class='qa_title'>酒的品質會不會很差？</div>
 												<div class='qa_content'>我們的酒都是當天空運來台，直接傘兵空投到我們的工廠的，保證新鮮香醇。</div>

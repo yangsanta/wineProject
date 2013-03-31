@@ -21,4 +21,4 @@ public interface ProductDAO_interface {
 			String conditionValue);
 	
 	public List<ProductVO> findFuzzyProductName(String fuzzyProductName);
-}
+;}
