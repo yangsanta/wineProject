@@ -9,15 +9,49 @@
 	<title>酒迷|後台管理系統</title>
 	<link media="all" rel="stylesheet" type="text/css"
 		href="<%=request.getContextPath()%>/wine_admin/css/all.css" />
-	<c:if test="${sessionScope.admin_access!='y'}"><meta http-equiv="refresh" content="0; url=index.jsp"></c:if>
 	<script src="http://code.jquery.com/jquery.js"></script>
-	<script type="text/javascript">
-		window.jQuery|| document.write('<script type="text/javascript" src="js/jquery-1.7.2.min.js"><\/script>');
-	</script>
-	<link href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<script src="http://code.jquery.com/jquery.js"></script>
-		<script src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
-		<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
+	<link type="text/css"
+		href="<%=request.getContextPath()%>/style/jquery.datepick.css"
+		rel="stylesheet">
+		<script type="text/javascript">
+			window.jQuery
+					|| document
+							.write('<script type="text/javascript" src="js/jquery-1.7.2.min.js"><\/script>');
+		</script>
+		<script type="text/javascript"
+			src="<%=request.getContextPath()%>/js/jquery.datepick.js"></script>
+		<link href="<%=request.getContextPath()%>/style/reset.css"
+			rel="stylesheet" type="text/css" />
+		<link
+			href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css"
+			rel="stylesheet" media="screen">
+			<script
+				src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
+			<script src="<%=request.getContextPath()%>/js/jquery.validate.min.js"
+				type="text/javascript"></script>
+			<script src="<%=request.getContextPath()%>/js/messages_tw.js"
+				type="text/javascript"></script>
+			<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
+			<script type="text/javascript" charset="utf-8">
+				$(document).ready(function() {
+					$('#commentForm').validate({
+						success : function(label) {
+							label.addClass("success").text("Ok!");
+						}
+					});
+
+					$('#p_date').datepick({
+						dateFormat : 'yyyy-mm-dd'
+					});
+					$('#inlineDatepicker').datepick({
+						onSelect : showDate
+					});
+				});
+
+				function showDate(date) {
+					alert('The date chosen is ' + date);
+				}
+			</script>
 			<style>
 				.buttons li.product a {
 	background:url(<%=request.getContextPath()%>/wine_admin/images/sprite.png) no-repeat -113px -2px;
@@ -48,7 +82,7 @@
 					2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
 					2010, 2011, 2012);
 		</script>
-		<script type="text/javascript"
+<script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/tinymcec/jscripts/tiny_mce.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/tinymcec/tinymac.js"></script>
@@ -128,7 +162,7 @@
 			<br/>
 			<span>商品容量:</span><input type="text" size="30" name="p_vol"	value="${insertMsgs.p_vol}" /><span class="error">${ErrMsg.errVol}</span><br/> 
 			<span>酒精濃度:</span><input	type="text" size="30" name="p_alcho" value="${insertMsgs.p_alcho}" /><span class="error">${ErrMsg.errAlcho}</span><br/>
-			<span>上架日期:</span><input type="text" id="p_date" size="30" name="p_date"  value="${insertMsgs.p_date}" /><span class="error">${ErrMsg.errDate}</span><br/>
+			<span>上架日期:</span><input type="text" id="p_date" size="30" name="p_date"  value="${insertMsgs.p_date}" readonly /><span class="error">${ErrMsg.errDate}</span><br/>
 			<span>商品種類:</span>
 			<c:forEach var="type" items="紅葡萄酒,白葡萄酒,氣泡酒">
 			<c:if test="${insertMsgs.p_type!=null}">
