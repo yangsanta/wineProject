@@ -3,6 +3,7 @@ pageEncoding="UTF-8"%>
 <%@ page import=" java.net.*"%>
 <%@ page import=" java.io.*"%>
 <%
+String noneuse="中文";
 String q=request.getParameter("q");
 q = new String(q.getBytes("ISO-8859-1"),"UTF-8");
 String sCurrentLine;
