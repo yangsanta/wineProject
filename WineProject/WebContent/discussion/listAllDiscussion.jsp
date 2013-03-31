@@ -44,27 +44,27 @@
 		url('<%=request.getContextPath()%>/images/disz_bg.png');
 }
 
-table {
+#contenttable  {
 	border-top: 1px solid #ccc;
 	color: #333
 }
 
-thead {
+#contenttable thead {
 	background-color: rgba(114, 113, 113, 0.47);
 	text-align: center;
 	font-size: 12px;
 }
 
-thead tr:hover {
+#contenttable thead tr:hover {
 	background-color: rgba(0, 0, 0, 0);
 }
 
-td {
+#contenttable td {
 	border-bottom: 1px solid #ccc;
 	padding: 5px;
 }
 
-tr:hover {
+#contenttable tr:hover {
 	background-color: rgb(255, 255, 255);;
 	border-bottom: 1px solid #000;
 }
@@ -147,7 +147,7 @@ tr:hover {
 						<button class="btn btn-large btn-primary" style="float: right" type="button">
 							<i class="icon-pencil icon-white"></i> 發表文章
 						</button> </a> <br><br>
-							<table border="0" width="100%" cellspacing="0" cellpadding="0">
+							<table id="contenttable" border="0" width="100%" cellspacing="0" cellpadding="0">
 								<thead>
 									<tr>
 										<td>類型</td>

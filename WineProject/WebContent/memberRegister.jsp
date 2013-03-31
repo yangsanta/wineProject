@@ -110,7 +110,12 @@
 	function showDate(date) {
 		alert('The date chosen is ' + date);
 	}
-
+	function switchpage() {
+ 		$("#firstpage").slideUp("slow");
+ 		$("#secendpage").delay(800).slideDown("slow")
+	}
+	
+	
 </script>
 
 <style type="text/css">
@@ -140,7 +145,7 @@ label.success {
 	position: absolute;
 	background-color: white;
 	margin-top: -12px;
-	width: 410px;
+	width: 400px;
 	border: 1px solid rgb(213, 213, 213);;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -167,6 +172,7 @@ label.success {
 #ulResult .out {
 	padding: 0px 0 0px 0;
 }
+tr{height: 45px;}
 </style>
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -198,9 +204,16 @@ label.success {
 					<HR>
 					<Form Action="product/memberRegister.do" method="post"
 						id="commentForm" class="cmxform" name="aaa">
-						<div style="float: left;">
+						<div id="firstpage">
+						請您詳閱以下的使用者條款以及隱私權政策<br><br>
+						<iframe name="main" frameborder="0" height="300" scrolling="yes" src="registerlist.html" width="600" allowtransparency="true"></iframe>
+						<br><br><img src="images/aceptregister.png" onclick="switchpage();" style="float:right;margin-right: 40px;">
+						</div>
+						<div id="secendpage" style=" display:none;">
+						<div style="float: left;padding-top: 80px;">
 							<img src="images/ic_registrate_200.png">
 						</div>
+						
 						<div style="float: left">
 							<Table>
 								<TR>
@@ -243,7 +256,7 @@ label.success {
 									<td align="right">地址：</td>
 									<td align="left"><input autocomplete="off" type="text" id="m_addr"
 										name="m_addr" value="" onkeyup="showUser(this.value)"
-										onclick="showUser(this.value)" style="width: 400px"> <br>
+										onclick="showUser(this.value)" style="width: 380px"> <br>
 										<div id="divContent">
 											<ul id="ulResult"></ul>
 										</div></td>
@@ -253,7 +266,7 @@ label.success {
 										value="送出註冊" class="btn btn-primary" id="btnMSubmit"></td>
 								</TR>
 							</Table>
-						</div>
+						</div></div>
 					</Form>
 					<br class="clear" />
 				</div>

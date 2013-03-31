@@ -94,7 +94,7 @@ background-color: #fff;}
 				width="160px" height="200px" /> <br />
 			<form method="post" action="<%request.getContextPath();%>/WineProject/MenberPicByUser" enctype="multipart/form-data">
 				<input type="hidden" name="m_no" value="${memberVO.m_no}" class="btn btn-info btn-small">
-				<input style="background: #FFFFFF" type="file" name="p_pic" size="40" />
+				<input style="background: #FFFFFF;width: 200px;" type="file" name="p_pic" />
 				<button type="submit" style="width: 180px;height: 35px;"  class="btn btn-info "><i class="icon-plus icon-white"></i>上傳圖片</button>
 			</form>
 		</div>

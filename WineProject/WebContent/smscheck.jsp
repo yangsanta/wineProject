@@ -139,7 +139,8 @@
 											style="margin-left: 30px; font-size: 10px"> 範例:123456</span><br>
 												<input type="text" id="smscheck" name="smscheck"> <input
 													type="submit" id="send-code-button"
-													class="btn btn-success btn-small" value="傳送驗證碼">沒收到嗎?
+													class="btn btn-success btn-small" value="傳送驗證碼"><br>
+													<span>沒收到嗎? 在某些時候 有些電信商會把它當成廣告簡訊。</span>
 
 												
 								</form>
