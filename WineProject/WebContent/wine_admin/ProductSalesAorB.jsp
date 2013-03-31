@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <link rel="shortcut icon" href="favicon.ico" />
-<link rel="icon" href="<%=request.getContextPath()%>/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
 <head>
 <meta charset="utf-8">
 	<title>酒迷|後台管理系統</title>
@@ -12,38 +12,37 @@
 		 <c:if test="${sessionScope.admin_access!='y'}"><meta http-equiv="refresh" content="0; url=index.jsp"></c:if>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script type="text/javascript">
-		window.jQuery|| document.write('<script type="text/javascript" src="js/jquery-1.7.2.min.js"><\/script>');
+	window.jQuery|| document.write('<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.9.0.min.js"><\/script>');
 	</script>
-	<link href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="<%=request.getContextPath()%>/style/bootstrap/css/bootstrap.min.css"
+		rel="stylesheet" media="screen">
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script src="<%=request.getContextPath()%>/style/bootstrap/js/bootstrap.js"></script>
 		<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
-			<style>
-		.buttons li.product a {
+			<style type="text/css">
+	.buttons li.prodis a {
 	background:url(<%=request.getContextPath()%>/wine_admin/images/sprite.png) no-repeat -113px -2px;
 	margin:0 -21px 0 0;
 	padding:0 21px 0 0;
 }
-.buttons li.product a :hover{color:yellow;}
-.buttons li.product a em {top:40px;}
-.buttons .product .ico1 span {background-position:0 -23px;}
-.buttons .product .ico2 span {background-position:-2px -73px;}
+.buttons li.prodis a :hover{color:yellow;}
+.buttons li.prodis a em {top:40px;}
+.buttons .prodis .ico1 span {background-position:0 -23px;}
+.buttons .prodis .ico2 span {background-position:-2px -73px;}
 .buttons .ico3 span {background-position:-2px -97px;}
-.buttons .product .ico3 span {background-position:-2px -126px;}
+.buttons .prodis .ico3 span {background-position:-2px -126px;}
 .buttons .ico4 span {background-position:-2px -153px;}
-.buttons .product .ico4 span {background-position:-2px -178px;}
+.buttons .prodis .ico4 span {background-position:-2px -178px;}
 .buttons .ico5 span {background-position:-1px -206px;}
-.buttons .product .ico5 span {background-position:-2px -232px;}
+.buttons .prodis .ico5 span {background-position:-2px -232px;}
 .buttons .ico6 span {background-position:-2px -262px;}
-.buttons .product .ico6 span {background-position:-3px -291px;}
+.buttons .prodis .ico6 span {background-position:-3px -291px;}
 .buttons .ico7 span {background-position:-4px -321px;}
-.buttons .product .ico7 span {background-position:-4px -352px;}
+.buttons .prodis .ico7 span {background-position:-4px -352px;}
 .buttons .ico8 span {background-position:-4px -380px;}
-.buttons .product .ico8 span {background-position:-4px -415px;}
-	.error{color:red}
-	</style>
-
-		<script>
+.buttons .prodis .ico8 span {background-position:-4px -415px;}
+</style>
+	<script>
 			Array(1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 					2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
 					2010, 2011, 2012);
@@ -59,11 +58,6 @@
 			})
 		});
 		</script>
-		<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/tinymcec/jscripts/tiny_mce.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/tinymcec/tinymac.js"></script>
-<!-- /TinyMCE -->
 </head>
 <body>
 	<div id="wrapper">
@@ -77,7 +71,11 @@
 							<h1>商品專區</h1>
 							<p>可在這邊修改商品喔!!!</p>
 						</div>
-
+		<ul class="states">
+						
+						</ul>
+	
+						<div style="width: 80%; margin: 0 auto">
 						<table>
 						<tr>
 						<td>
@@ -101,15 +99,15 @@
 						<c:forEach var="products" items="${productList}">
 						<c:if test="${productVO.p_no!=products.p_no}"><option value="${products.p_no}">NO.${products.p_no} ${products.p_name}</option></c:if>
 						</c:forEach>
-						</select>
-						<input type="submit" class="btn btn-success" value="確認送出"></input>
+						</select><br>
+						<input type="submit" class="btn btn-success" style="width: 220px;height: 40px;"value="確認送出"></input>
 						</form>
 						</td>
 					
 				<c:forEach var="productintro" items="${productList}">
 						<c:if test="${productVO.p_no!=products.p_no}">
 						<td id="P${productintro.p_no}" style="display:none">
-						<div><img src="<%=request.getContextPath()%>/images/products/${ productVO.p_pic }" style="vertical-align: top; width: 100px;"/><br/>
+						<div><img src="<%=request.getContextPath()%>/images/products/${productintro.p_pic }" style="vertical-align: top; width: 100px;"/><br/>
 						</div>
 						<span>商品編號:${productintro.p_no}</span><br/> 
 						<span>商品名稱:${productintro.p_name}</span><br/>
@@ -119,6 +117,12 @@
 						</c:forEach>
 						</tr>
 						</table>
+							
+
+
+
+						
+
 						
 					<%@ include file="view_model/footer.jsp"%>
 						</div>

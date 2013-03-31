@@ -107,8 +107,8 @@
 					<div id="tab-1" class="tab">
 
 						<div class="text-section">
-							<h1>商品專區</h1>
-							<p>可在這邊修改商品喔!!!</p>
+							<h1>商品優惠</h1>
+							<p>各項暢銷商品的組合優惠方案都在這邊設定，設定完請洽行銷部門做商品促銷DM</p>
 						</div>
 
 
@@ -249,8 +249,8 @@
 														</c:when>
 													</c:choose>
 												</c:forEach></td>
-											<td><input
-													type="submit" class="btn btn-primary" value="修改" /></td>
+											<td> <button
+													type="button" class="btn btn-primary" ><i class=" icon-pencil icon-white"></i> 修改</button></td>
 										</form></tr>
 
 

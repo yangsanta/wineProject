@@ -52,8 +52,9 @@
 					<div id="tab-1" class="tab">
 
 						<div class="text-section">
-							<h1>商品專區</h1>
+						<h1>商品專區</h1>
 							<p>可在這邊修改商品喔!!!</p>
+							
 						</div>
 		<ul class="states">
 							<c:if test="${not empty param.update}">
