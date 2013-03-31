@@ -113,16 +113,24 @@ public class MemberServlet extends HttpServlet {
 		
 			try {
 				/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
+				InputFilter inputfilter = new InputFilter();
+				String m_id = inputfilter.sizeFomat(
+						req.getParameter("m_id"), 20);
+				String m_name = inputfilter.sizeFomat(
+						req.getParameter("m_name"), 10);
+				String m_pwd = inputfilter.sizeFomat(
+						req.getParameter("m_pwd"), 16);
+				String m_mobile = inputfilter.sizeFomat(
+						req.getParameter("m_mobile"), 10);
+				String m_email = inputfilter.sizeFomat(
+						req.getParameter("m_email"), 40);
+				String m_addr = inputfilter.sizeFomat(
+						req.getParameter("m_addr"), 100);
+				
 				Integer m_no = new Integer(req.getParameter("m_no").trim());
-				String m_id = req.getParameter("m_id").trim();
-				String m_name = req.getParameter("m_name").trim();
-				String m_pwd = req.getParameter("m_pwd").trim();
-				String m_mobile = req.getParameter("m_mobile").trim();
-				String m_email = req.getParameter("m_email").trim();
-				String m_addr = req.getParameter("m_addr").trim();
 				String m_pic = req.getParameter("m_pic").trim();
-				String m_safety_q = req.getParameter("m_safety_q").trim();
-				String m_safety_a = req.getParameter("m_safety_a").trim();
+				String m_safety_q = inputfilter.sizeFomat(req.getParameter("m_safety_q").trim(), 120);
+				String m_safety_a = inputfilter.sizeFomat(req.getParameter("m_safety_a").trim(), 120);
 				Integer m_status = new Integer(req.getParameter("m_status").trim());
 				
 				if (m_id == null || m_id.trim().length() == 0) {
