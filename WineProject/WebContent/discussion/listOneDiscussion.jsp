@@ -106,6 +106,16 @@ label.success {
 
 
 					<div id="content">
+						<c:if test="${fn:length (ErrorMsgKey) gt 0}">
+						.
+							<ul class="states">
+								<li class="error" style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;錯誤 : 請輸入
+									<c:forEach var="e" items="${ErrorMsgKey}">
+    									${e}
+									</c:forEach>
+								</li>
+							</ul>
+					</c:if>
 						<!-- 搜尋功能條						 -->
 						<div align="right">
 							<form action="DiscussionList.do" method="post"
@@ -144,10 +154,7 @@ label.success {
 							<strong><span class="label label-success">歡迎!</span></strong> <br><span
 								style="margin-left: 50px">你可以在這邊與各方的酒友一起討論酒香的芬芳以及在味蕾上跳動的喜悅。現在就發表一篇文章來與大家認識認識吧。</span>
 						</div>
-						<%-- 主題:${discussionVO.d_title}<br/> --%>
-						<%-- 發表日期:${discussionVO.d_datetime}<br/> --%>
-						<%-- 作者ID:${discussionVO.m_no}<br/> --%>
-						<%-- 內文:${discussionVO.d_context} --%>
+			
 						<c:if
 							test="${sessionScope.m_no==requestScope.discussionVO.memberVO.m_no}">
 							<a

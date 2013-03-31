@@ -63,7 +63,7 @@ public class ReplyServlet extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("ErrorMsgKey", errorMsgs);
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/error.jsp");//導入錯誤處理頁面
+							.getRequestDispatcher("DiscussionList.do?action=getOne&d_no=" + d_no);//導入錯誤處理頁面
 					failureView.forward(req, res);
 					return;										// 程式中斷
 				}
@@ -92,11 +92,11 @@ public class ReplyServlet extends HttpServlet {
 		java.util.regex.Matcher m_script;
 
 		try {
-			String regEx_script = "<[\\s]*?script[^>]*?>[\\s\\S]*?<[\\s]*?\\/[\\s]*?script[\\s]*?>"; // 定义script的正则表达式{或<script[^>]*?>[\\s\\S]*?<\\/script>
+			String regEx_script = "<[\\s]*?script[^>]*?>"; // 定义script的正则表达式{或<script[^>]*?>[\\s\\S]*?<\\/script>
 																										// }
 			p_script = Pattern.compile(regEx_script, Pattern.CASE_INSENSITIVE);
 			m_script = p_script.matcher(ScriptStr);
-			ScriptStr = m_script.replaceAll("<h1>YOU CAN ATTACK ME!!!!!!</h1>"); // 过滤script标签
+			ScriptStr = m_script.replaceAll("YOU CANT ATTACK ME!!!!!!"); // 过滤script标签
 
 			textStr = ScriptStr;
 
