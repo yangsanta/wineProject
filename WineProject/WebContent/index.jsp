@@ -27,29 +27,28 @@
 			<script type="text/javascript" src="js/index.js?v=1.0"></script>
 			<!-------JavaScript特定日期倒數計時 START-------->
 			<script language="JavaScript">
-				var DifferenceMinute = -1
-				var DifferenceSecond = -1
+				var DifferenceMinute = -1;
+				var DifferenceSecond = -1;
 				today = new Date();
-				var str = today.getMonth() + 1 + " " + today.getDate() + ","
-						+ today.getFullYear() + " 23:59:59"
-				var Tday = new Date(str)
-				var hoursms = 60 * 60 * 1000
-				var Secondms = 60 * 1000
-				var microsecond = 1000
+				var month =new Array('January','February','March','April','May','June','July','August','September','October','November','December'); 
+				var str =month[today.getMonth()] + " " + today.getDate() + ","
+						+ today.getFullYear() + " 23:59:59";
+			    var Tday = new Date(str);
+			    var hoursms = 60 * 60 * 1000;
+				var Secondms = 60 * 1000;
+				var microsecond = 1000;
 
 				function clock() {
-					var time = new Date()
-					var hour = time.getHours()
-					var minute = time.getMinutes()
-					var second = time.getSeconds()
-					var convertMinute = DifferenceMinute
+					var time = new Date();
+					;
+					var convertMinute = DifferenceMinute;
 					var convertSecond = DifferenceSecond
-					var Diffms = Tday.getTime() - time.getTime()
-					DifferenceMinute = Math.floor(Diffms / hoursms)
+					var Diffms = Tday.getTime() - time.getTime();
+					DifferenceMinute = Math.floor(Diffms / hoursms);
 					Diffms -= DifferenceMinute * hoursms
-					DifferenceSecond = Math.floor(Diffms / Secondms)
+					DifferenceSecond = Math.floor(Diffms / Secondms);
 					Diffms -= DifferenceSecond * Secondms
-					var dSecs = Math.floor(Diffms / microsecond)
+					var dSecs = Math.floor(Diffms / microsecond);
 					if (convertMinute != DifferenceMinute) {
 						document.getElementById('hr').innerHTML = DifferenceMinute;
 					}
