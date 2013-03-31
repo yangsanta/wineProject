@@ -114,6 +114,11 @@ background-color: #fff;}
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <span class="label label-success">Success!</span> <br> <span > 會員資料已成功修改!</span>
 </div></c:if>
+					<c:if test="${update=='error'}">
+<div class="alert" id="just_login" >
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <span class="label label-important">Error!</span> <br> <span > 會員資料修改失敗!</span>
+</div></c:if>
 <c:if test="${sessionScope.access=='y'}">
 					${m_id} 您好
 					<jsp:useBean id="memberDAO" class="member.model.MemberDAO" scope="page">

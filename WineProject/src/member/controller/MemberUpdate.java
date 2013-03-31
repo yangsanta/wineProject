@@ -118,7 +118,7 @@ public class MemberUpdate extends HttpServlet {
 			}
 			// try {
 			/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
-			Integer m_no = new Integer(sm_no);
+			Integer m_no = sm_no;
 			String m_id = req.getParameter("m_id").trim();
 			String m_name = req.getParameter("m_name").trim();
 			String m_mobile = req.getParameter("m_mobile").trim();
@@ -127,17 +127,20 @@ public class MemberUpdate extends HttpServlet {
 			String m_pic = req.getParameter("m_pic").trim();
 			String m_safety_q = req.getParameter("m_safety_q").trim();
 			String m_safety_a = req.getParameter("m_safety_a").trim();
-			Integer m_status = new Integer(req.getParameter("m_status").trim());
-
-			java.sql.Date m_bday = null;
-			try {
-				m_bday = java.sql.Date.valueOf(req.getParameter("m_bday")
-						.trim());
-			} catch (IllegalArgumentException e) {
-				m_bday = new java.sql.Date(System.currentTimeMillis());
-				errorMsgs.add("請輸入日期!");
+			Integer m_status = Integer.parseInt(req.getParameter("m_status").trim());
+			String  m_bday  =req.getParameter("m_bday").trim();                      
+			if(m_name.length()==0||m_mobile.length()==0||m_email.length()==0||m_addr.length()==0||m_bday.length()==0){
+				
+				req.setAttribute("update", "error"); // 資料庫update成功後,正確的的memberVO物件,存入req
+				String url = "/member/Member_Info.jsp"; //listOneMemOK.jsp
+				RequestDispatcher errorView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneMem.jsp
+				errorView.forward(req, res);
+				return; // 程式中斷
 			}
-
+					
+				
+			
+             java.sql.Date bday = java.sql.Date.valueOf(m_bday);
 			MemberVO memberVO = new MemberDAO().findByPrimaryKey(m_no);
 
 			memberVO.setM_no(m_no);
@@ -146,26 +149,21 @@ public class MemberUpdate extends HttpServlet {
 
 			memberVO.setM_mobile(m_mobile);
 			memberVO.setM_email(m_email);
-			memberVO.setM_bday(m_bday);
+			memberVO.setM_bday(bday);
 			memberVO.setM_addr(m_addr);
 			memberVO.setM_pic(m_pic);
 			memberVO.setM_safety_q(m_safety_q);
 			memberVO.setM_safety_a(m_safety_a);
 			memberVO.setM_status(m_status);
-			new MemberDAO().update(memberVO);
+			
 			// Send the use back to the form, if there were errors
-			if (!errorMsgs.isEmpty()) {
-				req.setAttribute("memberVO", memberVO); // 含有輸入格式錯誤的memberVO物件,也存入req
-				RequestDispatcher failureView = req
-						.getRequestDispatcher("listOneMem.jsp");
-				failureView.forward(req, res);
-				return; // 程式中斷
-			}
+			
 
 			/*************************** 2.開始修改資料 *****************************************/
 
 			/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
-			req.setAttribute("memberVO", memberVO); // 資料庫update成功後,正確的的memberVO物件,存入req
+			new MemberDAO().update(memberVO);
+			
 			req.setAttribute("update", "success"); // 資料庫update成功後,正確的的memberVO物件,存入req
 			String url = "/member/Member_Info.jsp"; //listOneMemOK.jsp
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneMem.jsp
