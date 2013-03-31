@@ -33,13 +33,6 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
 
-<style>
-img {
-	display: block;
-	height: 50px;
-}
-</style>
-
 </head>
 <body>
 	<div id="shadow_bg">
@@ -59,7 +52,7 @@ img {
 							感謝您的購買！您獲得了新的折價券:
 							<div style="width:50px;">
 								<a href="#" rel="tooltip" data-placement="bottom" style=" margin-right:10px" title="優惠卷序號:${newCoupon.c_key} ">
-								<img src="<%=request.getContextPath()%>/images/ticket${newCoupon.c_price}.png"   style="height:60px;width:50px"/></a> 
+								<div class="ticket${newCoupon.c_price}" style="display: inline-block;"></div></a> 
 							</div>
 						</div>
 					</c:if>
@@ -92,7 +85,7 @@ img {
 									<td><div style="overflow:auto;">
 										<div style="float:left;">
 										<img
-										src="<%=request.getContextPath()%>/images/products/${shoppingProduct.value.pic}"></div><div style="float:left;">${shoppingProduct.value.productName}
+										src="<%=request.getContextPath()%>/images/products/${shoppingProduct.value.pic}" style="height: 50px;"></div><div style="float:left;">${shoppingProduct.value.productName}
 										<c:if test="${shoppingProduct.value.saleType eq 'R'}">【紅】</c:if>
 										<c:if test="${shoppingProduct.value.saleType eq 'G'}">【綠】</c:if>
 										<c:if test="${shoppingProduct.value.saleType eq 'A'}">【A】</c:if>

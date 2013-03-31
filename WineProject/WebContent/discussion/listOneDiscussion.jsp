@@ -226,7 +226,7 @@ label.success {
 						<c:if test="${m_no!=null}">
 							<form action="<c:url value='/reply.do'/>" method="post"
 								id="commentForm" class="cmxform">
-								<img src="<%=request.getContextPath()%>/images/fast_discus.png" width=30px style="margin-bottom: 20px;">
+								<div class="fast_discus" ></div>
 								<span style="margin-bottom:10px;font-weight: bold;font-size:16px">快速留言：</span>
 								<textarea cols="200" rows="6" name="r_context" 
 									style="margin: 0px 0px 10px; width: 866px; height: 200px" class="required" minlength="10">${replyVO.r_context}</textarea>

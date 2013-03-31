@@ -207,7 +207,7 @@ tr{height: 45px;}
 						<div id="firstpage">
 						請您詳閱以下的使用者條款以及隱私權政策<br><br>
 						<iframe name="main" frameborder="0" height="300" scrolling="yes" src="registerlist.html" width="600" allowtransparency="true"></iframe>
-						<br><br><img src="images/aceptregister.png" onclick="switchpage();" style="float:right;margin-right: 40px;">
+						<br><br><div class="aceptregister"  onclick="switchpage();" style="float:right;margin-right: 40px;"></div>
 						</div>
 						<div id="secendpage" style=" display:none;">
 						<div style="float: left;padding-top: 80px;">

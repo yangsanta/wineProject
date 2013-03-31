@@ -182,7 +182,7 @@
 									</c:choose>
 									<a href="DisplayProducts.do?action=getOne_For_Display&pId=${product.p_no}">
 									<div name="${preference}" class="g_wall drop-shadow">
-										<img src="<%=request.getContextPath()%>/images/product_${preference}.png" class="label_tag" /> 
+										<div class="product_${preference} label_tag"></div>
 										<div style="height: 140px;">
 										<img src="<%=request.getContextPath()%>/images/products/${product.p_pic}" style="width: 50px;float:left;"  /></br>
 									<span style="color:#333">酒莊:${product.p_winery}<Br>地區:${product.p_area}<Br>評分:${product.p_rate}</span>

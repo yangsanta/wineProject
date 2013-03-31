@@ -145,7 +145,7 @@ background-color: #fff;}
 							<div class="mem_in_coupons">
 								<c:forEach var="coupon" items="${theCoupons}">
 							<a href="#" rel="tooltip" data-placement="bottom" style="margin-right:10px" title="優惠卷序號:${coupon.c_key} ">
-							<img src="<%=request.getContextPath()%>/images/ticket${coupon.c_price}.png" width=50px /></a> 
+							<div class="ticket${coupon.c_price}" style="display: inline-block;"></div></a> 
 								</c:forEach>
 							</div>
 					</jsp:useBean>		
@@ -154,12 +154,12 @@ background-color: #fff;}
 							<span class="mem_in_title">會員資料</span>
 							<div class="mem_div">
 								<div class="mem_in_inner" style="text-align :center">
-								<a style="text-decoration:none" href="<%request.getContextPath();%>/WineProject/MemberUpdate.do?action=getOne_For_Display&m_no=${m_no}"><img src="<%=request.getContextPath()%>/images/nav_safety.png" width=150px /><br>
+								<a style="text-decoration:none" href="<%request.getContextPath();%>/WineProject/MemberUpdate.do?action=getOne_For_Display&m_no=${m_no}"><div class="nav_safety"></div><br>
 									修改會員資料</a>
 								</div>
 								<div class="mem_in_inner" style="text-align :center">
 							<c:if test="${fn:length(memberVO.m_fbuid) == 0}">
-								<a style="text-decoration:none" href="<%=request.getContextPath()%>/listOneMemPass.jsp"><img src="<%=request.getContextPath()%>/images/mem_safety.png" width=150px />
+								<a style="text-decoration:none" href="<%=request.getContextPath()%>/listOneMemPass.jsp"><div class="mem_safety"></div>
 								<br>修改密碼</a>
 							</c:if>
 							<c:if test="${fn:length(memberVO.m_fbuid) != 0}">

@@ -66,7 +66,7 @@ border-width: 1px;}
 <c:if test="${not empty sessionScope.ShoppingCart}">
 <c:if test="${not empty sessionScope.ShoppingCart.content}">
 
-<h2><img src="<%=request.getContextPath()%>/images/checklist.png" width=40px;><span style="font-size: 50px;margin-left: 30px;">1.</span>您的訂單確認</h2>
+<h2><div class="checklist" style="display: inline-block;"></div><span style="font-size: 50px;margin-left: 30px;">1.</span>您的訂單確認</h2>
 	<table style="border: 3px solid #B3B3B3;-webkit-border-radius: 5px;" class="table table-striped .table-bordered">
 		<thead style="text-align:center">
 			<tr><th style="text-align:center">商品</th><th width=100px>單價</th><th  width=100px>數量</th><th>總價</th></tr>
@@ -110,7 +110,7 @@ border-width: 1px;}
 
 	<div style="margin-top:30px;">
 		<form method="post" action="<%=request.getContextPath()%>/orders/checkout.do">
-<h2><img src="<%=request.getContextPath()%>/images/user.png" width=40px;><span style="font-size: 50px;margin-left: 30px;">2.</span>訂單明細</h2>
+<h2><div class="user" style="display: inline-block;"></div><span style="font-size: 50px;margin-left: 30px;">2.</span>訂單明細</h2>
 
 			<span style="width:120px;display: inline-block;">收件人姓名：</span><input type="text" name="o_recipient" placeholder="收件人姓名" value="${o_recipient}"><span class="errorConfChkout"> ${errMap.errRName}</span><br>
 			<span style="width:120px;display: inline-block;">聯絡電話：</span><input type="text" name="o_recipient_tel" placeholder="聯絡電話" value="${o_recipient_tel}"><span class="errorConfChkout"> ${errMap.errRPhone}</span><br> 
@@ -118,13 +118,13 @@ border-width: 1px;}
 						value="${o_recipient_addr}"><span class="errorConfChkout"> ${errMap.errRAddr}</span><br>
 			
 			<c:if test="${not empty theCoupons}">
-			<br><h2><img src="<%=request.getContextPath()%>/images/US-dollar.png" width=40px;><span style="font-size: 50px;margin-left: 30px;">3.</span>您擁有的折價券:</h2>
+			<br><h2><div class="us-dollar" style="display: inline-block;"></div><span style="font-size: 50px;margin-left: 30px;">3.</span>您擁有的折價券:</h2>
 				<div style="overflow: auto;"><br>
 					<c:forEach var="coupon" items="${theCoupons}">
 						<div style="float:left;margin-right:30px">
 						
 						<label for="${coupon.c_key}">
-							<img rel="tooltip" data-placement="bottom" title="優惠卷序號:${coupon.c_key}"  src="/WineProject/images/ticket${coupon.c_price}.png" width=50px style="margin-left:30px"/></label>
+							<div rel="tooltip" data-placement="bottom" title="優惠卷序號:${coupon.c_key}"  class="ticket${coupon.c_price} style="margin-left:30px;display: inline-block;"></div></label>
 						
 						<br><br>
 						<input id="${coupon.c_key}" type="radio" name="useCoupon" value="${coupon.c_key}">使用${coupon.c_price}折價券 

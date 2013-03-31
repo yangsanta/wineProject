@@ -6,7 +6,7 @@
 			<span class="title">餐酒搭配</span><hr>
 		</div><br>
 		<ul>
-			<li class="firstli" style="border-top: 0;" style="margin-top:11px"><a href="#"><img src="<%=request.getContextPath()%>/images/icon_meat_off.png"><Br>肉類</a>
+			<li class="firstli" style="border-top: 0;" style="margin-top:11px"><a href="#"><div class="icon_meat_off"></div><Br>肉類</a>
 				<ul class="firstul">
 				<li style="width:600px;">請選擇您喜愛的食材</li>
 					<c:forEach var="food_set" items="${getSomebydF_id1}">
@@ -36,7 +36,7 @@
 				</ul></li>
 		</ul>
 		<ul>
-			<li  class="firstli" style="border-top: 0;"><a href="#"><img src="<%=request.getContextPath()%>/images/icon_cheese_off.png"><Br>乳酪</a>
+			<li  class="firstli" style="border-top: 0;"><a href="#"><div class="icon_cheese_off"></div><Br>乳酪</a>
 				<ul class="firstul">
 				<li style="width:600px;">請選擇您喜愛的食材</li>
 					<c:forEach var="food_set" items="${getSomebydF_id2}">
@@ -64,7 +64,7 @@
 				</ul></li>
 		</ul>
 		<ul>
-			<li  class="firstli" style="border-top: 0;"><a href="#"><img src="<%=request.getContextPath()%>/images/icon_dessert_off.png"><Br>甜點</a>
+			<li  class="firstli" style="border-top: 0;"><a href="#"><div class="icon_dessert_off"></div><Br>甜點</a>
 				<ul class="firstul">
 				<li style="width:600px;">請選擇您喜愛的食材</li>
 					<c:forEach var="food_set" items="${getSomebydF_id3}">
@@ -92,7 +92,7 @@
 				</ul></li>
 		</ul>
 		<ul>
-			<li  class="firstli" style="border-top: 0;"><a href="#"><img src="<%=request.getContextPath()%>/images/icon_pasta_off.png"><Br>穀類</a>
+			<li  class="firstli" style="border-top: 0;"><a href="#"><div class="icon_pasta_off"></div><Br>穀類</a>
 				<ul class="firstul">
 				<li style="width:600px;">請選擇您喜愛的食材</li>
 					<c:forEach var="food_set" items="${getSomebydF_id4}"> <!-- 第二層 -->
@@ -120,7 +120,7 @@
 				</ul></li>
 		</ul>
 		<ul>
-			<li  class="firstli" style="border-top: 0;"><a href="#"><img src="<%=request.getContextPath()%>/images/icon_poultry_off.png"><Br>雞鴨</a>
+			<li  class="firstli" style="border-top: 0;"><a href="#"><div class="icon_poultry_off"></div><Br>雞鴨</a>
 				<ul class="firstul">
 				<li style="width:600px;">請選擇您喜愛的食材</li>
 					<c:forEach var="food_set" items="${getSomebydF_id5}">
@@ -148,7 +148,7 @@
 				</ul></li>
 		</ul>
 		<ul>
-			<li class="firstli" style="border-top: 0;"><a href="#"><img src="<%=request.getContextPath()%>/images/icon_seafood_off.png"><Br>海鮮</a>
+			<li class="firstli" style="border-top: 0;"><a href="#"><div class="icon_seafood_off"></div><Br>海鮮</a>
 				<ul class="firstul">
 				<li style="width:600px;">請選擇您喜愛的食材</li>
 					<c:forEach var="food_set" items="${getSomebydF_id6}">

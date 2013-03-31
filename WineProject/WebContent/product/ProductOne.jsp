@@ -137,12 +137,10 @@
 										src="<%=request.getContextPath()%>/images/products/${ productVO.p_pic }"
 										style="vertical-align: top; width: 100px;" />
 								</div> <a
-								href="javascript: void(window.open('http://www.plurk.com/?qualifier=shares&amp;status=' .concat(encodeURIComponent(location.href)) .concat(' ') .concat('(') .concat(encodeURIComponent(document.title)) .concat(')')));"><img
-									src="<%=request.getContextPath()%>/images/plurk.png"
-									title="分享至plurk" style="width: 20px" /></a> <a
-								href="javascript: void(window.open('http://twitter.com/home/?status='.concat(encodeURIComponent(document.title)) .concat(' ') .concat(encodeURIComponent(location.href))));"><img
-									src="<%=request.getContextPath()%>/images/Twitter.jpg"
-									title="分享至Twitter" style="width: 20px" /></a>
+								href="javascript: void(window.open('http://www.plurk.com/?qualifier=shares&amp;status=' .concat(encodeURIComponent(location.href)) .concat(' ') .concat('(') .concat(encodeURIComponent(document.title)) .concat(')')));">
+								<div class="plurk" title="分享至plurk"style="display: inline-block;"></div></a> <a
+								href="javascript: void(window.open('http://twitter.com/home/?status='.concat(encodeURIComponent(document.title)) .concat(' ') .concat(encodeURIComponent(location.href))));">
+								<div class="twitter" title="分享至Twitter" style="display: inline-block;"></div></a>
 								<div class="fb-like"
 									data-href="http://wine.davidou.org:8080/WineProject"
 									data-send="true" data-layout="button_count" data-width="100"

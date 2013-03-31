@@ -345,7 +345,8 @@
 											<div class="TS_pricezone">
 												<div
 													style="border-width: 2px; border-style: solid; background-color: white; margin-top: 10px; padding: 10px 0px 10px 20px; height: 150px;">
-													<img src="<%=request.getContextPath()%>/images/tag.png"  style="left: -30px;top: 10px;float: left;width: 60px;position: absolute;}">
+													<div class="tag" style="left: -30px;top: 10px;float: left;width: 60px;position: absolute;}"></div>
+													
 													<div style="width: 110px; float: left;margin-left: 20px;">
 														<span style="font-size: 16px; font-weight: bold;">原價
 														</span></br>
@@ -414,7 +415,7 @@
 
 		<div
 			style="background-color: #ccc; background-image: url(images/timebg.jpg); margin: 10px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
-			<img src="<%=request.getContextPath()%>/images/time_note.png" style="margin: 5px 5px 0 10px;width:30px"><span
+			<div class="time_note" style="margin: 5px 5px 0 10px;"></div><span
 				style="font-weight: bold;">購買注意事項!</span><br>
 					<ul id ="buyinfo"
 						style="background-color: rgba(255, 255, 255, 0.75); font-size: 10px; margin: 20px; padding: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">

@@ -161,8 +161,7 @@
 								<c:forEach var="discussionVO" items="${list}"
 									begin="${pageIndex}" end="${pageIndex+rowsPerPage-1}">
 									<tr>
-										<td class="img_type"><img
-											src="images/discussion_paper.gif"></td>
+										<td class="img_type"><div class="discussion_paper"></div></td>
 										<td class="table_title"><a
 											href="DiscussionList.do?d_no=${discussionVO.d_no}&action=getOne">${discussionVO.d_title}</a></td>
 										<td class="tdcenter">${discussionVO.memberVO.m_id}</td>

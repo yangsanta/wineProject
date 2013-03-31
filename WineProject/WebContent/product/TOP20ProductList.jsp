@@ -132,10 +132,10 @@ height: 60px;width: 171px;background: url(<%=request.getContextPath()%>/images/b
 	right: 19px;
 }
 
-.display_long_off{margin-right:5px;background: url("<%=request.getContextPath()%>/images/line_off.png")no-repeat}
-.display_long_on{margin-right:5px;background: url("<%=request.getContextPath()%>/images/line_on.png") no-repeat}
-.display_block_on{margin-right:5px;background: url("<%=request.getContextPath()%>/images/block_on.png")no-repeat}
-.display_block_off{margin-right:5px;background: url("<%=request.getContextPath()%>/images/block_off.png")no-repeat}
+.display_long_off{margin-right:5px;background: url("<%=request.getContextPath()%>/images/csssplite.png"); background-position: -448px 0; width: 16px; height: 16px; background-repeat: no-repeat; }
+.display_long_on{margin-right:5px;background: url("<%=request.getContextPath()%>/images/csssplite.png"); background-position: -464px 0; width: 16px; height: 16px; background-repeat: no-repeat; }
+.display_block_on{margin-right:5px;background: url("<%=request.getContextPath()%>/images/csssplite.png"); background-position: -990px -90px; width: 16px; height: 16px; background-repeat: no-repeat; }
+.display_block_off{margin-right:5px;background: url("<%=request.getContextPath()%>/images/csssplite.png"); background-position: -990px -74px; width: 16px; height: 16px; background-repeat: no-repeat; }
 
 </style>
 			<script type="text/javascript">
@@ -203,7 +203,7 @@ height: 60px;width: 171px;background: url(<%=request.getContextPath()%>/images/b
 									href="DisplayProducts.do?action=getOne_For_Display&pId=${product.p_no}">
 									<div name="g_wall" class="g_wall drop-shadow"
 										style="position: relative;">
-										<img src="<%=request.getContextPath()%>/images/label.png"
+										<img src="<%=request.getContextPath()%>/images/product_hot.png"
 											class="label_tag" />
 										<div style="height: 105px;">
 											<img name="g_wall_proimg"
