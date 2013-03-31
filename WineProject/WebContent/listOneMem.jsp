@@ -56,7 +56,28 @@ background-color: #fff;}
 	<div id="main">
 					<div id="sidebar">
 						<%@ include file="../view_model/product_list.jsp"%>
-						<%@ include file="../view_model/index_left_hotsale.jsp"%>	
+<div class="abgne-news-scroll">
+	<div align="center">
+		<span class="title">暢銷商品</span>
+	</div>
+	<ul>
+<jsp:useBean id="hot_product2" class="product.model.ProductDAO">
+	 <c:forEach var="product" items="${hot_product2.topProduct}" >				
+		<li style="height:110px">
+			<div>
+				<img
+					src="<%=request.getContextPath()%>/images/products/${product.p_pic}"
+					style="width: 50px;" /> <span>${product.p_name}<br> <br>特價$${product.p_price}！
+					<a href="<%=request.getContextPath()%>/product/DisplayProducts.do?action=getOne_For_Display&pId=${product.p_no}"><br>
+					  <button style="margin-top:10px;" class="btn btn-mini btn-danger" type="button">熱烈搶購!</button></a>
+				</span>
+			</div>
+		</li>
+	 </c:forEach>
+</jsp:useBean>
+	
+	</ul>
+</div>
 					</div>
 	
 					<div id="content">

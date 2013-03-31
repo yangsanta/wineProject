@@ -62,12 +62,12 @@ td {
 				<div id="content">
 					<%@ include file="../view_model/page_alert.htm"%>
 					您的訂單（no. ${ordersVO.o_no}）已成立：
-
 					<c:if test="${not empty newCoupon}">
-						<div>
+						<div style="height:95px;">
 							感謝您的購買！您獲得了新的折價券:
-							<div>
-								${newCoupon.c_price}<br>${newCoupon.c_key}<br>
+							<div style="width:50px;">
+								<a href="#" rel="tooltip" data-placement="bottom" style=" margin-right:10px" title="優惠卷序號:${newCoupon.c_key} ">
+								<img src="<%=request.getContextPath()%>/images/ticket${newCoupon.c_price}.png"   style="height:60px;width:50px"/></a> 
 							</div>
 						</div>
 					</c:if>
@@ -96,12 +96,14 @@ td {
 							<c:forEach var="shoppingProduct"
 								items="${requestScope.ShoppingCart.content}">
 								<tr>
-									<td><img
-										src="<%=request.getContextPath()%>/images/products/${shoppingProduct.value.pic}">${shoppingProduct.value.productName}
+									<td><div style="overflow:auto;">
+										<div style="float:left;">
+										<img
+										src="<%=request.getContextPath()%>/images/products/${shoppingProduct.value.pic}"></div><div style="float:left;">${shoppingProduct.value.productName}
 										<c:if test="${shoppingProduct.value.saleType eq 'R'}">【紅】</c:if>
 										<c:if test="${shoppingProduct.value.saleType eq 'G'}">【綠】</c:if>
 										<c:if test="${shoppingProduct.value.saleType eq 'A'}">【A】</c:if>
-										<c:if test="${shoppingProduct.value.saleType eq 'B'}">【B】</c:if></td>
+										<c:if test="${shoppingProduct.value.saleType eq 'B'}">【B】</c:if></div></div></td>
 									<td>$ ${shoppingProduct.value.productVO.p_price}</td>
 									<td>${shoppingProduct.value.productNumber}</td>
 									<td><c:choose>
