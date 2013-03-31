@@ -230,7 +230,8 @@
 </style>
 			<script type="text/javascript">
 				//右邊輪播式廣告
-				$(function() {
+					function ad() {
+				$(document).ready(function() {
 					// 先取得必要的元素並用 jQuery 包裝
 					// 再來取得 $block 的高度及設定動畫時間
 					var $block = $('#abgneBlock'), $slides = $('ul.list',
@@ -293,7 +294,7 @@
 						$playerControlLi.eq(
 								(_index + 1) % $playerControlLi.length).click();
 					}
-				});
+				});}
 			</script>
 			<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 			<!--[if lt IE 9]>
@@ -301,7 +302,7 @@
     <![endif]-->
 </head>
 
-<body onload="clock();return true">
+<body onload="clock();ad();return true">
 	<div id="shadow_bg">
 		<div id="body">
 			<%@ include file="view_model/index_header.jsp"%>

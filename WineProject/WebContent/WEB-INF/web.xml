@@ -401,5 +401,8 @@
     <error-code>404</error-code>
     <location>/NotFound.jsp</location>
   </error-page>
-  
+  <error-page>
+<error-code>500</error-code>
+<location>/bad.jsp</location>
+</error-page>
 </web-app>
