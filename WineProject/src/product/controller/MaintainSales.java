@@ -36,17 +36,17 @@ public class MaintainSales extends HttpServlet {
 
 			// 如果用戶只是切換分頁，就直接從session裡抓list出來，如果用戶是新執行getAll
 			// (點擊瀏覽全商品的連結，或直接在新的session打開該連結)，則重新query資料庫
-			if (request.getAttribute("action") != null
-					&& (request.getAttribute("action").equals("getAll"))) {
-				list = (List<ProductVO>) request.getSession().getAttribute(
-						"list");
-			} else {
-				request.setAttribute("action", new String("getAll"));
+//			if (request.getAttribute("action") != null
+//					&& (request.getAttribute("action").equals("getAll"))) {
+//				list = (List<ProductVO>) request.getSession().getAttribute(
+//						"list");
+//			} else {
+//				request.setAttribute("action", new String("getAll"));
 
 				ProductDAO productDAO = new ProductDAO();
 				list = productDAO.getAll();
-				request.getSession().setAttribute("list", list);
-			}
+				request.setAttribute("list", list);
+//			}
 			splitPages(list, request);
 
 			String listAllUrl = "/wine_admin/ProductListSales.jsp";
@@ -166,20 +166,20 @@ public class MaintainSales extends HttpServlet {
 		
 			// 如果用戶只是切換分頁，就直接從session裡抓list出來;如果用戶是新執行getSome_For_Display
 			// (點擊瀏覽全商品的連結，或直接在新的session打開該連結)，則重新query資料庫
-			if (request.getAttribute("action") != null
-					&& (request.getAttribute("action")
-							.equals("getSome_For_Display"))) {
-				list = (List<ProductVO>) request.getSession().getAttribute(
-						"list");
-				splitPages(list, request);
-				
-			} else {
+//			if (request.getAttribute("action") != null
+//					&& (request.getAttribute("action")
+//							.equals("getSome_For_Display"))) {
+//				list = (List<ProductVO>) request.getSession().getAttribute(
+//						"list");
+//				splitPages(list, request);
+//				
+//			} else {
 				ProductDAO productDAO = new ProductDAO();
 				list=productDAO.findFuzzyProductName(conditionValue);
 				request.setAttribute("action",
 						new String("getSome_For_Display"));
 				request.setAttribute("list", list);
-			}
+//			}
 			splitPages(list, request);
 			String listAllUrl="/wine_admin/ProductListSales.jsp";
 			
