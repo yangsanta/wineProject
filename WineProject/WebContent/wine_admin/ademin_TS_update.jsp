@@ -23,7 +23,7 @@
 		<script type="text/javascript">
 			window.jQuery
 					|| document
-							.write('<script type="text/javascript" src="js/jquery-1.7.2.min.js"><\/script>');
+							.write('<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.9.0.min.js"><\/script>');
 		</script>
 		<script type="text/javascript"
 			src="<%=request.getContextPath()%>/js/jquery.datepick.js"></script>
