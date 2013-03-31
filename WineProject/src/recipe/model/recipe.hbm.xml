@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="recipe.model.RecipeVO" table="recipe">
+
+		<id name="rp_id" column="rp_id">
+			<generator class="identity" />
+		</id>
+
+		<property name="f_id" column="f_id" />
+		<property name="i_id" column="i_id" />
+		<property name="s_id" column="s_id" />
+		
+	</class>
+</hibernate-mapping>
+

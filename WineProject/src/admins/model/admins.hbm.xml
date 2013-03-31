@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="admins.model.AdminsVO" table="admins">
+
+		<id name="a_no" column="a_no">
+			<generator class="identity" />
+		</id>
+
+		<property name="a_name" column="a_name" />
+		<property name="a_pwd" column="a_pwd" />
+		<property name="a_role" column="a_role" />
+
+	</class>
+</hibernate-mapping>
+

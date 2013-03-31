@@ -55,7 +55,14 @@
 
 				<div id="content">
 					<%@ include file="view_model/page_alert.htm"%>
-
+					<div>
+						<h2>聯絡我們</h2>
+						<h4>請以下列方式聯絡我們，或照下列地圖位址至與酒迷創意行銷有限公司</h4><br/>
+						<h5>&nbsp;&nbsp;&nbsp;聯絡窗口：公司之花JO咪小姐</h5>
+						<h5>&nbsp;&nbsp;&nbsp;聯絡電話：0800-092-000</h5>
+						<h5>&nbsp;&nbsp;&nbsp;聯絡地址：台北市大安區復興南路一段390號</h5><br/><br/>
+					</div>
+					
 					<!-- 地圖內容 -->
 					<iframe width="625" height="625" frameborder="0" scrolling="no"
 						marginheight="0" marginwidth="0"

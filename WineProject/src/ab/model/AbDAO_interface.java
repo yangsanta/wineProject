@@ -9,6 +9,9 @@ public interface AbDAO_interface {
           public void update(AbVO abVO);
           public void delete(Integer Uniid);
           public AbVO findByPrimaryKey(Integer Uniid);
-          public AbVO findByAKey(Integer Aid);
           public List<AbVO> getAll();
+          public AbVO findByAKey(Integer ab_a_p_id);
+          public AbVO findByBKey(Integer ab_b_p_id);
+          public void deleteByA(Integer ab_a_p_id);
+          public void deleteByB(Integer ab_b_p_id);
 }

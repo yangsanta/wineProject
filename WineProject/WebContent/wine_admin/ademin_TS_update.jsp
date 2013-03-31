@@ -200,7 +200,7 @@ label.success {
 
 								限惠文宣：
 								<textarea rows="20" name="ts_content" style="width: 600px;">${ts.ts_content}</textarea>
-								<span>${ErrMsg.errTs_content}</span><br /> 已購人數：<input
+								<span>${ErrMsg.errTs_content}</span><br /> 售出數量：<input
 									type="text" name="ts_totalsale" value="${ts.ts_totalsale}"
 									readonly="readonly" /><span>${ErrMsg.errTs_totalsale}</span><br />
 								<input type="submit" value="送出" />

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="ab.model.AbVO" table="ab">
+
+		<id name="Uniid" column="Uniid">
+			<generator class="identity" />
+		</id>
+
+		<property name="ab_a_p_id" column="ab_a_p_id" />
+		<property name="ab_b_p_id" column="ab_b_p_id" />
+
+	</class>
+</hibernate-mapping>
+

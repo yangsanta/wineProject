@@ -1,4 +1,4 @@
-﻿package admins.model;
+package admins.model;
 
 import hibernate.util.HibernateUtil;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class AdminsDAO implements AdminsDAO_interface {
+public class AdminsHibernateDAO implements AdminsDAO_interface {
 	
 	private static final String GET_ALL_STMT = "FROM AdminsVO order by a_no";
 

@@ -1,4 +1,4 @@
-﻿package admins.model;
+package recipe.model;
 
 import hibernate.util.HibernateUtil;
 
@@ -8,16 +8,16 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class AdminsDAO implements AdminsDAO_interface {
+public class RecipeHibernateDAO implements RecipeDAO_interface {
 	
-	private static final String GET_ALL_STMT = "FROM AdminsVO order by a_no";
+	private static final String GET_ALL_STMT = "FROM RecipeVO order by rp_id";
 
 	@Override
-	public void insert(AdminsVO adminsVO) {
+	public void insert(RecipeVO recipeVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(adminsVO);
+			session.saveOrUpdate(recipeVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -27,11 +27,11 @@ public class AdminsDAO implements AdminsDAO_interface {
 	}
 
 	@Override
-	public void update(AdminsVO adminsVO) {
+	public void update(RecipeVO recipeVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(adminsVO);
+			session.saveOrUpdate(recipeVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -41,13 +41,13 @@ public class AdminsDAO implements AdminsDAO_interface {
 	}
 
 	@Override
-	public void delete(Integer a_no) {
+	public void delete(Integer rp_id) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			AdminsVO adminsVO = new AdminsVO();
-			adminsVO.setA_no(a_no);
-			session.delete(adminsVO);
+			RecipeVO recipeVO = new RecipeVO();
+			recipeVO.setRp_id(rp_id);
+			session.delete(recipeVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -57,23 +57,23 @@ public class AdminsDAO implements AdminsDAO_interface {
 	}
 
 	@Override
-	public AdminsVO findByPrimaryKey(Integer a_no) {
-		AdminsVO adminsVO = null;
+	public RecipeVO findByPrimaryKey(Integer rp_id) {
+		RecipeVO recipeVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			adminsVO = (AdminsVO) session.get(AdminsVO.class, a_no);
+			recipeVO = (RecipeVO) session.get(RecipeVO.class, rp_id);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}
-		return adminsVO;
+		return recipeVO;
 	}
 
 	@Override
-	public List<AdminsVO> getAll() {
-		List<AdminsVO> list = new ArrayList<AdminsVO>();
+	public List<RecipeVO> getAll() {
+		List<RecipeVO> list = new ArrayList<RecipeVO>();
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
