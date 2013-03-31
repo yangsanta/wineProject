@@ -63,7 +63,9 @@
 		<mapping resource="adminLogin/model/adminLogin.hbm.xml" />
 		<mapping resource="timing_sales/model/timing_Sales.hbm.xml" />
 		<mapping resource="shipping_set/model/shipping_set.hbm.xml" />	
-		<mapping resource="coupon_set/model/coupon_set.hbm.xml" />		
+		<mapping resource="coupon_set/model/coupon_set.hbm.xml" />
+		<mapping resource="admins/model/admins.hbm.xml" />		
+		<mapping resource="ab/model/ab.hbm.xml" />				
 	</session-factory>
 
 </hibernate-configuration>

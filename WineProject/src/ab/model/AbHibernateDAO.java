@@ -1,4 +1,4 @@
-﻿package ab.model;
+package ab.model;
 
 import hibernate.util.HibernateUtil;
 
@@ -10,7 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
-public class AbDAO implements AbDAO_interface {
+public class AbHibernateDAO implements AbDAO_interface {
 	
 	private static final String GET_ALL_STMT = "FROM AbVO order by Uniid";
 
@@ -135,8 +135,7 @@ public class AbDAO implements AbDAO_interface {
 			query.addOrder(Order.desc("Uniid"));
 			query.add( Restrictions.eq("ab_a_p_id", ab_a_p_id) );
 			list = query.list();
-			AbVO abVO = list.get(0);
-			session.delete(abVO);
+			delete(list.get(0).getUniid());
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -155,8 +154,7 @@ public class AbDAO implements AbDAO_interface {
 			query.addOrder(Order.desc("Uniid"));
 			query.add( Restrictions.eq("ab_b_p_id", ab_b_p_id) );
 			list = query.list();
-			AbVO abVO = list.get(0);
-			session.delete(abVO);
+			delete(list.get(0).getUniid());
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
