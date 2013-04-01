@@ -204,7 +204,7 @@ public class Admin_boardHibernateDAO {
 		ResultSet rs = null;
 		
 		try {List<String> list =new ArrayList<String>();
-	int num = 0;
+		int num = 0;
 		int numday = 0;
 		int nummonth = 0;
 		int numlastmonth = 0;
@@ -212,16 +212,14 @@ public class Admin_boardHibernateDAO {
 
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, userid, passwd);
-//			pstmt = con.prepareStatement("select viewedate  from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr,CONVERT(CHAR(8), viewedate, 112))");
-			pstmt = con.prepareStatement("SELECT viewedate FROM admin_board LEFT JOIN (select MAX(i_no) as a from admin_board group by  remoteAddr, DATE_FORMAT( viewedate,  '%y%m' )) as a ON a.a=admin_board.i_no"); //mysql
+			pstmt = con.prepareStatement("select viewedate  from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr,CONVERT(CHAR(8), viewedate, 112))");
+//			pstmt = con.prepareStatement("SELECT viewedate FROM admin_board LEFT JOIN (select MAX(i_no) as a from admin_board group by  remoteAddr, DATE_FORMAT( viewedate,  '%y%m' )) as a ON a.a=admin_board.i_no"); //mysql
 			rs = pstmt.executeQuery();
-
 			while (rs.next()) {
 	
 				String ts =rs.getString(1);
-//				System.out.println(ts);
                  list.add(ts);
-				
+				num++;
 			}
 			for (String aEmp : list) {
 				String dateString = aEmp;
