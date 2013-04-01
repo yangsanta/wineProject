@@ -229,7 +229,7 @@ label.success {
 								<div class="fast_discus" ></div>
 								<span style="margin-bottom:10px;font-weight: bold;font-size:16px">快速留言：</span>
 								<textarea cols="200" rows="6" name="r_context" 
-									style="margin: 0px 0px 10px; width: 866px; height: 200px" class="required" minlength="10">${replyVO.r_context}</textarea>
+									style="margin: 0px 0px 10px; width: 866px; height: 200px" class="required" minlength="10">${r_context}</textarea>
 								<br /> <input type="submit" value="送出"
 									class="btn btn-primary" id="btnDsSubmit" /> <input type="hidden" name="action"
 									value="insert"> <input type="hidden" name="d_no"
