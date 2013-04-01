@@ -13,4 +13,13 @@ public class InputFilter {
 		return output;
 	}
 
+	 public static void main(String args[]) throws Exception {
+			InputFilter inputfilter = new InputFilter();
+			String output = inputfilter.sizeFomat("</a>", 20);
+			
+			
+			System.out.println(output);
+	    } 	
+	
+	
 }
