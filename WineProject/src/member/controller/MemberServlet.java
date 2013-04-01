@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import tools.InputFilter;
 
+import member.model.MemberDAO;
 import member.model.MemberDAO_interface;
 import member.model.MemberHibernateDAO;
 import member.model.MemberService;
@@ -129,8 +130,7 @@ public class MemberServlet extends HttpServlet {
 				
 				Integer m_no = new Integer(req.getParameter("m_no").trim());
 				String m_pic = req.getParameter("m_pic").trim();
-				String m_safety_q = inputfilter.sizeFomat(req.getParameter("m_safety_q").trim(), 120);
-				String m_safety_a = inputfilter.sizeFomat(req.getParameter("m_safety_a").trim(), 120);
+
 				Integer m_status = new Integer(req.getParameter("m_status").trim());
 				
 				if (m_id == null || m_id.trim().length() == 0) {
@@ -159,9 +159,10 @@ public class MemberServlet extends HttpServlet {
 					m_bday = new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				
-
-				MemberVO memberVO = new MemberVO();
+				String m_safety_q = inputfilter.sizeFomat(req.getParameter("m_safety_q").trim(), 120);
+				String m_safety_a = inputfilter.sizeFomat(req.getParameter("m_safety_a").trim(), 120);
+				MemberDAO dao=new MemberDAO();
+				MemberVO memberVO =dao.findByPrimaryKey(m_no) ;
 				
 				memberVO.setM_no(m_no);
 				memberVO.setM_id(m_id);				
@@ -178,6 +179,7 @@ public class MemberServlet extends HttpServlet {
 				
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
+					req.setAttribute("errorMsgs", errorMsgs);
 					req.setAttribute("memberVO", memberVO); // 含有輸入格式錯誤的memberVO物件,也存入req
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/wine_admin/ademin_member_update.jsp");
@@ -186,9 +188,7 @@ public class MemberServlet extends HttpServlet {
 				}
 				
 				/***************************2.開始修改資料*****************************************/
-				MemberService memSvc = new MemberService();
-				memberVO = memSvc.updateMem(m_no, m_id, m_name, m_pwd, m_mobile, m_email, m_bday, m_addr, m_pic, m_safety_q,
-						m_safety_a, m_status);
+				dao.insert(memberVO);
 				/***************************3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("memberVO", memberVO); // 資料庫update成功後,正確的的memberVO物件,存入req
 				String url = "/wine_admin/ademin_member_updateOK.jsp";

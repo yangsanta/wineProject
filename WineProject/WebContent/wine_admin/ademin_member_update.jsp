@@ -148,6 +148,9 @@ label.success {
 							<input type="submit" value="送出修改"  class="btn btn-primary"/>
 							
 						</form></td></tr></table>
+						<c:forEach var="error" items="errorMsgs">
+						${error} 
+						</c:forEach>
 						<%@ include file="view_model/footer.jsp"%>
 						</div>						
 						</article>

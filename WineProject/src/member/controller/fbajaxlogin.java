@@ -49,6 +49,7 @@ public class fbajaxlogin  extends HttpServlet{
 				memberVo.setM_name(cname); //暱稱
 				memberVo.setM_email(email);
 				memberVo.setM_bday(new java.sql.Date(new java.util.Date().getTime()));
+				memberVo.setM_status(1);
 				DAO.insert(memberVo);
 				//註冊完後 重新取得資訊
 				 member = dao.FBLogin(uid);
