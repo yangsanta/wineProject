@@ -133,9 +133,7 @@ public class MemberServlet extends HttpServlet {
 
 				Integer m_status = new Integer(req.getParameter("m_status").trim());
 				
-				if (m_id == null || m_id.trim().length() == 0) {
-					errorMsgs.add("請輸入「帳號」");
-				}
+			
 				if (m_pwd == null || m_pwd.trim().length() == 0) {
 					errorMsgs.add("請輸入「密碼」");
 				}
