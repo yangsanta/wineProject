@@ -2,10 +2,17 @@
 
 import hibernate.util.HibernateUtil;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -13,6 +20,8 @@ import java.util.TreeMap;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+
+import product.model.ProductVO;
 
 public class Admin_boardHibernateDAO {
 	private static final String GET_ALL_STMT = "from Admin_boardVO order by i_no";
@@ -135,10 +144,12 @@ public class Admin_boardHibernateDAO {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			SQLQuery query = session
-					.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr,CONVERT(CHAR(8), viewedate, 112))");  //mssql
+			Query query = session
+					.createQuery("select viewedate,i_no from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr,CONVERT(CHAR(8), viewedate, 112))");  //mssql
 //					.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr, DATE_FORMAT( viewedate,  '%y%m' ))"); //mysql
-			query.addEntity(Admin_boardVO.class);
+//			query.addEntity(Admin_boardVO.class);
+			
+			list = query.list();
 			num = query.list().size();
 			list = query.list();
 			for (Admin_boardVO aEmp : list) {
@@ -176,6 +187,108 @@ public class Admin_boardHibernateDAO {
 		}
 		return map;
 	}
+	//-----------------------
+	@SuppressWarnings("null")
+	public Map<String, String> getvisiterJDBC() throws ParseException {
+		
+		String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+		String url = "jdbc:sqlserver://localhost:1433;DatabaseName=WineProject";
+//		String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+//		String url = "jdbc:sqlserver://localhost:1433;DatabaseName=WineProject";	
+		String userid = "sa";
+		String passwd = "sa123456";
+		Map<String, String> map = new TreeMap<String, String>();
+	
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {List<String> list =new ArrayList<String>();
+	int num = 0;
+		int numday = 0;
+		int nummonth = 0;
+		int numlastmonth = 0;
+		int numyesterday = 0;
+
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement("select viewedate  from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr,CONVERT(CHAR(8), viewedate, 112))");
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+	
+				String ts =rs.getString(1);
+				System.out.println(ts);
+                 list.add(ts);
+				
+			}
+			for (String aEmp : list) {
+				String dateString = aEmp;
+				
+				DateFormat DF = new SimpleDateFormat("yyyy-MM-dd");
+				java.util.Date dateU=(java.util.Date) DF.parse(dateString);
+				java.sql.Date date = new java.sql.Date(dateU.getTime());
+			
+				DateFormat mF = new SimpleDateFormat("yyyy-MM");
+				Date today = new java.sql.Date(System.currentTimeMillis());
+				Date yesterday = new java.sql.Date(System.currentTimeMillis()
+						- 1 * 24 * 3600 * 1000);
+				Date lastmonth = new java.sql.Date(System.currentTimeMillis()
+						- 31 * 24 * 3600 * 1000);
+				if ((DF.format(today)).equals(DF.format(date))) {//本日人數
+					numday++;
+				}
+				if ((DF.format(yesterday)).equals(DF.format(date))) {//昨天人數
+					numyesterday++;
+				}
+				if ((mF.format(today)).equals(mF.format(date))) {//本月人數
+					nummonth++;
+				}
+				if ((mF.format(lastmonth)).equals(mF.format(date))) {//上月人數
+					numlastmonth++;
+				}
+			}
+			map.put("num", Integer.toString(num));
+			map.put("numday", Integer.toString(numday));
+			map.put("nummonth", Integer.toString(nummonth));
+			map.put("numyesterday", Integer.toString(numyesterday));
+			map.put("numlastmonth", Integer.toString(numyesterday));			
+			// Handle any driver errors
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return map;
+	}
+	//------------------------
 
 	public Map<String, String> getpv() {
 		List<Timestamp> list = null;

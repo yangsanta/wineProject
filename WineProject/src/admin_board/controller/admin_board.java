@@ -1,6 +1,7 @@
 package admin_board.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -43,7 +44,10 @@ public class admin_board extends HttpServlet {
 		request.getSession().setAttribute("lastReferer", lastReferer);
 		
 		//取得訪客數
-		Map<String, String> visiter = Admin_boardHibernateDAO.getvisiter();
+		Map<String, String> visiter;
+		try {
+			visiter = Admin_boardHibernateDAO.getvisiterJDBC();
+		
 		request.getSession().setAttribute("visiter", visiter);	
 		//取得pv
 		Map<String, String> pv =  Admin_boardHibernateDAO.getpv();
@@ -54,7 +58,10 @@ public class admin_board extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/wine_admin/admin_board.jsp");
 		rd.forward(request, response);
 		return;
-
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
