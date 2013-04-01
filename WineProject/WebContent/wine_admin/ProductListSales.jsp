@@ -250,7 +250,7 @@
 													</c:choose>
 												</c:forEach></td>
 											<td> <button
-													type="button" class="btn btn-primary" style="width: 80px;" ><i class=" icon-pencil icon-white"></i> 修改</button></td>
+													type="submit" class="btn btn-primary" style="width: 80px;" ><i class=" icon-pencil icon-white"></i> 修改</button></td>
 										</form></tr>
 
 

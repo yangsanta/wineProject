@@ -70,8 +70,8 @@ public class MenberPicByUser extends HttpServlet {
 						sb.append(String.format("%02X", bb));
 					}
 					memberVO.setM_pic(sb.toString() + ".jpg");
-					String sss = request.getServletContext().getRealPath("\\")
-							+ "images\\";
+					String sss = request.getServletContext().getRealPath("/")
+							+ "images/memberPic/";
 
 					File file = new File(sss, sb.toString() + ".jpg");
 					item.write(file);

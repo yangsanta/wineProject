@@ -90,7 +90,7 @@ background-color: #fff;}
 		<div style="overflow:auto; ">
 		<div style="width:200px;float:left;padding-top: 40px;">
 					<img
-				src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}"
+				src="<%request.getContextPath();%>/WineProject/images/memberPic/${memberVO.m_pic}"
 				width="160px" height="200px" /> <br />
 			<form method="post" action="<%request.getContextPath();%>/WineProject/MenberPicByUser" enctype="multipart/form-data">
 				<input type="hidden" name="m_no" value="${memberVO.m_no}" class="btn btn-info btn-small">

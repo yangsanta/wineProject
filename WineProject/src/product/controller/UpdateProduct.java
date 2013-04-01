@@ -265,7 +265,7 @@ public class UpdateProduct extends HttpServlet {
 							sb.append(String.format("%02X", bb));
 					    }
 						productVO.setP_pic(sb.toString()+".jpg");
-						String sss=request.getServletContext().getRealPath("\\")+ "images\\products\\";
+						String sss=request.getServletContext().getRealPath("/")+ "images/products/";
 						
 						File file = new File(sss, sb.toString()+".jpg");
 						item.write(file);

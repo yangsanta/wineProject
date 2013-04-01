@@ -61,7 +61,7 @@ public class AdsFacade {
 					item.write(file);
 
 					// 複製一份圖片到 C 槽，因每次重部署 webapps 下的圖片都會被砍掉
-					cloneFile(file);
+//					cloneFile(file);
 
 					JSONObject jsono = new JSONObject();
 					jsono.put("name", item.getName());
