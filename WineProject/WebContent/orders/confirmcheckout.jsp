@@ -59,7 +59,7 @@ border-width: 1px;}
 
 
 <c:if test="${empty sessionScope.ShoppingCart.content}">
-如果購物車內沒東西的 request attribute： ${cartNoContent}
+${cartNoContent}
 <hr>
 </c:if>
 

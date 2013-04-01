@@ -246,6 +246,8 @@ public class OrdersFacade {
 				
 			}
 			request.setAttribute("ordersVO", ordersVO);
+			request.setAttribute("couponPrice", (new CouponDAO().findByPrimaryKey(request
+								.getParameter("useCoupon"))).getC_price());
 			
 			//訂單成立贈送coupon
 			List<Coupon_setVO> cs = new Coupon_setDAO().getAll();
