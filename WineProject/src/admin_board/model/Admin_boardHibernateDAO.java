@@ -100,7 +100,7 @@ public class Admin_boardHibernateDAO {
 		try {
 			session.beginTransaction();
 			SQLQuery query = session
-					.createSQLQuery("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by UserAgent)");
+					.createSQLQuery("SELECT * FROM admin_board LEFT JOIN (select MAX(i_no) as a from admin_board group by UserAgent) as a ON a.a=admin_board.i_no");
 			query.addEntity(Admin_boardVO.class);
 			query.setFirstResult(0);
 			query.setMaxResults(10);
@@ -119,7 +119,7 @@ public class Admin_boardHibernateDAO {
 		try {
 			session.beginTransaction();
 			SQLQuery query = session
-					.createSQLQuery("  select * from admin_board where lastReferer  IS NOT NULL order by i_no DESC");
+					.createSQLQuery("select * from admin_board where lastReferer  IS NOT NULL order by i_no DESC");
 			query.setFirstResult(0);
 			query.setMaxResults(10);
 			query.addEntity(Admin_boardVO.class);
@@ -219,7 +219,7 @@ public class Admin_boardHibernateDAO {
 			while (rs.next()) {
 	
 				String ts =rs.getString(1);
-				System.out.println(ts);
+//				System.out.println(ts);
                  list.add(ts);
 				
 			}
@@ -350,7 +350,9 @@ public class Admin_boardHibernateDAO {
 		//
 		// System.out.println(aEmp);
 		// }
-
+		List<Admin_boardVO> lastReferer = null;
+		lastReferer = dao.getlastReferer();
+		System.out.println(lastReferer);
 		// 新增
 		// Admin_boardVO admin_boardVOO1 = new Admin_boardVO();
 		// admin_boardVOO1.setQueryString("QueryString路易拉葡萄酒");
@@ -374,12 +376,12 @@ public class Admin_boardHibernateDAO {
 		// System.out.println(admin_boardVOO3.getP_grape() );
 		// System.out.println();
 		// 查詢
-		Map<String, String> list = dao.getpv();
-		System.out.println(new java.sql.Date(System.currentTimeMillis()));
-		System.out.println("卓天"
-				+ new java.sql.Date(System.currentTimeMillis() - 1 * 24 * 3600
-						* 1000));
-		System.out.println("*-*-*-" + list);
+//		Map<String, String> list = dao.getpv();
+//		System.out.println(new java.sql.Date(System.currentTimeMillis()));
+//		System.out.println("卓天"
+//				+ new java.sql.Date(System.currentTimeMillis() - 1 * 24 * 3600
+//						* 1000));
+//		System.out.println("*-*-*-" + list);
 		// for (Admin_boardVO aEmp : list) {
 		// System.out.print(aEmp.a );
 		// System.out.print(aEmp.getQueryString() + ",");
