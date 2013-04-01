@@ -66,11 +66,11 @@ public class MenberPic extends HttpServlet {
 					for (byte bb : hash) {
 						sb.append(String.format("%02X", bb));
 					}
-					memberVO.setM_pic(sb.toString() + ".jpg");
-					String sss = request.getServletContext().getRealPath("\\")
-							+ "images\\";
+					memberVO.setM_pic(sb.toString() + ".jpEg");
+					String sss = request.getServletContext().getRealPath("/")
+							+ "images/";
 
-					File file = new File(sss, sb.toString() + ".jpg");
+					File file = new File(sss, sb.toString() + ".jpEg");
 					item.write(file);
 					
 					
