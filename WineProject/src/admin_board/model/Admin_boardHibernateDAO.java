@@ -178,7 +178,7 @@ public class Admin_boardHibernateDAO {
 	}
 
 	public Map<String, String> getpv() {
-		List<Admin_boardVO> list = null;
+		List<Timestamp> list = null;
 		Map<String, String> map = new TreeMap<String, String>();
 		int num = 0;
 		int numday = 0;
@@ -188,13 +188,12 @@ public class Admin_boardHibernateDAO {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			SQLQuery query = session
-					.createSQLQuery("select * from admin_board ");
-			query.addEntity(Admin_boardVO.class);
+			Query query = session
+					.createQuery("select viewedate from Admin_boardVO ");
 			list = query.list();
 			num = query.list().size();
-			for (Admin_boardVO aEmp : list) {
-				Timestamp date = aEmp.getViewedate();
+			for (Timestamp aEmp : list) {
+				Timestamp date = aEmp;
 				DateFormat DF = new SimpleDateFormat("yyyy-MM-dd");
 				DateFormat mF = new SimpleDateFormat("yyyy-MM");
 				Date today = new java.sql.Date(System.currentTimeMillis());
