@@ -62,7 +62,7 @@ public class ReplyServlet extends HttpServlet {
 					req.setAttribute("ErrorMsgKey", errorMsgs);
 					System.out.println(r_context);
 //					replyVO.setR_context(r_context);
-//					req.setAttribute("replyVO", replyVO);
+					req.setAttribute("r_context", r_context);
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("DiscussionList.do?action=getOne&d_no=" + d_no);//導入錯誤處理頁面
 					failureView.forward(req, res);
