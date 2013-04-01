@@ -206,7 +206,7 @@ tr{height: 45px;}
 						id="commentForm" class="cmxform" name="aaa">
 						<div id="firstpage">
 						請您詳閱以下的使用者條款以及隱私權政策<br><br>
-						<iframe name="main" frameborder="0" height="300" scrolling="yes" src="registerlist.html" width="600" allowtransparency="true"></iframe>
+						<iframe name="main" frameborder="0" height="405" scrolling="yes" src="registerlist.html" width="610" allowtransparency="true"></iframe>
 						<br><br><div class="aceptregister"  onclick="switchpage();" style="float:right;margin-right: 40px;"></div>
 						</div>
 						<div id="secendpage" style=" display:none;">
