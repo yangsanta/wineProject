@@ -213,7 +213,7 @@ public class Admin_boardHibernateDAO {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement("select viewedate  from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr,CONVERT(CHAR(8), viewedate, 112))");
-
+//			pstmt = con.prepareStatement("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr, DATE_FORMAT( viewedate,  '%y%m' ))"); //mysql
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
