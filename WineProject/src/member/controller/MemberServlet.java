@@ -188,7 +188,7 @@ public class MemberServlet extends HttpServlet {
 				}
 				
 				/***************************2.開始修改資料*****************************************/
-				dao.insert(memberVO);
+				dao.update(memberVO);
 				/***************************3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("memberVO", memberVO); // 資料庫update成功後,正確的的memberVO物件,存入req
 				String url = "/wine_admin/ademin_member_updateOK.jsp";
