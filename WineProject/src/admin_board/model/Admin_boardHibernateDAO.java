@@ -193,8 +193,8 @@ public class Admin_boardHibernateDAO {
 		
 		String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 		String url = "jdbc:sqlserver://localhost:1433;DatabaseName=WineProject";
-//		String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-//		String url = "jdbc:sqlserver://localhost:1433;DatabaseName=WineProject";	
+//		String driver = "com.mysql.jdbc.Driver";
+//		String url = "jdbc:mysql://localhost:3306/WineProject?characterEncoding=UTF-8";	
 		String userid = "sa";
 		String passwd = "sa123456";
 		Map<String, String> map = new TreeMap<String, String>();
@@ -212,8 +212,8 @@ public class Admin_boardHibernateDAO {
 
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement("select viewedate  from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr,CONVERT(CHAR(8), viewedate, 112))");
-//			pstmt = con.prepareStatement("select * from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr, DATE_FORMAT( viewedate,  '%y%m' ))"); //mysql
+//			pstmt = con.prepareStatement("select viewedate  from admin_board where i_no in (select MAX(i_no) from admin_board group by  remoteAddr,CONVERT(CHAR(8), viewedate, 112))");
+			pstmt = con.prepareStatement("SELECT viewedate FROM admin_board LEFT JOIN (select MAX(i_no) as a from admin_board group by  remoteAddr, DATE_FORMAT( viewedate,  '%y%m' )) as a ON a.a=admin_board.i_no"); //mysql
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
