@@ -35,6 +35,7 @@ public class login extends HttpServlet {
 		HttpSession session = request.getSession();
 		InputFilter inputfilter = new InputFilter();
 		// 登出功能
+		request.setCharacterEncoding("UTF-8");
 				try {
 		String action = request.getParameter("action");
 		if ("logout".equals(action)) {
@@ -53,7 +54,7 @@ public class login extends HttpServlet {
 		request.setAttribute("ErrorMsgKey", errorMsgs);
 		String m_id = inputfilter.sizeFomat(request.getParameter("m_id").trim(),20);
 		System.out.println(m_id);
-		String m_pwd = inputfilter.sizeFomat(request.getParameter("m_pwd").trim(),16);
+		String m_pwd =request.getParameter("m_pwd");
 		System.out.println(m_pwd);
 		session.setAttribute("access", "n");
 		

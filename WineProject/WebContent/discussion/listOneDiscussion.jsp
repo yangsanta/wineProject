@@ -177,7 +177,7 @@ label.success {
 								<td class="table_member">
 									<div class="defalut">
 										<br> <img
-											src="<%=request.getContextPath() %>/images/${discussionVO.memberVO.m_pic}"
+											src="<%=request.getContextPath() %>/images/memberPic/${discussionVO.memberVO.m_pic}"
 											style="background: #ededed; padding: 5px;" class="m_pic"><br>
 													作者帳號:${discussionVO.memberVO.m_id}<br>
 													UID:14381${discussionVO.memberVO.m_no} <br>
@@ -205,7 +205,7 @@ label.success {
 										<tr>
 											<td class="table_member"><div class="defalut">
 													${discussionVO.replies[i].memberVO.m_id}<br> <img
-														src="<%=request.getContextPath() %>/images/${discussionVO.replies[i].memberVO.m_pic}"
+														src="<%=request.getContextPath() %>/images/memberPic/${discussionVO.replies[i].memberVO.m_pic}"
 														style="background: #ededed; padding: 5px;" class="m_pic"><br>
 															UID:14381${discussionVO.replies[i].memberVO.m_no} 	
 												</div></td>

@@ -52,7 +52,7 @@ table{font-size:16px}
 						<h2>會員資料修改完成！</h2>
 											
 				<table><tr><td>			
-							<img src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}" style="vertical-align: top; width: 100px;"/>
+							<img src="<%request.getContextPath();%>/WineProject/images/memberPic/${memberVO.m_pic}" style="vertical-align: top; width: 100px;"/>
 							</td><td>
 							<span class="listtag">會員編號：</span><span>${memberVO.m_no}</span><br>
 							<span class="listtag">帳號：</span><span>${memberVO.m_id}</span><br>

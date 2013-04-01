@@ -126,7 +126,7 @@ background-color: #fff;}
 					<hr>
 					<div style="overflow:auto; ">
 					<div style="width:200px;float:left">
-					<img  src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}"
+					<img  src="<%request.getContextPath();%>/WineProject/images/memberPic/${memberVO.m_pic}"
 				width="160px" height="200px"/></td><td  valign="top" style="padding-left:10px"></div>
 					<div style="width:300px;float:left">
 					<span style="line-height: 40px;width:80px;display:inline-block"><b>姓名：</b></span>${memberVO.m_name}<br>
