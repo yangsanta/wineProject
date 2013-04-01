@@ -116,7 +116,7 @@ label.success {
 					<p >圖片：</p>
 					
 					<input type="hidden" name="m_no" value="${memberVO.m_no}"/>
-					<img src="<%request.getContextPath();%>/WineProject/images/${memberVO.m_pic}" style="vertical-align: top; width: 100px;"/><br/>
+					<img src="<%request.getContextPath();%>/WineProject/images/memberPic/${memberVO.m_pic}" style="vertical-align: top; width: 100px;"/><br/>
 					 <input	style="background: #FFFFFF" type="file" name="p_pic" size="40" /><br/> 
 					 <button type="submit" class="btn btn-info" style="width: 150px;"><i class=" icon-plus icon-white"></i> 上傳圖片</button>		
 					</form>

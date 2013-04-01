@@ -197,8 +197,8 @@ public class Timing_SalesFacade {
 //									+ "images\\timingSales\\";
 							System.out.println("目標儲存路徑" + fi.getName());
 							String fileUrl = request.getServletContext()
-									.getRealPath("\\")
-									+ "images\\timingSales\\";
+									.getRealPath("/")
+									+ "images/timingSales/";
 							File file = new File(fileUrl, fi.getName());
 							fi.write(file);
 							ts.setTs_pic(fi.getName());

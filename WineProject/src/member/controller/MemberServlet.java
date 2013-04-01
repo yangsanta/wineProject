@@ -117,9 +117,9 @@ public class MemberServlet extends HttpServlet {
 				String m_id = inputfilter.sizeFomat(
 						req.getParameter("m_id"), 20);
 				String m_name = inputfilter.sizeFomat(
-						req.getParameter("m_name"), 10);
+						req.getParameter("m_name"), 30);
 				String m_pwd = inputfilter.sizeFomat(
-						req.getParameter("m_pwd"), 16);
+						req.getParameter("m_pwd"), 40);
 				String m_mobile = inputfilter.sizeFomat(
 						req.getParameter("m_mobile"), 10);
 				String m_email = inputfilter.sizeFomat(

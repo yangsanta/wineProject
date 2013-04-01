@@ -78,7 +78,7 @@ public class DiscussionServlet extends HttpServlet {
 			}
 
 			// 新增主題功能
-			else	if ("insert".equals(action)) {
+			else if ("insert".equals(action)) {
 				InputFilter tool = new InputFilter();
 				
 				// 之後修改成從session獲取會員編號
@@ -101,13 +101,9 @@ public class DiscussionServlet extends HttpServlet {
 					errorMsgs.add("文章內容請輸入超過10字");
 				}
 				if (!errorMsgs.isEmpty()) {
-					DiscussionVO discussionVO = new DiscussionVO();
-					discussionVO.setD_title(d_title);
-					discussionVO.setD_context(d_context);
-					System.out.println(d_title);
-					System.out.println(d_context);
 					System.out.println("進入!errorMsgs.isEmpty()");
-					req.setAttribute("discussionVO", discussionVO);
+					req.setAttribute("d_title", d_title);
+					req.setAttribute("d_context", d_context);
 					req.setAttribute("ErrorMsgKey", errorMsgs);
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/discussion/insertDiscussion.jsp");// 導入錯誤處理頁面
