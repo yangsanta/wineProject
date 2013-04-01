@@ -10,13 +10,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import member.model.MemberDAO;
 import member.model.MemberDAO_interface;
 import member.model.MemberHibernateDAO;
 import member.model.MemberService;
 import member.model.MemberVO;
+import tools.InputFilter;
 
 public class MemberUpdate extends HttpServlet {
 
@@ -30,7 +30,7 @@ public class MemberUpdate extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-		
+
 		if ("getOne_For_Display".equals(action)) { // 來自select_page.jsp的請求
 
 			List<String> errorMsgs = new LinkedList<String>();
@@ -39,8 +39,8 @@ public class MemberUpdate extends HttpServlet {
 			try {
 				/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
 				Integer m_no = (Integer) req.getSession().getAttribute("m_no");
-				if(m_no==null){
-					res.sendRedirect(req.getContextPath()+"/index.jsp");
+				if (m_no == null) {
+					res.sendRedirect(req.getContextPath() + "/index.jsp");
 					return;
 				}
 				MemberDAO memSvc = new MemberDAO();
@@ -82,12 +82,10 @@ public class MemberUpdate extends HttpServlet {
 			try {
 				/*************************** 1.接收請求參數 ****************************************/
 				Integer m_no = (Integer) req.getSession().getAttribute("m_no");
-				if(m_no==null){
-					res.sendRedirect(req.getContextPath()+"/index.jsp");
+				if (m_no == null) {
+					res.sendRedirect(req.getContextPath() + "/index.jsp");
 					return;
 				}
-				
-
 
 				/*************************** 2.開始查詢資料 ****************************************/
 				MemberService memSvc = new MemberService();
@@ -107,13 +105,13 @@ public class MemberUpdate extends HttpServlet {
 						.getRequestDispatcher("select_page.jsp");
 				failureView.forward(req, res);
 			}
-		}else	if ("member_update".equals(action)) { // 來自update_mem_input.jsp的請求
-
+		} else if ("member_update".equals(action)) { // 來自update_mem_input.jsp的請求
+			InputFilter inputfilter = new InputFilter();
 			List<String> errorMsgs = new LinkedList<String>();
 			req.setAttribute("errorMsgs", errorMsgs);
 			Integer sm_no = (Integer) req.getSession().getAttribute("m_no");
-			if(sm_no==null){
-				res.sendRedirect(req.getContextPath()+"/index.jsp");
+			if (sm_no == null) {
+				res.sendRedirect(req.getContextPath() + "/index.jsp");
 				return;
 			}
 			// try {
@@ -127,20 +125,30 @@ public class MemberUpdate extends HttpServlet {
 			String m_pic = req.getParameter("m_pic").trim();
 			String m_safety_q = req.getParameter("m_safety_q").trim();
 			String m_safety_a = req.getParameter("m_safety_a").trim();
-			Integer m_status = Integer.parseInt(req.getParameter("m_status").trim());
-			String  m_bday  =req.getParameter("m_bday").trim();                      
-			if(m_name.length()==0||m_mobile.length()==0||m_email.length()==0||m_addr.length()==0||m_bday.length()==0){
-				
+			Integer m_status = Integer.parseInt(req.getParameter("m_status")
+					.trim());
+			String m_bday = req.getParameter("m_bday").trim();
+
+			m_id = inputfilter.sizeFomat(m_id, 20);
+			m_name = inputfilter.sizeFomat(m_name, 30);
+			m_mobile = inputfilter.sizeFomat(m_mobile, 10);
+			m_email = inputfilter.sizeFomat(m_email, 40);
+			m_bday = inputfilter.sizeFomat(m_bday, 20);
+			m_addr = inputfilter.sizeFomat(m_addr, 200);
+			m_safety_q = inputfilter.sizeFomat(m_safety_q, 120);
+			m_safety_a = inputfilter.sizeFomat(m_safety_a, 120);
+			if (m_name.length() == 0 || m_mobile.length() == 0
+					|| m_email.length() == 0 || m_addr.length() == 0
+					|| m_bday.length() == 0) {
+
 				req.setAttribute("update", "error"); // 資料庫update成功後,正確的的memberVO物件,存入req
-				String url = "/member/Member_Info.jsp"; //listOneMemOK.jsp
+				String url = "/member/Member_Info.jsp"; // listOneMemOK.jsp
 				RequestDispatcher errorView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneMem.jsp
 				errorView.forward(req, res);
 				return; // 程式中斷
 			}
-					
-				
-			
-             java.sql.Date bday = java.sql.Date.valueOf(m_bday);
+
+			java.sql.Date bday = java.sql.Date.valueOf(m_bday);
 			MemberVO memberVO = new MemberDAO().findByPrimaryKey(m_no);
 
 			memberVO.setM_no(m_no);
@@ -155,17 +163,16 @@ public class MemberUpdate extends HttpServlet {
 			memberVO.setM_safety_q(m_safety_q);
 			memberVO.setM_safety_a(m_safety_a);
 			memberVO.setM_status(m_status);
-			
+
 			// Send the use back to the form, if there were errors
-			
 
 			/*************************** 2.開始修改資料 *****************************************/
 
 			/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
 			new MemberDAO().update(memberVO);
-			
+
 			req.setAttribute("update", "success"); // 資料庫update成功後,正確的的memberVO物件,存入req
-			String url = "/member/Member_Info.jsp"; //listOneMemOK.jsp
+			String url = "/member/Member_Info.jsp"; // listOneMemOK.jsp
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneMem.jsp
 			successView.forward(req, res);
 
@@ -179,7 +186,7 @@ public class MemberUpdate extends HttpServlet {
 			// }
 		}
 
-		else	if ("password_update".equals(action)) { // 來自update_mem_input.jsp的請求
+		else if ("password_update".equals(action)) { // 來自update_mem_input.jsp的請求
 
 			List<String> errorMsgs = new LinkedList<String>();
 			req.setAttribute("errorMsgs", errorMsgs);
@@ -187,46 +194,42 @@ public class MemberUpdate extends HttpServlet {
 			try {
 				/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
 				Integer m_no = (Integer) req.getSession().getAttribute("m_no");
-				if(m_no==null){
-					res.sendRedirect(req.getContextPath()+"/index.jsp");
+				if (m_no == null) {
+					res.sendRedirect(req.getContextPath() + "/index.jsp");
 					return;
 				}
-				
-
+                         
 				String m_pwd = req.getParameter("m_pwd").trim();
+			     
 				String Password = req.getParameter("Password").trim();
-				String PasswordChecked = req.getParameter("PasswordChecked").trim();
+				String PasswordChecked = req.getParameter("PasswordChecked")
+						.trim();
 				MemberDAO_interface dao = new MemberHibernateDAO();
 				MemberVO memberVO = dao.findByPrimaryKey(m_no);
-				
-				
-				MessageDigest md= MessageDigest.getInstance("MD5");
+            
+				MessageDigest md = MessageDigest.getInstance("MD5");
 				byte[] b = m_pwd.trim().getBytes();
-			
-			byte[] hash = md.digest(b);
-			StringBuilder pwd = new StringBuilder();
-			for (byte bb : hash) {
-				pwd.append(String.format("%02X", bb));
-			}
-				
-				
-				
+                byte[] hash = md.digest(b);
+				StringBuilder pwd = new StringBuilder();
+				for (byte bb : hash) {
+					pwd.append(String.format("%02X", bb));
+				}
+
 				if (!memberVO.getM_pwd().equals(pwd.toString())) {
 					req.setAttribute("error", "你輸入的密碼不正確!!!");
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/listOneMemPass.jsp");
 					failureView.forward(req, res);
 					return;
-				}else if(!PasswordChecked.equals(Password)){
+				} else if (!PasswordChecked.equals(Password)) {
 					req.setAttribute("error", "請確認再次確認你的新密碼!!!");
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/listOneMemPass.jsp");
 					failureView.forward(req, res);
 					return;
-					
-				}
-				else {
-					
+
+				} else {
+
 					if (Password.length() < 8) {
 						errorMsgs.add("密碼不能為空值且長度必須大於8");
 					}
@@ -237,7 +240,7 @@ public class MemberUpdate extends HttpServlet {
 						return; // 程式中斷
 					}
 					byte[] b2 = Password.trim().getBytes();
-					
+
 					byte[] hash2 = md.digest(b2);
 					StringBuilder newpwd = new StringBuilder();
 					for (byte bb : hash2) {
@@ -261,10 +264,10 @@ public class MemberUpdate extends HttpServlet {
 						.getRequestDispatcher("/listOneMemPass.jsp");
 				failureView.forward(req, res);
 			}
-		}else{
-			res.sendRedirect(req.getContextPath()+"/index.jsp");
-			return;		
-			}
-	
+		} else {
+			res.sendRedirect(req.getContextPath() + "/index.jsp");
+			return;
+		}
+
 	}
 }

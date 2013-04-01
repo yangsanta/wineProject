@@ -68,9 +68,8 @@ public class register extends HttpServlet {
 				String m_id = inputfilter.sizeFomat(
 						request.getParameter("m_id"), 20);
 				String m_name = inputfilter.sizeFomat(
-						request.getParameter("m_name"), 10);
-				String m_pwd = inputfilter.sizeFomat(
-						request.getParameter("m_pwd"), 16);
+						request.getParameter("m_name"), 30);
+				String m_pwd =request.getParameter("m_pwd");
 				String m_mobile = inputfilter.sizeFomat(
 						request.getParameter("m_mobile"), 10);
 				String m_email = inputfilter.sizeFomat(
@@ -78,7 +77,7 @@ public class register extends HttpServlet {
 				String m_bday = inputfilter.sizeFomat(
 						request.getParameter("m_bday"), 20);
 				String m_addr = inputfilter.sizeFomat(
-						request.getParameter("m_addr"), 100);
+						request.getParameter("m_addr"), 200);
 
 				// 3. 檢查使用者輸入資料
 				if (m_id == null || m_id.trim().length() == 0) {
