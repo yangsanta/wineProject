@@ -1,6 +1,11 @@
 package member.controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
@@ -9,7 +14,6 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -144,35 +148,35 @@ public class register extends HttpServlet {
 					int rand = (int) (Math.random() * 100000 + 99999);
 
 					// // 變數宣告
-					// String msg;
-					// String thisLine;
-					// URL u;
-					// URLConnection uc;
-					//
-					// // 設定參數
-					// String username = "davidou"; // 帳號
-					// String password = ""; // 密碼
-					// String mobile = m_mobile; // 電話 m_mobile 0971091213
-					// String message =
-					// "hello!"+username+" 感謝您註冊成為酒迷的會員 以下是您的酒迷驗證碼:"+rand; //
-					// 簡訊內容
-					//
-					// msg = "http://api.twsms.com/smsSend.php?username=" +
-					// username
-					// + "&password=" + password + "&mobile=" + mobile
-					// + "&message=" + URLEncoder.encode(message);
-					//
-					// u = new URL(msg);
-					// try {
-					// uc = u.openConnection();
-					// BufferedReader theHTML = new BufferedReader(
-					// new InputStreamReader(uc.getInputStream()));
-					// thisLine = theHTML.readLine();
-					//
-					// System.out.println(thisLine);//回傳訊息:
-					// } catch (Exception e) {
-					// System.out.println(e.getMessage()); //無法連結網站
-					// }
+					 String msg;
+					 String thisLine;
+					 URL u;
+					 URLConnection uc;
+					
+					 // 設定參數
+					 String username = "davidou"; // 帳號
+					 String password = "davideric"; // 密碼
+					 String mobile = m_mobile; // 電話 m_mobile 0971091213
+					 String message =
+					 "hello!"+username+" 感謝您註冊成為酒迷的會員 以下是您的酒迷驗證碼:"+rand; //
+//					 簡訊內容
+					
+					 msg = "http://api.twsms.com/smsSend.php?username=" +
+					 username
+					 + "&password=" + password + "&mobile=" + mobile
+					 + "&message=" + URLEncoder.encode(message);
+					
+					 u = new URL(msg);
+					 try {
+					 uc = u.openConnection();
+					 BufferedReader theHTML = new BufferedReader(
+					 new InputStreamReader(uc.getInputStream()));
+					 thisLine = theHTML.readLine();
+					
+					 System.out.println(thisLine);//回傳訊息:
+					 } catch (Exception e) {
+					 System.out.println(e.getMessage()); //無法連結網站
+					 }
 					// // 簡訊結束
 					MemberHibernateDAO dao = new MemberHibernateDAO();
 					MemberVO member = dao.Login(m_id, pwd.toString());
