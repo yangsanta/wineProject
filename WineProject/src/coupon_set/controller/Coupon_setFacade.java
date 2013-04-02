@@ -1,6 +1,9 @@
 package coupon_set.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -52,17 +55,42 @@ public class Coupon_setFacade {
 
 	public void addCouponSet(Integer new_cs_limit_price, Integer new_cs_price) {
 		Coupon_setDAO cdao = new Coupon_setDAO();
-		Coupon_setVO coupon_setVO = cdao.findByPrimaryKey(new_cs_limit_price);		
+		List<Coupon_setVO> oriCSList = cdao.getAll();
+		Boolean cs_limitAlready = false;
+		Integer oriCs_price = null;
+		
+		Coupon_setVO coupon_setVO = cdao.findByPrimaryKey(new_cs_limit_price);
 		
 		if (coupon_setVO != null){
+			oriCs_price = coupon_setVO.getCs_price();
 			coupon_setVO.setCs_price(new_cs_price);
 			cdao.update(coupon_setVO);
+			cs_limitAlready = true;
 		} else {
 			coupon_setVO = new Coupon_setVO();
 			coupon_setVO.setCs_limit_price(new_cs_limit_price);
 			coupon_setVO.setCs_price(new_cs_price);
 			cdao.insert(coupon_setVO);
 		}
+		
+		List<Coupon_setVO> newCSList = cdao.getAll();
+		SortedMap<Integer, Integer> newCSMap = new TreeMap<Integer,Integer>();
+		for (Coupon_setVO cs: newCSList){
+			newCSMap.put(cs.getCs_price(), cs.getCs_limit_price());
+		}
+		for (Coupon_setVO cs: newCSList){
+			if (cs.getCs_limit_price() != newCSMap.get(cs.getCs_price())){
+				System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEError!");
+				if (!cs_limitAlready){
+					cdao.delete(coupon_setVO.getCs_limit_price());
+				}
+				else {
+					coupon_setVO.setCs_price(oriCs_price);
+					cdao.update(coupon_setVO);
+				}
+			}
+		}
+
 	}
 
 	public void deleteCouponSet(Integer cs_limit_price) {
