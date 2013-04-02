@@ -76,6 +76,7 @@ public class OrdersFacade {
 			request.getSession().setAttribute("OriginShippingCost", 50);
 			request.getSession().setAttribute("ShippingCost", 0);
 		} else {
+			request.getSession().setAttribute("OriginShippingCost", 50);
 			request.getSession().setAttribute("ShippingCost", 50);
 		}
 		

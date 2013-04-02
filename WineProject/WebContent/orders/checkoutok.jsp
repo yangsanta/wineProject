@@ -117,7 +117,7 @@
 								<td></td>
 								<td></td>
 								<td></td>
-								<td><i>運費： ${ShippingCost}</i><br>總計： $
+								<td><i>運費：$ ${ShippingCost}</i><br><c:if test="${not empty couponPrice}"><i>使用優惠券：$ ${couponPrice}</i><br></c:if>總計： $
 									${ShoppingCart.total + ShippingCost - couponPrice}</td>
 							</tr>
 						</tbody>

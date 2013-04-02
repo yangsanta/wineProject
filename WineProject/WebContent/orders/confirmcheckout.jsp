@@ -102,8 +102,8 @@ ${cartNoContent}
 					</td>
 				</tr>
 			</c:forEach>
-			<tr><td style="padding-right:10px;padding-bottom:10px;" COLSPAN=4 align="right" ><hr><div style="text-align: right;"><span style="margin:0 20px 20px 0">運費：
-			<c:if test="${OriginShippingCost!=ShippingCost}"><span style="font-size:10px;color:blue"><del>達到免運價免收運費$${OriginShippingCost}元</del></span></c:if> ${ShippingCost}元 <br> 總計： $ ${ShoppingCart.total + ShippingCost} 元</span></div></td></tr>
+			<tr><td style="padding-right:10px;padding-bottom:10px;" COLSPAN=4 align="right" ><hr><div style="text-align: right;"><span>運費：
+			<c:if test="${OriginShippingCost!=ShippingCost}"><span style="font-size:10px;color:blue"><del> 達到免運價免收運費$${OriginShippingCost}元 </del></span></c:if>${ShippingCost}元 <br>總計： ${ShoppingCart.total + ShippingCost}元</span></div></td></tr>
 		</tbody>
 	</table>
 	
@@ -121,14 +121,28 @@ ${cartNoContent}
 			<br><h2><div class="us-dollar" style="display: inline-block;"></div><span style="font-size: 50px;margin-left: 30px;">3.</span>您擁有的折價券:</h2>
 				<div style="overflow: auto;"><br>
 					<c:forEach var="coupon" items="${theCoupons}">
+					<c:if test="${coupon.c_price * 5 < ShoppingCart.total + ShippingCost}">
 						<div style="float:left;margin-right:30px">
 						
 						<label for="${coupon.c_key}">
 							<div rel="tooltip" data-placement="bottom" title="優惠卷序號:${coupon.c_key}"  class="ticket${coupon.c_price} style="margin-left:30px;display: inline-block;"></div></label>
 						
 						<br><br>
-						<input id="${coupon.c_key}" type="radio" name="useCoupon" value="${coupon.c_key}">使用${coupon.c_price}折價券 
+						<input id="${coupon.c_key}" type="radio" name="useCoupon" value="${coupon.c_key}">使用${coupon.c_price}元折價券 
 						</div>
+					</c:if>
+					<c:if test="${coupon.c_price * 5 > ShoppingCart.total + ShippingCost}">
+						<div style="float:left;margin-right:30px">
+						
+<%-- 						<label for="${coupon.c_key}"> --%>
+							<div rel="tooltip" data-placement="bottom" title="優惠卷序號:${coupon.c_key}"  class="ticket${coupon.c_price} style="margin-left:30px;display: inline-block;"></div>
+<!-- 							</label> -->
+						
+						<br><br>
+						<span style="color:silver">訂單滿${coupon.c_price * 5}元可用</span>
+<%-- 						<input id="${coupon.c_key}" type="radio" name="useCoupon" value="${coupon.c_key}">使用${coupon.c_price}折價券  --%>
+						</div>
+					</c:if>
 					</c:forEach>
 				</div>
 			</c:if>
