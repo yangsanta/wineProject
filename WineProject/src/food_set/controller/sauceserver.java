@@ -72,14 +72,10 @@ public class sauceserver extends HttpServlet {
 			DAO.update(sauceVO2);}
 		}
 			if (errorMsg.isEmpty()) {
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/food.do?action=Foodsetinsert");// error傳過去//最後轉向ademin_Fs_index.jsp
-				rd.forward(request, response);
+				response.sendRedirect(request.getContextPath()+"/wine_admin/food.do?action=Foodsetinsert");
 				return;
 			} else {
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/food.do?action=Foodsetinsert");//最後轉向ademin_Fs_index.jsp
-				rd.forward(request, response);
+				response.sendRedirect(request.getContextPath()+"/wine_admin/food.do?action=Foodsetinsert");
 				return;
 			}
 	}

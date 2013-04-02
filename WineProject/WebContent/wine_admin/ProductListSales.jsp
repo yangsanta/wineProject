@@ -123,7 +123,7 @@
 									<input type="hidden" name="condition" value="p_name" /> <input
 										type="text" name="conditionValue"
 										class="input-medium search-query" placeholder="商品名稱" /> <input
-										type="submit" value="search" class="btn" /> <input
+										type="submit" value="搜尋" class="btn" /> <input
 										type="hidden" name="action" value="search" />
 								</form>
 							</div>

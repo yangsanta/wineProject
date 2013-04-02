@@ -77,7 +77,7 @@ public class register extends HttpServlet {
 			
 			//確認是否已存在同筆資料
 			List<Food_setVO> list = DAO.getSomeFISP(Integer.parseInt(f_id), Integer.parseInt(i_id), Integer.parseInt(s_id), Integer.parseInt(p_no));
-			if (list!=null || list.size() > 0){
+			if ( list.size() > 0){
 				errorMsg.add("已有相同餐酒搭配資料");
 			}
 			
@@ -91,9 +91,8 @@ public class register extends HttpServlet {
 
 			DAO.insert(food_setVO);
 			request.setAttribute("update", "success");
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/food.do?action=Foodsetall");
-				rd.forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/wine_admin/food.do?action=Foodsetall");
+	
 				return;}
 		}
 		// 刪除
@@ -101,8 +100,7 @@ public class register extends HttpServlet {
 			int fs_id = Integer.parseInt(request.getParameter("fs_id"));
 			DAO.delete(fs_id);
 			request.setAttribute("del", "success");
-				RequestDispatcher rd = request.getRequestDispatcher("/wine_admin/food.do?action=Foodsetall");
-				rd.forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/wine_admin/food.do?action=Foodsetall");
 				return;
 		}
 		// 修改
@@ -126,9 +124,7 @@ public class register extends HttpServlet {
 
 			DAO.update(food_setVO);
 			request.setAttribute("update", "success");
-				RequestDispatcher rd = request
-						.getRequestDispatcher("/wine_admin/food.do?action=Foodsetall");
-				rd.forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/wine_admin/food.do?action=Foodsetall");
 				return;
 
 		}
