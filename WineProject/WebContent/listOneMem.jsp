@@ -25,6 +25,8 @@
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.fancybox.js?v=2.1.4"></script>
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style/jquery.fancybox.css?v=2.1.4" media="screen" />
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style/index.css?v=1.0" media="screen" />
+<script src="<%=request.getContextPath()%>/js/jquery.validate.min.js" type="text/javascript"></script>
+<link type="text/css" href="<%=request.getContextPath()%>/style/jquery.datepick.css" rel="stylesheet">
 
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/index.js?v=1.0"></script>
 
@@ -33,6 +35,24 @@ $(document).ready(function()
   { $('#MyForm').formly({'onBlur':false});
    });
 </script>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$('#m_bday').datepick({
+			dateFormat : 'yyyy-mm-dd'
+		});
+		$('#inlineDatepicker').datepick({
+			onSelect : showDate
+		});
+	});
+
+	function showDate(date) {
+		alert('The date chosen is ' + date);
+	}
+
+	
+	
+</script>
+
 <style type="text/css">
 #content{background: url('<%=request.getContextPath()%>/images/mem_infobg.png');background-repeat: no-repeat;
 background-position: bottom right;
@@ -115,7 +135,7 @@ background-color: #fff;}
 					value="${memberVO.m_email}" />
 			</p>
 			<p align=center>
-				<span class="listtag"><b>生日：</b></span><input type="text" validate="bday" name="m_bday"
+				<span class="listtag"><b>生日：</b></span><input type="text"  name="m_bday" id="m_bday"
 					value="${memberVO.m_bday}" />
 			</p>
 			<p align=center>

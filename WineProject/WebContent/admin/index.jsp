@@ -71,15 +71,15 @@ box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 
     <div class="container">
 <div style="text-align:center"><img src="<%=request.getContextPath()%>/admin/admin_title.png" title="酒迷後台管理系統"/></div><br><br><br>
       <form class="form-signin"  action = "adminlogin" method="post">
-        <h2 class="form-signin-heading" style="color:rgb(25, 75, 163);">Login</h2><hr>
-        <input name="a_id"  type="text" class="input-block-level" placeholder="Account">
+        <h2 class="form-signin-heading" style="color:rgb(25, 75, 163);">登入</h2><hr>
+        <input name="a_id"  type="text" class="input-block-level" placeholder="帳號">
         
         
-        <input name="a_pwd" type="password" class="input-block-level" placeholder="Password">
+        <input name="a_pwd" type="password" class="input-block-level" placeholder="密碼">
         <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" value="remember-me"> 記住我
         </label>
-        <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+        <button class="btn btn-large btn-primary" type="submit">送出</button>
       </form>
 
     </div>

@@ -124,7 +124,7 @@
 									<option value="m_id">會員帳號</option>
 								</select>								
 								<button class="btn btn-success"  type="submit">
-									<i class="icon-search icon-white"></i> search
+									<i class="icon-search icon-white"></i> 搜尋
 								</button>
 						
 								<input type="hidden" name="action" value="search" />
