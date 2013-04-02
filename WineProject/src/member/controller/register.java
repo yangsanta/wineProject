@@ -155,7 +155,7 @@ public class register extends HttpServlet {
 					
 					 // 設定參數
 					 String username = "davidou"; // 帳號
-					 String password = "davideric"; // 密碼
+					 String password = ""; // 密碼
 					 String mobile = m_mobile; // 電話 m_mobile 0971091213
 					 String message =
 					 "hello!"+username+" 感謝您註冊成為酒迷的會員 以下是您的酒迷驗證碼:"+rand; //
