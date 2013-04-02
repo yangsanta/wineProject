@@ -137,7 +137,7 @@ label.success {
 										style="width: 100px">
 										<option value="d_title">主題</option>
 										<option value="d_context">文章內容</option>
-									</select> <input type="submit" value="search" class="btn btn-primary " />
+									</select> <input type="submit" value="搜尋" class="btn btn-primary " />
 									<input type="hidden" name="action" value="search" />
 								</form>
 						</div>
